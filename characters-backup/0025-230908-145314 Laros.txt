@@ -1,0 +1,32 @@
+Laros ; Pts : 175 ; Pts éco : 4
+For 13 ; Dex 13 ; Int 12 ; San 12 ; Per 13 ; Vol 12
+
+Apparence agréable (5) ; Réflexes de combat (15) ; Résistance à la douleur (10)
+Loyauté (Élias) (-10) ; Sens du devoir (-5)
+Mesuré (-1) ; Patient (-1) ; Peu bavard (-1)
+
+Compétences	Score	Pts (mult)	Groupe(s)
+Acrobatie	11	[1]
+Arc	13	[2]
+Combat à mains nues	14	[2]	[b]
+Couteau	14	[0]	[a,b]
+Crochetage	11	[2]
+Culture générale	11	[1]
+Dégainer rapidement (+1)	14	[1]
+Épée	16	[12]	[a]
+Escalade	12	[1]
+Esquive (+1)	14	[4]
+Filature	13	[2]
+Furtivité	14	[4]
+Hache/Masse	13	[0]	[a]
+Monte (cheval)	13	[2]
+Pique	13	[0]	[a]
+
+Épée bâtarde BQ+1	1.7 kg		P.e+6 / T.t+5		
+Armure de cuir (RD4)	2.4 kg		BQ +2 – Torse et bras		
+Arc + flèches (9)	1.5 kg		P.e+2		
+Super-soin	0.15 kg				
+Cheval de selle (411)					
+Épée (tanière ours-hibou)	1.5 kg	 (ct_411)			
+Poignard (tanière ours-hibou)	0.5 kg	 (ct_411)			
+Poignard BQ	0.5 kg	 (ct_411)	P.e+1		

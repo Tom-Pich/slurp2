@@ -1,0 +1,57 @@
+Julian Bholt  ; Pts : 120 ; Pts éco : -1
+For 8 ; Dex 8 ; Int 19 ; San 9 ; Per 12 ; Vol 10
+
+Acuité visuelle +1 (2) ; Mémoire infaillible (40)
+Loyauté envers la communauté vs google. (-10) ; Malchance (-15) ; Méfiance (-5)
+
+Compétences	Score	Pts (mult)	Groupe(s)
+Baratin	20	[1]
+Bricolage	15	[4]
+Camouflage	20	[0.5]
+Commerce	20	[1]
+Conduite moto	14	[4]
+Conn. technologies (réseaux informatique)	20	[1]	[a]
+Conn. technologies (satellites)	21	[1]
+Conn. technologies (sécurité)	17	[0]	[a]
+Connaissance de la Rue	21	[1]
+Cryptographie	19	[1]
+Démolition	20	[1]
+Diplomatie	19	[0.5]
+Dissimulation	20	[1]
+Électricité	20	[0.5]
+Électronique	20	[1]
+Enseignement	20	[1]
+Furtivité	9	[4]
+Informatique	20	[0.5]	[a]
+Ingénierie mécanique	18	[1]	[d]
+Karaté	9	[4]
+Langage des signes (sourds)	19	[1]	[e]
+Langue – espagnol	20	[1]
+Langue – russe	19	[1]
+Lecture sur les lèvres	19	[1]	[e]
+Mécanique	19	[1]	[d]
+Médecine	19	[1]
+Piraterie informatique	18	[1]	[a]
+Premiers secours	21	[1]
+Programmation	×	[0]	[a]
+Stratégie	18	[1]	[b]
+Survie en milieu désertique	20	[1]
+Tactique	16	[0]	[b]
+
+Haut de trellis 	0.3 kg				
+Couteau suisse 	0.05 kg				
+Pantalon trellis camo	0.4 kg				
+Chaussures de sport 	0.35 kg				
+Lunettes de soleil Oakley					
+Portefeuille 					
+Petit sac à dos  (251)			pistolet google		
+90 $					
+Pistolet 9mm + 1chargeur	1 kg				
+Trousseaux de cles 					
+Trousse à outils de poche 	1 kg	 (ct_251)			
+Nokia E7-00		 (ct_251)	+ ensemble connecteurs		
+Stylo 4 couleurs		 (ct_251)			
+Un rubix cube		 (ct_251)			
+Petit miroir portable 		 (ct_251)			
+Boule de ficelle 		 (ct_251)			
+Petite clochette 		 (ct_251)			

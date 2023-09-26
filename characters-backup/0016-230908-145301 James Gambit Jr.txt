@@ -1,0 +1,46 @@
+James Gambit Jr ; Pts : 120 ; Pts éco : 3
+For 12 ; Dex 12 ; Int 13 ; San 11 ; Per 12 ; Vol 11
+
+Nyctalope (5)
+Allergie – guêpes (-2) ; Curiosité (-5) ; Sens de l’Honneur (-5) ; Sens du devoir (-10)
+
+Compétences	Score	Pts (mult)	Groupe(s)
+Arme à feu	14	[6]
+Bricolage	13	[3]
+Camouflage	13	[1]	[c]
+Combat à mains nues	12	[1]	[d]
+Conduite camion	12	[1]	[b]
+Conduite moto	14	[8]
+Conduite voiture	13	[4]	[b]
+Connaissance de la Rue	12	[0.5]
+Couteau	12	[1]	[d]
+Dissimulation	11	[0.5]	[c]
+Électricité	12	[0.5]
+Électronique	12	[1]
+Escalade	11	[1]
+Furtivité	12	[2]
+Informatique	13	[0.5]	[a]
+Langue moyenne	11	[0.5]
+Mécanique	14	[4]
+Nage	11	[0.5]
+Piraterie informatique	11	[1.5]	[a]
+Programmation	12	[0.5]	[a]
+Survie désert	12	[1]
+
+Revolver cal. 45 (6 balles)	1.2 kg		2d [20 (180) ; 3 ; 6 ; -2]		
+Vêtements en faux cuir	1.2 kg				
+Couteau	0.3 kg				
+Petite trousse à outils	2 kg				
+Chaussures type rangers	1 kg				
+Petite sacoche (252)					
+Écharpe	0.2 kg				
+Lunettes teintées (type ski)	0.05 kg				
+Jumelles	0.4 kg				
+15 $					
+Sac de sport (344)	0.3 kg				
+Gourde	0.8 kg	 (ct_252)			
+Pain sec	0.1 kg	 (ct_252)			
+54 balles cal. 45	0.35 kg	 (ct_252)			
+Fusil d’assaut + 20 balles	4 kg	 (ct_344)	5d [200 (500) ; 12* ; 40 ; -1]		
+Gilet pare-balle Google RD12	6 kg	 (ct_344)			
+Pistolet 9mm + 1 chargeur	1 kg	 (ct_344)			

@@ -1,0 +1,36 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php
+
+# RewriteRule ^content/(.*)$ /not-found
+# RewriteRule ^rules/(.*)$ /not-found
+# RewriteRule ^src/(.*)$ /not-found
+# RewriteRule ^vendor/(.*)$ /not-found
+
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} !^site-jdr$ [NC]
+RewriteRule ^(.*)$ https://jdr.pichegru.net/$1 [R=301,L]
+
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header set Connection keep-alive
+    <filesmatch "\.(ico|flv|gif|woff|woff2|svg)$">
+        Header set Cache-Control "max-age=2592000, public"
+    </filesmatch>
+    <filesmatch "\.(jpg|jpeg|png|webp)$">
+        Header set Cache-Control "max-age=1209600, public"
+    </filesmatch>
+    <filesmatch "\.(css)$">
+        Header set Cache-Control "max-age=31536000, private"
+    </filesmatch>
+    <filesmatch "\.(js)$">
+        Header set Cache-Control "max-age=1209600, private"
+    </filesmatch>
+</IfModule>

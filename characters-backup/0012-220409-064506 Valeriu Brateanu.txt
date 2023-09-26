@@ -1,0 +1,44 @@
+Valeriu Brateanu ; Pts : 280 ; Pts éco : 0
+For 10 ; Dex 14 ; Int 15 ; San 12 ; Per 12 ; Vol 12
+
+Pack « Démon » (0)
+Acuité olfactive +4 (8) ; PdM (10) ; Résistance au poison +5 (5)
+Allergie au gluten (-5) ; Incompétence conduite (-2) ; Myope (-5) ; Perfectionniste (-5)
+Méprisant avec les provinciaux (-1)
+
+Compétences	Score	Pts (mult)	Groupe(s)
+Acrobatie	11	[0.5]
+Arme à feu	17	[12]
+Baratin	15	[2]
+Biologie	14	[1.5]×2
+Chimie	16	[4]×2	[a]
+Connaissance des technologies	17	[4]
+Dégainer rapidement	14	[1]
+Dissimulation	15	[2]
+Furtivité	14	[2]
+Informatique	16	[1]	[b]
+Médecine	13	[1.5]
+Nage	12	[1]
+Pharmacologie	16	[2.5]×2	[a]
+Pilotage (drone)	14	[3]
+Piraterie informatique	15	[4]	[b]
+Programmation	×	[0]	[b]
+
+Accoutumance (I)	16	[2]
+Arme maudite (I-III) – Ingram 9 mm P	16	[2]
+Armure maudite (I-IV)	16	[2]
+Détection du Bien (II)	18	[6]
+Poison (I-III)	16	[2]
+
+Bague avec petit dard					
+Ingram 9 mm P maudit	2.5 kg		3d-1 ; Portée 50 m (160 m) ; VdT 10 ; Coups  ∞ ; Rcl -2		
+Portefeuille	0.1 kg		carte bancaire - carte d’identité - carte vitale - carte pro - 345 €		
+Smartphone	0.1 kg				
+Blouson	0.75 kg		Plein de petites poches avec une dizaine de pillules d’amphet’		
+Couteau suisse	0.05 kg				
+Jumelles	0.5 kg		Avec étui à la ceinture		
+Lampe de poche	0.3 kg				
+Couteau commando	0.3 kg				
+Kevlar+casque	9 kg				
+Grenade offensive	0.25 kg				
+Grenade fumigène	0.25 kg				

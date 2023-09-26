@@ -1,0 +1,12 @@
+{
+  "name": "slurp-v2.0",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch --style=compressed ./sass/main.scss:./styles.min.css"
+  },
+  "keywords": [],
+  "author": "TomPich SitUp",
+  "license": "ISC"
+}

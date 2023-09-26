@@ -1,0 +1,30 @@
+Jean Vidal ; Pts : 265 ; Pts éco : 7
+For 16 ; Dex 13 ; Int 15 ; San 13 ; Per 13 ; Vol 13
+
+Pack « Démon » (0)
+Chance (15) ; PdM (6)
+Apparence déplaisante (-5) ; Curieux (-5) ; Nanisme (-15)
+
+Compétences	Score	Pts (mult)	Groupe(s)
+Acrobatie	10	[0.5]
+Arme à feu	17	[12]
+Baratin (-1)	12	[0.5]
+Combat à mains nues	13	[1]
+Droit (Droit fiscal)	15/17	[2]×2
+Épée	15	[8]
+Esquive	11	[1]
+Furtivité	13	[2]
+Informatique	15	[1]
+Nage	15	[2]
+
+Arme maudite (I-II) – Fusil cal. 308	15	[0]
+Armure maudite (I-III)	15	[0]
+Changement d’apparence (II)	15	[0]
+Invisibilité (IV)	15	[0]
+
+Téléphone portable					
+Portefeuille avec 345 €					
+Pistolet 9mm P - 5 balles	1.1 kg		2d+2 [20 m (150 m) ; 3 ; 8 ; -1]		
+Munitions 9mm P (100)	0.5 kg				
+Lampe de poche	0.3 kg				
+Fusil cal. 308 maudit	2.7 kg				

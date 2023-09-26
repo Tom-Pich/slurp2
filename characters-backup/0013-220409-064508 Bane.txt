@@ -1,0 +1,31 @@
+Bane ; Pts : 235 ; Pts éco : 0
+For 23 ; Dex 14 ; Int 8 ; San 12 ; Per 8 ; Vol 11
+
+Pack « Démon » (0)
+PdM (20) ; Réflexes de combat (15) ; Résistance à la douleur (10)
+Apparence hideuse (-20) ; Berserk (-15) ; Gigantisme (-5) ; Malchance (-15)
+
+Compétences	Score	Pts (mult)	Groupe(s)
+Arme à feu	17	[12]
+Conduite moto	10	[1]
+Couteau	15	[2]
+Esquive	14	[4]
+Furtivité	14	[2]
+Karaté	16	[8]
+
+Arme maudite (I-IV) – Fusil de sniper cal. 50	18	[12]
+Arme maudite (I) – Trident	15	[6]
+Armure maudite (I-IV)	15	[6]
+Hâte (III)	15	[6]
+
+Fusil de sniper maudit cal .50	14 kg		13d [1 km (2,2 km) ; 1 ; 5 ; -1]		
+Trident maudit	2 kg		P.e+5 (à deux mains : P.e+9)		
+Couteau de combat avec boussole 	0.5 kg		T.t-2 - P.e+1		
+Survêtement noir + basket	1 kg				
+Un peu de cash (470€)					
+Carte d’identité : Germain Bourrin					
+Veste kevlar RD 8	2.5 kg				
+Casque kevlar RD 8	0.7 kg				
+Fusil d’assaut + 3 chargeurs	3.8 kg				
+Pistolet 9mm 	1 kg				
+Grenade offensive	0.3 kg				

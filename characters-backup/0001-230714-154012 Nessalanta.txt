@@ -1,0 +1,125 @@
+Nessalanta ; Pts : 219 ; Pts éco : 17.5
+For 8 ; Dex 9 ; Int 16 ; San 9 ; Per 10 ; Vol 12
+
+PdE -5 (en suspens) (0) ; Sang-froid -3 (en suspens) (0)
+Alphabétisation (5) ; Apparence agréable (5) ; Don Furtivité +1 (2) ; Infravision (10) ; Magerie 4 (50) ; PdM +5 (10) ; Résistance à l’Emprise mentale +2 (2) ; Sex-appeal (5)
+Besoin de contrôle (-5) ; Disgrâce sociale -1 (-5) ; Douillette (-10) ; Malchance (-15) ; Perfectionniste (-5) ; Rancunière (-5) ; Sens du devoir - compagnons (-5)
+Aucune pitié (-1) ; Cynique/amère (-1) ; Hautaine (-1) ; Réflechie (-1) ; Réservée (-1)
+
+Compétences	Score	Pts (mult)	Groupe(s)
+Alchimie	12	[0.5]
+Baratin	14	[0.5]
+Commerce	14	[0.5]
+Connaissance de la Rue	15	[0.5]
+Couteau	9	[1]
+Culture générale	14	[0.5]
+Éloquence	14	[0.5]
+Enquête	14	[0.5]
+Fouille	12	[0.5]
+Furtivité (+1)	8	[0.5]
+Grimer	14	[0.5]
+Herboristerie	13	[0.5]
+Lancer	10	[0]	[a]
+Lancer de sorts	14	[17]	[a]
+Nage	7	[0.5]
+Perception empathique	14	[2]
+Pièges	10	[0.5]
+Poisons	14	[0.5]
+Premiers secours	15	[0.5]
+Sciences occultes	13	[0.5]
+Séduction (+2)	12	[2]
+Voile	14	[0.5]
+
+Acoustique	19	[17]
+Clairaudience		[1]
+Furtivité		[1]
+Jaillissement sonore		[4]
+Mur de silence		[1]
+Silence		[2]
+Vision sonore		[1]
+
+Connaissance	18	[12]
+Clairaudience		[1]
+Magie analyse		[1]
+
+Mouvement	19	[17]
+Arme précise		[1]
+Bond		[1]
+Couteau ailé		[4]
+Hâte		[4]
+Lévitation		[1]
+Mouche au plafond		[1]
+Serrurier		[1]
+Télékinésie		[2]
+Vacillation		[3]
+
+Ombre & Lumière	18	[12]
+Brouillage		[1]
+Flash		[1]
+Rayon solaire		[1]
+Ténèbres		[1]
+Vision obscure		[1]
+
+
+Vêtements moyens + mocassins	1.25 kg		Pantalon + tunique 		
+Fléchettes (22)	1.1 kg		P.e-2 ; 6 m		
+Poignard BQ+1	0.5 kg		P.e+3		
+Bracelets coupe-lien					
+Bouton de chemise de Saradas					
+Diadème avec glyphe	0.1 kg		+1 en Intelligence, autres sorts dormants	Créée par êtres extraplanaires. Provoque glissement rêves	
+Dague à poison + fourreau manche	0.3 kg		P.e – pas de poison		
+Bourse (43 po, 17 pa, 2 pc)	0.8 kg				
+Potions de super soin (5)	0.75 kg				
+Herbes : Aclathe de minuit 	0.5 kg		poison léger, qsp 50 personnes (volume tassé = 2 L)		
+Cape gris sombre avec capuche	0.5 kg				
+Pendentif anti-détection			Pendentif récupéré sur Shonrath		
+Fiole de poison 	0.05 kg		10 doses de poison mortel		
+Baguette de Boules de Feu III (1 charge)	0.1 kg		Trouvée dans la fosse d’Alastor. En bois rouge	Max 12 charges	
+Armure en cuir	6.4 kg		tete + cou + torse  RD 3 / bras RD 2		
+OBJETS MAGIQUES (451)					
+3 morceaux de pierre (chez Rodek)			6+6+8 carats – Rodek est un mage de Mikalas, en Lauria		
+Chambre à Imégie (350)					
+Grande besace (456)	0.7 kg				
+Cheval (Nessalanta) (517)			Nom : Mag – selle + 2 sacoches		
+Pierre 3/3 PdM		 (ct_451)			
+Collier + pierre 2/8 PdM		 (ct_451)			
+Pierre 10/10 PdM		 (ct_451)	Trouvée dans la fosse d’Alastor - attachée  autour du cou par des lanières		
+Collier + pierre 10/10 PdM		 (ct_451)			
+Collier crâne oiseau + pierre 15/15 PdM		 (ct_451)	Collier de Filge		
+Poignard BQ	0.5 kg	 (ct_350)	P.e+2		
+Coutil complet RD1	2.8 kg	 (ct_350)			
+Cape bleu sombre avec capuche	0.5 kg	 (ct_350)			
+Baguette de sorcier	0.25 kg	 (ct_350)			
+Sac-à-dos	0.5 kg	 (ct_350)			
+Clous de poursuite (90)	0.45 kg	 (ct_350)			
+Dés pipés		 (ct_350)			
+Bourse bien cachée (95 po, 6 pa, 1 pc)	1.5 kg	 (ct_350)	sous le plancher de la chambre		
+Doses de soporifique (4)		 (ct_350)			
+Doses de poison type F		 (ct_350)			
+Perruque blonde + faux-cils	0.1 kg	 (ct_350)			
+Matériel de maquillage	0.1 kg	 (ct_350)			
+Potion d’Amnésie	0.15 kg	 (ct_350)			
+Fléchettes (21)	1.05 kg	 (ct_350)			
+Trousse de premiers secours	1 kg	 (ct_350)	tombée dans l’eau		
+Cape d’hiver brune	1 kg	 (ct_350)			
+Morceau de miroir 		 (ct_456)	Trouvés dans le cairn		
+Grimoire Filge 1	1.5 kg	 (ct_456)	La Nécromancie pour les Nuls		
+Grimoire Filge 2	2.5 kg	 (ct_456)	Précis de Nécromancie théorique et appliquée		
+Parchemin de Balabar		 (ct_456)	Trouvé chez Filge 		
+Bocal avec ver olivâtre mystérieux	0.6 kg	 (ct_456)	Trouvé chez Filge - le ver est magique		
+Chiffons emballage	1 kg	 (ct_456)			
+Pierre précieuse Filge bleu profond		 (ct_456)	Trouvée dans le corps disséqué. Magique.	Genre de pierre de puissance – liée au corps où elle se trouve	
+Nombreuses notes de Filge	0.15 kg	 (ct_456)	Recherches de nécromancie		
+Bocal avec liquide rouge huileux	0.2 kg	 (ct_456)			
+Coffret scellé avec métal fondu	3 kg	 (ct_456)	Contient le sceptre. Magique. Sorts en dormance		
+Deux grandes cornes à pointe rouge	1.5 kg	 (ct_456)	Cornes de démons. Ne sont pas magiques		
+Fioles inconnues (4)	0.6 kg	 (ct_456)		Potions ayant perdu leur pouvoir	
+Parchemin Animation des morts		 (ct_456)	Trouvé chez Filge		
+Parchemin de perception des ennemis		 (ct_456)			
+Parchemin de recherche de personne/objet		 (ct_456)			
+Baguette de sorcier en ivoire	0.1 kg	 (ct_456)			
+Corde 20 m	2 kg	 (ct_517)			
+Briquets (2)		 (ct_517)			
+Torches (12)	6 kg	 (ct_517)			
+Outres 5L (2)	10 kg	 (ct_517)			
+Vieille marmite en fonte 	3 kg	 (ct_517)			

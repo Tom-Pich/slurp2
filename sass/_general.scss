@@ -1,0 +1,110 @@
+:root {
+	font-size: 14px;
+}
+
+// À mettre dans base ? ––––––––––––––––––––
+.color-text {color: var(--clr-text);}
+.border-grey-700 {border: 1px solid var(--grey-700) !important;}
+// scroll-margin-top dans variable ?
+// nude ?
+// –––––––––––––––––––––––––––––––––––––––
+
+body {background: url(/assets/img/bg-paper.png) fixed repeat;}
+main {padding: var(--dynamic-space-1-2); display: flex; min-height: 72vh; flex-wrap: wrap; justify-content: center; gap: 1em;}
+
+h1 {font-size: var(--fs-800);}
+h3 {font-size: var(--fs-600);}
+.h3 {font-weight: bold; font-size: var(--fs-400); background: silver; padding: 0.25em .5em; font-family: var(--ff-accent); margin-top: 0.5em; line-height: 1.5em;}
+h4 {font-size: var(--fs-500);}
+
+dfn {text-decoration: underline #777; cursor: help;}
+
+article {width: 350px; background: white; box-shadow: 2px 2px 2px silver; padding: .5em; min-height: 250px; margin-top: 1em;}
+article h2 {background: black; color: white; padding: .15em .30em; font-size: var(--fs-500); box-shadow: 0 2px 1px silver; margin: -1em 0 1rem; }
+article h4 { margin: .75em 0 .25em; font-size: var(--fs-450);}
+article p { margin: .5em 0;}
+
+// Utility classes
+.nude {border: none; background: none; padding: 0; color: inherit;}
+.color1, .color1::placeholder {color: var(--clr-warning) !important;}
+input.color1 {border: 1px solid var(--clr-text);}
+.hidden {display: none;}
+.border-bottom-grey-700 {border-bottom: 1px solid var(--grey-700);}
+.widget{background-color: var(--clr-accent-background)}
+
+
+// pagination classes
+.exemple {background: var(--grey-900); border-radius: .25em; padding: 2em .5em 1em; margin-top: 1em; position: relative}
+.exemple::before{content:"Exemple"; position: absolute; top: .5em; left: .5em; font-weight: bold; font-family: Rubik;}
+
+// Details & summary (no base) ––––––––––––––––––––––––––––––––––––––––––––––––––––––
+details[open] {padding-bottom: .5em;}
+summary{cursor: pointer; list-style-type: none; display: flex; gap: 0.5em; justify-content: space-between; align-items: center;}
+summary::after {content: "\2261"; color:"inherit"}
+details[open] > summary::after{content:"\00D7";  color:"inherit"}
+
+summary.h4 {font-weight: bold; font-size: var(--fs-400); font-family: var(--ff-accent);}
+details.liste summary::after {content: none;}
+details.liste[open] {background: LightGrey; padding: 5px;}
+details.liste[open] > summary {font-weight: bold;}
+details.sous-liste summary {margin-top: 1px}
+details.sous-liste p {padding: 0 5px; font-size: .95em; margin-top: 1px;}
+
+// Forms, button ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+button, input[type=submit], .btn {border-radius: .25em}
+:is(button:not(.nude), input[type=submit], .btn:not(.nude)):hover {background: var(--clr-text); color: white; border: 1px solid var(--clr-text);}
+button.nude:hover, .btn.nude:hover {transform: scale(1.05)}
+input.manquant {background-color: var(--clr-warning-background);}
+input::placeholder {font-style: italic}
+[draggable=true]{cursor: move;}
+
+
+// tables –––––––––
+table {
+	width: 100%;
+
+	th, td {padding: 0 .25em; text-align: center;}
+
+	&.alternate-e { tr:nth-child(even){background-color: var(--grey-900);} }
+	&.alternate-o { tr:nth-child(odd){background-color: var(--grey-900);} }
+	&.left-1 { :is(td, th):nth-child(1){text-align: left;} }
+	&.left-2 { :is(td, th):nth-child(2){text-align: left;} }
+
+	&.weapons {
+		font-size: var(--fs-300); margin-top: .5em;
+		th {font-weight: 600;}
+		tr:nth-child(even){background-color: var(--grey-900);}
+		:is(td, th):nth-child(1){text-align: left;}
+		:is(td, th):nth-child(2){text-align: left;}
+
+		&.alternate-o {
+			tr:nth-child(even){background-color: transparent;}
+			tr:nth-child(odd){background-color: var(--grey-900);}
+		}
+	}
+}
+caption {font-style: italic; caption-side: bottom; margin: .25em 0;}
+
+table.left {text-align: left}
+table.left1 tr :first-child {text-align: left}
+table.left2 tr :nth-child(2) {text-align: left}
+table.left3 tr :nth-child(3) {text-align: left}
+table.left4 tr :nth-child(4) {text-align: left}
+table.last-right tr :last-child {text-align: right;}
+
+table.armes {text-align: left; font-size: .9em}
+table.armes tr :last-child {text-align: right}
+table.armes tr:nth-child(odd) {background-color: LightGrey;}
+table.notes {font-size: .9em}
+table.notes tr :first-child{vertical-align: top;}
+table.notes tr :last-child{text-align: left;}
+
+// ––– fieldset
+fieldset{
+	border-radius: 0.75em; padding: 0.25em 0.75em 0.75em; box-sizing: border-box;
+
+	legend{ padding: 0 0.5em; font-weight: bold; font-family: var(--ff-accent); font-size: var(--fs-500); }
+
+	&.widget legend {font-size: var(--fs-400); font-weight: 500;}
+}
+

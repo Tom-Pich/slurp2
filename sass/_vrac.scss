@@ -1,0 +1,106 @@
+figure {margin: 5px 0}
+figure img {margin: 0 auto;}
+figcaption {text-align: center; font-style: italic;}
+
+/* Liste Av-Désav, Compétences, Sorts RdB, armes spéciales, sorts et pouvoirs personnage */
+// button, .button {background: #0006; color: white; padding: 5px 10px; border: 2px solid white; border-radius: 10px; cursor: pointer; transition: all 0.3s}
+// button:hover, .button:hover {background: #fff8; color: black}
+button:active, .button:active {transform: scale(95%, 95%)}
+
+.telephone{display: none}
+.close-cross{position: absolute; top: 0; right: 10px; cursor: pointer; font-size: 1.3em; font-weight: bold;}
+.centered {margin-right: auto; margin-left: auto}
+.center {text-align: center;}
+.left {text-align: left;}
+.interligne {margin-top: 15px;}
+.interligne-b {margin-bottom: 15px;}
+
+.mrtop0{margin-top: 0;}
+.mrtop5{margin-top: 5px;}
+.mrbottom5{margin-bottom: 5px;}
+.flex-around{display: flex; justify-content: space-around;}
+.flex-between{display: flex; justify-content: space-between;}
+.flex-center{display: flex; justify-content: center;}
+.flex1 {flex: 1;}
+.gap5 {gap: 5px;}
+.gap10 {gap: 10px;}
+.vertical-center {align-items: center;}
+.gris{color: #777;}
+
+.pointer {cursor: pointer;}
+
+.kit-card {border: 2px solid #aaa; flex: 1 ; padding: 5px; border-radius: 10px}
+:is(div, p):nth-child(odd).alternate-o {background-color: lightgrey;}
+.float-right{float: right; margin-left: 5px}
+
+/* Éléments spécifiques de certaines pages */
+body.table-jeu header{background-image: linear-gradient(180deg, #fff0 0%, black 100%), url(/assets/img/bg-header-table.jpg);}
+body.table-jeu main {padding: 10px 30px 0 15px;}
+body.table-jeu article{margin-top: 0; min-height: 68vh;}
+body.table-jeu article:first-of-type{padding: 10px; background: url(/assets/img/bg-table.jpg) center/cover; border-radius: 5px; flex: 1; display: flex; gap: 10px; flex-wrap: wrap}
+body.table-jeu fieldset {background: #fff5; margin-bottom: 10px; justify-content: space-between; break-inside: avoid;}
+body.table-jeu fieldset legend {color: white; font-family: Rubik; font-weight: bold;}
+#connected-users{border-bottom: 1px solid #333; margin-bottom: 5px; height: 40px}
+#chat-box{overflow-x: hidden; height: 48vh;}
+#chat-box p {text-align: left;}
+#entree-chat {width: 100%; background: #fff;}
+#msg-content {height: 4em;}
+#smiley-bar{padding-bottom: 5px; margin-top: 10px; border-top: 1px solid #333}
+
+body.adapted-dungeons-dragons #calcul_armures select {width: 160px; font-size: 0.95em}
+body.adapted-dungeons-dragons #calcul_armures td {padding: 2px 0}
+
+
+
+body.paorn #encyclopedie-sommaire {width: 350px}
+body.paorn #encyclopedie-sommaire li {cursor: pointer}
+body.paorn #encyclopedie-display {flex: 1}
+
+@media screen and (max-width: 730px) {
+
+	body{background-attachment: scroll;}
+
+	main, body.gestionnaire-mj main{flex-direction: column; /* padding: 15px 10px 10px 10px; */}
+	article{margin: 35px 0 0 0; background: none; box-shadow: none; padding: 0; width: 100%; min-height: 0}
+	article:first-child{margin-top: 10px;}
+	
+	.computer{display: none;}
+	.telephone {display: block;}
+	.full-width.flex-between {display: block;}
+	
+	#lists-left-side-form{margin: 0; width: 100%;}
+	
+	body.personnage-fiche article {min-height: 0;}
+	
+	body.table-jeu main {display: block; padding: 15px 10px 10px 10px;}
+	body.table-jeu article{min-height: auto}
+	body.table-jeu article:first-of-type{columns: auto auto; padding: 5px; margin-right: 0;}
+	body.table-jeu fieldset {display: block; text-align: center}
+	#chat-container {margin-top: 15px; background: white}
+
+	body.gestionnaire-mj .perso-card{margin-top: 15px;}
+}
+
+@media print { /* fiche perso en A4 portrait */
+	body{background-image: none; font-size: 11px; color: black;}
+	header{display: none}
+	main{padding: 0; box-shadow: none; margin-top: 2cm; }
+	meter {display: none;}
+	article{box-shadow: none; width: 260px; border:1px solid black;}
+	footer{display: none}
+	input{font-size: 90%;}
+	.no-print {display: none !important;}
+}
+
+/****
+Couleurs utilisées
+#333 (texte)
+#777 (fond footer et texte gris)
+silver C0C0C0 (shadow et fond titre 3 articles)
+LightGrey D3D3D3 (alternate)
+
+CornSilk
+#f2efe133 (main - inner shadow)
+SteelBlue (lien)
+FireBrick
+*****/

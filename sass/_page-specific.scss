@@ -1,0 +1,66 @@
+body.home {
+	main{ gap: 3em; }
+}
+
+body.gestionnaire-mj {
+	main {flex-direction: column;}
+	article {width: 100%; min-height: 0;}
+	article#liste-personnages {scroll-margin-top: 50px;}
+
+	.card {
+		width: 350px; border: 1px solid var(--grey-900); border-radius: 1em; padding: 1em;
+	}
+}
+
+body.personnage-fiche {
+	article {margin-top: 0; padding-top: 5px; min-height: 450px;}
+	details.objet summary {padding: 0;}
+	details summary.h4 {font-size: var(--fs-500); font-weight: 700; padding: 0;}
+
+	#form-possessions {
+		input {border: none; padding: 0.1em .2em;}
+		select {border: none; padding: 0.1em .2em;}
+		h4 {margin: 0;}
+	}
+
+	details.items-list{
+		transition: all .1s;
+		summary {grid-template-columns: 1ch 1fr 5ch 1ch;}
+		input[type=text] {border: none; border-bottom: 0.5px solid var(--grey-900)}
+		&.drag-over {padding-bottom: 2em;}
+	}
+
+	details.liste > summary {margin-top: 3px;}
+}
+
+body.personnage-gestion {
+	main {display: block; /* min-height: 800px */}
+	#noyau {display: flex; justify-content: center; flex-wrap: wrap; gap: 1em;}
+	article {margin-top: 0}
+	.h3 {margin-top: 0;}
+
+	input[type=text]{border: none; border-bottom: 1px solid var(--grey-700); padding-bottom: 0.15em;}
+	textarea {border: 1px solid var(--grey-700); padding: 0.5em; width: 100%;}
+	article:not(:first-of-type) input[type=text]{font-size: var(--fs-300)}
+
+	summary.ajouter {
+		background-color: var(--grey-700); margin: 1.5em auto 1em; color: white; padding: 0.25em; width: 50%; text-align: center; display: flex; transition: all .3s; border: 1px solid var(--grey-700); gap: 1em; align-items: center; justify-content: center;
+		&::after {content: " \f055"; font-family: "FA6 Solid"; display: block; transition: inherit;}
+		&:hover {background-color: white; color: var(--clr-txt);}
+	}
+
+	details[open] summary.ajouter::after {transform: rotate(45deg)}
+	
+	.radio-wrapper {width: 100px; text-align: center}
+	.radio-wrapper input[type=radio] {margin: 0}
+}
+
+body.gestionnaire-listes {
+	main {display: block}
+	article {width: unset; min-height: 50vh; max-width: 1000px; margin: 0 auto;}
+	textarea {padding: 1em; border: 1px solid var(--grey-700); height: 30em;}
+}
+
+body.test {
+	main {display: block;}
+}

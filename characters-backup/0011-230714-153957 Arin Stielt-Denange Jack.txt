@@ -1,0 +1,40 @@
+Arin Stielt-Denange Jack ; Pts : 255 ; Pts éco : 0
+For 14 ; Dex 13 ; Int 12 ; San 13 ; Per 14 ; Vol 12
+
+Pack « Démon » (0)
+Charisme +3 (15) ; Nyctalope (5) ; PdM (20) ; Réflexes de combat (15) ; Résistance à la douleur (10)
+Dépendance : joints (-5) ; Fier (-5) ; Flash-backs (-15)
+Créatif (-1) ; Tenue vestimentaire (-1) ; Très tatoué (-1)
+
+Compétences	Score	Pts (mult)	Groupe(s)
+Acrobatie	10	[0.5]
+Baratin (+3)	16	[4]
+Combat à mains nues	15	[6]
+Conduite (moto)	12	[2]
+Conduite (voiture)	12	[2]
+Disc-jockey	14	[2]×2
+Esquive (+1)	11	[0.5]
+Festoyer	13	[2]
+Furtivité	11	[0.5]
+Informatique	12	[1]
+Lecture sur les lèvres	12	[2]
+Nage	12	[0.5]
+Premiers secours	12	[1]
+
+Absorption de douleur (I)	12	[0]
+Arme maudite (I-III) – KRISS Vector .45	15	[6]
+Bond (III)	12	[0]
+Cauchemar (I)	12	[0]
+Griffes (I-II)	14	[4]
+Immunité au feu*		[5]
+Poison (I)	12	[0]
+
+Scooter MP3 400 cm³					
+iPad	0.2 kg				
+iPhone					
+Boîte de préservatifs					
+Portefeuille (345 €)					
+KRISS Vector .45 bénite	3.5 kg		Dég 2d+1 ; Portée : 70 m (160 m) ; VdT 10* ; Rcl -1		
+Sac en bandoulière (181)	0.2 kg				
+15 g de shit + tabac + papier					
+Ordi portable Mac	1.5 kg	 (ct_181)			

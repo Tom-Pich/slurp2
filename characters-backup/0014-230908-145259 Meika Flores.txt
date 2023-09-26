@@ -1,0 +1,41 @@
+Meika Flores ; Pts : 120 ; Pts éco : 0
+For 7 ; Dex 9 ; Int 15 ; San 10 ; Per 10 ; Vol 10
+
+Chance (30) ; Mémoire infaillible (20)
+Amnésie (-10) ; Ennemi (Google) (-30) ; Flash-backs (-5) ; Maigre (-5)
+
+Compétences	Score	Pts (mult)	Groupe(s)
+Cryptographie	14	[1]
+Culture amérindienne	16	[1]
+Drogue	16	[1]
+Écrivain	15	[1]
+Électricité	16	[1]
+Histoire	14	[1]
+Informatique	17	[0]	[A]
+Ingénierie électronique	16	[4]
+Langue – espagnol	16	[2]
+Mathématiques	14	[1]
+Nage	7	[0.5]
+Perception empathique	11	[0.5]
+Philosophie	14	[1]
+Photographie	16	[1]
+Physique	14	[1]
+Piraterie informatique	19	[12]	[A]
+Programmation	20	[11.5]	[A]
+
+Électrokinésie 4		(×0.75)
+Déclenchement involontaire en situation de stress sur 10 ou moins
+Bouclier magnétique	15/14/13/12	[6]
+Contrôle de l’influx nerveux	16/15/14/13	[10]
+Création d’un champ électrique	15/14/13/12	[4]
+Création d’un courant électrique	15/14/13/12	[4]
+Détection de champs électromagnétiques	15	[4]
+Photokinésie	16/15/14/13	[10]
+
+Culotte blanche	0.1 kg				
+Chemisette blanche d’hôpital	0.5 kg				
+Smart du garde	0.15 kg		Mouchard désactivé		
+Pantalon 	0.5 kg				
+Chaussures 	0.5 kg				
+Sweat à capuche 	0.3 kg				
+Trousseau de clé (assaillant)					

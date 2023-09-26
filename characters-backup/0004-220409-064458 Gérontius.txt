@@ -1,0 +1,69 @@
+Gérontius ; Pts : 227 ; Pts éco : 2.5
+For 12 ; Dex 17 ; Int 11 ; San 11 ; Per 13 ; Vol 10
+
+Acuité auditive +1 (2) ; Acuité olfactive +5 (10) ; Ambidextrie (15) ; Don Furtivité +2 (4) ; Réflexes de combat (15) ; Résistance à la douleur (10) ; Résistance au poison +2 (4) ; Sens de l’orientation (5)
+Apparence hideuse (-4 JR) (-20) ; Crainte (lumière du jour) (-15) ; Haine absolue de l’Atrimisme² (-7.5) ; Illettré (-5) ; PdV -1 (-5) ; Régime alimentaire viande crue (-5) ; Sadisme² (-5) ; Schizophrénie (-10) ; Sens du devoir¹ (-2.5) ; Statut social -2 (-10) ; Taille peu pratique (-5) ; Vitesse réduite -2 (-10)
+Méfiant (-1)
+
+Compétences	Score	Pts (mult)	Groupe(s)
+Acrobatie	15	[1]
+Acteur	10	[0.5]
+Arbalète	20	[7]	[a]
+Arc	15	[0]	[a]
+Baratin	9	[0.5]
+Bâton de combat	17	[2]	[b]
+Bolas	15	[0.5]
+Camouflage	10	[0.5]
+Connaissance de la Rue	11	[1]
+Connaissance de Laelith	12	[2]
+Course	10	[2]
+Couteau	19	[2]	[b]
+Crochetage	15	[8]
+Épée	19	[5.5]	[b]
+Esquive (+1)	19	[8]
+Évasion	16	[2]
+Filature	11	[1]
+Fouet	17	[2]
+Fouille	12	[1]
+Furtivité (+2)	19	[2]
+Hache/Masse	18	[2]	[b]
+Lancer de couteau	19	[6]	[c]
+Lancer de hache	18	[2]	[c]
+Lancer de sort	19	[2]	[c]
+Nage	13	[0.5]
+Pêche	10	[0.5]
+Pickpocket	16	[2]
+Saut (-2)	12	[1]
+Tour de passe-passe	15	[0.5]
+Voile	9	[0.5]
+
+Jaillissement d’acide (I-III)	12	[0]
+Marche sur les murs*		[20]
+Vision dans les ténèbres*		[15]
+
+Armure composite +2 brigandine / cuir	4.2 kg		Torse RD6 ; reste RD4		
+Foulard noir					
+Épée courte TBQ+1	1 kg		T.t+3/P.e+4		
+Poignard BQ+1	0.5 kg		P.e+3		
+Poignard BQ sans fourreau	0.5 kg		P.e+2. Appartenait à Ghozras, un des deux paladins de Lauria		
+Poignard BQ magique	0.3 kg		P.e+3	BQ+1 (dégâts e+3)	
+Besace Gérontius (71)	0.5 kg				
+Chaussures de marche en cuir RD1	0.3 kg				
+Cape avec capuche	0.25 kg				
+Gants en cuir souple					
+Carquois					
+Bourse (chez Élias)	1.6 kg		18 po		
+Poignard BQ sans fourreau	0.5 kg		P.e+2		
+Cape d’hiver brune raccourcie	0.75 kg				
+Chemise	0.25 kg				
+Entrée du cairn G (434)					
+Potion de Neutralisation du poison	0.15 kg	 (ct_71)			
+Bourse (15 pa, 15 pc)	0.3 kg	 (ct_71)			
+Cape noire à haut col rigide tachée de sang	0.4 kg	 (ct_71)			
+Fioles inconnues (4)	0.6 kg	 (ct_71)		Potions ayant perdu leur pouvoir	
+Torches (2)	1 kg	 (ct_71)			
+Briquet (sans amadou)		 (ct_71)			
+Arbalète légère	2 kg	 (ct_434)	P1d+2		
+Carquois + carreaux (1)	0.05 kg	 (ct_434)			
+Hache de lancer BQ magique	2 kg	 (ct_434)	T.t+5	BQ+2 (dégâts : t+5) Fmin = 11	
+Lance magique TBQ+1	2 kg	 (ct_434)	2,30 m (à raccourcir) – P.e+5/P.e+6 une/deux mains		

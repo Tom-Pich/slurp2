@@ -1,0 +1,60 @@
+Sakeenha ; Pts : 120 ; Pts éco : 0
+For 9 ; Dex 12 ; Int 14 ; San 10 ; Per 11 ; Vol 12
+
+Alphabétisation (5) ; Magerie 2 (25)
+Charitable (-5) ; Maigre (-5) ; Pacifisme (légitime défense) (-15) ; Sens du devoir (compagnons) (-5) ; Timidité (-5) ; Vieillesse (-15)
+
+Compétences	Score	Pts (mult)	Groupe(s)
+Alchimie	14	[8]
+Connaissance de la Nature	14	[0]	[a]
+Couteau	12	[0.5]	[c]
+Épée	12	[2]	[c]
+Esquive	12	[4]
+Fronde	12	[2]
+Furtivité	13	[4]
+Herboristerie	15	[4]×2	[a]
+Lancer de couteau	12	[1.5]	[b]
+Médecine	14	[4]
+Sarbacane	13	[2]	[b]
+
+Contrôle physique	13	[8]
+Croche-pied		[4]
+Douleur		[1]
+Force		[1]
+Spasme		[4]
+
+Soins	13	[8]
+
+Connaissance	13	[8]
+Détection des mensonges		[1]
+Recherche de plante		[1]
+Révélation de secrets		[2]
+
+Chaussures de marche cuir souple	0.5 kg				
+Vêtements moyens	1 kg				
+Coutil torse et cou	1.5 kg				
+Couteau	0.25 kg		T.t-3 - P.e [7 m (F-2)]		
+Epée courte	1 kg		T.t - P.e+1		
+4 bourses pour plantes	0.2 kg				
+Besace (562)	0.25 kg				
+Ane (563)					
+Briquet		 (ct_562)			
+Bourse avec 32 pc		 (ct_562)			
+Outre 1 L	1 kg	 (ct_562)			
+Fronde	2 kg	 (ct_562)			
+Sarbacane	0.2 kg	 (ct_562)			
+Flèchettes sarbacane (combien ?)		 (ct_562)			
+Epée courte	7 kg	 (ct_563)			
+Couverture	2.5 kg	 (ct_563)			
+Sacoche de selle (568)	0.25 kg	 (ct_563)			
+Grappin	1 kg	 (ct_568)			
+Corde	0.75 kg	 (ct_568)			
+Huile	0.5 kg	 (ct_568)			
+Lanterne	1 kg	 (ct_568)			
+Caltrop	0.5 kg	 (ct_568)			
+Chapeau de feutre		 (ct_568)			
+Gants en laine		 (ct_568)			
+Cape lourde	1 kg	 (ct_568)			
+Labo d’alchimie portable	8 kg	 (ct_568)			
+Outre 5 L	5 kg	 (ct_568)			
+6 rations	1.5 kg	 (ct_568)			

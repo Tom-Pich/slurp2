@@ -1,0 +1,51 @@
+Iego ; Pts : 213 ; Pts éco : 5
+For 15 ; Dex 13 ; Int 9 ; San 13 ; Per 13 ; Vol 13
+
+Réflexes de combat (15) ; Résistance à la douleur (10)
+Apparence déplaisante (-5) ; Illettré (-5) ; Impulsif (-10) ; Sens du devoir (-5) ; Sommeil lourd (-10)
+Conversation limitée (-1) ; Fume la pipe (-1) ; Propreté douteuse (-1)
+
+Compétences	Score	Pts (mult)	Groupe(s)
+Acrobatie	12	[2]
+Acteur	9	[1]
+Combat à mains nues	16	[8]	[B]
+Connaissance de Laelith	12	[8]
+Connaissance de la Lauria	8	[0.5]
+Connaissance de la Rue	11	[4]
+Connaissance d’Imégie	9	[1]
+Course	14	[4]
+Couteau	15	[0]	[A,B]
+Escalade	15	[8]
+Esquive (+1)	19	[30]
+Furtivité	12	[1]
+Hache/Masse	18	[23]	[A]
+Intimidation	12	[2]
+Lancer de couteau	12	[1]
+Pistage	9	[0.5]
+Vigilance	14	[2]
+
+Masse à 2 mains +1	4 kg		B.t+5 ‡ , Fmin : 14		
+Poignard magique	0.5 kg		Trouvé dans le puit aux goules	BQ+1 (dégâts e+3)	
+Collier de Vordok			Magique, divise les besoins en nourriture par 7		
+Armure +2 brigandine / cuir lourd	8.7 kg		Torse, bras, cou RD6 ; jambes, pieds, tête RD5		
+Gantelêts +2 (RD10)	0.5 kg				
+Cape sombre avec capuche	0.5 kg				
+Pipe et tabac	0.1 kg				
+Briquet	0.1 kg				
+Épée de Bristam	2 kg				
+Vieille besace (375)	0.3 kg				
+Chambre à Imégie (351)					
+Cheval n°1 (407)					
+Cheval n°2 (516)					
+Cape d’hiver brune	1 kg	 (ct_375)			
+Bourse 57 po, 40 pa, 15 pc, 12 pierres	1.33 kg	 (ct_375)	Les pierres viennent du tombeau de Bristam	Valeur de l’anneau : 2 po	
+Potion de Neutralisation du poison	0.15 kg	 (ct_375)			
+Potions de Dextérité (1)	0.15 kg	 (ct_375)			
+Potions de supersoin (4)	0.6 kg	 (ct_375)			
+Outre 5L bandoulière	5 kg	 (ct_375)	(pas au repos)		
+2 torches	0.5 kg	 (ct_375)			
+Corde 10 m + grappin	2 kg	 (ct_351)			
+Outre 5 L	5 kg	 (ct_351)			
+Briquet	0.05 kg	 (ct_351)			
+Bourse (7 po)	0.12 kg	 (ct_351)			
+Vêtements moyens + mocassins	1.25 kg	 (ct_351)			

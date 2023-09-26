@@ -1,0 +1,25 @@
+Théod Vulkar ; Pts : 120 ; Pts éco : 0
+For 15 ; Dex 13 ; Int 10 ; San 12 ; Per 12 ; Vol 9
+
+Alphabétisation (5) ; Réflexes de combat (15)
+Attitude odieuse (-5) ; Phobies (-5) ; Prosopagnosie (-10) ; Respect de la vérité (-10) ; Sens de l’Honneur (-5)
+Arrogant (-1) ; Indépendant (-1)
+
+Compétences	Score	Pts (mult)	Groupe(s)
+Connaissance de la Nature	11	[4]
+Épée (Deux mains)	15/17	[8]
+Furtivité	14	[4]
+Lance	13	[2]
+Monte	13	[2]
+Orientation	12	[4]
+Pistage	12	[4]
+Randonnée	13	[2]
+
+Épée batarde	1.7 kg		T.t+1, P.e+2, †		
+Potion de vie	0.1 kg				
+Armure de Théod	5 kg				
+Sac de voyage	2 kg				
+Potion de vie	0.1 kg				
+X2 Ration de voyage	1 kg				
+Torche	1 kg				
+Briquet à amadou	0.2 kg				

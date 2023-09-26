@@ -1,0 +1,43 @@
+Usthar ; Pts : 204 ; Pts éco : -1
+For 13 ; Dex 13 ; Int 10 ; San 12 ; Per 12 ; Vol 12
+
+Don Pierre & Métal +1 (2) ; Imperméabilité à la magie +3 (6) ; Infravision (10) ; Réflexes de combat (15) ; Résistance à la douleur (10) ; Résistance au poison +2 (4)
+Allergie au pollen (-2) ; Apparence déplaisante (-5) ; Curiosité (-5) ; Sens du devoir (-5) ; Vitesse réduite (-10)
+
+Compétences	Score	Pts (mult)	Groupe(s)
+Acrobatie	12	[2]
+Arc	14	[4]
+Combat à mains nues	14	[2]
+Connaissance de Laelith	10	[1]
+Couteau	14	[0]	[a]
+Épée	18	[23]	[a]
+Escalade	14	[4]
+Esquive (+1)	18	[23]
+Forgeron (+1)	11	[1]
+Furtivité	17	[17]
+Mine (+1)	11	[1]
+Monte (cheval) (-3)	11	[4]
+Nage	13	[1]
+Pièges	10	[1]
+Pistage	10	[1]
+
+Armure composite maille/cuir	8.8 kg		Torse RD5 ; reste RD2		
+Casque (RD8)	1.55 kg				
+Épée longue TBQ+1	1.5 kg		T.t+4/P.e+5		
+Bourse (32 po, 5 pa, 35 pc)	0.72 kg				
+Bracelets en bronze	0.1 kg			Non magiques (pure déco), valeur : 2×10 pc	
+Anneau cuivre			Trouvé sur le bras à la ferme d’Alastor		
+Potions de Neutralisation du poison	0.15 kg				
+Potion de Force	0.15 kg				
+Potions super soin 	0.15 kg				
+Cape d’hiver brune raccourcie	0.75 kg				
+Corde 10 m + grappin	2 kg				
+Grande besace d’Usthar (52)	0.5 kg				
+Vêtements moyens + mocassins	1.25 kg				
+Bourse  (chez Élias)	1.2 kg		75 po		
+Briquet	0.1 kg	 (ct_52)			
+Pipe et tabac	0.1 kg	 (ct_52)			
+Torche (1)	0.5 kg	 (ct_52)			
+Poignard	0.5 kg	 (ct_52)	P.e+1		
+Potion de Force	0.15 kg	 (ct_52)			
+Potions d’Effacement	0.15 kg	 (ct_52)			

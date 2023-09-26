@@ -1,0 +1,42 @@
+Grenn ; Pts : 120 ; Pts éco : 0
+For 10 ; Dex 14 ; Int 11 ; San 12 ; Per 13 ; Vol 11
+
+Acuité auditive (+3) (6) ; Réflexes de combat (15)
+Méfiance (-5) ; Sens de l’Honneur (-5) ; Sens du devoir (-5) ; Susceptibilité (-5) ; Timidité (-5)
+Porte en permanence une amulette et ne conçoit pas d'en être séparé (-1)
+
+Compétences	Score	Pts (mult)	Groupe(s)
+Arc	13	[1]
+Camouflage	11	[1]
+Combat à mains nues	12	[0]	[A]
+Couteau	12	[0]	[A, B]
+Crochetage	12	[4]
+Dissimulation	11	[2]
+Épée	14	[2]	[B]
+Esquive (+1)	15	[4]
+Filature	11	[1]
+Furtivité	14	[2]
+Grimer	12	[4]
+Lancer de couteau	14	[2]	[C]
+Nage	12	[1]
+Pickpocket	13	[2]
+Poisons	12	[4]
+Sarbacane	13	[0]	[C]
+
+Epée courte	1 kg		T.t - P.e+1		
+Vêtements moyens	1 kg				
+Cape lourde (avec capuche)	1 kg				
+Chaussures de marche cuir	0.5 kg				
+Armure de cuir (torse + cou)	3.01 kg				
+Grosse couverture	2.5 kg				
+Couteau (2)	0.5 kg				
+Bourse (15 pc)					
+Sac à dos (567)	0.5 kg				
+Outils de crochetage		 (ct_567)			
+Outre (1L)		 (ct_567)			
+Set pour manger	0.25 kg	 (ct_567)			
+Corde	0.75 kg	 (ct_567)			
+Briquet		 (ct_567)			
+Poison somnifère (4 doses)		 (ct_567)	2 doses injectables + 2 doses à ingérer		
+Poison Type F (1 dose)		 (ct_567)			
+Ration de voyageur (6 rations)	1.5 kg	 (ct_567)			
