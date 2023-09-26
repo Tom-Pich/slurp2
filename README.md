@@ -24,5 +24,5 @@ Le dossier "fonctions" contient des restes non encore refactorisés (uniquement 
 La base de données n’est pas fournie dans le code source.
 
 ### Voir une démo
-Vous pouvez voir le site en fonctionnement à l’adresse !jdr.pichegru.net[https://jdr.pichegru.net].
+Vous pouvez voir le site en fonctionnement à l’adresse [jdr.pichegru.net](https://jdr.pichegru.net).
 L’essentiel du site n’est cependant pas accessible si vous n’avez pas de compte (et vous ne pouvez pas en créer un vous-même). Si vous êtes intéressé, contactez-moi : t.pichegru@gmail.com. Je me ferai un plaisir de vous en créer un.
