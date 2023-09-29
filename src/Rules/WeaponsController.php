@@ -165,4 +165,17 @@ class WeaponsController
 		</table>
 <?php
 	}
+
+	public static function burstHits(int $rcl, int $bullets, int $mr){
+		$alpha = 1.5 / (2 - $rcl);
+		$frac = (0.133 * $mr + 0.333) * ((1.54 - $alpha) * exp(-0.1 * ($bullets - 1) / $alpha) + $alpha);
+		$frac = $frac > 1 ? 1 : $frac;
+		$frac = $frac < 0 ? 0 : $frac;
+		$hits_number = (int) round($frac * $bullets);
+		/* $localisations = [];
+		for($i = 0; $i < $hits_number; $i++){
+
+		} */
+		return $hits_number;
+	}
 }

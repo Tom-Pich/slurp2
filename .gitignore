@@ -1,4 +1,4 @@
 /vendor/
-/bdd-transform2/
-/characters-backup2/
+/bdd-transform/
+/characters-backup/
 .env

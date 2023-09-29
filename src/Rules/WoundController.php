@@ -68,7 +68,7 @@ class WoundController
 		"-1" => ["description" => "Membre détruit"],
 		"0" => ["description" => "Blessure invalidante"],
 		"0.5" => ["description" => "Inutilisable"],
-		"0.75" => ["description" => "<i>Boiteux</i> ou -3 pour utiliser ce membre"],
+		"0.75" => ["description" => "-3 pour utiliser"],
 	];
 
 	public const members_pdv = [
@@ -79,19 +79,44 @@ class WoundController
 	];
 
 	public const member_abbreviation = [
-		"BD" => ["full-name" =>"bras droit", "member" => "bras"],
-		"BG" => ["full-name" =>"bras gauche", "member" => "bras"],
-		"MD" => ["full-name" =>"main droite", "member" => "main"],
-		"MG" => ["full-name" =>"main gauche", "member" => "main"],
-		"JD" => ["full-name" =>"jambe droite", "member" => "jambe"],
-		"JG" => ["full-name" =>"jambe gauche", "member" => "jambe"],
-		"PD" => ["full-name" =>"pied droit", "member" => "pied"],
-		"PG" => ["full-name" =>"pied gauche", "member" => "pied"],
+		"BD" => ["full-name" => "bras droit", "member" => "bras"],
+		"BG" => ["full-name" => "bras gauche", "member" => "bras"],
+		"MD" => ["full-name" => "main droite", "member" => "main"],
+		"MG" => ["full-name" => "main gauche", "member" => "main"],
+		"JD" => ["full-name" => "jambe droite", "member" => "jambe"],
+		"JG" => ["full-name" => "jambe gauche", "member" => "jambe"],
+		"PD" => ["full-name" => "pied droit", "member" => "pied"],
+		"PG" => ["full-name" => "pied gauche", "member" => "pied"],
+	];
+
+	public const localisation = [
+		3 => ["Main arrière", "main"],
+		4 => ["Main avant", "main"],
+		5 => ["Crâne", "crane"],
+		6 => ["Cou", "cou"],
+		7 => ["Visage (ou crâne)", "visage"],
+		8 => ["Bras (avant)", "bras"],
+		9 => ["Torse", "torse"],
+		10 => ["Torse", "torse"],
+		11 => ["Torse", "torse"],
+		12 => ["Torse", "torse"],
+		13 => ["Torse", "torse"],
+		14 => ["Jambe (avant)", "jambe"],
+		15 => ["Cœur (ou torse)", "coeur"],
+		16 => ["Bras (arrière)", "bras"],
+		17 => ["Jambe (arrière)", "jambe"],
+		18 => ["Jambe (arrière)", "jambe"]
+	];
+
+	public const localisation_effect = [
+		"torse" => [
+			"chute" => ""
+		]
 	];
 
 	public static function getGeneralEffects(int $pdv, int $pdvm, bool $has_pain_resistance = false)
 	{
-		$ratio = $pdv / $pdvm;
+		$ratio = $pdvm === 0 ? 1 : $pdv / $pdvm;
 		if ($has_pain_resistance && $ratio > -1) {
 			$ratio += 0.25;
 		}
@@ -112,17 +137,45 @@ class WoundController
 
 	public static function getMemberEffects(int $dmg, int $pdvm, string $member, bool $has_pain_resistance = false)
 	{
-		$member_pdv = self::members_pdv[$member]*$pdvm ?? self::members_pdv["bras"]*$pdvm;
-		$ratio =($member_pdv - $dmg)/$member_pdv;
+		$member_pdv = self::members_pdv[$member] * $pdvm ?? self::members_pdv["bras"] * $pdvm;
+		$ratio = $pdvm === 0 ? 1 : ($member_pdv - $dmg) / $member_pdv;
 		if ($has_pain_resistance && $ratio > 0) {
 			$ratio += 0.25;
 		}
 		foreach (self::members_levels as $level => $effects) {
 			$level = (float) $level;
 			if ($ratio <= $level) {
+				if ($effects["description"] === "-3 pour utiliser") {
+					if (in_array($member, ["jambe", "pied"])) {
+						$effects["description"] = "<i>Boiteux</i>";
+					} else {
+						$effects["description"] .= $member === "bras" ? " ce bras" : " cette main";
+					}
+				}
 				return $effects;
 			}
 		}
-		return ["description" => ""];
+		return ["description" => "Aucun effet"];
+	}
+
+	public static function getWoundEffects(int $san, int $pdvm, int $pdv, bool $has_pain_resistance, int $raw_dmg, int $rd, string $dmg_type, string $bullet_type, string $localisation): array
+	{
+		$results = [
+			"localisation" => "",
+			"dégât bruts" => "",
+			"dégâts effectifs" => "",
+			"dégâts membre" => "",
+			"chute" => "",
+			"mort" => "",
+			"perte de conscience" => "",
+			"sonné" => "",
+			"autres effets" => "",
+			"pdv" => "",
+		];
+
+		$results["localisation"] = $localisation;
+		$results["dégâts bruts"] = $raw_dmg;
+
+		return $results;
 	}
 }

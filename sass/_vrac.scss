@@ -34,18 +34,7 @@ button:active, .button:active {transform: scale(95%, 95%)}
 .float-right{float: right; margin-left: 5px}
 
 /* Éléments spécifiques de certaines pages */
-body.table-jeu header{background-image: linear-gradient(180deg, #fff0 0%, black 100%), url(/assets/img/bg-header-table.jpg);}
-body.table-jeu main {padding: 10px 30px 0 15px;}
-body.table-jeu article{margin-top: 0; min-height: 68vh;}
-body.table-jeu article:first-of-type{padding: 10px; background: url(/assets/img/bg-table.jpg) center/cover; border-radius: 5px; flex: 1; display: flex; gap: 10px; flex-wrap: wrap}
-body.table-jeu fieldset {background: #fff5; margin-bottom: 10px; justify-content: space-between; break-inside: avoid;}
-body.table-jeu fieldset legend {color: white; font-family: Rubik; font-weight: bold;}
-#connected-users{border-bottom: 1px solid #333; margin-bottom: 5px; height: 40px}
-#chat-box{overflow-x: hidden; height: 48vh;}
-#chat-box p {text-align: left;}
-#entree-chat {width: 100%; background: #fff;}
-#msg-content {height: 4em;}
-#smiley-bar{padding-bottom: 5px; margin-top: 10px; border-top: 1px solid #333}
+
 
 body.adapted-dungeons-dragons #calcul_armures select {width: 160px; font-size: 0.95em}
 body.adapted-dungeons-dragons #calcul_armures td {padding: 2px 0}
@@ -72,11 +61,11 @@ body.paorn #encyclopedie-display {flex: 1}
 	
 	body.personnage-fiche article {min-height: 0;}
 	
-	body.table-jeu main {display: block; padding: 15px 10px 10px 10px;}
+	/* body.table-jeu main {display: block; padding: 15px 10px 10px 10px;}
 	body.table-jeu article{min-height: auto}
 	body.table-jeu article:first-of-type{columns: auto auto; padding: 5px; margin-right: 0;}
 	body.table-jeu fieldset {display: block; text-align: center}
-	#chat-container {margin-top: 15px; background: white}
+	#chat-container {margin-top: 15px; background: white} */
 
 	body.gestionnaire-mj .perso-card{margin-top: 15px;}
 }

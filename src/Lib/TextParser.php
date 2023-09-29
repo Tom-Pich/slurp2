@@ -117,6 +117,7 @@ class TextParser
 		$text = trim($text);
 		$text = rtrim($text, ";, ");
 		// check if string format seems correct
+		$text = preg_replace("/\s{1,}[,;]/", ";", $text);
 		$uncorrect_pattern = "/[^\s:;,]+\s+[^\s:;,]+\s+/";
 		preg_match($uncorrect_pattern, $text, $matches);
 		if (!empty($matches)) {

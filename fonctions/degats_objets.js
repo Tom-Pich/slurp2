@@ -58,7 +58,7 @@ function calcul_degats_objet() {
 	}
 	
 	// Affichage
-	let effets_degats = document.getElementById("msg-content")
+	let effets_degats = document.getElementById("msg-input")
 	let display = "<b>Dégâts à un objet</b><br/>"
 	display += "PdSm " + PdSm + "&nbsp;; PdS " + PdS + "&nbsp;; Intégrité " + integrite + "&nbsp;; RD " + RD +
 	"<br/> Dégâts " + code + " – " + type_nom + "&nbsp;; " + objet + " (" + orientation + ")<br/>"
@@ -90,7 +90,7 @@ function collision(){
 	
 	// Affichage résultats
 	if(PdSm){
-		let display = get_id("msg-content")
+		let display = get_id("msg-input")
 		display.value += "<b>Collision</b> " + gravite_nom + "&nbsp; PdSm " + PdSm + "<br/>"
 		display.value += "Dégâts&nbsp;: " + degats
 		send_msg("jet")

@@ -64,3 +64,31 @@ body.gestionnaire-listes {
 body.test {
 	main {display: block;}
 }
+
+body.table-jeu {
+	header{background-image: linear-gradient(180deg, #fff0 0%, black 100%), url(/assets/img/bg-header-table.jpg);}
+
+	main {padding: 1em; background: url(/assets/img/bg-table.jpg) center/cover; }
+
+	#widgets-container {
+		display: flex; gap: 1em; flex-wrap: wrap; flex: 1;
+		@include media {flex-direction: column;}
+
+		.widgets-column { display: grid; gap: var(--dynamic-space-½-1); height: fit-content; width: min(380px, 100%);}
+
+		fieldset {
+			background: #fff5;
+			legend {color: white; font-family: var(--font-accent); font-weight: bold; font-size: var(--fs-450)}
+		}
+	}
+
+	#chat-container {
+		width: min(380px, 100%); background: white; padding: 1em; border-radius: .75em;
+		@include media { display: block;}
+	}
+	#chat-input-wrapper {display: grid; width: 100%; background: #fff; border-top: 1px solid var(--grey-700); padding-top: 0.5em; margin-top: 1em;}
+	#msg-input {height: 6em; min-height: 0; border: 1px solid var(--grey-900); margin-top: .5em;}
+	#connected-users{border-bottom: 1px solid #333; margin-bottom: 5px; height: 40px}
+	#chat-dialog-wrapper{overflow-x: hidden; height: 48vh; padding-right: 1em;}
+}
+

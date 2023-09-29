@@ -2,11 +2,13 @@
 
 namespace App\Controller;
 
-use App\Lib\TextParser;
 use App\Entity\Creature;
-use App\Lib\DiceManager;
 use App\Entity\Attribute;
 use App\Entity\Equipment;
+use App\Lib\TextParser;
+use App\Rules\CriticalController;
+use App\Rules\WeaponsController;
+use App\Rules\WoundController;
 
 class ApiController
 {
@@ -34,7 +36,7 @@ class ApiController
 			$hands = "2M";
 		}
 		$damages = [];
-		foreach ($dice_codes as $code){
+		foreach ($dice_codes as $code) {
 			$damage = Equipment::evaluateDamages($for, $code, $hands);
 			$damages[] = $damage;
 		}
@@ -71,6 +73,45 @@ class ApiController
 			$pdv = Creature::getPdVFromWeight($weight);
 		}
 		$this->response["data"] = $pdv;
+		$this->sendResponse();
+	}
+
+	public function getLocalisation(int $roll)
+	{
+		$this->response["data"] = WoundController::localisation[$roll];
+		$this->sendResponse();
+	}
+
+	public function getCriticalResult(string $table, int $roll_3d, int $roll_1d)
+	{
+		$this->response["data"] = CriticalController::CriticalResult($table, $roll_3d, $roll_1d);
+		$this->sendResponse();
+	}
+
+	public function getBurstHits(int $rcl, int $bullets, int $mr)
+	{
+		$this->response["data"] = WeaponsController::burstHits($rcl, $bullets, $mr);
+		$this->sendResponse();
+	}
+
+	public function getGeneralState(int $san, int $pdvm, int $pdv, bool $pain_resistance, string $members)
+	{
+		$this->response["data"]["general"] = WoundController::getGeneralEffects($pdv, $pdvm, $pain_resistance)["description"];
+
+		$members = TextParser::parsePseudoArray2Array($members);
+		foreach ($members as $member => $damage) {
+			$member_full_name = WoundController::member_abbreviation[$member]["full-name"] ?? false;
+			$member_name = WoundController::member_abbreviation[$member]["member"] ?? false;
+			if ($member_full_name) {
+				$this->response["data"]["members"][ucfirst($member_full_name)] = WoundController::getMemberEffects($damage, $pdvm, $member_name, $pain_resistance)["description"];
+			}
+		}
+
+		$this->sendResponse();
+	}
+
+	public function getWoundEffects($post){
+		$this->response["data"] = $post;
 		$this->sendResponse();
 	}
 

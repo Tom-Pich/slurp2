@@ -40,7 +40,7 @@ function display_msg(message){
 
 	if(message.type == "online_users_list"){
 		let online_users_list = document.querySelector("#connected-users")
-		online_users_list_content = JSON.parse(message.content).join(" ; ")
+		let online_users_list_content = JSON.parse(message.content).join(" ; ")
 		online_users_list.innerHTML = online_users_list_content
 		let notif = new Audio('/chat/notif_logout.mp3');
 		notif.play();

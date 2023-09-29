@@ -379,7 +379,7 @@ function calcul_blessure(){
 	resultats.pdc = Math.round(resultats.pdc)
 
 	// ■■■ Affichage résultats ■■■
-	let display = document.getElementById("msg-content")
+	let display = document.getElementById("msg-input")
 
 	if(poids && PdVm){
 		let recap_parametres = `<b>Blessure ${nom_protagoniste}</b> ${poids} kg, PdVm ${PdVm}, Dégâts ${lowFirstLetter(type_nom)} ${balle ? " "+nom_balle_spe : ""} ${get_value("bl_deg_b")} = ${deg_b}<br/>
@@ -500,12 +500,12 @@ function widget_seuils_blessures(){
 	else {PdV = PdVm}
 	PdV = Math.min(val_int(PdV), PdVm)
 	get_id("protagoniste" + id_protagoniste).children[3].value = PdV
-	let blessures_membres = get_id("protagoniste" + id_protagoniste).children[5].value
+	let blessures_membres = get_id("protagoniste" + id_protagoniste).children[4].value
 
 	let niveaux = effets_seuils_blessures(PdV, PdVm, blessures_membres)
 
 	if(niveaux){
-		let display = get_id("msg-content")
+		let display = get_id("msg-input")
 		display.value += (display.value.length != 0 ? " " : "" ) + "<b>" + nom_protagoniste + "</b><br/>" + niveaux
 		send_msg("jet")
 	}

@@ -209,13 +209,7 @@
 
 <article><h2>Localisation</h2>
 	<details><summary class="h3">Localisation aléatoire</summary>
-		<table class="alternate-e left2 left4">
-			<tr><th width="10%">3/4</th><td>Main (arrière/avant)</td>	<th width="10%">9-13</th>	<td>Torse</td></tr>
-			<tr><th>5</th>		<td>Crâne</td>							<th>14</th>					<td>Jambe (avant)</td></tr>
-			<tr><th>6</th>		<td>Cou</td>							<th>15</th>					<td>Cœur (ou torse)</td></tr>
-			<tr><th>7</th>		<td>Visage (ou crâne)</td>				<th>16</th>					<td>Bras (arrière)</td></tr>
-			<tr><th>8</th>		<td>Bras (avant)</td>					<th>17-18</th>				<td>Jambe (arrière)</td></tr>
-		</table>
+		<p class="ta-center italic">Utiliser la <a href="/table-jeu">table de jeu</a></p>
 	</details>
 	<details><summary class="h3">Choisir une localisation</summary>
 		<p>Si l’attaquant vise, le malus de difficulté est estimé par le MJ. Si l’attaque est ratée de 1, une autre localisation, déterminée aléa&shy;toirement, est atteinte.</p>

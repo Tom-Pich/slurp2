@@ -34,7 +34,7 @@ if (!isset($_SESSION["Statut"]) or !DB_ACTIVE) {
 	$_SESSION["token"] = Firewall::generateToken(16);
 	$_SESSION["time"] = time();
 } else {
-	$_SESSION["time"] >= (time() - 30*60) ? $_SESSION["time"] = time() : LogController::logout();
+	$_SESSION["time"] >= (time() - 60*60) ? $_SESSION["time"] = time() : LogController::logout();
 }
 
 // ––– $pages_data ––––––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -83,7 +83,41 @@ if (substr($path, 0, 4) === "/api") {
 			$controller->getPdVFromWeight($weight, $interval);
 			break;
 
-		case "/api/test":
+		case "/api/localisation-table":
+			Firewall::check(!empty($_POST["roll"]));
+			$roll = (int) $_POST["roll"];
+			$controller->getLocalisation($roll);
+			break;
+
+		case "/api/critical-tables":
+			Firewall::check(!empty($_POST["table"]) && !empty($_POST["roll-3d"]) && !empty($_POST["roll-1d"]));
+			$table = $_POST["table"];
+			$roll_3d = (int) $_POST["roll-3d"];
+			$roll_1d = (int) $_POST["roll-1d"];
+			$controller->getCriticalResult($table, $roll_3d, $roll_1d);
+			break;
+
+		case "/api/burst-hits":
+			Firewall::check(!empty($_POST["rcl"]) && !empty($_POST["bullets"]) && !empty($_POST["mr"]));
+			$rcl = (int) $_POST["rcl"];
+			$bullets = (int) $_POST["bullets"];
+			$mr = (int) $_POST["mr"];
+			$controller->getBurstHits($rcl, $bullets, $mr);
+			break;
+
+		case "/api/general-state":
+			Firewall::check(isset($_POST["san"]) && isset($_POST["pdvm"]) && isset($_POST["pdv"]) && isset($_POST["pain-resistance"]) && isset($_POST["members"]));
+			$san = (int) $_POST["san"];
+			$pdvm = (int) $_POST["pdvm"];
+			$pdv = (int) $_POST["pdv"];
+			$pain_resistance = $_POST["pain-resistance"] === "true";
+			$members = trim($_POST["members"]);
+			$controller->getGeneralState($san, $pdvm, $pdv, $pain_resistance, $members);
+			break;
+
+		case "/api/wound-effects":
+			Firewall::check(isset($_POST["san"]) && isset($_POST["pdvm"]) && isset($_POST["pdv"]) && isset($_POST["pain-resistance"]) && isset($_POST["raw-dmg"]) && isset($_POST["rd"]) && isset($_POST["dmg-type"]) && isset($_POST["bullet-type"]) && isset($_POST["localisation"]));
+			$controller->getWoundEffects($_POST);
 			break;
 
 		default:
