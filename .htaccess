@@ -8,10 +8,9 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php
 
-# RewriteRule ^content/(.*)$ /not-found
-# RewriteRule ^rules/(.*)$ /not-found
-# RewriteRule ^src/(.*)$ /not-found
-# RewriteRule ^vendor/(.*)$ /not-found
+RewriteRule ^content/(.*)$ /not-found
+RewriteRule ^src/(.*)$ /not-found
+RewriteRule ^vendor/(.*)$ /not-found
 
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP_HOST} !^site-jdr$ [NC]

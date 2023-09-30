@@ -1,4 +1,5 @@
 <?php
+
 require_once "vendor/autoload.php";
 
 use App\Lib\DotEnv;
@@ -34,7 +35,7 @@ if (!isset($_SESSION["Statut"]) or !DB_ACTIVE) {
 	$_SESSION["token"] = Firewall::generateToken(16);
 	$_SESSION["time"] = time();
 } else {
-	$_SESSION["time"] >= (time() - 60*60) ? $_SESSION["time"] = time() : LogController::logout();
+	$_SESSION["time"] >= (time() - 60 * 60) ? $_SESSION["time"] = time() : LogController::logout();
 }
 
 // ––– $pages_data ––––––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -72,14 +73,14 @@ if (substr($path, 0, 4) === "/api") {
 		case "/api/weight-strength":
 			Firewall::check(!empty($_GET["weight"]));
 			$weight = (float) $_GET["weight"];
-			$interval = !! ($_GET["interval"] ?? false);
+			$interval = !!($_GET["interval"] ?? false);
 			$controller->getStrengthFromWeight($weight, $interval);
 			break;
 
 		case "/api/weight-pdv":
 			Firewall::check(!empty($_GET["weight"]));
 			$weight = (float) $_GET["weight"];
-			$interval = !! ($_GET["interval"] ?? false);
+			$interval = !!($_GET["interval"] ?? false);
 			$controller->getPdVFromWeight($weight, $interval);
 			break;
 
@@ -128,7 +129,7 @@ if (substr($path, 0, 4) === "/api") {
 			$bullet_type = $_POST["bullet-type"];
 			$localisation = $_POST["localisation"];
 			$rolls = explode(",", $_POST["rolls"]);
-			$rolls = array_map( fn ($x) => (int) $x, $rolls);
+			$rolls = array_map(fn ($x) => (int) $x, $rolls);
 			$controller->getWoundEffects($dex, $san, $pdvm, $pdv, $pain_resistance, $raw_dmg, $rd, $dmg_type, $bullet_type, $localisation, $rolls);
 			break;
 
@@ -147,6 +148,7 @@ elseif (substr($path, 0, 7) === "/submit") {
 
 		case "/submit/log-in":
 			Firewall::checkToken();
+			Firewall::check(DB_ACTIVE);
 			foreach (["login", "password", "redirect-url"] as $item) {
 				Firewall::check(isset($_POST[$item]));
 			}

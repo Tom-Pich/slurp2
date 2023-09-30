@@ -103,14 +103,14 @@ $nbre_protagonistes = 8;
 			<?php for ($i = 1; $i <= $nbre_protagonistes; $i++) { ?>
 				<div class="mt-1" data-role="opponent-wrapper" data-opponent="<?= $i ?>">
 					<div class="flex-s gap-½">
-						<input type="text" class="fl-1" data-type="name" placeholder="Nom" value="<?= $i === 1 ? "Mr Test" : "" ?>">
-						<input type="text" style="width: 6ch" data-type="dex" class="ta-center" placeholder="Dex" title="Dextérité" value="<?= $i === 1 ? 11 : "" ?>">
-						<input type="text"  style="width: 6ch" data-type="san" class="ta-center" placeholder="San" title="Santé" value="<?= $i === 1 ? 12 : "" ?>">
+						<input type="text" class="fl-1" data-type="name" placeholder="Nom" value="<?= $i === 0 ? "Mr Test" : "" ?>">
+						<input type="text" style="width: 6ch" data-type="dex" class="ta-center" placeholder="Dex" title="Dextérité" value="<?= $i === 0 ? 11 : "" ?>">
+						<input type="text"  style="width: 6ch" data-type="san" class="ta-center" placeholder="San" title="Santé" value="<?= $i === 0 ? 12 : "" ?>">
 						<input type="checkbox" data-type="pain-resistance" title="Résistance à la douleur">
 					</div>
 					<div class="flex-s gap-½ mt-½">
-						<input type="text" style="width: 6ch" data-type="pdvm" class="ta-center" placeholder="PdVm" title="PdV maxi" value="<?= $i === 1 ? 12 : "" ?>">
-						<input type="text" style="width: 6ch" data-type="pdv" class="ta-center" placeholder="PdV" title="PdV actuels" value="<?= $i === 1 ? 12 : "" ?>">
+						<input type="text" style="width: 6ch" data-type="pdvm" class="ta-center" placeholder="PdVm" title="PdV maxi" value="<?= $i === 0 ? 12 : "" ?>">
+						<input type="text" style="width: 6ch" data-type="pdv" class="ta-center" placeholder="PdV" title="PdV actuels" value="<?= $i === 0 ? 12 : "" ?>">
 						<input type="text" class="fl-1" data-type="members" placeholder="Blessures membres" title="Par exemple BD 2, PG 1">
 					</div>
 				</div>
@@ -146,7 +146,7 @@ $nbre_protagonistes = 8;
 								<option value="<?= $i ?>">Protagoniste <?= $i ?></option>
 							<?php } ?>
 						</select>
-						<input type="text" style="width: 6ch" class="ta-center" data-type="raw-dmg" value="3" placeholder="xd±y" title="Dégâts bruts">
+						<input type="text" style="width: 6ch" class="ta-center" data-type="raw-dmg" placeholder="xd±y" title="Dégâts bruts">
 						<input type="text" style="width: 6ch" class="ta-center" data-type="rd" placeholder="RD" title="RD localisation">
 					</div>
 
@@ -286,7 +286,7 @@ $nbre_protagonistes = 8;
 
 	<div id="chat-input-wrapper" data-id="<?= $_SESSION["id"] ?>" data-login="<?= $_SESSION["login"] ?>" data-key="<?= $_SESSION["id"] ? "a78D_Kj!45" : "0" ?>">
 
-		<div class="flex-s fl-wrap gap-½ fs-500 jc-center">
+		<div class="flex-s fl-wrap gap-½ fs-500 jc-center" data-role="emojis-wrapper">
 			<button data-role="emoji-button" class="nude">😊</button>
 			<button data-role="emoji-button" class="nude">😁</button>
 			<button data-role="emoji-button" class="nude">😄</button>
