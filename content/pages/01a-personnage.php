@@ -380,7 +380,24 @@ $attributes = [
 		<p>Elles sont basées les caractéristiques principales.</p>
 
 		<h4>Dégâts de base</h4>
-		<p>Ils sont basés sur la <i>For</i> et servent à déterminer les dégâts des armes dépendant de la puissance musculaire. Le premier score est l’<i>estoc</i> (<i>e</i>), le deuxième et la <i>taille</i> (<i>t</i>). Voir le chapitres <i>Armes &amp; armures</i> pour les valeurs.</p>
+		<p>Ils sont basés sur la <i>For</i> et servent à déterminer les dégâts des armes dépendant de la puissance musculaire. Le premier score est l’<i>estoc</i> (<i>e</i>), le deuxième et la <i>taille</i> (<i>t</i>).</p>
+
+		<table class="alternate-e">
+			<tr>
+				<th><i>For</i></th>
+				<th>estoc</th>
+				<th>taille</th>
+			</tr>
+			<?php for ($i = 8; $i <= 16; $i++) { ?>
+				<tr>
+					<td><?= $i ?></td>
+					<td><?= Attribute::getDamages($i)["estoc"] ?></td>
+					<td><?= Attribute::getDamages($i)["taille"] ?></td>
+				</tr>
+			<?php } ?>
+		</table>
+
+		<p>Pour des valeurs de <i>For</i> en dehors de cette table, utiliser le widget <i>Dégâts et localisation</i> de la <a href="/table-jeu">Table de jeu</a> ou consulter la page <a href="/animaux">Animaux</a> (les valeurs sont les mêmes pour toutes les créatures).</p>
 
 		<div class="flex-s">
 			<h4 class="fl-1">Réflexes (Réf)</h4>
@@ -617,23 +634,32 @@ $attributes = [
 		<?php
 		$skills_groups = Skill::skills_groups;
 		$repo = new SkillRepository;
-		
-		foreach($skills_groups as $group => $id_list){
-			switch($group){
-				case "melee" : $group_name = "Armes de contact"; break;
-				case "hand-to-hand" : $group_name = "Corps-à-corps"; break;
-				case "bow" : $group_name = "Arc &amp; arblètes"; break;
-				case "throwing" : $group_name = "Armes de jet"; break;
-				default : $group_name = $group;
+
+		foreach ($skills_groups as $group => $id_list) {
+			switch ($group) {
+				case "melee":
+					$group_name = "Armes de contact";
+					break;
+				case "hand-to-hand":
+					$group_name = "Corps-à-corps";
+					break;
+				case "bow":
+					$group_name = "Arc &amp; arblètes";
+					break;
+				case "throwing":
+					$group_name = "Armes de jet";
+					break;
+				default:
+					$group_name = $group;
 			}
 			$skills_name_list = [];
-			foreach ($id_list as $id){
+			foreach ($id_list as $id) {
 				$skill = $repo->getSkill($id);
 				$skills_name_list[] = $skill->name;
 			}
-			?>
-				<p><b><?= $group_name ?>&nbsp;:</b> <?= join(", ", $skills_name_list) ?></p>
-			<?php
+		?>
+			<p><b><?= $group_name ?>&nbsp;:</b> <?= join(", ", $skills_name_list) ?></p>
+		<?php
 		}
 		?>
 		<p>Et autres, selon la décision du MJ.</p>

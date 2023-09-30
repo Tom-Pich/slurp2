@@ -145,7 +145,7 @@ use App\Rules\MentalHealthController;
 			</tr>
 			<?php } ?>
 		</table>
-		<p>Le malus est doublé pour les compétences pour lesquelles il est indispensable d’être léger (<i>Course</i>, <i>Saut</i>, <i>Acrobatie</i>, etc.)</p>
+		<p>Le malus est doublé pour les compétences pour lesquelles il est indispensable d’être léger (<i>Course</i>, <i>Saut</i>, <i>Acrobatie</i>, <i>Esquive</i>&hellip;)</p>
 	</details>
 </article>
 	
