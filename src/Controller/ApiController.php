@@ -110,8 +110,8 @@ class ApiController
 		$this->sendResponse();
 	}
 
-	public function getWoundEffects($post){
-		$this->response["data"] = $post;
+	public function getWoundEffects(int $dex, int $san, int $pdvm, int $pdv, bool $pain_resistance, int $raw_dmg, int $rd, string $dmg_type, string $bullet_type, string $localisation, array $rolls){
+		$this->response["data"] = WoundController::getWoundEffects($dex, $san, $pdvm, $pdv, $pain_resistance, $raw_dmg, $rd, $dmg_type, $bullet_type, $localisation, $rolls);
 		$this->sendResponse();
 	}
 

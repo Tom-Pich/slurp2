@@ -118,11 +118,11 @@ wdwHands.addEventListener("change", (e) => {
 weaponDamageWidget.addEventListener("submit", async (e) => {
 	const damages = roll(wdwExpression.value);
 	const localisation = await getLocalisation();
-	
+
 	// updating wounds effect widget
 	woundEffectsWidget.querySelector("[data-type=raw-dmg]").value = damages.result
 	woundEffectsWidget.querySelector("[data-type=localisation]").value = localisation[1];
-	
+
 	// flushing result
 	inputEntry.value += `Dégâts (${damages.expression})&nbsp;: ${damages.result} – ${localisation[0]}`
 	flushMsg("jet")
@@ -222,6 +222,7 @@ generalStateWidget.addEventListener("submit", (e) => {
 	const opponent = collectOpponentData(opponentNumber);
 
 	const data = new FormData
+	//data.append("dex", opponent.dex)
 	data.append("san", opponent.san)
 	data.append("pdvm", opponent.pdvm)
 	data.append("pdv", opponent.pdv)
@@ -251,14 +252,19 @@ generalStateWidget.addEventListener("submit", (e) => {
 
 // wound effects widget
 woundEffectsWidget.addEventListener("submit", e => {
-	const opponentNumber = woundEffectsWidget.querySelector("[data-type=name-selector]").value
+	const opponentNumber = woundEffectsWidget.querySelector("[data-type=name-selector]").value;
 	const opponent = collectOpponentData(opponentNumber);
-	const rawDmg = roll(woundEffectsWidget.querySelector("[data-type=raw-dmg]").value).result
-	const rd = woundEffectsWidget.querySelector("[data-type=rd]").value
-	const dmgType = woundEffectsWidget.querySelector("[data-type=dmg-type]").value
-	const bulletType = woundEffectsWidget.querySelector("[data-type=bullet-type]").value
-	const localisation = woundEffectsWidget.querySelector("[data-type=localisation]").value
+	const rawDmg = roll(woundEffectsWidget.querySelector("[data-type=raw-dmg]").value).result;
+	const rd = woundEffectsWidget.querySelector("[data-type=rd]").value;
+	const dmgType = woundEffectsWidget.querySelector("[data-type=dmg-type]").value;
+	const bulletType = woundEffectsWidget.querySelector("[data-type=bullet-type]").value;
+	const localisation = woundEffectsWidget.querySelector("[data-type=localisation]").value;
+	const rolls = [];
+	for (let i = 0; i < 7; i++) {
+		rolls.push(roll("3d").result)
+	}
 	const data = new FormData
+	data.append("dex", opponent.dex)
 	data.append("san", opponent.san)
 	data.append("pdvm", opponent.pdvm)
 	data.append("pdv", opponent.pdv)
@@ -269,10 +275,11 @@ woundEffectsWidget.addEventListener("submit", e => {
 	data.append("dmg-type", dmgType)
 	data.append("bullet-type", bulletType)
 	data.append("localisation", localisation)
+	data.append("rolls", rolls)
 	fetch("/api/wound-effects", {
 		method: "post",
 		body: data,
 	})
-		.then(response => response.json())
-		.then(response => console.log(response.data))
+		.then(response => response.text())
+		.then(response => console.log(response))
 })

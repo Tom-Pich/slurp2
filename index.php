@@ -116,8 +116,20 @@ if (substr($path, 0, 4) === "/api") {
 			break;
 
 		case "/api/wound-effects":
-			Firewall::check(isset($_POST["san"]) && isset($_POST["pdvm"]) && isset($_POST["pdv"]) && isset($_POST["pain-resistance"]) && isset($_POST["raw-dmg"]) && isset($_POST["rd"]) && isset($_POST["dmg-type"]) && isset($_POST["bullet-type"]) && isset($_POST["localisation"]));
-			$controller->getWoundEffects($_POST);
+			Firewall::check(isset($_POST["dex"]) && isset($_POST["san"]) && isset($_POST["pdvm"]) && isset($_POST["pdv"]) && isset($_POST["pain-resistance"]) && isset($_POST["raw-dmg"]) && isset($_POST["rd"]) && isset($_POST["dmg-type"]) && isset($_POST["bullet-type"]) && isset($_POST["localisation"]) && isset($_POST["rolls"]));
+			$dex = (int) $_POST["dex"];
+			$san = (int) $_POST["san"];
+			$pdvm = (int) $_POST["pdvm"];
+			$pdv = (int) $_POST["pdv"];
+			$pain_resistance = $_POST["pain-resistance"] === "true";
+			$raw_dmg = (int) $_POST["raw-dmg"];
+			$rd = (int) $_POST["rd"];
+			$dmg_type = $_POST["dmg-type"];
+			$bullet_type = $_POST["bullet-type"];
+			$localisation = $_POST["localisation"];
+			$rolls = explode(",", $_POST["rolls"]);
+			$rolls = array_map( fn ($x) => (int) $x, $rolls);
+			$controller->getWoundEffects($dex, $san, $pdvm, $pdv, $pain_resistance, $raw_dmg, $rd, $dmg_type, $bullet_type, $localisation, $rolls);
 			break;
 
 		default:

@@ -101,13 +101,18 @@ $nbre_protagonistes = 8;
 			<legend>Protagonistes</legend>
 
 			<?php for ($i = 1; $i <= $nbre_protagonistes; $i++) { ?>
-				<div class="grid gap-½ mt-1" style="grid-template-columns: 1fr 7ch 7ch 7ch 2ch" data-role="opponent-wrapper" data-opponent="<?= $i ?>">
-					<input type="text" data-type="name" placeholder="Nom" value="<?= $i === 1 ? "Mr Test" : "" ?>">
-					<input type="text" data-type="san" class="center" placeholder="San" title="Santé" value="<?= $i === 1 ? 12 : "" ?>">
-					<input type="text" data-type="pdvm" class="center" placeholder="PdVm" title="PdV maxi" value="<?= $i === 1 ? 12 : "" ?>">
-					<input type="text" data-type="pdv" class="center" placeholder="PdV" title="PdV actuels" value="<?= $i === 1 ? 12 : "" ?>">
-					<input type="checkbox" data-type="pain-resistance" title="Résistance à la douleur">
-					<input type="text" data-type="members" style="grid-column: 1/-1" placeholder="Blessures membres" title="Par exemple BD 2, PG 1">
+				<div class="mt-1" data-role="opponent-wrapper" data-opponent="<?= $i ?>">
+					<div class="flex-s gap-½">
+						<input type="text" class="fl-1" data-type="name" placeholder="Nom" value="<?= $i === 1 ? "Mr Test" : "" ?>">
+						<input type="text" style="width: 6ch" data-type="dex" class="ta-center" placeholder="Dex" title="Dextérité" value="<?= $i === 1 ? 11 : "" ?>">
+						<input type="text"  style="width: 6ch" data-type="san" class="ta-center" placeholder="San" title="Santé" value="<?= $i === 1 ? 12 : "" ?>">
+						<input type="checkbox" data-type="pain-resistance" title="Résistance à la douleur">
+					</div>
+					<div class="flex-s gap-½ mt-½">
+						<input type="text" style="width: 6ch" data-type="pdvm" class="ta-center" placeholder="PdVm" title="PdV maxi" value="<?= $i === 1 ? 12 : "" ?>">
+						<input type="text" style="width: 6ch" data-type="pdv" class="ta-center" placeholder="PdV" title="PdV actuels" value="<?= $i === 1 ? 12 : "" ?>">
+						<input type="text" class="fl-1" data-type="members" placeholder="Blessures membres" title="Par exemple BD 2, PG 1">
+					</div>
 				</div>
 			<?php } ?>
 
