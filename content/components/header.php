@@ -27,7 +27,6 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 		<meta property="og:image" content="https://jdr.pichegru.net/assets/img/dices.png">
 	<?php } ?>
 
-	<!-- <script src="/fonctions/_general_header.js"></script> -->
 	<script type="module" src="/scripts/main.js" defer></script>
 </head>
 

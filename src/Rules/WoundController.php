@@ -166,8 +166,6 @@ class WoundController
 			"type balle" => $bullet_type,
 			"localisation" => $localisation,
 			"jets" => $rolls,
-			"separator" => "––––––––––––––––––",
-
 			"dégâts effectifs" => "",
 			"dégâts membre" => "",
 			"chute" => false,
@@ -218,30 +216,32 @@ class WoundController
 		$limits = ["bras" => self::members_pdv["bras"] * 1.25, "jambe" => self::members_pdv["jambe"] * 1.25, "pied" => self::members_pdv["pied"] * 1.25, "main" => self::members_pdv["main"] * 1.25];
 		$rcl = ["br" => 1.5, "tr" => 1, "pe" => 0.75, "mn" => 2.5, "b0" => 0.5, "b1" => 0.5, "b2" => 0.75, "b3" => 1, "exp" => 2];
 
-		// variables shorthand
+		// variables shorthand and inconsistency correction
 		$is_bullet = in_array($dmg_type, ["b0", "b1", "b2", "b3"]);
+		$bullet_type = !$is_bullet ? "std" : $bullet_type;
 		$is_armor_piercing_bullet = $is_bullet && $bullet_type === "bpa";
 		$is_hollow_point_bullet = $is_bullet && $bullet_type === "bpc";
+
 		$is_penetrating = $is_bullet || $dmg_type === "pe";
+
+		$localisation = $localisation === "coeur" && $dmg_type === "tr" ? "torse" : $localisation;
+		$localisation = $dmg_type === "exp" ? "torse" : $localisation;
+		$localisation = $localisation === "oeil" && !$is_penetrating ? "visage" : $localisation;
+		$result["type balle"] = $bullet_type;
+		$result["localisation"] = $localisation;
+		
 		$is_member = in_array($localisation, ["bras", "main", "pied", "jambe"]);
 		$is_vital = in_array($localisation, ["visage", "coeur", "cou", "crâne", "oeil"]);
 		$is_head = in_array($localisation, ["crane", "visage", "oeil"]);
 		$is_skull = in_array($localisation, ["crane", "oeil"]);
 		$is_sensitive = in_array($localisation, ["visage", "org_gen", "crane", "oeil"]);
 
-		// variables inconsistency correction
-		$bullet_type = !$is_bullet ? "std" : $bullet_type;
-		$localisation = $localisation === "coeur" && $dmg_type === "tr" ? "torse" : $localisation;
-		$localisation = $dmg_type === "exp" ? "torse" : $localisation;
-		$localisation = $localisation === "oeil" && !$is_penetrating ? "visage" : $localisation;
-
-
 		// ––– recoil
 		$limited_raw_dmg = $is_penetrating ? min($raw_dmg, ($pdvm + $rd) * ($limits[$localisation] ?? 1)) : $raw_dmg;
 		$rcl_dmg = $limited_raw_dmg * $rcl[$dmg_type] * ($is_head ? 3 : 1);
-		var_dump("rcl dmg " . $rcl_dmg);
+		////var_dump("rcl dmg " . $rcl_dmg);
 		$rcl_modif = modif($rcl_dmg, 0.8 * $pdvm);
-		var_dump("rcl modif " . $rcl_modif);
+		////var_dump("rcl modif " . $rcl_modif);
 		$result["chute"] = !is_success($dex + $rcl_modif, $rolls[0]);
 
 		// ––– armor and special bullet types
@@ -253,37 +253,39 @@ class WoundController
 		$net_dmg = $net_dmg >= 0 ? $net_dmg : 0;
 		$net_dmg_limit = !$is_vital && $is_penetrating ? ($limits[$localisation] ?? 1) : INF;
 		$net_dmg = min($net_dmg, $pdvm * $net_dmg_limit);
-		var_dump("net dmg " . $net_dmg);
+		//var_dump("net dmg " . $net_dmg);
 
 		$dmg_multiplier = $is_member ? 1 : $dmg_multipliers[$dmg_type];
 		$dmg_multiplier = $is_vital ? max($dmg_multiplier * 1.5, 2) : $dmg_multiplier;
+		$dmg_multiplier = $is_vital && $is_bullet ? max($dmg_multiplier * 1.5, 3) : $dmg_multiplier;
 		$dmg_multiplier = $is_skull ? 4 : $dmg_multiplier;
-		var_dump("dmg multiplier " . $dmg_multiplier);
+		//var_dump("dmg multiplier " . $dmg_multiplier);
 
 		$actual_dmg = $net_dmg * $dmg_multiplier;
 		$actual_dmg = ($rd === 0 && $is_penetrating) ? max($actual_dmg, 1) : $actual_dmg;
 		$actual_dmg *= $is_armor_piercing_bullet ? 0.5 : 1;
 		$actual_dmg *= $is_hollow_point_bullet ? 2 : 1;
 		$actual_dmg -= ($localisation === "crane") ? min($net_dmg, $pdvm / 5) * 3 : 0;
-		var_dump("actual dmg " . $actual_dmg);
-		$result["dégâts effectifs"] = round($actual_dmg);
+		//var_dump("actual dmg " . $actual_dmg);
+		$result["dégâts effectifs"] = floor($actual_dmg);
 		$pdv -= !$is_member ? $result["dégâts effectifs"] : 0;
 		$result["pdv"] = $pdv;
 
 		// ––– fall due to high damages
 		$fall_modifier = modif(2 * $actual_dmg, $pdvm);
-		var_dump("dmg fall modif : " . $fall_modifier);
+		//var_dump("dmg fall modif : " . $fall_modifier);
 		$result["chute"] = $result["chute"] || $actual_dmg && !is_success($san + $fall_modifier, $rolls[1]);
 
 		// ––– stunning
 		$stun_level = 0;
 		$stun_base_threshold = 0.25 * $pdvm * ($is_sensitive ? 0 : 1);
-		var_dump("stun base threshold : " . $stun_base_threshold);
+		//var_dump("stun base threshold : " . $stun_base_threshold);
 		if ($actual_dmg >= $stun_base_threshold) {
 
 			$stun_level = $actual_dmg >= 2 * max($stun_base_threshold, 0.1 * $pdvm) ? 2 : 1;
 			$stun_level = $actual_dmg >= 4 * max($stun_base_threshold, 0.1 * $pdvm) ? 3 : $stun_level;
 			$stun_level += $localisation === "org_gen" ? 1 : 0;
+			//var_dump("stun modifier : ". - 2 * $stun_level);
 			$stun_level -= is_success($san - 2 * $stun_level, $rolls[2]) ? 1 : 0;
 			$stun_level -= $has_pain_resistance ? 1 : 0;
 			$stun_level = min($stun_level, 3);
@@ -309,7 +311,7 @@ class WoundController
 		// ––– knock out
 		if ($is_head) {
 			$knock_out_modifier = -$actual_dmg + ($is_penetrating ? 5 : 0);
-			var_dump("knock out modif : " . $knock_out_modifier);
+			//var_dump("knock out modif : " . $knock_out_modifier);
 			$result["perte de conscience"] = !is_success($san + $knock_out_modifier, $rolls[3]);
 		}
 
@@ -318,17 +320,17 @@ class WoundController
 			$pdv_death_modifier = 5 * ($pdv / $pdvm + 1);
 			$dmg_death_modifier = - ($actual_dmg / $pdvm - 0.5) * 5;
 			$death_modifier = (int) round(($pdv_death_modifier + $dmg_death_modifier) / 2);
-			var_dump("death modif torso : " . $death_modifier);
+			//var_dump("death modif torso : " . $death_modifier);
 			$result["mort"] = !is_success($san + $death_modifier, $rolls[4]) ? "Mort en " . round($rolls[5] * 2) . " secondes" : false;
 		} elseif ($is_vital && $actual_dmg >= 0.25 * $pdvm) {
 			$death_modifier = modif(1.5 * $actual_dmg, $pdvm);
-			var_dump("death modif vital : " . $death_modifier);
+			//var_dump("death modif vital : " . $death_modifier);
 			$result["mort"] = !is_success($san + $death_modifier, $rolls[4]) ? "Mort immédiate&nbsp;! 😵" : false;
 		}
 
 		// ––– special random effects
 		$effects_modifier = modif($actual_dmg, $pdvm * 0.75);
-		var_dump("effects modif : " . $effects_modifier);
+		//var_dump("effects modif : " . $effects_modifier);
 		if ($actual_dmg > 0.25 * $pdvm && !is_success($san + $effects_modifier, $rolls[6])) {
 			if ($localisation === "torse") {
 				$effects = [

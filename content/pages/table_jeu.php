@@ -146,7 +146,7 @@ $nbre_protagonistes = 8;
 								<option value="<?= $i ?>">Protagoniste <?= $i ?></option>
 							<?php } ?>
 						</select>
-						<input type="text" style="width: 6ch" class="ta-center" data-type="raw-dmg" placeholder="xd±y" title="Dégâts bruts">
+						<input type="text" style="width: 6ch" class="ta-center" data-type="raw-dmg" value="3" placeholder="xd±y" title="Dégâts bruts">
 						<input type="text" style="width: 6ch" class="ta-center" data-type="rd" placeholder="RD" title="RD localisation">
 					</div>
 
@@ -179,7 +179,6 @@ $nbre_protagonistes = 8;
 							<option value="main">Main</option>
 							<option value="oeil">Œil</option>
 							<option value="org_gen">Org. génitaux</option>
-							<option value="oreille">Oreille</option>
 						</select>
 					</div>
 				</div>
@@ -317,27 +316,4 @@ $nbre_protagonistes = 8;
 
 </sidebar>
 
-<!-- Nouveaux scripts -->
 <script type="module" src="/scripts/game-table.js"></script>
-
-<!-- Anciens scripts à reprendre -->
-<!-- <script src="fonctions/roll_dices.js"></script>
-<script src="fonctions/calculs_degats.js"></script>
-<script src="fonctions/blessures_datas.js"></script>
-<script src="fonctions/blessures_calculs.js"></script>
-<script src="fonctions/degats_objets.js"></script> -->
-
-
-
-<script>
-	// active le type de balle si "balle" est sélectionné
-	function unfreeze_bullet_type(value) {
-		/* let select_bullet = document.getElementById("bl_type_balle")
-		if (["b0", "b1", "b2", "b3"].includes(value)) {
-			select_bullet.disabled = false
-		} else {
-			select_bullet.value = "std"
-			select_bullet.disabled = true
-		} */
-	}
-</script>

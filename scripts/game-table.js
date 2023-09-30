@@ -280,6 +280,52 @@ woundEffectsWidget.addEventListener("submit", e => {
 		method: "post",
 		body: data,
 	})
-		.then(response => response.text())
-		.then(response => console.log(response))
+		.then(response => response.json())
+		.then(response => {
+			console.log(response.data)
+			const result = response.data
+			let formattedMsg = `<b>${opponent.name} – ${result["dégâts bruts"]} ( ${result["type dégâts"]} ${result["localisation"]})</b>`;
+			let isNotDead = true;
+			formattedMsg += `<br>Dégâts effectifs&nbsp;: ${result["dégâts effectifs"]}`;
+			if (result["mort"]) {
+				formattedMsg += `<br>${result["mort"]}`;
+				isNotDead = false;
+			}
+			if (result["autres effets"]) {
+				formattedMsg += `<br>${result["autres effets"]}`
+			}
+			if (isNotDead) {
+				if (result["sonné"]) {
+					formattedMsg += `<br>${result["sonné"]}`
+				}
+				if (result["perte de conscience"]) {
+					formattedMsg += `<br>Le personnage perd conscience.`
+				}
+				if (result["chute"]) {
+					formattedMsg += `<br>Le personnage chûte.`
+				}
+				if (result["dégâts membre"]) {
+					formattedMsg += `<br>${result["dégâts membre"]}`
+				}
+			}
+			inputEntry.value += formattedMsg;
+			flushMsg("jet")
+
+			// update opponent widget
+			const opponentWrapper = qs(`[data-opponent="${opponentNumber}"]`)
+			const pdvWrapper = opponentWrapper.querySelector("[data-type=pdv]")
+			pdvWrapper.value = result["pdv"]
+		})
+})
+
+// unfreeze bullet type
+const dmgTypeSelector = woundEffectsWidget.querySelector("[data-type=dmg-type]")
+const bulletTypeSelector = woundEffectsWidget.querySelector("[data-type=bullet-type]")
+dmgTypeSelector.addEventListener("change", (e) => {
+	if (["b0", "b1", "b2", "b3"].includes(dmgTypeSelector.value)) {
+		bulletTypeSelector.disabled = false
+	} else {
+		bulletTypeSelector.value = "std"
+		bulletTypeSelector.disabled = true
+	}
 })
