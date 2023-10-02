@@ -459,9 +459,9 @@ $attributes = [
 
 	<details>
 		<summary class="h3">Règle du 12</summary>
-		<p>• <b>Avantage&nbsp;:</b> si un jet est nécessaire pour faire le fonctionner, le score <i>minimum</i> de ce jet est de 12</p>
-		<p>• <b>Désavantage&nbsp;:</b> si un jet est nécessaire pour y échapper, le score <i>maximum</i> de ce jet est de 12</p>
-		<div class="exemple">L’avantage <i>Intuition</i> nécessite un jet d’<i>Int</i> pour fonctionner. Si l’<i>Int</i> du personnage est inférieure à 12, elle est considérée comme valant 12 pour ce jet.</div>
+		<p>• <b>Avantage&nbsp;:</b> si un jet sous une caractéristique est nécessaire pour le faire fonctionner, le score de base <i>minimum</i> de cette caractéristique et considéré comme valant 12 (en dehors de modificateurs d’état ou de circonstances).</p>
+		<p>• <b>Désavantage&nbsp;:</b> si un jet est nécessaire pour y échapper, le score <i>maximum</i> de ce jet est de 12.</p>
+		<div class="exemple">L’avantage <i>Intuition</i> nécessite un jet d’<i>Int</i> pour fonctionner. Si l’<i>Int</i> du personnage est inférieure à 12, elle est considérée comme valant 12 pour ce jet. Mais si le personnage est blessé ou fatigué, les modificateurs normaux s’appliquent à cette base de 12.</div>
 	</details>
 
 	<details>

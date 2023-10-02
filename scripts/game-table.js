@@ -57,9 +57,20 @@ simpleDiceWidget.addEventListener("submit", (e) => {
 // score tester
 const scoreWidgets = qsa("[data-role=score-tester]")
 scoreWidgets.forEach(widget => {
+
+	const skillNameInput = widget.querySelector("[data-type=skill-name]");
+	const skillNumber = skillNameInput.dataset.skillNumber;
+	const skillScoreInput = widget.querySelector("[data-type=score]");
+	skillNameInput.value = localStorage.getItem(`skill-${skillNumber}-name`)
+	skillScoreInput.value = localStorage.getItem(`skill-${skillNumber}-score`)
+
 	widget.addEventListener("submit", (e) => {
-		const skillName = widget.querySelector("[data-type=name]").value;
-		const score = parseInt(widget.querySelector("[data-type=score]").value);
+		const skillName = skillNameInput.value;
+		const score = parseInt(skillScoreInput.value);
+
+		localStorage.setItem(`skill-${skillNumber}-name`, skillName);
+		localStorage.setItem(`skill-${skillNumber}-score`, score);
+
 		let modif = parseInt(widget.querySelector("[data-type=modif]").value);
 		modif = isNaN(modif) ? 0 : modif;
 		let netScore = score + modif
@@ -235,7 +246,7 @@ generalStateWidget.addEventListener("submit", (e) => {
 	})
 		.then(response => response.json())
 		.then(response => {
-			console.log(response.data)
+			//console.log(response.data)
 			let formattedMsg = `
 				État général de <b>${opponent.name}</b><br>
 				${response.data.general}
@@ -284,6 +295,9 @@ woundEffectsWidget.addEventListener("submit", e => {
 		.then(response => {
 			console.log(response.data)
 			const result = response.data
+
+			if (result["pdvm"] <= 0) { throw new Error("Il manque des données."); }
+
 			let formattedMsg = `<b>${opponent.name} – ${result["dégâts bruts"]} ( ${result["type dégâts"]} ${result["localisation"]})</b>`;
 			let isNotDead = true;
 			formattedMsg += `<br>Dégâts effectifs&nbsp;: ${result["dégâts effectifs"]}`;
@@ -308,6 +322,7 @@ woundEffectsWidget.addEventListener("submit", e => {
 					formattedMsg += `<br>${result["dégâts membre"]}`
 				}
 			}
+
 			inputEntry.value += formattedMsg;
 			flushMsg("jet")
 
@@ -329,3 +344,5 @@ dmgTypeSelector.addEventListener("change", (e) => {
 		bulletTypeSelector.disabled = true
 	}
 })
+
+// Memorizing entries

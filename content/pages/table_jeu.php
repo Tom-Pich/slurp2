@@ -1,5 +1,5 @@
 <?php
-$nbre_protagonistes = 8;
+$nbre_protagonistes = 7;
 ?>
 
 <div id="widgets-container">
@@ -20,9 +20,9 @@ $nbre_protagonistes = 8;
 		<!-- test caractéristique / compétence -->
 		<fieldset>
 			<legend>Jets de réussite</legend>
-			<?php for ($i = 0; $i < 7; $i++) { ?>
+			<?php for ($i = 1; $i <= 7; $i++) { ?>
 				<form data-role="score-tester" class="flex-s gap-½ mt-¼">
-					<input type="text" class="fl-1" data-type="name" placeholder="Comp. ou carac." list="liste-carac-comp">
+					<input type="text" style="width: 70%" data-type="skill-name" data-skill-number=<?= $i ?>  placeholder="Comp. ou carac." list="liste-carac-comp">
 					<datalist id="liste-carac-comp">
 						<option value="Force"></option>
 						<option value="Dextérité"></option>
@@ -50,15 +50,15 @@ $nbre_protagonistes = 8;
 		<fieldset>
 			<legend>Dégâts et localisation</legend>
 			<form class="flex-s gap-½ ai-first-baseline" id="weapon-damage-widget">
-				<input type="text" style="width: 6ch" data-type="strength" class="ta-center" placeholder="For" title="For de l’attaquant">
-				<input type="text" style="width: 8ch" data-type="weapon-code" class="ta-center" placeholder="Code" title="Code dégâts de l’arme">
-				<select id="as-mains" style="width: 14ch" data-type="hands" title="Préciser le maniement de l’arme">
+				<input type="text" style="width: 5ch" data-type="strength" class="ta-center" placeholder="For" title="For de l’attaquant"><!-- style="width: 6ch" -->
+				<input type="text" style="width: 6ch" data-type="weapon-code" class="ta-center" placeholder="Code" title="Code dégâts de l’arme"><!-- style="width: 8ch" -->
+				<select id="as-mains" style="width: 12ch" data-type="hands" title="Préciser le maniement de l’arme">
 					<option value="1M">1 main</option>
 					<option value="2M-opt">2 mains opt.</option>
 					<option value="2M">2 mains</option>
 				</select>
 				<div class="fl-1 fw-500 ta-center">ou</div>
-				<input type="text" style="width: 8ch" data-type="dice-code" class="ta-center" placeholder="xd±y" title="Expression des dégâts de type xd(y)(+-/* z)">
+				<input type="text" style="width: 6ch" data-type="dice-code" class="ta-center" placeholder="xd±y" title="Expression des dégâts de type xd(y)(+-/* z)">
 				<button class="nude">🎲</button>
 			</form>
 		</fieldset>
@@ -316,4 +316,4 @@ $nbre_protagonistes = 8;
 
 </sidebar>
 
-<script type="module" src="/scripts/game-table.js"></script>
+<script type="module" src="/scripts/game-table.js?v=1.0.1"></script>

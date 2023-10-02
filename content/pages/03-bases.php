@@ -19,7 +19,7 @@ use App\Rules\MentalHealthController;
 
 	<details><summary class="h3">Principes de base</summary>
 		<p class="center interligne"><b>Jet (3d) &le; score ± modificateurs</b></p>
-		<p class="interligne">3 est toujours une réussite, 17 et 18 sont toujours des échecs.</p>
+		<p class="interligne">3 et 4 sont toujours une réussite, 17 et 18 sont toujours des échecs.</p>
 		<p>Le <b>score brut</b> est le score sans aucun modificateur. Le <b>score net</b> est le score après application des différents modificateurs ci-dessous.</p>
 	</details>
 
@@ -54,10 +54,9 @@ use App\Rules\MentalHealthController;
 	<details><summary class="h3">Réussite et échec critiques</summary>
 		<table class="alternate-e">
 		<tr><th width="10%">Jet</th>	<th>Réussite critique</th>	<th width="10%">Jet</th>	<th>Échec critique</th></tr>
-		<tr><td>3</td>					<td>Score net &ge; 5</td>	<td>18</td>					<td>Toujours</td></tr>
+		<tr><td>3</td>					<td>Toujours</td>			<td>18</td>					<td>Toujours</td></tr>
 		<tr><td>4</td>					<td>Score net &ge; 6</td>	<td>17</td>					<td>Score net &le; 15</td></tr>
-		<tr><td>5</td>					<td>Score net &ge; 15</td>	<td>16</td>					<td>Score net &le; 6</td></tr>
-		<tr><td>6</td>					<td>Score net &ge; 16</td>	<td>15</td>					<td>Score net &le; 5</td></tr>
+		<tr><td>5-7</td>				<td>MR &ge; 10</td>			<td>5+</td>				<td>ME &ge; 10</td></tr>
 		</table>
 	</details>
 	

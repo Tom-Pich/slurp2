@@ -6,14 +6,14 @@ class WoundController
 {
 
 	public const general_levels = [
-		"-3" => [
+		"-3.0" => [
 			"description" => "Mort automatique",
 			"for-multiplier" => 0,
 			"dex-modifier" => -INF,
 			"int-modifier" => -INF,
 			"vit-multiplier" => 0,
 		],
-		"-2" => [
+		/* "-2" => [
 			"description" => "Jet de <i>San</i>-5 pour ne pas mourir au moment où ce seuil est franchi.",
 			"for-multiplier" => 0,
 			"dex-modifier" => -INF,
@@ -26,16 +26,16 @@ class WoundController
 			"dex-modifier" => -INF,
 			"int-modifier" => -INF,
 			"vit-multiplier" => 0,
-		],
-		"-1" => [
-			"description" => "Perte de conscience et jet de <i>San</i> pour ne pas mourir au moment où ce seuil est franchi.",
+		], */
+		"-1.0" => [
+			"description" => "Perte de conscience automatique. Tant qu’il ne repasse pas au-dessus de ce seuil, le personnage reste inconscient. Il ne peut ni boire, ni se nourrir.",
 			"for-multiplier" => 0,
 			"dex-modifier" => -INF,
 			"int-modifier" => -INF,
 			"vit-multiplier" => 0,
 		],
-		"0" => [
-			"description" => "Jet de <i>Vol</i>-3 à chaque round pour ne pas perdre conscience. Le personnage ne peut pas se tenir debout. Il peut reprendre conscience ultérieurement, mais ne pourra rien faire et sera semi-conscient jusqu’à ce que ses PdV soient de nouveau positifs.",
+		"0.0" => [
+			"description" => "Jet de <i>Vol</i>-3 à chaque round pour ne pas perdre conscience. Le personnage ne peut pas se tenir debout. Il peut reprendre conscience ultérieurement, mais ne pourra rien faire et sera semi-conscient jusqu’à ce que ses PdV repassent au-dessus de ce seuil.",
 			"for-multiplier" => 0.3,
 			"dex-modifier" => -7,
 			"int-modifier" => -7,
@@ -176,10 +176,17 @@ class WoundController
 			"pdv" => $pdv,
 		];
 
+		if ($pdvm <= 0) {
+			return $result;
+		}
+
 		// -1 par 10% d’excès de value sur ref (* mult)
-		function modif(float $value, float $ref, float $mult = 1)
+		function modif(float $value, float $ref)
 		{
-			return (int) round(- ($value / $ref - 1) * 10 * $mult);
+			if ($ref == 0) {
+				return 0;
+			}
+			return (int) round(- ($value / $ref - 1) * 10);
 		}
 
 		// check a roll against carac, taking into account 3-4 and 17-18
@@ -218,27 +225,30 @@ class WoundController
 
 		// variables shorthand and inconsistency correction
 		$is_bullet = in_array($dmg_type, ["b0", "b1", "b2", "b3"]);
-		$bullet_type = !$is_bullet ? "std" : $bullet_type;
+		//$bullet_type = !$is_bullet ? "std" : $bullet_type;
 		$is_armor_piercing_bullet = $is_bullet && $bullet_type === "bpa";
 		$is_hollow_point_bullet = $is_bullet && $bullet_type === "bpc";
 
-		$is_penetrating = $is_bullet || $dmg_type === "pe";
+		$is_perforating = $is_bullet || $dmg_type === "pe"; // b0, b1, b2, b3, pe
+		$is_penetrating = $is_perforating || $dmg_type === "tr"; // b0, b1, b2, b3, pe, tr
+		$is_blunting = in_array($dmg_type, ["br", "mn"]);
 
 		$localisation = $localisation === "coeur" && $dmg_type === "tr" ? "torse" : $localisation;
 		$localisation = $dmg_type === "exp" ? "torse" : $localisation;
-		$localisation = $localisation === "oeil" && !$is_penetrating ? "visage" : $localisation;
+		$localisation = $localisation === "oeil" && !$is_perforating ? "visage" : $localisation;
 		$result["type balle"] = $bullet_type;
 		$result["localisation"] = $localisation;
-		
+
 		$is_member = in_array($localisation, ["bras", "main", "pied", "jambe"]);
-		$is_vital = in_array($localisation, ["visage", "coeur", "cou", "crâne", "oeil"]);
+		$is_vital = in_array($localisation, ["visage", "coeur", "cou", "crane", "oeil"]);
 		$is_head = in_array($localisation, ["crane", "visage", "oeil"]);
 		$is_skull = in_array($localisation, ["crane", "oeil"]);
 		$is_sensitive = in_array($localisation, ["visage", "org_gen", "crane", "oeil"]);
 
 		// ––– recoil
-		$limited_raw_dmg = $is_penetrating ? min($raw_dmg, ($pdvm + $rd) * ($limits[$localisation] ?? 1)) : $raw_dmg;
+		$limited_raw_dmg = $is_perforating ? min($raw_dmg, ($pdvm + $rd) * ($limits[$localisation] ?? 1)) : $raw_dmg;
 		$rcl_dmg = $limited_raw_dmg * $rcl[$dmg_type] * ($is_head ? 3 : 1);
+		$rcl_dmg *= $dmg_type === "exp" ? 2 : 1;
 		////var_dump("rcl dmg " . $rcl_dmg);
 		$rcl_modif = modif($rcl_dmg, 0.8 * $pdvm);
 		////var_dump("rcl modif " . $rcl_modif);
@@ -251,7 +261,7 @@ class WoundController
 		// ––– effective damages
 		$net_dmg = $raw_dmg - $rd;
 		$net_dmg = $net_dmg >= 0 ? $net_dmg : 0;
-		$net_dmg_limit = !$is_vital && $is_penetrating ? ($limits[$localisation] ?? 1) : INF;
+		$net_dmg_limit = !$is_vital && $is_perforating ? ($limits[$localisation] ?? 1) : INF;
 		$net_dmg = min($net_dmg, $pdvm * $net_dmg_limit);
 		//var_dump("net dmg " . $net_dmg);
 
@@ -270,6 +280,10 @@ class WoundController
 		$result["dégâts effectifs"] = floor($actual_dmg);
 		$pdv -= !$is_member ? $result["dégâts effectifs"] : 0;
 		$result["pdv"] = $pdv;
+		$is_significant_wound = $actual_dmg >= 0.25 * $pdvm;
+		$is_major_wound = $actual_dmg >= 0.5 * $pdvm;
+		//$is_critical_wound = $actual_dmg >= $pdvm;
+
 
 		// ––– fall due to high damages
 		$fall_modifier = modif(2 * $actual_dmg, $pdvm);
@@ -278,12 +292,11 @@ class WoundController
 
 		// ––– stunning
 		$stun_level = 0;
-		$stun_base_threshold = 0.25 * $pdvm * ($is_sensitive ? 0 : 1);
-		//var_dump("stun base threshold : " . $stun_base_threshold);
-		if ($actual_dmg >= $stun_base_threshold) {
+		if ($is_significant_wound || $is_sensitive) {
+			$stun_base_threshold = $is_sensitive ? 0.1 * $pdvm : 0.25 * $pdvm;
 
-			$stun_level = $actual_dmg >= 2 * max($stun_base_threshold, 0.1 * $pdvm) ? 2 : 1;
-			$stun_level = $actual_dmg >= 4 * max($stun_base_threshold, 0.1 * $pdvm) ? 3 : $stun_level;
+			$stun_level = $actual_dmg >= 2 * $stun_base_threshold ? 2 : 1;
+			$stun_level = $actual_dmg >= 4 * $stun_base_threshold ? 3 : $stun_level;
 			$stun_level += $localisation === "org_gen" ? 1 : 0;
 			//var_dump("stun modifier : ". - 2 * $stun_level);
 			$stun_level -= is_success($san - 2 * $stun_level, $rolls[2]) ? 1 : 0;
@@ -310,19 +323,25 @@ class WoundController
 
 		// ––– knock out
 		if ($is_head) {
-			$knock_out_modifier = -$actual_dmg + ($is_penetrating ? 5 : 0);
+			$knock_out_modifier = round(-$actual_dmg + ($is_penetrating ? 5 : 0));
 			//var_dump("knock out modif : " . $knock_out_modifier);
 			$result["perte de conscience"] = !is_success($san + $knock_out_modifier, $rolls[3]);
 		}
 
 		// ––– death 🏴‍☠️
-		if ($localisation === "torse" && $pdv <= -$pdvm && $actual_dmg >= 0.5 * $pdvm) {
+		$is_automatically_dead = $pdv <= -3 * $pdvm;
+		$is_severly_wounded = $pdv <= -$pdvm && $is_major_wound || $pdv <= -1.5 * $pdvm && $is_significant_wound || $pdv <= -2 * $pdvm && $actual_dmg;
+		if ($is_automatically_dead) {
+			$result["mort"] = "Le personnage est mort&nbsp;! 😵";
+		} elseif ($localisation === "torse" && $is_severly_wounded) {
 			$pdv_death_modifier = 5 * ($pdv / $pdvm + 1);
+			//var_dump($pdv_death_modifier);
 			$dmg_death_modifier = - ($actual_dmg / $pdvm - 0.5) * 5;
+			//var_dump($dmg_death_modifier);
 			$death_modifier = (int) round(($pdv_death_modifier + $dmg_death_modifier) / 2);
 			//var_dump("death modif torso : " . $death_modifier);
-			$result["mort"] = !is_success($san + $death_modifier, $rolls[4]) ? "Mort en " . round($rolls[5] * 2) . " secondes" : false;
-		} elseif ($is_vital && $actual_dmg >= 0.25 * $pdvm) {
+			$result["mort"] = !is_success($san + $death_modifier, $rolls[4]) ? "Mort en " . round($rolls[5] / 2.5) * 5 . " secondes" : false;
+		} elseif ($is_vital && $is_significant_wound) {
 			$death_modifier = modif(1.5 * $actual_dmg, $pdvm);
 			//var_dump("death modif vital : " . $death_modifier);
 			$result["mort"] = !is_success($san + $death_modifier, $rolls[4]) ? "Mort immédiate&nbsp;! 😵" : false;
@@ -330,33 +349,54 @@ class WoundController
 
 		// ––– special random effects
 		$effects_modifier = modif($actual_dmg, $pdvm * 0.75);
+		$purely_random_parameter = random_int(0, 1) === 0;
 		//var_dump("effects modif : " . $effects_modifier);
-		if ($actual_dmg > 0.25 * $pdvm && !is_success($san + $effects_modifier, $rolls[6])) {
+		if ($is_significant_wound && !is_success($san + $effects_modifier, $rolls[6]) && $purely_random_parameter) {
 			if ($localisation === "torse") {
+				$explosion_gravity = max(floor(- modif($actual_dmg*2, $pdvm)/2), 1);
 				$effects = [
 					0 => "colonne vertébrale touchée. Le personnage est paraplégique. Cette lésion peut guérir – la traiter comme une blessure invalidante.",
-					1 => "colonne vertébrale touchée. Le personnage est définitivement paraplégique",
+					1 => "colonne vertébrale touchée. Le personnage est définitivement paraplégique.",
 					2 => "organe vital touché. Mort en quelques heures, sauf intervention chirurgicale réussie ou soins magiques",
 					3 => "organe vital touché. Mort en quelques minutes, sauf intervention chirurgicale réussie ou soins magiques.",
 
 				];
-				if ($is_penetrating || $dmg_type === "tr" ) {
-					$result["autres effets"] = get_random_element($effects, $actual_dmg <= 0.5 * $pdvm ? [1, 0, 10, 5] : [1, 1, 5, 10]);
-				} else {
-					$result["autres effets"] = get_random_element($effects, $actual_dmg <= 0.5 * $pdvm ? [2, 0, 2, 1] : [1, 3, 2, 2]);
+				$explosion_effects = [
+					0 => "blessure invalidante aux tympans. Le personnage souffre d’une <i>Surdité partielle</i> de niveau $explosion_gravity."
+				];
+				if ($is_penetrating) {
+					$result["autres effets"] = get_random_element($effects, !$is_major_wound ? [1, 0, 10, 5] : [1, 1, 5, 10]);
+				} elseif ($is_blunting) {
+					$result["autres effets"] = get_random_element($effects, !$is_major_wound ? [2, 0, 2, 1] : [1, 3, 2, 2]);
+				} elseif ($dmg_type === "exp") {
+					$result["autres effets"] = get_random_element($effects, !$is_major_wound ? [1, 0, 5, 0] : [1, 1, 8, 5]);
+					$result["autres effets"] .= (" " . ucfirst($explosion_effects[0]));
 				}
+				//
 			} elseif ($localisation === "cou") {
 				$effects = [
 					0 => "colonne vertébrale touchée. Le personnage est tétraplégique. Cette lésion peut guérir – la traiter comme une blessure invalidante.",
-					1 => "colonne vertébrale touchée. Le personnage est définitivement tétraplégique",
-					2 => "le personnage ne peut plus respirer et meurt rapidement",
+					1 => "colonne vertébrale touchée. Le personnage est définitivement tétraplégique.",
+					2 => "le personnage ne peut plus respirer et meurt rapidement.",
 					3 => "Le personnage s’étouffe dans son sang. Mort en quelques minutes, sauf intervention chirurgicale réussie ou soins magiques.",
 				];
-				if ($is_penetrating || $dmg_type === "tr") {
+				if ($is_penetrating) {
 					$result["autres effets"] = get_random_element($effects, $actual_dmg <= 0.5 * $pdvm ? [1, 0, 1, 6] : [1, 1, 1, 5]);
 				} else {
 					$result["autres effets"] = get_random_element($effects, $actual_dmg <= 0.5 * $pdvm ? [2, 0, 4, 0] : [1, 3, 4, 0]);
 				}
+			} elseif ($localisation === "crane") {
+				$effects = [
+					0 => "le personnage souffre de <i>Migraines</i> intenses régulièrement. À traiter comme une blessure invalidante.",
+					1 => "lésion cérébrale. Le personnage souffre d’<i>Amnésie partielle</i>. À traiter comme une blessure invalidante.",
+					2 => "lésion cérébrale. Le personnage souffre d’<i>Amnésie totale</i>. À traiter comme une blessure invalidante.",
+					3 => "lésion cérébrale. Le personnage perd " . ceil($actual_dmg*2/$pdvm) . " points d’<i>Intelligence</i>. À traiter comme une blessure invalidante.",
+					4 => "lésion cérébrale définitive. Le personnage est un légume (<i>Int</i> de 3)",
+					5 => "lésion cérébrale. Le personnage souffre de paralysie complète. À traiter comme une blessure invalidante.",
+					6 => "lésion cérébrale. Le personnage tombe dans un coma qui durera 1d mois.",
+					7 => "lésion cérébrale. Le personnage tombe dans un coma définitif.",
+				];
+				$result["autres effets"] = get_random_element($effects, !$is_major_wound ? [2, 1, 0, 1, 0, 0, 1, 0] : [3, 3, 1, 3, 1, 1, 3, 1]);
 			}
 		}
 

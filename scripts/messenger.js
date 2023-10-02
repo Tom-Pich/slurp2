@@ -49,7 +49,7 @@ export class Messenger {
 
 			if (message.type === "online_users_list") {
 				messenger.usersWrapper.innerText = JSON.parse(message.content).join(" ; ")
-				let notif = new Audio('/chat/notif_logout.mp3');
+				let notif = new Audio('/assets/notifs/notif_logout.mp3');
 				notif.play();
 			}
 
@@ -73,9 +73,9 @@ export class Messenger {
 				setTimeout(() => { messenger.dialogWrapper.appendChild(msg_container) }, 100)
 
 				if (!message.history) {
-					if (message.type == "jet" && message.receivers == "[]") { var notif = new Audio('/chat/notif_dices.mp3'); notif.play(); }
-					if (message.type == "standard" && message.receivers == "[]" && message.id_client != id) { var notif = new Audio('/chat/notif_standard.mp3'); notif.play(); }
-					if (message.receivers != "[]" && message.id_client != id) { var notif = new Audio('/chat/notif_secret.mp3'); notif.play(); }
+					if (message.type == "jet" && message.receivers == "[]") { var notif = new Audio('/assets/notifs/notif_dices.mp3'); notif.play(); }
+					if (message.type == "standard" && message.receivers == "[]" && message.id_client != id) { var notif = new Audio('/assets/notifs/notif_standard.mp3'); notif.play(); }
+					if (message.receivers != "[]" && message.id_client != id) { var notif = new Audio('/assets/notifs/notif_secret.mp3'); notif.play(); }
 				}
 			}
 
