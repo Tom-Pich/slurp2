@@ -309,13 +309,13 @@ woundEffectsWidget.addEventListener("submit", e => {
 				formattedMsg += `<br>${result["autres effets"]}`
 			}
 			if (isNotDead) {
-				if (result["sonné"]) {
+				if (result["sonné"] && !result["perte de conscience"]) {
 					formattedMsg += `<br>${result["sonné"]}`
 				}
 				if (result["perte de conscience"]) {
 					formattedMsg += `<br>Le personnage perd conscience.`
 				}
-				if (result["chute"]) {
+				if (result["chute"] && !result["perte de conscience"]) {
 					formattedMsg += `<br>Le personnage chûte.`
 				}
 				if (result["dégâts membre"]) {

@@ -349,7 +349,7 @@ class WoundController
 
 		// ––– special random effects
 		$effects_modifier = modif($actual_dmg, $pdvm * 0.75);
-		$purely_random_parameter = random_int(0, 1) === 0;
+		$purely_random_parameter = $localisation === "visage" ? random_int(0, 2) <= 1 : random_int(0, 1) === 0;
 		//var_dump("effects modif : " . $effects_modifier);
 		if ($is_significant_wound && !is_success($san + $effects_modifier, $rolls[6]) && $purely_random_parameter) {
 			if ($localisation === "torse") {
@@ -381,9 +381,9 @@ class WoundController
 					3 => "Le personnage s’étouffe dans son sang. Mort en quelques minutes, sauf intervention chirurgicale réussie ou soins magiques.",
 				];
 				if ($is_penetrating) {
-					$result["autres effets"] = get_random_element($effects, $actual_dmg <= 0.5 * $pdvm ? [1, 0, 1, 6] : [1, 1, 1, 5]);
+					$result["autres effets"] = get_random_element($effects, !$is_major_wound ? [1, 0, 1, 6] : [1, 1, 1, 5]);
 				} else {
-					$result["autres effets"] = get_random_element($effects, $actual_dmg <= 0.5 * $pdvm ? [2, 0, 4, 0] : [1, 3, 4, 0]);
+					$result["autres effets"] = get_random_element($effects, !$is_major_wound ? [2, 0, 4, 0] : [1, 3, 4, 0]);
 				}
 			} elseif ($localisation === "crane") {
 				$effects = [
@@ -397,6 +397,18 @@ class WoundController
 					7 => "lésion cérébrale. Le personnage tombe dans un coma définitif.",
 				];
 				$result["autres effets"] = get_random_element($effects, !$is_major_wound ? [2, 1, 0, 1, 0, 0, 1, 0] : [3, 3, 1, 3, 1, 1, 3, 1]);
+			} elseif ($localisation === "visage"){
+				$effects = [
+					0 => "dents arrachées (" . ceil($actual_dmg) . ")",
+					1 => "mâchoire fracturée",
+					2 => "mâchoire brisée",
+					3 => "cicatrice définitive",
+					4 => "oeil handicapé",
+					5 => "oeil détruit",
+					6 => "nez cassé",
+					7 => "nez arraché",
+				];
+				$result["autres effets"] = get_random_element($effects, $actual_dmg <= 0.5 * $pdvm ? [1, 1, 0, 3, 1, 0, 1, 0] : [1, 0, 1, 3, 1, 1, 1, 1]);
 			}
 		}
 

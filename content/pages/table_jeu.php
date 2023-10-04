@@ -316,4 +316,4 @@ $nbre_protagonistes = 7;
 
 </sidebar>
 
-<script type="module" src="/scripts/game-table.js?v=1.0.1"></script>
+<script type="module" src="/scripts/game-table.js?v=<?= VERSION ?>"></script>

@@ -14,7 +14,7 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 	<meta name="google-site-verification" content="Yap48CUfjcjJnXZufVRoH0B0KB5-_UXQArZJiRkn_Qs">
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=yes">
 	<meta name="description" content="<?= $page["description"] ?>">
-	<link rel="stylesheet" href="/styles.min.css">
+	<link rel="stylesheet" href="/styles.min.css?v=<?= VERSION ?>">
 	<link rel="shortcut icon" href="/assets/img/favicon.ico">
 	<title><?= $page["title"] ?></title>
 
@@ -27,7 +27,7 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 		<meta property="og:image" content="https://jdr.pichegru.net/assets/img/dices.png">
 	<?php } ?>
 
-	<script type="module" src="/scripts/main.js" defer></script>
+	<script type="module" src="/scripts/main.js?v=<?= VERSION ?>" defer></script>
 </head>
 
 <body class="<?= $page["body-class"] ?>">
