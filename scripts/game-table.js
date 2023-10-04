@@ -203,17 +203,39 @@ const opponentSelects = qsa("[data-type=name-selector]")
 
 opponents.forEach(opponent => {
 
+	const opponentNumber = opponent.dataset.opponent;
 	const nameWrapper = opponent.querySelector("[data-type=name]")
+	const dexWrapper = opponent.querySelector("[data-type=dex]")
+	const sanWrapper = opponent.querySelector("[data-type=san]")
+	const painResistanceWrapper = opponent.querySelector("[data-type=pain-resistance]")
 	const pdvmWrapper = opponent.querySelector("[data-type=pdvm]")
 	const pdvWrapper = opponent.querySelector("[data-type=pdv]")
+	const membersWrapper = opponent.querySelector("[data-type=members]")
+
+	// getting localStorage values
+	nameWrapper.value = localStorage.getItem(`opponent-${opponentNumber}-name`)
+	dexWrapper.value = localStorage.getItem(`opponent-${opponentNumber}-dex`)
+	sanWrapper.value = localStorage.getItem(`opponent-${opponentNumber}-san`)
+	painResistanceWrapper.checked = localStorage.getItem(`opponent-${opponentNumber}-pain-resistance`) === "true";
+	pdvmWrapper.value = localStorage.getItem(`opponent-${opponentNumber}-pdvm`)
+	pdvWrapper.value = localStorage.getItem(`opponent-${opponentNumber}-pdv`)
+	membersWrapper.value = localStorage.getItem(`opponent-${opponentNumber}-members`)
+
+	// storing values in localStorage
+	opponent.addEventListener("change", e => {
+		const dataType = e.target.dataset.type
+		const dataValue = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+		localStorage.setItem(`opponent-${opponentNumber}-${dataType}`, dataValue);
+	})
 
 	// update name in names selectors (general state and wound effects)
 	nameWrapper.addEventListener("keyup", (e) => {
-		const number = opponent.dataset.opponent
 		opponentSelects.forEach(select => {
-			select.options[number - 1].innerText = nameWrapper.value !== "" ? nameWrapper.value : `Protagoniste ${number}`
+			select.options[opponentNumber - 1].innerText = nameWrapper.value !== "" ? nameWrapper.value : `Protagoniste ${opponentNumber}`
 		})
 	})
+	// update name in names selectors on load (for localStorage)
+	nameWrapper.dispatchEvent(new Event('keyup'));
 
 	// complete pdv if empty
 	pdvmWrapper.addEventListener("blur", e => {
@@ -344,5 +366,3 @@ dmgTypeSelector.addEventListener("change", (e) => {
 		bulletTypeSelector.disabled = true
 	}
 })
-
-// Memorizing entries
