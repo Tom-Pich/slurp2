@@ -15,7 +15,7 @@
 
 	<details open>
 		<summary class="h3">Générateurs aléatoires d’idées</summary>
-		<fieldset class="widget mt-2" data-role="widget-generateur-idee">
+		<fieldset class="widget mt-1" data-role="widget-generateur-idee">
 			<legend>Générateur d’idées</legend>
 			<div class="flex-s ai-center gap-1">
 				<select class="fl-1 px-½" data-role="universe-selector">

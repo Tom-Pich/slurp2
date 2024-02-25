@@ -2,7 +2,9 @@
 header{
 	background: linear-gradient(180deg, #fff0 0%, black 100%), url(/assets/img/bg-header-std.jpg) no-repeat center/cover;
 	color: white; padding: var(--dynamic-space-1-2); padding-bottom: 0.25em; min-height: 18vh;
-	display: grid; grid-template-columns: 50px 1fr 10vw;
+	display: grid; grid-template-columns: 50px 1fr 150px;
+
+	@include media {grid-template-columns: 50px 1fr 30px;}
 
 	h1, h2, h3, h4 {color: inherit;}
 	h4 {font-size: var(--fs-400);}
@@ -26,19 +28,10 @@ header{
 			margin-top: 0;
 			> ul > li {margin-top: .75em;}
 			> ul > li > ul { padding: .5em 1em; }
-			&.active {padding: 1em;}
+			&.active {padding: 1em; min-height: 100dvh}
 		}
 	}
 
-	
-		/* nav {
-			display: block; width: 0; overflow: hidden; position: absolute; top: 0; right: 0; background-color: black; padding: 1em 0; grid-column: unset; margin-top: 0;
-			transition: all .3s;
-			.sub-menu { position: static; max-height: none;}
-		}
-		
-		nav.active {width: 100vw; } */
-	
 }
 
 footer{

@@ -70,7 +70,8 @@ export function reloadScripts() {
 		script.remove()
 		const newScript = ce("script")
 		newScript.type = script.type
-		newScript.src = script.src + "?v=" + new Date().getTime()
+		const scriptURL = new URL (script.src)
+		newScript.src = scriptURL.pathname + "?v=" + new Date().getTime()
 		newScript.dataset.type = "reloadable"
 		qs("main").appendChild(newScript)
 	})

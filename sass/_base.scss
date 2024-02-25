@@ -25,6 +25,7 @@ $scale: (100, 200, 300, 400, 450, 500, 600, 700, 800, 900);
 
 	--ff-base: Open Sans;
 	--ff-accent: Rubik;
+	--ff-hand: 'Segoe Print', 'Bradley Hand', Chilanka, TSCu_Comic, casual, cursive;
 
 	--content-max-width: 1000px;
 	--dynamic-space-½-1: clamp(0.50rem, calc(0.19rem + 0.93vw), 1.00rem);
@@ -38,9 +39,15 @@ $scale: (100, 200, 300, 400, 450, 500, 600, 700, 800, 900);
 	--clr-accent-background: cornsilk;
 	--clr-warning-background: hsl(0, 94%, 87%);
 
-	--clr-primary: hsl(208, 60% ,60%);
-	--clr-secondary: hsl(208, 40%, 80%);
-	--clr-accent: hsl(39, 92%, 54%);
+	--clr-primary-light: hsl(208, 40%, 80%);
+	--clr-primary: hsl(208, 60%, 60%);
+	--clr-primary-dark: hsl(208, 60%, 40%);
+	--clr-secondary-light: hsl(139, 30%, 78%);
+	--clr-secondary: hsl(140, 40%, 45%);
+	--clr-secondary-dark: hsl(140, 40%, 30%);
+	--clr-accent-light: hsl(39, 100%, 84%);
+	--clr-accent: hsl(39, 90%, 54%);
+	--clr-accent-dark: hsl(39, 90%, 40%);
 	--clr-warning: firebrick;
 	
 
@@ -53,7 +60,7 @@ $scale: (100, 200, 300, 400, 450, 500, 600, 700, 800, 900);
 	--fs-200: .8rem;
 	--fs-300: .9rem;
 	--fs-400: 1rem;
-	--fs-450: clamp(1.05rem, calc(1.02rem + 0.09vw), 1.1rem) ;
+	--fs-450: clamp(1.05rem, calc(1.02rem + 0.09vw), 1.1rem);
 	--fs-500: clamp(1.13rem, calc(1.05rem + 0.23vw), 1.25rem);
 	--fs-600: clamp(1.27rem, calc(1.08rem + 0.55vw), 1.56rem);
 	--fs-700: clamp(1.42rem, calc(1.09rem + 0.98vw), 1.95rem);
@@ -96,7 +103,7 @@ p { --flow-space: .5em; }
 a {transition: all .2s; color: steelblue;}
 a:not(.btn):hover {color: var(--clr-accent)}
 img {display: block; max-width: 100%;}
-ul, ol {padding-left: 1.5em; --flow-space: .5em; }
+ul, ol {padding-left: 1.5em; --flow-space: .5em;}
 sub, sup {line-height: 0; font-size: 0.7em;}
 strong { font-weight: 700; color: var(--clr-primary) }
 em { color: var(--clr-primary) }
@@ -132,13 +139,13 @@ button, input[type=submit], .btn {
 	cursor: pointer; display: block; color: currentColor; text-decoration: none; border: 1px solid currentColor; padding: .5em 1em; background: none; font-size: inherit; font-family: var(--ff-base); transition: all .2s; width:fit-content; background-color: transparent; line-height: inherit;
 }
 input, select, textarea {
-	font-family: var(--ff-base); font-size: inherit; padding: .25em; color: currentColor; border: 1px solid currentColor; background-color: var(--clr-background); min-width: 0
+	font-family: var(--ff-base); font-size: inherit; padding: .25em; color: currentColor; border: 1px solid currentColor; background-color: var(--clr-background); min-width: 0;
 }
 select {
 	appearance: none; padding: .25em 1.5em .25em .25em; background-repeat: no-repeat; background-position-x: 100%; background-position-y: center; background-image: var(--select-arrow);
 }
 option { color: grey; }
-textarea {resize: vertical; min-height: 8em;}
+textarea {resize: vertical; min-height: 8em; width: 100%;}
 :disabled{color: var(--grey-500);}
 
 
@@ -160,6 +167,7 @@ textarea {resize: vertical; min-height: 8em;}
 .fl-3 {flex: 3;}
 .fl-4 {flex: 4;}
 .fl-wrap {flex-wrap: wrap;}
+.fl-column {flex-direction: column;}
 
 .grid {display: grid;}
 
@@ -195,11 +203,18 @@ textarea {resize: vertical; min-height: 8em;}
 .fs { @include scale-var(font-size, fs); }
 
 .uppercase {text-transform: uppercase;}
+.clr-text {color: var(--clr-text);}
+.clr-primary {color: var(--clr-primary);}
 .clr-grey-700 {color: var(--grey-700);}
 .clr-grey-500 {color: var(--grey-500);}
 .bg-primary {background-color: var(--clr-primary);}
 .bg-grey-900 { background-color: var(--grey-900);}
 .bg-accent { background-color: var(--clr-accent-background);}
+.bg-background {background-color: var(--clr-background);}
+
+.border-grey-700 {border: 1px solid var(--grey-700) !important;}
+
+.nude {border: none; background: none; padding: 0; color: inherit; text-decoration: none;}
 
 // Font Awesome classes
 :is(.fas, .far, .fab)::before {display: inline-block; width: 1.5em;}
@@ -216,4 +231,3 @@ textarea {resize: vertical; min-height: 8em;}
 .fa-twitter::before {content: "\f099"}
 .fa-instagram::before {content: "\f16d"}
 .fa-youtube::before {content: "\f167"}
-

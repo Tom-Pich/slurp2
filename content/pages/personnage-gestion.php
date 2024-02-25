@@ -112,7 +112,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 				<b>Dégâts</b> <?= $character->attributes["Dégâts"]['estoc'] . '/' . $character->attributes["Dégâts"]['taille']; ?>&emsp;
 				<b>Réf </b> <?= $character->attributes["Réflexes"] ?>&emsp;
 				<b>S-F </b> <?= $character->attributes["Sang-Froid"] ?>&emsp;
-				<b>Vit </b> <?= $character->attributes["Vitesse"] ?>
+				<b>Vit </b> <?= round($character->attributes["Vitesse"], 1) ?>
 			</div>
 			<!-- PdV, PdF, PdM, PdE -->
 			<div class="flex-s gap-¾ jc-center mt-½">
@@ -468,7 +468,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 										<?= $power->specific["Nom"] ?? $power->data->name ?>
 										<?= isset($power->data->readableNiv) ? " (" . $power->data->readableNiv . ")" : "" ?>
 									</div>
-									<div><?= $power->data->displayCost() ?></div>
+									<div><?= $power->data->displayCost($power->specific["Mult"] ?? 1) ?></div>
 								</label>
 							<?php } ?>
 						</div>
@@ -487,7 +487,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 										<?= $power->specific["Nom"] ?? $power->data->name ?>
 										<?= isset($power->data->readableNiv) ? " (" . $power->data->readableNiv . ")" : "" ?>
 									</div>
-									<div><?= $power->data->displayCost() ?></div>
+									<div><?= $power->data->displayCost($power->specific["Mult"] ?? 1) ?></div>
 								</label>
 							<?php } ?>
 						</div>

@@ -43,6 +43,19 @@ class CharacterRepository extends AbstractRepository
 		return $item;
 	}
 
+	public function getCharacterState(int $id): ?array
+	{
+		$query = $this->db->prepare("SELECT État FROM persos WHERE id = ?");
+		$query->execute([$id]);
+		$item = $query->fetch(\PDO::FETCH_ASSOC);
+		$query->closeCursor();
+		if (!$item) {
+			return null;
+		}
+		return json_decode($item["État"], true);
+		//return $item;
+	}
+
 	/**
 	 * getCharactersFromGroup – array of ids
 	 *
@@ -118,6 +131,8 @@ class CharacterRepository extends AbstractRepository
 		$character_data["Competences"] = $character_data["Compétences"];
 		unset($character_data["Compétences"]);
 
+		//var_dump($character_data);
+
 		$query = $this->db->prepare("INSERT INTO persos (id_joueur, id_groupe, Nom, Statut, Pts, Caractéristiques, État, Calculs, MPP, Avdesav, Compétences, Sorts, Pouvoirs, Psi, Description, Background, Notes, Portrait) VALUES(:id_joueur, :id_groupe, :Nom, :Statut, :Pts, :Caracteristiques, :Etat, :Calculs, :MPP, :Avdesav, :Competences, :Sorts, :Pouvoirs, :Psi, :Description, :Background, :Notes, :Portrait)");
 		$query->execute($character_data);
 	}
@@ -166,5 +181,11 @@ class CharacterRepository extends AbstractRepository
 
 		$query = $this->db->prepare("UPDATE persos SET id_joueur = :id_joueur, id_groupe = :id_groupe, Statut = :Statut, Pts = :Pts, État = :Etat WHERE id = :id");
 		$query->execute($character_data);
+	}
+
+	public function updateCharacterPdM(int $id, int $pdm){
+		// Safe statement because $pdm is int. If normally prepared, $pdm will be handled as string.
+		$query = $this->db->prepare("UPDATE persos SET État = JSON_SET(État, '$.PdM', " . $pdm . ") WHERE id = ?");
+		$query->execute([$id]);
 	}
 }

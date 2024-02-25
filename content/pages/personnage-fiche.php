@@ -5,9 +5,12 @@ use App\Repository\EquipmentRepository;
 
 $character = $page["character"];
 $character->processCharacter(with_state_modifiers: true);
+$character_uses_pdm = $character->special_traits["magerie"] || $character->special_traits["pouvoirs"] ;
 $attributes_names = ["For", "Dex", "Int", "San", "Per", "Vol"];
 $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
+
 ?>
+
 
 <!-- Description, caractéristiques, état perso & Avantages-Désavantages -->
 <article>
@@ -38,7 +41,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 		<b>Dégâts</b> <?= $character->attributes["Dégâts"]['estoc'] . '/' . $character->attributes["Dégâts"]['taille']; ?>&emsp;
 		<b>Réf </b> <?= $character->attributes["Réflexes"] ?>&emsp;
 		<b>S-F </b> <?= $character->attributes["Sang-Froid"] ?>&emsp;
-		<b>Vit </b> <?= $character->attributes["Vitesse"] ?>
+		<b>Vit </b> <?= round($character->attributes["Vitesse"], 1) ?>
 	</div>
 
 	<!-- PdV, PdF, PdM, PdE -->
@@ -47,9 +50,9 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 			$pdxm = $character->attributes[$pdx_name];
 			$pdx = $character->state[$pdx_name];
 		?>
-			<div class="ta-center">
+			<div class="ta-center <?= $pdx_name === "PdM" && !$character_uses_pdm ? "clr-grey-500" : "" ?>">
 				<b><?= $pdx_name ?></b> <?= $pdxm ?><br>
-				<meter min="0" low="<?= $pdxm * 0.26 ?>" high="<?= $pdxm * 0.5 ?>" optimum="<?= $pdxm * 0.51 ?>" max="<?= $pdxm ?>" value="<?= $pdx ?>" title="<?= $pdx ?>"></meter>
+				<meter min="0" low="<?= $pdxm * 0.26 ?>" high="<?= $pdxm * 0.5 ?>" optimum="<?= $pdxm * 0.51 ?>" max="<?= $pdxm ?>" value="<?= $pdx ?>" title="<?= $pdx ?>" name="<?= $pdx_name ?>"></meter>
 			</div>
 		<?php } ?>
 	</div>
@@ -57,7 +60,17 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 	<!-- État du personnage -->
 	<fieldset class="mt-1">
 		<legend>État</legend>
+
 		<ul>
+			<?php if($character_uses_pdm){ ?>
+			<li>
+				<?php  ?>
+				<div class="grid gap-½ ai-center mb-½" style="grid-template-columns: auto 1fr">
+					<b>PdM</b>
+					<input type="text" name="pdm_counter" data-pdm-max = "<?= $character->attributes["PdM"] ?>" value="<?= $character->state["PdM"] === $character->attributes["PdM"] ? "" : $character->state["PdM"] ?>">
+				</div>
+			</li>
+			<?php } ?>
 			<li><b>Encombrement&nbsp;:</b> <?= $character->carried_weight ?> kg – <?= $character->state["Encombrement"]["description"] ?></li>
 			<?php if ($character->state["Fatigue"]["dex-modifier"]) { ?>
 				<li><b>Fatigue&nbsp;:</b> <?= $character->state["Fatigue"]["description"] ?></li>
@@ -101,12 +114,34 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 	foreach (["Zéro", "Avantage", "Désavantage", "Réputation", "Travers"] as $categorie) {
 		$sublist = [];
 		foreach ($character->avdesav as $avdesav) {
-			if ($avdesav["catégorie"] === $categorie and !in_array("caché", $avdesav['options'])) {
-				$sublist[] = $avdesav["label"];
+			if ($avdesav["catégorie"] === $categorie) {
+				$sublist[] = $avdesav;
 			}
 		}
 	?>
-		<div class="mt-½"><?= implode("&nbsp;; ", $sublist) ?></div>
+		<div class="mt-¾">
+			<?php foreach ($sublist as $avdesav) {
+				if ($avdesav["catégorie"] !== "Travers") : ?>
+
+					<details class="liste">
+						<summary>
+							<div><?= $avdesav["nom"] ?></div>
+							<div><?= $avdesav["points"] ?></div>
+						</summary>
+						<div class="mt-½"><?= $avdesav["description"] ?? "" ?></div>
+					</details>
+
+				<?php else : ?>
+
+					<div class="flex-s">
+						<div class="fl-1"><?= $avdesav["nom"] ?></div>
+						<div><?= $avdesav["points"] ?></div>
+					</div>
+
+				<?php endif ?>
+
+			<?php } ?>
+		</div>
 	<?php } ?>
 
 </article>
@@ -135,7 +170,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 		?>
 
 			<!-- Container wrapper -->
-			<details class="mb-1 p-½ border-grey-700" data-role="container-wrapper" data-place="<?= $sublist["lieu"] ?>">
+			<details class="mb-1 p-½ border-grey-700" data-role="container-wrapper" data-place="<?= $sublist["lieu"] ?>" title="<?= $sublist["lieu"] ?>">
 
 				<!-- Container title -->
 				<summary class="h4 gap-1 ai-center">
@@ -148,7 +183,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 				<!-- Container controls -->
 				<div class="flex-s ai-center gap-1½ py-½" data-role="container-controls">
 
-					<button class="ff-fas nude" title="ajouter un objet" data-role="item-add" type="button">
+					<button class="ff-fas nude" title="ajouter un objet" data-role="add-item" type="button">
 						&#xf055;
 					</button>
 					<div class="flex-s gap-½ fl-1">
@@ -309,7 +344,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 		<div class="flex-s mt-1 gap-1 jc-center">
 			<?php if ($character->id_group < 100) {
 				foreach ($character->group_members as $group_member) { ?>
-					<div data-place="pi_<?= $group_member->id ?>" data-role="item-transfer" data-name="<?= $group_member->name ?>">
+					<div data-place="pi_<?= $group_member->id ?>" data-role="item-transfer" data-name="<?= $group_member->name ?>" style="max-width: 8em;">
 						<img height="<?= count($character->group_members) < 5 ? 70 : 60 ?>" src="<?= $group_member->portrait ?>" class="mx-auto" title="<?= $group_member->description ?>" />
 						<div class="ta-center"><?= $group_member->name ?></div>
 					</div>
@@ -379,4 +414,4 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 </article>
 
-<script src="scripts/character-sheet.js" type="module" data-type="reloadable"></script>
+<script src="scripts/character-sheet.js?v=4.0" type="module" data-type="reloadable"></script>

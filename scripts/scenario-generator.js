@@ -47,6 +47,7 @@ function generateIdea(univers) {
 	let idee = sujet + " " + verbe + " " + complement
 	idee = idee.replace("de un", "d’un");
 	idee = idee.replace("de une", "d’une");
+	idee = idee.replace("de des", "des");
 	return idee
 }
 

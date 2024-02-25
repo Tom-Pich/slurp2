@@ -13,7 +13,8 @@ abstract class Define
 		'malus standards'	=> '-1/-2/-3/-5/&infin;',
 		'bonus BDS' 		=> '+2/+1d+1/+2d/+3d/+7d+2',
 		'modificateurs de longue distance' => "jusqu’à 100 m → 0 ; 300 m → -1 ; 1 km → -2 ; 3 km → -3 ; 10 km → -4 ; 30 km → -5 ; etc.",
-		'bonus de RD'		=> '+2/+4/+6/+10 ; ×1,5 à NT6 ×2 à NT7'
+		'bonus de RD'		=> '+2/+4/+6/+10 ; ×1,5 à NT6 ×2 à NT7+',
+		"bonus de Force standards" => "+20% / +40% / +60% / +100% / &infin;"
 	];
 
 	/**

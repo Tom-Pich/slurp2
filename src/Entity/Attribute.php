@@ -175,7 +175,7 @@ class Attribute
 		$proc_attr["Dégâts"] = self::getDamages($for);
 		$proc_attr["Réflexes"] = floor(($dex + $per) / 2 - 3);
 		$proc_attr["Sang-Froid"] = floor(($san + $vol) / 2);
-		$proc_attr["Vitesse"] = floor(($for + $dex + $san) / 1.5) / 4;
+		$proc_attr["Vitesse"] = ($for + $dex + $san)/6;
 		$proc_attr["PdV"] = floor(($for + $san) / 2);
 		$proc_attr["PdF"] = floor(($for + $san) / 2);
 		$proc_attr["PdM"] = $int;

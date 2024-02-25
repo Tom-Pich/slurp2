@@ -68,6 +68,7 @@
 		Faiseurs de bourses<br/>
 		Marchands de tissus<br/>
 		Marchands de vins<br/>
+		Maréchal-ferrant<br>
 		Meunier<br/>
 		Poissonniers<br/>
 		Prêteur sur gage<br/>
@@ -85,11 +86,11 @@
 		Blanchisseurs<br/>
 		Brasseur<br/>
 		Copiste<br/>
-		Cordelier<br/>
+		Cordier<br/>
 		Coutelier<br/>
 		Ébéniste<br/>
 		Fabricant de boucles<br/>
-		Fabricant de charrette<br/>
+		Fabricant de charrette (charron)<br/>
 		Pension<br/>
 		Potier<br/>
 		Serrurier<br/>
@@ -104,7 +105,7 @@
 		Enlumineur<br/>
 		Fabricant de bateaux<br/>
 		Fabricant de tuiles<br/>
-		Forgeron spécialisé (fondeur de laiton, chaudronnier, ferblantier, etc.)<br/>
+		Forgeron spécialisé (fondeur de laiton, chaudronnier, tallandier, ferblantier, etc.)<br/>
 		Fromager<br/>
 		Gantier<br/>
 		Joaillier / Orfèvre<br/>
@@ -138,7 +139,7 @@
 		Fossoyeur<br/>
 		Ingénieur<br/>
 		Maçon<br/>
-		Menuisier / charpentier<br/>
+		Menuisier / charpentier / Scieur de long<br/>
 		Ouvrier<br/>
 		Plâtrier<br/>
 		Tailleur de pierre

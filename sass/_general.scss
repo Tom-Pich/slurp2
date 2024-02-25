@@ -2,14 +2,6 @@
 	font-size: 14px;
 }
 
-// À mettre dans base ? ––––––––––––––––––––
-.color-text {color: var(--clr-text);}
-.border-grey-700 {border: 1px solid var(--grey-700) !important;}
-input[type=text] {min-width: 0;}
-// scroll-margin-top dans variable ?
-// nude ?
-// –––––––––––––––––––––––––––––––––––––––
-
 body {background: url(/assets/img/bg-paper.png) fixed repeat;}
 main {padding: var(--dynamic-space-1-2); display: flex; min-height: 72vh; flex-wrap: wrap; justify-content: center; gap: 1em;}
 
@@ -26,7 +18,6 @@ article h4 { margin: .75em 0 .25em; font-size: var(--fs-450);}
 article p { margin: .5em 0;}
 
 // Utility classes
-.nude {border: none; background: none; padding: 0; color: inherit;}
 .color1, .color1::placeholder {color: var(--clr-warning) !important;}
 input.color1 {border: 1px solid var(--clr-text);}
 .hidden {display: none;}
@@ -41,8 +32,8 @@ input.color1 {border: 1px solid var(--clr-text);}
 // Details & summary (no base) ––––––––––––––––––––––––––––––––––––––––––––––––––––––
 details[open] {padding-bottom: .5em;}
 summary{cursor: pointer; list-style-type: none; display: flex; gap: 0.5em; justify-content: space-between; align-items: center;}
-summary::after {content: "\2261"; color:"inherit"}
-details[open] > summary::after{content:"\00D7";  color:"inherit"}
+summary::after {content: "\2261"; color:inherit}
+details[open] > summary::after{content:"\00D7";}
 
 summary.h4 {font-weight: bold; font-size: var(--fs-400); font-family: var(--ff-accent);}
 details.liste summary::after {content: none;}

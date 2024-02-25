@@ -35,7 +35,7 @@ if (!isset($_SESSION["Statut"]) or !DB_ACTIVE) {
 	$_SESSION["token"] = Firewall::generateToken(16);
 	$_SESSION["time"] = time();
 } else {
-	$_SESSION["time"] >= (time() - 60 * 60) ? $_SESSION["time"] = time() : LogController::logout();
+	$_SESSION["time"] >= (time() - 3 * 60 * 60) ? $_SESSION["time"] = time() : LogController::logout();
 }
 
 // ––– $pages_data ––––––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -201,6 +201,18 @@ elseif (substr($path, 0, 7) === "/submit") {
 			Character::updateCharacterState($_POST);
 			break;
 
+		case "/submit/update-character-pdm":
+			Firewall::filter(1);
+			Firewall::check(!empty($_POST));
+			$character_id = (int) $_POST["id"];
+			$character = new Character($character_id);
+			if (!$character->checkClearance()) {
+				(new Error404Controller)->show();
+			}
+			//echo "coucou from update-character-pdm";
+			Character::updateCharacterPdM($_POST);
+			break;
+
 		case "/submit/groups":
 			Firewall::filter(3);
 			Firewall::check(!empty($_POST));
@@ -273,6 +285,28 @@ elseif (in_array($path, ["/personnage-fiche", "/personnage-gestion"])) {
 	];
 	$page = new PageController($page_data);
 	$page->show();
+
+
+// scenarii pages
+} elseif (substr($path, 0, 9) === "/scenario") {
+	Firewall::filter(3);
+	require_once "content/scenarii/_scenarii-data.php";
+	$scenario_url = substr($path, 9);
+	$scenario_name = ltrim($scenario_url, "/");
+	$scenarii_url_list = array_keys($scenarii_data);
+	if (in_array($scenario_name, $scenarii_url_list)) {
+		$page_data = [
+			"title" => $scenarii_data[$scenario_name]["title"],
+			"description" => $scenarii_data[$scenario_name]["excerpt"],
+			"body-class" => "scenario",
+			"file" => $scenario_name,
+		];
+		$page = new PageController($page_data);
+		$page->show("scenario");
+	} else {
+		$page = new Error404Controller;
+		$page->show();
+	}
 }
 
 // standard pages

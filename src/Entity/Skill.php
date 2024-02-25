@@ -249,7 +249,9 @@ class Skill implements RulesItem
 				$proc_skills[$index]["total_points"] = $skill["points"] + 0.25 * ($proc_skills[$index]["groups_points"] - $skill["points"]); // min($skill["points"], 8)
 				$virtual_niv = self::cost2niv($proc_skills[$index]["total_points"] * (!empty($skill["background"]) ? 2 : 1), $skill["difficulty"]);
 				$proc_skills[$index]["group_modif"] = $virtual_niv - $skill["niv"];
-				$proc_skills[$index]["score"] += $proc_skills[$index]["group_modif"];
+				if(is_numeric($proc_skills[$index]["score"])){
+					$proc_skills[$index]["score"] += $proc_skills[$index]["group_modif"];
+				}
 			}
 
 			// special skills retroaction on character modifiers

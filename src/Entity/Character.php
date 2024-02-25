@@ -154,12 +154,16 @@ class Character
 		$this->attributes["PdE"] += $this->modifiers["PdE"];
 
 		// updating Calculs in DB
+		$stored_calculs = json_decode($raw_data["Calculs"], true);
 		$calculs = ["PdVm" => $this->attributes["PdV"], "PdFm" => $this->attributes["PdF"], "PdMm" => $this->attributes["PdM"], "PdEm" => $this->attributes["PdE"]];
-		$calculs_data = [
-			"id" => $this->id,
-			"Calculs" => json_encode($calculs, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
-		];
-		$repo->updateCharacterPdX($calculs_data);
+		$PdXm_has_changed = $stored_calculs != $calculs;
+		if ($PdXm_has_changed) {
+			$calculs_data = [
+				"id" => $this->id,
+				"Calculs" => json_encode($calculs, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+			];
+			$repo->updateCharacterPdX($calculs_data);
+		}
 
 		// ––– state : For_global, For_deg, Dex, Int, Magie, PdV, PdF, (PdM), PdE, Stress, Membres, Autres
 
@@ -181,7 +185,7 @@ class Character
 			}
 			$this->state["Fatigue"] = FatigueController::getEffects($this->state["PdF"], $this->attributes["PdF"]);
 			$this->state["Santé-mentale"] = MentalHealthController::getEffects($this->state["PdE"], $this->attributes["PdE"]);
-			$this->state["Encombrement"] = EncumbranceController::getEffects($this->carried_weight, $this->attributes["For"]);
+			//$this->state["Encombrement"] = EncumbranceController::getEffects($this->carried_weight, $this->attributes["For"]);
 			if (!empty($this->state["Membres"])) {
 				$this->state["Membres"] = TextParser::parsePseudoArray2Array($this->state["Membres"]);
 				$explicit_damages = [];
@@ -194,7 +198,7 @@ class Character
 				$this->state["Autres"] = explode(";", TextParser::pseudoMDParser($this->state["Autres"]));
 			}
 
-			foreach ([$this->state["Blessures"], $this->state["Fatigue"], $this->state["Stress"], $this->state["Santé-mentale"], $this->state["Encombrement"]] as $state) {
+			foreach ([$this->state["Blessures"], $this->state["Fatigue"], $this->state["Stress"], $this->state["Santé-mentale"], /* $this->state["Encombrement"] */] as $state) {
 				$this->modifiers["For-mult"] *= $state["for-multiplier"] ?? 1;
 				$this->modifiers["Dex"] += $state["dex-modifier"] ?? 0;
 				$this->modifiers["Int"] += $state["int-modifier"] ?? 0;
@@ -230,6 +234,14 @@ class Character
 		$this->attributes["Sang-Froid"] += $this->modifiers["Sang-Froid"];
 		$this->attributes["Vitesse"] += $this->modifiers["Vitesse"]; // first modifier (avdesav, skills), than multiplier
 		$this->attributes["Vitesse"] *= $this->modifiers["Vitesse-mult"];
+
+		// encumbrance level with actual Strength
+		if ($with_state_modifiers) {
+			$this->state["Encombrement"] = EncumbranceController::getEffects($this->carried_weight, $this->attributes["For"]);
+			$this->attributes["Dex"] += $this->state["Encombrement"]["dex-modifier"];
+			$this->attributes["Réflexes"] += (int) ($this->state["Encombrement"]["dex-modifier"] / 2);
+			$this->attributes["Vitesse"] *= $this->state["Encombrement"]["vit-multiplier"];
+		}
 
 		// ––– skills
 		$raw_skills = json_decode($raw_data["Compétences"], true);
@@ -304,7 +316,7 @@ class Character
 			"Description" => "",
 			"Background" => "",
 			"Notes" => "",
-			"Portrait" => NULL
+			"Portrait" => "_default.png"
 		];
 
 		// Kits
@@ -345,6 +357,12 @@ class Character
 		$character["MPP"] = json_encode($character["MPP"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 		$character["Avdesav"] = json_encode($character["Avdesav"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 		$character["Compétences"] = json_encode($character["Compétences"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+
+		$character["Calculs"] = json_encode($character["Calculs"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+		$character["État"] = json_encode($character["État"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+		$character["Sorts"] = json_encode($character["Sorts"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+		$character["Pouvoirs"] = json_encode($character["Pouvoirs"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+		$character["Psi"] = json_encode($character["Psi"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 
 		$character_repo = new CharacterRepository;
 		$character_repo->createCharacter($character);
@@ -647,10 +665,15 @@ class Character
 
 		$character["Statut"] = !in_array($post["Statut"], ["Création", "Actif", "Archivé", "Mort"]) ? "Création" : $post["Statut"];
 
+		// fetching PdM value (this value is now managed from character sheet)
+		$repo = new CharacterRepository;
+		$state = $repo->getCharacterState($character["id"]);
+		$pdm = $state["PdM"] ?? "";
+
 		$character["État"] = [
 			"PdV" => $post["État"]["PdV"] === "" ? "" : min((int) $post["Calculs"]["PdVm"], (int) $post["État"]["PdV"]),
 			"PdF" => $post["État"]["PdF"] === "" ? "" : min((int) $post["Calculs"]["PdFm"], (int) $post["État"]["PdF"]),
-			"PdM" => $post["État"]["PdM"] === "" ? "" : min((int) $post["Calculs"]["PdMm"], (int) $post["État"]["PdM"]),
+			"PdM" => $pdm,
 			"PdE" => $post["État"]["PdE"] === "" ? "" : min((int) $post["Calculs"]["PdEm"], (int) $post["État"]["PdE"]),
 
 			"Stress" => min(3, max(0, (int) $post["État"]["Stress"])),
@@ -671,8 +694,7 @@ class Character
 				if ($value === "") {
 					unset($character["État"][$key]);
 				}
-			}
-			elseif (empty($value)) {
+			} elseif (empty($value)) {
 				unset($character["État"][$key]);
 			}
 		}
@@ -682,5 +704,18 @@ class Character
 		// Update database
 		$repo = new CharacterRepository;
 		$repo->updateCharactermanager($character);
+	}
+
+	public static function updateCharacterPdM(array $post): void {
+		$character_id = (int) $post["id"];
+		$max = (int) $post["max"];
+		$pdm = $post["pdm"] === "" ? $max : (int) $post["pdm"];
+		$pdm = max(0, $pdm);
+		$pdm = min($max, $pdm);
+		echo $pdm;
+
+		// Update database
+		$repo = new CharacterRepository;
+		$repo->updateCharacterPdm($character_id, $pdm);
 	}
 }

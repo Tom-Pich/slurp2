@@ -43,7 +43,7 @@ class AvDesav implements RulesItem
 	}
 
 	/**
-	 * displayCost
+	 * displayCost – display cost in rules
 	 *
 	 * @param  float $mult optionnal multiplier applied to character point
 	 * @return string cost of av/desav in readable format
@@ -57,7 +57,7 @@ class AvDesav implements RulesItem
 		} elseif (count($this->cost) == 2) {
 			$displayed_cost = (round($this->cost[0] * $mult * 2)) / 2 . "/" . (round($this->cost[1] * $mult * 2)) / 2;
 		} else {
-			$displayed_cost = (round($this->cost[0] * $mult * 2)) / 2 . " à " . (round($this->cost[0] * $mult * 2)) / 2;
+			$displayed_cost = (round($this->cost[0] * $mult * 2)) / 2 . " à " . (round($this->cost[1] * $mult * 2)) / 2;
 		}
 
 		if ($this->hasNiv) {

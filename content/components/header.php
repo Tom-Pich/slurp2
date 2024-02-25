@@ -39,14 +39,18 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 		<!-- Titres -->
 		<div class="px-1">
 			<h2>SLURP</h2>
-			<h1><?= $page["title"] ?></h1>
+			<h1><?= $page_type === "scenario" ? "Scénario" : $page["title"] ?></h1>
 		</div>
 
 		<!-- login et bouton connexion/déconnexion -->
 		<div id="login-element" <?= DB_ACTIVE ? "" : "hidden" ?>>
 
-			<div class="flex-s gap-½ ai-center jc-center fs-500">
-				<b><a href="/mon-compte"><?= $_SESSION['login']; ?></a></b>
+			<div class="flex-s gap-½ ai-center jc-center fs-500"> <!-- href="/mon-compte" -->
+				<?php if($_SESSION["Statut"]){ ?>
+					<b><a href="/mon-compte" title="Mon compte"><?= $_SESSION['login']; ?></a></b>
+				<?php } else { ?>
+					<b>Se connecter</b>
+				<?php } ?>
 				<button id="connection-btn" class="nude ff-fas" data-state="<?= $_SESSION["Statut"] ?>" title="<?= $_SESSION["Statut"] ? "Se déconnecter" : "Se connecter" ?>">
 					<?= $_SESSION["Statut"] ? "&#xf08b;" : "&#xf023;" ?>
 				</button>
@@ -106,12 +110,14 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 				</li>
 				<li>
 					<h4>Aides de jeu</h4>
-					<ul class="sub-menu">
+					<ul class="sub-menu" style="--height: 13rem;">
 						<li><a href="/ecrire-scenario"><?= $pages_data['ecrire-scenario']["title"] ?></a></li>
+						<!-- <li><a href="/ecrire-scenario-v2"><?= $pages_data['ecrire-scenario-v2']["title"] ?></a></li> -->
 						<li><a href="/aide-de-jeu-medfan"><?= $pages_data['aide-de-jeu-medfan']["title"] ?></a></li>
 						<li><a href="/bibliotheque-liens"><?= $pages_data['bibliotheque-liens']["title"] ?></a></li>
 						<?php if ($_SESSION['Statut'] >= 3) { ?>
 							<li><a href="/paorn"><?= $pages_data['paorn']["title"] ?></a></li>
+							<li><a href="/scenarii"><?= $pages_data['scenarii']["title"] ?></a></li>
 							<li><a href="/test">Test</a></li>
 						<?php } ?>
 					</ul>

@@ -24,6 +24,6 @@
 		&emsp;• <a href="https://www.fantasynamegenerators.com/demon-names.php" target="_blank" >Démons</a><br/>
 	</p>
 	<p><a href="https://rollforfantasy.com/" target="_blank">Roll for Fantasy</a></p>
-	<p><a href="https://thestoryshack.com/tools/" target="_blank">The Story Shack</a></p>
+	<p><a href="https://thestoryshack.com/tools/dnd-name-generators/" target="_blank">The Story Shack – DnD Name Generator</a></p>
 
 </article>

@@ -16,8 +16,8 @@ abstract class Firewall
 	static function filter(int $status)
 	{
 		$session_status = $_SESSION["Statut"] ?? 0;
-		$user_ip = $_SESSION["user_ip"] ?? "";
-		if ($session_status < $status || $user_ip !== $_SERVER["REMOTE_ADDR"] || !isset($_SESSION["token"])) {
+		//$user_ip = $_SESSION["user_ip"] ?? "";
+		if ($session_status < $status ||/*  $user_ip !== $_SERVER["REMOTE_ADDR"] || */ !isset($_SESSION["token"])) {
 			self::redirect_to_404();
 		}
 	}

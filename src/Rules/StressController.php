@@ -6,6 +6,7 @@ class StressController {
 	
 	public const levels = [
 		[
+			"level" => 0,
 			"name" => "Pas de stress",
 			"description" => "aucun effet",
 			"for-multiplier" => 1,
@@ -16,6 +17,7 @@ class StressController {
 			"sf-modifier" => 0,
 		],
 		[
+			"level" => 1,
 			"name" => "Moyen",
 			"description" => "+1 en <i>Réflexes</i>, -1 en <i>Int</i>, <i>Per</i> et <i>Sang-Froid</i>.",
 			"for-multiplier" => 1,
@@ -26,6 +28,7 @@ class StressController {
 			"sf-modifier" => -1,
 		],
 		[
+			"level" => 2,
 			"name" => "Fort",
 			"description" => "+1 en <i>Réflexes</i>, <i>For</i>×1.1, -1 en <i>Dex</i>, -2 en <i>Int</i>, <i>Per</i> et <i>Sang-Froid</i>. Perte de 1 PdE.",
 			"for-multiplier" => 1.1,
@@ -36,6 +39,7 @@ class StressController {
 			"sf-modifier" => -2,
 		],
 		[
+			"level" => 3,
 			"name" => "Extrême",
 			"description" => "Panique. <i>For</i>×1.1, -2 en <i>Dex</i>, -5 en <i>Int</i>, <i>Per</i> et <i>Sang-Froid</i>. Perte de 2 PdE.",
 			"for-multiplier" => 1.2,

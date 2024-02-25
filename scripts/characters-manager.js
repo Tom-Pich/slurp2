@@ -63,16 +63,18 @@ characterStateForms.forEach(form => {
 			cell.value = calculate(cell.value);
 		})
 		let form_id = form.getAttribute("id") // don’t use form.id because of one input which name is id
+		const form_data = new FormData(form);
+		// console.log(form_data)
 		fetch("/submit/update-character-state", {
 			method: 'post',
-			body: new FormData(form)
+			body: form_data
 		})
 			.then(() => {
 				fetch("/gestionnaire-mj")
 					.then(response => response.text())
 					.then(response => {
 						updateDOM(`#${form_id}`, response)
-						reloadScripts();
+						const characterStateForms = qsa("[data-role=character-state-form]")
 					})
 			})
 	})
@@ -91,7 +93,8 @@ itemsForm.addEventListener("submit", (e) => {
 				.then(response => response.text())
 				.then(response => {
 					updateDOM("#items-form", response)
-					reloadScripts();
+					//console.log("reloading scripts")
+					//reloadScripts();
 				})
 		})
 })

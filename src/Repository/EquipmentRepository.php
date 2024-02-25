@@ -21,6 +21,11 @@ class EquipmentRepository extends AbstractRepository
 	{
 		$query = $this->db->prepare("SELECT * FROM objets WHERE lieu = ? ORDER BY Ordre, id");
 		$query->execute([$place_code]);
+		/* $items = [];
+		while($item = $query->fetch(\PDO::FETCH_ASSOC)){
+			$object = new Equipment($item);
+			$items[] = $object;
+		} */
 		$items = $query->fetchAll(\PDO::FETCH_ASSOC);
 		$query->closeCursor();
 
@@ -91,7 +96,7 @@ class EquipmentRepository extends AbstractRepository
 					$owner_name = ((new CharacterRepository)->getCharacterRef($owner_id))["Nom"];
 					$container_items = $this->getEquipmentFromPlace("ct_" . $item["id"]);
 					$items = array_merge($items, $container_items);
-					$group_list[$item["Nom"]." (".$owner_name.")"] = $container_items;
+					$group_list[$item["Nom"] . " (" . $owner_name . ")"] = $container_items;
 				}
 			}
 		}
@@ -129,6 +134,23 @@ class EquipmentRepository extends AbstractRepository
 			}
 		}
 
+		// fetch content of orphan containers (recursive)
+		$search_items_in_orphan_container = true;
+		$inspected_orphan_containers_id = [];
+		while ($search_items_in_orphan_container) {
+			$search_items_in_orphan_container = false;
+			foreach ($orphan_items as $item) {
+				if ($item->isContainer && !in_array($item->id, $inspected_orphan_containers_id)) {
+					$inspected_orphan_containers_id[] = $item->id;
+					$search_items_in_orphan_container = true;
+					$item_content = $this->getEquipmentFromPlace("ct_" . $item->id);
+					foreach ($item_content as $item_in_orphan_container){
+						$orphan_items[] = new Equipment($item_in_orphan_container);
+					}
+				}
+			}
+		}
+
 		return $orphan_items;
 	}
 
@@ -140,11 +162,12 @@ class EquipmentRepository extends AbstractRepository
 	 */
 	public function setEquipment($data): void
 	{
-		if (isset($data["Secret"]) || is_null($data["Secret"])) {
+		if (isset($data["Secret"])) {
 			$query = $this->db->prepare("UPDATE objets set Nom = :Nom, Contenant = :Contenant , Poids = :Poids, Notes = :Notes, Secret = :Secret, Lieu = :Lieu, Groupe = :Groupe, Ordre = :Ordre WHERE id = :id");
 		} else {
 			$query = $this->db->prepare("UPDATE objets set Nom = :Nom, Contenant = :Contenant , Poids = :Poids, Notes = :Notes, Lieu = :Lieu, Groupe = :Groupe, Ordre = :Ordre WHERE id = :id");
 		}
+
 		$query->execute($data);
 		$query->closeCursor();
 	}

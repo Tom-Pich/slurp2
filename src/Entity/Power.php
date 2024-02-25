@@ -57,6 +57,7 @@ class Power implements RulesItem
 		}
 	}
 
+	// process power data from character
 	public static function processPowers(array $raw_powers, array $attributes, array $modifiers): array
 	{
 		$points = 0;

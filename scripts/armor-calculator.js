@@ -74,6 +74,6 @@ function calculate_armor_data(){
 
 	// add total weight and cost
 	const total_row = qs("#armor-total");
-	total_row.children[1].innerText = total_weight;
+	total_row.children[1].innerText = Math.round(total_weight*10)/10 ;
 	total_row.children[2].innerText = total_price;
 }

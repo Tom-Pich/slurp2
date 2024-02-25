@@ -9,6 +9,7 @@ class LogController
 {
 	public static function logout()
 	{
+		session_regenerate_id(true);
 		session_destroy();
 		header('Location: /');
 	}
@@ -25,11 +26,12 @@ class LogController
 		$passwords_match = $user->check_password($password);
 
 		if ($user_exists && $passwords_match && !$too_many_attempts) {
+			session_regenerate_id(true);
 			$_SESSION["id"] = $user->id;
 			$_SESSION["login"] = $user->login;
 			$_SESSION["Statut"] = $user->status;
 			$_SESSION["attempt"] = 0;
-			$_SESSION["user_ip"] = $_SERVER["REMOTE_ADDR"];
+			//$_SESSION["user_ip"] = $_SERVER["REMOTE_ADDR"];
 			$_SESSION["token"] = Firewall::generateToken(16);
 			$_SESSION["time"] = time();
 		} else {

@@ -81,10 +81,16 @@ $pages_data = [
 	],
 
 	// Aides de jeu
-	"ecrire-scenario" => [
+/* 	"ecrire-scenario" => [
 		"title" => "Écrire un scénario", 
 		"description" => "Un article précédemment publié dans PTGPTB faisant la synthèse de nombreux articles sur la création de scénario", 
 		"file" => "s_scenario",
+	], */
+	"ecrire-scenario" => [
+		"title" => "Écrire un scénario", 
+		"description" => "Une évolution de l’article précédemment publié dans PTGPTB faisant la synthèse de nombreux articles sur la création de scénario", 
+		"file" => "s_scenario-2",
+		"body-class" => "writing-scenario",
 	],
 	"aide-de-jeu-medfan" => [
 		"title" => "Le Moyen Âge", 
@@ -101,6 +107,13 @@ $pages_data = [
 		"description" => "Diverses notes à propos de Paorn", 
 		"file" => "s_paorn",
 		"body-class" => "paorn",
+		"access-restriction" => 3,
+	],
+	"scenarii" => [
+		"title" => "Scenarii", 
+		"description" => "Les scénariis passés et en cours", 
+		"file" => "scenarii",
+		"body-class" => "scenarii",
 		"access-restriction" => 3,
 	],
 	"test" => [

@@ -1209,6 +1209,6 @@ $creatures_repo = new CreatureRepository;
 
 </article>
 
-<script type="module" src="/scripts/magical-items.js"></script>
-<script type="module" src="/scripts/armor-calculator.js"></script>
-<script type="module" src="/scripts/creatures.js"></script>
+<script type="module" src="/scripts/magical-items.js?v=<?= VERSION ?>"></script>
+<script type="module" src="/scripts/armor-calculator.js?v=<?= VERSION ?>"></script>
+<script type="module" src="/scripts/creatures.js?v=<?= VERSION ?>"></script>

@@ -13,7 +13,7 @@ $group_repo = new GroupRepository;
 $character_repo = new CharacterRepository;
 
 $liste_objets_orphelins = $equipment_repo->getOrphanEquiment();
-for ($k = 0; $k < 1; $k++) {
+for ($k = 0; $k < 3; $k++) {
 	$liste_objets_orphelins[] = new Equipment();
 }
 
@@ -27,9 +27,9 @@ foreach ($characters_id as $character) {
 }
 ?>
 
-<article>
+<article><!-- Objets orphelins -->
 	<h2>Objets orphelins</h2>
-	<form id="items-form" class="grid gap-¼">
+	<form id="items-form" class="grid gap-¼"><!-- method="post" action="/submit/equipment-list" -->
 		<?php
 		$n = 0;
 		foreach ($liste_objets_orphelins as $objet) { ?>
@@ -159,7 +159,7 @@ foreach ($characters_id as $character) {
 
 							<input type="text" name="État[PdF]" value="<?= $pdf ?>" class="fl-1 ta-center" placeholder="PdF <?= $pdfm ?>" data-role="pdx-cell" title="PdFm <?= $pdfm ?>" style="<?= $style_pdf ?>">
 
-							<input type="text" name="État[PdM]" value="<?= $pdm ?>" class="fl-1 ta-center" placeholder="PdM <?= $pdmm ?>" data-role="pdx-cell" title="PdMm <?= $pdmm ?>" style="<?= $style_pdm ?>">
+							<input type="text" disabled name="État[PdM]" value="<?= $pdm ?>" class="fl-1 ta-center" placeholder="PdM <?= $pdmm ?>" data-role="pdx-cell" title="PdMm <?= $pdmm ?>" style="<?= $style_pdm ?>">
 
 							<input type="text" name="État[PdE]" value="<?= $pde ?>" class="fl-1 ta-center" placeholder="PdE <?= $pdem ?>" data-role="pdx-cell" title="PdEm <?= $pdem ?>" style="<?= $style_pde ?>">
 						</div>
@@ -281,4 +281,4 @@ foreach ($characters_id as $character) {
 	</article>
 <?php } ?>
 
-<script type="module" src="/scripts/characters-manager.js" data-type="reloadable"></script>
+<script type="module" src="/scripts/characters-manager.js"></script><!-- data-type="reloadable" -->

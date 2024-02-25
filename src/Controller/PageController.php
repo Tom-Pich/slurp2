@@ -16,11 +16,15 @@ class PageController
 		$this->page["body-class"] = $page_data["body-class"] ?? "standard-page";
 	}
 
-	public function show()
+	public function show($page_type="page")
 	{
 		$page = $this->page;
 		include "content/components/header.php";
-		include "content/pages/" . $this->page["file"] . ".php";
+		if ($page_type === "scenario"){
+			include "content/components/scenario-template.php";			
+		} else {
+			include "content/pages/" . $this->page["file"] . ".php";
+		}
 		include "content/components/footer.php";
 	}
 }

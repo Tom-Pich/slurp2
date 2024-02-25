@@ -4,7 +4,7 @@ define("IS_ONLINE", $_SERVER['HTTP_HOST'] === 'jdr.pichegru.net');
 define("DB_ACTIVE", true);
 define("TABLE_PREFIX", "");
 define("GENERIC_PASSWORD", $_ENV["GENERIC_PASSWORD"]);
-define("VERSION", "2.0.4");
+define("VERSION", "2.2.1");
 
 if (IS_ONLINE){
 	define("DB_HOST", $_ENV["DB_HOST"]);

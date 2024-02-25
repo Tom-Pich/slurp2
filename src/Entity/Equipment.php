@@ -119,7 +119,7 @@ class Equipment
 				$equipment[$item->place]["ordre"] = $equipment[$item->place]["ordre"] ?? $item->order;
 			}
 
-			// processing state counters
+			// processing state counters to be displayed as meter in state section of character
 			if (!empty($state)) {
 				$counter = TextParser::parseObjectCounter($item->name);
 				if (!empty($counter)) {
@@ -143,7 +143,7 @@ class Equipment
 		$repo = new EquipmentRepository;
 
 		$post["objet"] = $post["objet"] ?? [];
-		
+
 		foreach ($post["objet"] as $id => $item) {
 			$order++;
 			if ($id && empty($item["Nom"])) {
@@ -154,7 +154,7 @@ class Equipment
 				$formatted_item["Nom"] = trim(strip_tags($item["Nom"]), "* ");
 
 				$formatted_item["Contenant"] = (bool) $item["Contenant"];
-				if (isset($item["Contenant-off"]) && empty($repo->getEquipmentFromPlace("ct_" . $id))) {
+				if ($item["Contenant-off"] === "on" && empty($repo->getEquipmentFromPlace("ct_" . $id))) {
 					$formatted_item["Contenant"] = false;
 				}
 				if (substr($item["Nom"], 0, 1) === "*") {
@@ -164,10 +164,15 @@ class Equipment
 				$formatted_item["Notes"] = strip_tags($item["Notes"]);
 				isset($item["Secret"]) ? $formatted_item["Secret"] = strip_tags($item["Secret"]) : "";
 				$formatted_item["Lieu"] = strip_tags($item["Lieu"]);
-				$formatted_item["Groupe"] = isset($post["sub-list"][$id]["Groupe"]) ? (int) $post["sub-list"][$id]["Groupe"] : null;  //$item["Groupe"] ?? null;
+				$formatted_item["Groupe"] = !empty($post["sub-list"][$id]["Groupe"]) ? (int) $post["sub-list"][$id]["Groupe"] : null;  //$item["Groupe"] ?? null;
 				$formatted_item["Ordre"] = $order;
-				
-				$repo->setEquipment($formatted_item);
+
+				// prevent putting container in itself
+				$container_is_in_itself = $formatted_item["id"] == substr($formatted_item["Lieu"], 3);
+
+				if (!$container_is_in_itself) {
+					$repo->setEquipment($formatted_item);
+				}
 			}
 		}
 
@@ -182,7 +187,9 @@ class Equipment
 			$formatted_item["Lieu"] = strip_tags($item["Lieu"]);
 			$formatted_item["Groupe"] = null;
 			$formatted_item["Ordre"] = 99;
-			$repo->createEquipment($formatted_item);
+			if (!empty($formatted_item["Nom"])) {
+				$repo->createEquipment($formatted_item);
+			}
 		}
 
 		$post["objet-gestionnaire"] = $post["objet-gestionnaire"] ?? [];
@@ -192,8 +199,8 @@ class Equipment
 			$formatted_item["Nom"] = trim(strip_tags($item["Nom"]), "* ");
 			$formatted_item["Contenant"] = isset($item["Contenant"]) ? true : false;
 			$formatted_item["Poids"] = $item["Poids"] !== "" ? (float) $item["Poids"] : null;
-			$formatted_item["Notes"] = $item["Notes"] === "" ? null : strip_tags($item["Notes"]);
-			$formatted_item["Secret"] =  $item["Secret"] === "" ? null : strip_tags($item["Secret"]);
+			$formatted_item["Notes"] = strip_tags($item["Notes"]);
+			$formatted_item["Secret"] = strip_tags($item["Secret"]);
 			$formatted_item["Lieu"] = strip_tags($item["Lieu"]);
 			$formatted_item["Groupe"] = null;
 			$formatted_item["Ordre"] = 99;
@@ -203,6 +210,7 @@ class Equipment
 				$repo->deleteEquipment($formatted_item["id"]);
 			} elseif (!$formatted_item["id"] && $formatted_item["Nom"]) {
 				unset($formatted_item["id"]);
+				var_dump($formatted_item);
 				$repo->createEquipment($formatted_item);
 			}
 		}
@@ -215,7 +223,7 @@ class Equipment
 	{
 		preg_match('/^[TBP]\.[te]([\+-][0-9]+){0,}$/', $code, $matches);
 		$code = $matches[0] ?? null;
-		if(empty($code)){
+		if (empty($code)) {
 			return "invalid code";
 		}
 
