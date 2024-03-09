@@ -27,7 +27,7 @@ class PsiPower implements RulesItem
 		return $this->data->displayInRules(show_edit_link: $show_edit_link, edit_link: "gestion-listes?req=psi&id=" . $this->id);
 	}
 
-	public static function processPowers(array $raw_psi, array $disciplines, array $attributes, array $special_traits)
+	public static function processPowers(array $raw_psi, array $disciplines, array $attributes)
 	{
 		$raw_powers = array_filter($raw_psi, fn ($x) => $x["catégorie"] === "pouvoir");
 		$repo = new PsiPowerRepository;

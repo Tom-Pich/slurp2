@@ -29,6 +29,7 @@ body.personnage-fiche {
 		transition: all .1s;
 		summary {grid-template-columns: 1ch 1fr 5ch 1ch;}
 		input[type=text] {border: none; border-bottom: 0.5px solid var(--grey-900)}
+		input[type=text]:focus {outline: none; border: .5px solid hsl(207, 44%, 49%, .5);}
 		&.drag-over {padding-bottom: 2em;}
 	}
 
@@ -88,10 +89,11 @@ body.table-jeu {
 		width: min(380px, 100%); background: white; padding: 1em; border-radius: .75em;
 		@include media { display: block;}
 	}
+	#chat-dialog-wrapper{overflow-x: hidden; height: 48vh; padding-right: 1em;}
 	#chat-input-wrapper {display: grid; width: 100%; background: #fff; border-top: 1px solid var(--grey-700); padding-top: 0.5em; margin-top: 1em;}
 	#msg-input {height: 6em; min-height: 0; border: 1px solid var(--grey-900); margin-top: .5em;}
 	#connected-users{border-bottom: 1px solid #333; margin-bottom: 5px; height: 40px}
-	#chat-dialog-wrapper{overflow-x: hidden; height: 48vh; padding-right: 1em;}
+	
 }
 
 body.not-found {

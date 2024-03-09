@@ -9,6 +9,16 @@ $character_uses_pdm = $character->special_traits["magerie"] || $character->speci
 $attributes_names = ["For", "Dex", "Int", "San", "Per", "Vol"];
 $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
+// modifies text color if score has changed due to character state
+function color_modifier($original_score, $actual_score){
+	if ($actual_score < $original_score){
+		return "style='color: var(--clr-warning)'";
+	} elseif ($actual_score > $original_score){
+		return "style='color: var(--clr-secondary-dark)'";
+	} else {
+		return "";
+	}
+}
 ?>
 
 
@@ -18,8 +28,8 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 	<div class="flex-s ai-center mt-½ gap-½">
 		<h3 class="fl-1" id="character-name" data-id="<?= $character->id ?>"><?= $character->name ?></h3>
 		<a href="personnage-gestion?perso=<?= $character->id ?>" title="Éditer – Alt+Shift+E" accesskey="e" class="btn ff-fas ">&#xf013;</a>
-		<button type="submit" form="form-equipment" class="ff-fas" title="Sauvegarder (enter)">&#xf0c7;</button>
-		<button type="button" data-role="refresh-character" class="ff-fas" title="Actualiser">&#xf2f1;</button>
+		<!-- <button type="submit" form="form-equipment" class="ff-fas" title="Sauvegarder (enter)">&#xf0c7;</button> -->
+		<!-- <button type="button" data-role="refresh-character" class="ff-fas" title="Actualiser">&#xf2f1;</button> -->
 	</div>
 	<div class="ta-center mt-½ fs-300">
 		Pts&nbsp;: <?= $character->points ?> | éco&nbsp;: <?= $character->points - $character->points_count["total"] ?>
@@ -32,16 +42,21 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 	<div class="flex-s gap-¾ mt-1 jc-center">
 		<?php foreach ($attributes_names as $attr_name) { ?>
 			<div>
-				<b><?= $attr_name ?></b> <?= $character->attributes[$attr_name] ?>
+				<b><?= $attr_name ?></b>
+				<span <?= color_modifier($character->raw_attributes[$attr_name], $character->attributes[$attr_name]) ?>><?= $character->attributes[$attr_name] ?></span>
 			</div>
 		<?php } ?>
 	</div>
 
 	<div class="ta-center mt-½">
-		<b>Dégâts</b> <?= $character->attributes["Dégâts"]['estoc'] . '/' . $character->attributes["Dégâts"]['taille']; ?>&emsp;
-		<b>Réf </b> <?= $character->attributes["Réflexes"] ?>&emsp;
-		<b>S-F </b> <?= $character->attributes["Sang-Froid"] ?>&emsp;
-		<b>Vit </b> <?= round($character->attributes["Vitesse"], 1) ?>
+		<b>Dégâts</b>
+		<span <?= color_modifier($character->raw_attributes["For"], $character->attributes["For"] + $character->modifiers["Dégâts"]) ?>><?= $character->attributes["Dégâts"]['estoc'] . '/' . $character->attributes["Dégâts"]['taille']; ?></span>&emsp;
+		<b>Réf </b>
+		<span <?= color_modifier($character->raw_attributes["Réflexes"], $character->attributes["Réflexes"]) ?>><?= $character->attributes["Réflexes"] ?></span>&emsp;
+		<b>S-F </b>
+		<span <?= color_modifier($character->raw_attributes["Sang-Froid"], $character->attributes["Sang-Froid"]) ?>><?= $character->attributes["Sang-Froid"] ?></span>&emsp;
+		<b>Vit </b>
+		<span <?= color_modifier($character->raw_attributes["Vitesse"], $character->attributes["Vitesse"]) ?>><?= round($character->attributes["Vitesse"], 1) ?></span>
 	</div>
 
 	<!-- PdV, PdF, PdM, PdE -->
@@ -152,7 +167,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 	<?php foreach ($character->skills as $comp) {	?>
 		<div class="flex-s alternate-o">
 			<div class="fl-1"><?= $comp["label"] ?></div>
-			<div><?= $comp["score"] ?></div>
+			<div <?= color_modifier($comp["raw-base"], $comp["base"]) ?>><?= $comp["score"] ?></div>
 		</div>
 	<?php } ?>
 </article>
@@ -244,7 +259,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 			<details class="liste">
 				<summary>
 					<div><?= $college["name"] ?></div>
-					<div><?= $college["score"] ?></div>
+					<div <?= color_modifier(0, $character->modifiers["Int"] + $character->modifiers["Magie"]) ?>><?= $college["score"] ?></div>
 				</summary>
 
 				<?php foreach ($character->spells as $sort) {
@@ -283,7 +298,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 				<details class="liste">
 					<summary>
 						<div><?= $pouvoir["label"] ?></div>
-						<div><?= $pouvoir["score"] ?></div>
+						<div <?= color_modifier(0, $character->modifiers["Int"]) ?>><?= $pouvoir["score"] ?></div>
 					</summary>
 					<div class="fs-300">
 						<?php if ($type === "sort") {
@@ -318,7 +333,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 						<details class="sous-liste">
 							<summary>
 								<div><?= $pouvoir["data"]->name ?> (<?= $pouvoir["data"]->data->readableNiv ?>) [<?= $pouvoir["readable-cost"] ?>]</div>
-								<div><?= $pouvoir["readable-score"] ?></div>
+								<div <?= color_modifier(0, $character->modifiers["Int"]) ?>><?= $pouvoir["readable-score"] ?></div>
 							</summary>
 							<div class="fs-300">
 								<?php $pouvoir["data"]->data->displayFullDescription(); ?>
@@ -341,7 +356,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 	<div class="mt-½">
 		<img src="<?= $character->portrait ?>" width="180" class="mx-auto" />
 
-		<div class="flex-s mt-1 gap-1 jc-center">
+		<div class="flex-s mt-1 gap-1 jc-center" data-role="members-wrapper">
 			<?php if ($character->id_group < 100) {
 				foreach ($character->group_members as $group_member) { ?>
 					<div data-place="pi_<?= $group_member->id ?>" data-role="item-transfer" data-name="<?= $group_member->name ?>" style="max-width: 8em;">
@@ -414,4 +429,4 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 </article>
 
-<script src="scripts/character-sheet.js?v=4.0" type="module" data-type="reloadable"></script>
+<script src="scripts/character-sheet.js?v=<?= VERSION ?>" type="module"></script><!-- data-type="reloadable" -->

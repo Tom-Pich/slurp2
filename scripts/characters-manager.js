@@ -1,4 +1,10 @@
-import { qs, qsa, calculate, reloadScripts, updateDOM } from "./utilities.js";
+import { qs, qsa, calculate, updateDOM } from "./utilities.js";
+
+// Web Socket character ping sender
+const wsServerURL = window.location.hostname === "site-jdr" ? "ws://127.0.0.1:1337" : "wss://web-chat.pichegru.net:443";
+const wsTchatClient = new WebSocket(wsServerURL)
+wsTchatClient.onopen = () => { } // nothing to do (yet)
+wsTchatClient.onmessage = (rawMessage) => { }  // nothing to do (yet)
 
 // calulate pdx cells content
 const pdxCells = qsa("[data-role=pdx-cell]");
@@ -75,6 +81,10 @@ characterStateForms.forEach(form => {
 					.then(response => {
 						updateDOM(`#${form_id}`, response)
 						const characterStateForms = qsa("[data-role=character-state-form]")
+
+						// ping character
+						const initMsg = { type: "character-ping", id: parseInt(form.id.value), key: "a78D_Kj!45" }
+						wsTchatClient.send(JSON.stringify(initMsg))
 					})
 			})
 	})

@@ -9,7 +9,7 @@ $repo_powers = new PowerRepository("ins");
 
 ?>
 
-<article>
+<article><!-- Personnage -->
 	<h2>Personnage</h2>
 
 	<details>
@@ -112,7 +112,7 @@ $repo_powers = new PowerRepository("ins");
 
 </article>
 
-<article>
+<article><!-- Archanges & Princes-Démons -->
 	<h2>Archanges &amp; Princes-démons</h2>
 
 	<details>
@@ -341,7 +341,11 @@ $repo_powers = new PowerRepository("ins");
 
 		<h4>Fonctionnement des pouvoirs de type <i>Sort</i></h4>
 		<p>Ces pouvoirs fonctionnent comme décrit dans les RdB, à l'exception des points détaillés ci-dessous.</p>
-		<p><b>• Temps nécessaire &amp; rituel&nbsp;:</b> sauf indication contraire, tous les pouvoirs se déclenchent de manière instantanée et sans rituel. Le personnage doit juste se concentrer. Cependant, un seul pouvoir peut être déclenché chaque round.</p>
+		<p>
+			<b>• Temps nécessaire &amp; rituel&nbsp;:</b> sauf indication contraire, tous les pouvoirs dont le <i>Temps nécessaire</i> est <i>court</i> se déclenchent de manière instantanée et sans rituel. Le personnage doit juste se concentrer.<br>
+			Si le <i>Temps nécessaire</i> est <i>long</i>, suivre les règles générales concernant les sorts.<br>
+			Dans tous les cas, un seul pouvoir peut être déclenché par seconde.
+		</p>
 		<p><b>• Coût énergétique&nbsp;:</b> <i>demi-coût pour les lancer</i>. Coût identique pour le maintien. Un échec coûte autant de PdM qu’une réussite.</p>
 		<p><b>• Sujet d’un pouvoir&nbsp;:</b> lorsqu’un pouvoir affecte les êtres humains, il affecte aussi toutes les créatures incarnées dans des corps humains. Les pouvoirs défensifs ne peuvent agir que sur leur initiateur.</p>
 

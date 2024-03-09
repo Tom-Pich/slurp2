@@ -12,7 +12,8 @@ use App\Rules\WeaponsController;
 		<p>Les dégâts d’une arme sont caractérisés par un <i>Type</i> et une <i>Étendue</i>.</p>
 		<p>Types de dégâts&nbsp;: broyage (B), perforant (P) et tranchant (T).</p>
 		<p>L’étendue des dégâts d’une arme blanche dépend de la <i>For</i> de son utilisateur et de l’arme (voir caractéristiques des armes, plus loin).</p>
-		<p>Si, après addition du modificateur de dégâts <i>de l’arme</i> aux dégâts de base, il apparaît un bonus &ge; +3, ce bonus se transforme : +3 = +1d&nbsp;; +6 = +2d-1&nbsp;; +7 = +2d.</p>
+		<p>Si, après addition du modificateur de dégâts <i>de l’arme</i> aux dégâts de base, il apparaît un bonus &ge; +3, ce bonus se transforme&nbsp;: +3 = +1d&nbsp;; +6 = +2d-1&nbsp;; +7 = +2d.</p>
+		<p>De même, s’il apparaît un malus &le; -2, ce bonus se transforme&nbsp;: -2 = -1d+2&nbsp;; -3 = -1d+1&nbsp;; -4 = -1d&nbsp;; -5 = -2d+2&nbsp;; -6 = -2d+1&nbsp;; -7 = -2d.</p>
 		<p>Utiliser le widget de la <a href="table-jeu">Table de jeu</a> pour déterminer les dégâts d’une arme.</p>
 
 		<h4>Armes à deux mains</h4>

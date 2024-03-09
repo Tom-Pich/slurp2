@@ -168,7 +168,7 @@ class Equipment
 				$formatted_item["Ordre"] = $order;
 
 				// prevent putting container in itself
-				$container_is_in_itself = $formatted_item["id"] == substr($formatted_item["Lieu"], 3);
+				$container_is_in_itself = $formatted_item["id"] == substr($formatted_item["Lieu"], 3) && substr($formatted_item["Lieu"], 0, 3) === "ct_" ;
 
 				if (!$container_is_in_itself) {
 					$repo->setEquipment($formatted_item);

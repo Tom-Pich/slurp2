@@ -122,7 +122,7 @@ $creatures_repo = new CreatureRepository;
 
 </article>
 
-<article>
+<article><!-- Équipement -->
 	<h2>Équipement</h2>
 
 	<details>
@@ -318,7 +318,7 @@ $creatures_repo = new CreatureRepository;
 		<summary class="h3">Équipement divers</summary>
 
 		<h4>Vêtements</h4>
-		<table class="armes">
+		<table class="left1 fs-300 alternate-o">
 			<tr>
 				<td>Haillons*</td>
 				<td>2 pc&nbsp;; 1 kg</td>
@@ -406,7 +406,7 @@ $creatures_repo = new CreatureRepository;
 		</p>
 
 		<h4>Équipement spécial</h4>
-		<table class="armes">
+		<table class="left1 fs-300 alternate-o">
 			<tr>
 				<td>Outils de crochetage</td>
 				<td>30 pc</td>
@@ -450,7 +450,7 @@ $creatures_repo = new CreatureRepository;
 		</table>
 
 		<h4>Équipement de voyage</h4>
-		<table class="armes">
+		<table class="left1 fs-300 alternate-o">
 			<tr>
 				<td>Set pour manger (cuillère, petit couteau...)</td>
 				<td>5 pc&nbsp;; 0,25 kg</td>
@@ -526,7 +526,7 @@ $creatures_repo = new CreatureRepository;
 		</table>
 
 		<h4>Nourriture et logement</h4>
-		<table class="armes">
+		<table class="left1 fs-300 alternate-o">
 			<tr>
 				<td>Couche dans un dortoir commun, par nuit</td>
 				<td>2 pc</td>
@@ -574,7 +574,7 @@ $creatures_repo = new CreatureRepository;
 		</table>
 
 		<h4>Animaux et harnachement</h4>
-		<table class="armes">
+		<table class="left1 fs-300 alternate-o">
 			<tr>
 				<td>Ane</td>
 				<td>120 pc</td>

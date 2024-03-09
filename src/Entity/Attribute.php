@@ -118,7 +118,7 @@ class Attribute
 		$ip_m = 0.4 * $ip_t;
 		$ip_c = 0.3 * $ip_t;
 
-		if ($strength === 0) {
+		if ($strength <= 0) {
 			$taille = $estoc = $morsure = $cornes = '0';
 		} elseif ($strength <= 2) {
 			$taille = $estoc = $morsure = $cornes = '1d-5';

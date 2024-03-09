@@ -22,7 +22,7 @@ $nbre_protagonistes = 7;
 			<legend>Jets de réussite</legend>
 			<?php for ($i = 1; $i <= 7; $i++) { ?>
 				<form data-role="score-tester" class="flex-s gap-½ mt-¼">
-					<input type="text" style="width: 70%" data-type="skill-name" data-skill-number=<?= $i ?>  placeholder="Comp. ou carac." list="liste-carac-comp">
+					<input type="text" style="width: 70%" data-type="skill-name" data-skill-number=<?= $i ?> placeholder="Comp. ou carac." list="liste-carac-comp">
 					<datalist id="liste-carac-comp">
 						<option value="Force"></option>
 						<option value="Dextérité"></option>
@@ -105,7 +105,7 @@ $nbre_protagonistes = 7;
 					<div class="flex-s gap-½">
 						<input type="text" class="fl-1" data-type="name" placeholder="Nom" value="<?= $i === 0 ? "Mr Test" : "" ?>">
 						<input type="text" style="width: 6ch" data-type="dex" class="ta-center" placeholder="Dex" title="Dextérité" value="<?= $i === 0 ? 11 : "" ?>">
-						<input type="text"  style="width: 6ch" data-type="san" class="ta-center" placeholder="San" title="Santé" value="<?= $i === 0 ? 12 : "" ?>">
+						<input type="text" style="width: 6ch" data-type="san" class="ta-center" placeholder="San" title="Santé" value="<?= $i === 0 ? 12 : "" ?>">
 						<input type="checkbox" data-type="pain-resistance" title="Résistance à la douleur">
 					</div>
 					<div class="flex-s gap-½ mt-½">
@@ -278,10 +278,18 @@ $nbre_protagonistes = 7;
 
 <sidebar id="chat-container">
 
-	<div id="connected-users" class="color1"></div>
+	<div id="connected-users" class="color1">
+		<?php if(!$_SESSION["id"]){ ?>
+			<div class="ta-center italic">Vous n’êtes pas connecté</div>
+		<?php } ?>
+	</div>
 
-	<div id="chat-dialog-wrapper">
-		<p><b>Message privé&nbsp;:</b> "/" + n° destinataire(s) séparés par virgule – ex. "/2,3 Coucou"</p>
+	<div id="chat-dialog-wrapper" class="flow">
+		<?php if ($_SESSION["id"]) { ?>
+			<p><b>Message privé&nbsp;:</b> "/" + n° destinataire(s) séparés par virgule – ex. "/2,3 Coucou"</p>
+		<?php } else { ?>
+			<p class="ta-center fw-700"> Les résultats des widgets s’affichent ici</p>
+		<?php } ?>
 	</div>
 
 	<div id="chat-input-wrapper" data-id="<?= $_SESSION["id"] ?>" data-login="<?= $_SESSION["login"] ?>" data-key="<?= $_SESSION["id"] ? "a78D_Kj!45" : "0" ?>">

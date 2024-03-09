@@ -81,15 +81,10 @@ $pages_data = [
 	],
 
 	// Aides de jeu
-/* 	"ecrire-scenario" => [
-		"title" => "Écrire un scénario", 
-		"description" => "Un article précédemment publié dans PTGPTB faisant la synthèse de nombreux articles sur la création de scénario", 
-		"file" => "s_scenario",
-	], */
 	"ecrire-scenario" => [
 		"title" => "Écrire un scénario", 
 		"description" => "Une évolution de l’article précédemment publié dans PTGPTB faisant la synthèse de nombreux articles sur la création de scénario", 
-		"file" => "s_scenario-2",
+		"file" => "s_scenario",
 		"body-class" => "writing-scenario",
 	],
 	"aide-de-jeu-medfan" => [

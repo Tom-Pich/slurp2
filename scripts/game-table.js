@@ -17,23 +17,27 @@ const inputEntry = qs("#msg-input")
 
 const messenger = new Messenger(id, login, key, wsServerURL, chatBox, usersWrapper)
 
-// ––– chat controllers (message input and emoji buttons)
+// "Enter" event in message input
 inputEntry.addEventListener("keydown", function (e) {
 	if (e.keyCode === 13) { flushMsg("standard") }
 });
 
+// function fired on Enter : send the message and clean the text entry
 function flushMsg(type) {
 	messenger.send(type, inputEntry.value);
 	inputEntry.value = ""
 	setTimeout(() => { inputEntry.value = "" }, 10)
 }
 
-emojiBtns.forEach(btn => {
-	btn.addEventListener("click", (e) => {
-		inputEntry.value += e.target.innerText;
-		inputEntry.focus();
+// add emoji in chat entry on click if connected
+if (id) {
+	emojiBtns.forEach(btn => {
+		btn.addEventListener("click", (e) => {
+			inputEntry.value += e.target.innerText;
+			inputEntry.focus();
+		})
 	})
-})
+}
 
 // ––– Widgets ––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
@@ -64,12 +68,17 @@ scoreWidgets.forEach(widget => {
 	skillNameInput.value = localStorage.getItem(`skill-${skillNumber}-name`)
 	skillScoreInput.value = localStorage.getItem(`skill-${skillNumber}-score`)
 
+	widget.addEventListener("keyup", (e) => {
+		localStorage.setItem(`skill-${skillNumber}-name`, skillNameInput.value);
+		if(skillNameInput.value === ""){ skillScoreInput.value = ""; }
+		localStorage.setItem(`skill-${skillNumber}-score`, skillScoreInput.value);
+	})
+
 	widget.addEventListener("submit", (e) => {
 		const skillName = skillNameInput.value;
 		const score = parseInt(skillScoreInput.value);
 
-		localStorage.setItem(`skill-${skillNumber}-name`, skillName);
-		localStorage.setItem(`skill-${skillNumber}-score`, score);
+		if (isNaN(score) || skillName === "") { return }
 
 		let modif = parseInt(widget.querySelector("[data-type=modif]").value);
 		modif = isNaN(modif) ? 0 : modif;
@@ -222,7 +231,22 @@ opponents.forEach(opponent => {
 	membersWrapper.value = localStorage.getItem(`opponent-${opponentNumber}-members`)
 
 	// storing values in localStorage
-	opponent.addEventListener("change", e => {
+	opponent.addEventListener("keyup", e => {
+
+		const opponentDataType = ["name", "dex", "san", "pdvm", "pdv", "members"]
+		// if name empty, reset all inputs for the active oponent
+		if (e.target.dataset.type === "name" && e.target.value === "") {
+			opponentDataType.forEach(dataType => {
+				opponent.querySelector(`[data-type=${dataType}]`).value = "";
+				localStorage.removeItem(`opponent-${opponentNumber}-${dataType}`);
+			})
+
+			// for "pain-resistance" checkbox
+			opponent.querySelector(`[data-type=pain-resistance]`).checked = false;
+				localStorage.removeItem(`opponent-${opponentNumber}-pain-resistance`);
+			
+		}
+
 		const dataType = e.target.dataset.type
 		const dataValue = e.target.type === "checkbox" ? e.target.checked : e.target.value;
 		localStorage.setItem(`opponent-${opponentNumber}-${dataType}`, dataValue);

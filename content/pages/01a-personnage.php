@@ -630,6 +630,8 @@ $attributes = [
 
 		<p>Une compétence peut appartenir à deux groupes différents. Dans ce cas, elle reçoit des points de bonus de chacun des groupes (jusqu’à 2 pts de bonus par groupe).</p>
 
+		<p>Ces calculs sont gérés de manière complètement automatisée par la fiche de personnage.</p>
+
 		<h4>Groupes de compétences proches</h4>
 		<?php
 		$skills_groups = Skill::skills_groups;
@@ -648,6 +650,9 @@ $attributes = [
 					break;
 				case "throwing":
 					$group_name = "Armes de jet";
+					break;
+				case "seduction":
+					$group_name = "Séduction";
 					break;
 				default:
 					$group_name = $group;

@@ -23,6 +23,7 @@ class Skill implements RulesItem
 		"hand-to-hand" => [21, 22, 32, 33],
 		"bow" => [14, 15],
 		"throwing" => [34, 36, 37, 38, 47],
+		"seduction" => [148, 192, 157],
 	];
 
 	public function __construct(array $skill = [])
@@ -137,7 +138,7 @@ class Skill implements RulesItem
 	 * @param array $modifiers index array with all character modifiers entries 
 	 * @return array  [processed skills, skills total points, updated character modifiers]
 	 */
-	public static function processSkills(array $skills, array $attr, array $modifiers, array $special_traits): array
+	public static function processSkills(array $skills, array $raw_attr, array $attr, array $modifiers, array $special_traits): array
 	{
 		$points = 0;
 		$pool = [];
@@ -168,11 +169,14 @@ class Skill implements RulesItem
 			// skill base value
 			$attr_number = 0;
 			$attr_sum = 0;
+			$raw_attr_sum = 0;
 			foreach (str_split($skill_entity->base) as $letter) {
 				$attr_sum += $attr[$attr_match[$letter]];
+				$raw_attr_sum += $raw_attr[$attr_match[$letter]];
 				$attr_number++;
 			}
 			$skill["base"] = (int) floor($attr_sum / $attr_number);
+			$skill["raw-base"] = (int) floor($raw_attr_sum / $attr_number);
 
 			// modifier from label
 			$skill["modif"] = TextParser::parseModif($skill["label"]);
@@ -227,10 +231,6 @@ class Skill implements RulesItem
 					$pool[$group] += $skill["points"];
 				}
 			}
-
-			// processing Frac-score and base attributes (for retro-compatibility)
-			//$skill["Frac-score"] = $attr_sum / $attr_number - $skill["base"];
-			//$skill["base-attr"] = $skill_entity->base;
 
 			// pushing skill in skills array
 			$proc_skills[] = $skill;

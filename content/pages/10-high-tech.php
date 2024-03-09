@@ -9,7 +9,7 @@
 			La cible doit se trouver à au moins 10 m pour que le missile fonctionne normalement; En-deçà de cette distance, il n’a pas assez de vitesse pour exploser au contact.
 		</p>
 		<p>Ces projectiles créent également une explosion externe (dégâts indiqués après le +).</p>
-		<table class="armes">
+		<table class="weapons">
 		<tr><td>Léger</td>	<td>4d×2(10)+5d×2 ; 7/700 ; 1 ; 1 ; 0</td>		<td>7 kg ; 8</td></tr>
 		<tr><td>Moyen</td>	<td>6d×3(10)+6d×2 ; 10/1000 ; 1 ; 1 ; 0</td>	<td>9 kg ; 8</td></tr>
 		<tr><td>Lourd</td>	<td>6d×5(10)+6d×3 ; 30*/1000 ; 1 ; 1 ; 0</td>	<td>20 kg ; 9</td></tr>

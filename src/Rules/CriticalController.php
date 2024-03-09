@@ -36,15 +36,15 @@ class CriticalController
 	public const movement_miss = [
 		1 => "Jet de <i>Dex</i>-3 pour ne pas tomber.",
 		2 => "Le personnage tombe.",
-		3 => "Le personnage tombe et est sonné.",
-		4 => "Le personnage tombe, subit 1d-3 de dégâts au bras ou à la main et est sonné.",
-		5 => "Le personnage tombe la tête la première, 1d-3 de dégâts à la tête. Le personnage est automatiquement sonné, voire assommé si les dégâts sont suffisants.",
-		6 => "Le personnage fait une chute spectaculaire. Il encaisse 2×1d-3 de dégâts et est gravement sonné.",
+		3 => "Le personnage tombe et est sonné au niveau 2. Faire un jet de <i>San</i>. Le nombre d’actions perdues est égale à la ME du jet (minimum 1).",
+		4 => "Le personnage tombe, subit 1d-3 de dégâts au bras ou à la main et est sonné. Faire un jet de <i>San</i>. Le nombre d’actions perdues est égale à la ME du jet (minimum 1).",
+		5 => "Le personnage tombe la tête la première, 1d÷2 pts de dégâts à la tête. Voir les conséquences avec le widget <i>Blessure</i>",
+		6 => "Le personnage fait une chute spectaculaire. Il encaisse 1d pts de dégâts et est sonné au niveau 3.",
 	];
 
 	public const spell_miss = [
 		7 => "Le sort semble agir, mais les effets produits ne sont qu'un pâle ersatz des effets attendus.",
-		8 => "Le sort échoue. L'initiateur est sonné (niveau 2).",
+		8 => "Le sort échoue. L'initiateur est sonné (niveau 2). Faire un jet de <i>San</i>. Le nombre d’actions perdues est égale à la ME du jet (minimum 1).",
 		9 => "Les effets du sort se limitent à un grand bruit suivi de crépitement de lumière colorée.",
 		10 => "Les effets sont l’inverse de ceux attendus. Refaire un jet si ce n’est pas possible.",
 		11 => "Le sort affecte une autre cible au choix du MJ. Refaire un jet si ce n’est pas possible.",

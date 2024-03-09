@@ -27,7 +27,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 	<input hidden name="Pts" value="<?= $character->points ?>">
 	<input hidden name="Portrait" value="<?= $character->portrait ?>">
 
-	<!-- Description & Caractéristiques -->
+	<!-- Portrait, description, background, notes -->
 	<article>
 
 		<!-- Nom, sauvegarde et retour fiche perso -->

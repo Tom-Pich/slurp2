@@ -1,10 +1,24 @@
-import { qs, qsa, ce, updateDOM, reloadScripts, calculate } from "./utilities.js";
+import { qs, qsa, ce, calculate } from "./utilities.js";
 import morphdom from 'https://cdn.skypack.dev/morphdom';
 
 const characterId = qs("#character-name").dataset.id;
 const formEquipment = qs("#form-equipment");
+const membersWrapper = qs("[data-role=members-wrapper]")
 const itemInputs = formEquipment.querySelectorAll("input");
 let newObjectNumber = 0;
+
+// ––– Web Socket character ping sender –––
+const wsServerURL = window.location.hostname === "site-jdr" ? "ws://127.0.0.1:1337" : "wss://web-chat.pichegru.net:443";
+const wsTchatClient = new WebSocket(wsServerURL)
+wsTchatClient.onopen = () => {
+	const initMsg = { type: "character-registration", id: parseInt(characterId), key: "a78D_Kj!45" }
+	wsTchatClient.send(JSON.stringify(initMsg))
+}
+
+wsTchatClient.onmessage = (rawMessage) => {
+	const message = JSON.parse(rawMessage.data);
+	updateCharacter(characterId)
+}
 
 // ––– functions ––––––––––––––––––––––––––––––––––––––
 
@@ -19,78 +33,9 @@ function updateCharacter(id) {
 			const target = qs("main")
 			morphdom(target, source);
 			containerOpenCloseStateManager()
-			addDragAndDropEventListener()
 		})
 }
 
-// ––– add drag & drop event listeners – dragstart, dragend, dragover, dragenter (drag, dragleave, drop) 
-function addDragAndDropEventListener() {
-
-	let draggedItem = null;
-
-	const grips = qsa("[data-role=item-grip]");
-	grips.forEach((item) => {
-
-		item.addEventListener("dragstart", (e) => {
-			itemInputs.forEach(input => { input.disabled = true; })
-			draggedItem = e.target.closest("[data-role=item-wrapper]");
-		})
-
-		item.addEventListener("dragend", (e) => {
-			itemInputs.forEach(input => { input.disabled = false; })
-			submitEquipment();
-		})
-
-		item.addEventListener("dragover", (e) => {
-			e.preventDefault();
-		})
-
-		item.addEventListener("dragenter", (e) => {
-			let container = e.target.closest("[data-role=container-wrapper]")
-			let target = e.target.closest("[data-role=item-wrapper]")
-			container.insertBefore(draggedItem, target)
-			draggedItem.querySelector("[data-role=item-place]").value = container.dataset.place
-		})
-
-		//item.addEventListener("drag", (e) => { not used })
-		//item.addEventListener("dragleave", (e) => { not used })
-		//item.addEventListener("drop", (e) => { not used })
-
-	})
-
-	const freeItemSlots = qsa("[data-role=free-slot]");
-	freeItemSlots.forEach(slot => {
-
-		slot.addEventListener("dragover", (e) => {
-			e.preventDefault();
-		})
-
-		slot.addEventListener("dragenter", (e) => {
-			let container = e.target.closest("[data-role=container-wrapper]")
-			let target = e.target
-			container.insertBefore(draggedItem, target)
-			draggedItem.querySelector("[data-role=item-place]").value = container.dataset.place
-		})
-
-	})
-
-	const groupTransfer = qsa("[data-role=item-transfer]")
-	groupTransfer.forEach(member => {
-		member.addEventListener("dragover", (e) => {
-			e.preventDefault();
-		})
-
-		member.addEventListener("drop", (e) => {
-			const container = qs("#item-transfer");
-			const transferLabel = ce("div", ["mt-½", "fw-600"]);
-			const target = e.target.closest("[data-role=item-transfer]")
-			transferLabel.innerText = `Transfert à ${target.dataset.name}`
-			container.append(transferLabel, draggedItem);
-			draggedItem.querySelector("[data-role=item-place]").value = target.dataset.place;
-			submitEquipment();
-		})
-	})
-}
 
 // ––– handling containers state (open or close)
 function containerOpenCloseStateManager() {
@@ -119,7 +64,6 @@ function submitEquipment() {
 			formData.append(input.name, input.value)
 		}
 	})
-	console.log(formData)
 
 	fetch("/submit/equipment-list", {
 		method: 'post',
@@ -132,7 +76,7 @@ function submitEquipment() {
 
 // ––– event listeners –––––––––––––––––––––––––––––––––––––
 
-// event listeners for moving container and add item
+// event listeners for moving container and adding item
 formEquipment.addEventListener("click", (e) => {
 	//e.preventDefault();
 	const target = e.target
@@ -176,9 +120,64 @@ formEquipment.addEventListener("click", (e) => {
 // event listeners for saving after input change
 formEquipment.addEventListener("change", (e) => {
 	const target = e.target
-	console.log(target)
-	if(target.tagName === "INPUT"){
+	if (target.tagName === "INPUT") {
 		submitEquipment();
+	}
+})
+
+// event listener for drag and drop (not used: drag, dragleave, drop)
+let draggedItem = null;
+
+formEquipment.addEventListener("dragover", (e) => {
+	e.preventDefault();
+})
+
+formEquipment.addEventListener("dragstart", (e) => {
+	if (e.target.dataset.role === "item-grip") {
+		itemInputs.forEach(input => { input.disabled = true; })
+		draggedItem = e.target.closest("[data-role=item-wrapper]");
+	}
+})
+
+formEquipment.addEventListener("dragend", (e) => {
+	if (e.target.dataset.role === "item-grip") {
+		itemInputs.forEach(input => { input.disabled = false; })
+		submitEquipment();
+	}
+})
+
+formEquipment.addEventListener("dragenter", (e) => {
+	if (e.target.dataset.role === "item-grip") {
+		let container = e.target.closest("[data-role=container-wrapper]")
+		let target = e.target.closest("[data-role=item-wrapper]")
+		container.insertBefore(draggedItem, target)
+		draggedItem.querySelector("[data-role=item-place]").value = container.dataset.place
+	}
+	else if (e.target.dataset.role === "free-slot") {
+		let container = e.target.closest("[data-role=container-wrapper]")
+		let target = e.target
+		container.insertBefore(draggedItem, target)
+		draggedItem.querySelector("[data-role=item-place]").value = container.dataset.place
+	}
+})
+
+membersWrapper.addEventListener("dragover", (e) => {
+	e.preventDefault();
+})
+
+membersWrapper.addEventListener("drop", (e) => {
+	const target = e.target.closest("[data-role=item-transfer]")
+	if (target) {
+		const container = qs("#item-transfer");
+		draggedItem.querySelector("[data-role=item-place]").value = target.dataset.place;
+		container.append(draggedItem);
+
+		// ping character after change
+		setTimeout(() => {
+			const characterTargetId = parseInt(target.dataset.place.substr(3));
+			const pingMsg = { type: "character-ping", id: characterTargetId, key: "a78D_Kj!45" };
+			wsTchatClient.send(JSON.stringify(pingMsg));
+		}, 500)
 	}
 })
 
@@ -187,8 +186,6 @@ formEquipment.addEventListener("submit", (e) => {
 	e.preventDefault();
 	submitEquipment();
 })
-
-addDragAndDropEventListener()
 
 // get weapon damage on hover
 const itemNotes = qsa("[data-role=item-notes]")
@@ -212,12 +209,6 @@ itemNotes.forEach(note => {
 // apply container state
 containerOpenCloseStateManager()
 
-// refresh character button
-const refreshBtn = qs("[data-role=refresh-character]");
-refreshBtn.addEventListener("click", (e) => {
-	updateCharacter(characterId)
-})
-
 // pdm counter
 const pdmInput = qs("[name=pdm_counter]")
 if (pdmInput) {
@@ -227,12 +218,10 @@ if (pdmInput) {
 	pdmInput.addEventListener("blur", (e) => {
 		try {
 			pdm_value = pdmInput.value === "" ? "" : calculate(pdmInput.value)
-			//console.log(pdm_value)
 			let data = new FormData;
 			data.append("id", characterId);
 			data.append("pdm", pdm_value)
 			data.append("max", pdmInput.dataset.pdmMax)
-			//console.log(data)
 			if (pdm_value < 0) { alert("Vous ne pouvez pas dépenser autant de PdM !") }
 			else {
 				fetch("/submit/update-character-pdm", {

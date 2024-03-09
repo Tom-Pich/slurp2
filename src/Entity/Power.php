@@ -58,7 +58,7 @@ class Power implements RulesItem
 	}
 
 	// process power data from character
-	public static function processPowers(array $raw_powers, array $attributes, array $modifiers): array
+	public static function processPowers(array $raw_powers, array $raw_attributes, array $modifiers): array
 	{
 		$points = 0;
 		$processed_powers = [];
@@ -70,7 +70,7 @@ class Power implements RulesItem
 
 			// score
 			if ($power["niv"]) {
-				$power["score"] = max($attributes["Int"], 12) + floor($power["points"] / 2) + $modifiers["Int"] + ($power["modif"] ?? 0);
+				$power["score"] = max($raw_attributes["Int"], 12) + floor($power["points"] / 2) + $modifiers["Int"] + ($power["modif"] ?? 0);
 			} else {
 				$power["score"] = null;
 			}

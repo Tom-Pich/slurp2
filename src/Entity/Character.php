@@ -32,6 +32,7 @@ class Character
 	public string $portrait;
 
 	// only available after processing character data
+	public array $raw_attributes;
 	public array $attributes;
 	public array $points_count;
 	public array $modifiers;
@@ -135,8 +136,9 @@ class Character
 		$raw_data = $repo->getCharacterRawData($this->id);
 
 		// ––– attributes
-		$raw_attributes = json_decode($raw_data["Caractéristiques"], true);
-		[$this->attributes, $this->points_count["attributes"]] = Attribute::processAttributes($raw_attributes);
+		$this->raw_attributes = json_decode($raw_data["Caractéristiques"], true);
+		[$this->attributes, $this->points_count["attributes"]] = Attribute::processAttributes($this->raw_attributes);
+		$this->raw_attributes = $this->attributes;
 
 		// ––– MPP
 		$raw_mpp = json_decode($raw_data["MPP"], true);
@@ -185,7 +187,7 @@ class Character
 			}
 			$this->state["Fatigue"] = FatigueController::getEffects($this->state["PdF"], $this->attributes["PdF"]);
 			$this->state["Santé-mentale"] = MentalHealthController::getEffects($this->state["PdE"], $this->attributes["PdE"]);
-			//$this->state["Encombrement"] = EncumbranceController::getEffects($this->carried_weight, $this->attributes["For"]);
+
 			if (!empty($this->state["Membres"])) {
 				$this->state["Membres"] = TextParser::parsePseudoArray2Array($this->state["Membres"]);
 				$explicit_damages = [];
@@ -198,7 +200,7 @@ class Character
 				$this->state["Autres"] = explode(";", TextParser::pseudoMDParser($this->state["Autres"]));
 			}
 
-			foreach ([$this->state["Blessures"], $this->state["Fatigue"], $this->state["Stress"], $this->state["Santé-mentale"], /* $this->state["Encombrement"] */] as $state) {
+			foreach ([$this->state["Blessures"], $this->state["Fatigue"], $this->state["Stress"], $this->state["Santé-mentale"]] as $state) {
 				$this->modifiers["For-mult"] *= $state["for-multiplier"] ?? 1;
 				$this->modifiers["Dex"] += $state["dex-modifier"] ?? 0;
 				$this->modifiers["Int"] += $state["int-modifier"] ?? 0;
@@ -216,36 +218,43 @@ class Character
 			$this->modifiers["Int"] += $this->state["Int"] ?? 0;
 			$this->modifiers["Dégâts"] += $this->state["For_deg"] ?? 0;
 			$this->modifiers["Magie"] += $this->state["Magie"] ?? 0;
-		}
 
-		// applying modifers to attributes
-		$this->attributes["For"] *= $this->modifiers["For-mult"]; // first multiplier, than modifier (magic)
-		$this->attributes["For"] += $this->modifiers["For"];
-		$this->attributes["For"] = (int) $this->attributes["For"];
-		$this->attributes["Dex"] += $this->modifiers["Dex"];
-		$this->attributes["Int"] += $this->modifiers["Int"];
-		$this->attributes["San"] += $this->modifiers["San"];
-		$this->attributes["Per"] += $this->modifiers["Per"];
-		$this->attributes["Vol"] += $this->modifiers["Vol"];
-		if ($this->modifiers["Dégâts"]) {
-			$this->attributes["Dégâts"] = Attribute::getDamages($this->attributes["For"] + $this->modifiers["Dégâts"]);
-		}
-		$this->attributes["Réflexes"] += $this->modifiers["Réflexes"];
-		$this->attributes["Sang-Froid"] += $this->modifiers["Sang-Froid"];
-		$this->attributes["Vitesse"] += $this->modifiers["Vitesse"]; // first modifier (avdesav, skills), than multiplier
-		$this->attributes["Vitesse"] *= $this->modifiers["Vitesse-mult"];
+			// evaluating strength to get ecumbrance effect
+			$this->attributes["For"] *= $this->modifiers["For-mult"]; // first multiplier, than modifier (magic)
+			$this->attributes["For"] += $this->modifiers["For"];
+			$this->attributes["For"] = (int) $this->attributes["For"];
+			//$this->attributes["For"] =
 
-		// encumbrance level with actual Strength
-		if ($with_state_modifiers) {
+			// encumbrance level with actual Strength
 			$this->state["Encombrement"] = EncumbranceController::getEffects($this->carried_weight, $this->attributes["For"]);
-			$this->attributes["Dex"] += $this->state["Encombrement"]["dex-modifier"];
-			$this->attributes["Réflexes"] += (int) ($this->state["Encombrement"]["dex-modifier"] / 2);
-			$this->attributes["Vitesse"] *= $this->state["Encombrement"]["vit-multiplier"];
+			$this->modifiers["Dex"] += $this->state["Encombrement"]["dex-modifier"];
+			$this->modifiers["Vitesse-mult"] *= $this->state["Encombrement"]["vit-multiplier"];
+
+			// reflexes and sf modifers based on primary attributes (vitesse is independant)
+			$this->modifiers["Réflexes"] += (int) floor($this->modifiers["Dex"] / 2 + $this->modifiers["Per"] / 2);
+			$this->modifiers["Sang-Froid"] += (int) floor($this->modifiers["San"] / 2 + $this->modifiers["Vol"] / 2);
+
+			// updating attributes values
+			$this->attributes["Dex"] += $this->modifiers["Dex"];
+			$this->attributes["Int"] += $this->modifiers["Int"];
+			$this->attributes["San"] += $this->modifiers["San"];
+			$this->attributes["Per"] += $this->modifiers["Per"];
+			$this->attributes["Vol"] += $this->modifiers["Vol"];
+			$this->attributes["Dégâts"] = Attribute::getDamages( max($this->attributes["For"] + $this->modifiers["Dégâts"], 0) );
+			$this->attributes["Réflexes"] += $this->modifiers["Réflexes"];
+			$this->attributes["Sang-Froid"] += $this->modifiers["Sang-Froid"];
+			$this->attributes["Vitesse"] += $this->modifiers["Vitesse"]; // first modifier (avdesav, skills), than multiplier
+			$this->attributes["Vitesse"] *= $this->modifiers["Vitesse-mult"];
+
+			// preventing negative attributes value
+			foreach(["For", "Dex", "Int", "San", "Per", "Vol", "Réflexes", "Sang-Froid", "Vitesse"] as $attr_name){
+				$this->attributes[$attr_name] = max($this->attributes[$attr_name], 0);
+			}
 		}
 
 		// ––– skills
 		$raw_skills = json_decode($raw_data["Compétences"], true);
-		[$this->skills, $this->points_count["skills"], $this->modifiers] = Skill::processSkills($raw_skills, $this->attributes, $this->modifiers, $this->special_traits);
+		[$this->skills, $this->points_count["skills"], $this->modifiers] = Skill::processSkills($raw_skills, $this->raw_attributes, $this->attributes, $this->modifiers, $this->special_traits);
 
 		// ––– colleges & spells
 		$raw_colleges_spells = json_decode($raw_data["Sorts"], true);
@@ -254,12 +263,12 @@ class Character
 
 		// --- Powers
 		$raw_powers = json_decode($raw_data["Pouvoirs"], true);
-		[$this->powers, $this->points_count["powers"]] = Power::processPowers($raw_powers, $this->attributes, $this->modifiers);
+		[$this->powers, $this->points_count["powers"]] = Power::processPowers($raw_powers, $this->raw_attributes, $this->modifiers);
 
 		// ––– Psi
 		$raw_psis = json_decode($raw_data["Psi"], true);
 		[$this->disciplines, $this->points_count["disciplines"]] = Discipline::processDisciplines($raw_psis);
-		[$this->psi, $this->points_count["psi"]] = PsiPower::processPowers($raw_psis, $this->disciplines, $this->attributes, $this->special_traits);
+		[$this->psi, $this->points_count["psi"]] = PsiPower::processPowers($raw_psis, $this->disciplines, $this->attributes);
 
 		// ––– Equipment
 		$equipment_repo = new EquipmentRepository;
@@ -451,7 +460,7 @@ class Character
 				$f_skill["id"] = (int) $skill["id"];
 				isset($skill["former-niv"]) ? $f_skill["niv"] = (int) $skill["former-niv"] + (int) $skill["score"] - (int) $skill["former-score"] : "";
 				isset($skill["label"]) ? $f_skill["label"] = strip_tags($skill["label"]) : "";
-				$is_deleted_skill = empty($f_skill["label"]) && !empty($f_skill["niv"]);
+				$is_deleted_skill = empty($f_skill["label"]) && isset($f_skill["niv"]);
 				if (!$is_deleted_skill) {
 					$character["Compétences"][] = $f_skill;
 				}
@@ -602,7 +611,7 @@ class Character
 			if ($file['image']['size'] <= 520000) {
 				$infosfichier = pathinfo($_FILES['image']['name']);
 				$extension_upload = strtolower($infosfichier['extension']);
-				$extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
+				$extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png', 'webp');
 				if (in_array($extension_upload, $extensions_autorisees)) {
 					$nom_fichier = "Perso_" . str_pad($character["id"], 4, '0', STR_PAD_LEFT);
 					$url_dossier = $_SERVER['DOCUMENT_ROOT'] . '/assets/character-portraits/';
@@ -706,7 +715,8 @@ class Character
 		$repo->updateCharactermanager($character);
 	}
 
-	public static function updateCharacterPdM(array $post): void {
+	public static function updateCharacterPdM(array $post): void
+	{
 		$character_id = (int) $post["id"];
 		$max = (int) $post["max"];
 		$pdm = $post["pdm"] === "" ? $max : (int) $post["pdm"];

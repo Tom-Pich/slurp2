@@ -9,16 +9,26 @@ export function roll(code) {
 		x = 0, y = "", op = "+", z = result
 	}
 	else {
-		x = match[1]
-		y = (match[2] != "") ? match[2] : 6
+		x = parseInt(match[1])
+		y = (match[2] != "") ? parseInt(match[2]) : 6
 		op = (match[3] != "") ? match[3] : "+"
 		z = (match[4] != undefined && match[4] != "") ? parseFloat(match[4]) : 0
-		for (let i = 0; i < x; i++) { result += Math.floor(Math.random() * y) + 1 }
-		switch (op) {
-			case "+": result += z; break;
-			case "-": result -= z; break;
-			case "*": result *= z; break;
-			case "/": result /= z; break;
+
+		// handling special cases: 1d-2, 1d-3, 1d-4, 1d-5
+		if (x === 1 && y === 6 && op === "-" && z === 2){ result = Math.floor(Math.random() * 5) }
+		else if (x === 1 && y === 6 && op === "-" && z === 3){ result = Math.floor(Math.random() * 4) }
+		else if (x === 1 && y === 6 && op === "-" && z === 4){ result = Math.floor(Math.random() * 3) }
+		else if (x === 1 && y === 6 && op === "-" && z === 5){ result = Math.floor(Math.random() * 2) }
+
+		// regular dices throw
+		else{
+			for (let i = 0; i < x; i++) { result += Math.floor(Math.random() * y) + 1 }
+			switch (op) {
+				case "+": result += z; break;
+				case "-": result -= z; break;
+				case "*": result *= z; break;
+				case "/": result /= z; break;
+			}
 		}
 	}
 	let expression = `${x}d${y === 6 ? "" : y}${op}${z}`;

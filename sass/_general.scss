@@ -50,7 +50,6 @@ input.manquant {background-color: var(--clr-warning-background);}
 input::placeholder {font-style: italic}
 [draggable=true]{cursor: move;}
 
-
 // tables –––––––––
 table {
 	width: 100%;
@@ -83,13 +82,6 @@ table.left2 tr :nth-child(2) {text-align: left}
 table.left3 tr :nth-child(3) {text-align: left}
 table.left4 tr :nth-child(4) {text-align: left}
 table.last-right tr :last-child {text-align: right;}
-
-table.armes {text-align: left; font-size: .9em}
-table.armes tr :last-child {text-align: right}
-table.armes tr:nth-child(odd) {background-color: LightGrey;}
-table.notes {font-size: .9em}
-table.notes tr :first-child{vertical-align: top;}
-table.notes tr :last-child{text-align: left;}
 
 // ––– fieldset
 fieldset{

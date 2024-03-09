@@ -28,15 +28,3 @@ navBtn.addEventListener("click", () => {
 		navBtn.innerText = "\uf0c9"
 	}
 })
-
-// sticky nav bar on scroll
-/* const header = qs("header");
-const observer = new IntersectionObserver(function (entries) {
-	let entry = entries[0];
-	if (!entry.isIntersecting) {
-		header.classList.add("sticky")
-	} else {
-		header.classList.remove("sticky")
-	}
-}, { threshold: 0.9 });
-observer.observe(navBar) */

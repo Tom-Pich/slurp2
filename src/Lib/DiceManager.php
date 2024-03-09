@@ -99,6 +99,44 @@ abstract class DiceManager
 				$dices_sum += 1;
 				$fixed_sum = 0;
 				break;
+				
+			case -2:
+				if($dices_sum >= 2){
+					$dices_sum -= 1;
+					$fixed_sum = 2;
+				}
+				break;
+			case -3:
+				if($dices_sum >= 2){
+					$dices_sum -= 1;
+					$fixed_sum = 1;
+				}
+				break;
+			case -4:
+				if($dices_sum >= 2){
+					$dices_sum -= 1;
+					$fixed_sum = 0;
+				}
+				break;
+			case -5:
+				if($dices_sum >= 3){
+					$dices_sum -= 2;
+					$fixed_sum = 2;
+				}
+				elseif ($dices_sum === 2){
+					$dices_sum -= 1;
+					$fixed_sum = -1;
+				}
+			case -6:
+				if($dices_sum >= 3){
+					$dices_sum -= 2;
+					$fixed_sum = 1;
+				}
+				elseif ($dices_sum === 2){
+					$dices_sum -= 1;
+					$fixed_sum = -2;
+				}
+				break;
 		}
 
 		$parsed_expression = $dices_sum . "d";
