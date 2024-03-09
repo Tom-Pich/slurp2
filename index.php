@@ -111,7 +111,7 @@ if (substr($path, 0, 4) === "/api") {
 			$san = (int) $_POST["san"];
 			$pdvm = (int) $_POST["pdvm"];
 			$pdv = (int) $_POST["pdv"];
-			$pain_resistance = $_POST["pain-resistance"] === "true";
+			$pain_resistance = (int) $_POST["pain-resistance"];
 			$members = trim($_POST["members"]);
 			$controller->getGeneralState($san, $pdvm, $pdv, $pain_resistance, $members);
 			break;
@@ -122,7 +122,7 @@ if (substr($path, 0, 4) === "/api") {
 			$san = (int) $_POST["san"];
 			$pdvm = (int) $_POST["pdvm"];
 			$pdv = (int) $_POST["pdv"];
-			$pain_resistance = $_POST["pain-resistance"] === "true";
+			$pain_resistance = (int) $_POST["pain-resistance"];
 			$raw_dmg = (int) $_POST["raw-dmg"];
 			$rd = (int) $_POST["rd"];
 			$dmg_type = $_POST["dmg-type"];

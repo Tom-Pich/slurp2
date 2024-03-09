@@ -94,7 +94,7 @@ class ApiController
 		$this->sendResponse();
 	}
 
-	public function getGeneralState(int $san, int $pdvm, int $pdv, bool $pain_resistance, string $members)
+	public function getGeneralState(int $san, int $pdvm, int $pdv, int $pain_resistance, string $members)
 	{
 		$this->response["data"]["general"] = WoundController::getGeneralEffects($pdv, $pdvm, $pain_resistance)["description"];
 
@@ -110,7 +110,7 @@ class ApiController
 		$this->sendResponse();
 	}
 
-	public function getWoundEffects(int $dex, int $san, int $pdvm, int $pdv, bool $pain_resistance, int $raw_dmg, int $rd, string $dmg_type, string $bullet_type, string $localisation, array $rolls){
+	public function getWoundEffects(int $dex, int $san, int $pdvm, int $pdv, int $pain_resistance, int $raw_dmg, int $rd, string $dmg_type, string $bullet_type, string $localisation, array $rolls){
 		$this->response["data"] = WoundController::getWoundEffects($dex, $san, $pdvm, $pdv, $pain_resistance, $raw_dmg, $rd, $dmg_type, $bullet_type, $localisation, $rolls);
 		$this->sendResponse();
 	}

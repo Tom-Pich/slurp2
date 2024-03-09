@@ -70,7 +70,14 @@ export class Messenger {
 				}
 				msg_ref.innerHTML += "&nbsp;: "
 
-				// message content
+				// message content – authorize <b>, <i> and <br>
+				message.content = message.content.replace( /&lt;b&gt;/g, "<b>")
+				message.content = message.content.replace( /&lt;\/b&gt;/g, "</b>")
+				message.content = message.content.replace( /&lt;i&gt;/g, "<i>")
+				message.content = message.content.replace( /&lt;\/i&gt;/g, "</i>")
+				message.content = message.content.replace( /&lt;br&gt;/g, "<br>")
+
+				// message content – append in tchat window
 				let msg_content = ce("span")
 				msg_content.innerHTML = message.content // sanitization done on server
 				if (message.type == "jet") { msg_content.className = "color1" }

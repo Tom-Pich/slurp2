@@ -108,11 +108,13 @@ class WoundController
 		18 => ["Jambe (arrière)", "jambe"]
 	];
 
-	public static function getGeneralEffects(int $pdv, int $pdvm, bool $has_pain_resistance = false)
+	public static function getGeneralEffects(int $pdv, int $pdvm, int $pain_resistance = 0)
 	{
 		$ratio = $pdvm === 0 ? 1 : $pdv / $pdvm;
-		if ($has_pain_resistance && $ratio > -1) {
+		if ($pain_resistance >= 1 && $ratio > -1) {
 			$ratio += 0.25;
+		} else if ($pain_resistance <= -1 && $ratio > -1 && $pdv < $pdvm) {
+			$ratio -= 0.25;
 		}
 		foreach (self::general_levels as $level => $effects) {
 			$level = (float) $level;
@@ -129,12 +131,14 @@ class WoundController
 		];
 	}
 
-	public static function getMemberEffects(int $dmg, int $pdvm, string $member, bool $has_pain_resistance = false)
+	public static function getMemberEffects(int $dmg, int $pdvm, string $member, int $pain_resistance = 0)
 	{
 		$member_pdv = self::members_pdv[$member] * $pdvm ?? self::members_pdv["bras"] * $pdvm;
 		$ratio = $pdvm === 0 ? 1 : ($member_pdv - $dmg) / $member_pdv;
-		if ($has_pain_resistance && $ratio > 0) {
+		if ($pain_resistance >= 1 && $ratio > 0) {
 			$ratio += 0.25;
+		} else if ($pain_resistance <= -1 && $ratio > -1) {
+			$ratio -= 0.25;
 		}
 		foreach (self::members_levels as $level => $effects) {
 			$level = (float) $level;
@@ -152,14 +156,14 @@ class WoundController
 		return ["description" => "Aucun effet"];
 	}
 
-	public static function getWoundEffects(int $dex, int $san, int $pdvm, int $pdv, bool $has_pain_resistance, int $raw_dmg, int $rd, string $dmg_type, string $bullet_type, string $localisation, array $rolls): array
+	public static function getWoundEffects(int $dex, int $san, int $pdvm, int $pdv, int $pain_resistance, int $raw_dmg, int $rd, string $dmg_type, string $bullet_type, string $localisation, array $rolls): array
 	{
 		$result = [
 			"dex" => $dex,
 			"san" => $san,
 			"pdvm" => $pdvm,
 			"pdv_init" => $pdv,
-			"res-douleur" => $has_pain_resistance,
+			"res-douleur" => $pain_resistance,
 			"dégâts bruts" => $raw_dmg,
 			"RD" => $rd,
 			"type dégâts" => $dmg_type,
@@ -282,8 +286,6 @@ class WoundController
 		$result["pdv"] = $pdv;
 		$is_significant_wound = $actual_dmg >= 0.25 * $pdvm;
 		$is_major_wound = $actual_dmg >= 0.5 * $pdvm;
-		//$is_critical_wound = $actual_dmg >= $pdvm;
-
 
 		// ––– fall due to high damages
 		$fall_modifier = modif(2 * $actual_dmg, $pdvm);
@@ -292,15 +294,22 @@ class WoundController
 
 		// ––– stunning
 		$stun_level = 0;
-		if ($is_significant_wound || $is_sensitive) {
-			$stun_base_threshold = $is_sensitive ? 0.1 * $pdvm : 0.25 * $pdvm;
+		if ($is_significant_wound || $is_sensitive || $pain_resistance <= -1 && $actual_dmg > 0) {
 
-			$stun_level = $actual_dmg >= 2 * $stun_base_threshold ? 2 : 1;
-			$stun_level = $actual_dmg >= 4 * $stun_base_threshold ? 3 : $stun_level;
-			$stun_level += $localisation === "org_gen" ? 1 : 0;
-			//var_dump("stun modifier : ". - 2 * $stun_level);
+			$stun_base_threshold = $is_sensitive ? 0.1 * $pdvm : 0.25 * $pdvm;
+			$stun_base_threshold *= ($pain_resistance <= -1) ? 0.5 : 1;
+
+			if ($actual_dmg >= 4 * $stun_base_threshold) {
+				$stun_level = 3;
+			} elseif ($actual_dmg >= 2 * $stun_base_threshold){
+				$stun_level = 2;
+			} elseif ($actual_dmg >= $stun_base_threshold || $is_sensitive ){
+				$stun_level = 1;
+			}
+
+			$stun_level += $localisation === "org_gen" ? 2 : 0;
 			$stun_level -= is_success($san - 2 * $stun_level, $rolls[2]) ? 1 : 0;
-			$stun_level -= $has_pain_resistance ? 1 : 0;
+			$stun_level -= $pain_resistance;
 			$stun_level = min($stun_level, 3);
 
 			switch ($stun_level) {
@@ -353,7 +362,7 @@ class WoundController
 		//var_dump("effects modif : " . $effects_modifier);
 		if ($is_significant_wound && !is_success($san + $effects_modifier, $rolls[6]) && $purely_random_parameter) {
 			if ($localisation === "torse") {
-				$explosion_gravity = max(floor(- modif($actual_dmg*2, $pdvm)/2), 1);
+				$explosion_gravity = max(floor(-modif($actual_dmg * 2, $pdvm) / 2), 1);
 				$effects = [
 					0 => "colonne vertébrale touchée. Le personnage est paraplégique. Cette lésion peut guérir – la traiter comme une blessure invalidante.",
 					1 => "colonne vertébrale touchée. Le personnage est définitivement paraplégique.",
@@ -390,14 +399,14 @@ class WoundController
 					0 => "le personnage souffre de <i>Migraines</i> intenses régulièrement. À traiter comme une blessure invalidante.",
 					1 => "lésion cérébrale. Le personnage souffre d’<i>Amnésie partielle</i>. À traiter comme une blessure invalidante.",
 					2 => "lésion cérébrale. Le personnage souffre d’<i>Amnésie totale</i>. À traiter comme une blessure invalidante.",
-					3 => "lésion cérébrale. Le personnage perd " . ceil($actual_dmg*2/$pdvm) . " points d’<i>Intelligence</i>. À traiter comme une blessure invalidante.",
+					3 => "lésion cérébrale. Le personnage perd " . ceil($actual_dmg * 2 / $pdvm) . " points d’<i>Intelligence</i>. À traiter comme une blessure invalidante.",
 					4 => "lésion cérébrale définitive. Le personnage est un légume (<i>Int</i> de 3)",
 					5 => "lésion cérébrale. Le personnage souffre de paralysie complète. À traiter comme une blessure invalidante.",
 					6 => "lésion cérébrale. Le personnage tombe dans un coma qui durera 1d mois.",
 					7 => "lésion cérébrale. Le personnage tombe dans un coma définitif.",
 				];
 				$result["autres effets"] = get_random_element($effects, !$is_major_wound ? [2, 1, 0, 1, 0, 0, 1, 0] : [3, 3, 1, 3, 1, 1, 3, 1]);
-			} elseif ($localisation === "visage"){
+			} elseif ($localisation === "visage") {
 				$effects = [
 					0 => "dents arrachées (" . ceil($actual_dmg) . ")",
 					1 => "mâchoire fracturée",

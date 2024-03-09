@@ -225,7 +225,7 @@ opponents.forEach(opponent => {
 	nameWrapper.value = localStorage.getItem(`opponent-${opponentNumber}-name`)
 	dexWrapper.value = localStorage.getItem(`opponent-${opponentNumber}-dex`)
 	sanWrapper.value = localStorage.getItem(`opponent-${opponentNumber}-san`)
-	painResistanceWrapper.checked = localStorage.getItem(`opponent-${opponentNumber}-pain-resistance`) === "true";
+	painResistanceWrapper.value = localStorage.getItem(`opponent-${opponentNumber}-pain-resistance`);
 	pdvmWrapper.value = localStorage.getItem(`opponent-${opponentNumber}-pdvm`)
 	pdvWrapper.value = localStorage.getItem(`opponent-${opponentNumber}-pdv`)
 	membersWrapper.value = localStorage.getItem(`opponent-${opponentNumber}-members`)
@@ -233,7 +233,7 @@ opponents.forEach(opponent => {
 	// storing values in localStorage
 	opponent.addEventListener("keyup", e => {
 
-		const opponentDataType = ["name", "dex", "san", "pdvm", "pdv", "members"]
+		const opponentDataType = ["name", "dex", "san", "pain-resistance", "pdvm", "pdv", "members"]
 		// if name empty, reset all inputs for the active oponent
 		if (e.target.dataset.type === "name" && e.target.value === "") {
 			opponentDataType.forEach(dataType => {
@@ -242,8 +242,8 @@ opponents.forEach(opponent => {
 			})
 
 			// for "pain-resistance" checkbox
-			opponent.querySelector(`[data-type=pain-resistance]`).checked = false;
-				localStorage.removeItem(`opponent-${opponentNumber}-pain-resistance`);
+			//opponent.querySelector(`[data-type=pain-resistance]`).checked = false;
+			//localStorage.removeItem(`opponent-${opponentNumber}-pain-resistance`);
 			
 		}
 
@@ -290,6 +290,8 @@ generalStateWidget.addEventListener("submit", (e) => {
 		method: "post",
 		body: data,
 	})
+	//.then(response=> response.text())
+	//.then(response => console.log(response))
 		.then(response => response.json())
 		.then(response => {
 			//console.log(response.data)
@@ -333,13 +335,16 @@ woundEffectsWidget.addEventListener("submit", e => {
 	data.append("bullet-type", bulletType)
 	data.append("localisation", localisation)
 	data.append("rolls", rolls)
+
 	fetch("/api/wound-effects", {
 		method: "post",
 		body: data,
 	})
+	//.then (response => response.text())
+	//.then( response => console.log(response))
 		.then(response => response.json())
 		.then(response => {
-			console.log(response.data)
+			//console.log(response.data)
 			const result = response.data
 
 			if (result["pdvm"] <= 0) { throw new Error("Il manque des données."); }

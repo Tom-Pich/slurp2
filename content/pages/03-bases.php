@@ -16,7 +16,7 @@ use App\Rules\MentalHealthController;
 	<p>Pour les jets de dégâts inférieurs à 1d-1, utiliser les correspondances suivantes&nbsp;: 1d-2 → 1d5-1, 1d-3 → 1d4-1, 1d-4 → 1d3-1, 1d-5 → 1d2-1</p>
 </article>
 
-<article>
+<article><!-- Jet de réussite -->
 	<h2>Jet de réussite</h2>
 
 	<details>
@@ -162,7 +162,7 @@ use App\Rules\MentalHealthController;
 
 </article>
 
-<article>
+<article><!-- Exploits physiques -->
 	<h2>Exploits physiques</h2>
 
 	<details>
@@ -211,7 +211,7 @@ use App\Rules\MentalHealthController;
 
 </article>
 
-<article>
+<article><!-- Encombrement -->
 	<h2>Encombrement</h2>
 
 	<details>
@@ -237,7 +237,7 @@ use App\Rules\MentalHealthController;
 	</details>
 </article>
 
-<article>
+<article><!-- Fatigue -->
 	<h2>Fatigue</h2>
 
 	<details>
@@ -289,7 +289,7 @@ use App\Rules\MentalHealthController;
 
 </article>
 
-<article>
+<article><!-- Équilibre psychique -->
 	<h2>Équilibre psychique</h2>
 
 	<details>
@@ -415,17 +415,17 @@ use App\Rules\MentalHealthController;
 	<details>
 		<summary class="h3">État psychologique général</summary>
 
-		<p class="mt-1">Les seuils d’état psychologique sont basés sur des valeurs absolues de PdE, et non des valeurs en pourcentage des PdE max.</p>
+		<!-- <p class="mt-1">Les seuils d’état psychologique sont basés sur des valeurs absolues de PdE, et non des valeurs en pourcentage des PdE max. Si les PdE max d’un personnage sont en dessous d’un des seuils, il n’est pas concerné par les effets de ce seuil (sauf pour le déavantage mental qui reste acquis)</p> -->
 
 		<table class="alternate-e left-2 mt-1">
 			<tr>
-				<th style="width: 15%">PdE</th>
+				<th style="width: 20%">PdE</th>
 				<th>Effets</th>
 			</tr>
 			<?php foreach (array_reverse(MentalHealthController::levels) as $index => $level) { ?>
 				<tr>
-					<!-- <td>$index !== 0 ? ("&le; " . ((float) $index)*100 . "&nbsp;%") : "0"</td> -->
-					<td><?= $index !== 0 ? ("&le; " . (int) $index) : "0" ?></td>
+					<!-- <td></td> $index !== 0 ? ("&le; " . (int) $index) : "0" -->
+					<td><?= $index !== 0 ? ("&le; " . ((float) $index)*100 . "&nbsp;%") : "0" ?></td>
 					<td><?= ucfirst($level["description"]) ?></td>
 				</tr>
 			<?php } ?>
@@ -439,6 +439,7 @@ use App\Rules\MentalHealthController;
 			Soit un personnage avec 10 PdE au maximum. Il descend à 5 PdE, il perd définitivement 1 PdE. Il continue à descendre et arrive à 2 PdE. Il perd alors un autre PdE et un pt de <i>Sang-froid</i>. Puis il remonte à 4 PdE et redescend à 2 PdE. Aucune perte définitive dans ce cas, car le personnage n’est remonté que d’un seuil et pas de deux.<br>
 			Il remonte ensuite de 2 PdE à 6 PdE. Puis redescend à 2 PdE. Il ne subit aucune perte pour le passage par 5 PdE, mais il subira la perte du passage à 2 PdE.
 		</div> -->
+		<p>Lorsqu’un PdE est perdu définitivement, il faut retirer un pt aux PdEm <i>et</i> aux PdE actuels.</p>
 		<p>Cette perte est cumulative. Autrement dit, un personnage passant de 6 PdE à 2 PdE perdra définitivement 2 PdE et un pt de <i>Sang-froid</i>.</p>
 
 	</details>
@@ -450,7 +451,7 @@ use App\Rules\MentalHealthController;
 	</details>
 </article>
 
-<article>
+<article><!-- Jet de réaction -->
 	<h2>Jet de réaction</h2>
 
 	<details>
@@ -517,7 +518,7 @@ use App\Rules\MentalHealthController;
 
 </article>
 
-<article>
+<article><!-- Règles de diverses -->
 	<h2>Règles diverses</h2>
 
 	<details>

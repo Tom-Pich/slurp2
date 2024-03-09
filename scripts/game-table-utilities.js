@@ -58,7 +58,7 @@ export function collectOpponentData(number){
 		san: opponentWrapper.querySelector("[data-type=san]").value || 0,
 		pdvm: opponentWrapper.querySelector("[data-type=pdvm]").value || 0,
 		pdv: opponentWrapper.querySelector("[data-type=pdv]").value || opponentWrapper.querySelector("[data-type=pdvm]").value,
-		painResistance: opponentWrapper.querySelector("[data-type=pain-resistance]").checked,
+		painResistance: opponentWrapper.querySelector("[data-type=pain-resistance]").value,
 		members: opponentWrapper.querySelector("[data-type=members]").value,
 	}
 

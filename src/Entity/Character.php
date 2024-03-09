@@ -128,7 +128,7 @@ class Character
 			"magerie" => null,
 			"pouvoirs" => false,
 			"psi" => false,
-			"resistance-douleur" => false,
+			"resistance-douleur" => 0,
 			"mult-memoire-infaillible" => 1,
 		];
 
@@ -138,7 +138,6 @@ class Character
 		// ––– attributes
 		$this->raw_attributes = json_decode($raw_data["Caractéristiques"], true);
 		[$this->attributes, $this->points_count["attributes"]] = Attribute::processAttributes($this->raw_attributes);
-		$this->raw_attributes = $this->attributes;
 
 		// ––– MPP
 		$raw_mpp = json_decode($raw_data["MPP"], true);
@@ -147,7 +146,8 @@ class Character
 
 		// –––– avdesav
 		$raw_avdesav = json_decode($raw_data["Avdesav"], true);
-		[$this->avdesav, $this->modifiers, $this->attr_cost_multipliers, $this->special_traits, $this->points_count] = AvDesav::processAvdesav($raw_avdesav, $this->modifiers, $this->attr_cost_multipliers, $this->special_traits, $this->attributes, $this->points_count);
+		[$this->avdesav, $this->attr_cost_multipliers, $this->special_traits, $this->attributes, $this->points_count] = AvDesav::processAvdesav($raw_avdesav, $this->attr_cost_multipliers, $this->special_traits, $this->attributes, $this->points_count);
+		$this->raw_attributes = $this->attributes;
 
 		// --- PdXm with modifiers
 		$this->attributes["PdV"] += $this->modifiers["PdV"];

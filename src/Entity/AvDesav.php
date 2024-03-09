@@ -116,7 +116,7 @@ class AvDesav implements RulesItem
 <?php
 	}
 
-	public static function processAvdesav(array $raw_avdesavs, array $modifiers, array $attr_cost_multipliers, array $special_traits, array $attributes, array $points_count): array
+	public static function processAvdesav(array $raw_avdesavs, array $attr_cost_multipliers, array $special_traits, array $attributes, array $points_count): array
 	{
 		$repo = new AvDesavRepository;
 		$points_avdesav = 0;
@@ -151,36 +151,48 @@ class AvDesav implements RulesItem
 			switch ($avdesav["id"]) {
 
 				case 29: // Réflexes de combat
-					$modifiers["Réflexes"] += 3;
-					$modifiers["Sang-Froid"] += 2;
+					$attributes["Réflexes"] += 3;
+					$attributes["Sang-Froid"] += 2;
 					break;
 
 				case 160: // PdV supp
-					$modifiers["PdV"] += floor($avdesav['points'] / 5);
+					$attributes["PdV"] += floor($avdesav['points'] / 5);
 					break;
 
 				case 161: // PdF supp
-					$modifiers["PdF"] += $avdesav['points'] / 2;
+					$attributes["PdF"] += $avdesav['points'] / 2;
 					break;
 
 				case 162: // PdM supp
-					$modifiers["PdM"] += $avdesav['points'] / 2;
+					$attributes["PdM"] += $avdesav['points'] / 2;
 					break;
 
 				case 163: // PdE supp
-					$modifiers["PdE"] += $avdesav['points'] / 2;
+					$attributes["PdE"] += $avdesav['points'] / 2;
+					break;
+
+				case 158 : // modif Réflexes
+					$attributes["Réflexes"] += $avdesav['points'] / 3;
+					break;
+
+				case 159 : // modif Sang-froid
+					$attributes["Sang-Froid"] += $avdesav['points'] / 3;
 					break;
 
 				case 157: // vitesse
-					$modifiers["Vitesse"] += $avdesav['points'] / 5;
+					$attributes["Vitesse"] += $avdesav['points'] / 5;
 					break;
 
 				case 60: // nanisme
-					$modifiers["Vitesse"] += -2;
+					$attributes["Vitesse"] += -2;
 					break;
 
 				case 31: // Résistance à la douleur (pour gérer l’état)
-					$special_traits["resistance-douleur"] = true;
+					$special_traits["resistance-douleur"] = 1;
+					break;
+				
+				case 49 : // Douillet (pour gérer l’état)
+					$special_traits["resistance-douleur"] = -1;
 					break;
 
 				case 25: // Mémoire infaillible
@@ -199,8 +211,8 @@ class AvDesav implements RulesItem
 
 				case 165: // pack Ange (INS)
 					$special_traits["type-perso"] = "ins";
-					$modifiers["PdV"] += ceil(($attributes["For"] + $attributes["San"]) / 2);
-					$modifiers["PdF"] += ceil(($attributes["For"] + $attributes["San"]) / 2);
+					$attributes["PdV"] += ceil(($attributes["For"] + $attributes["San"]) / 2);
+					$attributes["PdF"] += ceil(($attributes["For"] + $attributes["San"]) / 2);
 					$attr_cost_multipliers["For"] = 0.5;
 					$attr_cost_multipliers["San"] = 0.5;
 					$attr_cost_multipliers["Vol"] = 0.5;
@@ -208,8 +220,8 @@ class AvDesav implements RulesItem
 
 				case 166: // pack Démon (INS)
 					$special_traits["type-perso"] = "ins";
-					$modifiers["PdV"] += ceil(($attributes["For"] + $attributes["San"]) / 2);
-					$modifiers["PdF"] += ceil(($attributes["For"] + $attributes["San"]) / 2);
+					$attributes["PdV"] += ceil(($attributes["For"] + $attributes["San"]) / 2);
+					$attributes["PdF"] += ceil(($attributes["For"] + $attributes["San"]) / 2);
 					$attr_cost_multipliers["For"] = 0.5;
 					$attr_cost_multipliers["San"] = 0.5;
 					break;
@@ -238,7 +250,7 @@ class AvDesav implements RulesItem
 		// osrting by name
 		$avdesavs = Sorter::sort($avdesavs, "nom");
 
-		return [$avdesavs, $modifiers, $attr_cost_multipliers, $special_traits, $points_count];
+		return [$avdesavs, $attr_cost_multipliers, $special_traits, $attributes, $points_count];
 	}
 
 	/**
