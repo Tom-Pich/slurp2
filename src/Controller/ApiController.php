@@ -9,6 +9,7 @@ use App\Lib\TextParser;
 use App\Rules\CriticalController;
 use App\Rules\WeaponsController;
 use App\Rules\WoundController;
+use App\Rules\ExplosionController;
 
 class ApiController
 {
@@ -112,6 +113,11 @@ class ApiController
 
 	public function getWoundEffects(int $dex, int $san, int $pdvm, int $pdv, int $pain_resistance, int $raw_dmg, int $rd, string $dmg_type, string $bullet_type, string $localisation, array $rolls){
 		$this->response["data"] = WoundController::getWoundEffects($dex, $san, $pdvm, $pdv, $pain_resistance, $raw_dmg, $rd, $dmg_type, $bullet_type, $localisation, $rolls);
+		$this->sendResponse();
+	}
+
+	public function getExplosionDamages(float $damages, string $distance, float $fragSurface, bool $isFragmentationDevice){
+		$this->response["data"] = ExplosionController::getExplosionDamages($damages, $distance, $fragSurface, $isFragmentationDevice);
 		$this->sendResponse();
 	}
 

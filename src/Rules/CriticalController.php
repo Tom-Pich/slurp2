@@ -43,18 +43,17 @@ class CriticalController
 	];
 
 	public const spell_miss = [
-		7 => "Le sort semble agir, mais les effets produits ne sont qu'un pâle ersatz des effets attendus.",
+		6 => "Le sort semble agir, mais les effets produits ne sont qu'un pâle ersatz des effets attendus.",
+		7 => "Les effets du sort se limitent à un grand bruit suivi de crépitement de lumière colorée.",
 		8 => "Le sort échoue. L'initiateur est sonné (niveau 2). Faire un jet de <i>San</i>. Le nombre d’actions perdues est égale à la ME du jet (minimum 1).",
-		9 => "Les effets du sort se limitent à un grand bruit suivi de crépitement de lumière colorée.",
-		10 => "Les effets sont l’inverse de ceux attendus. Refaire un jet si ce n’est pas possible.",
-		11 => "Le sort affecte une autre cible au choix du MJ. Refaire un jet si ce n’est pas possible.",
-		12 => "Le sort se retourne contre son initiateur. Refaire un jet si ce n’est pas possible.",
+		9 => "Les effets sont l’inverse de ceux attendus. Refaire un jet si ce n’est pas possible.",
+		10 => "Le sort affecte une autre cible au choix du MJ. Refaire un jet si ce n’est pas possible.",
+		11 => "Le sort se retourne contre son initiateur. Refaire un jet si ce n’est pas possible.",
 		13 => "Le sort échoue. L’initiateur subit [1d×niveau de puissance] de dégâts, perd tous ses PdM et ceux de la ou des pierres de puissance qu’il portait.",
 		14 => "Le sort échoue. L’initiateur tombe dans le coma pendant 1d minutes / heures / jours / semaines / mois selon le niveau du sort.",
-		15 => "Explosion ! [2d×niveau de puissance] de dégâts explosifs centrés sur l’initiateur.",
+		15 => "Explosion&nbsp;! [1d×niveau de puissance] de dégâts explosifs centrés sur l’initiateur.",
 		16 => "Le sort échoue. L’initiateur vieillit de [1d×niveau de puissance] années et perd 1d/1d+2/2d/2d+2/3d PdE selon le niveau de puissance.",
-		17 => "Le sort échoue. L’initiateur vieillit de [1d×niveau de puissance] années et perd 1d/1d+2/2d/2d+2/3d PdE selon le niveau de puissance.",
-		18 => "Le sort échoue. Un démon apparaît et attaque l’initiateur, sauf si ses intentions étaient pures (refaire un jet). Sort de niveau I ou II → démon mineur. III/IV/V → démon moyen / majeur / majeur extrêmement puissant.",
+		17 => "Le sort échoue. Un démon apparaît et attaque l’initiateur, sauf si ses intentions étaient pures (refaire un jet). Sort de niveau I ou II → démon mineur. III/IV/V → démon moyen / majeur / majeur extrêmement puissant.",
 	];
 
 	public static function CriticalResult(string $table_name, int $roll_3d, int $roll_1d)

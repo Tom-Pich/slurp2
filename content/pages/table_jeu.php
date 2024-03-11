@@ -125,7 +125,7 @@ $nbre_protagonistes = 7;
 		<fieldset>
 			<legend>État général (PdV)</legend>
 			<form class="flex-s gap-½" id="general-state-widget">
-				<select class="fl-1 px-1" data-type="name-selector">
+				<select class="fl-1" data-type="name-selector">
 					<?php for ($i = 1; $i <= $nbre_protagonistes; $i++) { ?>
 						<option value="<?= $i ?>">Protagoniste <?= $i ?></option>
 					<?php } ?>
@@ -141,7 +141,7 @@ $nbre_protagonistes = 7;
 
 				<div class="fl-1">
 					<div class="flex-s gap-½">
-						<select class="fl-1 px-1" data-type="name-selector">
+						<select class="fl-1" data-type="name-selector">
 							<?php for ($i = 1; $i <= $nbre_protagonistes; $i++) { ?>
 								<option value="<?= $i ?>">Protagoniste <?= $i ?></option>
 							<?php } ?>
@@ -178,13 +178,33 @@ $nbre_protagonistes = 7;
 							<option value="pied">Pied</option>
 							<option value="main">Main</option>
 							<option value="oeil">Œil</option>
-							<option value="org_gen">Org. génitaux</option>
+							<option value="org_gen">Org. gén.</option>
 						</select>
 					</div>
 				</div>
 
 				<button class="nude">🎲</button>
 			</form>
+		</fieldset>
+
+		<!-- Explosion -->
+		<fieldset>
+			<legend>Explosions</legend>
+			<form class="flex-s gap-½" id="explosion-widget">
+				<div class="fl-1">
+					<div class="flex-s gap-½ ai-center">
+						<input type="text" size="1" data-type="explosion-dmg" class="center fl-1" placeholder="xd±y" title="Dégâts de l’explosion">
+						<input type="text" size="1" data-type="explosion-distance" class="center fl-1" placeholder="Distance" title="Distance de la cible (I, R, C ou valeur en m)">
+						<input type="text" size="1" data-type="explosion-frag-surface" class="center fl-1" placeholder="S. fragments" title="Surface cible exposée aux fragments">
+						<input type="checkbox" data-type="explosion-frag-device" title="Engin explosif à fragmentation ?" />
+					</div>
+				</div>
+				<button class="nude">🎲</button>
+			</form>
+			<p class="clr-white mt-½ fs-300">
+				<b>Distance&nbsp;:</b> interne (i), recouvert (r), contact (c) ou distance en mètres.<br>
+				<b>Surface exposée aux fragments&nbsp;:</b> un homme de face offre une surface de 0,75 m².
+			</p>
 		</fieldset>
 
 		<form hidden onsubmit="return false"><!-- dégâts objets -->
@@ -244,33 +264,9 @@ $nbre_protagonistes = 7;
 			</fieldset>
 		</form>
 
-		<form hidden onsubmit="return false"><!-- explosion -->
-			<fieldset>
-				<legend>Explosions</legend>
-				<div class="flex-between">
-					<div>
-						<span style="display: inline-block; width: 40px">Dégâts</span>
-						<input type="text" size="5" id="exp_degats" class="center" placeholder="xd±y" title="Dégâts de référence de l’explosion" />
-						Distance
-						<input type="text" size="3" id="exp_distance" class="center" placeholder="Dist." title="Distance de la cible" onkeyup="calc_frac_explosion()" />
-						<br />
-						<span style="display: inline-block; width: 40px">Blast</span>
-						<input type="text" size="5" id="exp_surface_blast" class="center" placeholder="Surface" title="Surface de la cible (m²)" onkeyup="calc_frac_explosion()" />
-						<span style="display: inline-block; width: 37px; text-align: center"><b>ou</b></span>
-						<input type="text" size="5" id="exp_%_blast" class="center" placeholder="%" title="Pourcentage du blast reçu" /> %
-						<br />
-						<span style="display: inline-block; width: 40px">Frag.</span>
-						<input type="text" size="5" id="exp_surface_frag" class="center" placeholder="Surface" title="Surface de la cible (m²)" onkeyup="calc_frac_explosion()" />
-						<span style="display: inline-block; width: 37px; text-align: center"><b>ou</b></span>
-						<input type="text" size="5" id="exp_%_frag" class="center" placeholder="%" title="Pourcentage des éclats reçus" /> %
-						<br />
-						<label for="exp_frag">Nombreux éclats</label>
-						<input type="checkbox" id="exp_frag" title="Engin explosif à fragmentation ?" />
-					</div>
-					<button class="nude" onclick="calcul_deg_explosion()">&#x1F3B2;</button>
-				</div>
-			</fieldset>
-		</form>
+		<!-- explosion -->
+
+
 
 	</div>
 
@@ -279,7 +275,7 @@ $nbre_protagonistes = 7;
 <sidebar id="chat-container">
 
 	<div id="connected-users" class="color1">
-		<?php if(!$_SESSION["id"]){ ?>
+		<?php if (!$_SESSION["id"]) { ?>
 			<div class="ta-center italic">Vous n’êtes pas connecté</div>
 		<?php } ?>
 	</div>

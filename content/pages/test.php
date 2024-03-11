@@ -1,14 +1,21 @@
 <?php
 
-use App\Lib\TextParser;
-use App\Entity\Character;
-use App\Repository\CharacterRepository;
-use App\Repository\EquipmentRepository;
-use App\Rules\WoundController;
+use App\Rules\ExplosionController;
+
 
 ini_set('xdebug.var_display_max_depth', 10);
 ini_set("xdebug.var_display_max_data", -1);
 
-$repo = new CharacterRepository;
-$state = $repo->getCharacterState(31);
-var_dump($state["PdM"] ?? "");
+$params = [
+	"damages" => 25,
+	"distance" => "6",
+	"surface-exposed" => .75,
+	"fragmentation-engine" => false,
+];
+var_dump($params);
+echo "<br><br>";
+
+$test = ExplosionController::getExplosionDamages($params["damages"], $params["distance"], $params["surface-exposed"], $params["fragmentation-engine"]);
+
+echo "<br><br>";
+var_dump($test);

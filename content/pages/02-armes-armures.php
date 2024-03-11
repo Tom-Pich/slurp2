@@ -392,18 +392,21 @@ use App\Rules\WeaponsController;
 
 	<details>
 		<summary class="h3">Grenades</summary>
-		<p><b>Défensive :</b> grenade à fragmentation. Concussion : 2d+2 à 5d, Fragmentation : 1d+2 à 3d.</p>
-		<p><b>Offensive :</b> peu de fragmentation, charge explosive plus importante. Concussion : 5d à 6d, Fragmentation : dépend de la nature du sol.</p>
+		<p><b>Défensive&nbsp;:</b> grenade à fragmentation. Concussion : 2d+2 à 5d, Fragmentation : 1d+2 à 3d.</p>
+		<p><b>Offensive&nbsp;:</b> peu de fragmentation, charge explosive plus importante. Concussion : 5d à 6d, Fragmentation : dépend de la nature du sol.</p>
 	</details>
 
 	<details>
 		<summary class="h3">Explosifs</summary>
-		<p>
-			500 g de TNT&nbsp;: 6d×2 de dégâts de concussion<br>
-			Poudre&nbsp;: avant 1600 ×0,3 ; avant 1850 ×0,4 ; après 1850 ×0,5<br>
-			Dynamite&nbsp;: ×0,8<br>
-			C4&nbsp;: ×1,4
-		</p>
+		<p>Pour obtenir une explosion faisant 6d×<i>n</i> pts de dégâts, il faut n²×0,1 kg de TNT</p>
+		<p>Puissance relative d’autres explosifs&nbsp;:</p>
+		<ul>
+			<li>Poudre&nbsp;: avant 1600 ×0,3&nbsp;; avant 1850 ×0,4&nbsp;; après 1850 ×0,5</li>
+			<li>Carburant + nitrates&nbsp;: ×0,5</li>
+			<li>Dynamite&nbsp;: ×0,8</li>
+			<li>C4&nbsp;: ×1,4</li>
+		</ul>
+
 	</details>
 
 	<details class="mt-1">
@@ -461,9 +464,9 @@ use App\Rules\WeaponsController;
 				<th>% poids</th>
 				<th>% prix</th>
 			</tr>
-			<?php foreach(ArmorsController::armor_parts as $part){ ?>
+			<?php foreach (ArmorsController::armor_parts as $part) { ?>
 				<tr>
-					<td><?= $part["nom"] ?><?= $part["notes"] ? ("<sup>".$part["notes"]."</sup>") : "" ?></td>
+					<td><?= $part["nom"] ?><?= $part["notes"] ? ("<sup>" . $part["notes"] . "</sup>") : "" ?></td>
 					<td><?= $part["mult_poids"] ?></td>
 					<td><?= $part["mult_prix"] ?></td>
 				</tr>
@@ -486,7 +489,7 @@ use App\Rules\WeaponsController;
 				<th>DP</th>
 				<th>Poids</th>
 			</tr>
-			<?php foreach (ArmorsController::shields as $shield){ ?>
+			<?php foreach (ArmorsController::shields as $shield) { ?>
 				<tr>
 					<td><?= $shield["nom"] ?></td>
 					<td><?= $shield["DP"] ?></td>

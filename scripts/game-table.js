@@ -70,7 +70,7 @@ scoreWidgets.forEach(widget => {
 
 	widget.addEventListener("keyup", (e) => {
 		localStorage.setItem(`skill-${skillNumber}-name`, skillNameInput.value);
-		if(skillNameInput.value === ""){ skillScoreInput.value = ""; }
+		if (skillNameInput.value === "") { skillScoreInput.value = ""; }
 		localStorage.setItem(`skill-${skillNumber}-score`, skillScoreInput.value);
 	})
 
@@ -206,7 +206,7 @@ burstWidget.addEventListener("submit", async (e) => {
 	flushMsg("jet")
 })
 
-// opponents list
+// opponents list widget
 const opponents = qsa("[data-role=opponent-wrapper]")
 const opponentSelects = qsa("[data-type=name-selector]")
 
@@ -244,7 +244,7 @@ opponents.forEach(opponent => {
 			// for "pain-resistance" checkbox
 			//opponent.querySelector(`[data-type=pain-resistance]`).checked = false;
 			//localStorage.removeItem(`opponent-${opponentNumber}-pain-resistance`);
-			
+
 		}
 
 		const dataType = e.target.dataset.type
@@ -290,8 +290,8 @@ generalStateWidget.addEventListener("submit", (e) => {
 		method: "post",
 		body: data,
 	})
-	//.then(response=> response.text())
-	//.then(response => console.log(response))
+		//.then(response=> response.text())
+		//.then(response => console.log(response))
 		.then(response => response.json())
 		.then(response => {
 			//console.log(response.data)
@@ -340,8 +340,8 @@ woundEffectsWidget.addEventListener("submit", e => {
 		method: "post",
 		body: data,
 	})
-	//.then (response => response.text())
-	//.then( response => console.log(response))
+		//.then (response => response.text())
+		//.then( response => console.log(response))
 		.then(response => response.json())
 		.then(response => {
 			//console.log(response.data)
@@ -394,4 +394,39 @@ dmgTypeSelector.addEventListener("change", (e) => {
 		bulletTypeSelector.value = "std"
 		bulletTypeSelector.disabled = true
 	}
+})
+
+// explosion widget
+const explosionWidget = qs("#explosion-widget")
+explosionWidget.addEventListener("submit", (e) => {
+
+	const dmgExpression = qs("[data-type=explosion-dmg]").value;
+	const distance = qs("[data-type=explosion-distance]").value;
+	const fragSurface = qs("[data-type=explosion-frag-surface]").value;
+	const isFragmentationDevice = qs("[data-type=explosion-frag-device]").checked;
+
+	// evaluate damages – compression around a mathematical expectation of 5 per dice
+	const roll1 = roll(dmgExpression).result;
+	const roll2 = roll(dmgExpression).result;
+	const roll3 = roll(dmgExpression).result;
+	const dmgValue = (roll1 + roll2 + roll3) / 3 * 1.43;
+
+	const data = new FormData;
+	data.append("damages", dmgValue);
+	data.append("distance", distance);
+	data.append("fragmentation-surface", fragSurface);
+	data.append("is-fragmentation-device", isFragmentationDevice);
+
+	fetch("/api/explosion-damages", {
+		method: "post",
+		body: data,
+	})
+		.then(response => response.json())
+		.then(response => {
+			const results = response.data;
+			const formattedMsg = `<b>Explosion&nbsp;:</b> dégâts ${results.damages} – fragment(s) ${results.fragments} – hauteur de chute ${results.height}&nbsp;m`;
+			inputEntry.value += formattedMsg;
+			flushMsg("jet")
+		})
+
 })

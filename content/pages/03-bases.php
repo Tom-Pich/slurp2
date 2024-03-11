@@ -246,6 +246,10 @@ use App\Rules\MentalHealthController;
 
 		<h4>Efforts physiques</h4>
 		<p>Les PdF perdus sont estimés par le MJ. Un jet de <i>San</i> réussi (ou d’une compétence appropriée&nbsp;: <i>Course</i>, <i>Randonnée</i>, <i>Nage</i>, etc.) réduit le coût de fatigue d’un tiers.</p>
+		<ul class="mt-½">
+			<li>Effort peu intense, de longue durée (marche sur terrain plat) : 1 PdF / heure</li>
+			<li>Activité physique soutenu : 2-4 PdF / heure</li>
+		</ul>
 		<p>L’<i>Encombrement</i> multiplie ce coût&nbsp;: ×1,5 pour <i>Léger</i>, ×2 pour <i>Moyen</i>, ×3 pour <i>Pesant</i>.</p>
 
 		<h4>Sommeil écourté</h4>
@@ -282,9 +286,10 @@ use App\Rules\MentalHealthController;
 
 	<details>
 		<summary class="h3">Récupération</summary>
-		<p>Le MJ décide du rythme de récupération en fonction des conditions de repos. La seule règle est que l’on est « frais et dispo » qu’après une nuit de sommeil.<br />
-			Des PdF perdus par un manque de nourriture ou d’eau ne peuvent être regagnés qu’en mangeant ou en s’hydratant.<br />
-			Ne tenir compte des PdF que si cela est important dans le jeu. Dans la plupart des situations, les PdF n’ont aucune importance.</p>
+		<p>Le MJ décide du rythme de récupération en fonction des conditions de repos et du type d’effort fourni (peu intense et de longue durée, ou l’invers). La seule règle est que l’on est « frais et dispo » qu’après une nuit de sommeil.</p>
+		<p><b>Règle de coin de table&nbsp;:</b> en se reposant après un effort, on peut récupérer au maximum un quart des PdF dépensés.</p>
+		<p>Des PdF perdus par un manque de nourriture ou d’eau ne peuvent être regagnés qu’en mangeant ou en s’hydratant.</p>
+		<p>Ne tenir compte des PdF que si cela est important dans le jeu. Dans la plupart des situations, les PdF n’ont aucune importance.</p>
 	</details>
 
 </article>
@@ -425,7 +430,7 @@ use App\Rules\MentalHealthController;
 			<?php foreach (array_reverse(MentalHealthController::levels) as $index => $level) { ?>
 				<tr>
 					<!-- <td></td> $index !== 0 ? ("&le; " . (int) $index) : "0" -->
-					<td><?= $index !== 0 ? ("&le; " . ((float) $index)*100 . "&nbsp;%") : "0" ?></td>
+					<td><?= $index !== 0 ? ("&le; " . ((float) $index) * 100 . "&nbsp;%") : "0" ?></td>
 					<td><?= ucfirst($level["description"]) ?></td>
 				</tr>
 			<?php } ?>

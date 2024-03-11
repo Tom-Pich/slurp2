@@ -23,7 +23,7 @@ input.color1 {border: 1px solid var(--clr-text);}
 .hidden {display: none;}
 .border-bottom-grey-700 {border-bottom: 1px solid var(--grey-700);}
 .widget{background-color: var(--clr-accent-background)}
-
+:is(div, p):nth-child(odd).alternate-o {background-color: var(--grey-900);}
 
 // pagination classes
 .exemple {background: var(--grey-900); border-radius: .25em; padding: 2em .5em 1em; margin-top: 1em; position: relative}

@@ -1,6 +1,6 @@
 <article><h2>Bases du combat</h2>
 
-	<p class="mrtop0">Chaque tour (ou round) dure trois secondes.<br/>
+	<p class="mrtop0">Chaque tour (ou round) dure trois secondes.<br>
 	Le terme «&nbsp;hex&nbsp;» désigne un hexagone de «&nbsp;diamètre&nbsp;» moyen égal à 1 m. C’est l’espace qu’occupe un humain lorsqu’il combat.</p>
 
 	<details><summary class="h3">Surprise</summary>
@@ -15,7 +15,7 @@
 		<p>Pour déterminer qui agit en premier au cours d’un round (s’il y a un doute), il faut faire un <b>Duel de <i>Réflexes</i></b> entre les opposants.</p>
 
 		<h4>Modificateurs</h4>
-		<p>À ce jet s’appliquent tous les modificateurs habituels plus un malus dû au poids de l’arme&nbsp;: -1 par kg (arrondir le poids de l’arme à l’entier inférieur).<br/>
+		<p>À ce jet s’appliquent tous les modificateurs habituels plus un malus dû au poids de l’arme&nbsp;: -1 par kg (arrondir le poids de l’arme à l’entier inférieur).<br>
 		Ce malus ne s’applique que si l’arme doit être bougée. Il ne s’applique bien sûr pas à, par exemple, une arbalète lourde pointant dans la direction de sa cible.</p>
 
 		<h4>Initiative et sorts</h4>
@@ -89,9 +89,9 @@
 
 	<details><summary class="h3">Dégâts à mains nues</summary>
 	<h4>Pour les humains</h4>
-	<p>• Coup de poing&nbsp;: B.e-2<br/>
-	• Coup de pied&nbsp;: B.e, +1 avec des bottes pesantes.<br/>
-	• Coup de genou&nbsp;: B.e-1.<br/>
+	<p>• Coup de poing&nbsp;: B.e-2<br>
+	• Coup de pied&nbsp;: B.e, +1 avec des bottes pesantes.<br>
+	• Coup de genou&nbsp;: B.e-1.<br>
 	• Coup de tête&nbsp;: B.e-1. Si l’attaque est ratée de plus de 3, l’attaquant subit la moitié des dégâts qu’il aurait dû infliger.</p>
 	<p>Avec la compétence <i>Karaté</i>&nbsp;: +1/5<sup>e</sup> du score de la compétence aux dégâts (sauf pour le coup de tête).</p>
 	<h4>Effets spéciaux</h4>
@@ -149,7 +149,7 @@
 	<details><summary class="h3">Types de défenses</summary>
 	<p><b>Esquive&nbsp;:</b> pas de limite au nombre d'esquives chaque tour, mais -2 cumulatif après la première défense du tour.</p>
 	<p><b>Blocage&nbsp;:</b> <i>Bouclier</i> -3 + DP</p>
-	<p><b>Parade&nbsp;:</b> <i>Arme</i> -3 (sauf exceptions mentionnées dans la table des armes)<br/>
+	<p><b>Parade&nbsp;:</b> <i>Arme</i> -3 (sauf exceptions mentionnées dans la table des armes)<br>
 	Une parade est possible seulement si l’arme est apprêtée. Si l’arme pare une arme 3 fois plus lourde, elle a 33% de chance de se briser.</p></details>
 
 	<details><summary class="h3">Modificateurs de défenses</summary>
@@ -230,17 +230,15 @@
 
 	<details><summary class="h3">Onde de choc</summary>
 	
-		<p>La puissance de l’onde de choc provoquée par l’explosion décroit rapidement avec la distance.</p>
+		<p>La puissance de l’onde de choc provoquée par l’explosion décroit avec la distance (-1d tous les deux mètres).</p>
 		<p>Les calculs sont gérés par le widget de la <a href="table-jeu">Table de jeu</a>.</p>
-		<p>Un être humain debout présente une surface de 0,6 m<sup>2</sup> à l’explosion.<br/>
-		Quelle que soit sa position, un être vivant (ayant des fluides internes) présente toujours une surface proche de sa surface réelle à une explosion. Ceci est dû au fait que le corps est de toute façon exposé à la surpression, quelle que soit sa position.</p>
-		<p>Les objets non vivants ne sont pas soumis à cette règle et seule leur surface réelle d’exposition à l’explosion doit être prise en compte.</p>
+		<p>Un être humain debout et de face présente une surface de 0,75 m² aux fragments projetés.</p>
+		<p>La décroissance de l’onde de choc dépend du milieu dans lequel a lieu l’explosion. Par défaut, il s’agit de l’air à pression atmosphérique. Dans l’eau, diviser la distance réelle par 3. Dans le vide, la multiplier par 3.</p>
 
 		<h4>Résistance aux dégâts</h4>
-		<p>Une armure ne protège pas, sauf si elle est rigide, étanche et couvre tout le corps.</p>
+		<p>Prendre en compte la RD du torse seulement, pour les dégâts de concussions. Les dégâts dus à d’éventuels fragments doivent être localisés.</p>
 
 		<h4>Effets des dégâts</h4>
-		<p>Les dégâts de concussion n’ont pas de multiplicateur sur les êtres vivants et ne sont pas localisés.</p>
 		<p>Le widget de la <a href="table-jeu">Table de jeu</a> gère les effets spéciaux des dégâts d’explosion.</p>
 
 	</details>
@@ -264,13 +262,10 @@
 		<p>Ces dégâts sont à traiter comme une chute de <i>x</i> mètres, avec <i>x</i> = dégâts de l’onde de choc × 20 ÷ masse de la victime.</p>
 	</details>
 
-	<details><summary class="h3">Cas particuliers</summary>
-		<h4>Dégâts de contact</h4>
-		<p>Entrez dans le Widget le pourcentage des dégâts totaux reçus, plutôt qu’une distance et une surface exposée.</p>
-		<h4>Explosion en espace confiné</h4>
-		<p>Même principe que pour les dégâts de contact. Il faut estimer le pourcentage de dégâts de l’explosion reçu par la victime.</p>
-		<h4>Explosion sous-marine</h4>
-		<p>Sous l’eau, il n’y a pas de dégâts de fragmentation, mais les dégâts de l’onde de choc sont beaucoup plus destructeurs que dans l’air&nbsp;: l’atténuation des dégâts avec la distance est quatre fois plus faible.</p>
+	<details><summary class="h3">Explosion en espace confiné</summary>
+		<p>Il faut dans un premier temps estimer la fraction de l’énergie retenue par le volume confiné. Ce n’est pas la même si le volume est entièrement scellé par des parois rigide et solide, ou s’il est en partie fermé par des fenêtres qui exploseront et laisseront passer une partie du souffle.</p>
+		<p>Il faut ensuite estimer la distance moyenne entre le centre du volume et les parois. Par exemple, pour une explosion qui a lieu dans un container fermé de 2&nbsp;m × 3&nbsp;m × 6&nbsp;m, cette distance moyenne est de (2÷2 + 3÷2 + 6÷2)/3 = 1,8&nbsp;m.</p>
+		<p>Enfin, les dégâts <i>supplémentaires</i> dus au caractère confiné de l’explosion sont obtenus en considérant une deuxième explosion qui a lieu à cette distance de la cible.</p>
 	</details>
 
 </article>
@@ -283,7 +278,7 @@
 		<p><b>• Points de Structure (PdS)&nbsp;:</b> ce sont les «&nbsp;PdV&nbsp;» de l’objet.</p>
 		<p><b>• Intégrité&nbsp;:</b> c’est la «&nbsp;Santé&nbsp;» de l’objet. Plus elle est élevée, mieux l’objet continue à fonctionner malgré les dégâts reçus.</p>
 		<div class="exemple">
-			Un robot type R2D2 pourrait avoir 8 PdS et une <i>Intégrité</i> de 10 (il n’est pas particulièrement résistant).<br/>
+			Un robot type R2D2 pourrait avoir 8 PdS et une <i>Intégrité</i> de 10 (il n’est pas particulièrement résistant).<br>
 			Il aurait une RD de 4, sauf sur certains capteurs en verre qui auraient une RD de 1 ou 2.
 		</div>
 	</details>

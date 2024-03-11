@@ -20,8 +20,8 @@ function calcul_deg_explosion() {
 	let parse_deg = roll(deg_ref, true)
 	let isFrag = get_id("exp_frag").checked
 
-	let deg = parse_deg[1] * 5
-	switch (parse_deg[3]) {
+	let deg = parse_deg[1] * 5 // deg = 5 × nbre de dés
+	switch (parse_deg[3]) { // ajout du modif
 		case "+": deg += parse_deg[4]; break;
 		case "-": deg -= parse_deg[4]; break;
 		case "*": deg *= parse_deg[4]; break;

@@ -380,8 +380,8 @@ use App\Rules\WoundController;
 
 	<details>
 		<summary class="h3">Inanition et déshydratation</summary>
-		<p><b>Nourriture&nbsp;:</b> 1 PdF par repas raté. Lorsque les PdF atteignent 3 pour cause de sous-alimentation, perte de PdV à la même vitesse.</p>
-		<p><b>Eau&nbsp;:</b> 1 PdF et 1 PdV par jour si 2/3 des besoins sont couverts. 2 PdF et 2 PdV par jour pour 1/3 des besoins. Sans eau&nbsp;: 3 PdF et 3 PdV par jour. Si les PdV ou les PdF atteignent 0 par manque d’eau (même si ce n’en est pas l’unique cause), délire et mort au bout d’une journée.</p>
+		<p><b>Nourriture&nbsp;:</b> 1 PdF par repas raté (on compte deux repas par jour). Lorsque les PdF atteignent 3 pour cause de sous-alimentation, perte de PdV à la même vitesse.</p>
+		<p><b>Eau&nbsp;:</b> 1 PdF et 1 PdV par jour si 2/3 des besoins sont couverts. 2 PdF et 2 PdV par jour pour 1/3 des besoins. Sans eau&nbsp;: 3 PdF et 3 PdV par jour. Si les PdV ou les PdF atteignent 0 par manque d’eau, délire et mort au bout d’une journée.</p>
 		<p>Des jets de <i>San</i> réussis peuvent diminuer (légèrement) ces conséquences.</p>
 	</details>
 

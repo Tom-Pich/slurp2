@@ -35,7 +35,7 @@ if (!isset($_SESSION["Statut"]) or !DB_ACTIVE) {
 	$_SESSION["token"] = Firewall::generateToken(16);
 	$_SESSION["time"] = time();
 } else {
-	$_SESSION["time"] >= (time() - 3 * 60 * 60) ? $_SESSION["time"] = time() : LogController::logout();
+	$_SESSION["time"] >= (time() - 3600) ? $_SESSION["time"] = time() : LogController::logout();
 }
 
 // ––– $pages_data ––––––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -131,6 +131,15 @@ if (substr($path, 0, 4) === "/api") {
 			$rolls = explode(",", $_POST["rolls"]);
 			$rolls = array_map(fn ($x) => (int) $x, $rolls);
 			$controller->getWoundEffects($dex, $san, $pdvm, $pdv, $pain_resistance, $raw_dmg, $rd, $dmg_type, $bullet_type, $localisation, $rolls);
+			break;
+
+		case "/api/explosion-damages":
+			Firewall::check(isset($_POST["damages"]) && isset($_POST["distance"]) && isset($_POST["fragmentation-surface"]) && isset($_POST["is-fragmentation-device"]));
+			$damages = (float) $_POST["damages"];
+			$distance = htmlspecialchars($_POST["distance"]);
+			$fragSurface = (float) $_POST["fragmentation-surface"];
+			$isFragmentationDevice = $_POST["is-fragmentation-device"] === "true";
+			$controller->getExplosionDamages($damages, $distance, $fragSurface, $isFragmentationDevice);
 			break;
 
 		default:
