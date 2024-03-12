@@ -1,4 +1,7 @@
 <?php
+
+use \App\Rules\ObjectController;
+
 $nbre_protagonistes = 7;
 ?>
 
@@ -123,7 +126,7 @@ $nbre_protagonistes = 7;
 
 		<!-- État général -->
 		<fieldset>
-			<legend>État général (PdV)</legend>
+			<legend>État général &amp; PdV</legend>
 			<form class="flex-s gap-½" id="general-state-widget">
 				<select class="fl-1" data-type="name-selector">
 					<?php for ($i = 1; $i <= $nbre_protagonistes; $i++) { ?>
@@ -207,43 +210,41 @@ $nbre_protagonistes = 7;
 			</p>
 		</fieldset>
 
-		<form hidden onsubmit="return false"><!-- dégâts objets -->
-			<fieldset>
-				<legend>Dégâts aux objets (expérimental)</legend>
-				<div class="flex-between">
-					<div>
-						<div>
-							<input type="text" size="3" id="do_pdsm" class="center" placeholder="PdSm" title="Pts de structure maxi de l’objet" />
-							<input type="text" size="3" id="do_pds" class="center" placeholder="PdS" title="Pts de structure actuels de l’objet" />
-							<input type="text" size="3" id="do_integ" class="center" placeholder="Intég." title="Intégrité de l’objet" />
-							<input type="text" size="3" id="do_rd" class="center" placeholder="RD" title="RD de l’objet" />
-							<input type="text" size="3" id="do_deg" class="center" placeholder="xd±y" title="Dégâts infligés à l’objet" />
-						</div>
-						<p>
-							<select id="do_type_deg" style="width: 95px" title="Type de dégâts">
-								<option value="norm">Normaux</option>
-								<option value="tr-loc" selected>Localisés</option>
-							</select>
-							<select id="do_type_objet" style="width: 80px" title="Type d’objet">
-								<option value="0">&nbsp;---</option>
-								<option selected>Voiture</option>
-								<option>Moto</option>
-								<option>Robot</option>
-								<option>Quadricoptère</option>
-							</select>
-
-							<select id="do_orientation" style="width: 65px" title="localisation des dégâts">
-								<option>Avant</option>
-								<option>Latéral</option>
-								<option>Arrière</option>
-							</select>
-
-						</p>
+		<!-- dégâts objets -->
+		<fieldset>
+			<legend>Dégâts aux objets (inactif)</legend>
+			<form class="flex-s gap-½" id="object-damages">
+				<div class="fl-1">
+					<div class="flex-s gap-½">
+						<input type="text" size="1" class="center fl-1" placeholder="PdSm" title="Pts de structure maxi de l’objet" />
+						<input type="text" size="1" class="center fl-1" placeholder="PdS" title="Pts de structure actuels de l’objet" />
+						<input type="text" size="1" class="center fl-1" placeholder="Intég." title="Intégrité de l’objet" />
+						<input type="text" size="1" class="center fl-1" placeholder="RD" title="RD de l’objet" />
+						<input type="text" size="1" class="center fl-1" placeholder="xd±y" title="Dégâts infligés à l’objet" />
 					</div>
-					<button class="nude" onclick="calcul_degats_objet()">&#x1F3B2;</button>
+					<div class="flex-s mt-½ gap-½">
+						<select class="fl-1" title="Type de dégâts">
+							<option value="norm">Normaux</option>
+							<option value="tr-loc" selected>Localisés</option>
+						</select>
+						<select class="fl-1" data-type="object-damages-object-type" title="Type d’objet">
+							<?php foreach (ObjectController::object_types as $index => $object) { ?>
+								<option><?= ucfirst($index) ?></option>
+							<?php } ?>
+						</select>
+
+						<select class="fl-1" data-type="object-damages-localisation-options" title="localisation des dégâts">
+							<?php foreach (ObjectController::object_types["voiture"]["localisations"] as $index => $object) { ?>
+								<option><?= ucfirst($index) ?></option>
+							<?php } ?>
+						</select>
+
+					</div>
 				</div>
-			</fieldset>
-		</form>
+				<button class="nude">🎲</button>
+			</form>
+		</fieldset>
+
 
 		<form hidden onsubmit="return false"><!-- collision véhicule -->
 			<fieldset>

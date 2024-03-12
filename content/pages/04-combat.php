@@ -258,8 +258,8 @@
 	</details>
 
 	<details><summary class="h3">Souffle et projection</summary>
-		<p>Une explosion suffisamment forte peut également causer des dégâts en projetant les victimes au sol.</p>
-		<p>Ces dégâts sont à traiter comme une chute de <i>x</i> mètres, avec <i>x</i> = dégâts de l’onde de choc × 20 ÷ masse de la victime.</p>
+		<p>Une explosion suffisamment forte peut également causer des dégâts en projetant les victimes dans les airs.</p>
+		<p>Ces dégâts sont à traiter comme une chute de <i>x</i> mètres, avec <i>x</i> = dégâts de l’onde de choc × 0,25.</p>
 	</details>
 
 	<details><summary class="h3">Explosion en espace confiné</summary>

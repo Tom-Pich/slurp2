@@ -1,4 +1,4 @@
-import { qs, qsa, calculate } from "./utilities.js"
+import { qs, qsa, ce, calculate } from "./utilities.js"
 import { Messenger } from "./messenger.js"
 import { roll, getLocalisation, collectOpponentData } from "./game-table-utilities.js"
 
@@ -322,6 +322,9 @@ woundEffectsWidget.addEventListener("submit", e => {
 	for (let i = 0; i < 7; i++) {
 		rolls.push(roll("3d").result)
 	}
+	if(parseInt(opponent.dex) < 0 || parseInt(opponent.san) < 0 || parseInt(opponent.pdvm) <= 0){
+		return
+	}
 	const data = new FormData
 	data.append("dex", opponent.dex)
 	data.append("san", opponent.san)
@@ -340,8 +343,6 @@ woundEffectsWidget.addEventListener("submit", e => {
 		method: "post",
 		body: data,
 	})
-		//.then (response => response.text())
-		//.then( response => console.log(response))
 		.then(response => response.json())
 		.then(response => {
 			//console.log(response.data)
@@ -429,4 +430,26 @@ explosionWidget.addEventListener("submit", (e) => {
 			flushMsg("jet")
 		})
 
+})
+
+// object damages widget – modify localisation options according to object type
+const objectDamagesObjectTypeSelector = qs("[data-type=object-damages-object-type]")
+const objectDamagesLocalisationSelector = qs("[data-type=object-damages-localisation-options]")
+objectDamagesObjectTypeSelector.addEventListener("change", (e) => {
+	const data = new FormData;
+	data.append("object-type", objectDamagesObjectTypeSelector.value);
+	fetch("/api/object-localisation-options", {
+		method: "post",
+		body: data,
+	})
+		.then(response => response.json())
+		.then(response => {
+			objectDamagesLocalisationSelector.innerHTML = "";
+			response.data.forEach(localisation => {
+				localisation = localisation.charAt(0).toUpperCase() + localisation.slice(1);
+				const option = ce("option");
+				option.innerText = localisation;
+				objectDamagesLocalisationSelector.appendChild(option)
+			})
+		})
 })

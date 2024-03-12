@@ -46,7 +46,7 @@ abstract class DiceManager
 	 * Parses a dice expression into a valid sum
 	 *
 	 * @param  string $expression – like 2d+1-4+1d-2
-	 * @return string parsed dices / modifiers
+	 * @return string parsed dices / modifiers – like 1d+2
 	 */
 	public static function diceParser(string $expression)
 	{
@@ -148,5 +148,39 @@ abstract class DiceManager
 		}
 
 		return $parsed_expression;
+	}
+
+	/**
+	 * Calculate a modifier based on a value and a reference. This modifier is equal to
+	 * ± 1 per 10% of difference.
+	 * @param float $value number that will be compared to $ref
+	 * @param float $ref the reference number
+	 * @param bool $excess_is_bad if true, modifier will be negative if value > ref
+	 * @return int ± 1 per 10% of difference
+	 */
+	public static function getModifier(float $value, float $ref, bool $excess_is_bad = true): int
+	{
+		if ($ref == 0) {
+			return 0;
+		}
+		return (int) round(($value / $ref - 1) * 10)*($excess_is_bad ? -1 : 1);
+	}
+
+	/**
+	 * given a score and a dice roll, return roll success status
+	 * does not take into account critical success or critical miss
+	 * @param int $score the score to be tested
+	 * @param int $roll the roll result (3d6)
+	 * @return bool success status of the roll
+	 */
+	public static function check_is_successfull(int $score, int $roll):bool
+	{
+		if ($roll <= 4) {
+			return true; // automatic success
+		} elseif ($roll >= 17) {
+			return false; // automatic failure
+		} else {
+			return $roll <= $score;
+		}
 	}
 }

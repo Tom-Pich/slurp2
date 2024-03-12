@@ -125,9 +125,9 @@ if (substr($path, 0, 4) === "/api") {
 			$pain_resistance = (int) $_POST["pain-resistance"];
 			$raw_dmg = (int) $_POST["raw-dmg"];
 			$rd = (int) $_POST["rd"];
-			$dmg_type = $_POST["dmg-type"];
-			$bullet_type = $_POST["bullet-type"];
-			$localisation = $_POST["localisation"];
+			$dmg_type = htmlspecialchars($_POST["dmg-type"]);
+			$bullet_type = htmlspecialchars($_POST["bullet-type"]);
+			$localisation = htmlspecialchars($_POST["localisation"]);
 			$rolls = explode(",", $_POST["rolls"]);
 			$rolls = array_map(fn ($x) => (int) $x, $rolls);
 			$controller->getWoundEffects($dex, $san, $pdvm, $pdv, $pain_resistance, $raw_dmg, $rd, $dmg_type, $bullet_type, $localisation, $rolls);
@@ -136,10 +136,19 @@ if (substr($path, 0, 4) === "/api") {
 		case "/api/explosion-damages":
 			Firewall::check(isset($_POST["damages"]) && isset($_POST["distance"]) && isset($_POST["fragmentation-surface"]) && isset($_POST["is-fragmentation-device"]));
 			$damages = (float) $_POST["damages"];
-			$distance = htmlspecialchars($_POST["distance"]);
+			$distance = 1;
+			if(is_numeric($_POST["distance"]) || in_array($_POST["distance"], ["i", "r", "c"])){
+				$distance = $_POST["distance"];
+			}
 			$fragSurface = (float) $_POST["fragmentation-surface"];
 			$isFragmentationDevice = $_POST["is-fragmentation-device"] === "true";
 			$controller->getExplosionDamages($damages, $distance, $fragSurface, $isFragmentationDevice);
+			break;
+		
+		case "/api/object-localisation-options" :
+			Firewall::check(isset($_POST["object-type"]));
+			$objectType = htmlspecialchars(strtolower($_POST["object-type"]));
+			$controller->getObjectLocalisationOptions($objectType);
 			break;
 
 		default:
