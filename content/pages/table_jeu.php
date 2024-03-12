@@ -213,19 +213,19 @@ $nbre_protagonistes = 7;
 		<!-- dégâts objets -->
 		<fieldset>
 			<legend>Dégâts aux objets (inactif)</legend>
-			<form class="flex-s gap-½" id="object-damages">
+			<form class="flex-s gap-½" id="object-damages-widget">
 				<div class="fl-1">
 					<div class="flex-s gap-½">
-						<input type="text" size="1" class="center fl-1" placeholder="PdSm" title="Pts de structure maxi de l’objet" />
-						<input type="text" size="1" class="center fl-1" placeholder="PdS" title="Pts de structure actuels de l’objet" />
-						<input type="text" size="1" class="center fl-1" placeholder="Intég." title="Intégrité de l’objet" />
-						<input type="text" size="1" class="center fl-1" placeholder="RD" title="RD de l’objet" />
-						<input type="text" size="1" class="center fl-1" placeholder="xd±y" title="Dégâts infligés à l’objet" />
+						<input type="text" size="1" data-type="object-damages-pdsm" class="center fl-1" placeholder="PdSm" title="Pts de structure maxi de l’objet" />
+						<input type="text" size="1" data-type="object-damages-pds" class="center fl-1" placeholder="PdS" title="Pts de structure actuels de l’objet" />
+						<input type="text" size="1" data-type="object-damages-integrite" class="center fl-1" placeholder="Intég." title="Intégrité de l’objet" />
+						<input type="text" size="1" data-type="object-damages-rd" class="center fl-1" placeholder="RD" title="RD de l’objet" />
+						<input type="text" size="1" data-type="object-damages-damages-code" class="center fl-1" placeholder="xd±y" title="Dégâts infligés à l’objet" />
 					</div>
 					<div class="flex-s mt-½ gap-½">
-						<select class="fl-1" title="Type de dégâts">
-							<option value="norm">Normaux</option>
-							<option value="tr-loc" selected>Localisés</option>
+						<select class="fl-1" data-type="object-damages-damages-type" title="Type de dégâts">
+							<option value="normaux">Normaux</option>
+							<option value="tres-localises">Localisés</option>
 						</select>
 						<select class="fl-1" data-type="object-damages-object-type" title="Type d’objet">
 							<?php foreach (ObjectController::object_types as $index => $object) { ?>

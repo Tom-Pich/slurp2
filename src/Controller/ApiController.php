@@ -139,6 +139,12 @@ class ApiController
 		$this->sendResponse();
 	}
 
+	public function getObjectDamageEffects(int $pdsm, int $pds, int $integrite, int $rd, int $rawDamages, string $dmgType, string $objectType, string $localisation, array $rolls)
+	{
+		$this->response["data"] = ObjectController::getObjectDamageEffects($pdsm, $pds, $integrite, $rd, $rawDamages, $dmgType, $objectType, $localisation, $rolls);
+		$this->sendResponse();
+	}
+
 	/**
 	 * sendResponse \
 	 * send JSON response, with all data under "data" key

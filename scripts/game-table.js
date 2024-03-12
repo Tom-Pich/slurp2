@@ -322,7 +322,7 @@ woundEffectsWidget.addEventListener("submit", e => {
 	for (let i = 0; i < 7; i++) {
 		rolls.push(roll("3d").result)
 	}
-	if(parseInt(opponent.dex) < 0 || parseInt(opponent.san) < 0 || parseInt(opponent.pdvm) <= 0){
+	if (parseInt(opponent.dex) < 0 || parseInt(opponent.san) < 0 || parseInt(opponent.pdvm) <= 0) {
 		return
 	}
 	const data = new FormData
@@ -451,5 +451,55 @@ objectDamagesObjectTypeSelector.addEventListener("change", (e) => {
 				option.innerText = localisation;
 				objectDamagesLocalisationSelector.appendChild(option)
 			})
+		})
+})
+
+// object damages widget – submit
+const objectDamageWidget = qs("#object-damages-widget")
+objectDamageWidget.addEventListener("submit", (e) => {
+
+	const pdsm = qs("[data-type=object-damages-pdsm]").value;
+	const pds = qs("[data-type=object-damages-pds]").value;
+	const integrite = qs("[data-type=object-damages-integrite]").value;
+	const rd = qs("[data-type=object-damages-rd]").value;
+	const dmgCode = qs("[data-type=object-damages-damages-code]").value
+	const dmgValue = roll(dmgCode).result;
+
+	if (isNaN(parseInt(pdsm)) || isNaN(parseInt(integrite)) || isNaN(parseInt(dmgValue))) { return }
+
+	const data = new FormData;
+	data.append("pdsm", pdsm);
+	data.append("pds", pds);
+	data.append("integrite", integrite);
+	data.append("rd", rd);
+	data.append("dmgValue", dmgValue);
+	data.append("dmgType", qs("[data-type=object-damages-damages-type]").value)
+	data.append("objectType", objectDamagesObjectTypeSelector.value)
+	data.append("localisation", objectDamagesLocalisationSelector.value)
+	data.append("rolls", [roll("3d").result, roll("3d").result, roll("3d").result, roll("3d").result])
+
+	fetch("/api/object-damages-effects", {
+		method: "post",
+		body: data,
+	})
+		.then(response => response.json())
+		.then(response => {
+			const results = response.data;
+			console.log(results);
+			qs("[data-type=object-damages-pds]").value = results.pds;
+			let formattedMsg = `
+				<b>Dégâts ${results.objectType}</b><br>
+				PdSm&nbsp;: ${results.pdsm} – RD&nbsp;: ${results.rd}<br>
+				Dégâts&nbsp;: ${results.netDamages} (${results.damagesLevel})<br>
+				PdS restant&nbsp;: ${results.pds} (${results.stateLevel})
+			`;
+			if(results.sideEffects.length){
+				formattedMsg += "<br>"
+				for (let effect of results.sideEffects){
+					formattedMsg += `•&nbsp;${effect[0]} niv. ${effect[1]}<br>`
+				}
+			}
+			inputEntry.value += formattedMsg;
+			flushMsg("jet")
 		})
 })

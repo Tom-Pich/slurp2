@@ -150,6 +150,21 @@ if (substr($path, 0, 4) === "/api") {
 			$objectType = htmlspecialchars(strtolower($_POST["object-type"]));
 			$controller->getObjectLocalisationOptions($objectType);
 			break;
+		
+		case "/api/object-damages-effects" :
+			Firewall::check(isset($_POST["pdsm"]) && isset($_POST["pds"]) && isset($_POST["integrite"]) && isset($_POST["rd"]) && isset($_POST["dmgValue"]) && isset($_POST["dmgType"]) && isset($_POST["objectType"]) && isset($_POST["localisation"]) && isset($_POST["rolls"]));
+			$pdsm = (int) $_POST["pdsm"];
+			$pds = is_numeric($_POST["pds"]) ? (int) $_POST["pds"] : $pdsm;
+			$integrite = (int) $_POST["integrite"];
+			$rd = (int) $_POST["rd"];
+			$rawDamages = (int) $_POST["dmgValue"];
+			$dmgType = htmlspecialchars($_POST["dmgType"]);
+			$objectType = htmlspecialchars(strtolower($_POST["objectType"]));
+			$localisation = htmlspecialchars(strtolower($_POST["localisation"]));
+			$rolls = explode(",", $_POST["rolls"]);
+			$rolls = array_map(fn ($x) => (int) $x, $rolls);
+			$controller->getObjectDamageEffects($pdsm, $pds, $integrite, $rd, $rawDamages, $dmgType, $objectType, $localisation, $rolls);
+			break;
 
 		default:
 			Firewall::redirect_to_404();

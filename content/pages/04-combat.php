@@ -309,7 +309,7 @@
 		
 		<h5>Niveaux de gravité</h5>
 		<table class="alternate-o left2">
-			<tr><th width="25px">1</th> <td>Dommages mineurs.</td></tr>
+			<tr><th style="width: 5ch">1</th> <td>Dommages mineurs.</td></tr>
 			<tr><th>2</th> <td>Fonctionne encore, mais mal et/ou provisoirement.</td></tr>
 			<tr><th>3</th> <td>Cesse de fonctionner immédiatement.</td></tr>
 			<tr><th>&ge; 4</th> <td>Localisation détruite.</td></tr>
