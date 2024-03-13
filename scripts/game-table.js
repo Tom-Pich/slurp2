@@ -493,13 +493,37 @@ objectDamageWidget.addEventListener("submit", (e) => {
 				Dégâts&nbsp;: ${results.netDamages} (${results.damagesLevel})<br>
 				PdS restant&nbsp;: ${results.pds} (${results.stateLevel})
 			`;
-			if(results.sideEffects.length){
+			if (results.sideEffects.length) {
 				formattedMsg += "<br>"
-				for (let effect of results.sideEffects){
+				for (let effect of results.sideEffects) {
 					formattedMsg += `•&nbsp;${effect[0]} niv. ${effect[1]}<br>`
 				}
 			}
 			inputEntry.value += formattedMsg;
 			flushMsg("jet")
 		})
+})
+
+// vehicle collision widget
+const vehicleCollisionWidget = qs("#vehicle-collision-widget")
+vehicleCollisionWidget.addEventListener("submit", (e) => {
+	const pdsm = parseInt(qs("[data-type=vehicle-collision-pdsm]").value);
+	const severity = qs("[data-type=vehicle-collision-severity]");
+	const severityIndex = parseInt(severity.value);
+	const severityLevel = severity.options[severity.selectedIndex].innerText;
+
+	if (!pdsm) { return }
+	let damages;
+	switch (severityIndex) {
+		case 1: damages = Math.round((15 + roll("3d").result) / 100 * pdsm); break;
+		case 2: damages = Math.round((40 + roll("3d").result) / 100 * pdsm); break;
+		case 3: damages = Math.round((90 + roll("3d").result) / 100 * pdsm); break;
+		case 4: damages = Math.round((180 + roll("6d").result) / 100 * pdsm); break;
+		case 5: damages = "véhicule détruit"; break;
+		default: damages = 0
+	}
+
+	const formattedMsg = `<b>Collision</b> ${severityLevel}&nbsp;: dégâts ${damages}`
+	inputEntry.value += formattedMsg;
+	flushMsg("jet")
 })

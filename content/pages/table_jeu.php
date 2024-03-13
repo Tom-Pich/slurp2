@@ -212,7 +212,7 @@ $nbre_protagonistes = 7;
 
 		<!-- dégâts objets -->
 		<fieldset>
-			<legend>Dégâts aux objets (inactif)</legend>
+			<legend>Dégâts aux objets</legend>
 			<form class="flex-s gap-½" id="object-damages-widget">
 				<div class="fl-1">
 					<div class="flex-s gap-½">
@@ -245,29 +245,23 @@ $nbre_protagonistes = 7;
 			</form>
 		</fieldset>
 
-
-		<form hidden onsubmit="return false"><!-- collision véhicule -->
-			<fieldset>
-				<legend>Collision de véhicule (expérimental)</legend>
-				<div class="flex-between">
-					<div>
-						<select id="collision_gravite" style="width: 100px">
-							<option value="1">Très Légère</option>
-							<option value="2">Légère</option>
-							<option value="3">Moyenne</option>
-							<option value="4">Grave</option>
-							<option value="5">Extrême</option>
-						</select>&emsp;
-						<input type="text" size="3" id="collision_pdsm" class="center" placeholder="PdSm" />
-					</div>
-					<button class="nude" onclick="collision()">&#x1F3B2;</button>
+		<!-- Collision véhicule -->
+		<fieldset>
+			<legend>Collision de véhicules</legend>
+			<form class="flex-s gap-½" id="vehicle-collision-widget">
+				<div class="fl-1 flex-s gap-½">
+					<select class="fl-1" data-type="vehicle-collision-severity">
+						<option value="1">Très Légère</option>
+						<option value="2">Légère</option>
+						<option value="3">Moyenne</option>
+						<option value="4">Grave</option>
+						<option value="5">Extrême</option>
+					</select>
+					<input type="text" size="4" data-type="vehicle-collision-pdsm" class="center" placeholder="PdSm" />
 				</div>
-			</fieldset>
-		</form>
-
-		<!-- explosion -->
-
-
+				<button class="nude">🎲</button>
+			</form>
+		</fieldset>
 
 	</div>
 

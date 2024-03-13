@@ -173,6 +173,7 @@ if (substr($path, 0, 4) === "/api") {
 
 // submit
 elseif (substr($path, 0, 7) === "/submit") {
+	
 	switch ($path) {
 
 		case "/submit/log-out":
