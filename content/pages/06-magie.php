@@ -45,7 +45,7 @@ use App\Entity\Spell;
 
 	<details><summary class="h3">Apprendre un sort</summary>
 		<p>Un sort est une <i>spécialisation optionnelle</i> d’un collège. Le score d’un sort est également assorti d’un modificateur qui dépend de son niveau de puissance (voir <i>Lancer un sort</i> plus loin)</p>
-		<p class="interligne center"><b>score brut (sort) = score (collège) + pts investis – modificateur de puissance</b></p>
+		<p class="mt-1 ta-center"><b>score brut (sort) = score (collège) + pts investis – modificateur de puissance</b></p>
 		<p>Un sort ayant plusieurs niveaux de puissance possèdera donc des scores différents selon le niveau auquel il est utilisé.</p>
 		<p>Il est <b>impossible de lancer un sort sans avoir un score brut &ge; 12</b> dans ce sort, que ce soit en l’improvisant ou en l’ayant appris.</p>
 		
@@ -139,7 +139,7 @@ use App\Entity\Spell;
 	<p><b>Jeter des sorts en en prolongeant d’autres&nbsp;:</b> si le sort actif nécessite une concentration, un autre sort peut être jeté à -3. Les sorts nécessitant une concentration le mentionnent dans leur description. Sinon (y compris dans le cas d’un sort projectile gardé « &nbsp;en main&nbsp;»), il peut être jeté à -1. Les sorts permanents ne sont pas considérés comme des sorts en cours. Ces pénalités sont cumulatives.</p></details>
 	
 	<details><summary class="h3">Caractéristiques générales des sorts</summary>
-	<table class="alternate-e center">
+	<table class="alternate-e">
 		<tr>
 			<th rowspan="2">Niv.</th>
 			<th rowspan="2">Modif. de<br/> puissance</th>
@@ -170,7 +170,7 @@ use App\Entity\Spell;
 	<p>Ce temps peut être raccourci grâce à un score de compétence élevé (sauf si le sort nécessite toujours un rituel ou un objet spécifique).</p>
 	<p>Dans tous les cas, <b>un seul sort peut être lancé chaque seconde</b>, même s'il peut être lancé de manière instantanée.</p>
 
-	<table class="alternate-e left2">
+	<table class="alternate-e left-2">
 		<tr>
 			<th width="10%">Score brut</th>
 			<th>Rituel nécessaire</th>
@@ -216,7 +216,7 @@ use App\Entity\Spell;
 
 	<details><summary class="h3">Modificateurs de longue distance</summary>
 	<p>Lorsqu’un sort agit à longue distance, utiliser le tableau ci-dessous pour déterminer le malus associé à la distance entre l’initiateur et le sujet.</p>
-	<table class="alternate-e center">
+	<table class="alternate-e left-1">
 		<tr><th>Distance</th>	<th>Modif.</th></tr>
 		<tr><td>&le; 100 m</td>	<td>0</td></tr>
 		<tr><td>&le; 300 m</td>	<td>-1</td></tr>
@@ -244,7 +244,7 @@ use App\Entity\Spell;
 	<p>Afin de simplifier la description des sorts, des effets «&nbsp;génériques&nbsp;» sont définis en fonction du niveau du sort.</p>
 	
 	<details><summary class="h3">Table des effets génériques</summary>
-	<table class="alternate-e center left1">
+	<table class="alternate-e left-1">
 		<tr><th>Type d’effets</th>				<th>I</th>				<th>II</th>			<th>III</th>		<th>IV</th>			<th>V<sup>(5)</sup></th></tr>
 		<tr><td>Modif. standards</td>		<td>&plusmn;1</td>		<td>&plusmn;2</td>	<td>&plusmn;3</td>	<td>&plusmn;5</td>	<td>&infin;</td></tr>
 		<tr><td>Modif. de <i>Force</i></td>	<td>&plusmn;20&nbsp;%</td><td>&plusmn;40&nbsp;%</td><td>&plusmn;60&nbsp;%</td><td>&plusmn;100&nbsp;%</td><td>&infin;</td></tr>
@@ -352,7 +352,7 @@ use App\Entity\Spell;
 	</details>
 
 	<details><summary class="h3">Coût en points de personnage</summary>
-		<table class="center left1">
+		<table class="left-1">
 			<tr><th>Puissance</th>		<td>I</td>	<td>II</td>	<td>III</td>	<td>IV</td>	<td>V</td></tr>
 			<tr>
 				<th>Pts de perso</th>
@@ -384,12 +384,16 @@ use App\Entity\Spell;
 	<p>Il est possible d'améliorer ou de limiter l'utilisation d'un pouvoir.</p>
 	<p>En fonction de l’étendue des limitations et/ou des améliorations, le MJ attribue un multiplicateur de coût en pts de personnage à l’achat du pouvoir. Ce multiplicateur n'a pas d'influence sur le coût de l'amélioration du score de ce pouvoir.</p>
 
-	<table class="alternate-e center2 center4">
-		<tr><th colspan="2">Limitation</th><th colspan="2">Amélioration</th></td>
-		<tr><td>Légère</td>		<td>×0,90</td>	<td>Mineure</td>			<td>×1,1</td></tr>
-		<tr><td>Moyenne</td>	<td>×0,75</td>	<td>Moyenne</td>			<td>×1,25</td></tr>
-		<tr><td>Forte</td>		<td>×0,67</td>	<td>Assez importante</td>	<td>×1,5</td></tr>
-		<tr><td>Drastique</td>	<td>×0,50</td>	<td>Très importante</td>	<td>×2</td></tr>
+	<table class="alternate-e left-1">
+		<tr><th>Limitation ou amélioration</th> 	<th>Mult.</th></td>
+		<tr><td>Limitation drastique</td> 			<td>×0,50</td></tr>
+		<tr><td>Limitation forte</td> 				<td>×0,67</td></tr>
+		<tr><td>Limitation moyenne</td> 			<td>×0,75</td></tr>
+		<tr><td>Limitation légère</td> 				<td>×0,90</td></tr>
+		<tr><td>Amélioration mineure</td>			<td>×1,1</td></tr>
+		<tr><td>Amélioration moyenne</td>			<td>×1,25</td></tr>
+		<tr><td>Amélioration assez importante</td>	<td>×1,5</td></tr>
+		<tr><td>Amélioration très importante</td>	<td>×2</td></tr>
 	</table>
 
 	<p>L'importance d’une amélioration donnée ou d’une limitation donnée peut dépendre de la nature du pouvoir et de l’univers de jeu. Elle doit être évaluée au cas par cas par le MJ en se basant sur le tableau ci-dessus.</p>
@@ -600,7 +604,7 @@ use App\Entity\Spell;
 	<p><b>Échec&nbsp;:</b> les matériaux sont perdus.</p>
 	<p><b>Échec critique&nbsp;:</b> refaire un jet d'<i>Alchimie</i>, à -1 pour chaque dose d’élixir de la fournée, au-delà de la première. En cas de réussite, le désastre est évité ; s’il échoue, faire un jet sur la table ci-dessous.</p>
 
-	<table class="alternate-e left2">
+	<table class="alternate-e left-2">
 		<tr><th width="15%">3d</th>		<th>Effets</th></tr>
 		<tr><td>3-5</td>	<td>Les potions paraissent réussies, mais elles auront un effet inverse (50%) ou auront les effets d’une dose de poison mortel (50%) lorsqu’elles sont bues.</td></tr>
 		<tr><td>6-9</td>	<td>Tous ceux qui se trouvent dans un rayon de 10 m subiront les effets de l’élixir (50 %), ou ses effets inverses (50 %).</td></tr>

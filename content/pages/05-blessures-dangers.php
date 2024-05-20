@@ -171,7 +171,7 @@ use App\Rules\WoundController;
 		</table>
 
 		<h4>Conditions de guérison</h4>
-		<table class="alternate-o left1">
+		<table class="alternate-o left-1">
 			<tr>
 				<th colspan="2">Modificateur d’environnement</th>
 			</tr>

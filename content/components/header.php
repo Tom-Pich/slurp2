@@ -19,10 +19,10 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 	<title><?= $page["title"] ?></title>
 
 	<?php if (!empty($page["canonical"])) { ?>
-		<link rel="canonical" href="https://jdr.pichegru.net/<?= $page["canonical"] ?>">
+		<link rel="canonical" href="https://jdr.pichegru.net<?= $page["canonical"] ?>">
 		<meta property="og:title" content="<?= $page["title"] ?>">
 		<meta property="og:type" content="Website">
-		<meta property="og:url" content="https://jdr.pichegru.net/<?= $page["canonical"] ?? "" ?>">
+		<meta property="og:url" content="https://jdr.pichegru.net<?= $page["canonical"] ?? "" ?>">
 		<meta property="og:description" content="<?= $page["description"] ?>">
 		<meta property="og:image" content="https://jdr.pichegru.net/assets/img/dices.png">
 	<?php } ?>
@@ -112,11 +112,11 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 					<h4>Aides de jeu</h4>
 					<ul class="sub-menu" style="--height: 13rem;">
 						<li><a href="/ecrire-scenario"><?= $pages_data['ecrire-scenario']["title"] ?></a></li>
-						<!-- <li><a href="/ecrire-scenario-v2"><?= $pages_data['ecrire-scenario-v2']["title"] ?></a></li> -->
 						<li><a href="/aide-de-jeu-medfan"><?= $pages_data['aide-de-jeu-medfan']["title"] ?></a></li>
 						<li><a href="/bibliotheque-liens"><?= $pages_data['bibliotheque-liens']["title"] ?></a></li>
+						<li><a href="/paorn"><?= $pages_data['paorn']["title"] ?></a></li>
 						<?php if ($_SESSION['Statut'] >= 3) { ?>
-							<li><a href="/paorn"><?= $pages_data['paorn']["title"] ?></a></li>
+							
 							<li><a href="/scenarii"><?= $pages_data['scenarii']["title"] ?></a></li>
 							<li><a href="/test">Test</a></li>
 						<?php } ?>

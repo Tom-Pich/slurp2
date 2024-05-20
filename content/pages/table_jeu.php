@@ -196,9 +196,9 @@ $nbre_protagonistes = 7;
 			<form class="flex-s gap-½" id="explosion-widget">
 				<div class="fl-1">
 					<div class="flex-s gap-½ ai-center">
-						<input type="text" size="1" data-type="explosion-dmg" class="center fl-1" placeholder="xd±y" title="Dégâts de l’explosion">
-						<input type="text" size="1" data-type="explosion-distance" class="center fl-1" placeholder="Distance" title="Distance de la cible (I, R, C ou valeur en m)">
-						<input type="text" size="1" data-type="explosion-frag-surface" class="center fl-1" placeholder="S. fragments" title="Surface cible exposée aux fragments">
+						<input type="text" size="1" data-type="explosion-dmg" class="ta-center fl-1" placeholder="xd±y" title="Dégâts de l’explosion">
+						<input type="text" size="1" data-type="explosion-distance" class="ta-center fl-1" placeholder="Distance" title="Distance de la cible (I, R, C ou valeur en m)">
+						<input type="text" size="1" data-type="explosion-frag-surface" class="ta-center fl-1" placeholder="S. fragments" title="Surface cible exposée aux fragments">
 						<input type="checkbox" data-type="explosion-frag-device" title="Engin explosif à fragmentation ?" />
 					</div>
 				</div>
@@ -216,11 +216,11 @@ $nbre_protagonistes = 7;
 			<form class="flex-s gap-½" id="object-damages-widget">
 				<div class="fl-1">
 					<div class="flex-s gap-½">
-						<input type="text" size="1" data-type="object-damages-pdsm" class="center fl-1" placeholder="PdSm" title="Pts de structure maxi de l’objet" />
-						<input type="text" size="1" data-type="object-damages-pds" class="center fl-1" placeholder="PdS" title="Pts de structure actuels de l’objet" />
-						<input type="text" size="1" data-type="object-damages-integrite" class="center fl-1" placeholder="Intég." title="Intégrité de l’objet" />
-						<input type="text" size="1" data-type="object-damages-rd" class="center fl-1" placeholder="RD" title="RD de l’objet" />
-						<input type="text" size="1" data-type="object-damages-damages-code" class="center fl-1" placeholder="xd±y" title="Dégâts infligés à l’objet" />
+						<input type="text" size="1" data-type="object-damages-pdsm" class="ta-center fl-1" placeholder="PdSm" title="Pts de structure maxi de l’objet" />
+						<input type="text" size="1" data-type="object-damages-pds" class="ta-center fl-1" placeholder="PdS" title="Pts de structure actuels de l’objet" />
+						<input type="text" size="1" data-type="object-damages-integrite" class="ta-center fl-1" placeholder="Intég." title="Intégrité de l’objet" />
+						<input type="text" size="1" data-type="object-damages-rd" class="ta-center fl-1" placeholder="RD" title="RD de l’objet" />
+						<input type="text" size="1" data-type="object-damages-damages-code" class="ta-center fl-1" placeholder="xd±y" title="Dégâts infligés à l’objet" />
 					</div>
 					<div class="flex-s mt-½ gap-½">
 						<select class="fl-1" data-type="object-damages-damages-type" title="Type de dégâts">
@@ -257,7 +257,7 @@ $nbre_protagonistes = 7;
 						<option value="4">Grave</option>
 						<option value="5">Extrême</option>
 					</select>
-					<input type="text" size="4" data-type="vehicle-collision-pdsm" class="center" placeholder="PdSm" />
+					<input type="text" size="4" data-type="vehicle-collision-pdsm" class="ta-center" placeholder="PdSm" />
 				</div>
 				<button class="nude">🎲</button>
 			</form>

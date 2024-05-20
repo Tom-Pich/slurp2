@@ -63,7 +63,7 @@
 
 	<details><summary class="h3">Paramètres matériels</summary>
 		<p>La tentative de piratage dépend des paramètres suivants&nbsp;:</p>
-		<ul class="interligne">
+		<ul class="mt-1">
 			<li><b>Puissance</b> des ordinateurs impliqués, aussi bien l’ordinateur de l’attaquant que l’ordinateur cible (pour certaines formes d’attaques)</li>
 			<li><b>Type d’accès</b> à l’ordinateur cible. Il y a 4 types d’accès possibles.
 				<ul>
@@ -81,7 +81,7 @@
 	<details><summary class="h3">Niveau de sécurisation d’un ordinateur</summary>
 		<p>Le niveau de sécurisation d’un ordinateur dépend des compétences de son administrateur, de la qualité des programmes installés dessus (absence de faille&hellip;) et du que les dispositifs de sécurisation installés (antivirus, mur de feu, etc&hellip;) soient bien à jour.</p>
 		<p>On distingue 5 niveaux de sécurisation&nbsp;:</p>
-		<table class="alternate-e left2">
+		<table class="alternate-e left-2">
 			<tr><th>Niveau</th>	<th>Description</th></tr>
 			<tr>
 				<th>1</th>
@@ -133,7 +133,7 @@
 		<h4>Procédure d’attaque en aveugle</h4>
 		<p>Si le pirate ne connaît pas de faille particulière à l’avance, il va devoir en chercher une. Ceci nécessite un jet de <i>Piraterie Informatique</i> avec les modificateurs suivants&nbsp;:</p>
 		
-		<table class="alternate-e left1">
+		<table class="alternate-e left-1">
 			<tr><th class="color1" colspan = "2">Type d’accès</th></tr>
 			<tr><td>Accès physique</td>	<td>-5</td></tr>
 			<tr><td>Accès par port</td>	<td>0</td></tr>
@@ -165,7 +165,7 @@
 		<h4>Attaque réussie</h4>
 		<p>Si l’attaque réussit, le pirate a accès à l’ordinateur au moins partiellement. L’ampleur du type d’accès dépend de la MR de son jet de <i>Piraterie informatique</i>.</p>
 		
-		<table class="alternate-e left2">
+		<table class="alternate-e left-2">
 			<tr><th>MR</th>	<th>Type d’accès</th></tr>
 			<tr><th>0</th>	<td><b>Accès limité.</b> Il a les autorisations d’un utilisateur lambda et ne peut donc pas accéder aux zones sensibles du système</td></tr>
 			<tr><th>1-4</th><td><b>Accès avancé.</b> Il peut accéder à certaines données sensibles et modifier de nombreux paramètres de l’ordinateur ne compromettant pas sa sécurité.</td></tr>

@@ -39,13 +39,17 @@ if (!isset($_SESSION["Statut"]) or !DB_ACTIVE) {
 }
 
 // ––– $pages_data ––––––––––––––––––––––––––––––––––––––––––––––––––––––
-include "content/pages.php";
+include "content/pages/_pages-data.php";
 
 // Front router –––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 $path = parse_url($_SERVER["REQUEST_URI"])["path"];
+$path_segments = array_filter(explode("/", $path)); // empty for home page, first level = $path_segments[1] (not [0])
+$pathFirstSegment = $path_segments[1] ?? null;
+//var_dump($path_levels); die();
 
 // API
-if (substr($path, 0, 4) === "/api") {
+//if (substr($path, 0, 4) === "/api") {
+if ($pathFirstSegment === "api") {
 
 	$controller = new ApiController;
 
@@ -172,7 +176,7 @@ if (substr($path, 0, 4) === "/api") {
 }
 
 // submit
-elseif (substr($path, 0, 7) === "/submit") {
+elseif ($pathFirstSegment === "submit") {
 	
 	switch ($path) {
 
@@ -302,14 +306,14 @@ elseif (substr($path, 0, 7) === "/submit") {
 }
 
 // character pages
-elseif (in_array($path, ["/personnage-fiche", "/personnage-gestion"])) {
+elseif (in_array($pathFirstSegment, ["personnage-fiche", "personnage-gestion"])) {
 	Firewall::filter(1);
-	Firewall::check(!empty($_GET["perso"]));
-	$character = new Character($_GET["perso"]);
+	Firewall::check(!empty($_GET["perso"] && (int) $_GET["perso"]));
+	$character = new Character( (int) $_GET["perso"]);
 	if (!$character->checkClearance()) {
 		(new Error404Controller)->show();
 	}
-	$page_name = ltrim($path, "/");
+	$page_name = $pathFirstSegment;
 	$page_data = [
 		"title" => $character->name,
 		"description" => "",
@@ -322,11 +326,10 @@ elseif (in_array($path, ["/personnage-fiche", "/personnage-gestion"])) {
 
 
 // scenarii pages
-} elseif (substr($path, 0, 9) === "/scenario") {
+} elseif ($pathFirstSegment === "scenario") {
 	Firewall::filter(3);
 	require_once "content/scenarii/_scenarii-data.php";
-	$scenario_url = substr($path, 9);
-	$scenario_name = ltrim($scenario_url, "/");
+	$scenario_name = $path_segments[2];
 	$scenarii_url_list = array_keys($scenarii_data);
 	if (in_array($scenario_name, $scenarii_url_list)) {
 		$page_data = [
@@ -345,11 +348,11 @@ elseif (in_array($path, ["/personnage-fiche", "/personnage-gestion"])) {
 
 // standard pages
 else {
-	$page_name = $path === "/" ? "home" : ltrim($path, "/");
+	$page_name = $path === "/" ? "home" : $pathFirstSegment;
 	$page_data = $pages_data[$page_name] ?? null;
 
 	if ($page_data) {
-		$page_data["canonical"] = ltrim($path, "/");
+		$page_data["canonical"] = $path;
 		$access_restriction = $page_data["access-restriction"] ?? 0;
 		if ($access_restriction) {
 			Firewall::filter($access_restriction);

@@ -1,36 +1,50 @@
-@font-face { font-family: Rubik; font-weight: 300 900; font-style: normal; font-display: swap; src: url('/assets/fonts/rubik-regular.woff2') format('woff2-variations');}
-@font-face { font-family: Rubik; font-weight: 300 900; font-style: italic; font-display: swap; src: url('/assets/fonts/rubik-italic.woff2') format('woff2-variations');}
-@font-face { font-family: Open Sans; font-weight: 300 800; font-stretch: 75% 100%; font-style: normal; font-display: swap;src: url('/assets/fonts/opensans-regular.woff2') format('woff2-variations');}
+@font-face { font-family: "Rubik"; font-weight: 300 900; font-style: normal; font-display: swap; src: url('/assets/fonts/rubik-regular.woff2') format('woff2-variations');}
+@font-face { font-family: "Rubik"; font-weight: 300 900; font-style: italic; font-display: swap; src: url('/assets/fonts/rubik-italic.woff2') format('woff2-variations');}
+@font-face { font-family: "Open Sans"; font-weight: 300 800; font-stretch: 75% 100%; font-style: normal; font-display: swap;src: url('/assets/fonts/opensans-regular.woff2') format('woff2-variations');}
 @font-face { font-family: Open Sans; font-weight: 300 800; font-stretch: 75% 100%; font-style: italic; font-display: swap; src: url('/assets/fonts/opensans-italic.woff2') format('woff2-variations');}
 @font-face { font-family: 'FA6 Brands'; src: url("assets/fonts/fa-brands-400.woff2") format("woff2"); font-display: swap; }
 @font-face { font-family: 'FA6 Regular'; src: url("assets/fonts/fa-regular-400.woff2") format("woff2"); font-display: swap; }
 @font-face { font-family: 'FA6 Solid'; src: url("assets/fonts/fa-solid-900.woff2") format("woff2"); font-display: swap; }
 
 $brp-l: 1200px;
-$brp-m: 800px;
-$brp-s: 540px;
+$brp-m: 768px;
+$brp-s: 480px;
 
-$size-values: ( 0: 0, ¼: .25em, ½: .5em, ¾: .75em, 1: 1em, 1½ : 1.5em, 2: 2em, 3: 3em, 4: 4em, 5: 5em );
-$dynamic-size-values: ("½-1": var(--dynamic-space-½-1), "½-2": var(--dynamic-space-½-2), "1-2": var(--dynamic-space-1-2) );
-$scale: (100, 200, 300, 400, 450, 500, 600, 700, 800, 900);
+$size-values: ( 0: 0, ¼: .25em, ½: .5em, ¾: .75em, 1: 1em, 2: 2em, 3: 3em, 4: 4em, 5: 5em ); // alt + : 172 → ¼ ; 171 → ½ ; 243 → ¾ 
+$dynamic-size-values: ("½-1": var(--dynamic-space-½-1), "½-2": var(--dynamic-space-½-2), "1-2": var(--dynamic-space-1-2), "1-5": var(--dynamic-space-1-5),  "3-5": var(--dynamic-space-3-5) );
+$scale: (100, 200, 300, 400, 450, 500, 600, 700, 800, 900, 1000);
 
-@mixin sizes($attr) { @each $size, $value in $size-values { &-#{$size} {#{$attr}: $value !important; }}}
-@mixin dynamic-sizes($attr) { @each $size, $value in $dynamic-size-values { &-#{$size} {#{$attr}: $value !important; }}}
-@mixin scale($attr) { @each $step in $scale { &-#{$step} {#{$attr}: #{$step} !important; }}}
-@mixin scale-var($attr, $var) { @each $step in $scale { &-#{$step} {#{$attr}: var(--#{$var}-#{$step}) !important; }}}
-@mixin media($break-point: $brp-s) {@media screen and (max-width: #{$break-point}) {@content}};
+@mixin sizes($attr, $important: false) { @each $size, $value in $size-values {
+	&-#{$size} { @if $important {#{$attr}: $value !important;} @else {#{$attr}: $value;} }
+}} // margin, padding and gaps
+@mixin dynamic-sizes($attr, $important: false) { @each $size, $value in $dynamic-size-values {
+	&-#{$size} { @if $important {#{$attr}: $value !important;} @else {#{$attr}: $value;} }
+}} // margin, padding and gaps
+@mixin scale($attr, $important: false) { @each $step in $scale {
+	&-#{$step} { @if $important {#{$attr}: #{$step} !important;} @else {#{$attr}: #{$step}} }
+}} // used in .fw-
+@mixin scale-var($attr, $var, $important: false) { @each $step in $scale {
+	&-#{$step} { @if $important {#{$attr}: var(--#{$var}-#{$step}) !important; } @else {#{$attr}: var(--#{$var}-#{$step}) }}
+}} // used in .fs-
+
+@mixin media($break-point: $brp-m) {@media screen and (max-width: #{$break-point}) {@content}};
+@mixin media-min($break-point: $brp-m) {@media screen and ( width > #{$break-point}) {@content}};
+@mixin flow { > :where(:not(:first-child)) {margin-top: var(--flow-space, 1em);} }
 
 :root {
 	//color-scheme: light dark;
 
-	--ff-base: Open Sans;
-	--ff-accent: Rubik;
+	--ff-base: "Open Sans", sans-serif;
+	--ff-accent: "Rubik", sans-serif;
 	--ff-hand: 'Segoe Print', 'Bradley Hand', Chilanka, TSCu_Comic, casual, cursive;
 
 	--content-max-width: 1000px;
-	--dynamic-space-½-1: clamp(0.50rem, calc(0.19rem + 0.93vw), 1.00rem);
-	--dynamic-space-½-2: clamp(0.50rem, calc(-0.44rem + 2.79vw), 2.00rem);
-	--dynamic-space-1-2: clamp(1.00rem, calc(0.37rem + 1.86vw), 2.00rem);
+	--dynamic-space-½-1: clamp(0.5rem, calc(0.19rem + 0.93vw), 1rem);
+	--dynamic-space-½-2: clamp(0.5rem, calc(-0.44rem + 2.79vw), 2rem);
+	--dynamic-space-1-2: clamp(1rem, calc(0.37rem + 1.86vw), 2rem);
+	--dynamic-space-1-5: clamp(1rem, -1.51rem + 7.44vw, 5rem);
+	--dynamic-space-3-5: clamp(3rem, 1.74rem + 3.72vw, 5rem);
+
 
 	--clr-text: hsl(0, 0%, 20%);
 	--clr-text-accent: hsl(0, 0%,0%);
@@ -77,11 +91,11 @@ $scale: (100, 200, 300, 400, 450, 500, 600, 700, 800, 900);
 }
 
 // Reset
-* {margin: 0;}
-*, *::after, *::before {box-sizing: border-box;}
-html {scroll-behavior: smooth;}
+*, *::after, *::before {margin: 0; box-sizing: border-box; font-size: inherit; }
+html {color-scheme: dark light;}
+:has(:target){ scroll-behavior: smooth; scroll-padding-top: 10em; }
 body {font-family: var(--ff-base); color: var(--clr-text); font-size: var(--fs-400); line-height: 1.5; background-color: var(--clr-background); }
-h1, h2, h3, h4, h5, h6 {font-family: var(--ff-accent); line-height: 1.1; color: var(--clr-text-accent)}
+h1, h2, h3, h4, h5, h6 {font-family: var(--ff-accent); line-height: 1.1; color: var(--clr-text-accent); text-wrap: balance; letter-spacing: -.02em;}
 h1 {font-size: var(--fs-900);}
 h2 {font-size: var(--fs-800); --flow-space: 1.5em}
 h3 {font-size: var(--fs-700);}
@@ -116,13 +130,15 @@ nav {
 
 // Form
 button, input[type=submit], .btn {
-	cursor: pointer; display: block; color: currentColor; text-decoration: none; border: 1px solid currentColor; padding: .5em 1em; background: none; font-size: inherit; font-family: var(--ff-base); transition: all .2s; width:fit-content; background-color: transparent; line-height: inherit;
+	cursor: pointer; display: block; text-decoration: none; padding: .5em 1em; transition: all .2s; width: fit-content; font-family: inherit;
+	background: var(--btn-clr, none); color: var(--text-clr, currentColor); border: 1px solid var(--btn-clr, currentColor); line-height: inherit;
+	&:hover {background: var(--btn-clr-hover, none); color: var(--text-clr-hover, var(--btn-clr, currentColor));}
 }
+.btn-primary { --btn-clr: var(--clr-primary); --text-clr: var(--white); --btn-clr-hover: var(--clr-primary-dark); --text-clr-hover: var(--white); }
+
+
 input, select, textarea {
 	font-family: var(--ff-base); font-size: inherit; padding: .25em; color: currentColor; border: 1px solid currentColor; background-color: var(--clr-background); min-width: 0;
-}
-select {
-	/* appearance: none; padding: .25em 1.5em .25em .25em; background-repeat: no-repeat; background-position-x: 100%; background-position-y: center; background-image: var(--select-arrow); */
 }
 option { color: grey; }
 textarea {resize: vertical; min-height: 8em; width: 100%;}
@@ -150,6 +166,7 @@ textarea {resize: vertical; min-height: 8em; width: 100%;}
 .fl-column {flex-direction: column;}
 
 .grid {display: grid;}
+.col-2 { grid-template-columns: 1fr 1fr; @include media {grid-template-columns: 1fr;} }
 
 .gap { @include sizes(gap); @include dynamic-sizes(gap);}
 
@@ -195,7 +212,7 @@ textarea {resize: vertical; min-height: 8em; width: 100%;}
 
 .border-grey-700 {border: 1px solid var(--grey-700) !important;}
 
-.nude {border: none; background: none; padding: 0; color: inherit; text-decoration: none;}
+.nude {border: none; padding: 0;}
 
 // Font Awesome classes
 :is(.fas, .far, .fab)::before {display: inline-block; width: 1.5em;}

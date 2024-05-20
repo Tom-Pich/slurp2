@@ -148,7 +148,7 @@ function color_modifier($original_score, $actual_score){
 
 				<?php else : ?>
 
-					<div class="flex-s">
+					<div class="flex-s gap-½">
 						<div class="fl-1"><?= $avdesav["nom"] ?></div>
 						<div><?= $avdesav["points"] ?></div>
 					</div>

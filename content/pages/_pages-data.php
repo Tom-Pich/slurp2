@@ -56,18 +56,20 @@ $pages_data = [
 	"vehicules" => [
 		"title" => "Véhicules", 
 		"description" => "Tout sur les véhicules&nbsp;: caractéristiques, règles de poursuites, combat, dégâts&hellip;", 
-		"file" => "09-vehicules",],
+		"file" => "09-vehicules",
+	],
 	"high-tech" => [
 		"title" => "High-tech", 
 		"description" => "Armes technologiques, informatique, robots, cyberprothèses&hellip;", 
-		"file" => "10-high-tech",],
+		"file" => "10-high-tech",
+	],
 	
 	// Univers
 	"adapted-dungeons-dragons" => [
 		"title" => "AD&D",
 		"description" => "Ce qu’il faut pour jouer dans l’esprit <i>Donjons &amp; Dragons</i>, sans le système abject d20.",
 		"file" => "univers_add",
-		"body-class" => "adapted-dungeons-dragons",
+		//"body-class" => "adapted-dungeons-dragons",
 	],
 	"in-nomine" => [
 		"title" => "In Nomine", 
@@ -97,12 +99,19 @@ $pages_data = [
 		"description" => "Quelques liens utiles", 
 		"file" => "s_liens",
 	],
-	"paorn" => [
+	/* "paorn" => [
 		"title" => "Encyclopedia Paornensis", 
 		"description" => "Diverses notes à propos de Paorn", 
 		"file" => "s_paorn",
 		"body-class" => "paorn",
 		"access-restriction" => 3,
+	], */
+	"paorn" => [
+		"title" => "Encyclopedia Paornensis", 
+		"description" => "Diverses notes à propos de Paorn", 
+		"file" => "s_paorn-2",
+		"body-class" => "wiki",
+		//"access-restriction" => 3,
 	],
 	"scenarii" => [
 		"title" => "Scenarii", 

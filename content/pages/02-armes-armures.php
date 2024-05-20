@@ -107,7 +107,7 @@ use App\Rules\WeaponsController;
 		<summary class="h3">Qualités des armes</summary>
 
 		<p>La qualité d’une arme influe sur les chances qu’elle a de se briser en cas d’échec critique (voir chapitre <i>Combat</i>) et sur ses dégâts de base.</p>
-		<table class="left1">
+		<table class="left-1">
 			<tr>
 				<th>Armes blanches</th>
 				<th>Se briser*</th>

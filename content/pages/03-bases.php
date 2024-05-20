@@ -21,15 +21,15 @@ use App\Rules\MentalHealthController;
 
 	<details>
 		<summary class="h3">Principes de base</summary>
-		<p class="center interligne"><b>Jet (3d) &le; score ± modificateurs</b></p>
-		<p class="interligne">3 et 4 sont toujours une réussite, 17 et 18 sont toujours des échecs.</p>
+		<p class="ta-center mt-1"><b>Jet (3d) &le; score ± modificateurs</b></p>
+		<p class="mt-1">3 et 4 sont toujours une réussite, 17 et 18 sont toujours des échecs.</p>
 		<p>Le <b>score brut</b> est le score sans aucun modificateur. Le <b>score net</b> est le score après application des différents modificateurs ci-dessous.</p>
 	</details>
 
 	<details>
 		<summary class="h3">Difficulté</summary>
 		<p>Difficulté intrinsèque de l’action, sans tenir compte de l’état du personnage.</p>
-		<table class="alternate-e left1">
+		<table class="alternate-e left-1">
 			<tr>
 				<th>Difficulté</th>
 				<th>Modificateur</th>
@@ -123,7 +123,7 @@ use App\Rules\MentalHealthController;
 		<summary class="h3">Jets de probabilité</summary>
 		<p>Lorsque il faut faire un jet sous «&nbsp;rien&nbsp;», consulter la table ci-dessous.</p>
 
-		<table class="alternate-e left1">
+		<table class="alternate-e left-1">
 			<tr>
 				<th>Probabilité</th>
 				<th>Score</th>
@@ -313,7 +313,7 @@ use App\Rules\MentalHealthController;
 		<p>Un événement traumatisant provoque un choc psychologique. Il n’est pas nécessairement effrayant ni directement menaçant (perte d’un être cher, être témoin d’actes de barbarie, etc.).</p>
 		<p>Il peut entraîner la perte de PdE : faire un jet de <i>Sang-froid</i> pour résister au traumatisme. En cas de réussite, la perte de PdE est divisée par 2. Ce jet de <i>Sang-froid</i> peut être assorti d’un modificateur, mais ce modificateur ne dépendra, en général, pas de l’ampleur du traumatisme, qui est quantifié par la perte de PdE, mais de l’état ou du vécu du personnage.</p>
 
-		<table class="alternate-e left1">
+		<table class="alternate-e left-1">
 			<tr>
 				<th>Ampleur du traumatisme</th>
 				<th>Perte PdE</th>
@@ -355,7 +355,7 @@ use App\Rules\MentalHealthController;
 		<p>Un malus peut s’appliquer en fonction de la nature de l’événement terrorisant.</p>
 		<p>Si le jet de <i>Sang-froid</i> est réussi, le personnage surmonte sa peur et peut agir immédiatement. Sinon, il subit les conséquences décrites dans le tableau ci-dessous.
 			La ME d’un jet de <i>Sang-froid</i> pour résister à la terreur ne peut être supérieure à [malus du test +3], sauf en cas d’échec critique (exemple : rater un jet de Sang-froid à -2 ne peut entraîner une ME de plus de 2+3 = 5).</p>
-		<table class="alternate-e left2">
+		<table class="alternate-e left-2">
 			<tr>
 				<th width="10">ME</th>
 				<th>Conséquences</th>
@@ -472,7 +472,7 @@ use App\Rules\MentalHealthController;
 
 	<details>
 		<summary class="h3">Résultat du jet de réaction</summary>
-		<table class="alternate-e left2">
+		<table class="alternate-e left-2">
 			<tr>
 				<td width="15%">&le;-4</td>
 				<td><b>Désastreuse.</b> Le PNJ déteste le personnage et fera tout ce qui est en son pouvoir pour lui nuire.</td>
@@ -611,7 +611,7 @@ use App\Rules\MentalHealthController;
 
 	<details>
 		<summary class="h3">Niveaux technologiques</summary>
-		<table class="alternate-e left2">
+		<table class="alternate-e left-2">
 			<tr>
 				<th colspan="2">Niveaux technologiques et époque correspondante</th>
 			</tr>

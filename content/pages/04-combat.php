@@ -1,6 +1,6 @@
 <article><h2>Bases du combat</h2>
 
-	<p class="mrtop0">Chaque tour (ou round) dure trois secondes.<br>
+	<p class="mt-0">Chaque tour (ou round) dure trois secondes.<br>
 	Le terme «&nbsp;hex&nbsp;» désigne un hexagone de «&nbsp;diamètre&nbsp;» moyen égal à 1 m. C’est l’espace qu’occupe un humain lorsqu’il combat.</p>
 
 	<details><summary class="h3">Surprise</summary>
@@ -29,8 +29,8 @@
 
 	<details><summary class="h3">Déroulement d’un tour de combat</summary>
 	<p>Un protagoniste a deux opportunités d’action par round (généralement une attaque et une défense). La première au début du round et la deuxième au milieu du round.</p>
-	<p class="center interligne"><b>Attaque puis Défense</b> ou <b>Défense puis Attaque</b></p>
-	<p class="interligne">Au cours d’un tour de combat, le déplacement maximum est de 3 m, sauf en cas de <i>Déplacement</i> (voir ci-dessous).</p>
+	<p class="ta-center mt-1"><b>Attaque puis Défense</b> ou <b>Défense puis Attaque</b></p>
+	<p class="mt-1">Au cours d’un tour de combat, le déplacement maximum est de 3 m, sauf en cas de <i>Déplacement</i> (voir ci-dessous).</p>
 	<p>Possibilité de porter une 2<sup>e</sup> attaque si l’adversaire est sonné et que l’attaquant peut encore disposer d’une défense dans le tour.</p>
 	<p>Le joueur peut choisir une <b>attaque spéciale</b> <i>ou</i> une <b>défense spéciale</b> par tour (mais ce n’est pas une obligation). <b>Attention&nbsp;:</b> certaines défenses spéciales exigent d’avoir laissé l’initiative à son adversaire. Ces manœuvres ne peuvent donc pas être choisies si l’initiative a été perdue aux dés, mais seulement si elle a été volontairement laissé à l’adversaire.</p></details>
 	
@@ -50,7 +50,7 @@
 	</details>
 
 	<details><summary class="h3">Attaque massive</summary>
-	<table class="alternate-e left1">
+	<table class="alternate-e left-1">
 	<tr><th></th>			<th>Bénéfices</th>			<th width="35%">Conséquences</th></tr>
 	<tr><th>Précise</th>	<td>+4 au jet d’attaque</td><td rowspan="4">-3 à la prochaine action <b>et</b> perte initiative prochain tour<sup>(2)</sup></td></tr>
 	<tr><th>Puissante</th>	<td>+1 aux dégâts par dé (min. +2)</td></tr>
@@ -159,7 +159,7 @@
 	<p><b>4. Conditions de défense&nbsp;:</b> déséquilibre, obscurité, position du défenseur, au jugé du MJ.</p></details>
 
 	<details><summary class="h3">Défense massive</summary>
-	<table class="alternate-e left1">
+	<table class="alternate-e left-1">
 		<tr>
 			<th></th>
 			<th>Bénéfices</th>
@@ -308,7 +308,7 @@
 		<p>Les éventuels effets secondaires sont définis par leur <b>Localisation</b> et leur <b>niveau de gravité</b>.</p>
 		
 		<h5>Niveaux de gravité</h5>
-		<table class="alternate-o left2">
+		<table class="alternate-o left-2">
 			<tr><th style="width: 5ch">1</th> <td>Dommages mineurs.</td></tr>
 			<tr><th>2</th> <td>Fonctionne encore, mais mal et/ou provisoirement.</td></tr>
 			<tr><th>3</th> <td>Cesse de fonctionner immédiatement.</td></tr>
@@ -330,7 +330,7 @@
 		<p>Une forte impulsion électromagnétique (EMP) est capable d’affecter les systèmes électroniques, provisoirement ou de manière permanente. En cas d’EMP, tout appareil électronique doit faire un jet d’<i>Intégrité</i> (score par défaut = 10), modifié selon l’intensité de l’EMP.</p>
 		<p>Si le jet d'<i>Intégrité</i> est raté, l'appareil subit les effets indiqués. S'il est réussi, les effets sont réduits d'un cran. Si MR &ge; 5 ou sur une réussite critique, les effets sont réduits de 2 crans. Si Me &ge; 5 ou sur un échec critique, les effets sont aggravés d'un cran.</p>
 
-		<table class="alternate-e left2">
+		<table class="alternate-e left-2">
 			<tr><th width="15%">Intensité de l’EMP</th>	<th>Effets</th></tr>
 			<tr><td>Légère</td>
 				<td>Dégâts légers&nbsp;: l’appareil cesse de fonctionner pendant 1d minute(s). Passé ce délai, il refonctionnera normalement.</td></tr>

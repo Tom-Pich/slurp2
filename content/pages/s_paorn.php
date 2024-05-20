@@ -233,12 +233,12 @@
 
 </article>
 
-<article>
+<article><!-- Imégie -->
 	<h2>Imégie</h2>
 
 	<details>
 		<summary class="h3">Généralités</summary>
-		<img src="/assets/img_encyclo/imegie_blason.png" width="70px" class="float-right mrtop5" />
+		<img src="/assets/img_encyclo/imegie_blason.png" width="70px" class="float-right" />
 		<p>Cité paresseuse aux maisons blanchies à la chaux, Imégie (également nommée la <i>Ville blanche</i>) est la ville la plus peuplée de l’Artaille avec 25000 habitants. C'est également la capitale de cette province.</p>
 		<p>Superficie de 175 ha (2,6 km dans sa plus grande longueur, de la porte de Mineurs jusqu'aux murailles de St-Almer).<br>
 			Ville prospère, traversée par la <i>Bigoule</i>, large rivière prenant sa source dans les monts Hizrak, au nord de la ville.</p>
@@ -420,7 +420,7 @@
 
 </article>
 
-<article>
+<article><!-- Lauria -->
 	<h2>Lauria</h2>
 
 	<details>
@@ -454,7 +454,7 @@
 	</details>
 </article>
 
-<article>
+<article><!-- Port Goshal -->
 	<h2>Port Goshal</h2>
 
 	<details>

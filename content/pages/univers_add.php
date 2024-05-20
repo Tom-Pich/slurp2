@@ -318,7 +318,7 @@ $creatures_repo = new CreatureRepository;
 		<summary class="h3">Équipement divers</summary>
 
 		<h4>Vêtements</h4>
-		<table class="left1 fs-300 alternate-o">
+		<table class="left-1 fs-300 alternate-o">
 			<tr>
 				<td>Haillons*</td>
 				<td>2 pc&nbsp;; 1 kg</td>
@@ -406,7 +406,7 @@ $creatures_repo = new CreatureRepository;
 		</p>
 
 		<h4>Équipement spécial</h4>
-		<table class="left1 fs-300 alternate-o">
+		<table class="left-1 fs-300 alternate-o">
 			<tr>
 				<td>Outils de crochetage</td>
 				<td>30 pc</td>
@@ -450,7 +450,7 @@ $creatures_repo = new CreatureRepository;
 		</table>
 
 		<h4>Équipement de voyage</h4>
-		<table class="left1 fs-300 alternate-o">
+		<table class="left-1 fs-300 alternate-o">
 			<tr>
 				<td>Set pour manger (cuillère, petit couteau...)</td>
 				<td>5 pc&nbsp;; 0,25 kg</td>
@@ -526,7 +526,7 @@ $creatures_repo = new CreatureRepository;
 		</table>
 
 		<h4>Nourriture et logement</h4>
-		<table class="left1 fs-300 alternate-o">
+		<table class="left-1 fs-300 alternate-o">
 			<tr>
 				<td>Couche dans un dortoir commun, par nuit</td>
 				<td>2 pc</td>
@@ -574,7 +574,7 @@ $creatures_repo = new CreatureRepository;
 		</table>
 
 		<h4>Animaux et harnachement</h4>
-		<table class="left1 fs-300 alternate-o">
+		<table class="left-1 fs-300 alternate-o">
 			<tr>
 				<td>Ane</td>
 				<td>120 pc</td>
@@ -837,7 +837,7 @@ $creatures_repo = new CreatureRepository;
 				Permet au buveur de voler comme sous l’effet du sort <i>Vol</i> pendant 1d×10 minutes. Matériaux 750 pc&nbsp;; 8×4h&nbsp;; compétence -3.
 			</details>
 
-			<details class="liste interligne">
+			<details class="liste mt-1">
 				<summary>Élixir de santé <div>2000 pc</div>
 				</summary>
 				Forme supérieure de la potion de <i>Guérison des maladies</i>. Cette potion guérit la cécité, la surdité, toutes les maladies, la débilité mentale non congénitale, la folie, les infections, l’empoisonnement et le pourrissement. Elle ne fait pas récupérer de PdV. Matériaux 750 pc&nbsp;; 8×4h&nbsp;; compétence -4.
@@ -888,7 +888,7 @@ $creatures_repo = new CreatureRepository;
 			<summary class="h4">Boire plusieurs potions</summary>
 			<p>Deux potions ne sont pas toujours compatibles. L’incompatibilité ne peut généralement être vérifiée que par l’expérience, sauf dans les cas de potions identiques (pas d’effets secondaires) et de potions à effets contraires (s’annulent). Dans les autres cas, si une créature boit une potion alors qu’une autre potion différente est déjà active, il peut y avoir des effets secondaires (voir table ci-dessous).</p>
 
-			<table class="alternate-e left2">
+			<table class="alternate-e left-2">
 				<tr>
 					<th>3d</th>
 					<th>Effets</th>
@@ -1181,10 +1181,10 @@ $creatures_repo = new CreatureRepository;
 
 		<h4>Catégories de créatures</h4>
 		<p><b>• Extraplanaire&nbsp;:</b> ces créatures ne peuvent être tuées ailleurs que sur leur plan d’origine. Ailleurs, elles se dématérialisent à 0 PdV et retournent à leur plan d’origine.</p>
-		<p class="interligne"><b>• Non biologique&nbsp;:</b> créatures dénuées de métabolisme &ndash; morts-vivants, créatures immatérielles, créatures animées par magie, etc. Elles «&nbsp;meurent&nbsp;» à 0 PdV. Insensibles à la douleur, jamais sonnées ni assommées. Pas d’organes vitaux et aucun multiplicateur de dégâts. Immunisées au poison ainsi qu’aux sorts d’<i>Emprise mentale</i> et de <i>Contrôle physique</i>.</p>
+		<p class="mt-1"><b>• Non biologique&nbsp;:</b> créatures dénuées de métabolisme &ndash; morts-vivants, créatures immatérielles, créatures animées par magie, etc. Elles «&nbsp;meurent&nbsp;» à 0 PdV. Insensibles à la douleur, jamais sonnées ni assommées. Pas d’organes vitaux et aucun multiplicateur de dégâts. Immunisées au poison ainsi qu’aux sorts d’<i>Emprise mentale</i> et de <i>Contrôle physique</i>.</p>
 		<p><i>Squelettique</i>&nbsp;: -3 au toucher et dégâts réduits au minimum avec des armes perforantes. Dégâts tranchants divisés par 2.</p>
-		<p class="interligne"><b>•&nbsp;Créature végétale&nbsp;:</b> mêmes avantages que les créatures «&nbsp;non biologiques&nbsp;», mais elles ne meurent pas à 0 PdV.</p>
-		<p class="interligne"><b>•&nbsp;Créature d’essence magique&nbsp;:</b> utilisent leurs pouvoirs innés avec un score minimum de 16 et le temps nécessaire à leur déclenchement est divisé par deux. Le rythme de récupération des PdM est doublé et sans condition de repos. Tous les démons sont d'essence magique.</p>
+		<p class="mt-1"><b>•&nbsp;Créature végétale&nbsp;:</b> mêmes avantages que les créatures «&nbsp;non biologiques&nbsp;», mais elles ne meurent pas à 0 PdV.</p>
+		<p class="mt-1"><b>•&nbsp;Créature d’essence magique&nbsp;:</b> utilisent leurs pouvoirs innés avec un score minimum de 16 et le temps nécessaire à leur déclenchement est divisé par deux. Le rythme de récupération des PdM est doublé et sans condition de repos. Tous les démons sont d'essence magique.</p>
 
 		<h4>Pouvoirs</h4>
 		<p><b>Demi-coût&nbsp;:</b> lorsqu'une créature possède un pouvoir dont le coût énergétique est réduit de moitié, le coût de maintien est également réduit de moitié, sauf mention contraire.</p>

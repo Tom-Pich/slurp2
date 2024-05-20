@@ -106,7 +106,7 @@
 	<details><summary class="h3">Échec au jet de Contrôle</summary>
 		<p>En cas d’échec, les conséquences varient selon la ME du jet de contrôle, du type de véhicule et de la nature du terrain dans lequel ce véhicule se déplace. Pour une voiture, cela peut aller d’un simple dérapage à une sortie de route suivie de tonneaux. Le tableau suivant permet d’estimer les conséquences d’un jet de <i>Contrôle</i> raté.</p>
 
-		<table class="alternate-e left2">
+		<table class="alternate-e left-2">
 			<tr><th>ME</th> <th>Interprétation</th></tr>
 			<tr><td>1</td>	<td>Erreur minime. Un 2<sup>e</sup> jet de contrôle, avec les mêmes malus, pour éviter l’accident. Les conséquences sont minimales</td></tr>
 			<tr><td>2</td>	<td>Erreur minime. Les conséquences sont minimales.</td></tr>
@@ -167,7 +167,7 @@
 
 	<details><summary class="h3">Perte de contrôle du véhicule</summary>
 		<p>Lorsqu’un véhicule subit des dégâts, il faut faire un jet de <i>Contrôle</i> dont la difficulté dépend des dégâts reçus par le véhicule.</p>
-		<table class="alternate-e left1">
+		<table class="alternate-e left-1">
 			<tr><th>Dégâts reçus</th>	<th>Difficulté</th></tr>
 			<tr><td>Légers</td>			<td>0</td></tr>
 			<tr><td>Moyens</td>			<td>-5</td></tr>
@@ -186,7 +186,7 @@
 		<p>Selon le contexte (taille du véhicule, localisation des occupants, etc.), les occupants sont automatiquement affectés <i>ou bien</i> ils ne sont affectés que si cela est indiqué dans les effets secondaires.</p>
 		<p>Les blessures peuvent être multiples&nbsp;: pour chaque dé de dégâts, déterminer une localisation (on peut se limiter à 4 localisations pour accélérer le calcul). Les dégâts sont en général des dégâts de broyage, mais du tranchant voire du perforant n’est pas exclu (jet de probabilité – <i>Peu probable</i> à <i>Très peu probable</i> selon les circonstances).</p>
 
-		<table class="alternate-e left1">
+		<table class="alternate-e left-1">
 			<tr><th>Dégâts au véhicule ou localisation</th>	<th>Dégâts occupants</th></tr>
 			<tr><td>Très légers</td>						<td>aucun</td></tr>
 			<tr><td>Légers ou niv. 1</td>					<td>jusqu’à 1d-3</td></tr>
@@ -201,7 +201,7 @@
 
 	<details><summary class="h3">État général</summary>
 		<p>Si un véhicule est endommagé, cela affecte ses performances. Les modificateurs de <i>Ma</i>, <i>Acc</i> et <i>Vm</i> donnés ci-dessous sont indépendants et cumulables avec tout autre effet secondaire.</p>
-		<table class="alternate-o left2">
+		<table class="alternate-o left-2">
 			<tr>
 				<th>L</th>
 				<td>Le véhicule fonctionne normalement, sauf en cas d’effets secondaires. -1 aux jet d’Intégrité.</td>
@@ -229,7 +229,7 @@
 
 	<details><summary class="h3">Types d’effets secondaires</summary>
 		<p>Les effets secondaires des dégâts sur un véhicule sont de 6 catégories différentes. Chaque type de véhicule devrait avoir sa propre table d’effets secondaires.</p>
-		<table class="alternate-o left2">
+		<table class="alternate-o left-2">
 			<tr><th>1</th>	<td>Convertisseur d’énergie : Moteur, réacteur.</td></tr>
 			<tr><th>2</th>	<td>Occupants : Pilote(s) ou passagers, pont de commande, quartiers de l’équipage, etc.</td></tr>
 			<tr><th>3</th> <td>Systèmes de propusion et manœuvre : Roue, chenille, hélice, aileron, gouvernail, freins, etc.</td></tr>
@@ -244,7 +244,7 @@
 	<details><summary class="h3">Voiture à moteur thermique</summary>
 		<p>Une voiture non-blindée a une RD 5 pour la carrosserie (+1 à +2 pour une voiture ancienne ou de luxe) et 3 pour les vitres.</p>
 
-		<table class="alternate-e left1">
+		<table class="alternate-e left-1">
 			<tr><th>Localisation &amp; Effets secondaires</th></tr>
 			<tr>
 				<td>

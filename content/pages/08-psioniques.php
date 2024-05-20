@@ -33,7 +33,7 @@ $niv_max = max(array_keys($_POST["niv"]));
 		<p>Les pouvoirs psi sont rattachés à des <i>Disciplines</i> recouvrant un champ d’action particulier. Chaque discipline est un <i>Avantage</i> comptant cinq niveaux, qui représentent la puissance brute de l’initiateur dans cette discipline. Ces avantages, quel que soit leur niveau, ne procurent aucun bonus aux jets de compétences portant sur les pouvoirs psi.</p>
 		<p>Pour pouvoir utiliser des pouvoirs psi d’une discipline donnée, il faut avoir l’avantage disciplinaire correspondant, à un niveau au moins égal au niveau de puissance du pouvoir utilisé.</p>
 
-		<table class="left1">
+		<table class="left-1">
 			<tr>
 				<th>Niveau de la discipline</th>
 				<td>1</td>
@@ -191,7 +191,7 @@ $niv_max = max(array_keys($_POST["niv"]));
 		Liste des pouvoirs
 	</h2>
 
-	<fieldset class="full-width interligne-b">
+	<fieldset class="full-width">
 		<form method="post" action="/psioniques">
 
 			<div class="flex-s gap-½">

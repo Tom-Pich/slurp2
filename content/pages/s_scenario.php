@@ -910,7 +910,7 @@
 				<li>Un intermédiaire bien placé s’est débrouillé pour leur obtenir le job.</li>
 			</ul>
 
-			<p class="interligne">Évitez dans tous les cas le poncif de «&nbsp;l’employeur qui n’a jamais entendu parler des personnages, mais qui se dirige droit sur eux dans une auberge pour leur confier une mission secrète&nbsp;».</p>
+			<p class="mt-1">Évitez dans tous les cas le poncif de «&nbsp;l’employeur qui n’a jamais entendu parler des personnages, mais qui se dirige droit sur eux dans une auberge pour leur confier une mission secrète&nbsp;».</p>
 
 			<h5>Des indices vers l’aventure</h5>
 			<p>Vous pouvez prévoir une série d’indices, disséminés subtilement et graduellement, pour les diriger vers l’aventure. Ces indices seront d’autant plus efficaces que vous saurez exploiter l’historique et le caractère des personnages, l’idéal étant qu’ils décident d’eux-mêmes de se lancer dans l’aventure. Cela fonctionne mieux si vous commencez à faire apparaître ces indices lors d’une aventure précédente.</p>

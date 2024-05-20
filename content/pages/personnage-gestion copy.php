@@ -28,39 +28,37 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 	<input hidden name="Portrait" value="<?= $character->portrait ?>">
 
 	<!-- Portrait, description, background, notes -->
-	<article class="flow">
+	<article>
 
 		<!-- Nom, sauvegarde et retour fiche perso -->
 		<div class="flex-s jc-space-between gap-1 ai-first-baseline">
 			<input name="Nom" type="text" value="<?= $character->name ?>" class="fs-500 fw-600 fl-1 px-½">
-			<button type="submit" class="ff-fas btn-primary" title="Enregistrer – Alt+Shift+S" accesskey="s">&#xf0c7;</button>
-			<a href="personnage-fiche?perso=<?= $character->id ?>" class="btn btn-primary ff-fas" title="Retour à la fiche de perso">&#xf2bb;</a>
+			<button type="submit" class="ff-fas" title="Enregistrer – Alt+Shift+S" accesskey="s">&#xf0c7;</button>
+			<a href="personnage-fiche?perso=<?= $character->id ?>" class="btn ff-fas" title="Retour à la fiche de perso">&#xf2bb;</a>
 		</div>
 
 		<!-- Portrait -->
 		<div class="mt-1">
 			<img src="<?= $character->portrait ?>" class="fit-cover mx-auto" style="max-height: 350px; max-width: 80%;">
-			<label title="Sélectionner une image" class="btn btn-primary mx-auto mt-½">
+			<label title="Sélectionner une image" class="btn pointer mx-auto mt-½">
 				Télécharger image (max. 500 ko)
 				<input type="file" name="image" data-role=add-portrait hidden>
 			</label>
 			<p id="file" class="ta-center gris"></p>
 		</div>
 
-		<h4>Description</h4>
-		<p>Cette description sera visible par les autres membres du groupe. Soyez évocateur, sans être trop long.</p>
-		<textarea name="Description" form="noyau" placeholder="Description du personnage" class="mt-1" style="min-height: 12em;"><?= $character->description ?></textarea>
+		<textarea name="Description" form="noyau" placeholder="Description du personnage" class="mt-1" style="min-height: 6em;"><?= $character->description ?></textarea>
 
 		<!-- Background -->
 		<details class="mt-1">
 			<summary class="h3">Background</summary>
-			<textarea name="Background" form="noyau" placeholder="Background du personnage" class="mt-½" style="min-height: 12em;"><?= $character->background ?></textarea>
+			<textarea name="Background" form="noyau" placeholder="Background du personnage" class="mt-½"><?= $character->background ?></textarea>
 		</details>
 
 		<!-- Notes -->
 		<details class="mt-1">
 			<summary class="h3">Notes</summary>
-			<textarea name="Notes" form="noyau" placeholder="Notes diverses" class="mt-½" style="min-height: 12em;"><?= $character->notes ?></textarea>
+			<textarea name="Notes" form="noyau" placeholder="Notes diverses" class="mt-½"><?= $character->notes ?></textarea>
 		</details>
 
 		<p class="mt-1 fs-300">Le background et les notes peuvent être mis en forme&nbsp;: *<b>gras</b>*, _<i>italique</i>_ et **<b>titre</b></p>
@@ -140,7 +138,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 		</div>
 
 		<!-- Mode d’emploi Avdésav -->
-		<details class="mt-3-5 border-bottom-grey-700">
+		<details class="mt-2 border-bottom-grey-700">
 			<summary class="h3">Avantages &amp; Désavantages</summary>
 			<div class="mt-½">
 				<p>
@@ -168,7 +166,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 								<summary>
 									<input type="text" name="Avdesav[<?= $n_post ?>][nom]" value="<?= $avdesav['nom'] ?>" class="fl-1">
 									<input type="text" title="Coût" name="Avdesav[<?= $n_post ?>][points]" value="<?= $avdesav['points'] ?>" size="2" class="ta-center" <?= $avdesav['catégorie'] === "Travers" ? "disabled" : "" ?>>
-									<div hidden>
+									<div>
 										<input type="checkbox" title="Afficher coût" name="Avdesav[<?= $n_post ?>][options][aff_coût]" <?= in_array("aff_coût", $avdesav['options']) ? 'checked' : '' ?> <?= $avdesav['catégorie'] === "Travers" ? "disabled" : "" ?>>
 										<input type="checkbox" title="Pas sur fiche" name="Avdesav[<?= $n_post ?>][options][caché]" <?= in_array("caché", $avdesav['options']) ? 'checked' : '' ?> <?= $avdesav['catégorie'] === "Travers" ? "disabled" : "" ?>>
 									</div>
@@ -186,7 +184,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 		<!-- Nouveaux Avdésav -->
 		<details>
-			<summary class="add-character-element">Ajouter des avantages et désavantages</summary>
+			<summary class="add-character-element">Ajouter</summary>
 
 			<?php foreach ($avdesav_repo->getDistinctCategories() as $categorie) { ?>
 				<details>
@@ -212,9 +210,13 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 			<button data-role="add-quirk" type="button" class="mt-1 mx-auto" data-number="<?= $n_post ?>">Ajouter un travers</button>
 		</details>
 
+	</article>
 
-		<!-- Mode d’emploi compétences -->
-		<details class="mt-3-5">
+	<!-- Compétences -->
+	<article>
+
+		<!-- Mode d’emploi -->
+		<details>
 			<summary class="h3">Compétences</summary>
 			<div class="border-bottom-grey-700 mt-½">
 				<p>
@@ -253,7 +255,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 		<!-- Nouvelles compétences -->
 		<details>
-			<summary class="add-character-element">Ajouter des compétences</summary>
+			<summary class="add-character-element">Ajouter</summary>
 			<?php
 			$liste_categories_competences_rdb = $skills_repo->getDistinctCategories();
 			foreach ($liste_categories_competences_rdb as $categorie) { ?>
@@ -280,12 +282,13 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 			<?php } ?>
 		</details>
 
+	</article>
 
-		<!-- Magie -->
+	<!-- Magie, pouvoirs et psi -->
+	<article>
 		<?php if ($character->special_traits["magerie"]) { ?>
 
-			<!-- Mode d’emploi collège et sorts -->
-			<details class="mt-3-5">
+			<details>
 				<summary class="h3">Collèges &amp; sorts</summary>
 				<div class="border-bottom-grey-700 mt-½">
 					<p>
@@ -295,7 +298,6 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 				</div>
 			</details>
 
-			<!-- Collèges et sorts -->
 			<div class="mt-½">
 				<?php
 				foreach ($character->colleges as $college) {
@@ -339,7 +341,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 			<!-- Nouveaux collèges -->
 			<details>
-				<summary class="add-character-element">Ajouter des collèges</summary>
+				<summary class="add-character-element">Ajouter</summary>
 				<?php
 				$all_colleges = $colleges_repo->getAllColleges();
 				$known_colleges_id = array_map(fn ($x) => $x["id"], $character->colleges);
@@ -358,13 +360,12 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 				} ?>
 			</details>
 
-		<?php } ?>
 
-		<!-- Pouvoirs -->
-		<?php if ($character->special_traits["pouvoirs"]) { ?>
+		<?php }
 
-			<!-- Mode d’emploi pouvoirs -->
-			<details  class="mt-3-5">
+		if ($character->special_traits["pouvoirs"]) { ?>
+
+			<details <?= $character->special_traits["magerie"] ? "class=\"mt-2\"" : "" ?>>
 				<summary class="h3">Pouvoirs</summary>
 				<div class="border-bottom-grey-700 mt-½">
 					<p>
@@ -377,7 +378,6 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 				</div>
 			</details>
 
-			<!-- Pouvoirs acquis -->
 			<div class="mt-½">
 				<?php foreach ($character->powers as $pouvoir) {
 					$type = $pouvoir["data"]->specific["Type"] ?? $pouvoir["origine"];
@@ -427,7 +427,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 			<!-- Nouveaux pouvoirs -->
 			<details>
-				<summary class="add-character-element">Ajouter des pouvoirs</summary>
+				<summary class="add-character-element">Ajouter</summary>
 
 				<?php if (!in_array($character->special_traits["type-perso"], ["ins"])) { ?>
 					<details>
@@ -497,13 +497,12 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 			</details>
 
-		<?php } ?>
+		<?php }
 
-		<!-- Psionique -->
-		<?php if ($character->special_traits["psi"]) { ?>
+		if ($character->special_traits["psi"]) { ?>
 
-			<!-- Mode d’emploi psi -->
-			<details  class="mt-3-5">
+			<!-- Mode d’emploi -->
+			<details <?= ($character->special_traits["magerie"] || $character->special_traits["pouvoirs"]) ? "class=\"mt-2\"" : "" ?>>
 				<summary class="h3">Psi</summary>
 				<div class="bored-bottom-grey-700 mt-½">
 					<p>
@@ -557,7 +556,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 			<!-- Nouvelles disciplines psi -->
 			<?php $disciplines = $disciplines_repo->getAllDisciplines(); ?>
 			<details>
-				<summary class="add-character-element">Ajouter des disciplines</summary>
+				<summary class="add-character-element">Ajouter</summary>
 				<?php
 				foreach ($disciplines as $discipline) {
 					if (!in_array($discipline->id, $disciplines_connues_id)) {
