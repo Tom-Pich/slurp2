@@ -27,7 +27,7 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 		<meta property="og:image" content="https://jdr.pichegru.net/assets/img/dices.png">
 	<?php } ?>
 
-	<script type="module" src="/scripts/main.js?v=<?= VERSION ?>" defer></script>
+	<script type="module" src="/scripts/main<?= PRODUCTION ? ".min" : "" ?>.js?v=<?= VERSION ?>" defer></script>
 </head>
 
 <body class="<?= $page["body-class"] ?>">
@@ -114,7 +114,7 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 						<li><a href="/ecrire-scenario"><?= $pages_data['ecrire-scenario']["title"] ?></a></li>
 						<li><a href="/aide-de-jeu-medfan"><?= $pages_data['aide-de-jeu-medfan']["title"] ?></a></li>
 						<li><a href="/bibliotheque-liens"><?= $pages_data['bibliotheque-liens']["title"] ?></a></li>
-						<li><a href="/paorn"><?= $pages_data['paorn']["title"] ?></a></li>
+						<li><a href="/wiki-paorn"><?= $pages_data['wiki-paorn']["title"] ?></a></li>
 						<?php if ($_SESSION['Statut'] >= 3) { ?>
 							
 							<li><a href="/scenarii"><?= $pages_data['scenarii']["title"] ?></a></li>

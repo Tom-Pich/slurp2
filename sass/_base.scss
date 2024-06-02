@@ -29,7 +29,7 @@ $scale: (100, 200, 300, 400, 450, 500, 600, 700, 800, 900, 1000);
 
 @mixin media($break-point: $brp-m) {@media screen and (max-width: #{$break-point}) {@content}};
 @mixin media-min($break-point: $brp-m) {@media screen and ( width > #{$break-point}) {@content}};
-@mixin flow { > :where(:not(:first-child)) {margin-top: var(--flow-space, 1em);} }
+@mixin flow { > :where(:not(:first-child, .float-right, .float-left)) {margin-top: var(--flow-space, 1em);} }
 
 :root {
 	//color-scheme: light dark;
@@ -147,7 +147,7 @@ textarea {resize: vertical; min-height: 8em; width: 100%;}
 
 // Layout
 .wrapper {width: min( 100% - 2 * var(--dynamic-space-1-2), var(--content-max-width)); margin-inline: auto;}
-.flow > :where(:not(:first-child)) {margin-top: var(--flow-space, 1em);}
+.flow { @include flow; }
 
 .flex {display: flex; @include media {flex-direction: column;} }
 .flex-s {display: flex;}
@@ -175,10 +175,11 @@ textarea {resize: vertical; min-height: 8em; width: 100%;}
 
 .desktop {@include media {display: none !important;}}
 .phone {display: none; @include media {display: block;}}
+.hidden { display: none !important; }
 
 // Utilities
-.mt { @include sizes(margin-top); @include dynamic-sizes(margin-top); }
-.mb { @include sizes(margin-bottom); @include dynamic-sizes(margin-bottom); }
+.mt { @include sizes(margin-top, true); @include dynamic-sizes(margin-top); }
+.mb { @include sizes(margin-bottom, true); @include dynamic-sizes(margin-bottom); }
 .mx { @include sizes(margin-inline); @include dynamic-sizes(margin-inline); }
 .mx-auto {margin-inline: auto;}
 .p { @include sizes(padding); @include dynamic-sizes(padding); }
@@ -202,6 +203,8 @@ textarea {resize: vertical; min-height: 8em; width: 100%;}
 .uppercase {text-transform: uppercase;}
 .clr-text {color: var(--clr-text);}
 .clr-primary {color: var(--clr-primary);}
+.clr-warning { color: var(--clr-warning) }
+.clr-secondary-dark { color: var(--clr-secondary-dark) }
 .clr-grey-700 {color: var(--grey-700);}
 .clr-grey-500 {color: var(--grey-500);}
 .clr-white { color: var(--white);}
@@ -214,8 +217,18 @@ textarea {resize: vertical; min-height: 8em; width: 100%;}
 
 .nude {border: none; padding: 0;}
 
+dialog {
+	top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%);
+	width: clamp(300px, 35vw, 500px); border: 1px solid currentColor; padding: 1em;
+	&::backdrop { backdrop-filter: blur(5px);}
+	button[data-role=close-modal]:first-of-type {
+		border: none; padding: 0; margin-left: auto;
+		&:focus-visible {box-shadow: none;}
+	}
+}
+
 // Font Awesome classes
-:is(.fas, .far, .fab)::before {display: inline-block; width: 1.5em;}
+/* :is(.fas, .far, .fab)::before {display: inline-block; width: 1.5em;}
 .fas::before {font-family: "FA6 Solid", sans-serif;}
 .far::before {font-family: "FA6 Regular", sans-serif;}
 .fab::before {font-family: "FA6 Brands", sans-serif;}
@@ -228,4 +241,4 @@ textarea {resize: vertical; min-height: 8em; width: 100%;}
 .fa-linkedin::before {content: "\f0e1"}
 .fa-twitter::before {content: "\f099"}
 .fa-instagram::before {content: "\f16d"}
-.fa-youtube::before {content: "\f167"}
+.fa-youtube::before {content: "\f167"} */

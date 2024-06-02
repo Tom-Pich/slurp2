@@ -83,7 +83,7 @@ $nbre_protagonistes = 7;
 		</fieldset>
 
 		<!-- rafale -->
-		<fieldset>
+		<fieldset class="<?= $_SESSION["Statut"] === 1 ? "hidden" : "" ?>">
 			<legend>Tir en rafale</legend>
 			<form class="flex-s gap-½" id="burst-widget">
 				<div class="flex-s gap-½ fl-1 jc-space-between">
@@ -98,7 +98,7 @@ $nbre_protagonistes = 7;
 
 	</div>
 
-	<div class="widgets-column desktop">
+	<div class="widgets-column desktop <?= $_SESSION["Statut"] === 1 ? "hidden" : "" ?>">
 		<!-- Protagonistes -->
 		<fieldset>
 			<legend>Protagonistes</legend>
@@ -122,7 +122,7 @@ $nbre_protagonistes = 7;
 		</fieldset>
 	</div>
 
-	<div class="widgets-column desktop">
+	<div class="widgets-column desktop <?= $_SESSION["Statut"] === 1 ? "hidden" : "" ?>">
 
 		<!-- État général -->
 		<fieldset>
@@ -275,17 +275,17 @@ $nbre_protagonistes = 7;
 		<?php } ?>
 	</div>
 
+	<button id="chat-help-dialog-btn" class="ff-far btn-primary px-½ py-¼" data-role="open-dialog" data-dialog-name="chat-help">&#xf059;</button>
+
 	<div id="chat-dialog-wrapper" class="flow">
-		<?php if ($_SESSION["id"]) { ?>
-			<p><b>Message privé&nbsp;:</b> "/" + n° destinataire(s) séparés par virgule – ex. "/2,3 Coucou"</p>
-		<?php } else { ?>
+		<?php if (!$_SESSION["id"]) { ?>
 			<p class="ta-center fw-700"> Les résultats des widgets s’affichent ici</p>
 		<?php } ?>
 	</div>
 
-	<div id="chat-input-wrapper" data-id="<?= $_SESSION["id"] ?>" data-login="<?= $_SESSION["login"] ?>" data-key="<?= $_SESSION["id"] ? "a78D_Kj!45" : "0" ?>">
+	<div id="chat-input-wrapper" data-id="<?= $_SESSION["id"] ?>" data-login="<?= $_SESSION["login"] ?>" data-key="<?= $_SESSION["id"] ? WS_KEY : "0" ?>">
 
-		<div class="flex-s fl-wrap gap-½ fs-500 jc-center" data-role="emojis-wrapper">
+		<div class="flex-s fl-wrap gap-½ fs-500 jc-center desktop" data-role="emojis-wrapper">
 			<button data-role="emoji-button" class="nude">😊</button>
 			<button data-role="emoji-button" class="nude">😁</button>
 			<button data-role="emoji-button" class="nude">😄</button>
@@ -309,10 +309,22 @@ $nbre_protagonistes = 7;
 			<button data-role="emoji-button" class="nude">💩</button>
 		</div>
 
-		<textarea id="msg-input" <?= !$_SESSION["id"] ? "disabled" : "" ?>></textarea>
+		<textarea id="msg-input"></textarea> <!-- |?= !$_SESSION["id"] ? "disabled" : "" ?| -->
 
 	</div>
 
 </sidebar>
 
-<script type="module" src="/scripts/game-table.js?v=<?= VERSION ?>"></script>
+<dialog data-name="chat-help">
+	<button data-role="close-modal" class="ff-fas" >&#xf00d;</button>
+	<h4>Fonctionnalités du tchat</h4>
+	<ul class="mt-1 flow">
+		<li><b>Message privé&nbsp;:</b> "/" + n° du ou des destinataire(s), séparés par une virgule et <i>sans espace</i> – ex. «&nbsp;/2,3 Coucou&nbsp;»</li>
+		<li><b>Jet privé&nbsp;:</b> même principe que pour les messages privés. Entrez /x,y pour spécifier les destinataires, puis utilisez le widget de votre choix.</li>
+		<li><b>Jet de réussite dans un message&nbsp;:</b> insérez, dans votre message, un score entre crochets. Un jet sera fait, avec affichage de la MR et d’un éventuel critique – ex. «&nbsp;Blabla [12] blabla.&nbsp;»</li>
+		<li><b>Mise en forme du message&nbsp;:</b> des mots entre astérisques (*) seront affichés en gras. Des mots entre underscores (_) seront affichés en italique.</li>
+	</ul>
+
+</dialog>
+
+<script type="module" src="/scripts/game-table<?= PRODUCTION ? ".min" : "" ?>.js?v=<?= VERSION ?>" defer></script>

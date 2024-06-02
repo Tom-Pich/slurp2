@@ -27,6 +27,8 @@ foreach ($characters_id as $character) {
 }
 ?>
 
+<div id="ws-data" hidden data-session-id="<?= $_SESSION["id"] ?>" data-ws-key="<?= WS_KEY ?>" ></div>
+
 <article><!-- Objets orphelins -->
 	<h2>Objets orphelins</h2>
 	<form id="items-form" class="grid gap-¼"><!-- method="post" action="/submit/equipment-list" -->
@@ -55,7 +57,7 @@ foreach ($characters_id as $character) {
 	</form>
 </article>
 
-<article>
+<article><!-- Groupes et personnages -->
 	<h2>Groupes &amp; Personnages</h2>
 
 	<?php foreach ($groups as $group) { ?>
@@ -134,7 +136,7 @@ foreach ($characters_id as $character) {
 							</h4>
 							<a href="personnage-fiche?perso=<?= $perso->id ?>" target="_blank" class="ff-fas fs-500 btn nude" title="voir fiche">&#xf2c2;</a>
 							<button type="button" data-role="export-character" title="exporter" class="nude ff-fas fs-500" data-id="<?= $perso->id ?>">&#xf56e;</button>
-							<button type="submit" class="nude ff-fas fs-500" data-id="<?= $perso->id ?>" title="enregistrer">&#xf0c7;</button>
+							<!-- <button type="submit" class="nude ff-fas fs-500" data-id="<?= $perso->id ?>" title="enregistrer">&#xf0c7;</button> -->
 						</div>
 
 						<div class="flex-s gap-½ mt-½">
@@ -198,7 +200,7 @@ foreach ($characters_id as $character) {
 
 </article>
 
-<article>
+<article><!-- Créer un personnage -->
 	<h2>Créer un personnage</h2>
 	<form method="post" action="/submit/create-character">
 		<div class="flex gap-1">
@@ -244,7 +246,7 @@ foreach ($characters_id as $character) {
 </article>
 
 <?php if ($admin) { ?>
-	<article id="gestionnaire-groupes">
+	<article id="gestionnaire-groupes"><!-- Groupes -->
 		<h2>Groupes</h2>
 		<form action="/submit/groups" method="POST" autocomplete="off">
 			<div class="flex gap-1 fl-wrap jc-center">
@@ -281,4 +283,4 @@ foreach ($characters_id as $character) {
 	</article>
 <?php } ?>
 
-<script type="module" src="/scripts/characters-manager.js"></script><!-- data-type="reloadable" -->
+<script type="module" src="/scripts/characters-manager<?= PRODUCTION ? ".min" : "" ?>.js?v=<?= VERSION ?>" defer></script>

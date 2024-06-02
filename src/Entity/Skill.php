@@ -24,6 +24,7 @@ class Skill implements RulesItem
 		"bow" => [14, 15],
 		"throwing" => [34, 36, 37, 38, 47],
 		"seduction" => [148, 192, 157],
+		"acrobatics-dodging" => [169, 26],
 	];
 
 	public function __construct(array $skill = [])
@@ -182,7 +183,7 @@ class Skill implements RulesItem
 			$skill["modif"] = TextParser::parseModif($skill["label"]);
 
 			// score
-			$bonus_memoire_infaillible = $skill_entity->difficulty === -8 ? floor($special_traits["mult-memoire-infaillible"] / 2) : 0;
+			$bonus_memoire_infaillible = $skill_entity->difficulty === -8 && $skill_entity->base === "I" ? floor($special_traits["mult-memoire-infaillible"] / 2) : 0;
 			if ($skill["niv"] === $skill_entity->difficulty && !$skill_entity->hasDefault) {
 				$skill["score"] = "–";
 				$skill["virtual-score"] = $skill["base"] + $skill["niv"] + $skill["modif"] + $bonus_memoire_infaillible;

@@ -54,44 +54,17 @@ export function checkPasswordStrength(password) {
  * @returns result of calculation
  */
 export function calculate(str) {
-	str = str.replace(/[^-()\d/*+\.]/g, '');
-	let result = eval(str);
+	if (str === null) return "";
+	str = str.replace(/[+-]+$/g, ''); // trim + and - at the end
+	str = str.replace(/[^-\(\)\d/\*+\.]/g, ''); // only allow - + / * ( ) 0-9 .
+	let result
+	try { result = eval(str); }
+	catch (e) { result = "" }
 	result = result === undefined ? "" : result;
 	return result;
 }
 
-/**
- * reload (and re-execute) all scripts with data-type=reloadable \
- * after DOM change
- */
-export function reloadScripts() {
-	const scripts = qsa("[data-type=reloadable]");
-	scripts.forEach(script => {
-		script.remove()
-		const newScript = ce("script")
-		newScript.type = script.type
-		const scriptURL = new URL (script.src)
-		newScript.src = scriptURL.pathname + "?v=" + new Date().getTime()
-		newScript.dataset.type = "reloadable"
-		qs("main").appendChild(newScript)
-	})
-}
-
-
-/**
- * update HTML
- * @param {string} selector css-like selectore targeting a unique element
- * @param {*} content html-formatted string
- */
-export function updateDOM(selector, content) {
-	const parser = new DOMParser();
-	const virtualDoc = parser.parseFromString(content, "text/html")
-	const source = virtualDoc.querySelector(selector)
-	const target = qs(selector)
-	target.innerHTML = source.innerHTML
-}
-
-export function int(x){
+export function int(x) {
 	return isNaN(parseInt(x)) ? 0 : parseInt(x)
 }
 

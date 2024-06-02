@@ -14,7 +14,7 @@ export function roll(code) {
 		op = (match[3] != "") ? match[3] : "+"
 		z = (match[4] != undefined && match[4] != "") ? parseFloat(match[4]) : 0
 
-		// handling special cases: 1d-2, 1d-3, 1d-4, 1d-5
+		// handling special cases: 1d-2 = 1d5-1, 1d-3 = 1d4-1, 1d-4 = 1d3-1, 1d-5=1d2-1
 		if (x === 1 && y === 6 && op === "-" && z === 2){ result = Math.floor(Math.random() * 5) }
 		else if (x === 1 && y === 6 && op === "-" && z === 3){ result = Math.floor(Math.random() * 4) }
 		else if (x === 1 && y === 6 && op === "-" && z === 4){ result = Math.floor(Math.random() * 3) }
@@ -37,6 +37,7 @@ export function roll(code) {
 	return { expression: expression, result: result }
 }
 
+// get a random localisation for a hit
 export async function getLocalisation() {
 	let data = new FormData;
 	data.append("roll", roll("3d").result);
@@ -49,6 +50,7 @@ export async function getLocalisation() {
 	return result
 }
 
+// build opponent object based on form entries
 export function collectOpponentData(number){
 	const opponentWrapper = qs(`[data-opponent="${number}"]`)
 
@@ -63,4 +65,41 @@ export function collectOpponentData(number){
 	}
 
 	return opponent
+}
+
+// determine if a roll result is critical : -1 if critical miss, 1 if critical success, else 0
+/* export function isCritical(score, roll){
+	const MR = score - roll;
+	if (roll === 18) { return -1 }
+	else if (roll === 17) { return score >= 16 ? 0 : -1 }
+	else if (roll === 4) { return score <= 5 ? 0 : 1 }
+	else if (roll === 3) { return 1 }
+	else if (MR <= -10) { return -1 }
+	else if (MR >= 10 && roll <= 7) { return 1 }
+	return 0
+} */
+
+/**
+ * given a score and a 3d roll result, returns the MR and the symbol of outcome status
+ * Simple success, simple failure, critical success, critical failure
+ * @param {int} score net score
+ * @param {int} roll 3d rol result 
+ * @returns {Object} "MR" and "symbol"
+ */
+export function scoreTester(score, roll){
+	const MR = score - roll;
+
+	let critical = 0;
+	if (roll === 18) { critical = -1 }
+	else if (roll === 17) { critical = score >= 16 ? 0 : -1 }
+	else if (roll === 4) { critical = score <= 5 ? 0 : 1 }
+	else if (roll === 3) { critical = 1 }
+	else if (MR <= -10) { critical = -1 }
+	else if (MR >= 10 && roll <= 7) { critical = 1 }
+
+	let outcomeSymbol = MR >= 0 ? "🟢" : "🔴";
+	if (critical === -1) outcomeSymbol = "😖"
+	if (critical === 1) outcomeSymbol = "😎"
+
+	return {"MR": MR, "symbol": outcomeSymbol}
 }

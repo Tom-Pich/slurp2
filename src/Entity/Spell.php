@@ -208,7 +208,7 @@ class Spell implements RulesItem
 			<?php } elseif (!empty($custom_time)) { ?>
 				<i>Temps&nbsp;:</i> <?= $custom_time ?><br>
 			<?php }
-			if ($this->zone) { ?> <i>Zone de base</i>&nbsp;: <?= $this->zone ?><br>
+			if ($this->class==="Zone") { ?> <i>Zone de base</i>&nbsp;: <?= $this->zone ? $this->zone : "3&nbsp;m" ?><br>
 			<?php }
 			if ($this->resistance) { ?><i>Résistance</i>&nbsp;: <?= $this->resistance ?>
 			<?php } ?>

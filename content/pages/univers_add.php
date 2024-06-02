@@ -525,54 +525,6 @@ $creatures_repo = new CreatureRepository;
 			</tr>
 		</table>
 
-		<h4>Nourriture et logement</h4>
-		<table class="left-1 fs-300 alternate-o">
-			<tr>
-				<td>Couche dans un dortoir commun, par nuit</td>
-				<td>2 pc</td>
-			</tr>
-			<tr>
-				<td>Logement (chambre), auberge moyenne</td>
-				<td>4-10 pc</td>
-			</tr>
-			<tr>
-				<td>Repas dans une taverne moyenne</td>
-				<td>2-4 pc</td>
-			</tr>
-			<tr>
-				<td>Ration de voyageur (un repas)</td>
-				<td>2 pc&nbsp;; 0,25 kg</td>
-			</tr>
-			<tr>
-				<td>Fromage, 1 kg</td>
-				<td>2-5 pc</td>
-			</tr>
-			<tr>
-				<td>Lard, 1 kg</td>
-				<td>3 pc</td>
-			</tr>
-			<tr>
-				<td>Viande de porc, 1 kg</td>
-				<td>2-3 pc</td>
-			</tr>
-			<tr>
-				<td>Œufs, la douzaine</td>
-				<td>1 pc</td>
-			</tr>
-			<tr>
-				<td>Pain, 1 kg</td>
-				<td>1 pc</td>
-			</tr>
-			<tr>
-				<td>Vin, 1 litre</td>
-				<td>1 à 3 pc&nbsp;; 1 kg</td>
-			</tr>
-			<tr>
-				<td>Liqueur, 1 litre</td>
-				<td>3 à 6 pc&nbsp;; 1 kg</td>
-			</tr>
-		</table>
-
 		<h4>Animaux et harnachement</h4>
 		<table class="left-1 fs-300 alternate-o">
 			<tr>
@@ -626,6 +578,60 @@ $creatures_repo = new CreatureRepository;
 			<tr>
 				<td>Porc (60 kg)</td>
 				<td>45 pc</td>
+			</tr>
+		</table>
+	</details>
+
+	<details>
+		<summary class="h3">Nourriture et logement</summary>
+		<table class="left-1 fs-300 alternate-o mt-1">
+			<tr>
+				<td>Couchage dans un dortoir</td>
+				<td>2 pc</td>
+			</tr>
+			<tr>
+				<td>Chambre, auberge moyenne</td>
+				<td>4-10 pc</td>
+			</tr>
+			<tr>
+				<td>Repas dans une taverne</td>
+				<td>2-4 pc</td>
+			</tr>
+			<tr>
+				<td>Chope de bière dans une taverne</td>
+				<td>½ pc</td>
+			</tr>
+			<tr>
+				<td>Ration de voyageur (un repas)</td>
+				<td>2 pc&nbsp;; 0,25 kg</td>
+			</tr>
+			<tr>
+				<td>Fromage, 1 kg</td>
+				<td>2-5 pc</td>
+			</tr>
+			<tr>
+				<td>Lard, 1 kg</td>
+				<td>3 pc</td>
+			</tr>
+			<tr>
+				<td>Viande de porc, 1 kg</td>
+				<td>2-3 pc</td>
+			</tr>
+			<tr>
+				<td>Œufs, la douzaine</td>
+				<td>1 pc</td>
+			</tr>
+			<tr>
+				<td>Pain, 1 kg</td>
+				<td>1 pc</td>
+			</tr>
+			<tr>
+				<td>Vin, 1 litre</td>
+				<td>1-3 pc</td>
+			</tr>
+			<tr>
+				<td>Liqueur, 1 litre</td>
+				<td>3-6 pc</td>
 			</tr>
 		</table>
 	</details>

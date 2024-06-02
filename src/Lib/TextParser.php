@@ -352,4 +352,25 @@ class TextParser
 		}
 		return trim($text);
 	}
+
+	/**
+	 * transform a string serie of operations (with + and -) into a number
+	 * will return 0 if argument is not a number or a string, and if string cannot be parsed
+	 */
+	public static function evalString($value): int|float
+	{
+		if(is_int($value) || is_float($value)) return $value;
+		if (!is_string($value)) return 0;
+
+		// sanitizing expression
+		$value = preg_replace('/,/', '.', $value); // comma into dot
+
+		// return 0 if not valid string
+		if (preg_match('/[^0-9+\-. ]/',$value)) return 0;
+
+		$result = eval("return $value;");
+		if (is_null($result)) $result = 0;
+
+		return $result;
+	}
 }

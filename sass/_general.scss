@@ -2,9 +2,9 @@
 	font-size: 14px;
 }
 
-body {background: url(/assets/img/bg-paper.png) fixed repeat; @include media {background-attachment: scroll;}}
+body {background: url("/assets/img/bg-paper.png") fixed repeat; @include media {background-image: none;}}
 main {
-	padding: var(--dynamic-space-1-2); display: flex; min-height: 72vh; flex-wrap: wrap; justify-content: center; gap: 1em;
+	padding: var(--dynamic-space-½-2); display: flex; min-height: 72vh; flex-wrap: wrap; justify-content: center; gap: 1em;
 	@include media {flex-direction: column;}
 }
 
@@ -15,13 +15,13 @@ h4 {font-size: var(--fs-500);}
 
 dfn {text-decoration: underline #777; cursor: help;}
 
-figure {margin: 5px 0}
-figure img {margin: 0 auto;}
+/* figure {margin: 5px 0}
+figure img {margin: 0 auto;} */
 figcaption {text-align: center; font-style: italic;}
 
 :is(.standard-page, .gestionnaire-mj, .gestionnaire-listes) article {
 	width: 350px; background: white; box-shadow: 2px 2px 2px silver; padding: .5em; min-height: 250px; margin-top: 1em;
-	@include media { max-width: 100%; min-height: 0; }
+	@include media { width: 100%; min-height: 0; border: 1px solid var(--clr-text); box-shadow: none; }
 	h2 {background: black; color: white; padding: .15em .30em; font-size: var(--fs-500); box-shadow: 0 2px 1px silver; margin: -1em 0 1rem;}
 	h4 {margin: .75em 0 .25em; font-size: var(--fs-450);}
 	p {margin: .5em 0;}
@@ -35,8 +35,10 @@ input.color1 {border: 1px solid var(--clr-text);}
 .border-bottom-grey-700 {border-bottom: 1px solid var(--grey-700);}
 .widget{background-color: var(--clr-accent-background)}
 :is(div, p):nth-child(odd).alternate-o {background-color: var(--grey-900);}
+.cursor-pointer { cursor: pointer; }
 
 .float-right { float: right; margin-left: var(--dynamic-space-1-2); max-width: 50%; }
+.clear-right { clear: right; }
 .float-left { float: left; margin-right: var(--dynamic-space-1-2);  max-width: 50%; }
 
 // pagination classes
@@ -64,6 +66,7 @@ button:active, .btn:active {transform: scale(95%, 95%)}
 input.manquant {background-color: var(--clr-warning-background);}
 input::placeholder {font-style: italic}
 [draggable=true]{cursor: move;}
+label:has(input:disabled) {opacity: 0.5; }
 
 // tables –––––––––
 table {

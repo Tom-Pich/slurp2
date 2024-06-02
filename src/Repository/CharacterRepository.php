@@ -183,9 +183,15 @@ class CharacterRepository extends AbstractRepository
 		$query->execute($character_data);
 	}
 
-	public function updateCharacterPdM(int $id, int $pdm){
-		// Safe statement because $pdm is int. If normally prepared, $pdm will be handled as string.
-		$query = $this->db->prepare("UPDATE persos SET État = JSON_SET(État, '$.PdM', " . $pdm . ") WHERE id = ?");
-		$query->execute([$id]);
+	public function updateCharacterPdM(int $id, int|string $pdm){
+		if(is_int($pdm)){
+			// Safe statement because $pdm is int. If normally prepared, $pdm would be handled as string.
+			$query = $this->db->prepare("UPDATE persos SET État = JSON_SET(État, '$.PdM', " . $pdm . ") WHERE id = ?");
+			$query->execute([$id]);
+		} else {
+			$query = $this->db->prepare("UPDATE persos SET État = JSON_REMOVE(État, '$.PdM') WHERE id = ?");
+			$query->execute([$id]);
+		}
+		
 	}
 }

@@ -1,9 +1,8 @@
-import { qs, qsa, ce, calculate } from "./utilities.js"
-import { Messenger } from "./messenger.js"
-import { roll, getLocalisation, collectOpponentData } from "./game-table-utilities.js"
+import { qs, qsa, ce, calculate, int } from "./utilities.js"
+import { wsURL, Message } from "./ws-utilities.js"
+import { roll, getLocalisation, collectOpponentData, scoreTester } from "./game-table-utilities.js"
 
 // ––– Websocket Chat Client ––––––––––––––––––––––––
-const wsServerURL = window.location.hostname === "site-jdr" ? "ws://127.0.0.1:1337" : "wss://web-chat.pichegru.net:443";
 
 const chatEntry = qs("#chat-input-wrapper");
 const id = parseInt(chatEntry.dataset.id);
@@ -11,33 +10,148 @@ const login = chatEntry.dataset.login;
 const key = chatEntry.dataset.key;
 
 const usersWrapper = qs("#connected-users")
-const chatBox = qs("#chat-dialog-wrapper")
+const dialogWrapper = qs("#chat-dialog-wrapper")
 const emojiBtns = qsa("[data-role=emoji-button]")
 const inputEntry = qs("#msg-input")
 
-const messenger = new Messenger(id, login, key, wsServerURL, chatBox, usersWrapper)
+const ws = new WebSocket(wsURL);
+
+let users = {};
+let lastSender = 0;
+let lastMessageTime = 0;
+let lastRecipients = "[]"; // in JSON, to compare with message.recipients
+
+ws.onopen = () => {
+	let initMessage = new Message(id, key, "chat-init", login);
+	ws.send(initMessage.stringify());
+}
+
+ws.onmessage = (rawMessage) => {
+
+	const message = JSON.parse(rawMessage.data);
+	console.log(message)
+
+	// create user list and display it in the tchat
+	if (message.type === "chat-users") {
+		users = message.content; // { "id1" : { login : "login1", isConnected : bool}, ... }
+		const userList = [];
+		Object.entries(users).forEach(([id, user]) => {
+			if (user.isConnected) userList.push(`${user.login} (${id})`); // filling userList
+		})
+		usersWrapper.innerText = userList.join(", "); // display userList
+		if (message.isDeconnection === undefined) {
+			let notif = new Audio('/assets/notifs/user-log.mp3');
+			notif.play();
+		}
+	}
+
+	// handle new message in tchat
+	if (message.type === "chat-message" || message.type === "chat-roll") {
+
+		const jsonRecipients = JSON.stringify(message.recipients);
+
+		const p = ce("div", ["chat-message-wrapper"])
+		const messageRef = ce("div", ["chat-message-header"]);
+		const messageText = ce("div", ["chat-message-content"]);
+
+		// message global CSS classes
+		if (message.type === "chat-roll") messageText.classList.add("color1");
+		if (message.sender === id) p.classList.add("self-message");
+		if (message.sender !== id) p.classList.add("bg-color-user-" + (message.sender % 7 + 1));
+		if (message.sender === lastSender  && jsonRecipients === lastRecipients && (message.timestamp - lastMessageTime) < 15000) p.classList.add("same-routing");
+		if (message.recipients.length > 0) p.classList.add("is-private");
+
+		// building message "header"
+		if (message.sender !== id) { messageRef.innerText = users[message.sender].login; }
+		if (message.recipients.length) {
+			const recipientLogins = [];
+			message.recipients.forEach(recipientId => {
+				const login = users[recipientId] === undefined ? "?" : users[recipientId].login;
+				recipientLogins.push(login)
+			})
+			messageRef.innerText += ` (à ${recipientLogins.join(", ")})`;
+		}
+		const time = new Date(message.timestamp);
+		const readableTime = time.toLocaleTimeString('fr-FR');
+		messageRef.innerText += ` ${readableTime}`;
+
+		// finishing message building : content + injection in DOM
+		messageText.innerHTML = message.content; // sanitized on server
+		p.append(messageRef, messageText);
+		dialogWrapper.append(p);
+
+		// notifications
+		if (message.type === "chat-roll" && message.history === undefined) {
+			let notif = new Audio('/assets/notifs/dice-roll.mp3');
+			notif.play();
+		}
+		if (message.type === "chat-message" && message.sender !== id && message.history === undefined) {
+			let notif = message.recipients.length ? new Audio('/assets/notifs/secret.mp3') : new Audio('/assets/notifs/message.mp3');
+			notif.play();
+		}
+
+		// scroll the dialog down to the bottom
+		if (dialogWrapper.scrollHeight - (dialogWrapper.offsetHeight + dialogWrapper.scrollTop) < 250) {
+			setTimeout(() => { dialogWrapper.scrollTop = dialogWrapper.scrollHeight - dialogWrapper.offsetHeight + 5; }, 200)
+		}
+
+		lastSender = message.sender;
+		lastMessageTime = message.timestamp;
+		lastRecipients = jsonRecipients;
+	}
+}
 
 // "Enter" event in message input
 inputEntry.addEventListener("keydown", function (e) {
-	if (e.keyCode === 13) { flushMsg("standard") }
+	if (e.keyCode === 13) {
+		e.preventDefault();
+		flushMsg("chat-message");
+	}
 });
 
-// function fired on Enter : send the message and clean the text entry
+// function fired on "enter" : send the message and clean the text entry
 function flushMsg(type) {
-	messenger.send(type, inputEntry.value);
-	inputEntry.value = ""
-	setTimeout(() => { inputEntry.value = "" }, 10)
+
+	// extract recipients from inputEntry.value
+	const recipientsRegexp = /^\/(\d+,){0,10}\d+/;
+	const recipientsRegexpResult = recipientsRegexp.exec(inputEntry.value);
+	let recipients = [];
+	if (recipientsRegexpResult) {
+		recipients = recipientsRegexpResult[0].substring(1).split(","); // array of recipients ID
+		recipients = recipients.map(id => parseInt(id)); // conversion of IDs in int
+		inputEntry.value = inputEntry.value.replace(recipientsRegexpResult[0], "").trim(); // delete recipient from message text
+	}
+
+	// handle inline rolls
+	const inlineRollRegexp = /\[\d{1,2}\]/g; // search for expressions like [7] or [18] /\[\d{1,2}\]/g;
+	const inlineRollRegexpResult = inputEntry.value.match(inlineRollRegexp);
+	if (inlineRollRegexpResult) {
+		const scores = [];
+		inlineRollRegexpResult.forEach(match => {
+			scores.push(parseInt(match.replace("[", "").replace("]", ""))); // extract scores from [] and parse them to integer
+		})
+		scores.forEach(score => {
+			const rollResult = roll("3d").result;
+			const outcome = scoreTester(score, rollResult);
+			const detailledResult = `[ ${score} → ${rollResult} (MR ${outcome.MR} ${outcome.symbol}) ]`;
+			const replacementRegexp = new RegExp(`\\[${score}\\]`);
+			inputEntry.value = inputEntry.value.replace(replacementRegexp, detailledResult); // replace [xx] by detailled outcome		
+		})
+		type = "chat-roll"; // changing message type
+	}
+
+	let message = new Message(id, key, type, inputEntry.value, recipients);
+	ws.send(message.stringify());
+	inputEntry.value = "";
 }
 
-// add emoji in chat entry on click if connected
-if (id) {
-	emojiBtns.forEach(btn => {
-		btn.addEventListener("click", (e) => {
-			inputEntry.value += e.target.innerText;
-			inputEntry.focus();
-		})
+// add emoji in chat entry
+emojiBtns.forEach(btn => {
+	btn.addEventListener("click", (e) => {
+		inputEntry.value += e.target.innerText;
+		inputEntry.focus();
 	})
-}
+})
 
 // ––– Widgets ––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 
@@ -55,7 +169,7 @@ simpleDiceWidget.addEventListener("submit", (e) => {
 	const expression = simpleDiceWidget.querySelector("[data-type=dice-expression]").value
 	let rollDice = roll(expression);
 	inputEntry.value += `${rollDice.expression} → ${rollDice.result}`
-	flushMsg("jet")
+	flushMsg("chat-roll")
 })
 
 // score tester
@@ -81,22 +195,12 @@ scoreWidgets.forEach(widget => {
 		if (isNaN(score) || skillName === "") { return }
 
 		let modif = parseInt(widget.querySelector("[data-type=modif]").value);
-		modif = isNaN(modif) ? 0 : modif;
-		let netScore = score + modif
+		modif = int(modif);
+		const netScore = score + modif
 		const diceResult = roll("3d").result
-		const MR = netScore - diceResult
-
-		let symbol = MR >= 0 ? "🟢" : "🔴";
-
-		if (diceResult === 18) { symbol = "😖" }
-		else if (diceResult === 17) { symbol = netScore >= 16 ? "🔴" : "😖" }
-		else if (diceResult === 4) { symbol = netScore < 6 ? "🟢" : "😎" }
-		else if (diceResult === 3) { symbol = "😎" }
-		else if (MR <= -10) { symbol = "😖" }
-		else if (MR >= 10 && diceResult <= 7) { symbol = "😎" }
-
-		inputEntry.value += `${skillName} (${score + modif}) → ${diceResult} (MR ${MR} ${symbol})`
-		flushMsg("jet")
+		const outcome = scoreTester(netScore, diceResult)
+		inputEntry.value += `${skillName} (${netScore}) → ${diceResult} (MR ${outcome.MR} ${outcome.symbol})`
+		flushMsg("chat-roll")
 	})
 })
 
@@ -145,7 +249,7 @@ weaponDamageWidget.addEventListener("submit", async (e) => {
 
 	// flushing result
 	inputEntry.value += `Dégâts (${damages.expression})&nbsp;: ${damages.result} – ${localisation[0]}`
-	flushMsg("jet")
+	flushMsg("chat-roll")
 })
 
 // critical widget
@@ -164,7 +268,7 @@ criticalWidget.addEventListener("submit", (e) => {
 		.then(result => result.data)
 		.then(critical => {
 			inputEntry.value += `${critical}`
-			flushMsg("jet")
+			flushMsg("chat-roll")
 		})
 })
 
@@ -203,7 +307,7 @@ burstWidget.addEventListener("submit", async (e) => {
 	})
 
 	inputEntry.value += formattedMsg;
-	flushMsg("jet")
+	flushMsg("chat-roll")
 })
 
 // opponents list widget
@@ -305,7 +409,7 @@ generalStateWidget.addEventListener("submit", (e) => {
 				}
 			}
 			inputEntry.value += formattedMsg;
-			flushMsg("jet")
+			flushMsg("chat-roll")
 		})
 })
 
@@ -376,7 +480,7 @@ woundEffectsWidget.addEventListener("submit", e => {
 			}
 
 			inputEntry.value += formattedMsg;
-			flushMsg("jet")
+			flushMsg("chat-roll")
 
 			// update opponent widget
 			const opponentWrapper = qs(`[data-opponent="${opponentNumber}"]`)
@@ -427,7 +531,7 @@ explosionWidget.addEventListener("submit", (e) => {
 			const results = response.data;
 			const formattedMsg = `<b>Explosion&nbsp;:</b> dégâts ${results.damages} – fragment(s) ${results.fragments} – hauteur de chute ${results.height}&nbsp;m`;
 			inputEntry.value += formattedMsg;
-			flushMsg("jet")
+			flushMsg("chat-roll")
 		})
 
 })
@@ -500,7 +604,7 @@ objectDamageWidget.addEventListener("submit", (e) => {
 				}
 			}
 			inputEntry.value += formattedMsg;
-			flushMsg("jet")
+			flushMsg("chat-roll")
 		})
 })
 
@@ -525,5 +629,5 @@ vehicleCollisionWidget.addEventListener("submit", (e) => {
 
 	const formattedMsg = `<b>Collision</b> ${severityLevel}&nbsp;: dégâts ${damages}`
 	inputEntry.value += formattedMsg;
-	flushMsg("jet")
+	flushMsg("chat-roll")
 })

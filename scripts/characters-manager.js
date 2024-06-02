@@ -1,10 +1,25 @@
-import { qs, qsa, calculate, updateDOM } from "./utilities.js";
+import { qs, qsa, calculate } from "./utilities.js";
+import { wsURL, Message } from "./ws-utilities.js";
+import { updateDOM } from "./update-dom.js";
+
+const sessionId = qs("#ws-data").dataset.sessionId;
+const wsKey = qs("#ws-data").dataset.wsKey;
 
 // Web Socket character ping sender
-const wsServerURL = window.location.hostname === "site-jdr" ? "ws://127.0.0.1:1337" : "wss://web-chat.pichegru.net:443";
-const wsTchatClient = new WebSocket(wsServerURL)
-wsTchatClient.onopen = () => { } // nothing to do (yet)
-wsTchatClient.onmessage = (rawMessage) => { }  // nothing to do (yet)
+const ws = new WebSocket(wsURL)
+ws.onopen = () => { } // nothing to do (yet)
+ws.onmessage = (rawMessage) => {
+	const message = JSON.parse(rawMessage.data);
+	console.log(message)
+	if (message.type === "character-ping") {
+		fetch("gestionnaire-mj")
+			.then(response => response.text())
+			.then(response => {
+				updateDOM(`#state-form-character-${message.content}`, response)
+			})
+	}
+}
+
 
 // calulate pdx cells content
 const pdxCells = qsa("[data-role=pdx-cell]");
@@ -36,15 +51,6 @@ exportBtns.forEach(btn => {
 	})
 })
 
-// change events
-const inputs = qsa("input, select");
-inputs.forEach(input => {
-	input.addEventListener("change", (e) => {
-		const saveBtn = input.closest("form").querySelector("button[type=submit]");
-		saveBtn.classList.add("color1")
-	})
-})
-
 // remember group state (open/close)
 const groupWrappers = qsa("[data-group]");
 groupWrappers.forEach(group => {
@@ -60,33 +66,56 @@ groupWrappers.forEach(group => {
 })
 
 // submit character form and update
+function submitCharacterForm(form) {
+	const pdxCells = form.querySelectorAll("[data-role=pdx-cell]");
+	pdxCells.forEach(cell => {
+		cell.value = calculate(cell.value);
+	})
+	let form_id = form.getAttribute("id") // don’t use form.id because of one input which name is id
+	const form_data = new FormData(form);
+	//console.log(form_data)
+	fetch("/submit/update-character-state", {
+		method: 'post',
+		body: form_data
+	})
+		.then(() => {
+			fetch("/gestionnaire-mj")
+				.then(response => response.text())
+				.then(response => {
+					updateDOM(`#${form_id}`, response)
+
+					// ping character
+					const ping = new Message(sessionId, wsKey, "character-ping", parseInt(form_data.get("id")));
+					ws.send(ping.stringify())
+				})
+		})
+}
+
+// character forms events
 const characterStateForms = qsa("[data-role=character-state-form]")
 characterStateForms.forEach(form => {
+
+	// if form submitted manually (with "enter" key)
 	form.addEventListener("submit", (e) => {
 		e.preventDefault();
-		const pdxCells = form.querySelectorAll("[data-role=pdx-cell]");
-		pdxCells.forEach(cell => {
-			cell.value = calculate(cell.value);
-		})
-		let form_id = form.getAttribute("id") // don’t use form.id because of one input which name is id
-		const form_data = new FormData(form);
-		// console.log(form_data)
-		fetch("/submit/update-character-state", {
-			method: 'post',
-			body: form_data
-		})
-			.then(() => {
-				fetch("/gestionnaire-mj")
-					.then(response => response.text())
-					.then(response => {
-						updateDOM(`#${form_id}`, response)
-						const characterStateForms = qsa("[data-role=character-state-form]")
+		submitCharacterForm(form)
+	})
 
-						// ping character
-						const initMsg = { type: "character-ping", id: parseInt(form.id.value), key: "a78D_Kj!45" }
-						wsTchatClient.send(JSON.stringify(initMsg))
-					})
-			})
+	let timeoutId
+
+	// submit form on keyup with delay
+	form.addEventListener("keyup", (e) => {
+		if (timeoutId) {
+			clearTimeout(timeoutId);
+		}
+		timeoutId = setTimeout(function () {
+			submitCharacterForm(form);
+		}, 1000);
+	})
+
+	// submit form on change
+	form.addEventListener("change", (e) => {
+		submitCharacterForm(form)
 	})
 })
 
@@ -103,8 +132,6 @@ itemsForm.addEventListener("submit", (e) => {
 				.then(response => response.text())
 				.then(response => {
 					updateDOM("#items-form", response)
-					//console.log("reloading scripts")
-					//reloadScripts();
 				})
 		})
 })

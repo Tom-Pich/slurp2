@@ -4,7 +4,8 @@ define("IS_ONLINE", $_SERVER['HTTP_HOST'] === 'jdr.pichegru.net');
 define("DB_ACTIVE", true);
 define("TABLE_PREFIX", "");
 define("GENERIC_PASSWORD", $_ENV["GENERIC_PASSWORD"]);
-define("VERSION", "3.6.4"); // all widgets fully active
+define("VERSION", "3.8.5"); // 3.8 : chat improvment
+define("PRODUCTION", true); // run webpack before switching to true
 
 if (IS_ONLINE){
 	define("DB_HOST", $_ENV["DB_HOST"]);
@@ -18,6 +19,8 @@ else {
 	define("DB_USER", "root");
 	define("DB_PASSWORD", "");
 }
+
+define("WS_KEY", $_ENV["WS_KEY"]);
 
 setlocale(LC_ALL,"fra_FRA.utf-8");
 setlocale(LC_ALL,"fr_FR.utf-8");

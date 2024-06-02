@@ -141,21 +141,21 @@ if ($pathFirstSegment === "api") {
 			Firewall::check(isset($_POST["damages"]) && isset($_POST["distance"]) && isset($_POST["fragmentation-surface"]) && isset($_POST["is-fragmentation-device"]));
 			$damages = (float) $_POST["damages"];
 			$distance = 1;
-			if(is_numeric($_POST["distance"]) || in_array($_POST["distance"], ["i", "r", "c"])){
+			if (is_numeric($_POST["distance"]) || in_array($_POST["distance"], ["i", "r", "c"])) {
 				$distance = $_POST["distance"];
 			}
 			$fragSurface = (float) $_POST["fragmentation-surface"];
 			$isFragmentationDevice = $_POST["is-fragmentation-device"] === "true";
 			$controller->getExplosionDamages($damages, $distance, $fragSurface, $isFragmentationDevice);
 			break;
-		
-		case "/api/object-localisation-options" :
+
+		case "/api/object-localisation-options":
 			Firewall::check(isset($_POST["object-type"]));
 			$objectType = htmlspecialchars(strtolower($_POST["object-type"]));
 			$controller->getObjectLocalisationOptions($objectType);
 			break;
-		
-		case "/api/object-damages-effects" :
+
+		case "/api/object-damages-effects":
 			Firewall::check(isset($_POST["pdsm"]) && isset($_POST["pds"]) && isset($_POST["integrite"]) && isset($_POST["rd"]) && isset($_POST["dmgValue"]) && isset($_POST["dmgType"]) && isset($_POST["objectType"]) && isset($_POST["localisation"]) && isset($_POST["rolls"]));
 			$pdsm = (int) $_POST["pdsm"];
 			$pds = is_numeric($_POST["pds"]) ? (int) $_POST["pds"] : $pdsm;
@@ -177,7 +177,7 @@ if ($pathFirstSegment === "api") {
 
 // submit
 elseif ($pathFirstSegment === "submit") {
-	
+
 	switch ($path) {
 
 		case "/submit/log-out":
@@ -247,7 +247,6 @@ elseif ($pathFirstSegment === "submit") {
 			if (!$character->checkClearance()) {
 				(new Error404Controller)->show();
 			}
-			//echo "coucou from update-character-pdm";
 			Character::updateCharacterPdM($_POST);
 			break;
 
@@ -309,7 +308,7 @@ elseif ($pathFirstSegment === "submit") {
 elseif (in_array($pathFirstSegment, ["personnage-fiche", "personnage-gestion"])) {
 	Firewall::filter(1);
 	Firewall::check(!empty($_GET["perso"] && (int) $_GET["perso"]));
-	$character = new Character( (int) $_GET["perso"]);
+	$character = new Character((int) $_GET["perso"]);
 	if (!$character->checkClearance()) {
 		(new Error404Controller)->show();
 	}
@@ -323,10 +322,10 @@ elseif (in_array($pathFirstSegment, ["personnage-fiche", "personnage-gestion"]))
 	];
 	$page = new PageController($page_data);
 	$page->show();
-
+}
 
 // scenarii pages
-} elseif ($pathFirstSegment === "scenario") {
+elseif ($pathFirstSegment === "scenario") {
 	Firewall::filter(3);
 	require_once "content/scenarii/_scenarii-data.php";
 	$scenario_name = $path_segments[2];
@@ -343,7 +342,17 @@ elseif (in_array($pathFirstSegment, ["personnage-fiche", "personnage-gestion"]))
 	} else {
 		$page = new Error404Controller;
 		$page->show();
-	}
+	}	
+}
+
+// wiki pages
+else if ($pathFirstSegment === "wiki-paorn") {
+	require_once "content/wiki/paorn/_articles_data.php";
+	$page_data = $pages_data["wiki-paorn"];
+	$page_data["article"] = $path_segments[2] ?? null;
+	$page_data["article-title"] = $page_data["article"] ? $articles[$page_data["article"]] : null;
+	$page = new PageController($page_data);
+	$page->show();
 }
 
 // standard pages

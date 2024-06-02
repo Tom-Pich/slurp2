@@ -1,4 +1,4 @@
-import { qs } from "./utilities";
+import { qs, qsa } from "./utilities";
 
 // connection and disconnection
 const connectionBtn = qs("#connection-btn")
@@ -27,4 +27,21 @@ navBtn.addEventListener("click", () => {
 	} else {
 		navBtn.innerText = "\uf0c9"
 	}
+})
+
+// dialogs handling
+const dialogOpenerBtns = qsa("[data-role=open-dialog]");
+dialogOpenerBtns.forEach( btn => {
+	btn.addEventListener("click", (e) => {
+		const dialog = qs( `[data-name=${btn.dataset.dialogName}]`)
+		dialog.showModal();
+	})
+})
+
+const dialogCloseBtns = qsa("[data-role=close-modal]");
+dialogCloseBtns.forEach( btn => {
+	btn.addEventListener("click", (e) => {
+		const dialog = btn.closest("dialog")
+		dialog.close();
+	})
 })

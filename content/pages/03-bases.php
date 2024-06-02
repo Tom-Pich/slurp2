@@ -573,12 +573,12 @@ use App\Rules\MentalHealthController;
 			</tr>
 			<tr>
 				<td>2</td>
-				<td>Chevalier, maire, marchand considéré</td>
+				<td>Chevalier, bourgeois</td>
 				<td>Maire</td>
 			</tr>
 			<tr>
 				<td>1</td>
-				<td>Châtelain, capitaine de navire, marchand</td>
+				<td>Petit bourgeois</td>
 				<td>Médecin, membre du conseil municipal</td>
 			</tr>
 			<tr>
@@ -593,7 +593,7 @@ use App\Rules\MentalHealthController;
 			</tr>
 			<tr>
 				<td>-2</td>
-				<td>Étranger, membre du milieu</td>
+				<td>Pauvre</td>
 				<td>Mendiant</td>
 			</tr>
 			<tr>

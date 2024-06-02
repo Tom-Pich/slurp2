@@ -592,4 +592,4 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 </form>
 
-<script src="/scripts/character-edit.js" type="module"></script>
+<script src="/scripts/character-edit<?= PRODUCTION ? ".min" : "" ?>.js?v=<?= VERSION ?>" type="module"></script>

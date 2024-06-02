@@ -1,41 +1,44 @@
-import { qs, qsa, ce, calculate } from "./utilities.js";
-import morphdom from 'https://cdn.skypack.dev/morphdom';
+import { qs, qsa, ce, calculate, int } from "./utilities.js";
+import { wsURL, Message } from "./ws-utilities.js";
+import { updateDOM } from "./update-dom.js";
 
-const characterId = qs("#character-name").dataset.id;
+const sessionId = qs("#ws-data").dataset.sessionId;
+const wsKey = qs("#ws-data").dataset.wsKey;
+
+const characterId = parseInt(qs("#character-name").dataset.id);
 const formEquipment = qs("#form-equipment");
 const membersWrapper = qs("[data-role=members-wrapper]")
 const itemInputs = formEquipment.querySelectorAll("input");
 let newObjectNumber = 0;
 
 // ––– Web Socket character ping sender –––
-const wsServerURL = window.location.hostname === "site-jdr" ? "ws://127.0.0.1:1337" : "wss://web-chat.pichegru.net:443";
-const wsTchatClient = new WebSocket(wsServerURL)
-wsTchatClient.onopen = () => {
-	const initMsg = { type: "character-registration", id: parseInt(characterId), key: "a78D_Kj!45" }
-	wsTchatClient.send(JSON.stringify(initMsg))
+const ws = new WebSocket(wsURL)
+ws.onopen = () => { } // nothing to do
+
+ws.onmessage = (rawMessage) => {
+	const message = JSON.parse(rawMessage.data);
+	console.log(message)
+	if (message.type === "character-ping" && message.content === characterId) {
+		updateCharacter(characterId)
+	}
 }
 
-wsTchatClient.onmessage = (rawMessage) => {
-	const message = JSON.parse(rawMessage.data);
-	updateCharacter(characterId)
-}
+// on page load update sheet state
+containerOpenCloseStateManager();
+fillPdMCount();
 
 // ––– functions ––––––––––––––––––––––––––––––––––––––
 
-// ––– fetch the character sheet from server and update DOM with DOM diffing
+// ––– fetch the character sheet from server and update DOM with morphdom
 function updateCharacter(id) {
 	fetch("personnage-fiche?perso=" + id)
 		.then(response => response.text())
 		.then(response => {
-			const parser = new DOMParser();
-			const virtualDoc = parser.parseFromString(response, "text/html")
-			const source = virtualDoc.querySelector("main")
-			const target = qs("main")
-			morphdom(target, source);
+			updateDOM("main", response);
 			containerOpenCloseStateManager()
+			fillPdMCount()
 		})
 }
-
 
 // ––– handling containers state (open or close)
 function containerOpenCloseStateManager() {
@@ -53,7 +56,27 @@ function containerOpenCloseStateManager() {
 	})
 }
 
-// ––– submit character equipment
+// ––– filling PdM count
+function fillPdMCount() {
+	const pdmInput = qs("[name=pdm_counter]")
+
+	if (pdmInput) {
+		const PdMCount = localStorage.getItem("pdm-count"); // should be a string with a serie of operations (+2-4-2...)
+		const PdMmax = parseInt(pdmInput.dataset.pdmMax);
+		const calculatedResult = PdMmax + int(calculate(PdMCount));
+		const PdM = parseInt(pdmInput.dataset.pdmCurrent);
+
+		if (calculatedResult === PdM) {
+			pdmInput.value = PdMCount;
+		} else if (PdM === PdMmax) {
+			pdmInput.value = ""
+		} else {
+			pdmInput.value = PdM - PdMmax;
+		}
+	}
+}
+
+// ––– submit character equipment and send a character ping
 function submitEquipment() {
 	// getting ordered inputs (FF bug ?) for list ordering
 	let formData = new FormData();
@@ -70,8 +93,45 @@ function submitEquipment() {
 		body: formData
 	})
 		.then(() => {
-			updateCharacter(characterId)
+			const ping = new Message(sessionId, wsKey, "character-ping", characterId);
+			ws.send(ping.stringify());
 		})
+}
+
+// ––– submit PdM change
+function submitPdMChange() {
+
+	const PdMmax = parseInt(pdmInput.dataset.pdmMax);
+	const inputExpression = pdmInput.value;
+	const inputEvaluation = calculate(pdmInput.value);
+
+	// check if entered value is valid, if not valid → empty value
+	const pdmInputIsValid = ["+", "-"].includes(inputExpression.charAt(0)) || inputExpression === "" || inputEvaluation !== ""
+	if (pdmInputIsValid) { localStorage.setItem("pdm-count", inputExpression) }
+	else { localStorage.setItem("pdm-count", "") }
+
+	// evaluating current PdM value
+	let pdm_value
+	if (inputExpression === "") { pdm_value = "" } // empty value will erase PdM value in DB
+	else { pdm_value = PdMmax + int(inputEvaluation); } // if invalid expression, PdM = PdM max
+
+	// submiting form
+	let data = new FormData;
+	data.append("id", characterId);
+	data.append("pdm", pdm_value)
+	data.append("max", PdMmax)
+	if (pdm_value < 0) { alert("Vous ne pouvez pas dépenser autant de PdM !"); }
+	else {
+		fetch("/submit/update-character-pdm", {
+			method: 'post',
+			body: data
+		})
+			.then(response => response.text())
+			.then(() => {
+				const ping = new Message(sessionId, wsKey, "character-ping", characterId);
+				ws.send(ping.stringify()); // ping will reload character
+			})
+	}
 }
 
 // ––– event listeners –––––––––––––––––––––––––––––––––––––
@@ -117,7 +177,7 @@ formEquipment.addEventListener("click", (e) => {
 
 })
 
-// event listeners for saving after input change
+// event listeners for saving equipment after input change
 formEquipment.addEventListener("change", (e) => {
 	const target = e.target
 	if (target.tagName === "INPUT") {
@@ -175,9 +235,9 @@ membersWrapper.addEventListener("drop", (e) => {
 		// ping character after change
 		setTimeout(() => {
 			const characterTargetId = parseInt(target.dataset.place.substr(3));
-			const pingMsg = { type: "character-ping", id: characterTargetId, key: "a78D_Kj!45" };
-			wsTchatClient.send(JSON.stringify(pingMsg));
-		}, 500)
+			const ping = new Message(sessionId, wsKey, "character-ping", characterTargetId);
+			ws.send(ping.stringify());
+		}, 300)
 	}
 })
 
@@ -206,41 +266,17 @@ itemNotes.forEach(note => {
 })
 
 // ––– other stuff ––––––––––––––––––––––––––––––––––
-// apply container state
-containerOpenCloseStateManager()
+
 
 // pdm counter
 const pdmInput = qs("[name=pdm_counter]")
 if (pdmInput) {
 
-	let pdm_value = null
-
-	pdmInput.addEventListener("blur", (e) => {
-		try {
-			pdm_value = pdmInput.value === "" ? "" : calculate(pdmInput.value)
-			let data = new FormData;
-			data.append("id", characterId);
-			data.append("pdm", pdm_value)
-			data.append("max", pdmInput.dataset.pdmMax)
-			if (pdm_value < 0) { alert("Vous ne pouvez pas dépenser autant de PdM !") }
-			else {
-				fetch("/submit/update-character-pdm", {
-					method: 'post',
-					body: data
-				})
-					.then(response => response.text())
-					.then(response => updatePdmMeter(response))
-			}
-		} catch (error) {
-			alert("Expression invalide")
+	let timeoutId;
+	pdmInput.addEventListener("keyup", (e) => {
+		if (timeoutId){
+			clearTimeout(timeoutId)
 		}
+		timeoutId = setTimeout( () => submitPdMChange(), 1000);
 	})
 }
-
-function updatePdmMeter(pdm) {
-	const meter = qs("meter[name=PdM]");
-	meter.value = pdm;
-	meter.title = pdm;
-}
-
-

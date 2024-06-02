@@ -21,6 +21,9 @@ function color_modifier($original_score, $actual_score){
 }
 ?>
 
+<div id="ws-data" hidden data-session-id="<?= $_SESSION["id"] ?>" data-ws-key="<?= WS_KEY ?>" >
+
+</div>
 
 <!-- Description, caractéristiques, état perso & Avantages-Désavantages -->
 <article>
@@ -28,8 +31,6 @@ function color_modifier($original_score, $actual_score){
 	<div class="flex-s ai-center mt-½ gap-½">
 		<h3 class="fl-1" id="character-name" data-id="<?= $character->id ?>"><?= $character->name ?></h3>
 		<a href="personnage-gestion?perso=<?= $character->id ?>" title="Éditer – Alt+Shift+E" accesskey="e" class="btn ff-fas ">&#xf013;</a>
-		<!-- <button type="submit" form="form-equipment" class="ff-fas" title="Sauvegarder (enter)">&#xf0c7;</button> -->
-		<!-- <button type="button" data-role="refresh-character" class="ff-fas" title="Actualiser">&#xf2f1;</button> -->
 	</div>
 	<div class="ta-center mt-½ fs-300">
 		Pts&nbsp;: <?= $character->points ?> | éco&nbsp;: <?= $character->points - $character->points_count["total"] ?>
@@ -63,6 +64,7 @@ function color_modifier($original_score, $actual_score){
 	<div class="flex-s gap-¾ jc-center mt-½">
 		<?php foreach ($pdx_names as $pdx_name) {
 			$pdxm = $character->attributes[$pdx_name];
+			//$pdx = TextParser::evalString($character->state[$pdx_name]);
 			$pdx = $character->state[$pdx_name];
 		?>
 			<div class="ta-center <?= $pdx_name === "PdM" && !$character_uses_pdm ? "clr-grey-500" : "" ?>">
@@ -82,7 +84,8 @@ function color_modifier($original_score, $actual_score){
 				<?php  ?>
 				<div class="grid gap-½ ai-center mb-½" style="grid-template-columns: auto 1fr">
 					<b>PdM</b>
-					<input type="text" name="pdm_counter" data-pdm-max = "<?= $character->attributes["PdM"] ?>" value="<?= $character->state["PdM"] === $character->attributes["PdM"] ? "" : $character->state["PdM"] ?>">
+					<input type="text" name="pdm_counter" data-pdm-max = "<?= $character->attributes["PdM"] ?>" data-pdm-current="<?= $character->state["PdM"] ?>">
+					<!--  value="|?= $character->state["PdM"] === $character->attributes["PdM"] ? "" : $character->state["PdM"] ?|" -->
 				</div>
 			</li>
 			<?php } ?>
@@ -138,7 +141,7 @@ function color_modifier($original_score, $actual_score){
 			<?php foreach ($sublist as $avdesav) {
 				if ($avdesav["catégorie"] !== "Travers") : ?>
 
-					<details class="liste">
+					<details class="liste" tabindex="-1">
 						<summary>
 							<div><?= $avdesav["nom"] ?></div>
 							<div><?= $avdesav["points"] ?></div>
@@ -185,7 +188,7 @@ function color_modifier($original_score, $actual_score){
 		?>
 
 			<!-- Container wrapper -->
-			<details class="mb-1 p-½ border-grey-700" data-role="container-wrapper" data-place="<?= $sublist["lieu"] ?>" title="<?= $sublist["lieu"] ?>">
+			<details class="mb-1 p-½ border-grey-700" data-role="container-wrapper" data-place="<?= $sublist["lieu"] ?>" title="<?= $sublist["lieu"] ?>" tabindex="-1">
 
 				<!-- Container title -->
 				<summary class="h4 gap-1 ai-center">
@@ -196,9 +199,9 @@ function color_modifier($original_score, $actual_score){
 				</summary>
 
 				<!-- Container controls -->
-				<div class="flex-s ai-center gap-1½ py-½" data-role="container-controls">
+				<div class="flex-s ai-center gap-1 py-½" data-role="container-controls">
 
-					<button class="ff-fas nude" title="ajouter un objet" data-role="add-item" type="button">
+					<button class="ff-fas nude clr-primary p-¼" title="ajouter un objet" data-role="add-item" type="button">
 						&#xf055;
 					</button>
 					<div class="flex-s gap-½ fl-1">
@@ -207,13 +210,13 @@ function color_modifier($original_score, $actual_score){
 					</div>
 
 					<?php if ($sublist["id"]) { ?>
-						<label class="ff-fas" title="transformer en objet simple">
+						<label class="ff-fas clr-warning cursor-pointer" title="transformer en objet simple (si vide seulement !)">
 							&#xf057;
-							<input type="checkbox" name="objet[<?= $sublist["id"] ?>][Contenant-off]" <?= $sublist["non-vide"] ? "disabled" : "" ?>>
+							<input type="checkbox" name="objet[<?= $sublist["id"] ?>][Contenant-off]" <?= $sublist["non-vide"] ? "disabled" : "" ?> hidden>
 						</label>
-						<label class="ff-fas" title="rendre visible pour le groupe">
+						<label class="ff-fas clr-secondary-dark cursor-pointer group-share-input px-¼" title="rendre visible pour le groupe">
 							&#xe533;
-							<input type="checkbox" name="sub-list[<?= $sublist["id"] ?>][Groupe]" <?= !empty($sublist["groupe"]) ? "checked" : "" ?> value="<?= $character->id_group ?>">
+							<input type="checkbox" hidden name="sub-list[<?= $sublist["id"] ?>][Groupe]" <?= !empty($sublist["groupe"]) ? "checked" : "" ?> value="<?= $character->id_group ?>">
 						</label>
 					<?php } ?>
 
@@ -315,7 +318,7 @@ function color_modifier($original_score, $actual_score){
 	<?php } ?>
 
 	<?php if ($character->special_traits["psi"]) {	?>
-		<h4>Psi</h4>
+		<h4 class="mt-1 mb-½">Psi</h4>
 		<?php foreach ($character->disciplines as $discipline) { ?>
 			<details class="liste">
 				<summary>
@@ -370,14 +373,14 @@ function color_modifier($original_score, $actual_score){
 	</div>
 
 	<!-- Mode d’emploi form équipement -->
-	<details class="mt-1">
+	<details class="mt-1 flow">
 		<summary class="fw-700">Mode d’emploi de la liste de possessions</summary>
-		<p><b>Ajouter un objet&nbsp;:</b> cliquer sur <span class="ff-fas">&#xf055;</span> dans l’emplacement désiré.</p>
+		<p><b>Ajouter un objet&nbsp;:</b> cliquer sur <span class="ff-fas clr-primary">&#xf055;</span> dans l’emplacement désiré.</p>
 		<p><b>Supprimer un objet&nbsp;:</b> effacer son nom. Attention&nbsp;: si vous effacez un objet-contenant, vous perdrez tout son contenu avec&nbsp;!</p>
 		<p><b>Transformer un objet en contenant&nbsp;:</b> Insérer * devant son nom.</p>
-		<p><b>Transformer un contenant en objet simple&nbsp;:</b> cocher la case <span class="ff-fas">&#xf057;</span> dans la liste associée au contenant (pas possible si le contenant n’est pas vide).</p>
+		<p><b>Transformer un contenant en objet simple&nbsp;:</b> cocher la case <span class="ff-fas clr-warning">&#xf057;</span> dans la liste associée au contenant (pas possible si le contenant n’est pas vide).</p>
 		<p><b>Déplacer un objet</b> (vers un autre endroit, ou à l’intérieur d’une liste, ou vers un autre personnage)&nbsp;: faire un <i>glisser-déposer</i> en vous servant de la poignée <span class="ff-fas">&#xf58e;</span> . Attention&nbsp;: la liste de destination doit être dépliée pour pouvoir faire le transfert.</p>
-		<p><b>Partager</b> le contenu d’un contenant&nbsp;: cliquer sur la case <span class="ff-fas">&#xe533;</span>. Les autres membres du groupe pourront voir ce contenu (mais pas le modifier).</p>
+		<p><b>Partager</b> le contenu d’un contenant&nbsp;: cliquer sur la case <span class="ff-fas clr-secondary-dark">&#xe533;</span>. Les autres membres du groupe pourront voir ce contenu (mais pas le modifier).</p>
 		<p><b>Calcul automatique des dégâts</b> des armes blanches&nbsp;:</p>
 		<ol>
 			<li>Entrez dans les <b>notes</b> de l’objet le ou les <b>codes de dégâts</b> de l’arme <i>tels que</i> donnés dans les règles (ex. P.e+1, T.t-2, B.t&hellip;), en tenant compte d’un éventuel bonus de qualité ou de magie.</li>
@@ -429,4 +432,4 @@ function color_modifier($original_score, $actual_score){
 
 </article>
 
-<script src="scripts/character-sheet.js?v=<?= VERSION ?>" type="module"></script><!-- data-type="reloadable" -->
+<script src="scripts/character-sheet<?= PRODUCTION ? ".min" : "" ?>.js?v=<?= VERSION ?>" type="module"></script>

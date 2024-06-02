@@ -314,7 +314,7 @@ class Character
 			"Statut" => "Création",
 			"Pts" => 120,
 			"Caractéristiques" => ["For" => 10, "Dex" => 10, "Int" => 10, "San" => 10, "Per" => 10, "Vol" => 10],
-			"État" => [],
+			"État" => "{}", // if "État" => [], will create a JSON array and not a JSON object, which can be problematic
 			"Calculs" => [],
 			"MPP" => [],
 			"Avdesav" => [],
@@ -368,7 +368,7 @@ class Character
 		$character["Compétences"] = json_encode($character["Compétences"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 
 		$character["Calculs"] = json_encode($character["Calculs"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-		$character["État"] = json_encode($character["État"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+		//$character["État"] = json_encode($character["État"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 		$character["Sorts"] = json_encode($character["Sorts"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 		$character["Pouvoirs"] = json_encode($character["Pouvoirs"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 		$character["Psi"] = json_encode($character["Psi"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
@@ -719,9 +719,12 @@ class Character
 	{
 		$character_id = (int) $post["id"];
 		$max = (int) $post["max"];
-		$pdm = $post["pdm"] === "" ? $max : (int) $post["pdm"];
-		$pdm = max(0, $pdm);
-		$pdm = min($max, $pdm);
+		$pdm = $post["pdm"];
+		if ($pdm !== ""){
+			$pdm = (int) $post["pdm"];
+			$pdm = max(0, $pdm);
+			$pdm = min($max, $pdm);
+		}
 		echo $pdm;
 
 		// Update database

@@ -1,4 +1,5 @@
 import {qs, qsa, ce} from "./utilities";
+import { updateDOM } from "./update-dom.js";
 
 // Portrait select confirmation
 const addPortrait = qs("[data-role=add-portrait]")
@@ -35,4 +36,16 @@ addQuirkBtn.addEventListener("click", (e) => {
 	`;
 	avdesavWrapper.appendChild(newQuirkWrapper);
 	e.target.dataset.number ++;
+})
+
+// submit form and reload page with morphdom
+const form = qs("#noyau");
+form.addEventListener("submit", (e) => {
+	e.preventDefault();
+	fetch(form.action, {
+		method: 'post',
+		body: new FormData(form)
+	})
+	.then(response => response.text())
+	.then(response => updateDOM("#noyau", response))
 })

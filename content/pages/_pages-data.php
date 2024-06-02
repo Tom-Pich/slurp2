@@ -99,19 +99,11 @@ $pages_data = [
 		"description" => "Quelques liens utiles", 
 		"file" => "s_liens",
 	],
-	/* "paorn" => [
-		"title" => "Encyclopedia Paornensis", 
+	"wiki-paorn" => [
+		"title" => "Wiki Paorn", 
 		"description" => "Diverses notes à propos de Paorn", 
 		"file" => "s_paorn",
-		"body-class" => "paorn",
-		"access-restriction" => 3,
-	], */
-	"paorn" => [
-		"title" => "Encyclopedia Paornensis", 
-		"description" => "Diverses notes à propos de Paorn", 
-		"file" => "s_paorn-2",
 		"body-class" => "wiki",
-		//"access-restriction" => 3,
 	],
 	"scenarii" => [
 		"title" => "Scenarii", 
