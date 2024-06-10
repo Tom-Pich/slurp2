@@ -43,7 +43,8 @@ class Discipline
 
 		$disciplines = Sorter::sort($disciplines, "nom");
 
-		$points = 0.5 * max($detailled_points) + 0.5 * (array_sum($detailled_points));
+		if(!empty($detailled_points)){$points = 0.5 * max($detailled_points) + 0.5 * (array_sum($detailled_points));}
+		
 		$points = ceil($points * 2) / 2;
 
 		return [$disciplines, $points];

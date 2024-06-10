@@ -48,7 +48,6 @@ $pathFirstSegment = $path_segments[1] ?? null;
 //var_dump($path_levels); die();
 
 // API
-//if (substr($path, 0, 4) === "/api") {
 if ($pathFirstSegment === "api") {
 
 	$controller = new ApiController;
@@ -168,6 +167,12 @@ if ($pathFirstSegment === "api") {
 			$rolls = explode(",", $_POST["rolls"]);
 			$rolls = array_map(fn ($x) => (int) $x, $rolls);
 			$controller->getObjectDamageEffects($pdsm, $pds, $integrite, $rd, $rawDamages, $dmgType, $objectType, $localisation, $rolls);
+			break;
+		
+		case "/api/reaction-test":
+			Firewall::check(isset($_POST["reaction-test"]));
+			$reactionTest = (int) $_POST["reaction-test"];
+			$controller->getReaction($reactionTest);
 			break;
 
 		default:

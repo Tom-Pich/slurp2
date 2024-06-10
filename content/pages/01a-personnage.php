@@ -14,7 +14,7 @@ $attributes = [
 ];
 ?>
 
-<article>
+<article><!-- Concevoir son personnage -->
 	<h2>Concevoir son personnage</h2>
 
 	<details>
@@ -239,7 +239,7 @@ $attributes = [
 
 </article>
 
-<article>
+<article><!-- Caractéristiques -->
 	<h2>Caractéristiques</h2>
 
 	<details>
@@ -449,7 +449,7 @@ $attributes = [
 
 </article>
 
-<article>
+<article><!-- Avantages & Désavantages -->
 	<h2>Avantages, Désavantages &amp; Travers</h2>
 
 	<details>
@@ -527,7 +527,7 @@ $attributes = [
 
 </article>
 
-<article>
+<article><!-- Compétences -->
 	<h2>Compétences</h2>
 
 	<details>
@@ -636,37 +636,26 @@ $attributes = [
 		<?php
 		$skills_groups = Skill::skills_groups;
 		$repo = new SkillRepository;
+		$readable_group_names = [
+			"melee" => "Armes de contact",
+			"hand-to-hand" => "Corps-à-corps",
+			"bow" => "Arc &amp; arblètes",
+			"throwing" => "Armes de jet",
+			"seduction" => "Séduction",
+			"acrobatics-dodging" => "Esquive",
+		];
 
 		foreach ($skills_groups as $group => $id_list) {
-			switch ($group) {
-				case "melee":
-					$group_name = "Armes de contact";
-					break;
-				case "hand-to-hand":
-					$group_name = "Corps-à-corps";
-					break;
-				case "bow":
-					$group_name = "Arc &amp; arblètes";
-					break;
-				case "throwing":
-					$group_name = "Armes de jet";
-					break;
-				case "seduction":
-					$group_name = "Séduction";
-					break;
-				default:
-					$group_name = $group;
-			}
 			$skills_name_list = [];
 			foreach ($id_list as $id) {
 				$skill = $repo->getSkill($id);
 				$skills_name_list[] = $skill->name;
 			}
 		?>
-			<p><b><?= $group_name ?>&nbsp;:</b> <?= join(", ", $skills_name_list) ?></p>
-		<?php
-		}
-		?>
+			<p><b><?= $readable_group_names[$group] ?? $group ?>&nbsp;:</b> <?= join(", ", $skills_name_list) ?></p>
+
+		<?php } ?>
+
 		<p>Et autres, selon la décision du MJ.</p>
 
 		<div class="exemple">

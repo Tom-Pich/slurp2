@@ -587,7 +587,7 @@ class Character
 				!empty($discipline["mult"]) ? $f_discipline["mult"] = (float) $discipline["mult"] : "";
 				!empty($discipline["notes"]) ? $f_discipline["notes"] = strip_tags($discipline["notes"]) : "";
 				$f_discipline["catégorie"] = "discipline";
-				$discipline["niv"] ? $character["Psi"][] = $f_discipline : "";
+				$discipline["niv"] ? $character["Psi"][] = $f_discipline : ""; // push discipline if niv > 0
 			}
 		}
 
@@ -632,9 +632,7 @@ class Character
 				}
 			}
 		}
-
-		//var_dump($character);
-
+		
 		foreach (["Caractéristiques", "MPP", "Avdesav", "Compétences", "Sorts", "Pouvoirs", "Psi"] as $array_data) {
 			$character[$array_data] = json_encode($character[$array_data], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 		}

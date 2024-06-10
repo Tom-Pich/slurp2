@@ -172,6 +172,7 @@ textarea {resize: vertical; min-height: 8em; width: 100%;}
 
 .fit-cover {width: 100%; height: 100%; object-fit: cover; }
 .full-width {width: 100%;}
+.width-fit-content { width: fit-content; }
 
 .desktop {@include media {display: none !important;}}
 .phone {display: none; @include media {display: block;}}

@@ -58,7 +58,7 @@ ws.onmessage = (rawMessage) => {
 		if (message.type === "chat-roll") messageText.classList.add("color1");
 		if (message.sender === id) p.classList.add("self-message");
 		if (message.sender !== id) p.classList.add("bg-color-user-" + (message.sender % 7 + 1));
-		if (message.sender === lastSender  && jsonRecipients === lastRecipients && (message.timestamp - lastMessageTime) < 15000) p.classList.add("same-routing");
+		if (message.sender === lastSender && jsonRecipients === lastRecipients && (message.timestamp - lastMessageTime) < 15000) p.classList.add("same-routing");
 		if (message.recipients.length > 0) p.classList.add("is-private");
 
 		// building message "header"
@@ -170,6 +170,24 @@ simpleDiceWidget.addEventListener("submit", (e) => {
 	let rollDice = roll(expression);
 	inputEntry.value += `${rollDice.expression} → ${rollDice.result}`
 	flushMsg("chat-roll")
+})
+
+// reaction test
+const reactionWidget = qs("#reaction-widget")
+reactionWidget.addEventListener("submit", (e) => {
+	const reactionModifier = int(reactionWidget.querySelector("[data-type=reaction-modifier]").value)
+	const reactionTest = roll("1d").result + reactionModifier;
+	console.log(reactionModifier)
+	let data = new FormData
+	data.append("reaction-test", reactionTest)
+	fetch("/api/reaction-test", {
+		method: "post",
+		body: data
+	}).then(response => response.json())
+		.then(response => {
+			inputEntry.value += `Jet de réaction (${reactionTest}) → ${response.data}`
+			flushMsg("chat-roll")
+		})
 })
 
 // score tester

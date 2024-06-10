@@ -135,6 +135,7 @@ class Skill implements RulesItem
 	 * processSkills – process an array of raw skills data as in database persos Compétences \
 	 *
 	 * @param  array $skills unprocessed array from database
+	 * @param array $raw_attr indexed array with unmodified attributes
 	 * @param array $attr indexed array with For, Dex, Int, San, Per Vol
 	 * @param array $modifiers index array with all character modifiers entries 
 	 * @return array  [processed skills, skills total points, updated character modifiers]
@@ -145,18 +146,19 @@ class Skill implements RulesItem
 		$pool = [];
 		$attr_match = ["F" => "For", "D" => "Dex", "I" => "Int", "S" => "San", "P" => "Per", "V" => "Vol",];
 		$proc_skills = [];
+		$skill_repo = new SkillRepository;
 
 		// first process loop – group bonus can only be processed after a complete first loop
 		foreach ($skills as $skill) {
 
-			$skill_entity = (new SkillRepository)->getSkill($skill["id"]);
+			$skill_entity = $skill_repo->getSkill($skill["id"]);
 
 			// default label
 			if (empty($skill["label"])) {
 				$skill["label"] = $skill_entity->name;
 			}
 
-			// default niv
+			// default niv or impossible niv
 			if (!isset($skill["niv"]) || $skill["niv"] < $skill_entity->difficulty / 2) {
 				$skill["niv"] = $skill_entity->difficulty;
 			}
@@ -172,8 +174,8 @@ class Skill implements RulesItem
 			$attr_sum = 0;
 			$raw_attr_sum = 0;
 			foreach (str_split($skill_entity->base) as $letter) {
-				$attr_sum += $attr[$attr_match[$letter]];
-				$raw_attr_sum += $raw_attr[$attr_match[$letter]];
+				$attr_sum += $attr[$attr_match[$letter]]; // sum of current state attributes
+				$raw_attr_sum += $raw_attr[$attr_match[$letter]]; // sum of un modified attributes
 				$attr_number++;
 			}
 			$skill["base"] = (int) floor($attr_sum / $attr_number);
@@ -182,8 +184,10 @@ class Skill implements RulesItem
 			// modifier from label
 			$skill["modif"] = TextParser::parseModif($skill["label"]);
 
-			// score
+			// modifier from "Mémoire infaillible for I-8 skills
 			$bonus_memoire_infaillible = $skill_entity->difficulty === -8 && $skill_entity->base === "I" ? floor($special_traits["mult-memoire-infaillible"] / 2) : 0;
+
+			// score
 			if ($skill["niv"] === $skill_entity->difficulty && !$skill_entity->hasDefault) {
 				$skill["score"] = "–";
 				$skill["virtual-score"] = $skill["base"] + $skill["niv"] + $skill["modif"] + $bonus_memoire_infaillible;
@@ -194,14 +198,14 @@ class Skill implements RulesItem
 			// processing skill base cost
 			$skill["points"] = self::niv2cost($skill["niv"], $skill_entity->difficulty);
 			if ($skill_entity->base === "I" && $skill_entity->difficulty > -8) {
-				$skill["points"] /= $special_traits["mult-memoire-infaillible"];
+				$skill["points"] /= $special_traits["mult-memoire-infaillible"]; // "Mémoire infaillible" divider (1, 2 or 4)
 			}
 			if ($skill["id"] === 200) { // langue maternelle
 				$skill["points"] = self::niv2cost($skill["niv"], $skill_entity->difficulty) - self::niv2cost(5, $skill_entity->difficulty);
 			}
 
 			// processing skill speciality bonus (with limits)
-			$speciality_regexp = "/\([^\(]+\s\+(\d)\)/";
+			$speciality_regexp = "/\([^\(]+\s\+(\d)\)/"; // ( .... +d )
 			preg_match($speciality_regexp, $skill["label"], $matches);
 			if (isset($matches[1])) {
 				$skill["spe_bonus"] = (int)$matches[1];

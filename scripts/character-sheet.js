@@ -18,7 +18,7 @@ ws.onopen = () => { } // nothing to do
 ws.onmessage = (rawMessage) => {
 	const message = JSON.parse(rawMessage.data);
 	console.log(message)
-	if (message.type === "character-ping" && message.content === characterId) {
+	if (message.type === "character-ping" && [0, characterId].includes(message.content)) {
 		updateCharacter(characterId)
 	}
 }
@@ -77,7 +77,7 @@ function fillPdMCount() {
 }
 
 // ––– submit character equipment and send a character ping
-function submitEquipment() {
+function submitEquipment(pingAllCharacter = false) {
 	// getting ordered inputs (FF bug ?) for list ordering
 	let formData = new FormData();
 	formEquipment.querySelectorAll("input").forEach(input => {
@@ -93,7 +93,7 @@ function submitEquipment() {
 		body: formData
 	})
 		.then(() => {
-			const ping = new Message(sessionId, wsKey, "character-ping", characterId);
+			const ping = new Message(sessionId, wsKey, "character-ping", pingAllCharacter ? 0 : characterId);
 			ws.send(ping.stringify());
 		})
 }
@@ -179,10 +179,8 @@ formEquipment.addEventListener("click", (e) => {
 
 // event listeners for saving equipment after input change
 formEquipment.addEventListener("change", (e) => {
-	const target = e.target
-	if (target.tagName === "INPUT") {
-		submitEquipment();
-	}
+	const pingAllCharacter = e.target.dataset.pingAll !== undefined ? true : false;
+	submitEquipment(pingAllCharacter);
 })
 
 // event listener for drag and drop (not used: drag, dragleave, drop)

@@ -47,5 +47,5 @@ form.addEventListener("submit", (e) => {
 		body: new FormData(form)
 	})
 	.then(response => response.text())
-	.then(response => updateDOM("#noyau", response))
+	.then(response => updateDOM("main", response))
 })

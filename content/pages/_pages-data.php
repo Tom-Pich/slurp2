@@ -87,7 +87,7 @@ $pages_data = [
 		"title" => "Écrire un scénario", 
 		"description" => "Une évolution de l’article précédemment publié dans PTGPTB faisant la synthèse de nombreux articles sur la création de scénario", 
 		"file" => "s_scenario",
-		"body-class" => "writing-scenario",
+		"body-class" => "standard-page writing-scenario",
 	],
 	"aide-de-jeu-medfan" => [
 		"title" => "Le Moyen Âge", 

@@ -11,6 +11,7 @@ use App\Rules\WeaponsController;
 use App\Rules\WoundController;
 use App\Rules\ExplosionController;
 use App\Rules\ObjectController;
+use App\Rules\ReactionController;
 
 class ApiController
 {
@@ -142,6 +143,12 @@ class ApiController
 	public function getObjectDamageEffects(int $pdsm, int $pds, int $integrite, int $rd, int $rawDamages, string $dmgType, string $objectType, string $localisation, array $rolls)
 	{
 		$this->response["data"] = ObjectController::getObjectDamageEffects($pdsm, $pds, $integrite, $rd, $rawDamages, $dmgType, $objectType, $localisation, $rolls);
+		$this->sendResponse();
+	}
+
+	public function getReaction(int $reaction)
+	{
+		$this->response["data"] = ReactionController::getReaction($reaction);
 		$this->sendResponse();
 	}
 

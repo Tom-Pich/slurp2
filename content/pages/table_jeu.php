@@ -20,6 +20,17 @@ $nbre_protagonistes = 7;
 			</form>
 		</fieldset>
 
+		<!-- jet de réaction -->
+		<fieldset class="<?= $_SESSION["Statut"] === 1 ? "hidden" : "" ?>">
+			<legend>Jet de réaction</legend>
+			<form class="flex-s ai-flex-between" id="reaction-widget">
+				<div class="fl-1 ta-center">
+					<input type="text" size="5" data-type="reaction-modifier" class="ta-center" placeholder="±x" title="Modificateur de réaction">
+				</div>
+				<button class="nude">🎲</button>
+			</form>
+		</fieldset>
+
 		<!-- test caractéristique / compétence -->
 		<fieldset>
 			<legend>Jets de réussite</legend>

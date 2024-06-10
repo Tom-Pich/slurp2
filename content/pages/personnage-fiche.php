@@ -216,7 +216,7 @@ function color_modifier($original_score, $actual_score){
 						</label>
 						<label class="ff-fas clr-secondary-dark cursor-pointer group-share-input px-¼" title="rendre visible pour le groupe">
 							&#xe533;
-							<input type="checkbox" hidden name="sub-list[<?= $sublist["id"] ?>][Groupe]" <?= !empty($sublist["groupe"]) ? "checked" : "" ?> value="<?= $character->id_group ?>">
+							<input type="checkbox" hidden name="sub-list[<?= $sublist["id"] ?>][Groupe]" <?= !empty($sublist["groupe"]) ? "checked" : "" ?> value="<?= $character->id_group ?>" data-ping-all>
 						</label>
 					<?php } ?>
 
