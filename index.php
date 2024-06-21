@@ -168,11 +168,20 @@ if ($pathFirstSegment === "api") {
 			$rolls = array_map(fn ($x) => (int) $x, $rolls);
 			$controller->getObjectDamageEffects($pdsm, $pds, $integrite, $rd, $rawDamages, $dmgType, $objectType, $localisation, $rolls);
 			break;
-		
+
 		case "/api/reaction-test":
 			Firewall::check(isset($_POST["reaction-test"]));
 			$reactionTest = (int) $_POST["reaction-test"];
 			$controller->getReaction($reactionTest);
+			break;
+		
+		case "/api/npc-generator":
+			$post = [];
+			foreach ($_POST as $parameter => $value){
+				//Firewall::check(isset($_POST[$parameter]));
+				$post[$parameter] = htmlspecialchars($_POST[$parameter]);
+			}
+			$controller->getNPC($post);
 			break;
 
 		default:
@@ -347,16 +356,26 @@ elseif ($pathFirstSegment === "scenario") {
 	} else {
 		$page = new Error404Controller;
 		$page->show();
-	}	
+	}
 }
 
 // wiki pages
 else if ($pathFirstSegment === "wiki-paorn") {
-	require_once "content/wiki/paorn/_articles_data.php";
+	$is_root_page = empty($path_segments[2]);
 	$page_data = $pages_data["wiki-paorn"];
-	$page_data["article"] = $path_segments[2] ?? null;
-	$page_data["article-title"] = $page_data["article"] ? $articles[$page_data["article"]] : null;
-	$page = new PageController($page_data);
+	include "content/wiki/paorn/_articles.php";
+	$article = $is_root_page ? null : $articles[$path_segments[2]];
+
+	if ($is_root_page) {
+		$page = new PageController($page_data);
+	} elseif (!empty($article)) {
+		$page_data["title"] = "Wiki Paorn – " . $article["title"];
+		$page_data["description"] .= ( " – " . $article["title"] );
+		$page_data["article"] = $path_segments[2];
+		$page = new PageController($page_data);
+	} else {
+		$page = new Error404Controller;
+	}
 	$page->show();
 }
 

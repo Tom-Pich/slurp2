@@ -15,13 +15,13 @@ export function roll(code) {
 		z = (match[4] != undefined && match[4] != "") ? parseFloat(match[4]) : 0
 
 		// handling special cases: 1d-2 = 1d5-1, 1d-3 = 1d4-1, 1d-4 = 1d3-1, 1d-5=1d2-1
-		if (x === 1 && y === 6 && op === "-" && z === 2){ result = Math.floor(Math.random() * 5) }
-		else if (x === 1 && y === 6 && op === "-" && z === 3){ result = Math.floor(Math.random() * 4) }
-		else if (x === 1 && y === 6 && op === "-" && z === 4){ result = Math.floor(Math.random() * 3) }
-		else if (x === 1 && y === 6 && op === "-" && z === 5){ result = Math.floor(Math.random() * 2) }
+		if (x === 1 && y === 6 && op === "-" && z === 2) { result = Math.floor(Math.random() * 5) }
+		else if (x === 1 && y === 6 && op === "-" && z === 3) { result = Math.floor(Math.random() * 4) }
+		else if (x === 1 && y === 6 && op === "-" && z === 4) { result = Math.floor(Math.random() * 3) }
+		else if (x === 1 && y === 6 && op === "-" && z === 5) { result = Math.floor(Math.random() * 2) }
 
 		// regular dices throw
-		else{
+		else {
 			for (let i = 0; i < x; i++) { result += Math.floor(Math.random() * y) + 1 }
 			switch (op) {
 				case "+": result += z; break;
@@ -50,8 +50,26 @@ export async function getLocalisation() {
 	return result
 }
 
+// get a damage expression from strength and code
+export async function fetchDamageExpression(strength, code, hands) {
+	if (parseInt(strength) && code) {
+		let weaponCode = "B." + code;
+		let data = new FormData;
+		data.append("for", strength);
+		data.append("notes", weaponCode);
+		data.append("mains", hands);
+		return fetch("/api/weapon-damages", {
+			method: 'post',
+			body: data
+		})
+			.then(response => response.json())
+			.then(response => response.data.damages.slice(2))
+			//.then(damage => wdwExpression.value = damage)
+	}
+}
+
 // build opponent object based on form entries
-export function collectOpponentData(number){
+export function collectOpponentData(number) {
 	const opponentWrapper = qs(`[data-opponent="${number}"]`)
 
 	const opponent = {
@@ -67,18 +85,6 @@ export function collectOpponentData(number){
 	return opponent
 }
 
-// determine if a roll result is critical : -1 if critical miss, 1 if critical success, else 0
-/* export function isCritical(score, roll){
-	const MR = score - roll;
-	if (roll === 18) { return -1 }
-	else if (roll === 17) { return score >= 16 ? 0 : -1 }
-	else if (roll === 4) { return score <= 5 ? 0 : 1 }
-	else if (roll === 3) { return 1 }
-	else if (MR <= -10) { return -1 }
-	else if (MR >= 10 && roll <= 7) { return 1 }
-	return 0
-} */
-
 /**
  * given a score and a 3d roll result, returns the MR and the symbol of outcome status
  * Simple success, simple failure, critical success, critical failure
@@ -86,7 +92,7 @@ export function collectOpponentData(number){
  * @param {int} roll 3d rol result 
  * @returns {Object} "MR" and "symbol"
  */
-export function scoreTester(score, roll){
+export function scoreTester(score, roll) {
 	const MR = score - roll;
 
 	let critical = 0;
@@ -101,5 +107,19 @@ export function scoreTester(score, roll){
 	if (critical === -1) outcomeSymbol = "😖"
 	if (critical === 1) outcomeSymbol = "😎"
 
-	return {"MR": MR, "symbol": outcomeSymbol}
+	return { "MR": MR, "symbol": outcomeSymbol }
+}
+
+/**
+ * return the result of the fetch query
+ * @param {string} url of the API
+ * @param {FormData} data to be sent 
+ */
+export async function fetchResult(url, data) {
+	return fetch(url, {
+		method: "post",
+		body: data,
+	})
+		.then(response => response.json())
+		.then(response => response.data)
 }

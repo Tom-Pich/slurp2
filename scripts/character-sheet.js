@@ -1,6 +1,7 @@
-import { qs, qsa, ce, calculate, int } from "./utilities.js";
+import { qs, qsa, ce, calculate, int, trimModifier, explicitSign } from "./utilities.js";
 import { wsURL, Message } from "./ws-utilities.js";
 import { updateDOM } from "./update-dom.js";
+import { roll, scoreTester } from "./game-table-utilities.js"
 
 const sessionId = qs("#ws-data").dataset.sessionId;
 const wsKey = qs("#ws-data").dataset.wsKey;
@@ -265,16 +266,52 @@ itemNotes.forEach(note => {
 
 // ––– other stuff ––––––––––––––––––––––––––––––––––
 
-
 // pdm counter
 const pdmInput = qs("[name=pdm_counter]")
 if (pdmInput) {
 
 	let timeoutId;
 	pdmInput.addEventListener("keyup", (e) => {
-		if (timeoutId){
+		if (timeoutId) {
 			clearTimeout(timeoutId)
 		}
-		timeoutId = setTimeout( () => submitPdMChange(), 1000);
+		timeoutId = setTimeout(() => submitPdMChange(), 1000);
 	})
 }
+
+// make a test on game table
+const throwableItems = qsa("[data-type=throwable-label], [data-type=throwable-score]")
+const testDialog = qs("dialog[data-type=character-sheet-roll]")
+const testDialogBtn = testDialog.querySelector("[data-type=send-test]")
+const modifierInput = testDialog.querySelector("[data-type=test-modifier-value]");
+let label, score
+
+throwableItems.forEach(item => {
+	item.addEventListener("click", () => {
+
+		testDialog.showModal();
+		modifierInput.focus();
+		modifierInput.value = ""; // reset modifier value
+
+		const wrapper = item.closest("[data-type=throwable-wrapper]");
+		label = trimModifier(wrapper.querySelector("[data-type=throwable-label]").innerText);
+		score = parseInt(wrapper.querySelector("[data-type=throwable-score]").innerText);
+		testDialog.querySelector("[data-content=label]").innerText = label;
+		testDialog.querySelector("[data-content=score]").innerText = score;
+	})
+})
+
+testDialogBtn.addEventListener("click", (e) => {
+	const modifier = int(modifierInput.value);
+	const readableModif = modifier === 0 ? "" : explicitSign(modifier)
+	const rollResult = roll("3d").result;
+	const outcome = scoreTester(score + modifier, rollResult)
+	const messageContent = `${label} (${score}${readableModif}) → ${rollResult} (MR ${outcome.MR} ${outcome.symbol})`;
+	const message = new Message(sessionId, wsKey, "chat-roll", messageContent, [], outcome.symbol);
+	ws.send(message.stringify());
+	testDialog.close()
+})
+
+testDialog.addEventListener("keydown", (e) => {
+	if (e.keyCode === 13) { testDialogBtn.click() }
+})

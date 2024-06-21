@@ -248,20 +248,20 @@
 			<tr><th>Localisation &amp; Effets secondaires</th></tr>
 			<tr>
 				<td>
-					<b class="color1">Moteur</b><br/>
+					<b>Moteur</b><br/>
 					<b>Niv. 1 :</b> fonctionne normalement 2d minutes puis panne<br/>
 					<b>Niv. 2 :</b> fonctionne 1d minutes (-2 Acc, -50% Vit.) puis HS
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<b class="color1">Roue</b><br/>
+					<b>Roue</b><br/>
 					Le pneu est crevé (niv.1) ou éclate (niv. 2+). <i>Ma</i> -2 pour une seule roue crevée sur une voiture. Le véhicule est incontrôlable avec 2 pneus crevés.
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<b class="color1">Réservoir</b><br/>
+					<b>Réservoir</b><br/>
 					<b>Niv. 1 :</b> réservoir percé. La fuite ne posera pas de problème immédiat sauf en cas de flammes.<br/>
 					<b>Niv. 2 :</b> Le carburant peut prendre feu – <b>1-5</b> pour de l’essence et <b>1-3</b> pour du gasoil.
 				</td>

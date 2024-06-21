@@ -11,7 +11,7 @@
 	</figure>
 </div>
 
-<img src="/assets/img_paorn/imegie_blason.png" width="70px" class="float-left">
+<img src="/assets/img_paorn/blason-imegie.png" width="70px" class="float-left">
 <p class="mt-0">Cité paresseuse aux maisons blanchies à la chaux, Imégie (également nommée la <i>Ville blanche</i>) est la ville la plus peuplée de l’Artaille avec 25000 habitants. C'est également la capitale de cette province.</p>
 <p>
 	Elle s’étend sur une superficie de 175 ha (2,6 km dans sa plus grande longueur, de la porte de Mineurs au nord-est jusqu'aux murailles de St-Almer au sud-ouest). La citée est divisée en deux parties&nbsp;: la vieille ville, ou ville haute, au sud-ouest, et la ville basse. Ces deux parties sont séparées par une fortification intérieure et communiquent par la <i>Vieille Porte</i>.

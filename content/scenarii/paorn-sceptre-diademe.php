@@ -326,7 +326,7 @@
 
 	<details open><!-- Trajet vers Stomilie -->
 		<summary>
-			<h3 class="color1">Départ pour Stomilie</h3>
+			<h3 class="clr-warning">Départ pour Stomilie</h3>
 		</summary>
 		<p class="important">
 			<b>Objectifs&nbsp;:</b> vendre/acheter du matériel (souhait des PJ), retrouver des traces de l’Ordre
@@ -437,7 +437,7 @@
 		<h4>L’amulette</h4>
 		<p>Symbolise la force et la protecion. Elle agit comme une protection face aux forces du mal.</p>
 		<p>Cet artefact n’est pas en possession des PJ. C’est la Fraternité du Crépuscule de Sang qui la possède.</p>
-		<p><b>Pouvoirs&nbsp;:</b> Augmente grandement la zone de Protection contre le mal générée par le sceptre, <span class="color1">À compléter</span></p>
+		<p><b>Pouvoirs&nbsp;:</b> Augmente grandement la zone de Protection contre le mal générée par le sceptre, <span class="clr-warning">À compléter</span></p>
 
 
 	</details>
@@ -515,7 +515,7 @@
 
 	<details><!-- La secte du Crépuscule de Sang -->
 		<summary>
-			<h3 class="color1">La secte du Crépuscule de Sang</h3>
+			<h3 class="clr-warning">La secte du Crépuscule de Sang</h3>
 		</summary>
 		<p>
 			Culte vénérant trois divinités maléfiques&nbsp;: la <i>Dame Rouge</i>, <i>Malgog, Prince des Enfers</i> et <i>Iggaroth l’Éternel, Porteur de la Fin des Temps</i>.
@@ -543,7 +543,7 @@
 
 		<p>Il possède un familier : un corbeau intelligent et capable de communiquer avec lui. Il dispose également du pouvoir <i>Perception interne</i> lié à son familier.</p>
 
-		<div class="color1">
+		<div class="clr-warning">
 			<h4>Les dissensions internes</h4>
 			<p>Il y a des dissensions internes parmi les membres. Parmi les causes possibles de dissension&nbsp;:</p>
 			<ul>
@@ -562,7 +562,7 @@
 		<h5>Projet indépendant des PJ :</h5>
 		<p>Préparation du rituel de fusion. Ce rituel nécessite des sacrifices, des composants magiques rares et la réalisation d'actes maléfiques à des endroits spécifiques. Les PJ peuvent être amenés à découvrir ces activités occultes au fil de leur quête, ce qui pourrait les conduire à perturber ou à contrecarrer le rituel pour affaiblir le culte dans son ensemble.</p>
 
-		<p class="color1">
+		<p class="clr-warning">
 			Ils ont invoqué la <i>Dame Rouge</i> lorsqu'ils ont détecté l'activation des artefacts, cherchant son soutien dans leur quête.
 			La Dame Rouge a ses propres desseins, utilisant les cultistes comme pions dans une guerre occulte contre les Araéthias. Et elle est satisfaite de pouvoir se venger de Nessalanta.
 		</p>

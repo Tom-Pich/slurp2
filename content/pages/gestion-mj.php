@@ -44,10 +44,10 @@ foreach ($characters_id as $character) {
 						<input type="checkbox" name="objet-gestionnaire[<?= $n ?>][Contenant]" <?= $objet->isContainer ? "checked" : "" ?> title="contenant ?">
 					</label>
 				</div>
-				<input type="text" name="objet-gestionnaire[<?= $n ?>][Poids]" value="<?= $objet->weight ?>" size="2" placeholder="Pds" class="ta-center title=" poids">
+				<input type="text" name="objet-gestionnaire[<?= $n ?>][Poids]" value="<?= $objet->weight ?>" size="2" placeholder="Pds" class="ta-center" title="poids">
 				<input type="text" name="objet-gestionnaire[<?= $n ?>][Lieu]" value="<?= $objet->place ?>" size="5" class="ta-center" placeholder="Lieu">
 				<input type="text" name="objet-gestionnaire[<?= $n ?>][Notes]" value="<?= $objet->notes ?>" class="fl-1" placeholder="Notes">
-				<input type="text" name="objet-gestionnaire[<?= $n ?>][Secret]" value="<?= $objet->secret ?>" class="fl-1 color1" placeholder="Notes du MJ">
+				<input type="text" name="objet-gestionnaire[<?= $n ?>][Secret]" value="<?= $objet->secret ?>" class="fl-1 clr-warning" placeholder="Notes du MJ">
 				<input hidden name="objet-gestionnaire[<?= $n ?>][id]" value="<?= $objet->id ?>">
 			</div>
 		<?php

@@ -4,7 +4,7 @@ header{
 	color: white; padding: var(--dynamic-space-1-2); padding-bottom: 0.25em; min-height: 18vh;
 	display: grid; grid-template-columns: 50px 1fr 150px;
 
-	@include media {grid-template-columns: 50px 1fr 30px; min-height: 0;}
+	@include media {grid-template-columns: 50px 1fr 30px; min-height: 0; padding-bottom: 1em;}
 
 	h1, h2, h3, h4 {color: inherit;}
 	h4 {font-size: var(--fs-400);}
@@ -20,7 +20,7 @@ header{
 	}
 
 	nav {
-		grid-column: 1/span 3; margin-top: 2em; background-color: black; line-height: 1.6; 
+		grid-column: 1/span 3; margin-top: 2em; background-color: black; line-height: 1.6; z-index: 1;
 		li > ul {padding: 0 1em; background-color: black;}
 		li:hover > ul { padding: .5em 1em; }
 

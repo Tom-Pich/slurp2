@@ -134,18 +134,18 @@
 		<p>Si le pirate ne connaît pas de faille particulière à l’avance, il va devoir en chercher une. Ceci nécessite un jet de <i>Piraterie Informatique</i> avec les modificateurs suivants&nbsp;:</p>
 		
 		<table class="alternate-e left-1">
-			<tr><th class="color1" colspan = "2">Type d’accès</th></tr>
+			<tr><th colspan = "2">Type d’accès</th></tr>
 			<tr><td>Accès physique</td>	<td>-5</td></tr>
 			<tr><td>Accès par port</td>	<td>0</td></tr>
 			<tr><td>Accès par réseau interne</td>	<td>-5</td></tr>
 			<tr><td>Accès distant</td>	<td>-10</td></tr>
-			<tr><th class="color1" colspan = "2">Niveau de sécurisation de la cible</th></tr>
+			<tr><th colspan = "2">Niveau de sécurisation de la cible</th></tr>
 			<tr><td>Niveau 1</td>	<td>+3</td></tr>
 			<tr><td>Niveau 2</td>	<td>+0</td></tr>
 			<tr><td>Niveau 3</td>	<td>-5</td></tr>
 			<tr><td>Niveau 4</td>	<td>-10</td></tr>
 			<tr><td>Niveau 5</td>	<td>-15</td></tr>
-			<tr><th class="color1" colspan = "2">Temps disponible</th></tr>
+			<tr><th colspan = "2">Temps disponible</th></tr>
 			<tr><td>1 minute</td>		<td>-10</td></tr>
 			<tr><td>10 minutes</td>		<td>-5</td></tr>
 			<tr><td>1 heure</td>		<td>+0</td></tr>

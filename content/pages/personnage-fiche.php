@@ -5,15 +5,16 @@ use App\Repository\EquipmentRepository;
 
 $character = $page["character"];
 $character->processCharacter(with_state_modifiers: true);
-$character_uses_pdm = $character->special_traits["magerie"] || $character->special_traits["pouvoirs"] ;
+$character_uses_pdm = $character->special_traits["magerie"] || $character->special_traits["pouvoirs"];
 $attributes_names = ["For", "Dex", "Int", "San", "Per", "Vol"];
 $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 // modifies text color if score has changed due to character state
-function color_modifier($original_score, $actual_score){
-	if ($actual_score < $original_score){
+function color_modifier($original_score, $actual_score)
+{
+	if ($actual_score < $original_score) {
 		return "style='color: var(--clr-warning)'";
-	} elseif ($actual_score > $original_score){
+	} elseif ($actual_score > $original_score) {
 		return "style='color: var(--clr-secondary-dark)'";
 	} else {
 		return "";
@@ -21,18 +22,16 @@ function color_modifier($original_score, $actual_score){
 }
 ?>
 
-<div id="ws-data" hidden data-session-id="<?= $_SESSION["id"] ?>" data-ws-key="<?= WS_KEY ?>" >
-
-</div>
+<div id="ws-data" hidden data-session-id="<?= $_SESSION["id"] ?>" data-ws-key="<?= WS_KEY ?>"></div>
 
 <!-- Description, caractéristiques, état perso & Avantages-Désavantages -->
 <article>
 
 	<div class="flex-s ai-center mt-½ gap-½">
 		<h3 class="fl-1" id="character-name" data-id="<?= $character->id ?>"><?= $character->name ?></h3>
-		<a href="personnage-gestion?perso=<?= $character->id ?>" title="Éditer – Alt+Shift+E" accesskey="e" class="btn ff-fas ">&#xf013;</a>
+		<a href="personnage-gestion?perso=<?= $character->id ?>" title="Éditer – Alt+Shift+E" accesskey="e" class="btn ff-fas no-print">&#xf013;</a>
 	</div>
-	<div class="ta-center mt-½ fs-300">
+	<div class="ta-center mt-½ fs-300 no-print">
 		Pts&nbsp;: <?= $character->points ?> | éco&nbsp;: <?= $character->points - $character->points_count["total"] ?>
 	</div>
 	<div class="mt-1">
@@ -42,22 +41,43 @@ function color_modifier($original_score, $actual_score){
 	<!-- Caractéristiques -->
 	<div class="flex-s gap-¾ mt-1 jc-center">
 		<?php foreach ($attributes_names as $attr_name) { ?>
-			<div>
-				<b><?= $attr_name ?></b>
-				<span <?= color_modifier($character->raw_attributes[$attr_name], $character->attributes[$attr_name]) ?>><?= $character->attributes[$attr_name] ?></span>
+			<div data-type="throwable-wrapper">
+				<b data-type="throwable-label"><?= $attr_name ?></b>
+				<span <?= color_modifier($character->raw_attributes[$attr_name], $character->attributes[$attr_name]) ?> data-type="throwable-score">
+					<?= $character->attributes[$attr_name] ?>
+				</span>
 			</div>
 		<?php } ?>
 	</div>
 
-	<div class="ta-center mt-½">
-		<b>Dégâts</b>
-		<span <?= color_modifier($character->raw_attributes["For"], $character->attributes["For"] + $character->modifiers["Dégâts"]) ?>><?= $character->attributes["Dégâts"]['estoc'] . '/' . $character->attributes["Dégâts"]['taille']; ?></span>&emsp;
-		<b>Réf </b>
-		<span <?= color_modifier($character->raw_attributes["Réflexes"], $character->attributes["Réflexes"]) ?>><?= $character->attributes["Réflexes"] ?></span>&emsp;
-		<b>S-F </b>
-		<span <?= color_modifier($character->raw_attributes["Sang-Froid"], $character->attributes["Sang-Froid"]) ?>><?= $character->attributes["Sang-Froid"] ?></span>&emsp;
-		<b>Vit </b>
-		<span <?= color_modifier($character->raw_attributes["Vitesse"], $character->attributes["Vitesse"]) ?>><?= round($character->attributes["Vitesse"], 1) ?></span>
+	<div class="flex-s gap-¾ jc-center mt-½">
+		<div>
+			<b>Dégâts</b>
+			<span <?= color_modifier($character->raw_attributes["For"], $character->attributes["For"] + $character->modifiers["Dégâts"]) ?>>
+				<?= $character->attributes["Dégâts"]['estoc'] . '/' . $character->attributes["Dégâts"]['taille']; ?>
+			</span>
+		</div>
+
+		<div data-type="throwable-wrapper">
+			<b data-type="throwable-label">Réf</b>
+			<span <?= color_modifier($character->raw_attributes["Réflexes"], $character->attributes["Réflexes"]) ?> data-type="throwable-score">
+				<?= $character->attributes["Réflexes"] ?>
+			</span>
+		</div>
+
+		<div data-type="throwable-wrapper">
+			<b data-type="throwable-label">S-F</b>
+			<span <?= color_modifier($character->raw_attributes["Sang-Froid"], $character->attributes["Sang-Froid"]) ?> data-type="throwable-score">
+				<?= $character->attributes["Sang-Froid"] ?>
+			</span>
+		</div>
+
+		<div>
+			<b>Vit</b>
+			<span <?= color_modifier($character->raw_attributes["Vitesse"], $character->attributes["Vitesse"]) ?>>
+				<?= round($character->attributes["Vitesse"], 1) ?>
+			</span>
+		</div>
 	</div>
 
 	<!-- PdV, PdF, PdM, PdE -->
@@ -79,15 +99,15 @@ function color_modifier($original_score, $actual_score){
 		<legend>État</legend>
 
 		<ul>
-			<?php if($character_uses_pdm){ ?>
-			<li>
-				<?php  ?>
-				<div class="grid gap-½ ai-center mb-½" style="grid-template-columns: auto 1fr">
-					<b>PdM</b>
-					<input type="text" name="pdm_counter" data-pdm-max = "<?= $character->attributes["PdM"] ?>" data-pdm-current="<?= $character->state["PdM"] ?>">
-					<!--  value="|?= $character->state["PdM"] === $character->attributes["PdM"] ? "" : $character->state["PdM"] ?|" -->
-				</div>
-			</li>
+			<?php if ($character_uses_pdm) { ?>
+				<li>
+					<?php  ?>
+					<div class="grid gap-½ ai-center mb-½" style="grid-template-columns: auto 1fr">
+						<b>PdM</b>
+						<input type="text" name="pdm_counter" data-pdm-max="<?= $character->attributes["PdM"] ?>" data-pdm-current="<?= $character->state["PdM"] ?>">
+						<!--  value="|?= $character->state["PdM"] === $character->attributes["PdM"] ? "" : $character->state["PdM"] ?|" -->
+					</div>
+				</li>
 			<?php } ?>
 			<li><b>Encombrement&nbsp;:</b> <?= $character->carried_weight ?> kg – <?= $character->state["Encombrement"]["description"] ?></li>
 			<?php if ($character->state["Fatigue"]["dex-modifier"]) { ?>
@@ -168,9 +188,9 @@ function color_modifier($original_score, $actual_score){
 <article>
 	<h4 class="mb-½">Compétences</h4>
 	<?php foreach ($character->skills as $comp) {	?>
-		<div class="flex-s alternate-o">
-			<div class="fl-1"><?= $comp["label"] ?></div>
-			<div <?= color_modifier($comp["raw-base"], $comp["base"]) ?>><?= $comp["score"] ?></div>
+		<div class="flex-s alternate-o" data-type="throwable-wrapper">
+			<div class="fl-1" data-type="throwable-label"><?= $comp["label"] ?></div>
+			<div <?= color_modifier($comp["raw-base"], $comp["base"]) ?> data-type="throwable-score"><?= $comp["score"] ?></div>
 		</div>
 	<?php } ?>
 </article>
@@ -235,7 +255,7 @@ function color_modifier($original_score, $actual_score){
 						<div class="grid">
 							<input name="objet[<?= $item->id ?>][Notes]" type="text" value="<?= $item->notes ?>" placeholder="Notes" data-role="item-notes">
 							<?php if ($_SESSION["Statut"] >= 2 && ($character->id_gm === $_SESSION["id"] || !$character->id_gm)) { ?>
-								<input name="objet[<?= $item->id ?>][Secret]" type="text" value="<?= $item->secret ?>" placeholder="Notes du MJ" class="color1" data-role="item-notes">
+								<input name="objet[<?= $item->id ?>][Secret]" type="text" value="<?= $item->secret ?>" placeholder="Notes du MJ" class="clr-warning" data-role="item-notes">
 							<?php } ?>
 							<input hidden name="objet[<?= $item->id ?>][Lieu]" value="<?= $item->place ?>" data-role="item-place">
 							<input hidden name="objet[<?= $item->id ?>][Contenant]" value="<?= $item->isContainer ?>">
@@ -353,10 +373,10 @@ function color_modifier($original_score, $actual_score){
 </article>
 
 <!-- Divers -->
-<article class="no-print">
+<article>
 
 	<!-- Portraits -->
-	<div class="mt-½">
+	<div class="mt-½ no-break-inside">
 		<img src="<?= $character->portrait ?>" width="180" class="mx-auto" />
 
 		<div class="flex-s mt-1 gap-1 jc-center" data-role="members-wrapper">
@@ -373,7 +393,7 @@ function color_modifier($original_score, $actual_score){
 	</div>
 
 	<!-- Mode d’emploi form équipement -->
-	<details class="mt-1 flow">
+	<details class="mt-1 flow no-print">
 		<summary class="fw-700">Mode d’emploi de la liste de possessions</summary>
 		<p><b>Ajouter un objet&nbsp;:</b> cliquer sur <span class="ff-fas clr-primary">&#xf055;</span> dans l’emplacement désiré.</p>
 		<p><b>Supprimer un objet&nbsp;:</b> effacer son nom. Attention&nbsp;: si vous effacez un objet-contenant, vous perdrez tout son contenu avec&nbsp;!</p>
@@ -396,7 +416,7 @@ function color_modifier($original_score, $actual_score){
 
 	<!--Notes -->
 	<?php if (!empty($character->notes)) { ?>
-		<details>
+		<details class="no-print">
 			<summary class="h3">Notes</summary>
 			<div class="mt-½">
 				<?= TextParser::pseudoMDParser($character->notes) ?>
@@ -406,7 +426,7 @@ function color_modifier($original_score, $actual_score){
 
 	<!-- Background -->
 	<?php if (!empty($character->background)) { ?>
-		<details>
+		<details class="no-print">
 			<summary class="h3">Background</summary>
 			<div class="mt-½"><?= TextParser::pseudoMDParser($character->background) ?></div>
 		</details>
@@ -417,7 +437,7 @@ function color_modifier($original_score, $actual_score){
 	$equipement_repo = new EquipmentRepository;
 	$possessions_communes = $equipement_repo->getCommonGroupEquipment($character->id_group);
 	if ($possessions_communes) { ?>
-		<details class="flow">
+		<details class="flow no-print">
 			<summary class="h3">Possessions de groupe</summary>
 			<?php foreach ($possessions_communes as $key => $liste_contenant) {
 				$liste_contenant_string = implode("&nbsp;; ", array_map(function ($item) {
@@ -431,5 +451,14 @@ function color_modifier($original_score, $actual_score){
 	<?php } ?>
 
 </article>
+
+<dialog data-type="character-sheet-roll" class="ta-center">
+	<button data-role="close-modal" class="ff-fas">&#xf00d;</button>
+	<p><span data-content="label"></span> – <span data-content="score"></span></p>
+	<label>
+		Modificateur <input type="text" data-type="test-modifier-value" class="ta-center" style="width: 5ch">
+	</label>
+	<button class="btn-primary mt-1 mx-auto" data-type="send-test">Faire le jet</button>
+</dialog>
 
 <script src="scripts/character-sheet<?= PRODUCTION ? ".min" : "" ?>.js?v=<?= VERSION ?>" type="module"></script>

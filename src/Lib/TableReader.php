@@ -51,4 +51,16 @@ class TableReader
 		return $table[$picked_index];
 	}
 
+	/**
+	 * return a random array element, with equal probability for each element
+	 * @param array $array the source array
+	 * @return any the picked element
+	 */
+	static function pickRandomArrayElement(array $array){
+		$length = count($array);
+		if (!$length) return "";
+		$random_int = random_int(0, $length-1);
+		return $array[$random_int];
+	}
+
 }

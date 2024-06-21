@@ -28,9 +28,6 @@ figcaption {text-align: center; font-style: italic;}
 }
 
 // Utility classes
-.color1, .color1::placeholder {color: var(--clr-warning) !important;}
-.gris{color: #777;}
-input.color1 {border: 1px solid var(--clr-text);}
 .hidden {display: none;}
 .border-bottom-grey-700 {border-bottom: 1px solid var(--grey-700);}
 .widget{background-color: var(--clr-accent-background)}

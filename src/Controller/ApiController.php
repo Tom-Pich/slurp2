@@ -12,6 +12,7 @@ use App\Rules\WoundController;
 use App\Rules\ExplosionController;
 use App\Rules\ObjectController;
 use App\Rules\ReactionController;
+use App\Generator\NPCGenerator;
 
 class ApiController
 {
@@ -149,6 +150,12 @@ class ApiController
 	public function getReaction(int $reaction)
 	{
 		$this->response["data"] = ReactionController::getReaction($reaction);
+		$this->sendResponse();
+	}
+
+	public function getNPC(array $parameters)
+	{
+		$this->response["data"] = NPCGenerator::generateNPC($parameters);
 		$this->sendResponse();
 	}
 

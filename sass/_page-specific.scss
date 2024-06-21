@@ -36,17 +36,22 @@ body.personnage-fiche {
 		&.drag-over {padding-bottom: 2em;}
 	}
 
+	[data-type=throwable-wrapper] {cursor:alias}
+
 	details.liste > summary {margin-top: 3px;}
 
 	@media print { /* fiche perso en A4 portrait */
-		body{background-image: none; font-size: 11px; color: black;}
-		header{display: none}
-		main{padding: 0; box-shadow: none; margin-top: 2cm; }
-		meter {display: none;}
-		article{box-shadow: none; width: 260px; border:1px solid black;}
-		footer{display: none}
-		input{font-size: 90%;}
-		.no-print {display: none !important;}
+		width: 20cm; margin: 0;
+		//border: 1px solid black;
+		background-image: none; font-size: 11px; color: black;
+
+		header, meter, footer, .no-print, [data-role=container-controls] {display: none}
+		main { display: block; column-count: 3; column-gap: .5cm; column-rule: 1px solid var(--grey-900); padding: .5cm; min-height: 0; }
+		article { width: auto; min-height: 0; box-shadow: none; padding: 0; }
+		article:not(:first-of-type) { margin-top: 1cm; }
+		h4, legend { font-size: 14px; break-inside: avoid; }
+		details.liste[open] {background-color: transparent;}
+		[data-role=container-wrapper], .no-break-inside { break-inside: avoid; }
 	}
 }
 
@@ -87,62 +92,69 @@ body.test {
 body.table-jeu {
 	header{background-image: linear-gradient(180deg, #fff0 0%, black 100%), url(/assets/img/bg-header-table.jpg);}
 
-	main {padding: 1em; background: url(/assets/img/bg-table.jpg) center/cover; @include media {flex-direction: column-reverse;} }
+	main { padding: 1em; background: url(/assets/img/bg-table.jpg) center/cover; @include media {flex-direction: column-reverse; padding: .5em;} }
 
 	#widgets-container {
-		display: flex; gap: 1em; flex-wrap: wrap; flex: 1;
-		@include media {flex-direction: column; margin-inline: auto;}
+		display: flex; flex-wrap: wrap; flex: 1; position: relative; gap: .5em;
+		@include media {flex-direction: column; margin-inline: auto; margin-top: 1em;}
 
-		.widgets-column { display: grid; gap: var(--dynamic-space-½-1); height: fit-content; width: min(380px, 100%);}
+		#widgets-help-dialog-btn { position: absolute; top: 0; right: .5em; @include media {top: -.5em;}}
+
+		.widgets-column { display: grid; gap: 0.5em; height: fit-content; /*  width: min(350px, 100%); */}
 
 		fieldset {
-			background: #fff5;
+			width: 350px; max-width: calc(100vw - 1em);  background: #fff5;
 			legend {color: white; font-family: var(--font-accent); font-weight: bold; font-size: var(--fs-450)}
+			input:not([type=checkbox]), select { width: 6ch; } // deffault width, allow {flex: 1} to work
 		}
 	}
 
 	#chat-container {
-		width: min(380px, 100%); background: white; padding: 1em; border-radius: .75em; position: relative;
+		width: min(350px, 100%); background: white; padding: 1em; border-radius: .75em; position: relative; align-self: flex-start;
 		@include media {margin-inline: auto;}
+
+		#connected-users{
+			border-bottom: .5px solid var(--grey-700); margin-bottom: 5px; min-height: 1.9em; padding-right: 2em;
+			@include media { min-height: 0; }
+		}
+		#chat-dialog-wrapper{overflow-x: hidden; height: 40vh; padding-right: .75em; @include media { height: 24vh; }}
+		#chat-help-dialog-btn { position: absolute; top: .5em; right: .5em;}
+		#chat-input-wrapper {display: grid; width: 100%; background: #fff; border-top: 1px solid var(--grey-700); padding-top: 0.5em; margin-top: 1em;}
+		#msg-input {height: 6em; min-height: 0; border: 1px solid var(--grey-900); margin-top: .5em; resize: none; @include media { height: 4em; }}
 
 		.chat-message-wrapper {
 			.chat-message-header { font-weight: 600; font-size: var(--fs-300);}
 			.chat-message-content {
 				background-color: var(--user-color, white); max-width: 90%; width: fit-content; position: relative;
 				border-radius: .5em; padding: .25em .5em; margin: .25em 0; box-shadow: 1px 1px 3px #0003;
+				&::before { display: block; position: absolute; right: 0; transform: translateX(100%) ; top: .25em; }
 			}
 
 			&.self-message {
 				--user-color: var(--grey-900); text-align: right;
 				.chat-message-content {margin-left: auto;}
-				&.is-private .chat-message-content::before { left: -1.5em; right: unset; }
+				.chat-message-content::before { transform: translateX(-100%); left: 0.4em; right: unset; }
 			}
+			
+			// bg color depends on user id modulo 7 (see game-table.js)
+			&.bg-color-user-1 { --user-color: hsl(200, 50%, 90%); }
+			&.bg-color-user-2 { --user-color: hsl(220, 50%, 90%); }
+			&.bg-color-user-3 { --user-color: hsl(190, 50%, 90%); }
+			&.bg-color-user-4 { --user-color: hsl(55, 50%, 90%); }
+			&.bg-color-user-5 { --user-color: hsl(47, 50%, 90%); }
+			&.bg-color-user-6 { --user-color: hsl(270, 50%, 90%); }
+			&.bg-color-user-7 { --user-color: hsl(240, 50%, 90%); }
 
-			// bg-color for 7 differents users
-			@for $i from 1 through 7 {
-				&.bg-color-user-#{$i} {
-				  --user-color: hsl(#{51.4 * ($i - 1)}, 50%, 95%);
-				}
-			  }
+			.chat-roll::before { content:"🎲" ; }
+			&.is-private .chat-message-content::before { content:"🤫" ; }
+			&.is-private .chat-message-content.chat-roll::before { content:"🤫🎲" ; }
 
-			&.is-private .chat-message-content::before { content:"🤫" ; display: block; position: absolute; right: -1.5em; top: .25em; }
-
-			/* &:not(.is-private) + .same-sender:not(.is-private) {
-				margin-top: .5em;
-				.chat-message-header { display: none }
-			} */
 			&.same-routing {
 				margin-top: .5em;
 				.chat-message-header { display: none }
 			}
 		}
-	
 	}
-	#chat-dialog-wrapper{overflow-x: hidden; height: 40vh; padding-right: 1em; @include media { height: 24vh; }}
-	#chat-help-dialog-btn { position: absolute; top: .5em; right: .5em;}
-	#chat-input-wrapper {display: grid; width: 100%; background: #fff; border-top: 1px solid var(--grey-700); padding-top: 0.5em; margin-top: 1em;}
-	#msg-input {height: 6em; min-height: 0; border: 1px solid var(--grey-900); margin-top: .5em;}
-	#connected-users{border-bottom: 1px solid #333; margin-bottom: 5px; height: 40px; @include media { height: unset; }}
 	
 }
 
@@ -207,10 +219,14 @@ body.wiki {
 		width: clamp(200px, 15vw, 300px); border: 1px solid black; background-color: var(--white);
 		@include media {width: unset;}
 
-		P {padding-block: .25em; padding-left: .25em;}
+		h4 { margin: .75em 0 .25em; }
+		p {padding-block: .15em; padding-left: .25em;}
+		ul { padding-left: .5em; list-style-type: none; margin-bottom: .25em;}
+		li { padding-left: .25em; font-style: italic;}
 		a { text-decoration: none; color: inherit; display: block; }
-		.active { background-color: var(--clr-primary); color: var(--white) }
-		.subsection { padding-left: .75em; padding-block: .1em; }
+		p:has(.active-link), p:hover { background-color: var(--clr-primary); color: var(--white) }
+		li:has(.active-link), li:hover { background-color: var(--clr-accent-dark); color: var(--white) }
+		//.subsection { padding-left: .75em; padding-block: .1em; }
 	}
 	.article-wrapper {
 		flex: 1; padding-inline: var(--dynamic-space-1-5); padding-block: var(--dynamic-space-1-2); border: 1px solid black; background-color: var(--white);

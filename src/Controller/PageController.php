@@ -15,7 +15,7 @@ class PageController
 		$this->page["file"] = $page_data["file"] ?? "zz-not-found";
 		$this->page["body-class"] = $page_data["body-class"] ?? "standard-page";
 
-		if($page_data["title"] === "Wiki Paorn" && $page_data["article"]) $this->page["title"] .= (" – " . rtrim( $page_data["article-title"], "*"));
+		//if($page_data["title"] === "Wiki Paorn" && $page_data["article"]) $this->page["title"] .= (" – " . $page_data["article-title"]);
 	}
 
 	public function show($page_type="page")
@@ -25,7 +25,7 @@ class PageController
 		if ($page_type === "scenario"){
 			include "content/components/scenario-template.php";			
 		} else {
-			include "content/pages/" . $this->page["file"] . ".php";
+			include "content/pages/" . $page["file"] . ".php";
 		}
 		include "content/components/footer.php";
 	}

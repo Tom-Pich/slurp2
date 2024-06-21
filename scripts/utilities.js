@@ -83,3 +83,16 @@ export function coarseRound(x) {
 
 	return x
 }
+
+// delete end modifier, like (+2) or (-1)
+export function trimModifier(string){
+	string = string.replace(/\([+-]\d+\)$/g, '');
+	string= string.trimEnd();
+	return string;
+}
+
+// add an explicit sign (+ or -) in front of an integer
+export function explicitSign(int){
+	if (int > 0) return `+${int}`
+	return `${int}`
+}

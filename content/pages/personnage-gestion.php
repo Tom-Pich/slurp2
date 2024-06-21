@@ -44,7 +44,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 				Télécharger image (max. 500 ko)
 				<input type="file" name="image" data-role=add-portrait hidden>
 			</label>
-			<p id="file" class="ta-center gris"></p>
+			<p id="file" class="ta-center clr-grey-500"></p>
 		</div>
 
 		<h4>Description</h4>

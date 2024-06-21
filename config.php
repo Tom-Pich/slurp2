@@ -4,7 +4,7 @@ define("IS_ONLINE", $_SERVER['HTTP_HOST'] === 'jdr.pichegru.net');
 define("DB_ACTIVE", true);
 define("TABLE_PREFIX", "");
 define("GENERIC_PASSWORD", $_ENV["GENERIC_PASSWORD"]);
-define("VERSION", "3.8.7"); // 3.8 : chat improvment
+define("VERSION", "3.10.4"); // 3.10 : widget NPC
 define("PRODUCTION", true); // run webpack before switching to true
 
 if (IS_ONLINE){

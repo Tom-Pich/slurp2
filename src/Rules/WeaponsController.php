@@ -14,10 +14,10 @@ class WeaponsController
 		['nom' => 'Arbalète moyenne', 'dégâts' => 'P.2d+1, 20/60', 'Fmin' => 8, 'poids' => 3, 'notes' => NULL, 'catégorie' => 'arc-arbalète', 'prix-add' => 150,],
 		['nom' => 'Arbalète lourde', 'dégâts' => 'P.3d, 20/100', 'Fmin' => 10, 'poids' => 6, 'notes' => NULL, 'catégorie' => 'arc-arbalète', 'prix-add' => 300,],
 
-		['nom' => 'Épée longue', 'dégâts' => 'T.t+1 - P.e+2', 'Fmin' => 10, 'poids' => 1.5, 'notes' => NULL, 'catégorie' => 'épée-couteau', 'prix-add' => 600,],
-		['nom' => 'Épée bâtarde', 'dégâts' => 'T.t+1 - P.e+2', 'Fmin' => 11, 'poids' => 1.7, 'notes' => '(M)', 'catégorie' => 'épée-couteau', 'prix-add' => 750,],
+		['nom' => 'Épée longue', 'dégâts' => 'T.t+1 - P.e+2', 'Fmin' => 10, 'poids' => 1.25, 'notes' => NULL, 'catégorie' => 'épée-couteau', 'prix-add' => 600,],
+		['nom' => 'Épée bâtarde', 'dégâts' => 'T.t+1 - P.e+2', 'Fmin' => 11, 'poids' => 1.5, 'notes' => '(M)', 'catégorie' => 'épée-couteau', 'prix-add' => 750,],
 		['nom' => 'Épée courte', 'dégâts' => 'T.t - P.e+1', 'Fmin' => 7, 'poids' => 1, 'notes' => NULL, 'catégorie' => 'épée-couteau', 'prix-add' => 400,],
-		['nom' => 'Épée à 2 mains', 'dégâts' => 'T.t+3 - P.e+3', 'Fmin' => 12, 'poids' => 3.5, 'notes' => NULL, 'catégorie' => 'épée-couteau', 'prix-add' => 900,],
+		['nom' => 'Épée à 2 mains', 'dégâts' => 'T.t+3 - P.e+3', 'Fmin' => 12, 'poids' => 2.5, 'notes' => NULL, 'catégorie' => 'épée-couteau', 'prix-add' => 900,],
 		['nom' => 'Poignard', 'dégâts' => 'T.t-2 - P.e+1, 7/F-2', 'Fmin' => NULL, 'poids' => 0.5, 'notes' => '(PA)', 'catégorie' => 'épée-couteau', 'prix-add' => 40,],
 		['nom' => 'Couteau', 'dégâts' => 'T.t-3 - P.e, 7/F-2', 'Fmin' => NULL, 'poids' => 0.25, 'notes' => '(PA)(L)', 'catégorie' => 'épée-couteau', 'prix-add' => 30,],
 		['nom' => 'Rapière', 'dégâts' => 'P.e+1', 'Fmin' => NULL, 'poids' => 0.75, 'notes' => '(PF)(L)', 'catégorie' => 'épée-couteau', 'prix-add' => NULL,],

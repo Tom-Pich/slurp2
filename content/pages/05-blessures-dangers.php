@@ -91,7 +91,7 @@ use App\Rules\WoundController;
 
 	<details>
 		<summary class="h3">Hémorragie</summary>
-		<p class="color1 italic ta-center">Règle à revoir et à passer en gestion automatique.</p>
+		<p class="clr-warning italic ta-center">Règle à revoir et à passer en gestion automatique.</p>
 		<p><i>Attention</i>&nbsp;: cette règle est optionnelle car elle augmente <i>drastiquement</i> la mortalité en l’absence de soins magiques.</p>
 		<p>Une blessure peut provoquer une hémorragie. Jet de <i>San</i> à -1 pour chaque tranche complète de 25&nbsp;% des PdVm perdus, une fois par minute&nbsp;:</p>
 		<p>Pour une <b>blessure à un membre</b>, le jet de <i>San</i> se fait sans malus si le membre n’a pas de blessure invalidante, à -1 s’il a reçu une blessure invalidante et à -2 s’il est détruit.</p>
@@ -129,7 +129,7 @@ use App\Rules\WoundController;
 		<p>Le cas échéant, faire également un jet pour chaque membre blessé.</p>
 		<p>
 			Un membre détruit ne peut pas avoir moins que -100&nbsp;% de ses PdVm propres. S’il a été sectionné, on considère qu’il est à 0 PdV.<br>
-			Ainsi, un personnage ayant 12 PdV et dont la main broyée aura perdu 6 PdV à sa main. Après guérison, celle-ci sera toujours inutilisable, mais le personnage ne risquera pas l’infection.<br>
+			Ainsi, un personnage ayant 12 PdV et dont la main a été broyée aura perdu 6 PdV à sa main (une main a 25&nbsp;% des PdV max d’un humain). Après guérison, celle-ci sera toujours inutilisable, mais le personnage ne risquera pas l’infection.<br>
 			Si ce même personnage a eu la main sectionnée, on considère qu’il a perdu 3 PdV à sa main.<br>
 			Un bras ou une jambe guérit à un rythme réduit de moitié par rapport aux PdV généraux. Une main ou un pied guérit au quart de ce rythme.
 		</p>

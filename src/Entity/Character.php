@@ -707,6 +707,7 @@ class Character
 		}
 
 		$character["État"] = json_encode($character["État"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+		if ($character["État"] === "[]") $character["État"] = "{}";
 
 		// Update database
 		$repo = new CharacterRepository;

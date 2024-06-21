@@ -6,6 +6,9 @@
 		D’autres lexiques médiévaux également sur ce site.
 	</p>
 
+	<h3>Dessinger des blasons</h3>
+	<a href="https://drawshield.net/index.html">drawshield.net</a>
+
 </article>
 
 <article> <!-- Générateurs -->

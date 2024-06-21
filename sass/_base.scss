@@ -116,7 +116,7 @@ nav {
 	ul {list-style: none; padding: 0;}
 	> ul {display: flex; gap: 1em;}
 	li > ul {position: absolute; max-height: 0; overflow: hidden; transition: all .3s; width: max-content; }
-	li:hover > ul {max-height: var(--height, 10rem);}
+	li:hover > ul {max-height: var(--height, 10rem); z-index:1;}
 	li {position: relative; cursor: pointer; }
 	a {text-decoration: none; color: inherit;}
 
@@ -219,12 +219,12 @@ textarea {resize: vertical; min-height: 8em; width: 100%;}
 .nude {border: none; padding: 0;}
 
 dialog {
-	top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%);
+	top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%); position: relative;
 	width: clamp(300px, 35vw, 500px); border: 1px solid currentColor; padding: 1em;
 	&::backdrop { backdrop-filter: blur(5px);}
 	button[data-role=close-modal]:first-of-type {
-		border: none; padding: 0; margin-left: auto;
-		&:focus-visible {box-shadow: none;}
+		border: none; padding: 0; position: absolute; top: .5em; right: 1em;
+		&:focus-visible {box-shadow: none; outline: none;}
 	}
 }
 

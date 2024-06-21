@@ -1,28 +1,36 @@
 <?php
 
-include "content/wiki/paorn/_articles_data.php";
 $admin = $_SESSION["Statut"] >= 3;
 
+function lk($name)
+{
+	global $page_data; // global $page is a $pageController object!
+	$output = "href='/wiki-paorn/" . $name . "' ";
+	if (!empty($page_data["article"]) && $page_data["article"] === $name) $output .= "class='active-link'";
+	return $output;
+}
 ?>
 
-<aside class="nav p-1">
-	<h4 class="mb-½">Articles</h4>
-	<?php
-	foreach ($articles as $name => $title) {
-		$article_is_subsection = substr($title, -1) === "*";
-		if ($article_is_subsection) $title = substr($title, 0, -1);
-	?>
-		<p class="<?= $page["article"] === $name ? "active" : "" ?> <?= $article_is_subsection ? "subsection" : "" ?>">
-			<a href="/wiki-paorn/<?= $name ?>"><?= $title ?></a>
-		</p>
-	<?php } ?>
+<aside class="nav p-½">
+	<p><a href="/wiki-paorn">Accueil</a></p>
+	<h4>Régions</h4>
+	<p><a <?= lk("artaille") ?>>Artaille</a></p>
+	<p><a <?= lk("lauria") ?>>Lauria</a></p>
+
+	<h4>Villes de Burgonnie</h4>
+	<p><a <?= lk("imegie") ?>>Imégie</a></p>
+	<ul>
+		<li><a <?= lk("auberge-vieille-tour") ?>>Auberge de la Vieille Tour</a></li>
+	</ul>
+	<p><a <?= lk("almisie") ?>>Almisie</a></p>
+	<p><a <?= lk("stomilie") ?>>Stomilie</a></p>
+	<p><a <?= lk("port-goshal") ?>>Port Goshal</a></p>
+
+	<h4>Organisations</h4>
+	<p><a <?= lk("arcania") ?>>Arcania</a></p>
+	<p><a <?= lk("atrimisme") ?>>Atrimisme</a></p>
 </aside>
 
 <div class="article-wrapper">
-	<?php if ($page["article"]) {
-		include "content/wiki/paorn/" . $page["article"] . ".php";
-	} else { ?>
-		<p><i>Sélectionnez un article à afficher</i></p>
-	<?php }
-	?>
+	<?php include "content/wiki/paorn/" . ($page["article"] ?? "paorn") . ".php";  ?>
 </div>
