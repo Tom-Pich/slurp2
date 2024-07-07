@@ -484,7 +484,6 @@ woundEffectsWidget.addEventListener("submit", e => {
 			let isNotDead = true;
 			formattedMsg += `<br>Dégâts effectifs&nbsp;: ${result["dégâts effectifs"]}`;
 			if (result["recul"]) formattedMsg += `<br>Recul de ${result["recul"]}&nbsp; m.`
-			// distance recul !
 			if (result["mort"]) {
 				formattedMsg += `<br>${result["mort"]}`;
 				isNotDead = false;

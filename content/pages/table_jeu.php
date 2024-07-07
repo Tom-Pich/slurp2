@@ -52,9 +52,10 @@ $nbre_competences = 15;
 				<div class="mt-1" data-role="opponent-wrapper" data-opponent="<?= $i ?>">
 					<div class="flex-s gap-½">
 						<input type="text" class="fl-1" data-type="name" placeholder="Nom">
-						<select data-type="category" style="width: 6ch" title="cnb: non-biologique">
+						<select data-type="category" style="width: 6ch" title="nbh: non biologique humanoïde, nbx: non biolique quelconque">
 							<option value="std">std</option>
-							<option value="cnb">cnb</option>
+							<option value="nbh">cnb</option>
+							<option value="nbx">nbx</option>
 						</select>
 						<input type="text" style="width: 5ch" data-type="dex" class="ta-center" placeholder="Dex" title="Dextérité" value="<?= $i === 0 ? 11 : "" ?>">
 						<input type="text" style="width: 5ch" data-type="san" class="ta-center" placeholder="San" title="Santé" value="<?= $i === 0 ? 12 : "" ?>">

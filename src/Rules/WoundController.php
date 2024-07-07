@@ -179,7 +179,7 @@ class WoundController
 	public static function getWoundEffects(string $category, int $dex, int $san, int $pdvm, int $pdv, int $pain_resistance, int $raw_dmg, int $rd, string $dmg_type, string $bullet_type, string $localisation, array $rolls): array
 	{
 		// sanitizing string entries
-		$category = !in_array($category, ["std", "cnb"]) ? "std" : $category;
+		$category = !in_array($category, ["std", "nbh", "nbx"]) ? "std" : $category;
 		$dmg_type = !in_array($dmg_type, ["br", "tr", "pe", "mn", "b0", "b1", "b2", "b3", "exp"]) ? "br" : $dmg_type;
 		$bullet_type = !in_array($bullet_type, ["std", "bpa", "bpc"]) ? "std" : $bullet_type;
 		$localisation = !in_array($localisation, ["torse",  "coeur", "crane", "visage", "cou", "jambe", "bras", "pied", "main", "oeil", "org_gen"]) ? "torse" : $localisation;
@@ -220,10 +220,10 @@ class WoundController
 		// base values
 		$dmg_multipliers = ["br" => 1, "tr" => 1.5, "pe" => 2, "mn" => 1, "b0" => 0.5, "b1" => 1, "b2" => 1.5, "b3" => 2, "exp" => 1];
 		$limits = [
-			"bras" => self::members_pdv["bras"] * 1.25,
-			"jambe" => self::members_pdv["jambe"] * 1.25,
-			"pied" => self::members_pdv["pied"] * 1.25,
-			"main" => self::members_pdv["main"] * 1.25
+			"bras" => self::members_pdv["bras"] * 1.25, // 0.4×1.25 = 0.5
+			"jambe" => self::members_pdv["jambe"] * 1.25, // 0.5×1.25 = 0.625
+			"pied" => self::members_pdv["pied"] * 1.25, // 0.33×1.25 = 0.4125
+			"main" => self::members_pdv["main"] * 1.25 // 0.25×1.25 = 0.3125
 		];
 		$rcl = ["br" => 1.5, "tr" => 1, "pe" => 0.75, "mn" => 2.5, "b0" => 0.5, "b1" => 0.5, "b2" => 0.75, "b3" => 1, "exp" => 3];
 
@@ -249,15 +249,16 @@ class WoundController
 		$is_sensitive = in_array($localisation, ["visage", "org_gen", "crane", "oeil"]);
 
 		// changes for special categories
-		if ($category === "cnb") {
-			//non biological creature
+		if ($category === "nbh" || $category === "nbx") {
+			//non biological creature – humanoid (h) or not (x)
 			$dmg_multipliers = ["br" => 1, "tr" => 1, "pe" => 1, "mn" => 1, "b0" => 1, "b1" => 1, "b2" => 1, "b3" => 1, "exp" => 1];
 			$is_vital = false;
 			$is_sensitive = false;
-			$skull_dmg_factor = 2;
+			$skull_dmg_factor = $category === "nbh" ? 2 : 1;
+			$no_minimal_penetrating_dmg = true;
 			$cannot_be_stunned = true;
 			$cannot_be_knocked_out = true;
-			$automatic_death = 0; // pdvm mult threshold
+			$automatic_death = 0; // pdvm mult threshold for automatic death (default -3)
 		}
 
 		// ––– recoil
@@ -265,15 +266,17 @@ class WoundController
 		$rcl_dmg = $limited_raw_dmg * $rcl[$dmg_type] * ($is_head ? 3 : 1);
 		$rcl_modif = DiceManager::getModifier($rcl_dmg, 0.8 * $pdvm);
 		$rcl_distance = $rcl_dmg / $pdvm * 3;
-		$rcl_distance = min($rcl_distance, $raw_dmg / 2, $pdvm / 3) + random_int(0, 2) - 1;
-		$result["recul"] = max(floor($rcl_distance), 0);
-		$result["chute"] = !DiceManager::check_is_successfull($dex + $rcl_modif, $rolls[0]);
-		// for bullet and piercing damages → effective recoil dmg limited to pdvm + rd (×member limit if member)
-		// recoil dmg → limited raw damage × rcl factor depending on dmg type (×3 if head)
-		// recoil distance → 3× ratio (recoil dmg / pdvm), cannot exceed raw_dmg / 2 and pdvm/3, + random modif [-1, 0, 1]
-		// recoil distance is rounded down and cannot be negative
+		$rcl_distance = min($rcl_distance, $raw_dmg / 2, $pdvm / 3);
+		if ($rcl_distance >= 1) $rcl_distance += (random_int(0, 2) - 1);
+		$result["recul"] = floor($rcl_distance);
+		if($rcl_modif <= 3)  $result["chute"] = !DiceManager::check_is_successfull($dex + $rcl_modif, $rolls[0]);
+		// for bullet and piercing damages → raw_dmg for recoil limited to pdvm + rd (× member limit)
+		// rcl_dmg → limited raw_damage × rcl factor depending on dmg type (×3 if head)
+		// recoil distance → 3×(rcl_dmg / pdvm), cannot exceed raw_dmg / 2 and pdvm/3
+		// if recoil distance > 1, add a random number [-1, 0, 1]
+		// recoil distance is rounded down
 		// fall modifier : +1 for each 10% excess of recoil_dmg over 80% of pvdm
-		// fall test: use first roll, against Dex + fall modifier
+		// fall test (only if modifier <= +3): use first roll, against Dex + fall modifier
 
 		// ––– armor and special bullet types
 		$rd = $is_armor_piercing_bullet ? floor($rd / 2) : $rd;
@@ -296,7 +299,7 @@ class WoundController
 		// si crâne ou oeil → ×4 (sauf si $skull_dmg_factor est spécifié)
 
 		$actual_dmg = $net_dmg * $dmg_multiplier;
-		$actual_dmg = ($rd === 0 && $is_penetrating) ? max($actual_dmg, 1) : $actual_dmg;
+		$actual_dmg = ($rd === 0 && $is_penetrating && empty($no_minimal_penetrating_dmg)) ? max($actual_dmg, 1) : $actual_dmg;
 		$actual_dmg *= $is_armor_piercing_bullet ? 0.5 : 1;
 		$actual_dmg *= $is_hollow_point_bullet ? 2 : 1;
 		$actual_dmg -= ($localisation === "crane") ? min($net_dmg, $pdvm / 5) * 3 : 0; //cranial bones protection

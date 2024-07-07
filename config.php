@@ -4,7 +4,7 @@ define("IS_ONLINE", $_SERVER['HTTP_HOST'] === 'jdr.pichegru.net');
 define("DB_ACTIVE", true);
 define("TABLE_PREFIX", "");
 define("GENERIC_PASSWORD", $_ENV["GENERIC_PASSWORD"]);
-define("VERSION", "3.10.8"); // 3.10.8 : widget Effets blessure amélioré
+define("VERSION", "3.11.1"); // 3.11 : widget Effets blessure amélioré
 define("PRODUCTION", true); // run webpack before switching to true
 
 if (IS_ONLINE){
