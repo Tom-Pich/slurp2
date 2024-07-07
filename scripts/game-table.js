@@ -132,14 +132,15 @@ function flushMsg(type, label = null) {
 	}
 
 	// handle inline tests and rolls
-	const inlineTestRegexp = /\#\d{1,2}([+-]\d{1,2})?[^d]/g; // search for expressions like #7 or #13-2
-	const inlineRollRegexp = /\#(\d+)d(\d{0,3})([+-/*]*)([0-9\.]+)*/g; // search for expressions like #1d+2 or #6d*2
+	const inlineTestRegexp = /#\d{1,2}([+-]\d{1,2})?(?=\s|$)/g; // search for expressions like #7 or #13-2 followed by a space or the end of the expression
+	const inlineRollRegexp = /#(\d+)d(\d{0,3})([+-/*]*)([0-9\.]+)*/g; // search for expressions like #1d+2 or #6d*2
 	const inlineTestRegexpResult = inputEntry.value.match(inlineTestRegexp);
 	const inlineRollRegexpResult = inputEntry.value.match(inlineRollRegexp);
 
 	if (inlineTestRegexpResult) {
 		const scores = [];
 		inlineTestRegexpResult.forEach(match => {
+			console.log(match)
 			scores.push(match.replace("#", "")); // extract scores and parse them to integer
 		})
 		scores.forEach(score => {
@@ -153,9 +154,10 @@ function flushMsg(type, label = null) {
 		})
 	}
 
-	if (inlineRollRegexpResult){
+	if (inlineRollRegexpResult) {
 		const expressions = [];
 		inlineRollRegexpResult.forEach(match => {
+			console.log(match)
 			expressions.push(match.replace("#", "")); // extract roll expressions
 		})
 		expressions.forEach(expression => {
@@ -189,6 +191,8 @@ const scoreWidgets = qsa("[data-name=score-tester] form");
 const weaponDamageWidget = qs("[data-name=widget-damage-location] form");
 const woundEffectsWidget = qs("[data-name=wound-effect] form");
 const criticalWidget = qs("[data-name=widget-criticals] form");
+const opponents = qsa("[data-role=opponent-wrapper]");
+const opponentSelects = qsa("[data-type=name-selector]"); // for general state and wound effects
 
 // prevent default submit on each form
 widgetForms.forEach(form => {
@@ -225,10 +229,14 @@ scoreWidgets.forEach(widget => {
 	skillNameInput.value = localStorage.getItem(`skill-${skillNumber}-name`)
 	skillScoreInput.value = localStorage.getItem(`skill-${skillNumber}-score`)
 
-	widget.addEventListener("keyup", (e) => {
-		localStorage.setItem(`skill-${skillNumber}-name`, skillNameInput.value);
-		if (skillNameInput.value === "") { skillScoreInput.value = ""; }
-		localStorage.setItem(`skill-${skillNumber}-score`, skillScoreInput.value);
+	// memorize entered value
+	const events = ["keyup", "change"];
+	events.forEach(event => {
+		widget.addEventListener(event, (e) => {
+			localStorage.setItem(`skill-${skillNumber}-name`, skillNameInput.value);
+			if (skillNameInput.value === "") { skillScoreInput.value = ""; }
+			localStorage.setItem(`skill-${skillNumber}-score`, skillScoreInput.value);
+		})
 	})
 
 	widget.addEventListener("submit", (e) => {
@@ -328,13 +336,11 @@ burstWidget.addEventListener("submit", async (e) => {
 })
 
 // opponents list widget
-const opponents = qsa("[data-role=opponent-wrapper]")
-const opponentSelects = qsa("[data-type=name-selector]")
-
 opponents.forEach(opponent => {
 
 	const opponentNumber = opponent.dataset.opponent;
 	const nameWrapper = opponent.querySelector("[data-type=name]")
+	const categoryWrapper = opponent.querySelector("[data-type=category]")
 	const dexWrapper = opponent.querySelector("[data-type=dex]")
 	const sanWrapper = opponent.querySelector("[data-type=san]")
 	const painResistanceWrapper = opponent.querySelector("[data-type=pain-resistance]")
@@ -344,6 +350,7 @@ opponents.forEach(opponent => {
 
 	// getting localStorage values
 	nameWrapper.value = localStorage.getItem(`opponent-${opponentNumber}-name`)
+	categoryWrapper.value = localStorage.getItem(`opponent-${opponentNumber}-category`) || "std"
 	dexWrapper.value = localStorage.getItem(`opponent-${opponentNumber}-dex`)
 	sanWrapper.value = localStorage.getItem(`opponent-${opponentNumber}-san`)
 	painResistanceWrapper.value = localStorage.getItem(`opponent-${opponentNumber}-pain-resistance`);
@@ -354,23 +361,24 @@ opponents.forEach(opponent => {
 	// storing values in localStorage
 	opponent.addEventListener("keyup", e => {
 
-		const opponentDataType = ["name", "dex", "san", "pain-resistance", "pdvm", "pdv", "members"]
+		const opponentDataType = ["name", "category", "dex", "san", "pain-resistance", "pdvm", "pdv", "members"];
 		// if name empty, reset all inputs for the active oponent
 		if (e.target.dataset.type === "name" && e.target.value === "") {
 			opponentDataType.forEach(dataType => {
 				opponent.querySelector(`[data-type=${dataType}]`).value = "";
 				localStorage.removeItem(`opponent-${opponentNumber}-${dataType}`);
 			})
-
-			// for "pain-resistance" checkbox
-			//opponent.querySelector(`[data-type=pain-resistance]`).checked = false;
-			//localStorage.removeItem(`opponent-${opponentNumber}-pain-resistance`);
-
 		}
 
 		const dataType = e.target.dataset.type
-		const dataValue = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+		//const dataValue = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+		const dataValue = e.target.value;
 		localStorage.setItem(`opponent-${opponentNumber}-${dataType}`, dataValue);
+	})
+	opponent.addEventListener("change", e => {
+		if(e.target.dataset.type === "category"){
+			localStorage.setItem(`opponent-${opponentNumber}-category`, e.target.value)
+		}
 	})
 
 	// update name in names selectors (general state and wound effects)
@@ -393,7 +401,7 @@ opponents.forEach(opponent => {
 	})
 })
 
-// general state widget
+// general state widget (add category !)
 const generalStateWidget = qs("#general-state-widget")
 generalStateWidget.addEventListener("submit", (e) => {
 	const opponentNumber = generalStateWidget.querySelector("[data-type=name-selector]").value
@@ -447,6 +455,7 @@ woundEffectsWidget.addEventListener("submit", e => {
 		return
 	}
 	const data = new FormData
+	data.append("category", opponent.category)
 	data.append("dex", opponent.dex)
 	data.append("san", opponent.san)
 	data.append("pdvm", opponent.pdvm)
@@ -466,7 +475,7 @@ woundEffectsWidget.addEventListener("submit", e => {
 	})
 		.then(response => response.json())
 		.then(response => {
-			//console.log(response.data)
+
 			const result = response.data
 
 			if (result["pdvm"] <= 0) { throw new Error("Il manque des données."); }
@@ -474,6 +483,8 @@ woundEffectsWidget.addEventListener("submit", e => {
 			let formattedMsg = `<b>${opponent.name} – ${result["dégâts bruts"]} ( ${result["type dégâts"]} ${result["localisation"]})</b>`;
 			let isNotDead = true;
 			formattedMsg += `<br>Dégâts effectifs&nbsp;: ${result["dégâts effectifs"]}`;
+			if (result["recul"]) formattedMsg += `<br>Recul de ${result["recul"]}&nbsp; m.`
+			// distance recul !
 			if (result["mort"]) {
 				formattedMsg += `<br>${result["mort"]}`;
 				isNotDead = false;
@@ -665,7 +676,7 @@ npcWidget.addEventListener("submit", async (e) => {
 	if (result.error) {
 		inputEntry.value += "Paramètres PNJ invalides";
 		flushMsg("chat-roll");
-		return ;
+		return;
 	}
 
 	const facialHair = result.facialHair ? `${result.facialHair},` : "";

@@ -79,7 +79,7 @@ class Skill implements RulesItem
 			<summary>
 				<div>
 					<?php if ($show_edit_link) { ?>
-						<a href="<?= $edit_link ?>" class="nude ff-far">&#xf044;</a>
+						<a href="<?= $edit_link ?>" class="edit-link ff-far">&#xf044;</a>
 					<?php } ?>
 					<?= $this->name ?>
 				</div>

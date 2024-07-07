@@ -94,7 +94,7 @@ $creature_repo = new CreatureRepository;
 <article>
 	<h2>
 		<?php if ($_SESSION["Statut"] == 3) { ?>
-			<a href="gestion-listes?req=creature&id=0" class="nude ff-far">&#xf044;</a>
+			<a href="gestion-listes?req=creature&id=0" class="edit-link ff-far">&#xf044;&nbsp;</a>
 		<?php } ?>
 		Quelques animaux
 	</h2>

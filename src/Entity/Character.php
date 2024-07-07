@@ -219,11 +219,10 @@ class Character
 			$this->modifiers["Dégâts"] += $this->state["For_deg"] ?? 0;
 			$this->modifiers["Magie"] += $this->state["Magie"] ?? 0;
 
-			// evaluating strength to get ecumbrance effect
+			// evaluating strength to get encumbrance effect
 			$this->attributes["For"] *= $this->modifiers["For-mult"]; // first multiplier, than modifier (magic)
 			$this->attributes["For"] += $this->modifiers["For"];
 			$this->attributes["For"] = (int) $this->attributes["For"];
-			//$this->attributes["For"] =
 
 			// encumbrance level with actual Strength
 			$this->state["Encombrement"] = EncumbranceController::getEffects($this->carried_weight, $this->attributes["For"]);

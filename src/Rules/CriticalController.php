@@ -5,8 +5,8 @@ namespace App\Rules;
 class CriticalController
 {
 	public const attack_success = [
-		2 => "Dégâts ×2&nbsp;; l’ennemi est sonné s’il reçoit des dégâts.",
-		5 => "Dégâts ×2, RD divisée par 2&nbsp;; l’ennemi est sonné (niveau 2) s’il reçoit des dégâts.",
+		2 => "Dégâts ×2&nbsp;; l’ennemi est sonné (niveau 1) s’il reçoit des dégâts. Faire un jet de <i>San</i>. Le personnage perd les ME prochaines actions (minimum 1), à moins que les conséquences de la blessure n’indique un résultat supérieur.",
+		5 => "Dégâts ×2, RD divisée par 2&nbsp;; l’ennemi est sonné (niveau 2) s’il reçoit des dégâts. Faire un jet de <i>San</i>-5. Le personnage perd les ME prochaines actions (minimum 1), à moins que les conséquences de la blessure n’indique un résultat supérieur.",
 		6 => "Dégâts ×3, RD divisée par 3&nbsp;; l’ennemi perd conscience s’il reçoit des dégâts."
 	];
 

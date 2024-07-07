@@ -120,7 +120,8 @@ if ($pathFirstSegment === "api") {
 			break;
 
 		case "/api/wound-effects":
-			Firewall::check(isset($_POST["dex"]) && isset($_POST["san"]) && isset($_POST["pdvm"]) && isset($_POST["pdv"]) && isset($_POST["pain-resistance"]) && isset($_POST["raw-dmg"]) && isset($_POST["rd"]) && isset($_POST["dmg-type"]) && isset($_POST["bullet-type"]) && isset($_POST["localisation"]) && isset($_POST["rolls"]));
+			Firewall::check(isset($_POST["category"]) && isset($_POST["dex"]) && isset($_POST["san"]) && isset($_POST["pdvm"]) && isset($_POST["pdv"]) && isset($_POST["pain-resistance"]) && isset($_POST["raw-dmg"]) && isset($_POST["rd"]) && isset($_POST["dmg-type"]) && isset($_POST["bullet-type"]) && isset($_POST["localisation"]) && isset($_POST["rolls"]));
+			$category = htmlspecialchars($_POST["category"]);
 			$dex = (int) $_POST["dex"];
 			$san = (int) $_POST["san"];
 			$pdvm = (int) $_POST["pdvm"];
@@ -133,7 +134,7 @@ if ($pathFirstSegment === "api") {
 			$localisation = htmlspecialchars($_POST["localisation"]);
 			$rolls = explode(",", $_POST["rolls"]);
 			$rolls = array_map(fn ($x) => (int) $x, $rolls);
-			$controller->getWoundEffects($dex, $san, $pdvm, $pdv, $pain_resistance, $raw_dmg, $rd, $dmg_type, $bullet_type, $localisation, $rolls);
+			$controller->getWoundEffects($category, $dex, $san, $pdvm, $pdv, $pain_resistance, $raw_dmg, $rd, $dmg_type, $bullet_type, $localisation, $rolls);
 			break;
 
 		case "/api/explosion-damages":
@@ -174,10 +175,10 @@ if ($pathFirstSegment === "api") {
 			$reactionTest = (int) $_POST["reaction-test"];
 			$controller->getReaction($reactionTest);
 			break;
-		
+
 		case "/api/npc-generator":
 			$post = [];
-			foreach ($_POST as $parameter => $value){
+			foreach ($_POST as $parameter => $value) {
 				//Firewall::check(isset($_POST[$parameter]));
 				$post[$parameter] = htmlspecialchars($_POST[$parameter]);
 			}
@@ -310,7 +311,8 @@ elseif ($pathFirstSegment === "submit") {
 			Firewall::filter(3);
 			Firewall::check(!empty($_POST));
 			Creature::processSubmitCreature($_POST);
-			header("Location: /animaux");
+			if ($_POST["Origine"] === "ADD") header("Location: /adapted-dungeons-dragons");
+			else header("Location: /animaux");
 			break;
 
 		default:
@@ -370,7 +372,7 @@ else if ($pathFirstSegment === "wiki-paorn") {
 		$page = new PageController($page_data);
 	} elseif (!empty($article)) {
 		$page_data["title"] = "Wiki Paorn – " . $article["title"];
-		$page_data["description"] .= ( " – " . $article["title"] );
+		$page_data["description"] .= (" – " . $article["title"]);
 		$page_data["article"] = $path_segments[2];
 		$page = new PageController($page_data);
 	} else {

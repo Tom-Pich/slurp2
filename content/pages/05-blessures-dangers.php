@@ -22,6 +22,8 @@ use App\Rules\WoundController;
 			Utiliser le <b>widget</b> <i>Effets d’une blessure</i> de la <a href="table-jeu">Table de jeu</a> pour déterminer ces effets.
 		</p>
 
+		<p>Si vous voulez voir l’algorithme de détermination de ces effets, voir <a href="https://github.com/Tom-Pich/slurp2/blob/main/src/Rules/WoundController.php" target="_blank">ce fichier sur Github</a> – plus précisemment la méthode <code>getWoundEffect</code>.</p>
+
 		<h4>Dégâts effectifs</h4>
 		<p>Dégâts à soustraire des PdV. Ces dégâts ne sont pas décomptés du total si la localisation est un membre (jambe, bras, pied, main). Un décompte séparé doit être tenu pour chaque membre pour savoir s’il finit par subir une blessure invalidante ou par être détruit – voir <i>Effets des blessures aux membres</i>.</p>
 

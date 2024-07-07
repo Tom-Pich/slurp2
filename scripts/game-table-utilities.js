@@ -74,6 +74,7 @@ export function collectOpponentData(number) {
 
 	const opponent = {
 		name: opponentWrapper.querySelector("[data-type=name]").value || `Protagoniste ${number}`,
+		category : opponentWrapper.querySelector("[data-type=category]").value || "std",
 		dex: opponentWrapper.querySelector("[data-type=dex]").value || 0,
 		san: opponentWrapper.querySelector("[data-type=san]").value || 0,
 		pdvm: opponentWrapper.querySelector("[data-type=pdvm]").value || 0,

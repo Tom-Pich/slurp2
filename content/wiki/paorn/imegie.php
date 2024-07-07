@@ -2,12 +2,12 @@
 
 <div class="wiki-right-element flow">
 	<figure>
-		<img src="/assets/img_paorn/imegie_01.jpg" />
-		<figcaption>Imégie &ndash; vieille ville</figcaption>
+		<img src="/assets/img_paorn/imegie-01.webp?v=2.0" />
+		<figcaption>Plan de la ville</figcaption>
 	</figure>
 	<figure>
-		<img src="/assets/img_paorn/imegie_02.jpg?v=2.0" />
-		<figcaption>Plan de la ville</figcaption>
+		<img src="/assets/img_paorn/imegie-02.jpg" />
+		<figcaption>Imégie – vieille ville</figcaption>
 	</figure>
 </div>
 

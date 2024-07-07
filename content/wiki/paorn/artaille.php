@@ -1,9 +1,15 @@
 <h2>Artaille</h2>
 
-<figure class="wiki-right-element">
-	<img src="/assets/img_paorn/artaille.webp" />
-	<figcaption><i>Artaille</i></figcaption>
-</figure>
+<div class="wiki-right-element flow">
+	<figure >
+		<img src="/assets/img_paorn/artaille.webp">
+		<figcaption><i>Artaille</i></figcaption>
+	</figure>
+	<figure >
+		<img src="/assets/img_paorn/artaille-wd.webp?v=<?= VERSION ?>">
+		<figcaption><i>Duché d’Elmour</i></figcaption>
+	</figure>
+</div>
 
 <p>L’Artaille est la province la plus méridionnale de la Burgonie. Avec ses immenses prairies, ses vallées verdoyantes, ses collines ombragées et ses forêts regorgeant de fruits, l'Artaille est un véritable paradis.</p>
 <p>Ses habitants se montrent particulièrement accueillants et sympathiques, même s’ils peuvent se montrer très directs avec les importuns.</p>
@@ -16,8 +22,8 @@
 
 <h4>Routes &amp; distances</h4>
 <ul>
-	<li><b>Imégie – Almisie par route carrossable&nbsp;:</b> 150 km. La route passe par le village de <i>Barlesso</i>. Un chariot ou un piéton met 5 jours pour faire ce trajet.</li>
-	<li><b>Imégie – Almisie,</b> itinéraire un peu plus direct, mais empruntable qu’à pied ou à cheval&nbsp;: 130 km. Cet itinéraire à la réputation d’être un peu moins sûr que le premier. Avec un bon cheval, il est faisable en deux jours et demi.</li>
+	<li><b>Imégie – Almisie&nbsp;:</b> 150 km. La route passe par le village de <i>Barlesso</i>. Un chariot ou un piéton met 5 à 6 jours pour faire ce trajet.</li>
+	<li><b>Imégie – Almisie, par le chemin des ermites</b> itinéraire un peu plus direct, mais empruntable qu’à pied ou à cheval&nbsp;: 130 km. Cet itinéraire à la réputation d’être un peu moins sûr que le premier – on y voit de temps en temps de créatures dangereuses, et il faut traverser une étrange zone à fluide nul de plusieurs kilomètres de long. Enfin, il y a un peu plus d’une quarantaine de kilomètres à parcourir sans rencontrer de village, ce qui implique, si on se déplace à pied, de passer une nuit à la belle étoile. Avec un bon cheval, il est faisable en deux jours et demi. Il quitte l’itinéraire principal à Barlesso et le rejoint à Capria.</li>
 	<li><b>Imégie – Stomilie&nbsp;:</b> en passant par Barlesso, 110 km. La route est carrosable.</li>
 	<li><b>Almisie – Stomilie&nbsp;:</b> 130 km.</li>
 	<li><b>Almisie – Maylie&nbsp;:</b> 180 km.</li>
@@ -34,11 +40,18 @@
 	L'université locale, l'École d'Olpalia, est la plus fameuse de Burgonnie méridionale.
 </p>
 
-<p><b><a href="/wiki-paorn/almisie">Almisie</a>&nbsp;:</b> Le centre industrieux de l’Artaille. En plus de cristalleries réputées, on y trouve des tisserands, des forgerons et les meilleurs négociants en vins de Paorn. Détail typique de la province méridionale&nbsp;: malgré sa relative richesse, Aimisi ne possède pas de murs d'enceinte, Ses troupes sont cependant largement suffisantes pour assurer sa sécurité contre d'éventuels pillards.</p>
+<p><b><a href="/wiki-paorn/almisie">Almisie</a>&nbsp;:</b> Le centre industrieux de l’Artaille. En plus de cristalleries réputées, on y trouve des tisserands, des forgerons et les meilleurs négociants en vins de Paorn. Détail typique de la province méridionale&nbsp;: malgré sa relative richesse, Almisie ne possède pas de murs d'enceinte, Ses troupes sont cependant largement suffisantes pour assurer sa sécurité contre d'éventuels pillards.</p>
 
 <p><b><a href="/wiki-paorn/stomilie">Stomilie</a>&nbsp;:</b> la citée saint de l’Atrimisme. Construite sur une colline, la ville est dominée par une cathédrale fortifiée. Bien qu’officiellement sous le contrôle du Prince, le clergé qui dirige la ville jouit d’une relative indépendance par rapport au pouvoir séculaire.</p>
 
 <p><b>Maylie&nbsp;:</b> Le grand port commercial de Burgonnie. C’est de là que partent les nefs marchandes à destination de la Lauria, des îles du Tarot et de Majistra, loin à l'est. Les pirates, qui ont sévi de tous temps dans ce secteur, ont obligé les Maylars (habitants de Maylie) à constituer une flotte de guerre composée d'impressionnantes galères.</p>
+
+<h4>Bourgs &amp; Villages</h4>
+<p><b>Barlesso&nbsp;:</b> bourg minier situé à 25 km d’Imégie, dans les piémonts des Thundraks. Sinistre et poussiéreux, avec des habitations mal entretenues. Lac aux eaux de couleur rougeâtre, due à l’extraction minière dans la région. Présence de ruines dans les montagnes alentours, réputées hantées. Grande auberge du di <i>Chien sauvage</i>. Parmi ses videurs, on trouve un étonnant demi-orc albinos à l’allure imposante.</p>
+<p><b>Forli&nbsp;:</b> petit village à 5 km d’Almisie. Vignes, céréales, vaches et moutons, culture maraîchère.</p>
+<p><b>Capria&nbsp;:</b> bourg agricole à 20 km d’Almisie. Cet à cet endroit que bifurquent les routes Almisie - Imégie et Almisie - Stomilie.</p>
+<p><b>Beaulieu&nbsp;:</b> petit hameau de pêcheurs, sur la côte à quelques kilomètres au nord d’Imégie.</p>
+
 
 <h4>Autres lieux remarquables</h4>
 

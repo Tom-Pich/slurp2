@@ -399,6 +399,7 @@ function color_modifier($original_score, $actual_score)
 		<p><b>Supprimer un objet&nbsp;:</b> effacer son nom. Attention&nbsp;: si vous effacez un objet-contenant, vous perdrez tout son contenu avec&nbsp;!</p>
 		<p><b>Transformer un objet en contenant&nbsp;:</b> Insérer * devant son nom.</p>
 		<p><b>Transformer un contenant en objet simple&nbsp;:</b> cocher la case <span class="ff-fas clr-warning">&#xf057;</span> dans la liste associée au contenant (pas possible si le contenant n’est pas vide).</p>
+		<p><b>Changer l’ordre des contenants&nbsp;:</b> utiliser les boutons <span class="ff-fas">&#xf0aa;</span> et <span class="ff-fas">&#xf0ab;</span>. Attention&nbsp;: un contenant vide peut perturber le positionnement des autres contenant. Dans ce cas, transformez-le en objet simple.</p>
 		<p><b>Déplacer un objet</b> (vers un autre endroit, ou à l’intérieur d’une liste, ou vers un autre personnage)&nbsp;: faire un <i>glisser-déposer</i> en vous servant de la poignée <span class="ff-fas">&#xf58e;</span> . Attention&nbsp;: la liste de destination doit être dépliée pour pouvoir faire le transfert.</p>
 		<p><b>Partager</b> le contenu d’un contenant&nbsp;: cliquer sur la case <span class="ff-fas clr-secondary-dark">&#xe533;</span>. Les autres membres du groupe pourront voir ce contenu (mais pas le modifier).</p>
 		<p><b>Calcul automatique des dégâts</b> des armes blanches&nbsp;:</p>

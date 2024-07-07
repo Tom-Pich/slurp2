@@ -38,8 +38,6 @@ class Spell implements RulesItem
 		$this->id = $spell["id"] ?? 0;
 		$this->name = $spell["Nom"] ?? "";
 		$niv_array = json_decode($spell["Niv"] ?? "[]");
-		//$this->niv_min = array_search("1", $niv_array) + 1;
-		//$this->niv_max = array_search("1", array_reverse($niv_array, true)) + 1;
 		$this->niv_min = $niv_array[0] ?? 0;
 		$this->niv_max = $niv_array[1] ?? $this->niv_min;
 		$this->readableNiv = $this->niv_min ? TextParser::parseNumbers2Latin($this->niv_min, $this->niv_max) : "";
@@ -162,7 +160,7 @@ class Spell implements RulesItem
 			<summary title="id <?= $this->id ?>">
 				<div>
 					<?php if ($show_edit_link) { ?>
-						<a href="<?= $edit_link ?>" class="nude ff-far">&#xf044;</a>
+						<a href="<?= $edit_link ?>" class="edit-link ff-far">&#xf044;</a>
 					<?php } ?>
 					<?= $data["name"] ? $data["name"] : $this->name ?> (<?= $this->readableNiv ?>) <?= !empty($this->class) ? " – <i>$this->class</i>" : "" ?>
 				</div>
@@ -247,6 +245,17 @@ class Spell implements RulesItem
 			$college_spells = $repo->getSpellsByCollege($college["id"]);
 			$college_spells = array_filter($college_spells, fn ($spell) => $spell->niv_min <= $magery);
 
+			// creating pseudo spell "Improvisation" for each college
+			$impro_spell = new Spell([
+				"id" => -$college["id"],
+				"Nom" => "<i>Improvisation</i>",
+				"Niv" => "[1, 3]",
+				"Collège" =>  "[". $college["id"] . "]",
+				"Description" => "Tous les sorts de niveau I à III peuvent être improvisés (y compris des sorts ne se trouvant pas dans les règles) sauf les sorts de classe <i>Blocage</i> et les sorts du collège <i>Enchantement</i>.<br> Le temps indiqué suppose un temps «&nbsp;<i>court</i>&nbsp;». Si le temps nécessaire est «&nbsp;<i>long</i>&nbsp;» (". self::cast_time[0][1] . "&nbsp;s, ". self::cast_time[1][1] ."&nbsp;s, ". self::cast_time[2][1]/60 ."&nbsp;min), n’oubliez pas qu’un score supérieur ou égal à 21 réduit le temps nécessaire (voir les règles de magie)."
+			]);
+			
+			if($college["id"] !== 23) $college_spells[] = $impro_spell;
+
 			foreach ($college_spells as $spell_entity) {
 				$spell = [];
 				$spell_data = array_values(array_filter($known_spells, fn ($x) => $x["id"] === $spell_entity->id))[0] ?? [];
@@ -281,7 +290,8 @@ class Spell implements RulesItem
 				$spell["costs"] = [];
 				for ($i = 1; $i <= 5; $i++) {
 					$cost_modifier = (int) max(0, floor(($spell["scores"][$i] - 13) / 2));
-					$spell["costs"][$i] = $spell["scores"][$i] ? max(0, self::pdm_cost[$i - 1] - $cost_modifier) : null;
+					$spell["costs"][$i] = $spell["scores"][$i] >= 12 ? max(0, self::pdm_cost[$i - 1] - $cost_modifier) : null;
+					//if ($spell["scores"][$i] < 12)
 				}
 				$spell["readable_costs"] = array_filter($spell["costs"], fn ($cost) => !is_null($cost));
 				$spell["readable_costs"] = implode("/", $spell["readable_costs"]);
@@ -324,7 +334,12 @@ class Spell implements RulesItem
 			}
 		}
 
-		$all_spells_filtered = Sorter::sort($all_spells_filtered, "label");
+		// separating pseudo-spell "Improvisation" and standard spell for sorting
+		$improvised_spells = array_filter($all_spells_filtered, fn($spell) => $spell["id"] < 0);
+		$standard_spells = array_filter($all_spells_filtered, fn($spell) => $spell["id"] > 0);
+		$standard_spells = Sorter::sort($standard_spells, "label");
+		$all_spells_filtered = array_values(array_merge($improvised_spells, $standard_spells));
+		// $all_spells_filtered = Sorter::sort($all_spells_filtered, "label");
 
 		return [$all_spells_filtered, $points];
 	}

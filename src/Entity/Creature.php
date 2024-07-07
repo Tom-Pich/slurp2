@@ -80,7 +80,7 @@ class Creature implements RulesItem
 		<details class="liste">
 			<summary>
 				<div>
-					<?php if ($show_edit_link) { ?><a href="<?= $edit_link ?>" class="ff-fas nude">&#xf044;</a><?php } ?>
+					<?php if ($show_edit_link) { ?><a href="<?= $edit_link ?>" class="ff-fas edit-link">&#xf044;</a><?php } ?>
 					<?= $this->name ?>
 				</div>
 			</summary>
@@ -158,7 +158,7 @@ class Creature implements RulesItem
 	public static function processSubmitCreature(array $post): void
 	{
 		// id, Nom, Origine, Catégorie, Pds1, Pds2, Options, Taille, Int, RD, Vitesse, Description, Avdesav, Pouvoirs, Combat
-		var_dump($post);
+		//var_dump($post);
 		$creature = [];
 
 		$creature["id"] = (int) $post["id"];
@@ -183,7 +183,7 @@ class Creature implements RulesItem
 		$creature["Pouvoirs"] = $post["Pouvoirs"] ? $post["Pouvoirs"] : NULL;
 		$creature["Combat"] = $post["Combat"];
 		
-		var_dump($creature);
+		//var_dump($creature);
 
 		$repo = new CreatureRepository;
 

@@ -33,6 +33,7 @@ figcaption {text-align: center; font-style: italic;}
 .widget{background-color: var(--clr-accent-background)}
 :is(div, p):nth-child(odd).alternate-o {background-color: var(--grey-900);}
 .cursor-pointer { cursor: pointer; }
+.edit-link { color: inherit; text-decoration: none; }
 
 .float-right { float: right; margin-left: var(--dynamic-space-1-2); max-width: 50%; }
 .clear-right { clear: right; }

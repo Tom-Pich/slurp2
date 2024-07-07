@@ -60,7 +60,7 @@ $affichage = $_POST["affichage"] ?? "categorie";
 
 <article><!-- Avantages & Désavantages -->
 	<h2>
-		<?php if ($_SESSION["Statut"] === 3) { ?><a href="gestion-listes?req=avdesav&id=0" class="nude ff-far">&#xf044;</a><?php } ?>
+		<?php if ($_SESSION["Statut"] === 3) { ?><a href="gestion-listes?req=avdesav&id=0" class="edit-link ff-far">&#xf044;&nbsp;</a><?php } ?>
 		Avantages &amp; Désavantages
 	</h2>
 
@@ -103,7 +103,7 @@ $affichage = $_POST["affichage"] ?? "categorie";
 
 <article><!-- Compétences -->
 	<h2>
-		<?php if ($_SESSION["Statut"] === 3) { ?><a href="gestion-listes?req=competence&id=0" class="nude ff-far">&#xf044;</a><?php } ?>
+		<?php if ($_SESSION["Statut"] === 3) { ?><a href="gestion-listes?req=competence&id=0" class="edit-link ff-far">&#xf044;&nbsp;</a><?php } ?>
 		Compétences
 	</h2>
 
@@ -169,7 +169,7 @@ $affichage = $_POST["affichage"] ?? "categorie";
 
 <article data-role="spells-wrapper"><!-- Sorts -->
 	<h2>
-		<?php if ($_SESSION["Statut"] == 3) { ?><a href="gestion-listes?req=sort&id=0" class="nude ff-far">&#xf044;</a><?php } ?>
+		<?php if ($_SESSION["Statut"] == 3) { ?><a href="gestion-listes?req=sort&id=0" class="edit-link ff-far">&#xf044;&nbsp;</a><?php } ?>
 		Sorts
 	</h2>
 	<?php

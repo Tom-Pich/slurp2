@@ -36,7 +36,7 @@ function updateCharacter(id) {
 		.then(response => response.text())
 		.then(response => {
 			updateDOM("main", response);
-			containerOpenCloseStateManager()
+			containerOpenCloseStateManager() // useless: updateDOM keeps track of <details> state
 			fillPdMCount()
 		})
 }
@@ -88,6 +88,8 @@ function submitEquipment(pingAllCharacter = false) {
 			formData.append(input.name, input.value)
 		}
 	})
+
+	console.log(formData);
 
 	fetch("/submit/equipment-list", {
 		method: 'post',

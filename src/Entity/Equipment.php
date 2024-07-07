@@ -79,7 +79,7 @@ class Equipment
 	public static function processEquipmentList(array $raw_equipment, array $state = []): array
 	{
 		$equipment = [
-			"pi" => ["id" => 0, "nom" => "Possessions sur soi", "liste" => [], "poids" => 0, "ordre" => null, "ordre-par-defaut" => 1, "sur-soi" => true, "lieu" => "pi"],
+			"pi" => ["id" => 0, "nom" => "Possessions sur soi", "liste" => [], "poids" => 0, "ordre" => null, "ordre-par-defaut" => 2, "sur-soi" => true, "lieu" => "pi"],
 		];
 
 		foreach ($raw_equipment as $item) {
@@ -90,7 +90,7 @@ class Equipment
 					"liste" => [],
 					"poids" => $item->weight,
 					"ordre" => null,
-					"ordre-par-defaut" => $item->order,
+					"ordre-par-defaut" => $item->order+1,
 					"groupe" => $item->visibleByGroupId,
 					"non-vide" => false,
 					"sur-soi" => self::isCarried($item->id),

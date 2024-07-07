@@ -42,6 +42,34 @@ $nbre_competences = 15;
 		</fieldset>
 
 	</div>
+	
+	<div class="widgets-column">
+		<!-- Protagonistes -->
+		<fieldset data-name="opponents" hidden>
+			<legend>Protagonistes</legend>
+
+			<?php for ($i = 1; $i <= $nbre_protagonistes; $i++) { ?>
+				<div class="mt-1" data-role="opponent-wrapper" data-opponent="<?= $i ?>">
+					<div class="flex-s gap-½">
+						<input type="text" class="fl-1" data-type="name" placeholder="Nom">
+						<select data-type="category" style="width: 6ch" title="cnb: non-biologique">
+							<option value="std">std</option>
+							<option value="cnb">cnb</option>
+						</select>
+						<input type="text" style="width: 5ch" data-type="dex" class="ta-center" placeholder="Dex" title="Dextérité" value="<?= $i === 0 ? 11 : "" ?>">
+						<input type="text" style="width: 5ch" data-type="san" class="ta-center" placeholder="San" title="Santé" value="<?= $i === 0 ? 12 : "" ?>">
+						<input type="text" style="width: 5ch" data-type="pain-resistance" class="ta-center" placeholder="Doul." title="Résistance à la douleur (-1, 0, 1)">
+					</div>
+					<div class="flex-s gap-½ mt-½">
+						<input type="text" style="width: 6ch" data-type="pdvm" class="ta-center" placeholder="PdVm" title="PdV maxi" value="<?= $i === 0 ? 12 : "" ?>">
+						<input type="text" style="width: 6ch" data-type="pdv" class="ta-center" placeholder="PdV" title="PdV actuels" value="<?= $i === 0 ? 12 : "" ?>">
+						<input type="text" class="fl-1" style="width: 6ch" data-type="members" placeholder="Blessures membres" title="Par exemple BD 2, PG 1">
+					</div>
+				</div>
+			<?php } ?>
+
+		</fieldset>
+	</div>
 
 	<div class="widgets-column">
 
@@ -183,30 +211,6 @@ $nbre_competences = 15;
 	</div>
 
 	<div class="widgets-column">
-		<!-- Protagonistes -->
-		<fieldset data-name="opponents" hidden>
-			<legend>Protagonistes</legend>
-
-			<?php for ($i = 1; $i <= $nbre_protagonistes; $i++) { ?>
-				<div class="mt-1" data-role="opponent-wrapper" data-opponent="<?= $i ?>">
-					<div class="flex-s gap-½">
-						<input type="text" class="fl-1" style="width: 6ch" data-type="name" placeholder="Nom" value="<?= $i === 0 ? "Mr Test" : "" ?>">
-						<input type="text" style="width: 6ch" data-type="dex" class="ta-center" placeholder="Dex" title="Dextérité" value="<?= $i === 0 ? 11 : "" ?>">
-						<input type="text" style="width: 6ch" data-type="san" class="ta-center" placeholder="San" title="Santé" value="<?= $i === 0 ? 12 : "" ?>">
-						<input type="text" style="width: 6ch" data-type="pain-resistance" class="ta-center" placeholder="Doul." title="Résistance à la douleur (-1, 0, 1)">
-					</div>
-					<div class="flex-s gap-½ mt-½">
-						<input type="text" style="width: 6ch" data-type="pdvm" class="ta-center" placeholder="PdVm" title="PdV maxi" value="<?= $i === 0 ? 12 : "" ?>">
-						<input type="text" style="width: 6ch" data-type="pdv" class="ta-center" placeholder="PdV" title="PdV actuels" value="<?= $i === 0 ? 12 : "" ?>">
-						<input type="text" class="fl-1" style="width: 6ch" data-type="members" placeholder="Blessures membres" title="Par exemple BD 2, PG 1">
-					</div>
-				</div>
-			<?php } ?>
-
-		</fieldset>
-	</div>
-
-	<div class="widgets-column">
 
 		<!-- Explosion -->
 		<fieldset data-name="explosion" hidden>
@@ -288,6 +292,7 @@ $nbre_competences = 15;
 					</select>
 					<select class="fl-1" data-type="region" title="Région d’origine">
 						<option value="artaille">Artaille</option>
+						<option value="french">Français</option>
 					</select>
 					<select class="fl-1" data-type="profile" title="profil du PNJ">
 						<option value="default">Standard</option>

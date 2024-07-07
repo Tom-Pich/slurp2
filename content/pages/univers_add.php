@@ -12,7 +12,7 @@ $spells_repo = new SpellRepository;
 $creatures_repo = new CreatureRepository;
 ?>
 
-<article>
+<article><!-- Personnages -->
 	<h2>Personnage</h2>
 
 	<details>
@@ -131,7 +131,7 @@ $creatures_repo = new CreatureRepository;
 		<h4>Système monétaire</h4>
 		<p>1 po = 20 pa = 80 pc</p>
 		<p>pièce d’or&nbsp;: taille d’une pièce de 20 ¢, 15 g<br>
-			pièce d’argent&nbsp;: taille d’une pièce de 20 ¢, 8 g<br>
+			pièce d’argent&nbsp;: taille d’une pièce de 20 ¢, 10 g<br>
 			pièce de cuivre&nbsp;: taille d’une pièce de 50 ¢, 10 g<br>
 			piécette (½ pc)&nbsp;: taille d’une pièce de 2 ¢, 5 g</p>
 		<p>Conversion AD&amp;D&nbsp;: 1 po AD&D = 12 pc = 0,15 po</p>
@@ -665,7 +665,7 @@ $creatures_repo = new CreatureRepository;
 
 </article>
 
-<article>
+<article><!-- Magie -->
 	<h2>Magie</h2>
 
 	<details>
@@ -1007,7 +1007,7 @@ $creatures_repo = new CreatureRepository;
 				<p><b>Prix&nbsp;:</b> 15 / 60 / 150 / 450 / 1500+ pc selon le niveau du sort.</p>
 			</details>
 
-			<details class="liste" open>
+			<details class="liste">
 				<summary>Pierre de puissance</summary>
 				<p>Pierre précieuse servant de réservoir de PdM. Pour pouvoir l’utiliser, le mage doit la toucher physiquement. Un mage ne peut tirer parti de plusieurs pierres pour un même sort. Il peut par contre utiliser à la fois ses propres PdM et des PdM tirés d’une pierre de puissance.<br>
 					En fluide normal, une pierre de puissance récupère 1 PdM toutes les 12 heures. Si des pierres sont à 2 m ou moins l’une de l’autre, seule la plus grosse se recharge, sauf si celle-ci est pleine.<br>
@@ -1139,10 +1139,10 @@ $creatures_repo = new CreatureRepository;
 
 </article>
 
-<article>
+<article><!-- Créatures -->
 	<h2>
 		<?php if ($_SESSION["Statut"] == 3) { ?>
-			<a href="gestion-listes?req=creature&id=0" class="nude ff-far">&#xf044;</a>
+			<a href="gestion-listes?req=creature&id=0" class="ff-far edit-link">&#xf044;&nbsp;</a>
 		<?php } ?>
 		Bestiaire
 	</h2>
@@ -1187,7 +1187,11 @@ $creatures_repo = new CreatureRepository;
 
 		<h4>Catégories de créatures</h4>
 		<p><b>• Extraplanaire&nbsp;:</b> ces créatures ne peuvent être tuées ailleurs que sur leur plan d’origine. Ailleurs, elles se dématérialisent à 0 PdV et retournent à leur plan d’origine.</p>
-		<p class="mt-1"><b>• Non biologique&nbsp;:</b> créatures dénuées de métabolisme &ndash; morts-vivants, créatures immatérielles, créatures animées par magie, etc. Elles «&nbsp;meurent&nbsp;» à 0 PdV. Insensibles à la douleur, jamais sonnées ni assommées. Pas d’organes vitaux et aucun multiplicateur de dégâts. Immunisées au poison ainsi qu’aux sorts d’<i>Emprise mentale</i> et de <i>Contrôle physique</i>.</p>
+		<p class="mt-1">
+			<b>• Non biologique&nbsp;:</b> créatures dénuées de métabolisme &ndash; morts-vivants, créatures immatérielles, créatures animées par magie, etc. Elles «&nbsp;meurent&nbsp;» à 0 PdV. Insensibles à la douleur, jamais sonnées ni assommées. Pas d’organes vitaux. Pour les morts-vivants matériels, le seul multiplicateur de dégâts qui s’applique concerne le crâne et vaut ×2, en tenant compte de la résistance de la boîte cranienne.<br>
+			Pour les créatures immatérielles, la localisation n’a aucune importance&nbsp;: considérez toutes les attaques comme portées au torse.<br>
+			Immunisées au poison ainsi qu’aux sorts d’<i>Emprise mentale</i> et de <i>Contrôle physique</i>.
+		</p>
 		<p><i>Squelettique</i>&nbsp;: -3 au toucher et dégâts réduits au minimum avec des armes perforantes. Dégâts tranchants divisés par 2.</p>
 		<p class="mt-1"><b>•&nbsp;Créature végétale&nbsp;:</b> mêmes avantages que les créatures «&nbsp;non biologiques&nbsp;», mais elles ne meurent pas à 0 PdV.</p>
 		<p class="mt-1"><b>•&nbsp;Créature d’essence magique&nbsp;:</b> utilisent leurs pouvoirs innés avec un score minimum de 16 et le temps nécessaire à leur déclenchement est divisé par deux. Le rythme de récupération des PdM est doublé et sans condition de repos. Tous les démons sont d'essence magique.</p>

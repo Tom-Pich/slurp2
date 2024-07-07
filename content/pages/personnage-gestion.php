@@ -314,13 +314,13 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 							<?php
 							foreach ($character->spells as $sort) {
-								if (in_array($college["id"], $sort["data"]->colleges)) {
+								if (in_array($college["id"], $sort["data"]->colleges) && $sort["id"] > 0) {
 							?>
 
 									<div class="flex-s gap-½ ai-first-baseline">
 										<input type="text" name="Sorts[<?= $n_post ?>][name]" value="<?= $sort["label"] ?>" class="fl-1">
 										<input type="text" name="Sorts[<?= $n_post ?>][points]" value="<?= $sort["points"] ?>" style="width: 3ch" class="ta-center">
-										<div style="width: 11ch" class="ta-right fs-300"><?= $sort["readable_scores"] ?></div>
+										<div style="width: 11ch" class="ta-right fs-300"><?= join("/", array_filter($sort["scores"], fn($score) => !!$score)) ?></div>
 										<input hidden name="Sorts[<?= $n_post ?>][id]" value="<?= $sort["id"] ?>" />
 										<input hidden name="Sorts[<?= $n_post ?>][former-points]" value="<?= $sort["points"] ?>" />
 										<input hidden name="Sorts[<?= $n_post ?>][former-modif]" value="<?= $sort["modif"] ?>" />

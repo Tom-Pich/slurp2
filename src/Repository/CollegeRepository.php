@@ -7,6 +7,10 @@ use App\Repository\AbstractRepository;
 
 class CollegeRepository extends AbstractRepository
 {
+
+	// For now, only read functionalities.
+	// modify description directly in DB
+
 	/**
 	 * getCollege
 	 *

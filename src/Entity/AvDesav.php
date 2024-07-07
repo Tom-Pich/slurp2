@@ -105,7 +105,7 @@ class AvDesav implements RulesItem
 			<summary title="id <?= $this->id ?>">
 				<div>
 					<?php if ($show_edit_link) { ?>
-						<a href="<?= $edit_link ?>" class="nude ff-far">&#xf044;</a>
+						<a href="<?= $edit_link ?>" class="edit-link ff-far">&#xf044;</a>
 					<?php } ?>
 					<?= $data["name"] ? $data["name"] : $this->name ?>
 				</div>

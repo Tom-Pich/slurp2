@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Lib\Sorter;
 use App\Repository\CollegeRepository;
+use App\Entity\Spell;
 
 //  id Nom Description
 class College

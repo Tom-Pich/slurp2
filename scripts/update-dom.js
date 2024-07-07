@@ -13,5 +13,10 @@ export function updateDOM(selector, source) {
 	const virtualDoc = parser.parseFromString(source, "text/html")
 	const sourceElement = virtualDoc.querySelector(selector)
 	const targetElement = document.querySelector(selector)
-	morphdom(targetElement, sourceElement);
+	morphdom(targetElement, sourceElement, {
+		onBeforeElUpdated: function (fromEl, toEl) {
+			// keep <details> state (open/close)
+			if (fromEl.tagName === "DETAILS") toEl.open = fromEl.open;
+		}
+	});
 }
