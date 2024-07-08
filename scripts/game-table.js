@@ -477,6 +477,7 @@ woundEffectsWidget.addEventListener("submit", e => {
 		.then(response => {
 
 			const result = response.data
+			console.log(result)
 
 			if (result["pdvm"] <= 0) { throw new Error("Il manque des données."); }
 
@@ -488,10 +489,10 @@ woundEffectsWidget.addEventListener("submit", e => {
 				formattedMsg += `<br>${result["mort"]}`;
 				isNotDead = false;
 			}
-			if (result["autres effets"]) {
-				formattedMsg += `<br>${result["autres effets"]}`
-			}
 			if (isNotDead) {
+				if (result["autres effets"]) {
+					formattedMsg += `<br>${result["autres effets"]}`
+				}
 				if (result["sonné"] && !result["perte de conscience"]) {
 					formattedMsg += `<br>${result["sonné"]}`
 				}
