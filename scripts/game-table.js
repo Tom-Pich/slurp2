@@ -504,6 +504,9 @@ woundEffectsWidget.addEventListener("submit", e => {
 				}
 				if (result["dégâts membre"]) {
 					formattedMsg += `<br>${result["dégâts membre"]}`
+					if (result["état membre"] !== ""){
+						formattedMsg += ` (${result["état membre"]})`
+					}
 				}
 			}
 

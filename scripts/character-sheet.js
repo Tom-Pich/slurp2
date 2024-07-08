@@ -62,7 +62,7 @@ function fillPdMCount() {
 	const pdmInput = qs("[name=pdm_counter]")
 
 	if (pdmInput) {
-		const PdMCount = localStorage.getItem("pdm-count"); // should be a string with a serie of operations (+2-4-2...)
+		const PdMCount = localStorage.getItem(`pdm-count-${characterId}`); // should be a string with a serie of operations (+2-4-2...)
 		const PdMmax = parseInt(pdmInput.dataset.pdmMax);
 		const calculatedResult = PdMmax + int(calculate(PdMCount));
 		const PdM = parseInt(pdmInput.dataset.pdmCurrent);
@@ -110,8 +110,8 @@ function submitPdMChange() {
 
 	// check if entered value is valid, if not valid → empty value
 	const pdmInputIsValid = ["+", "-"].includes(inputExpression.charAt(0)) || inputExpression === "" || inputEvaluation !== ""
-	if (pdmInputIsValid) { localStorage.setItem("pdm-count", inputExpression) }
-	else { localStorage.setItem("pdm-count", "") }
+	if (pdmInputIsValid) { localStorage.setItem(`pdm-count-${characterId}`, inputExpression) }
+	else { localStorage.setItem(`pdm-count-${characterId}`, "") }
 
 	// evaluating current PdM value
 	let pdm_value

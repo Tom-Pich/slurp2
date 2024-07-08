@@ -186,20 +186,21 @@ class WoundController
 
 		// base result array
 		$result = [
-			"categorie" => $category,
-			"dex" => $dex,
-			"san" => $san,
+			//"categorie" => $category,
+			//"dex" => $dex,
+			//"san" => $san,
 			"pdvm" => $pdvm,
-			"pdv_init" => $pdv,
-			"res-douleur" => $pain_resistance,
+			//"pdv_init" => $pdv,
+			//"res-douleur" => $pain_resistance,
 			"dégâts bruts" => $raw_dmg,
 			"RD" => $rd,
 			"type dégâts" => $dmg_type,
-			"type balle" => $bullet_type,
+			//"type balle" => $bullet_type,
 			"localisation" => $localisation,
-			"jets" => $rolls,
+			//"jets" => $rolls,
 			"dégâts effectifs" => "",
 			"dégâts membre" => "",
+			"état membre" => "",
 			"recul" => 0,
 			"chute" => false,
 			"mort" => false,
@@ -243,6 +244,7 @@ class WoundController
 		$result["localisation"] = $localisation;
 
 		$is_member = in_array($localisation, ["bras", "main", "pied", "jambe"]);
+		$is_leg = in_array($localisation, ["pied", "jambe"]);
 		$is_vital = in_array($localisation, ["visage", "coeur", "cou", "crane", "oeil"]);
 		$is_head = in_array($localisation, ["crane", "visage", "oeil"]);
 		$is_skull = in_array($localisation, ["crane", "oeil"]);
@@ -250,7 +252,7 @@ class WoundController
 
 		// changes for special categories
 		if (in_array($category, ["nbh", "nbx"])) {
-			//non biological creature – humanoid (h) or not (x)
+			//non biological creature – with head reduced sensibility (h) or no head sensibility at all (x)
 			$dmg_multipliers = ["br" => 1, "tr" => 1, "pe" => 1, "mn" => 1, "b0" => .5, "b1" => 1, "b2" => 1.5, "b3" => 2, "exp" => 1];
 			$is_vital = false;
 			$is_sensitive = false;
@@ -258,7 +260,7 @@ class WoundController
 			$no_minimal_penetrating_dmg = true;
 			$cannot_be_stunned = true;
 			$cannot_be_knocked_out = true;
-			$automatic_death = 0; // pdvm mult threshold for automatic death (default -3) → automatic death at 0 pdv
+			$automatic_death = 0; // pdvm mult threshold for automatic death (default -3) → automatic death at 0×pdvm
 		}
 
 		if ($category === "ins") {
@@ -270,6 +272,8 @@ class WoundController
 		$rcl_dmg = $limited_raw_dmg * $rcl[$dmg_type];
 		$rcl_pdvm = $pdvm * ($pdvm_multiplier_for_rcl ?? 1);
 		$rcl_distance = $rcl_dmg / $rcl_pdvm * 3;
+		if ($rcl_distance <= 1) $rcl_distance = 0;
+		if ($rcl_distance > 2) $rcl_distance = 2 + ($rcl_distance -2)**0.5; // distance > 2 → use square root of distance
 		$rcl_modif = DiceManager::getModifier($rcl_dmg * ($is_head ? 3 : 1), 0.8 * $rcl_pdvm);
 		$result["recul"] = floor($rcl_distance * 2) / 2;
 		if ($rcl_modif <= 3)  $result["chute"] = !DiceManager::check_is_successfull($dex + $rcl_modif, $rolls[0]);
@@ -302,24 +306,36 @@ class WoundController
 				$actual_dmg = $cranial_rd + ($net_dmg - $cranial_rd) * $dmg_multiplier;
 			}
 		}
-		if ($rd === 0 && $is_penetrating && !$actual_dmg && empty($no_minimal_penetrating_dmg) ) $actual_dmg = 1;
+		if ($rd === 0 && $is_penetrating && !$actual_dmg && empty($no_minimal_penetrating_dmg)) $actual_dmg = 1;
 
 		$result["dégâts effectifs"] = floor($actual_dmg);
 		$pdv -= !$is_member ? $result["dégâts effectifs"] : 0;
 		$result["pdv"] = $pdv;
+
 		$is_significant_wound = $actual_dmg >= 0.25 * $pdvm;
 		$is_major_wound = $actual_dmg >= 0.5 * $pdvm;
+		$is_significant_wound_to_member = false;
+		$is_incapacitating_wound_to_member = false;
+
+		if ($is_member) {
+			$is_significant_wound_to_member = $actual_dmg >= self::members_pdv[$localisation] * $pdvm * .5;
+			if ($is_significant_wound_to_member) $result["état membre"] = "membre inutilisable";
+			$is_incapacitating_wound_to_member = $actual_dmg >= self::members_pdv[$localisation] * $pdvm;
+			if ($is_incapacitating_wound_to_member) $result["état membre"] = "membre handicapé";
+		}
 
 		// ––– fall due to high damages
-		$fall_modifier = DiceManager::getModifier($actual_dmg, .5*$pdvm);
-		$result["chute"] = $result["chute"] || $fall_modifier <= 3 && !DiceManager::check_is_successfull($san + $fall_modifier, $rolls[1]);
+		$severe_hit_to_leg = $is_leg && $is_significant_wound_to_member;
+		$incapacitated_leg = $is_leg && $is_incapacitating_wound_to_member;
+		$fall_modifier = DiceManager::getModifier($actual_dmg * ($severe_hit_to_leg ? 1.5 : 1), .5 * $pdvm);
+		$general_fall_check = $fall_modifier <= 3 && !DiceManager::check_is_successfull($san + $fall_modifier, $rolls[1]);
+		$result["chute"] = $result["chute"] || $general_fall_check || $incapacitated_leg;
 
 		// ––– stunning
 		$stun_level = 0;
-		$might_be_stunned = $is_significant_wound || $is_sensitive || $pain_resistance <= -1 && $actual_dmg > 0;
-		$might_be_stunned = $might_be_stunned && empty($cannot_be_stunned);
+		$might_be_stunned = $is_significant_wound || $is_significant_wound_to_member || $is_sensitive || $pain_resistance <= -1 && $actual_dmg > 0;
 
-		if ($might_be_stunned) {
+		if ($might_be_stunned && empty($cannot_be_stunned)) {
 
 			$stun_base_threshold = $is_sensitive ? 0.1 * $pdvm : 0.25 * $pdvm;
 			$stun_base_threshold *= ($pain_resistance <= -1) ? 0.5 : 1;
@@ -333,7 +349,9 @@ class WoundController
 			}
 
 			$stun_level += $localisation === "org_gen" ? 2 : 0;
-			$stun_level -= DiceManager::check_is_successfull($san - 2 * ($stun_level-1), $rolls[2]) ? 1 : 0;
+			$stun_level += ($is_significant_wound_to_member) ? 1 : 0;
+			$stun_level += ($is_incapacitating_wound_to_member) ? 1 : 0; // if this is true, then line before is also true
+			$stun_level -= DiceManager::check_is_successfull($san - 2 * ($stun_level - 1), $rolls[2]) ? 1 : 0;
 			$stun_level -= $pain_resistance;
 			$stun_level = min($stun_level, 3);
 
@@ -373,7 +391,7 @@ class WoundController
 			$death_modifier = (int) round(($pdv_death_modifier + $dmg_death_modifier) / 2);
 			$result["mort"] = !DiceManager::check_is_successfull($san + $death_modifier, $rolls[4]) ? "Mort en " . round($rolls[5] / 2.5) * 5 . " secondes" : false;
 		} elseif ($is_vital && $is_significant_wound) {
-			$death_modifier = DiceManager::getModifier(1.5 * $actual_dmg, $pdvm);
+			$death_modifier = DiceManager::getModifier($actual_dmg, 0.67 * $pdvm);
 			$result["mort"] = !DiceManager::check_is_successfull($san + $death_modifier, $rolls[4]) ? "Mort immédiate&nbsp;! 😵" : false;
 		}
 
