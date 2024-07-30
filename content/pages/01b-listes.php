@@ -42,7 +42,7 @@ $affichage = $_POST["affichage"] ?? "categorie";
 				<div class="mt-½"><b>Sorts à afficher&nbsp;:</b></div>
 				<div class="flex-s ai-center jc-space-between mt-½" data-role="spell-filter">
 					Niveaux
-					<input type="text" data-role="range-filter" style="width: 5ch;" class="ta-center p-0" placeholder="1-5">
+					<input type="text" data-role="range-filter" style="width: 5ch;" class="ta-center p-0" placeholder="1-5" value="1-5">
 					<label>
 						<input type="checkbox" checked data-role="origin-selector" value="RdB"> RdB
 					</label>
@@ -187,7 +187,7 @@ $affichage = $_POST["affichage"] ?? "categorie";
 			if (!empty($spells)) {
 				if ($college->id === 22) { ?><h4>Collèges spéciaux</h4><?php } ?>
 
-				<details>
+				<details data-role="college-wrapper">
 					<summary class="h3"><?= $college->name ?></summary>
 					<p><?= $college->description ?></p>
 					<?php foreach ($spells as $spell) {
@@ -200,4 +200,4 @@ $affichage = $_POST["affichage"] ?? "categorie";
 
 </article>
 
-<script type="module" src="/scripts/spells-powers-filter.js" defer></script>
+<script type="module" src="/scripts/spells-powers-filter.js?v=2" defer></script>

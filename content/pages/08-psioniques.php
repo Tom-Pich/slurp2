@@ -185,7 +185,7 @@ $niv_max = max(array_keys($_POST["niv"]));
 
 </article>
 
-<article data-role="powers-wrapper">
+<article data-role="spells-wrapper">
 	<h2>
 		<?php if ($_SESSION["Statut"] === 3) { ?><a href="gestion-listes?req=psi&id=0" class="nude ff-far">&#xf044;</a><?php } ?>
 		Liste des pouvoirs
@@ -208,7 +208,7 @@ $niv_max = max(array_keys($_POST["niv"]));
 
 			<div class="ta-center mt-½">
 				Niveaux
-				<input type="text" data-role="range-filter" style="width: 5ch;" class="ta-center p-0" placeholder="1-5">
+				<input type="text" data-role="range-filter" style="width: 5ch;" class="ta-center p-0" placeholder="1-5" value="1-5">
 			</div>
 		</form>
 	</fieldset>
@@ -228,7 +228,7 @@ $niv_max = max(array_keys($_POST["niv"]));
 		}
 	} else {
 		foreach ($liste_disciplines as $discipline) { ?>
-			<details>
+			<details data-role="college-wrapper">
 				<summary class="h3"><?= $discipline->name ?></summary>
 				<p> <?= $discipline->description ?></p>
 				<?php
@@ -247,4 +247,4 @@ $niv_max = max(array_keys($_POST["niv"]));
 	?>
 
 </article>
-<script type="module" src="/scripts/spells-powers-filter.js" defer></script>
+<script type="module" src="/scripts/spells-powers-filter.js?v=2" defer></script>
