@@ -43,12 +43,11 @@ include "content/pages/_pages-data.php";
 
 // Front router –––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 $path = parse_url($_SERVER["REQUEST_URI"])["path"];
-$path_segments = array_filter(explode("/", $path)); // empty for home page, first level = $path_segments[1] (not [0])
-$pathFirstSegment = $path_segments[1] ?? null;
-//var_dump($path_levels); die();
+$path_segments = array_filter(explode("/", $path)); // empty for home page, first level = $path_segments[1] (not [0] – array_filter)
+$path_segments[1] = $path_segments[1] ?? null;
 
 // API
-if ($pathFirstSegment === "api") {
+if ($path_segments[1] === "api") {
 
 	$controller = new ApiController;
 
@@ -191,7 +190,7 @@ if ($pathFirstSegment === "api") {
 }
 
 // submit
-elseif ($pathFirstSegment === "submit") {
+elseif ($path_segments[1] === "submit") {
 
 	switch ($path) {
 
@@ -321,14 +320,14 @@ elseif ($pathFirstSegment === "submit") {
 }
 
 // character pages
-elseif (in_array($pathFirstSegment, ["personnage-fiche", "personnage-gestion"])) {
+elseif (in_array($path_segments[1], ["personnage-fiche", "personnage-gestion"]) && empty($path_segments[2]) ) {
 	Firewall::filter(1);
 	Firewall::check(!empty($_GET["perso"] && (int) $_GET["perso"]));
 	$character = new Character((int) $_GET["perso"]);
 	if (!$character->checkClearance()) {
 		(new Error404Controller)->show();
 	}
-	$page_name = $pathFirstSegment;
+	$page_name = $path_segments[1];
 	$page_data = [
 		"title" => $character->name,
 		"description" => "",
@@ -340,33 +339,12 @@ elseif (in_array($pathFirstSegment, ["personnage-fiche", "personnage-gestion"]))
 	$page->show();
 }
 
-// scenarii pages
-elseif ($pathFirstSegment === "scenario") {
-	Firewall::filter(3);
-	require_once "content/scenarii/_scenarii-data.php";
-	$scenario_name = $path_segments[2];
-	$scenarii_url_list = array_keys($scenarii_data);
-	if (in_array($scenario_name, $scenarii_url_list)) {
-		$page_data = [
-			"title" => $scenarii_data[$scenario_name]["title"],
-			"description" => $scenarii_data[$scenario_name]["excerpt"],
-			"body-class" => "scenario",
-			"file" => $scenario_name,
-		];
-		$page = new PageController($page_data);
-		$page->show("scenario");
-	} else {
-		$page = new Error404Controller;
-		$page->show();
-	}
-}
-
 // wiki pages
-else if ($pathFirstSegment === "wiki-paorn") {
+else if ($path_segments[1] === "wiki-paorn") {
 	$is_root_page = empty($path_segments[2]);
 	$page_data = $pages_data["wiki-paorn"];
 	include "content/wiki/paorn/_articles.php";
-	$article = $is_root_page ? null : $articles[$path_segments[2]];
+	$article = $is_root_page ? null : $articles[$path_segments[2]] ?? null;
 
 	if ($is_root_page) {
 		$page = new PageController($page_data);
@@ -383,15 +361,14 @@ else if ($pathFirstSegment === "wiki-paorn") {
 
 // standard pages
 else {
-	$page_name = $path === "/" ? "home" : $pathFirstSegment;
+	$page_name = $path_segments[1] ?? "home";
 	$page_data = $pages_data[$page_name] ?? null;
+	if (!empty($path_segments[2])) $page_data = null;
 
 	if ($page_data) {
 		$page_data["canonical"] = $path;
 		$access_restriction = $page_data["access-restriction"] ?? 0;
-		if ($access_restriction) {
-			Firewall::filter($access_restriction);
-		}
+		if ($access_restriction) Firewall::filter($access_restriction);
 		$page = new PageController($page_data);
 	} else {
 		$page = new Error404Controller;

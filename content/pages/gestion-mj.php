@@ -27,7 +27,7 @@ foreach ($characters_id as $character) {
 }
 ?>
 
-<div id="ws-data" hidden data-session-id="<?= $_SESSION["id"] ?>" data-ws-key="<?= WS_KEY ?>" ></div>
+<div id="ws-data" hidden data-session-id="<?= $_SESSION["id"] ?>" data-ws-key="<?= WS_KEY ?>"></div>
 
 <article><!-- Objets orphelins -->
 	<h2>Objets orphelins</h2>
@@ -136,7 +136,6 @@ foreach ($characters_id as $character) {
 							</h4>
 							<a href="personnage-fiche?perso=<?= $perso->id ?>" target="_blank" class="ff-fas fs-500 btn nude" title="voir fiche">&#xf2c2;</a>
 							<button type="button" data-role="export-character" title="exporter" class="nude ff-fas fs-500" data-id="<?= $perso->id ?>">&#xf56e;</button>
-							<!-- <button type="submit" class="nude ff-fas fs-500" data-id="<?= $perso->id ?>" title="enregistrer">&#xf0c7;</button> -->
 						</div>
 
 						<div class="flex-s gap-½ mt-½">
@@ -183,7 +182,8 @@ foreach ($characters_id as $character) {
 
 						<!-- Autres éléments d’état -->
 						<div class="flex-s gap-½ mt-½">
-							<input type="text" name="État[Autres]" value="<?= $perso->state["Autres"] ?? "" ?>" class="fl-1" placeholder="Autres éléments d’état" title="Autres éléments d’état – séparateur ;">
+							<!--  -->
+							<textarea name="État[Autres]" placeholder="Autres éléments d’état" title="Autres éléments d’état – séparateur ;"><?= $perso->state["Autres"] ?? "" ?></textarea>
 						</div>
 
 						<input hidden name="Calculs[PdVm]" value="<?= $perso->pdxm["PdVm"] ?? "" ?>">

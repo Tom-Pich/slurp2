@@ -351,45 +351,50 @@ use App\Rules\ReactionController;
 	</details>
 
 	<details>
-		<summary class="h3">Terreur</summary>
+		<summary class="h3">Peur &amp; Terreur</summary>
 		<p>Lorsqu’un événement terrifie le personnage, un jet de <i>Sang-froid</i> (appelé dans ce cas <i>Test de Frayeur</i>) doit être fait pour savoir comment le personnage réagit. Cette terreur doit être surnaturelle ou réveiller une phobie, et ponctuelle, sans quoi il s’agit d’un stress ou d’une <i>Surprise</i>.</p>
 		<p>Un malus peut s’appliquer en fonction de la nature de l’événement terrorisant.</p>
-		<p>Si le jet de <i>Sang-froid</i> est réussi, le personnage surmonte sa peur et peut agir immédiatement. Sinon, il subit les conséquences décrites dans le tableau ci-dessous.
-			La ME d’un jet de <i>Sang-froid</i> pour résister à la terreur ne peut être supérieure à [malus du test +3], sauf en cas d’échec critique (exemple : rater un jet de Sang-froid à -2 ne peut entraîner une ME de plus de 2+3 = 5).</p>
+		<p>Si le jet de <i>Sang-froid</i> est réussi, le personnage surmonte sa peur et peut agir immédiatement. Sinon, il subit les conséquences décrites dans le tableau ci-dessous.</p>
+		<p>La ME d’un <i>Test de Frayeur</i> <b>ne peut être supérieure à [malus du test +3]</b>, sauf en cas d’échec critique (exemple&nbsp;: rater un jet de <i>Sang-froid</i> à -2 ne peut entraîner une ME de plus de 2+3 = 5).</p>
+		
 		<table class="alternate-e left-2">
 			<tr>
 				<th width="10">ME</th>
 				<th>Conséquences</th>
 			</tr>
 			<tr>
-				<td>1</td>
+				<td>1-2</td>
 				<td>Surprise partielle.</td>
 			</tr>
 			<tr>
-				<td>2</td>
-				<td>Surprise totale. Jet de Vol pour retenir un cri.</td>
-			</tr>
-			<tr>
 				<td>3</td>
-				<td>Surprise totale. Vol -3 pour retenir un cri. <b>(1 PdE)</b></td>
+				<td>Surprise totale. Jet de <i>Vol</i> pour retenir un cri.</td>
 			</tr>
 			<tr>
 				<td>4</td>
-				<td>Panique. Le personnage s’enfuit en hurlant pendant 1d×10 secondes. S’il ne peut pas s’enfuir, faire un jet de San pour éviter une réaction physique inconvenante (vomir, uriner, pleurer, etc.). <b>(2 PdE)</b></td>
+				<td>Surprise totale. <i>Vol</i> -3 pour retenir un cri. <b>(1 PdE)</b></td>
 			</tr>
 			<tr>
 				<td>5</td>
-				<td>Panique totale. Le personnage est capable de faire n’importe quoi (jeter 3d, plus le résultat est élevé, plus l’action entreprise est inutile, voire dangereuse). <b>(3 PdE)</b>.</td>
+				<td>Panique. Le personnage s’enfuit en hurlant pendant 1d×10 secondes. S’il ne peut pas s’enfuir, faire un jet de San pour éviter une réaction physique inconvenante (vomir, uriner, pleurer, etc.). <b>(2 PdE)</b></td>
 			</tr>
 			<tr>
 				<td>6</td>
-				<td>Le personnage est en état de choc. Il ne fait rien durant 1d×5 secondes, puis entre en panique totale (résultat précédent). <b>(4 PdE)</b>.</td>
+				<td>Panique totale. Le personnage est capable de faire n’importe quoi (jeter 3d, plus le résultat est élevé, plus l’action entreprise est inutile, voire dangereuse). <b>(3 PdE)</b>.</td>
 			</tr>
 			<tr>
 				<td>7</td>
-				<td>Jet de San pour ne pas s’évanouir pendant 1d minutes. Voir résultat précédent si le jet de San est réussi. <b>(5 PdE)</b>.</td>
+				<td>Le personnage est en état de choc. Il ne fait rien durant 1d×5 secondes, puis entre en panique totale (résultat précédent). <b>(4 PdE)</b>.</td>
+			</tr>
+			<tr>
+				<td>8</td>
+				<td>Jet de <i>San</i> pour ne pas s’évanouir pendant 1d minutes. Voir résultat précédent si le jet de <i>San</i> est réussi. <b>(5 PdE)</b>.</td>
 			</tr>
 		</table>
+
+		<p><b>Terreur causée par des sorts&nbsp;:</b> si un sort oblige sa cible à réaliser un <i>Test de Frayeur</i> (par exemple <i>Terreur</i> ou <i>Vision de mort</i>), les éventuels PdE perdus par la victime à cause du sort sont récupérés quelques minutes après la fin du sort. De tels sorts ne peuvent jamais entraîner de perte définitive de PdE, de <i>Sang-Froid</i> ou de <i>Volonté</i>.</p>
+
+
 	</details>
 
 	<details>

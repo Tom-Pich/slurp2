@@ -161,6 +161,14 @@ $pages_data = [
 		"file" => "table_jeu",
 		"body-class" => "table-jeu",
 	],
+
+	// Licence
+	"licence" => [
+		"title" => "Licence",
+		"description" => "Licence d’utilisation du JdR SLURP.",
+		"file" => "licence",
+		"body-class" => "licence"
+	]
 	
 	
 	

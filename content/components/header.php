@@ -39,7 +39,7 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 		<!-- Titres -->
 		<div class="px-1">
 			<h2>SLURP</h2>
-			<h1><?= $page_type === "scenario" ? "Scénario" : $page["title"] ?></h1>
+			<h1><?= $page["title"] ?></h1>
 		</div>
 
 		<!-- login et bouton connexion/déconnexion -->
@@ -116,8 +116,6 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 						<li><a href="/bibliotheque-liens"><?= $pages_data['bibliotheque-liens']["title"] ?></a></li>
 						<li><a href="/wiki-paorn"><?= $pages_data['wiki-paorn']["title"] ?></a></li>
 						<?php if ($_SESSION['Statut'] >= 3) { ?>
-							
-							<li><a href="/scenarii"><?= $pages_data['scenarii']["title"] ?></a></li>
 							<li><a href="/test">Test</a></li>
 						<?php } ?>
 					</ul>

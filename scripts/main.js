@@ -11,9 +11,7 @@ if (connectionBtn.dataset.state === "0") {
 		connectionDialog.show();
 	})
 } else {
-	connectionBtn.addEventListener("click", () => {
-		window.open("/submit/log-out", "_self")
-	})
+	connectionBtn.addEventListener("click", () => { window.open("/submit/log-out", "_self") })
 }
 
 // nav on mobile
@@ -31,15 +29,15 @@ navBtn.addEventListener("click", () => {
 
 // dialogs handling
 const dialogOpenerBtns = qsa("[data-role=open-dialog]");
-dialogOpenerBtns.forEach( btn => {
+dialogOpenerBtns.forEach(btn => {
 	btn.addEventListener("click", (e) => {
-		const dialog = qs( `[data-name=${btn.dataset.dialogName}]`)
+		const dialog = qs(`[data-name=${btn.dataset.dialogName}]`)
 		dialog.showModal();
 	})
 })
 
 const dialogCloseBtns = qsa("[data-role=close-modal]");
-dialogCloseBtns.forEach( btn => {
+dialogCloseBtns.forEach(btn => {
 	btn.addEventListener("click", (e) => {
 		const dialog = btn.closest("dialog")
 		dialog.close();

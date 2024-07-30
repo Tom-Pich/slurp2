@@ -1,0 +1,1 @@
+<h1>Licence portant sur ce site et les règles qu’il contient</h1>

@@ -197,7 +197,9 @@ class Character
 				$this->state["Membres"] = $explicit_damages;
 			}
 			if (!empty($this->state["Autres"])) {
-				$this->state["Autres"] = explode(";", TextParser::pseudoMDParser($this->state["Autres"]));
+				//$this->state["Autres"] = explode("\r\n", TextParser::pseudoMDParser($this->state["Autres"]));
+				$this->state["Autres"] = explode(PHP_EOL, $this->state["Autres"]);
+				$this->state["Autres"] = array_map(fn($x) => TextParser::pseudoMDParser($x), $this->state["Autres"] );
 			}
 
 			foreach ([$this->state["Blessures"], $this->state["Fatigue"], $this->state["Stress"], $this->state["Santé-mentale"]] as $state) {

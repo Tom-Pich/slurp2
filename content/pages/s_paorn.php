@@ -4,15 +4,21 @@ $admin = $_SESSION["Statut"] >= 3;
 
 function lk($name)
 {
-	global $page_data; // global $page is a $pageController object!
-	$output = "href='/wiki-paorn/" . $name . "' ";
-	if (!empty($page_data["article"]) && $page_data["article"] === $name) $output .= "class='active-link'";
+	global $page_data;
+	if ($name === "home"){
+		$output = "href='/wiki-paorn/' ";
+		if (empty($page_data["article"])) $output .= "class='active-link'";
+	} else {
+		$output = "href='/wiki-paorn/" . $name . "' ";
+		if ( !empty($page_data["article"]) && $page_data["article"] === $name) $output .= "class='active-link'";
+	}
 	return $output;
 }
+
 ?>
 
 <aside class="nav p-½">
-	<p><a href="/wiki-paorn">Accueil</a></p>
+	<p><a <?= lk("home") ?>>Accueil</a></p>
 	<h4>Régions</h4>
 	<p><a <?= lk("artaille") ?>>Artaille</a></p>
 	<p><a <?= lk("lauria") ?>>Lauria</a></p>
@@ -32,5 +38,5 @@ function lk($name)
 </aside>
 
 <div class="article-wrapper">
-	<?php include "content/wiki/paorn/" . ($page["article"] ?? "paorn") . ".php";  ?>
+	<?php include "content/wiki/paorn/" . ($page["article"] ?? "home") . ".php";  ?>
 </div>

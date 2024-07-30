@@ -1,12 +1,18 @@
 <h2>Artaille</h2>
 
 <div class="wiki-right-element flow">
-	<figure >
-		<img src="/assets/img_paorn/artaille.webp">
+
+	<figure>
+		<a href="/assets/img_paorn/artaille.webp" target="_blank">
+			<img src="/assets/img_paorn/artaille.webp">
+		</a>
 		<figcaption><i>Artaille</i></figcaption>
 	</figure>
-	<figure >
-		<img src="/assets/img_paorn/artaille-wd.webp?v=<?= VERSION ?>">
+
+	<figure>
+		<a href="/assets/img_paorn/artaille-wd.webp" target="_blank">
+			<img src="/assets/img_paorn/artaille-wd.webp?v=<?= VERSION ?>">
+		</a>
 		<figcaption><i>Duché d’Elmour</i></figcaption>
 	</figure>
 </div>

@@ -273,7 +273,7 @@ class WoundController
 		$rcl_pdvm = $pdvm * ($pdvm_multiplier_for_rcl ?? 1);
 		$rcl_distance = $rcl_dmg / $rcl_pdvm * 3;
 		if ($rcl_distance <= 1) $rcl_distance = 0;
-		if ($rcl_distance > 2) $rcl_distance = 2 + ($rcl_distance -2)**0.5; // distance > 2 → use square root of distance
+		if ($rcl_distance > 2) $rcl_distance = 2 + ($rcl_distance - 2) ** 0.5; // distance > 2 → use square root of distance
 		$rcl_modif = DiceManager::getModifier($rcl_dmg * ($is_head ? 3 : 1), 0.8 * $rcl_pdvm);
 		$result["recul"] = floor($rcl_distance * 2) / 2;
 		if ($rcl_modif <= 3)  $result["chute"] = !DiceManager::check_is_successfull($dex + $rcl_modif, $rolls[0]);
@@ -319,9 +319,7 @@ class WoundController
 
 		if ($is_member) {
 			$is_significant_wound_to_member = $actual_dmg >= self::members_pdv[$localisation] * $pdvm * .5;
-			if ($is_significant_wound_to_member) $result["état membre"] = "membre inutilisable";
 			$is_incapacitating_wound_to_member = $actual_dmg >= self::members_pdv[$localisation] * $pdvm;
-			if ($is_incapacitating_wound_to_member) $result["état membre"] = "membre handicapé";
 		}
 
 		// ––– fall due to high damages
@@ -375,7 +373,7 @@ class WoundController
 
 		// ––– knock out
 		if ($is_head && empty($cannot_be_knocked_out)) {
-			$knock_out_modifier = round(-$actual_dmg + ($is_penetrating ? 5 : 0));
+			$knock_out_modifier = round(-2*($actual_dmg-1) + ($is_penetrating ? 5 : 0));
 			$result["perte de conscience"] = !DiceManager::check_is_successfull($san + $knock_out_modifier, $rolls[3]);
 		}
 
@@ -398,42 +396,41 @@ class WoundController
 		// ––– special random effects
 		$effects_modifier = DiceManager::getModifier($actual_dmg, $pdvm * 0.75);
 		$purely_random_parameter = $localisation === "visage" ? random_int(0, 2) <= 1 : random_int(0, 1) === 0;
-		if ($is_significant_wound && !DiceManager::check_is_successfull($san + $effects_modifier, $rolls[6]) && $purely_random_parameter) {
+		$has_random_effect = $is_significant_wound && !DiceManager::check_is_successfull($san + $effects_modifier, $rolls[6]) && $purely_random_parameter;
+		//var_dump($has_random_effect);
+		if ($has_random_effect) {
 
 			if ($localisation === "torse") {
-				$explosion_gravity = max(floor(-DiceManager::getModifier($actual_dmg * 2, $pdvm) / 2), 1);
 				$effects = [
 					0 => "Colonne vertébrale touchée. Le personnage est paraplégique. Cette lésion peut guérir – la traiter comme une blessure invalidante.",
 					1 => "Colonne vertébrale touchée. Le personnage est définitivement paraplégique.",
 					2 => "Organe vital touché. Mort en quelques heures, sauf intervention chirurgicale réussie ou soins magiques.",
 					3 => "Organe vital touché. Mort en quelques minutes, sauf intervention chirurgicale réussie ou soins magiques.",
-
 				];
-				$explosion_effects = [
-					0 => "Blessure invalidante aux tympans. Le personnage souffre d’une <i>Surdité partielle</i> de niveau $explosion_gravity."
-				];
-				if ($is_penetrating) {
-					$result["autres effets"] = TableReader::getWeightedResult($effects, !$is_major_wound ? [1, 0, 10, 5] : [1, 1, 5, 10]);
-				} elseif ($is_blunting) {
-					$result["autres effets"] = TableReader::getWeightedResult($effects, !$is_major_wound ? [2, 0, 2, 1] : [1, 3, 2, 2]);
-				} elseif ($dmg_type === "exp") {
+				
+				if ($is_penetrating) $result["autres effets"] = TableReader::getWeightedResult($effects, !$is_major_wound ? [1, 0, 10, 5] : [1, 1, 5, 10]);
+				if ($is_blunting) $result["autres effets"] = TableReader::getWeightedResult($effects, !$is_major_wound ? [2, 0, 2, 1] : [1, 3, 2, 2]);
+				if ($dmg_type === "exp") {
+					$explosion_gravity = max(floor(-DiceManager::getModifier($actual_dmg * 2, $pdvm) / 2), 1);
+					$explosion_effects = "Blessure invalidante aux tympans. Le personnage souffre d’une <i>Surdité partielle</i> de niveau $explosion_gravity.";
 					$result["autres effets"] = TableReader::getWeightedResult($effects, !$is_major_wound ? [1, 0, 5, 0] : [1, 1, 8, 5]);
-					$result["autres effets"] .= (" " . $explosion_effects[0]);
+					$result["autres effets"] .= (" " . $explosion_effects);
 				}
-				//
-			} elseif ($localisation === "cou") {
+			}
+
+			if ($localisation === "cou") {
 				$effects = [
 					0 => "Colonne vertébrale touchée. Le personnage est tétraplégique. Cette lésion peut guérir – la traiter comme une blessure invalidante.",
 					1 => "Colonne vertébrale touchée. Le personnage est définitivement tétraplégique.",
 					2 => "Le personnage ne peut plus respirer et meurt rapidement.",
 					3 => "Le personnage s’étouffe dans son sang. Mort en quelques minutes, sauf intervention chirurgicale réussie ou soins magiques.",
 				];
-				if ($is_penetrating) {
-					$result["autres effets"] = TableReader::getWeightedResult($effects, !$is_major_wound ? [1, 0, 1, 6] : [1, 1, 1, 5]);
-				} else {
-					$result["autres effets"] = TableReader::getWeightedResult($effects, !$is_major_wound ? [2, 0, 4, 0] : [1, 3, 4, 0]);
-				}
-			} elseif ($localisation === "crane") {
+
+				if ($is_penetrating) $result["autres effets"] = TableReader::getWeightedResult($effects, !$is_major_wound ? [1, 0, 1, 6] : [1, 1, 1, 5]);
+				else $result["autres effets"] = TableReader::getWeightedResult($effects, !$is_major_wound ? [2, 0, 4, 0] : [1, 3, 4, 0]);
+			}
+			
+			if ($localisation === "crane") {
 				$effects = [
 					0 => "Le personnage souffre de <i>Migraines</i> intenses régulièrement. À traiter comme une blessure invalidante.",
 					1 => "Lésion cérébrale. Le personnage souffre d’<i>Amnésie partielle</i>. À traiter comme une blessure invalidante.",
@@ -445,7 +442,9 @@ class WoundController
 					7 => "Lésion cérébrale. Le personnage tombe dans un coma définitif.",
 				];
 				$result["autres effets"] = TableReader::getWeightedResult($effects, !$is_major_wound ? [2, 1, 0, 1, 0, 0, 1, 0] : [3, 3, 1, 3, 1, 1, 3, 1]);
-			} elseif ($localisation === "visage") {
+			}
+			
+			if ($localisation === "visage") {
 				$effects = [
 					0 => "Dents arrachées (" . ceil($actual_dmg) . ")",
 					1 => "Mâchoire fracturée",
@@ -456,7 +455,7 @@ class WoundController
 					6 => "Nez cassé",
 					7 => "Nez arraché",
 				];
-				$result["autres effets"] = TableReader::getWeightedResult($effects, $actual_dmg <= 0.5 * $pdvm ? [1, 1, 0, 3, 1, 0, 1, 0] : [1, 0, 1, 3, 1, 1, 1, 1]);
+				$result["autres effets"] = TableReader::getWeightedResult($effects, !$is_major_wound ? [1, 1, 0, 3, 1, 0, 1, 0] : [1, 0, 1, 3, 1, 1, 1, 1]);
 			}
 		}
 
@@ -464,6 +463,8 @@ class WoundController
 		if ($is_member) {
 			$result["dégâts membre"] = ucfirst($localisation) . " " . $result["dégâts effectifs"];
 			$result["dégâts effectifs"] = 0;
+			if ($is_significant_wound_to_member) $result["état membre"] = "membre inutilisable";
+			if ($is_incapacitating_wound_to_member) $result["état membre"] = "membre handicapé";
 		}
 
 		return $result;
