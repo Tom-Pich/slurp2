@@ -55,7 +55,10 @@ use App\Rules\WoundController;
 			<?php foreach (array_reverse(WoundController::general_levels) as $index => $level) { ?>
 				<tr>
 					<td><?= $index !== 0 ? ("&le; " . ((float) $index) * 100 . "&nbsp;%") : "0" ?></td>
-					<td><?= ucfirst($level["description"]) ?></td>
+					<td>
+						<b><?= mb_convert_case($level["name"], MB_CASE_TITLE, "UTF-8") ?></b> –
+						<?= ucfirst($level["description"]) ?>
+					</td>
 				</tr>
 			<?php } ?>
 		</table>

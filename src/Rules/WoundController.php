@@ -10,6 +10,7 @@ class WoundController
 
 	public const general_levels = [
 		"-3.0" => [
+			"name" => "mort",
 			"description" => "Mort automatique",
 			"for-multiplier" => 0,
 			"dex-modifier" => -INF,
@@ -31,6 +32,7 @@ class WoundController
 			"vit-multiplier" => 0,
 		], */
 		"-1.0" => [
+			"name" => "état critique",
 			"description" => "Perte de conscience automatique. Tant qu’il ne repasse pas au-dessus de ce seuil, le personnage reste inconscient. Il ne peut ni boire, ni se nourrir.",
 			"for-multiplier" => 0,
 			"dex-modifier" => -INF,
@@ -38,6 +40,7 @@ class WoundController
 			"vit-multiplier" => 0,
 		],
 		"0.0" => [
+			"name" =>"très gravement blessé",
 			"description" => "Jet de <i>Vol</i>-3 à chaque round pour ne pas perdre conscience. Le personnage ne peut pas se tenir debout. Il peut reprendre conscience ultérieurement, mais ne pourra rien faire et sera semi-conscient jusqu’à ce que ses PdV repassent au-dessus de ce seuil.",
 			"for-multiplier" => 0.3,
 			"dex-modifier" => -7,
@@ -45,6 +48,7 @@ class WoundController
 			"vit-multiplier" => 0,
 		],
 		"0.25" => [
+			"name" => "gravement blessé",
 			"description" => "<i>For</i>×0.5, <i>Vitesse</i>×0.2, <i>Dex</i> et <i>Int</i> à -5",
 			"for-multiplier" => 0.5,
 			"dex-modifier" => -5,
@@ -52,6 +56,7 @@ class WoundController
 			"vit-multiplier" => 0.2,
 		],
 		"0.5" => [
+			"name" => "moyennement blessé",
 			"description" => "<i>For</i>×0.75, <i>Vitesse</i>×0.5, <i>Dex</i> et <i>Int</i> à -3",
 			"for-multiplier" => 0.75,
 			"dex-modifier" => -3,
@@ -59,6 +64,7 @@ class WoundController
 			"vit-multiplier" => 0.5,
 		],
 		"0.75" => [
+			"name" => "légèrement blessé",
 			"description" => "<i>For</i>×0.9, <i>Vitesse</i>×0.8, <i>Dex</i> et <i>Int</i> à -1",
 			"for-multiplier" => 0.9,
 			"dex-modifier" => -1,

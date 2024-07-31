@@ -167,7 +167,7 @@ class Character
 			$repo->updateCharacterPdX($calculs_data);
 		}
 
-		// ––– state : For_global, For_deg, Dex, Int, Magie, PdV, PdF, (PdM), PdE, Stress, Membres, Autres
+		// ––– state : For_global, For_deg, Dex, Int, Magie, PdV, PdF, (PdM), PdE, Stress, Membres, Autres + [ San, Per, Vol, Réflexes, Sang-Froid ]
 
 		// default value for state
 		$this->state["PdV"] = $this->state["PdV"] ?? $this->attributes["PdV"];
@@ -218,7 +218,12 @@ class Character
 			$this->modifiers["For"] += $this->state["For_global"] ?? 0;
 			$this->modifiers["Dex"] += $this->state["Dex"] ?? 0;
 			$this->modifiers["Int"] += $this->state["Int"] ?? 0;
+			$this->modifiers["San"] += $this->state["San"] ?? 0;
+			$this->modifiers["Per"] += $this->state["Per"] ?? 0;
+			$this->modifiers["Vol"] += $this->state["Vol"] ?? 0;
 			$this->modifiers["Dégâts"] += $this->state["For_deg"] ?? 0;
+			$this->modifiers["Réflexes"] += $this->state["Réflexes"] ?? 0;
+			$this->modifiers["Sang-Froid"] += $this->state["Sang-Froid"] ?? 0;
 			$this->modifiers["Magie"] += $this->state["Magie"] ?? 0;
 
 			// evaluating strength to get encumbrance effect
@@ -230,6 +235,7 @@ class Character
 			$this->state["Encombrement"] = EncumbranceController::getEffects($this->carried_weight, $this->attributes["For"]);
 			$this->modifiers["Dex"] += $this->state["Encombrement"]["dex-modifier"];
 			$this->modifiers["Vitesse-mult"] *= $this->state["Encombrement"]["vit-multiplier"];
+			$this->modifiers["Vitesse-mult"] = round($this->modifiers["Vitesse-mult"], 2);
 
 			// reflexes and sf modifers based on primary attributes (vitesse is independant)
 			$this->modifiers["Réflexes"] += (int) floor($this->modifiers["Dex"] / 2 + $this->modifiers["Per"] / 2);
@@ -262,21 +268,21 @@ class Character
 		[$this->colleges, $this->points_count["colleges"]] = College::processColleges($raw_colleges_spells, $this->attributes, $this->modifiers, $this->special_traits);
 		[$this->spells, $this->points_count["spells"]] = Spell::processSpells($raw_colleges_spells, $this->colleges, $this->special_traits);
 
-		// --- Powers
+		// --- powers
 		$raw_powers = json_decode($raw_data["Pouvoirs"], true);
 		[$this->powers, $this->points_count["powers"]] = Power::processPowers($raw_powers, $this->raw_attributes, $this->modifiers);
 
-		// ––– Psi
+		// ––– psi
 		$raw_psis = json_decode($raw_data["Psi"], true);
 		[$this->disciplines, $this->points_count["disciplines"]] = Discipline::processDisciplines($raw_psis);
 		[$this->psi, $this->points_count["psi"]] = PsiPower::processPowers($raw_psis, $this->disciplines, $this->attributes);
 
-		// ––– Equipment
+		// ––– pquipment
 		$equipment_repo = new EquipmentRepository;
 		$raw_equipment = $equipment_repo->getCharacterEquipment($this->id);
 		[$this->equipment, $this->state] = Equipment::processEquipmentList($raw_equipment, $this->state);
 
-		// ––– Notes & Background
+		// ––– notes & background
 		$this->notes = $raw_data["Notes"];
 		$this->background = $raw_data["Background"];
 
@@ -647,6 +653,7 @@ class Character
 	{
 		// id id_joueur id_groupe Nom Statut Pts Caractéristiques État Calculs MPP Avdesav Compétences Sorts Pouvoirs Psi Description Background Notes Portrait
 		// État : For_global, For_deg, Dex, Int, Magie, PdV, PdF, (PdM), PdE, Stress, Membres, Autres
+		// État – ajouts récents : San,
 
 		$character = [
 			// commented values are not be updated by manager
@@ -687,9 +694,14 @@ class Character
 			"Stress" => min(3, max(0, (int) $post["État"]["Stress"])),
 
 			"For_global" => (int) $post["État"]["For_global"],
-			"For_deg" => (int) $post["État"]["For_deg"],
 			"Dex" => (int) $post["État"]["Dex"],
 			"Int" => (int) $post["État"]["Int"],
+			"San" => (int) $post["État"]["San"],
+			"Per" => (int) $post["État"]["Per"],
+			"Vol" => (int) $post["État"]["Vol"],
+			"For_deg" => (int) $post["État"]["For_deg"],
+			"Réflexes" => (int) $post["État"]["Réflexes"],
+			"Sang-Froid" => (int) $post["État"]["Sang-Froid"],
 			"Magie" => (int) $post["État"]["Magie"],
 
 			"Membres" => strip_tags(trim($post["État"]["Membres"])),

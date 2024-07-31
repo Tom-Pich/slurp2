@@ -182,6 +182,10 @@ class AvDesav implements RulesItem
 				case 157: // vitesse
 					$attributes["Vitesse"] += $avdesav['points'] / 5;
 					break;
+				
+				case 44: // boiteux
+					$attributes["Vitesse"] *= 0.4;
+					break;
 
 				case 60: // nanisme
 					$attributes["Vitesse"] += -2;

@@ -230,7 +230,7 @@ use App\Rules\ReactionController;
 			<?php foreach (EncumbranceController::levels as $index => $level) { ?>
 				<tr>
 					<td>&le; For ×<?= $index ?></td>
-					<td><?= ucfirst($level["description"]) ?></td>
+					<td><?= ucfirst($level["name"]) ?> (<?= $level["description"] ?>)</td>
 				</tr>
 			<?php } ?>
 		</table>
@@ -397,6 +397,7 @@ use App\Rules\ReactionController;
 
 	</details>
 
+	<!-- Stress -->
 	<details>
 		<summary class="h3">Stress</summary>
 		<p>Une situation de stress se présente lorsque le personnage craint pour sa vie (à tort ou à raison).</p>
@@ -423,6 +424,7 @@ use App\Rules\ReactionController;
 		<p>• En situation de stress&nbsp;: si le personnage fait des efforts pour contrôler son stress, il peut refaire un jet de <i>Sang-Froid</i> avec les mêmes malus, à intervalles réguliers, pour perdre un niveau de stress.</p>
 	</details>
 
+	<!-- État psychologique général -->
 	<details>
 		<summary class="h3">État psychologique général</summary>
 
@@ -435,9 +437,11 @@ use App\Rules\ReactionController;
 			</tr>
 			<?php foreach (array_reverse(MentalHealthController::levels) as $index => $level) { ?>
 				<tr>
-					<!-- <td></td> $index !== 0 ? ("&le; " . (int) $index) : "0" -->
 					<td><?= $index !== 0 ? ("&le; " . ((float) $index) * 100 . "&nbsp;%") : "0" ?></td>
-					<td><?= ucfirst($level["description"]) ?></td>
+					<td>
+						<?= ucfirst($level["description"]) ?><br>
+						<?= ucfirst($level["attributes-effects"]) ?>
+					</td>
 				</tr>
 			<?php } ?>
 		</table>
@@ -451,7 +455,7 @@ use App\Rules\ReactionController;
 			Il remonte ensuite de 2 PdE à 6 PdE. Puis redescend à 2 PdE. Il ne subit aucune perte pour le passage par 5 PdE, mais il subira la perte du passage à 2 PdE.
 		</div> -->
 		<p>Lorsqu’un PdE est perdu définitivement, il faut retirer un pt aux PdEm <i>et</i> aux PdE actuels.</p>
-		<p>Cette perte est cumulative. Autrement dit, un personnage passant de 6 PdE à 2 PdE perdra définitivement 2 PdE et un pt de <i>Sang-froid</i>.</p>
+		<p>Cette perte est cumulative. Autrement dit, un personnage passant de 60&nbsp;% à 20&nbsp;% de ses PdEm perdra définitivement 2 PdE et un pt de <i>Sang-froid</i>.</p>
 
 	</details>
 

@@ -165,13 +165,23 @@ foreach ($characters_id as $character) {
 							<input type="text" name="État[PdE]" value="<?= $pde ?>" class="fl-1 ta-center" placeholder="PdE <?= $pdem ?>" data-role="pdx-cell" title="PdEm <?= $pdem ?>" style="<?= $style_pde ?>">
 						</div>
 
-						<!-- Modificateurs caractéristiques -->
+						<!-- Modificateurs caractéristiques ligne 1 -->
 						<div class="flex-s gap-½ mt-½">
-							<input type="text" name="État[Stress]" value="<?= $perso->state["Stress"] ?? "" ?>" class="fl-1 ta-center" placeholder="Stress" title="Niveau de stress">
 							<input type="text" name="État[For_global]" value="<?= $perso->state["For_global"] ?? "" ?>" class="fl-1 ta-center" placeholder="For" title="Modif force global">
-							<input type="text" name="État[For_deg]" value="<?= $perso->state["For_deg"] ?? "" ?>" class="fl-1 ta-center" placeholder="For D" title="Modif Force dégâts">
 							<input type="text" name="État[Dex]" value="<?= $perso->state["Dex"] ?? "" ?>" class="fl-1 ta-center" placeholder="Dex" title="Modif Dextérité">
 							<input type="text" name="État[Int]" value="<?= $perso->state["Int"] ?? "" ?>" class="fl-1 ta-center" placeholder="Int" title="Modif Intelligence">
+							<input type="text" name="État[San]" value="<?= $perso->state["San"] ?? "" ?>" class="fl-1 ta-center" placeholder="San" title="Modif Santé">
+							<input type="text" name="État[Per]" value="<?= $perso->state["Per"] ?? "" ?>" class="fl-1 ta-center" placeholder="Per" title="Modif Perception">
+							<input type="text" name="État[Vol]" value="<?= $perso->state["Vol"] ?? "" ?>" class="fl-1 ta-center" placeholder="Vol" title="Modif Volonté">
+
+						</div>
+
+						<!-- Modificateurs caractéristiques ligne 2 -->
+						<div class="flex-s gap-½ mt-½">
+							<input type="text" name="État[For_deg]" value="<?= $perso->state["For_deg"] ?? "" ?>" class="fl-1 ta-center" placeholder="For D" title="Modif Force dégâts">
+							<input type="text" name="État[Réflexes]" value="<?= $perso->state["Réflexes"] ?? "" ?>" class="fl-1 ta-center" placeholder="Réf." title="Modif Réflexes">
+							<input type="text" name="État[Sang-Froid]" value="<?= $perso->state["Sang-Froid"] ?? "" ?>" class="fl-1 ta-center" placeholder="S.-F." title="Modif Sang-Froid">
+							<input type="text" name="État[Stress]" value="<?= $perso->state["Stress"] ?? "" ?>" class="fl-1 ta-center" placeholder="Stress" title="Niveau de stress">
 							<input type="text" name="État[Magie]" value="<?= $perso->state["Magie"] ?? "" ?>" class="fl-1 ta-center" placeholder="Magie" title="Modif Collèges magie">
 						</div>
 

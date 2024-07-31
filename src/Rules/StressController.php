@@ -15,6 +15,7 @@ class StressController {
 			"per-modifier" => 0,
 			"ref-modifier" => 0,
 			"sf-modifier" => 0,
+			"pde-loss" => 0,
 		],
 		[
 			"level" => 1,
@@ -26,6 +27,7 @@ class StressController {
 			"per-modifier" => -1,
 			"ref-modifier" => 1,
 			"sf-modifier" => -1,
+			"pde-loss" => 0,
 		],
 		[
 			"level" => 2,
@@ -37,6 +39,7 @@ class StressController {
 			"per-modifier" => -2,
 			"ref-modifier" => 1,
 			"sf-modifier" => -2,
+			"pde-loss" => 1,
 		],
 		[
 			"level" => 3,
@@ -48,6 +51,7 @@ class StressController {
 			"per-modifier" => -5,
 			"ref-modifier" => 0,
 			"sf-modifier" => -5,
+			"pde-loss" => 2,
 		],
 	];
 

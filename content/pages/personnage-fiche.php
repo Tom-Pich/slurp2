@@ -109,18 +109,22 @@ function color_modifier($original_score, $actual_score)
 					</div>
 				</li>
 			<?php } ?>
-			<li><b>Encombrement&nbsp;:</b> <?= $character->carried_weight ?> kg – <?= $character->state["Encombrement"]["description"] ?></li>
+			<li><b>Encombrement&nbsp;:</b> <?= $character->carried_weight ?> kg – <?= $character->state["Encombrement"]["name"] ?></li>
 			<?php if ($character->state["Fatigue"]["dex-modifier"]) { ?>
-				<li><b>Fatigue&nbsp;:</b> <?= $character->state["Fatigue"]["description"] ?></li>
+				<li><b>Fatigue&nbsp;:</b> <?= $character->state["Fatigue"]["name"] ?></li>
 			<?php } ?>
 			<?php if ($character->state["Stress"]["sf-modifier"]) { ?>
-				<li><b>Stress&nbsp;:</b> <?= $character->state["Stress"]["description"] ?></li>
+				<li>
+					<b>Stress&nbsp;:</b>
+					<?= $character->state["Stress"]["name"] ?>
+					<?= $character->state["Stress"]["pde-loss"] ? "– perte de " . $character->state["Stress"]["pde-loss"] . " PdE" : "" ?>
+				</li>
 			<?php } ?>
 			<?php if ($character->state["Santé-mentale"]["sf-modifier"]) { ?>
 				<li><b>Santé mentale&nbsp;:</b> <?= $character->state["Santé-mentale"]["description"] ?></li>
 			<?php } ?>
 			<?php if ($character->state["Blessures"]["dex-modifier"]) { ?>
-				<li><b>Blessures générales&nbsp;:</b> <?= $character->state["Blessures"]["description"] ?></li>
+				<li><b>Blessures générales&nbsp;:</b> <?= $character->state["Blessures"]["vit-multiplier"] ? $character->state["Blessures"]["name"] : $character->state["Blessures"]["description"] ?></li>
 			<?php } ?>
 			<?php foreach ($character->state["Membres"] as $member) { ?>
 				<li><?= $member ?></li>
