@@ -1,6 +1,6 @@
 {
-  "name": "slurp-v2",
-  "version": "3.11",
+  "name": "slurp-v3",
+  "version": "3.12",
   "description": "",
   "main": "index.js",
   "scripts": {

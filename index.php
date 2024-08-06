@@ -340,18 +340,29 @@ elseif (in_array($path_segments[1], ["personnage-fiche", "personnage-gestion"]) 
 }
 
 // wiki pages
-else if ($path_segments[1] === "wiki-paorn") {
-	$is_root_page = empty($path_segments[2]);
-	$page_data = $pages_data["wiki-paorn"];
-	include "content/wiki/paorn/_articles.php";
-	$article = $is_root_page ? null : $articles[$path_segments[2]] ?? null;
-
-	if ($is_root_page) {
+else if ($path_segments[1] === "wiki" && !empty($path_segments[2]) && count($path_segments) <= 3) {
+	$wiki = $path_segments[2];
+	$articles_data_file = "content/wikis/" . $wiki . "/_data.php";
+	if (file_exists($articles_data_file)) {
+		// including $title, $description and $articles
+		include $articles_data_file;
+	} else {
+		$page = new Error404Controller;
+		$page->show();
+		die();
+	}
+	$is_root_page = empty($path_segments[3]);
+	$article = $is_root_page ? null : $articles[$path_segments[3]] ?? null;
+	$page_data = [ "body-class" => "wiki", "file" => "wiki-template", "wiki" => $wiki, "articles" => $articles ];
+	if($is_root_page){
+		$page_data["title"] = $title;
+		$page_data["description"] = $description;
+		$page_data["current-article"] = "home";
 		$page = new PageController($page_data);
-	} elseif (!empty($article)) {
-		$page_data["title"] = "Wiki Paorn – " . $article["title"];
-		$page_data["description"] .= (" – " . $article["title"]);
-		$page_data["article"] = $path_segments[2];
+	} elseif (!empty($article)){
+		$page_data["title"] = "Wiki " . ucfirst($wiki) . " – " . $article["title"];
+		$page_data["description"] = "";
+		$page_data["current-article"] = $path_segments[3];
 		$page = new PageController($page_data);
 	} else {
 		$page = new Error404Controller;

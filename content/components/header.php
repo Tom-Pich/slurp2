@@ -114,7 +114,7 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 						<li><a href="/ecrire-scenario"><?= $pages_data['ecrire-scenario']["title"] ?></a></li>
 						<li><a href="/aide-de-jeu-medfan"><?= $pages_data['aide-de-jeu-medfan']["title"] ?></a></li>
 						<li><a href="/bibliotheque-liens"><?= $pages_data['bibliotheque-liens']["title"] ?></a></li>
-						<li><a href="/wiki-paorn"><?= $pages_data['wiki-paorn']["title"] ?></a></li>
+						<li><a href="/wiki/paorn">Wiki Paorn</a></li>
 						<?php if ($_SESSION['Statut'] >= 3) { ?>
 							<li><a href="/test">Test</a></li>
 						<?php } ?>

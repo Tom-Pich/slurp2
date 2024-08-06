@@ -110,7 +110,7 @@ characterStateForms.forEach(form => {
 		}
 		timeoutId = setTimeout(function () {
 			submitCharacterForm(form);
-		}, 1000);
+		}, 3000);
 	})
 
 	// submit form on change

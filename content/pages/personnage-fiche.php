@@ -109,7 +109,11 @@ function color_modifier($original_score, $actual_score)
 					</div>
 				</li>
 			<?php } ?>
-			<li><b>Encombrement&nbsp;:</b> <?= $character->carried_weight ?> kg – <?= $character->state["Encombrement"]["name"] ?></li>
+			<li>
+				<b>Encombrement&nbsp;:</b>
+				<?= $character->carried_weight ?> kg –
+				<?= $character->state["Encombrement"]["name"] ?>
+			</li>
 			<?php if ($character->state["Fatigue"]["dex-modifier"]) { ?>
 				<li><b>Fatigue&nbsp;:</b> <?= $character->state["Fatigue"]["name"] ?></li>
 			<?php } ?>
@@ -383,7 +387,7 @@ function color_modifier($original_score, $actual_score)
 	<div class="mt-½ no-break-inside">
 		<img src="<?= $character->portrait ?>" width="180" class="mx-auto" />
 
-		<div class="flex-s mt-1 gap-1 jc-center" data-role="members-wrapper">
+		<div class="flex-s mt-1 gap-1 jc-center fl-wrap" data-role="members-wrapper">
 			<?php if ($character->id_group < 100) {
 				foreach ($character->group_members as $group_member) { ?>
 					<div data-place="pi_<?= $group_member->id ?>" data-role="item-transfer" data-name="<?= $group_member->name ?>" style="max-width: 8em;">

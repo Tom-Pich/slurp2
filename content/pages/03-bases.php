@@ -5,6 +5,8 @@ use App\Rules\FatigueController;
 use App\Rules\EncumbranceController;
 use App\Rules\MentalHealthController;
 use App\Rules\ReactionController;
+use App\Entity\Skill;
+use App\Repository\SkillRepository;
 
 ?>
 
@@ -234,7 +236,16 @@ use App\Rules\ReactionController;
 				</tr>
 			<?php } ?>
 		</table>
-		<p>Le malus est doublé pour les compétences pour lesquelles il est indispensable d’être léger (<i>Course</i>, <i>Saut</i>, <i>Acrobatie</i>, <i>Esquive</i>&hellip;)</p>
+		<?php 
+			$mvt_skills_id = Skill::mvt_skills;
+			$skill_repo = new SkillRepository;
+			$mvt_skills_names = [];
+			foreach( $mvt_skills_id as $id ){
+				$mvt_skills_names[] = $skill_repo->getSkill($id)->name;
+			}
+
+		?>
+		<p>Le malus de <i>Dex</i> est doublé pour les compétences pour lesquelles il est <b>indispensable</b> d’être léger&nbsp;: <i><?= join(", ", $mvt_skills_names) ?></i></p>
 	</details>
 </article>
 
@@ -295,7 +306,8 @@ use App\Rules\ReactionController;
 
 </article>
 
-<article><!-- Équilibre psychique -->
+<!-- Équilibre psychique -->
+<article>
 	<h2>Équilibre psychique</h2>
 
 	<details>
@@ -356,7 +368,7 @@ use App\Rules\ReactionController;
 		<p>Un malus peut s’appliquer en fonction de la nature de l’événement terrorisant.</p>
 		<p>Si le jet de <i>Sang-froid</i> est réussi, le personnage surmonte sa peur et peut agir immédiatement. Sinon, il subit les conséquences décrites dans le tableau ci-dessous.</p>
 		<p>La ME d’un <i>Test de Frayeur</i> <b>ne peut être supérieure à [malus du test +3]</b>, sauf en cas d’échec critique (exemple&nbsp;: rater un jet de <i>Sang-froid</i> à -2 ne peut entraîner une ME de plus de 2+3 = 5).</p>
-		
+
 		<table class="alternate-e left-2">
 			<tr>
 				<th width="10">ME</th>
@@ -466,7 +478,8 @@ use App\Rules\ReactionController;
 	</details>
 </article>
 
-<article><!-- Jet de réaction -->
+<!-- Jet de réaction -->
+<article>
 	<h2>Jet de réaction</h2>
 
 	<details>
@@ -503,7 +516,8 @@ use App\Rules\ReactionController;
 
 </article>
 
-<article><!-- Règles de diverses -->
+<!-- Règles de diverses -->
+<article>
 	<h2>Règles diverses</h2>
 
 	<details>

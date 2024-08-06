@@ -362,12 +362,13 @@ opponents.forEach(opponent => {
 	opponent.addEventListener("keyup", e => {
 
 		const opponentDataType = ["name", "category", "dex", "san", "pain-resistance", "pdvm", "pdv", "members"];
-		// if name empty, reset all inputs for the active oponent
+		// if name empty, reset all inputs for the active opponent
 		if (e.target.dataset.type === "name" && e.target.value === "") {
 			opponentDataType.forEach(dataType => {
 				opponent.querySelector(`[data-type=${dataType}]`).value = "";
 				localStorage.removeItem(`opponent-${opponentNumber}-${dataType}`);
 			})
+			opponent.querySelector('[data-type=category]').value = "std";
 		}
 
 		const dataType = e.target.dataset.type
@@ -451,7 +452,9 @@ woundEffectsWidget.addEventListener("submit", e => {
 	for (let i = 0; i < 7; i++) {
 		rolls.push(roll("3d").result)
 	}
-	if (parseInt(opponent.dex) < 0 || parseInt(opponent.san) < 0 || parseInt(opponent.pdvm) <= 0) {
+	if (parseInt(opponent.dex) <= 0 || parseInt(opponent.san) <= 0 || parseInt(opponent.pdvm) <= 0) {
+		inputEntry.value += "Data opposants manquantes";
+		flushMsg("chat-roll")
 		return
 	}
 	const data = new FormData

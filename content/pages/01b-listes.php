@@ -82,11 +82,16 @@ $affichage = $_POST["affichage"] ?? "categorie";
 			<details>
 				<summary class="h3"><?= $category ?></summary>
 				<?php if ($category === "PNJ") { ?>
-					<p>Certains PNJ peuvent vous fournir aide et assistance. Le coût de ces PNJ, en tant qu’<i>Avantage</i>, dépend de l’ampleur de l’aide qu’ils peuvent offrir. Cette aide est sincère et sans autre contrepartie qu’une aide équivalente et/ou une loyauté de la part du PJ lorsque nécessaire. Deux valeurs en points sont données : la 1<sup>ère</sup> correspond à une aide occasionnelle, la deuxième à une aide possible en toutes circonstances (sauf cas de force majeure).<br>
-						• <b>Aide minime (1 ou 2 pts) :</b> fournir un toit, un coup de main sans risque, prêter une petite somme d’argent.<br>
-						• <b>Aide non négligeable (10 ou 15 pts) :</b> prêter main forte au PJ, prendre des risques raisonnés. Permet en gros de doubler les capacités du PJ.<br>
-						• <b>Aide importante (15 ou 30 pts) :</b> fournir une aide substantielle au PJ, sans laquelle ce dernier pourrait avoir des problèmes sérieux ou échouer dans un objectif important, tirer le PJ d’un problème sérieux.<br>
-						• <b>Aide très importante (30 ou 60 pts) :</b> résout à peu près tous les problèmes du PJ, dans la mesure du possible.</p>
+					<p class="mt-1">Certains PNJ peuvent vous fournir aide et assis&shy;tance. Le coût de ces PNJ, en tant qu’<i>Avantage</i>, dépend de l’ampleur de l’aide qu’ils peuvent offrir. Cette aide est sincère et sans autre contrepartie qu’une aide équivalente et/ou une loyauté de la part du PJ lorsque nécessaire.<br>
+						Deux valeurs en points sont données&nbsp;: la 1<sup>ère</sup> correspond à une aide occasionnelle, la deuxième à une aide possible en toutes circonstances (sauf cas de force majeure).
+					</p>
+					<ul class="flow mt-1">
+						<li><b>Aide minime (1 ou 2 pts)&nbsp;:</b> fournir un toit, un coup de main sans risque, prêter une petite somme d’argent.</li>
+						<li><b>Aide non négligeable (10 ou 15 pts) :</b> prêter main forte au PJ, prendre des risques raisonnés. Permet en gros de doubler les capacités du PJ.<br></li>
+						<li><b>Aide importante (15 ou 30 pts) :</b> fournir une aide substantielle au PJ, sans laquelle ce dernier pourrait avoir des problèmes sérieux ou échouer dans un objectif important, tirer le PJ d’un problème sérieux.<br></li>
+						<li><b>Aide très importante (30 ou 60 pts) :</b> résout à peu près tous les problèmes du PJ, dans la mesure du possible.</li>
+					</ul>
+
 					<p>D’autres PNJ peuvent être des <i>Désavantages</i> : les <i>Ennemis</i> et les <i>Subordonnés</i>.</p>
 
 				<?php } elseif ($category === "Caractéristiques secondaires") { ?>

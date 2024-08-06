@@ -3,6 +3,7 @@
 use App\Rules\WoundController;
 ?>
 
+<!-- Blessures -->
 <article>
 	<h2>Blessures</h2>
 
@@ -77,19 +78,19 @@ use App\Rules\WoundController;
 			Chaque membre (bras, mains, jambes, pieds) a ses propres PdV qui sont calculés à partir des PdVm, ainsi que ses propres seuils de blessures. Les dégâts infligés à un membre ne sont pas décomptés du total des PdV du personnage.<br>
 			Utiliser le widget <i>Seuils de blessures</i> sur la <a href="table-jeu">Table de jeu</a> pour déterminer l’état d’un membre en fonction des dégâts qu’il a reçu.
 
-			<table class="alternate-e">
+		<table class="alternate-e">
+			<tr>
+				<th>Membre</th>
+				<th>PdVm</th>
+			</tr>
+			<?php foreach (WoundController::members_pdv as $member => $pdvm) { ?>
 				<tr>
-					<th>Membre</th>
-					<th>PdVm</th>
+					<td><?= ucfirst($member) ?></td>
+					<td><?= $pdvm * 100 ?>&nbsp;%</td>
 				</tr>
-				<?php foreach (WoundController::members_pdv as $member => $pdvm){ ?>
-					<tr>
-						<td><?= ucfirst($member) ?></td>
-						<td><?= $pdvm*100 ?>&nbsp;%</td>
-					</tr>
-				<?php } ?>
-				<caption>PdV des membres en fonction des PdVm totaux</caption>
-			</table>
+			<?php } ?>
+			<caption>PdV des membres en fonction des PdVm totaux</caption>
+		</table>
 		</p>
 
 	</details>
@@ -115,14 +116,17 @@ use App\Rules\WoundController;
 
 </article>
 
+<!-- Rétablissement -->
 <article>
 	<h2>Rétablissement</h2>
 
+	<!-- Premiers secours -->
 	<details>
 		<summary class="h3">Premiers secours</summary>
 		<p>Les soins durent une minute et permettent d’arrêter une hémorragie externe et de récupérer 1 PdV si la blessure est ouverte. Des premiers soins peuvent s’appliquer indépendamment aux PdV généraux (tronc et tête) et aux membres.</p>
 	</details>
 
+	<!-- Rétablissement naturel -->
 	<details>
 		<summary class="h3">Rétablissement naturel</summary>
 		<p>
@@ -233,6 +237,7 @@ use App\Rules\WoundController;
 
 	</details>
 
+	<!-- Rétablissement après inconscience -->
 	<details>
 		<summary class="h3">Rétablissement après inconscience</summary>
 
@@ -260,26 +265,50 @@ use App\Rules\WoundController;
 
 	</details>
 
+	<!-- Rétablissement de blessures invalidantes -->
 	<details>
 		<summary class="h3">Rétablissement de blessures invalidantes</summary>
-		<p>Après une blessure <i>invalidante</i>, la victime doit faire un jet de <i>San</i> pour déterminer la gravité de l’invalidité.</p>
-		<ul>
-			<li><b>Échec&nbsp;:</b> l’invalidité est définitive.</li>
-			<li><b>MR &le; 1 &nbsp;:</b> après 1d mois d’amélioration, l’invalidité diminue de 50&nbsp;% et ne s’améliorera plus après ce délai.</li>
-			<li><b>1 &lt; MR &le; 3 &nbsp;:</b> l’invalidité disparaît complètement après 1d mois.</li>
-			<li><b>MR &gt; 3 &nbsp;:</b> l’invalidité disparaît au rythme d’une guérison normale.</li>
-		</ul>
+		<p>Après une blessure <i>invalidante</i>, la victime doit faire un jet de <i>San</i> pour déterminer comment se rétablira l’invalidité (si elle se rétablit&hellip;).</p>
+		<table class="alternate-e left-2">
+			<colgroup>
+				<col style="width: 5em">
+			</colgroup>
+			<tr>
+				<th>MR</th>
+				<th>Conséquences</th>
+			</tr>
+			<tr>
+				<td>&le; -4</td>
+				<td>Invalidité définitive</td>
+			</tr>
+			<tr>
+				<td>-1 à -3</td>
+				<td>Après 2d semaines d’amélioration, l’invalidité diminue de 50&nbsp;% et ne s’améliorera plus après ce délai.</td>
+			</tr>
+			<tr>
+				<td>0 à 2</td>
+				<td>l’invalidité disparaît complètement après 2d semaines.</td>
+			</tr>
+			<tr>
+				<td>&ge; 3</td>
+				<td>l’invalidité disparaît au rythme d’une guérison normale.</td>
+			</tr>
+
+		</table>
 	</details>
 
+	<!-- Soins magiques & blessures aux membres -->
 	<details>
 		<summary class="h3">Soins magiques &amp; blessures aux membres</summary>
 		<p>
 			Lorsque le membre revient à 100&nbsp;% de ses PdVm propres, il est considéré comme guéri (même s’il reste handicapé ou détruit).<br>
-			Si le membre a été sectionné, récupérer la moitié de ses PdVm propres suffit à cicatriser le moignon.</p>
+			Si le membre a été sectionné, récupérer la moitié de ses PdVm propres suffit à cicatriser le moignon.
+		</p>
 	</details>
 
 </article>
 
+<!-- Danger divers -->
 <article>
 	<h2>Dangers divers</h2>
 

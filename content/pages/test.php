@@ -7,19 +7,14 @@ use App\Lib\DiceManager;
 ini_set('xdebug.var_display_max_depth', 10);
 ini_set("xdebug.var_display_max_data", -1);
 
-$perso = new Character(34);
+$perso = new Character(31);
 $perso->processCharacter();
 
 ?>
 
-<h4>State</h4>
+<h4>Compétences</h4>
 <pre>
-	<?php print_r($perso->state) ?>
-</pre>
-
-<h4>Modifiers</h4>
-<pre>
-	<?php var_dump($perso->modifiers) ?>
+	<?php print_r($perso->skills) ?>
 </pre>
 
 

@@ -119,6 +119,7 @@ class Character
 			"PdV" => 0, "PdF" => 0, "PdM" => 0, "PdE" => 0,
 			"Magie" => 0,
 			"For-mult" => 1, "Vitesse-mult" => 1,
+			"Encombrement" => 0,
 		];
 		$this->attr_cost_multipliers = [
 			"For" => 1, "Dex" => 1, "Int" => 1, "San" => 1, "Per" => 1, "Vol" => 1,
@@ -235,7 +236,8 @@ class Character
 			$this->state["Encombrement"] = EncumbranceController::getEffects($this->carried_weight, $this->attributes["For"]);
 			$this->modifiers["Dex"] += $this->state["Encombrement"]["dex-modifier"];
 			$this->modifiers["Vitesse-mult"] *= $this->state["Encombrement"]["vit-multiplier"];
-			$this->modifiers["Vitesse-mult"] = round($this->modifiers["Vitesse-mult"], 2);
+			$this->modifiers["Vitesse-mult"] = $this->modifiers["Vitesse-mult"];
+			$this->modifiers["Encombrement"] = $this->state["Encombrement"]["dex-modifier"];
 
 			// reflexes and sf modifers based on primary attributes (vitesse is independant)
 			$this->modifiers["Réflexes"] += (int) floor($this->modifiers["Dex"] / 2 + $this->modifiers["Per"] / 2);

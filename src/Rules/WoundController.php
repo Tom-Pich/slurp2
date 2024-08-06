@@ -402,7 +402,7 @@ class WoundController
 		// ––– special random effects
 		$effects_modifier = DiceManager::getModifier($actual_dmg, $pdvm * 0.75);
 		$purely_random_parameter = $localisation === "visage" ? random_int(0, 2) <= 1 : random_int(0, 1) === 0;
-		$has_random_effect = $is_significant_wound && !DiceManager::check_is_successfull($san + $effects_modifier, $rolls[6]) && $purely_random_parameter;
+		$has_random_effect = $is_significant_wound && !DiceManager::check_is_successfull($san + $effects_modifier, $rolls[6]) && $purely_random_parameter && !in_array($category, ["nbh", "nbx"]) ;
 		//var_dump($has_random_effect);
 		if ($has_random_effect) {
 

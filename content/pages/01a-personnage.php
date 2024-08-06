@@ -643,6 +643,7 @@ $attributes = [
 			"throwing" => "Armes de jet",
 			"seduction" => "Séduction",
 			"acrobatics-dodging" => "Esquive",
+			"survival" => "Survie",
 		];
 
 		foreach ($skills_groups as $group => $id_list) {

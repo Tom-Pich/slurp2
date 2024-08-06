@@ -221,11 +221,10 @@ body.wiki {
 
 		h4 { margin: .75em 0 .25em; }
 		p {padding-block: .15em; padding-left: .25em;}
-		ul { padding-left: .5em; list-style-type: none; margin-bottom: .25em;}
-		li { padding-left: .25em; font-style: italic;}
+		p.child-article { padding-left: .75em }
 		a { text-decoration: none; color: inherit; display: block; }
 		p:has(.active-link), p:hover { background-color: var(--clr-primary); color: var(--white) }
-		li:has(.active-link), li:hover { background-color: var(--clr-accent-dark); color: var(--white) }
+		p.child-article:has(.active-link), p.child-article:hover { background-color: var(--clr-accent-dark); color: var(--white) }
 		//.subsection { padding-left: .75em; padding-block: .1em; }
 	}
 	.article-wrapper {

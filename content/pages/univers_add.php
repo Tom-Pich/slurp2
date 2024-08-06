@@ -682,6 +682,19 @@ $creatures_repo = new CreatureRepository;
 			<li>-5 pour une armure de plates ou une armure à bande</li>
 			<li>-8 pour une superposition cotte de maille + plate</li>
 		</ul>
+		<p>Si le personnage ne porte qu’une armure partielle, utiliser les indications suivantes&nbsp;:</p>
+		<ul>
+			<li>le malus complet est appliqué si la tête <b>et</b> le torse sont protégés.</li>
+			<li>La tête (hors visage) est source d’un tiers de malus (la moitié si le visage est aussi couvert).</li>
+			<li>Le torse est source des deux-tiers des malus.</li>
+			<li>Les bras et les jambes ne comptent que pour 1/5<sup>e</sup> du malus.</li>
+			<li>Le malus total ne peut être supérieur à celui qu’aurait le mage en portant l’armure complète.</li>
+			<li>On arrondit le malus à l’inférieur</li>
+		</ul>
+		<div class="exemple">
+			Un mage porte une protection de maille couvrant le torse, ainsi qu’un protection de cuir lourd couvrant la tête (mais pas le visage).<br>
+			À la louche, on dit -2 pour la cotte de maille sur le torse et -2×⅓ pour la tête, soit un malus total de -2.
+		</div>
 	</details>
 
 	<details>

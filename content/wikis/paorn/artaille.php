@@ -42,13 +42,13 @@
 
 <h4>Agglomérations importantes</h4>
 <p>
-	<b><a href="/wiki-paorn/imegie">Imégie</a>&nbsp;:</b> La capitale provinciale est une cité paresseuse aux maisons blanchies la chaux, installée sur la côte. Le château du gouverneur, une grosse bâtisse aux tours rondes, est édifié sur une colline proche.<br>
+	<b><a href="/wiki/paorn/imegie">Imégie</a>&nbsp;:</b> La capitale provinciale est une cité paresseuse aux maisons blanchies la chaux, installée sur la côte. Le château du gouverneur, une grosse bâtisse aux tours rondes, est édifié sur une colline proche.<br>
 	L'université locale, l'École d'Olpalia, est la plus fameuse de Burgonnie méridionale.
 </p>
 
-<p><b><a href="/wiki-paorn/almisie">Almisie</a>&nbsp;:</b> Le centre industrieux de l’Artaille. En plus de cristalleries réputées, on y trouve des tisserands, des forgerons et les meilleurs négociants en vins de Paorn. Détail typique de la province méridionale&nbsp;: malgré sa relative richesse, Almisie ne possède pas de murs d'enceinte, Ses troupes sont cependant largement suffisantes pour assurer sa sécurité contre d'éventuels pillards.</p>
+<p><b><a href="/wiki/paorn/almisie">Almisie</a>&nbsp;:</b> Le centre industrieux de l’Artaille. En plus de cristalleries réputées, on y trouve des tisserands, des forgerons et les meilleurs négociants en vins de Paorn. Détail typique de la province méridionale&nbsp;: malgré sa relative richesse, Almisie ne possède pas de murs d'enceinte, Ses troupes sont cependant largement suffisantes pour assurer sa sécurité contre d'éventuels pillards.</p>
 
-<p><b><a href="/wiki-paorn/stomilie">Stomilie</a>&nbsp;:</b> la citée saint de l’Atrimisme. Construite sur une colline, la ville est dominée par une cathédrale fortifiée. Bien qu’officiellement sous le contrôle du Prince, le clergé qui dirige la ville jouit d’une relative indépendance par rapport au pouvoir séculaire.</p>
+<p><b><a href="/wiki/paorn/stomilie">Stomilie</a>&nbsp;:</b> la citée saint de l’Atrimisme. Construite sur une colline, la ville est dominée par une cathédrale fortifiée. Bien qu’officiellement sous le contrôle du Prince, le clergé qui dirige la ville jouit d’une relative indépendance par rapport au pouvoir séculaire.</p>
 
 <p><b>Maylie&nbsp;:</b> Le grand port commercial de Burgonnie. C’est de là que partent les nefs marchandes à destination de la Lauria, des îles du Tarot et de Majistra, loin à l'est. Les pirates, qui ont sévi de tous temps dans ce secteur, ont obligé les Maylars (habitants de Maylie) à constituer une flotte de guerre composée d'impressionnantes galères.</p>
 

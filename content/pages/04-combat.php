@@ -1,3 +1,4 @@
+<!-- Bases du combat -->
 <article>
 	<h2>Bases du combat</h2>
 
@@ -45,9 +46,11 @@
 	</details>
 </article>
 
+<!-- Attaque au contact -->
 <article>
 	<h2>Attaque au contact</h2>
 
+	<!-- Modificateurs d’attaque -->
 	<details>
 		<summary class="h3">Modificateurs d’attaque</summary>
 		<p><b>1. État du personnage&nbsp;:</b> PdV, PdF, <i>Encombrement</i>, heaume, armures superposées, usage de la main «&nbsp;faible&nbsp;».</p>
@@ -57,6 +60,7 @@
 		<p>À moins d’une bonne raison, en situation de combat «&nbsp;classique&nbsp;», une attaque se fera sans malus de difficulté.</p>
 	</details>
 
+	<!-- Attaque massive -->
 	<details>
 		<summary class="h3">Attaque massive</summary>
 		<table class="alternate-e left-1">
@@ -87,6 +91,7 @@
 		<p>(2) si l'action a eu lieu en 2<sup>e</sup> partie du round.</p>
 	</details>
 
+	<!-- Coups spéciaux -->
 	<details>
 		<summary class="h3">Coups spéciaux</summary>
 		<p><b>Désarmer l’adversaire&nbsp;:</b> -3 au jet d'attaque ou de parade</p>
@@ -95,17 +100,19 @@
 		<p><b>Amortir ses coups&nbsp;:</b> pour causer des dégâts inférieurs aux dégâts normaux. Le joueur annonce ses dégâts sous forme de «&nbsp;dés + bonus&nbsp;». Frapper avec le plat d’une épée, le bout arrondi d’une lance, etc.&nbsp;: le type de dégâts qui change (<i>Broyage</i>).</p>
 	</details>
 
+	<!-- Attaque avec deux armes -->
 	<details>
 		<summary class="h3">Attaque avec 2 armes</summary>
 		<p>Attaque avec 2<sup>e</sup> arme après défense&nbsp;: considérée comme une <i>Attaque non conventionnelle</i>.</p>
 		<p>Parade à deux armes simultanées&nbsp;: si les deux scores de parade sont différents de 3 ou moins → +1 sur le meilleur score de parade. Si les deux scores de parade sont égaux → +2.</p>
 	</details>
 
+	<!-- Attaque à mains nues -->
 	<details>
 		<summary class="h3">Attaques à mains nues</summary>
 		<p>Trois types d’attaque différentes à mains nues&nbsp;:</p>
 		<p><b>• Porter un coup</b>, dans le but d’infliger des dégâts&nbsp;: jet de <i>Combat à mains nues</i> ou de <i>Karaté</i>.</p>
-		<p><b>• Bousculer</b>, dans le but de faire tomber l’adversaire&nbsp;: jet de <i>Dex</i> pour déterminer si la « bousculade » réussit, puis jet de For pour en estimer les effets (la compétence <i>Judo/Lutte</i> peut se substituer à la <i>Dex</i> et à la <i>For</i>).</p>
+		<p><b>• Bousculer</b>, dans le but de faire tomber l’adver&shy;saire&nbsp;: jet de <i>Dex</i> pour déterminer si la «&nbsp;bous&shy;culade&nbsp;» réussit, puis jet de <i>For</i> pour en estimer les effets (la compétence <i>Judo/Lutte</i> peut se substituer à la <i>Dex</i> et à la <i>For</i>).</p>
 		<p><b>• Saisir, faire une prise</b>, dans le but de faire tomber ou d’immobiliser un adversaire&nbsp;: jet de <i>Dex</i> pour saisir, jet de <i>Dex</i> ou de <i>For</i> pour immobiliser (la compétence <i>Judo/Lutte</i> peut se substituer à la <i>Dex</i> et à la <i>For</i>).</p>
 		<p>Il est possible de choisir une des <i>Attaques spéciales</i> du paragraphe «&nbsp;Combat au contact&nbsp;»</p>
 
@@ -118,6 +125,7 @@
 		<p>Si l’adversaire réussit sa parade, il inflige demi-dégâts à l’attaquant (prendre en compte la RD). Pour éviter d’être blessé, l’attaquant doit réussir une <i>Parade</i> ou une <i>Esquive</i>.</p>
 	</details>
 
+	<!-- Dégâts à mains nues -->
 	<details>
 		<summary class="h3">Dégâts à mains nues</summary>
 		<h4>Pour les humains</h4>
@@ -133,6 +141,7 @@
 
 </article>
 
+<!-- Attaque à distance -->
 <article>
 	<h2>Attaque à distance</h2>
 
@@ -182,12 +191,17 @@
 
 </article>
 
+<!-- Défense -->
 <article>
 	<h2>Défense</h2>
 
 	<details>
 		<summary class="h3">Types de défenses</summary>
-		<p><b>Esquive&nbsp;:</b> pas de limite au nombre d'esquives chaque tour, mais -2 cumulatif après la première défense du tour.</p>
+		<p>Pour avoir le droit à un jet de défense, le personnage <i>doit</i> pouvoir voir l’attaque arriver.</p>
+		<p>
+			<b>Esquive&nbsp;:</b> pas de limite au nombre d'esquives chaque tour, mais -2 cumulatif après la première défense du tour, ainsi que -2 supplémentaire à toutes les esquives au-delà de la première.<br>
+			Ainsi, une esquive après une première parade se fait à -2. Mais une esquive après une première esquive se fait à -4 (-2 car il s’agit de la deuxième défense du tour, et encore -2 car il ne s’agit pas de la première esquive du tour.
+		</p>
 		<p><b>Blocage&nbsp;:</b> <i>Bouclier</i> -3 + DP</p>
 		<p><b>Parade&nbsp;:</b> <i>Arme</i> -3 (sauf exceptions mentionnées dans la table des armes)<br>
 			Une parade est possible seulement si l’arme est apprêtée. Si l’arme pare une arme 3 fois plus lourde, elle a 33% de chance de se briser.</p>
@@ -256,6 +270,7 @@
 
 </article>
 
+<!-- Localisation -->
 <article>
 	<h2>Localisation</h2>
 	<details>
@@ -270,6 +285,7 @@
 	</details>
 </article>
 
+<!-- Critiques -->
 <article>
 	<h2>Coups critiques &amp; Maladresses</h2>
 
@@ -279,6 +295,7 @@
 
 </article>
 
+<!-- Explosions -->
 <article>
 	<h2>Explosions</h2>
 
@@ -328,6 +345,7 @@
 
 </article>
 
+<!-- Dégâts aux objets -->
 <article>
 	<h2>Dégâts aux objets</h2>
 

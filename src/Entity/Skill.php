@@ -25,6 +25,27 @@ class Skill implements RulesItem
 		"throwing" => [34, 36, 37, 38, 47],
 		"seduction" => [148, 192, 157],
 		"acrobatics-dodging" => [169, 26],
+		"survival" => [71, 56],
+	];
+
+	const special_skills = [
+		// these skills have special default value
+		26 => ["min-level" => -3], // esquive – D-8, min Dex-3
+		200 => ["min-level" => 5], // langue maternelle I(-4), min Int +5
+	];
+
+	const mvt_skills = [
+		// these skills suffer a double encumbrancy penalty;
+		26, // esquive
+		58, // course
+		59, // escalade
+		62, // nage
+		68, // saut
+		69, // ski
+		72, // vol
+		169, // acrobatie
+		181, // furtivité
+		185, // pickpocket
 	];
 
 	public function __construct(array $skill = [])
@@ -152,6 +173,7 @@ class Skill implements RulesItem
 		foreach ($skills as $skill) {
 
 			$skill_entity = $skill_repo->getSkill($skill["id"]);
+			//if (empty($skill_entity)) break;
 
 			// default label
 			if (empty($skill["label"])) {
@@ -162,8 +184,10 @@ class Skill implements RulesItem
 			if (!isset($skill["niv"]) || $skill["niv"] < $skill_entity->difficulty / 2) {
 				$skill["niv"] = $skill_entity->difficulty;
 			}
-			if ($skill["id"] === 200) { // langue maternelle
-				$skill["niv"] = max($skill["niv"], 5);
+			if (isset(self::special_skills[$skill["id"]])){
+				// skills with default level different from standard defaults.
+				$min_level = self::special_skills[$skill["id"]]["min-level"];
+				$skill["niv"] = max($skill["niv"], $min_level);
 			}
 
 			// difficulty
@@ -181,18 +205,19 @@ class Skill implements RulesItem
 			$skill["base"] = (int) floor($attr_sum / $attr_number);
 			$skill["raw-base"] = (int) floor($raw_attr_sum / $attr_number);
 
-			// modifier from label
-			$skill["modif"] = TextParser::parseModif($skill["label"]);
-
-			// modifier from "Mémoire infaillible for I-8 skills
-			$bonus_memoire_infaillible = $skill_entity->difficulty === -8 && $skill_entity->base === "I" ? floor($special_traits["mult-memoire-infaillible"] / 2) : 0;
+			// modifier (label, mémoire infaillible, extra encumbrance penalty)
+			$skill["modif"] = TextParser::parseModif($skill["label"]); // from label
+			$is_mental_very_hard = $skill_entity->difficulty === -8 && $skill_entity->base === "I"; // affected by mémoire infaillible
+			$skill["modif"] += $is_mental_very_hard ? floor($special_traits["mult-memoire-infaillible"] / 2) : 0 ;
+			$is_extra_affected_by_encumbrance = in_array($skill["id"], self::mvt_skills);
+			$skill["modif"] += $is_extra_affected_by_encumbrance ? $modifiers["Encombrement"] : 0;
 
 			// score
 			if ($skill["niv"] === $skill_entity->difficulty && !$skill_entity->hasDefault) {
 				$skill["score"] = "–";
-				$skill["virtual-score"] = $skill["base"] + $skill["niv"] + $skill["modif"] + $bonus_memoire_infaillible;
+				$skill["virtual-score"] = $skill["base"] + $skill["niv"] + $skill["modif"];
 			} else {
-				$skill["score"] = $skill["base"] + $skill["niv"] + $skill["modif"] + $bonus_memoire_infaillible;
+				$skill["score"] = $skill["base"] + $skill["niv"] + $skill["modif"];
 			}
 
 			// processing skill base cost
@@ -200,8 +225,10 @@ class Skill implements RulesItem
 			if ($skill_entity->base === "I" && $skill_entity->difficulty > -8) {
 				$skill["points"] /= $special_traits["mult-memoire-infaillible"]; // "Mémoire infaillible" divider (1, 2 or 4)
 			}
-			if ($skill["id"] === 200) { // langue maternelle
-				$skill["points"] = self::niv2cost($skill["niv"], $skill_entity->difficulty) - self::niv2cost(5, $skill_entity->difficulty);
+			if (isset(self::special_skills[$skill["id"]])){
+				// skills with min level different form standard default
+				$min_level = self::special_skills[$skill["id"]]["min-level"];
+				$skill["points"] = self::niv2cost($skill["niv"], $skill_entity->difficulty) - self::niv2cost($min_level, $skill_entity->difficulty);
 			}
 
 			// processing skill speciality bonus (with limits)
@@ -247,12 +274,26 @@ class Skill implements RulesItem
 
 			// if skill belongs to one or more groups
 			if (isset($skill["groups"])) {
-				$proc_skills[$index]["groups_points"] = 0;
+				$proc_skills[$index]["groups_points"] = 0; // set group points to 0
 				foreach ($skill["groups"] as $skill_group) {
-					$proc_skills[$index]["groups_points"] += $pool[$skill_group]; //min($pool[$skill_group], 8);
+					$proc_skills[$index]["groups_points"] += $pool[$skill_group]; // add skill points to each related group
 				}
-				$proc_skills[$index]["total_points"] = $skill["points"] + 0.25 * ($proc_skills[$index]["groups_points"] - $skill["points"]); // min($skill["points"], 8)
-				$virtual_niv = self::cost2niv($proc_skills[$index]["total_points"] * (!empty($skill["background"]) ? 2 : 1), $skill["difficulty"]);
+
+				// add ¼ of all other related skill points and get total points invested in skill
+				$proc_skills[$index]["total_points"] = .75 * $skill["points"] + 0.25 * $proc_skills[$index]["groups_points"]; 
+				
+				// evaluate what would be the skill niv with these total virtual points
+				$free_points = 0;
+				if (isset(self::special_skills[$skill["id"]])){
+					// get free points due to default non standard skill level
+					$min_level = self::special_skills[$skill["id"]]["min-level"];
+					$free_points = self::niv2cost($min_level, $skill["difficulty"]);
+				}
+				$virtual_points = $proc_skills[$index]["total_points"] + $free_points;
+				$virtual_points *= (!empty($skill["background"]) ? 2 : 1);
+				$virtual_niv = self::cost2niv($virtual_points, $skill["difficulty"]);
+				
+				// get the group modif from the difference between this virtual niv and the actual raw niv
 				$proc_skills[$index]["group_modif"] = $virtual_niv - $skill["niv"];
 				if(is_numeric($proc_skills[$index]["score"])){
 					$proc_skills[$index]["score"] += $proc_skills[$index]["group_modif"];
