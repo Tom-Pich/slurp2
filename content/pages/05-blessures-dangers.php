@@ -32,8 +32,8 @@ use App\Rules\WoundController;
 		<p>Suivre les indications du widget.</p>
 		<p>Une blessure peut entraîner une chute, une perte de conscience, voire une mort immédiate.</p>
 		<p>
-			<b>Sonné 1&nbsp;:</b> pour les prochaines opportunités d’actions à venir (il y en a deux par rounds), le personnage ne peut rien faire, si ce n’est des actions «&nbsp;réflexes&nbsp;», type <i>Défense</i>, qui se font alors à -4. Le nombre d’actions perdues est déterminé par le widget de la <i>Table de jeu</i>.<br>
-			<b>Sonné 2&nbsp;:</b> comme <i>sonné 1</i>, sauf que le personnage perd totalement sa première prochaine action (y compris une action «&nbsp;réflexes&nbsp;»).<br>
+			<b>Sonné 1&nbsp;:</b> pour les prochaines opportunités d’actions à venir (il y en a deux par rounds), le personnage ne peut rien faire, si ce n’est des actions «&nbsp;réflexes&nbsp;», type <i>Défense</i>, qui se font alors à -4. Le nombre d’actions perdues est déterminé par le widget de la <i>Table de jeu</i> ou, si ce n’est pas le cas, par la ME d’un jet de <i>San</i> (minimum 1).<br>
+			<b>Sonné 2&nbsp;:</b> comme <i>sonné 1</i>, sauf que le personnage perd totalement sa première prochaine action (y compris une action «&nbsp;réflexes&nbsp;»). Le jet de <i>San</i> pour déterminer le nombre d’actions perdues se fait à -5 (minimum 1), sauf si le widget de la table de jeu vous donne cette information.<br>
 			<b>Sonné 3&nbsp;:</b> le personnage est hors combat (aucune action) pendant une durée de l’ordre de 1 minute (20 rounds). Il tombe automatiquement. Si le MJ est généreux, il peut un peu moduler cette durée en fonction de la MR d’un jet de <i>San</i>.
 		</p>
 		<p><b>Un personnage ayant <i>Résistance à la douleur</i> réduit son niveau de «&nbsp;sonnage&nbsp;» de 1.</b> Le widget tient compte de ce facteur si vous le lui précisez.</p>
@@ -248,6 +248,8 @@ use App\Rules\WoundController;
 			<li><b>ME &le; 3&nbsp;:</b> le coma se prolonge (redéterminer la durée aléatoirement sur la même base que le jet inital).</li>
 			<li><b>Réussite&nbsp;:</b> le personnage reprend conscience si son état général le lui permet. Il n’a plus de jet à faire pour éviter la mort due au coma en cours.</li>
 		</ul>
+
+		<hr class="mt-½">
 
 		<p><b>PdV &gt; 50 %&nbsp;:</b> 1d min puis jet de <i>San</i> chaque minute.</p>
 		<p><b>PdV &le; 50 %&nbsp;:</b> 1d×5 min puis jet de <i>San</i> toutes les 5 min.</p>

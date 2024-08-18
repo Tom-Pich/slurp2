@@ -302,7 +302,7 @@ class Skill implements RulesItem
 
 			// special skills retroaction on character modifiers
 			if ($skill["id"] === 58) {
-				$modifiers["Vitesse"] += ((int) $skill["score"] ?? 0) / 8;
+				$modifiers["Vitesse"] += ((int) $skill["score"] ?? 0) / 8; // Courses
 			}
 		}
 

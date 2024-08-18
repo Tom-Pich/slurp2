@@ -35,7 +35,7 @@ if (!isset($_SESSION["Statut"]) or !DB_ACTIVE) {
 	$_SESSION["token"] = Firewall::generateToken(16);
 	$_SESSION["time"] = time();
 } else {
-	$_SESSION["time"] >= (time() - 3600) ? $_SESSION["time"] = time() : LogController::logout();
+	$_SESSION["time"] >= (time() - 3600) || !$_SESSION["id"] ? $_SESSION["time"] = time() : LogController::logout();
 }
 
 // ––– $pages_data ––––––––––––––––––––––––––––––––––––––––––––––––––––––

@@ -16,7 +16,8 @@ export function updateDOM(selector, source) {
 	morphdom(targetElement, sourceElement, {
 		onBeforeElUpdated: function (fromEl, toEl) {
 			// keep <details> state (open/close)
-			if (fromEl.tagName === "DETAILS") toEl.open = fromEl.open;
+			if (fromEl.tagName === "DETAILS" && fromEl.classList === toEl.classList) toEl.open = fromEl.open;
+			if (fromEl.dataset.morhpdom === "ignore") return false;
 		}
 	});
 }

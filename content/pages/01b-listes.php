@@ -13,7 +13,7 @@ $spells_repo = new SpellRepository;
 $affichage = $_POST["affichage"] ?? "categorie";
 ?>
 
-<article class="flow"><!-- Introduction -->
+<article class="flow" data-morhpdom="ignore"><!-- Introduction -->
 
 	<h4>Affichage par catégories</h4>
 	<p>L’affichage par catégorie permet l’accès aux règles générales sur certaines catégories d’avantages &amp; désavantages, compétences et sorts.</p>
@@ -28,18 +28,22 @@ $affichage = $_POST["affichage"] ?? "categorie";
 
 	<!-- formulaire de sélection -->
 	<fieldset>
-		<form method="post" action="avdesav-comp-sorts">
+		<form action="avdesav-comp-sorts" data-role="filter-form">
 			<div class="flex-s">
 				<div class="fl-1"><b>Affichage&nbsp;:</b></div>
 				<div>
-					<input type="radio" id="aff1" name="affichage" value="categorie" <?= $affichage == "categorie" ? "checked" : "" ?> onchange="this.form.submit()">
-					<label for="aff1"> catégories</label>&nbsp;
-					<input type="radio" id="aff2" name="affichage" value="alpha" <?= $affichage == "alpha" ? "checked" : "" ?> onchange="this.form.submit()">
-					<label for="aff2"> alphabétique</label>
+					<label>
+						<input type="radio" name="affichage" value="categorie" <?= $affichage == "categorie" ? "checked" : "" ?>>
+						catégories
+					</label>&nbsp;
+					<label>
+						<input type="radio" name="affichage" value="alpha" <?= $affichage == "alpha" ? "checked" : "" ?>>
+						alphabétique
+					</label>
 				</div>
 			</div>
-			<div>
-				<div class="mt-½"><b>Sorts à afficher&nbsp;:</b></div>
+			<div class="mt-½">
+				<div><b>Sorts à afficher&nbsp;:</b></div>
 				<div class="flex-s ai-center jc-space-between mt-½" data-role="spell-filter">
 					Niveaux
 					<input type="text" data-role="range-filter" style="width: 5ch;" class="ta-center p-0" placeholder="1-5" value="1-5">
@@ -54,11 +58,16 @@ $affichage = $_POST["affichage"] ?? "categorie";
 					</label>
 				</div>
 			</div>
+			<div class="mt-½">
+				<div><b>Rechercher</b></div>
+				<input type="text" name="keyword" class="fl-1 border-grey-700 px-1 py-½ full-width">
+			</div>
 		</form>
 	</fieldset>
 </article>
 
-<article><!-- Avantages & Désavantages -->
+<!-- Avantages & Désavantages -->
+<article data-role="avdesavs-wrapper">
 	<h2>
 		<?php if ($_SESSION["Statut"] === 3) { ?><a href="gestion-listes?req=avdesav&id=0" class="edit-link ff-far">&#xf044;&nbsp;</a><?php } ?>
 		Avantages &amp; Désavantages
@@ -106,7 +115,8 @@ $affichage = $_POST["affichage"] ?? "categorie";
 	} ?>
 </article>
 
-<article><!-- Compétences -->
+<!-- Compétences -->
+<article data-role="skills-wrapper">
 	<h2>
 		<?php if ($_SESSION["Statut"] === 3) { ?><a href="gestion-listes?req=competence&id=0" class="edit-link ff-far">&#xf044;&nbsp;</a><?php } ?>
 		Compétences
@@ -172,7 +182,8 @@ $affichage = $_POST["affichage"] ?? "categorie";
 
 </article>
 
-<article data-role="spells-wrapper"><!-- Sorts -->
+<!-- Sorts -->
+<article data-role="spells-wrapper">
 	<h2>
 		<?php if ($_SESSION["Statut"] == 3) { ?><a href="gestion-listes?req=sort&id=0" class="edit-link ff-far">&#xf044;&nbsp;</a><?php } ?>
 		Sorts
@@ -192,7 +203,7 @@ $affichage = $_POST["affichage"] ?? "categorie";
 			if (!empty($spells)) {
 				if ($college->id === 22) { ?><h4>Collèges spéciaux</h4><?php } ?>
 
-				<details data-role="college-wrapper">
+				<details>
 					<summary class="h3"><?= $college->name ?></summary>
 					<p><?= $college->description ?></p>
 					<?php foreach ($spells as $spell) {
@@ -205,4 +216,4 @@ $affichage = $_POST["affichage"] ?? "categorie";
 
 </article>
 
-<script type="module" src="/scripts/spells-powers-filter.js?v=2" defer></script>
+<script type="module" src="/scripts/items-filter.js?v=<?= VERSION ?>" defer></script>

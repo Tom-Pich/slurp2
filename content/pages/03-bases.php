@@ -236,13 +236,13 @@ use App\Repository\SkillRepository;
 				</tr>
 			<?php } ?>
 		</table>
-		<?php 
-			$mvt_skills_id = Skill::mvt_skills;
-			$skill_repo = new SkillRepository;
-			$mvt_skills_names = [];
-			foreach( $mvt_skills_id as $id ){
-				$mvt_skills_names[] = $skill_repo->getSkill($id)->name;
-			}
+		<?php
+		$mvt_skills_id = Skill::mvt_skills;
+		$skill_repo = new SkillRepository;
+		$mvt_skills_names = [];
+		foreach ($mvt_skills_id as $id) {
+			$mvt_skills_names[] = $skill_repo->getSkill($id)->name;
+		}
 
 		?>
 		<p>Le malus de <i>Dex</i> est doublé pour les compétences pour lesquelles il est <b>indispensable</b> d’être léger&nbsp;: <i><?= join(", ", $mvt_skills_names) ?></i></p>
@@ -310,17 +310,20 @@ use App\Repository\SkillRepository;
 <article>
 	<h2>Équilibre psychique</h2>
 
+	<!-- Points d’Équilibre Psychique -->
 	<details>
 		<summary class="h3">Points d’Équilibre Psychique</summary>
 		<p>L’équilibre psychique d’un personnage est quantifié par les <i>Points d’Équilibre Psychique</i> (PdE).</p>
 	</details>
 
+	<!-- Jet de Sang-Froid et PdE -->
 	<details>
 		<summary class="h3">Jet de Sang-Froid et PdE</summary>
 		<p>Des PdE peuvent être perdus au cours de trois types de situations&nbsp;: un traumatisme, une peur extrême ou un stress intense.</p>
 		<p>Lorsque plusieurs effets peuvent advenir (traumatisant et stressant, par exemple), un seul jet de <i>Sang-Froid</i> est à faire. Les conséquences sont déterminées à partir de cet unique jet.</p>
 	</details>
 
+	<!-- Traumatisme -->
 	<details>
 		<summary class="h3">Traumatisme</summary>
 		<p>Un événement traumatisant provoque un choc psychologique. Il n’est pas nécessairement effrayant ni directement menaçant (perte d’un être cher, être témoin d’actes de barbarie, etc.).</p>
@@ -362,49 +365,131 @@ use App\Repository\SkillRepository;
 		</table>
 	</details>
 
+	<!-- Peur & terreur -->
 	<details>
 		<summary class="h3">Peur &amp; Terreur</summary>
-		<p>Lorsqu’un événement terrifie le personnage, un jet de <i>Sang-froid</i> (appelé dans ce cas <i>Test de Frayeur</i>) doit être fait pour savoir comment le personnage réagit. Cette terreur doit être surnaturelle ou réveiller une phobie, et ponctuelle, sans quoi il s’agit d’un stress ou d’une <i>Surprise</i>.</p>
-		<p>Un malus peut s’appliquer en fonction de la nature de l’événement terrorisant.</p>
-		<p>Si le jet de <i>Sang-froid</i> est réussi, le personnage surmonte sa peur et peut agir immédiatement. Sinon, il subit les conséquences décrites dans le tableau ci-dessous.</p>
-		<p>La ME d’un <i>Test de Frayeur</i> <b>ne peut être supérieure à [malus du test +3]</b>, sauf en cas d’échec critique (exemple&nbsp;: rater un jet de <i>Sang-froid</i> à -2 ne peut entraîner une ME de plus de 2+3 = 5).</p>
+		<p>Lorsqu’un événement terrifie le personnage, un jet de <i>Sang-froid</i> (appelé dans ce cas <i>Test de Frayeur</i>) doit être fait pour savoir comment le personnage réagit.</p>
+		<p>L’intensité de la peur potentiellement provoquée est quantifiée de I à III.</p>
+		<p>Un modificateur peut s’appliquer à ce jet, mais il ne dépend par de l’intensité de la peur. Il peut dépendre de l’état du personnage et des conditions extérieures à l’événement terrifiant, et devrait être dans la fourchette [-3&nbsp;; +3].</p>
+		<p>Les conséquences du <i>Test de frayeur</i> dépendent de sa MR et de l’intensité de la peur provoquée.</p>
 
 		<table class="alternate-e left-2">
 			<tr>
-				<th width="10">ME</th>
+				<th>MR</th>
 				<th>Conséquences</th>
 			</tr>
 			<tr>
-				<td>1-2</td>
-				<td>Surprise partielle.</td>
+				<td>R.C.</td>
+				<td>Gravité réduite de trois crans</td>
 			</tr>
 			<tr>
-				<td>3</td>
-				<td>Surprise totale. Jet de <i>Vol</i> pour retenir un cri.</td>
+				<td>&ge; 3</td>
+				<td>Gravité réduite de deux crans</td>
 			</tr>
 			<tr>
-				<td>4</td>
-				<td>Surprise totale. <i>Vol</i> -3 pour retenir un cri. <b>(1 PdE)</b></td>
+				<td>0 à 2</td>
+				<td>Gravité réduite de un cran</td>
 			</tr>
 			<tr>
-				<td>5</td>
-				<td>Panique. Le personnage s’enfuit en hurlant pendant 1d×10 secondes. S’il ne peut pas s’enfuir, faire un jet de San pour éviter une réaction physique inconvenante (vomir, uriner, pleurer, etc.). <b>(2 PdE)</b></td>
+				<td>-1 à -3</td>
+				<td>Gravité nominale</td>
 			</tr>
 			<tr>
-				<td>6</td>
-				<td>Panique totale. Le personnage est capable de faire n’importe quoi (jeter 3d, plus le résultat est élevé, plus l’action entreprise est inutile, voire dangereuse). <b>(3 PdE)</b>.</td>
+				<td>&le; -4</td>
+				<td>Gravité agravée d’un cran</td>
 			</tr>
 			<tr>
-				<td>7</td>
-				<td>Le personnage est en état de choc. Il ne fait rien durant 1d×5 secondes, puis entre en panique totale (résultat précédent). <b>(4 PdE)</b>.</td>
-			</tr>
-			<tr>
-				<td>8</td>
-				<td>Jet de <i>San</i> pour ne pas s’évanouir pendant 1d minutes. Voir résultat précédent si le jet de <i>San</i> est réussi. <b>(5 PdE)</b>.</td>
+				<td>E.C</td>
+				<td>Gravité agravée de deux crans</td>
 			</tr>
 		</table>
 
-		<p><b>Terreur causée par des sorts&nbsp;:</b> si un sort oblige sa cible à réaliser un <i>Test de Frayeur</i> (par exemple <i>Terreur</i> ou <i>Vision de mort</i>), les éventuels PdE perdus par la victime à cause du sort sont récupérés quelques minutes après la fin du sort. De tels sorts ne peuvent jamais entraîner de perte définitive de PdE, de <i>Sang-Froid</i> ou de <i>Volonté</i>.</p>
+		<p>Une fois la MR du <i>Test de Frayeur</i> déterminée, consultez la table ci-dessous pour trouver la ligne correspondant à l’intensité de la peur provoquée. Voir les notes après la table pour plus de détails.</p>
+
+		<table class="alternate-e left-2">
+			<tr>
+				<th width="10">Niv.</th>
+				<th>Conséquences</th>
+			</tr>
+			<tr>
+				<td>–</td>
+				<td><b>Sonné</b> 1 pour une action</td>
+			</tr>
+			<tr>
+				<td>I</td>
+				<td><b>Sonné</b> 1. Jet de <i>S-F</i> pour reprendre ses esprits. Jet de <i>Vol</i> pour retenir un cri.</td>
+			</tr>
+			<tr>
+				<td>II</td>
+				<td><b>Sonné</b> 2. Jet de <i>S-F</i> à -5 pour reprendre ses esprits. Jet de <i>Vol</i> -3 pour retenir un cri. <b>Perte de 1d-2 PdF + 1 PdE.</b></td>
+			</tr>
+			<tr>
+				<td>III</td>
+				<td>
+					Jet de <i>SF</i>&nbsp;: ✅ <b>choc</b><sup>(1)</sup> ou ❌ <b>panique</b><sup>(2)</sup><br>
+					Jet de <i>SF</i> pour éviter une réaction inconvenante<sup>(3)</sup>.<br>
+					Jet de <i>SF</i> pour éviter un nouveau <i>Travers</i><sup>(4)</sup>.<br>
+					<b>Perte de 2 PdE + 1d PdF</b>
+				</td>
+			</tr>
+			<tr>
+				<td>IV</td>
+				<td>
+					Jet de <i>SF</i>&nbsp;: ✅ <b>choc</b> grave<sup>(1)</sup> ou ❌ voir ligne suivante.<br>
+					Jet de <i>SF</i> si le 1<sup>er</sup> est raté&nbsp;: <b>panique</b> totale<sup>(2)</sup> / <b>évanouissement</b><sup>(5)</sup>.<br>
+					Jet de <i>SF</i> -3 pour éviter une réaction inconvenante<sup>(3)</sup>.<br>
+					Jet de <i>SF</i> -3 pour éviter un nouveau <i>Travers</i><sup>(4)</sup>.<br>
+					<b>Perte de 3 PdE + 1d PdF + 1 PdV</b>
+				</td>
+			</tr>
+			<tr>
+				<td>V</td>
+				<td>
+					Jet de <i>SF</i>&nbsp;: ✅ <b>catatonie</b><sup>(6)</sup> ou ❌ <b>évanouissement</b> long<sup>(5)</sup>.<br>
+					Jet de <i>San</i> pour éviter une attaque cardiaque légère<sup>(7)</sup>.<br>
+					Jet de <i>SF</i> -3 pour éviter un nouveau <i>Travers</i><sup>(4)</sup>.<br>
+					Jet de <i>SF</i> pour éviter des séquelles physiques<sup>(8)</sup>.<br>
+					<b>4 PdE + 1d PdF + 2 PdV</b>
+				</td>
+			</tr>
+			<tr>
+				<td>–</td>
+				<td>
+					Jet de <i>SF</i>&nbsp;: ✅ <b>catatonie</b> longue<sup>(6)</sup> ou ❌ <b>coma</b><sup>(9)</sup>.<br>
+					Jet de <i>San</i> pour éviter une attaque cardiaque<sup>(7)</sup>.<br>
+					Jet de <i>SF</i> -3 pour éviter un nouveau <i>Travers</i><sup>(4)</sup>.<br>
+					Jet de <i>SF</i> -1 pour éviter des séquelles physiques<sup>(8)</sup>.<br>
+					<b>5 PdE + 2d PdF + 1d PdV</b>
+				</td>
+			</tr>
+			<tr>
+				<td>–</td>
+				<td>
+					Jet de <i>SF</i>&nbsp;: ✅ <b>catatonie</b> très longue<sup>(6)</sup> ou ❌ <b>coma</b> long<sup>(9)</sup>.<br>
+					Jet de <i>San</i> -3 pour éviter une attaque cardiaque<sup>(7)</sup>.<br>
+					Jet de <i>SF</i> -3 pour éviter un nouveau <i>Travers</i><sup>(4)</sup>.<br>
+					Jet de <i>SF</i> -3 pour éviter des séquelles physiques<sup>(8)</sup>.<br>
+					Jet de <i>SF</i> pour éviter la perte définitive d’un pt d’<i>Int</i>.<br>
+					<b>6 PdE + 2d PdF + 2d PdV</b>
+				</td>
+			</tr>
+		</table>
+
+		<h4>Précision sur les états</h4>
+		<ol class="flow">
+			<li><b>Choc&nbsp;:</b> le personnage reste figé pendant 3d secondes. Après cette durée, faire un jet de <i>S-F</i> par round pour reprendre ses esprits. Pour un choc <i>grave</i>, la durée est de 1d×10 secondes</li>
+			<li><b>Panique&nbsp;:</b> le personnage s’enfuit, éventuellement en hurlant. S’il ne peut pas s’enfuir, il fait une action inutile (s’asseoir et pleurer, se réfugier dans un coin&hellip;). Si la panique est <i>totale</i>, le personnage entreprend une action totalement inutile, voire dangereuse. Lancer 3d. Plus le résultat est élevé, plus l’action est dangereuse.</li>
+			<li><b>Réaction inconvenante&nbsp;:</b> vomir, se faire pipi dessus (voir pire&hellip;).</li>
+			<li><b>Nouveau <i>Travers</i></b>&nbsp;: si le personnage passe sous en seuil de PdE provoquant un <i>Désavantage mental</i> temporaire, alors le personnage n’hérite pas d’un nouveau travers, mais le <i>Désavantage mental</i> sera permanent.</li>
+			<li><b>Évanouissement&nbsp;:</b> le personnage perd conscience pendant 1d minutes. Après ce délai, voir <i>Rétablissement après inconscience</i>. S’il s’agit d’un évanouissement <i>long</i>, la durée de base est de 3d minutes.</li>
+			<li><b>Catatonie&nbsp;:</b> le personnage regarde dans le vide et ne fait rien pendant 2d heures. Après ce délai, faire un jet de <i>San</i>. En cas d’échec, la catatonie est prolongée de 2d heures. La catatonie <i>longue</i> dure 1d jours au lieu de 2d heures.</li>
+			<li><b>Attaque cardiaque&nbsp;:</b> le personnage tombe au sol et perd 3d PdV et 2d PdF. Jet de <i>San</i>&nbsp;: perte définitive d’un point de <i>San</i> en cas d’échec. Mort en cas d’échec critique. Dans le cas d’une attaque <i>légère</i>, le personnage perd 1d PdV et 2d PdF, mais aucun jet de <i>San</i> n’est à faire.</li>
+			<li><b>Séquelles physique&nbsp;:</b> le personnage vieillit de quelques années, ses cheveux blanchissent, il devient muet&hellip;</li>
+		</ol>
+
+		<h4>Peur causée par des sorts</h4>
+		<p>Si un sort oblige sa cible à réaliser un <i>Test de Frayeur</i> (par exemple <i>Terreur</i> ou <i>Vision de mort</i>), les éventuels PdE perdus par la victime à cause du sort sont récupérés quelques minutes après la fin du sort. De tels sorts ne peuvent jamais entraîner de perte définitive de PdE, de <i>Sang-Froid</i> ou de <i>Volonté</i>. L’intensité de la peur est égale au niveau du sort.</p>
+		<p>Le <i>Test de Frayeur</i> se fait avec un malus correspondant à la MR du sort.</p>
 
 
 	</details>
@@ -471,11 +556,13 @@ use App\Repository\SkillRepository;
 
 	</details>
 
+	<!-- Récupération des PdE -->
 	<details>
 		<summary class="h3">Récupération des PdE</summary>
 		<p>Les PdE se récupèrent à raison de 1 par semaine, dans un endroit calme, et rassurant, en compagnie de gens mentalement sains et amicaux, à mener des activités ordinaires. Il est également possible de récupérer 1 ou 2 PdE si le personnage obtient une victoire sur ce qui a été la cause de sa perte de PdE (décision du MJ).</p>
 		<p>Un personnage peut racheter des PdE perdus définitivement en prenant un nouveau désavantage mental, en lien avec ce qui a causé la perte de PdE.</p>
 	</details>
+
 </article>
 
 <!-- Jet de réaction -->
