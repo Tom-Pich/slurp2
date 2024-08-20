@@ -15,6 +15,8 @@ class WoundController
 			"for-multiplier" => 0,
 			"dex-modifier" => -INF,
 			"int-modifier" => -INF,
+			"per-modifier" => -INF,
+			"vol-modifier" => -INF,
 			"vit-multiplier" => 0,
 		],
 		/* "-2" => [
@@ -33,51 +35,62 @@ class WoundController
 		], */
 		"-1.0" => [
 			"name" => "état critique",
-			"description" => "Perte de conscience automatique. Tant qu’il ne repasse pas au-dessus de ce seuil, le personnage reste inconscient. Il ne peut ni boire, ni se nourrir.",
+			"description" => "Perte de conscience automatique. Tant qu’il ne repasse pas au-dessus de ce seuil, le personnage reste inconscient. Il ne peut ni boire, ni se nourrir.<br>
+			Toutes les caractéristiques à 0, <i>Vol</i> à -5",
 			"for-multiplier" => 0,
 			"dex-modifier" => -INF,
 			"int-modifier" => -INF,
+			"per-modifier" => -INF,
+			"vol-modifier" => -5,
 			"vit-multiplier" => 0,
 		],
 		"0.0" => [
 			"name" =>"très gravement blessé",
-			"description" => "Jet de <i>Vol</i>-3 à chaque round pour ne pas perdre conscience. Le personnage ne peut pas se tenir debout. Il peut reprendre conscience ultérieurement, mais ne pourra rien faire et sera semi-conscient jusqu’à ce que ses PdV repassent au-dessus de ce seuil.",
+			"description" => "Jet de <i>Vol</i> à chaque round pour ne pas perdre conscience. Le personnage ne peut pas se tenir debout. Il peut reprendre conscience ultérieurement, mais ne pourra rien faire et sera semi-conscient jusqu’à ce que ses PdV repassent au-dessus de ce seuil.<br>
+			<i>For</i>×0.3, <i>Vitesse</i> = 0, <i>Dex</i> et <i>Int</i> à -7, <i>Per</i> à -5 et <i>Vol</i> à -3",
 			"for-multiplier" => 0.3,
 			"dex-modifier" => -7,
 			"int-modifier" => -7,
+			"per-modifier" => -5,
+			"vol-modifier" => -3,
 			"vit-multiplier" => 0,
 		],
 		"0.25" => [
 			"name" => "gravement blessé",
-			"description" => "<i>For</i>×0.5, <i>Vitesse</i>×0.2, <i>Dex</i> et <i>Int</i> à -5",
+			"description" => "<i>For</i>×0.5, <i>Vitesse</i>×0.2, <i>Dex</i> et <i>Int</i> à -5, <i>Per</i> à -3 et <i>Vol</i> à -2",
 			"for-multiplier" => 0.5,
 			"dex-modifier" => -5,
 			"int-modifier" => -5,
+			"per-modifier" => -3,
+			"vol-modifier" => -2,
 			"vit-multiplier" => 0.2,
 		],
 		"0.5" => [
 			"name" => "moyennement blessé",
-			"description" => "<i>For</i>×0.75, <i>Vitesse</i>×0.5, <i>Dex</i> et <i>Int</i> à -3",
+			"description" => "<i>For</i>×0.75, <i>Vitesse</i>×0.5, <i>Dex</i> et <i>Int</i> à -3, <i>Per</i> à -2 et <i>Vol</i> à -1",
 			"for-multiplier" => 0.75,
 			"dex-modifier" => -3,
 			"int-modifier" => -3,
+			"per-modifier" => -2,
+			"vol-modifier" => -1,
 			"vit-multiplier" => 0.5,
 		],
 		"0.75" => [
 			"name" => "légèrement blessé",
-			"description" => "<i>For</i>×0.9, <i>Vitesse</i>×0.8, <i>Dex</i> et <i>Int</i> à -1",
+			"description" => "<i>For</i>×0.9, <i>Vitesse</i>×0.8, <i>Dex</i>, <i>Int</i> et <i>Per</i> à -1",
 			"for-multiplier" => 0.9,
 			"dex-modifier" => -1,
 			"int-modifier" => -1,
+			"per-modifier" => -1,
 			"vit-multiplier" => 0.8,
 		],
 	];
 
 	public const members_levels = [
-		"-1" => ["description" => "Membre détruit"],
+		"-1.0" => ["description" => "Membre détruit"],
 		"0" => ["description" => "Blessure invalidante"],
 		"0.5" => ["description" => "Inutilisable"],
-		"0.75" => ["description" => "Malus"],
+		"0.75" => ["description" => "-3 pour utiliser ce membre"],
 	];
 
 	public const members_pdv = [
@@ -156,7 +169,7 @@ class WoundController
 		foreach (self::members_levels as $level => $effects) {
 			$level = (float) $level;
 			if ($ratio <= $level) {
-				if ($effects["description"] === "Malus") {
+				if ($effects["description"] === "-3 pour utiliser ce membre") {
 					switch ($member) {
 						case "bras":
 							$effects["description"] = "-3 pour utiliser ce bras";

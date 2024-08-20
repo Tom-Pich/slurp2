@@ -67,16 +67,17 @@ use App\Rules\WoundController;
 		<p>Si le personnage dispose de l’avantage <i>Résistance à la douleur</i>, ajouter 25&nbsp;% à son ratio PdV/PdVm, sauf si ses PdV sont &le; -100&nbsp;% PdVm.</p>
 		<p>Les PdV et PdF ne sont pas affectés par le multiplicateur de <i>For</i> associé au niveau de blessure.</p>
 
-		<h4>Blessures &amp; perte de conscience</h4>
-		<p>Un personnage dont les PdV sont inférieurs ou égaux au maximum de ses PdV max ne peut pas être conscient.</p>
-
 		<h4>Blessures &amp; fatigue</h4>
 		<p>Si le personnage est fatigué <i>et</i> blessé, les malus se cumulent. Si le personnage tombe en-dessous de la moitié de sa <i>For</i> normale, il ne peut pas tenir debout. Si sa vitesse tombe à 0, il peut à peine se déplacer en titubant.</p>
 
-		<h4>Effets des blessures aux membres</h4>
+	</details>
+
+	<details>
+		<summary class="h3">Effets des blessures aux membres</summary>
 		<p>
 			Chaque membre (bras, mains, jambes, pieds) a ses propres PdV qui sont calculés à partir des PdVm, ainsi que ses propres seuils de blessures. Les dégâts infligés à un membre ne sont pas décomptés du total des PdV du personnage.<br>
 			Utiliser le widget <i>Seuils de blessures</i> sur la <a href="table-jeu">Table de jeu</a> pour déterminer l’état d’un membre en fonction des dégâts qu’il a reçu.
+		</p>
 
 		<table class="alternate-e">
 			<tr>
@@ -91,10 +92,25 @@ use App\Rules\WoundController;
 			<?php } ?>
 			<caption>PdV des membres en fonction des PdVm totaux</caption>
 		</table>
-		</p>
+
+		<p>Voici les seuils d’états des membres</p>
+		<table class="alternate-e left-2">
+			<tr>
+				<th>% PdVm</th>
+				<th>État</th>
+			</tr>
+			<?php foreach (array_reverse(WoundController::members_levels) as $level => $state) { ?>
+				<tr>
+					<td>&le; <?= ((float) $level)*100 ?>&nbsp;%</td>
+					<td><?= $state["description"] ?></td>
+				</tr>
+			<?php } ?>
+			<caption>État des membres en fonction de leur PdVm propre</caption>
+		</table>
 
 	</details>
 
+	<!-- Hémorragie -->
 	<details>
 		<summary class="h3">Hémorragie</summary>
 		<p class="clr-warning italic ta-center">Règle à revoir et à passer en gestion automatique.</p>
@@ -241,26 +257,50 @@ use App\Rules\WoundController;
 	<details>
 		<summary class="h3">Rétablissement après inconscience</summary>
 
-		<p><b>Coma&nbsp;:</b> s’il est indiqué ci-dessous que le personnage tombe dans le coma, à la fin de celui-ci, le personnage doit faire un jet de <i>San</i> dont les conséquences sont listées ci-dessous.</p>
+		<p>La durée de l’inconscience dépend de la fraction des PdV restant et d’un ou plusieurs jet de <i>San</i>. Consultez la table ci-dessous.</p>
+
+		<table class="alternate-e left-2 mt-1">
+			<colgroup>
+				<col style="width: 8ch">
+			</colgroup>
+			<tr>
+				<th>PdV</th>
+				<th>Durée de l’inconsciences</th>
+			</tr>
+			<tr>
+				<td>&gt; 50 %</td>
+				<td>1d min puis jet de <i>San</i> chaque minute.</td>
+			</tr>
+			<tr>
+				<td>&le; 50 %</td>
+				<td>1d×5 min puis jet de <i>San</i> toutes les 5 min.</td>
+			</tr>
+			<tr>
+				<td>&le; 0</td>
+				<td>
+					15 minutes d’inconscience + 15 min par PdV négatif. Après ce délai, jet de <i>San</i> toutes les 15 minutes.<br>
+					Si ME &ge; 5&nbsp;: perte de 1d PdV et coma* de 1d jours.
+				</td>
+			</tr>
+			<tr>
+				<td>&le; -100 %</td>
+				<td>
+					Au bout de 2d-2 h, jet de <i>San</i> avec un modificateur qui dépend de ses PdV.<br>
+					De 0 pour -100&nbsp;% à -10 pour -300&nbsp;% (variation linéaire).<br>
+					• <b>ME &gt; 3&nbsp;:</b> mort<br>
+					• <b>ME &le; 3&nbsp;:</b> perte de 1d PdV et coma* de 1d×5 jours.<br>
+					• <b>Réussite&nbsp;:</b> le personnage reste inconscient jusqu’à ce que ses PdV dépassent le seuil de -100&nbsp;%.
+				</td>
+			</tr>
+		</table>
+
+		<p><b>* Coma&nbsp;:</b> si le personnage tombe dans le coma, à la fin de celui-ci, faire un jet de <i>San</i> dont les conséquences sont listées ci-dessous.</p>
 
 		<ul>
 			<li><b>ME &gt; 3&nbsp;:</b> le personnage meurt en 2d-2 heures.</li>
 			<li><b>ME &le; 3&nbsp;:</b> le coma se prolonge (redéterminer la durée aléatoirement sur la même base que le jet inital).</li>
 			<li><b>Réussite&nbsp;:</b> le personnage reprend conscience si son état général le lui permet. Il n’a plus de jet à faire pour éviter la mort due au coma en cours.</li>
 		</ul>
-
-		<hr class="mt-½">
-
-		<p><b>PdV &gt; 50 %&nbsp;:</b> 1d min puis jet de <i>San</i> chaque minute.</p>
-		<p><b>PdV &le; 50 %&nbsp;:</b> 1d×5 min puis jet de <i>San</i> toutes les 5 min.</p>
-		<p><b>PdV &le; 0&nbsp;:</b> 15 minutes d’inconscience + 15 min par PdV négatif. Après ce délai, jet de <i>San</i> toutes les 15 minutes.<br>
-			Si ME &ge; 5&nbsp;: perte de 1d PdV et coma de 1d jours.</p>
-		<p>
-			<b>PdV &le; -100 %&nbsp;:</b> Au bout de 2d-2 h, jet de <i>San</i> avec un modificateur qui dépend de ses PdV. 0 pour -100&nbsp;% à -10 pour -300&nbsp;% (variation linéaire).<br>
-			• <b>ME &gt; 3&nbsp;:</b> mort<br>
-			• <b>ME &le; 3&nbsp;:</b> perte de 1d PdV et coma de 1d×5 jours.<br>
-			• <b>Réussite&nbsp;:</b> le personnage reste inconscient jusqu’à ce que ses PdV dépassent le seuil de -100&nbsp;%.
-		</p>
 
 		<h4>Intervention chirurgicale</h4>
 		<p>Une intervention chirurgicale permet d’obtenir un bonus de +1 à +5 aux jets permettant d’éviter le coma ou la mort.</p>
@@ -306,6 +346,11 @@ use App\Rules\WoundController;
 			Lorsque le membre revient à 100&nbsp;% de ses PdVm propres, il est considéré comme guéri (même s’il reste handicapé ou détruit).<br>
 			Si le membre a été sectionné, récupérer la moitié de ses PdVm propres suffit à cicatriser le moignon.
 		</p>
+		<h4>Sorts de soin</h4>
+		<p>Le lanceur peur répartir comme il veut les PdV soignés entre les PdV généraux et les PdV des membres.</p>
+		<h4>Potion de soin</h4>
+		<p>Les PdV récupérés se répartissent de manière équitable entre les bras, les jambes et les PdV généraux. Les pieds et les mains reçoivent la moitié de PdV généraux.</p>
+		<p>On ne perd pas de PdV récupérés lors de cette répartition. De même, si cela représente plus de PdV récupérés que nécessaire, les autres PdV récupérés sont affectés à d’autres blessures.</p>
 	</details>
 
 </article>

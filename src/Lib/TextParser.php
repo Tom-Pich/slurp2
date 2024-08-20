@@ -295,8 +295,8 @@ class TextParser
 		// processing inline tag
 		$processed_lines_inline = [];
 		foreach ($processed_lines_blocks as $block) {
-			$block = preg_replace("/\*([^\*<>]+)\*/", "<b>$1</b>", $block);
-			$block = preg_replace("/_([^\*<>]+)_/", "<i>$1</i>", $block);
+			$block = preg_replace("/\*([^\*<>]+?)\*/", "<b>$1</b>", $block);
+			$block = preg_replace("/_([^\*<>]+?)_/", "<i>$1</i>", $block);
 			$processed_lines_inline[] = $block;
 		}
 

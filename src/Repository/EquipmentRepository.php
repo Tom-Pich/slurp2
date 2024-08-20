@@ -139,14 +139,19 @@ class EquipmentRepository extends AbstractRepository
 		$inspected_orphan_containers_id = [];
 		while ($search_items_in_orphan_container) {
 			$search_items_in_orphan_container = false;
-			foreach ($orphan_items as $item) {
+			$insertion_index_modifier = 0; // adjust contained object in the right position
+			foreach ($orphan_items as $index => $item) {
 				if ($item->isContainer && !in_array($item->id, $inspected_orphan_containers_id)) {
 					$inspected_orphan_containers_id[] = $item->id;
 					$search_items_in_orphan_container = true;
 					$item_content = $this->getEquipmentFromPlace("ct_" . $item->id);
+					$orphan_container_content = [];
 					foreach ($item_content as $item_in_orphan_container){
-						$orphan_items[] = new Equipment($item_in_orphan_container);
+						//$orphan_items[] = new Equipment($item_in_orphan_container);
+						$orphan_container_content[] = new Equipment($item_in_orphan_container);
 					}
+					array_splice($orphan_items, $index+1+$insertion_index_modifier, 0, $orphan_container_content );
+					$insertion_index_modifier += count($orphan_container_content);
 				}
 			}
 		}

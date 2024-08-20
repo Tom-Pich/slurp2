@@ -525,8 +525,6 @@ use App\Repository\SkillRepository;
 	<details>
 		<summary class="h3">État psychologique général</summary>
 
-		<!-- <p class="mt-1">Les seuils d’état psychologique sont basés sur des valeurs absolues de PdE, et non des valeurs en pourcentage des PdE max. Si les PdE max d’un personnage sont en dessous d’un des seuils, il n’est pas concerné par les effets de ce seuil (sauf pour le déavantage mental qui reste acquis)</p> -->
-
 		<table class="alternate-e left-2 mt-1">
 			<tr>
 				<th style="width: 20%">PdE</th>

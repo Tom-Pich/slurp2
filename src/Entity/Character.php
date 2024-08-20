@@ -193,7 +193,7 @@ class Character
 				$this->state["Membres"] = TextParser::parsePseudoArray2Array($this->state["Membres"]);
 				$explicit_damages = [];
 				foreach ($this->state["Membres"] as $member => $damage) {
-					$explicit_damages[] = "<b>Blessures " . WoundController::member_abbreviation[$member]["full-name"] . "</b>&nbsp;: " . WoundController::getMemberEffects($damage, $this->attributes["PdV"], WoundController::member_abbreviation[$member]["member"], $this->special_traits["resistance-douleur"])["description"];
+					$explicit_damages[] = "<b>Blessures " . WoundController::member_abbreviation[$member]["full-name"] . " ($damage)</b>&nbsp;: " . WoundController::getMemberEffects($damage, $this->attributes["PdV"], WoundController::member_abbreviation[$member]["member"], $this->special_traits["resistance-douleur"])["description"];
 				}
 				$this->state["Membres"] = $explicit_damages;
 			}

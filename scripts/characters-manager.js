@@ -103,11 +103,9 @@ characterStateForms.forEach(form => {
 
 	let timeoutId
 
-	// submit form on keyup with delay
+	// submit form on keyup with delay : 🖐️ provoque 2 pings – un pour le keyup, un autre pour le change
 	form.addEventListener("keyup", (e) => {
-		if (timeoutId) {
-			clearTimeout(timeoutId);
-		}
+		if (timeoutId) clearTimeout(timeoutId);
 		timeoutId = setTimeout(function () {
 			submitCharacterForm(form);
 		}, 3000);
@@ -115,6 +113,7 @@ characterStateForms.forEach(form => {
 
 	// submit form on change
 	form.addEventListener("change", (e) => {
+		if (timeoutId) clearTimeout(timeoutId);
 		submitCharacterForm(form)
 	})
 })

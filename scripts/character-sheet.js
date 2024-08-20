@@ -7,8 +7,9 @@ const sessionId = qs("#ws-data").dataset.sessionId;
 const wsKey = qs("#ws-data").dataset.wsKey;
 
 const characterId = parseInt(qs("#character-name").dataset.id);
+const gmId = parseInt(qs("#character-name").dataset.gm)
 const formEquipment = qs("#form-equipment");
-const membersWrapper = qs("[data-role=members-wrapper]")
+const membersWrapper = qs("[data-role=members-wrapper]"); // group members
 const itemInputs = formEquipment.querySelectorAll("input");
 let newObjectNumber = 0;
 
@@ -36,7 +37,7 @@ function updateCharacter(id) {
 		.then(response => response.text())
 		.then(response => {
 			updateDOM("main", response);
-			containerOpenCloseStateManager() // useless: updateDOM keeps track of <details> state
+			//containerOpenCloseStateManager() // useless: updateDOM keeps track of <details> state
 			fillPdMCount()
 		})
 }
@@ -88,8 +89,6 @@ function submitEquipment(pingAllCharacter = false) {
 			formData.append(input.name, input.value)
 		}
 	})
-
-	console.log(formData);
 
 	fetch("/submit/equipment-list", {
 		method: 'post',
@@ -188,6 +187,7 @@ formEquipment.addEventListener("change", (e) => {
 
 // event listener for drag and drop (not used: drag, dragleave, drop)
 let draggedItem = null;
+let timeoutId; // delay before opening a container wrapper
 
 formEquipment.addEventListener("dragover", (e) => {
 	e.preventDefault();
@@ -208,17 +208,28 @@ formEquipment.addEventListener("dragend", (e) => {
 })
 
 formEquipment.addEventListener("dragenter", (e) => {
+	
 	if (e.target.dataset.role === "item-grip") {
+		if (timeoutId) clearTimeout(timeoutId);
 		let container = e.target.closest("[data-role=container-wrapper]")
 		let target = e.target.closest("[data-role=item-wrapper]")
 		container.insertBefore(draggedItem, target)
 		draggedItem.querySelector("[data-role=item-place]").value = container.dataset.place
 	}
 	else if (e.target.dataset.role === "free-slot") {
+		if (timeoutId) clearTimeout(timeoutId);
 		let container = e.target.closest("[data-role=container-wrapper]")
 		let target = e.target
 		container.insertBefore(draggedItem, target)
 		draggedItem.querySelector("[data-role=item-place]").value = container.dataset.place
+	}
+	else if (e.target.dataset.role === "container-title-wrapper") {
+		if (timeoutId) clearTimeout(timeoutId);
+		timeoutId = setTimeout(function () {
+			let container = e.target.closest("[data-role=container-wrapper]");
+			container.open = true;
+		}, 500);
+		
 	}
 })
 
@@ -309,7 +320,9 @@ testDialogBtn.addEventListener("click", (e) => {
 	const rollResult = roll("3d").result;
 	const outcome = scoreTester(score + modifier, rollResult)
 	const messageContent = `${label} (${score}${readableModif}) → ${rollResult} (MR ${outcome.MR} ${outcome.symbol})`;
-	const message = new Message(sessionId, wsKey, "chat-roll", messageContent, [], outcome.symbol);
+	const isSecretTest = testDialog.querySelector("[data-type=secret-test-checkbox]").checked;
+	const recipients = isSecretTest ? [gmId] : [];
+	const message = new Message(sessionId, wsKey, "chat-roll", messageContent, recipients, outcome.symbol);
 	ws.send(message.stringify());
 	testDialog.close()
 })

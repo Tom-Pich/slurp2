@@ -28,7 +28,7 @@ function color_modifier($original_score, $actual_score)
 <article>
 
 	<div class="flex-s ai-center mt-½ gap-½">
-		<h3 class="fl-1" id="character-name" data-id="<?= $character->id ?>"><?= $character->name ?></h3>
+		<h3 class="fl-1" id="character-name" data-id="<?= $character->id ?>" data-gm="<?= $character->id_gm ?>"><?= $character->name ?></h3>
 		<a href="personnage-gestion?perso=<?= $character->id ?>" title="Éditer – Alt+Shift+E" accesskey="e" class="btn ff-fas no-print">&#xf013;</a>
 	</div>
 	<div class="ta-center mt-½ fs-300 no-print">
@@ -50,6 +50,7 @@ function color_modifier($original_score, $actual_score)
 		<?php } ?>
 	</div>
 
+	<!-- Caractéristiques secondaires -->
 	<div class="flex-s gap-¾ jc-center mt-½">
 		<div>
 			<b>Dégâts</b>
@@ -128,7 +129,7 @@ function color_modifier($original_score, $actual_score)
 				<li><b>Santé mentale&nbsp;:</b> <?= $character->state["Santé-mentale"]["description"] ?></li>
 			<?php } ?>
 			<?php if ($character->state["Blessures"]["dex-modifier"]) { ?>
-				<li><b>Blessures générales&nbsp;:</b> <?= $character->state["Blessures"]["vit-multiplier"] ? $character->state["Blessures"]["name"] : $character->state["Blessures"]["description"] ?></li>
+				<li><b>Blessures générales&nbsp;:</b> <?= $character->state["Blessures"]["name"] ?></li>
 			<?php } ?>
 			<?php foreach ($character->state["Membres"] as $member) { ?>
 				<li><?= $member ?></li>
@@ -216,10 +217,10 @@ function color_modifier($original_score, $actual_score)
 		?>
 
 			<!-- Container wrapper -->
-			<details class="mb-1 p-½ border-grey-700" data-role="container-wrapper" data-place="<?= $sublist["lieu"] ?>" title="<?= $sublist["lieu"] ?>" tabindex="-1">
+			<details class="mb-1 p-½ border-grey-700" data-role="container-wrapper" data-place="<?= $sublist["lieu"] ?>" title="<?= $sublist["lieu"] ?>" tabindex="-1" id="container-wrapper-<?= $sublist["lieu"] ?>">
 
 				<!-- Container title -->
-				<summary class="h4 gap-1 ai-center">
+				<summary class="h4 gap-1 ai-center" data-role="container-title-wrapper">
 					<h4 class="mt-0 flex-s gap-½ fl-1">
 						<div class="fl-1"><?= $sublist["nom"] ?></div>
 						<div><?= $sublist["sur-soi"] ? (round($sublist["poids"], 1) . "&nbsp;kg") : "" ?></div>
@@ -407,8 +408,8 @@ function color_modifier($original_score, $actual_score)
 		<p><b>Supprimer un objet&nbsp;:</b> effacer son nom. Attention&nbsp;: si vous effacez un objet-contenant, vous perdrez tout son contenu avec&nbsp;!</p>
 		<p><b>Transformer un objet en contenant&nbsp;:</b> Insérer * devant son nom.</p>
 		<p><b>Transformer un contenant en objet simple&nbsp;:</b> cocher la case <span class="ff-fas clr-warning">&#xf057;</span> dans la liste associée au contenant (pas possible si le contenant n’est pas vide).</p>
-		<p><b>Changer l’ordre des contenants&nbsp;:</b> utiliser les boutons <span class="ff-fas">&#xf0aa;</span> et <span class="ff-fas">&#xf0ab;</span>. Attention&nbsp;: un contenant vide peut perturber le positionnement des autres contenant. Dans ce cas, transformez-le en objet simple.</p>
-		<p><b>Déplacer un objet</b> (vers un autre endroit, ou à l’intérieur d’une liste, ou vers un autre personnage)&nbsp;: faire un <i>glisser-déposer</i> en vous servant de la poignée <span class="ff-fas">&#xf58e;</span> . Attention&nbsp;: la liste de destination doit être dépliée pour pouvoir faire le transfert.</p>
+		<p><b>Changer l’ordre des contenants&nbsp;:</b> utiliser les boutons <span class="ff-fas">&#xf0aa;</span> et <span class="ff-fas">&#xf0ab;</span>. Attention&nbsp;: un contenant vide peut perturber le positionnement des autres contenants. Dans ce cas, transformez-le en objet simple.</p>
+		<p><b>Déplacer un objet</b> (vers un autre endroit, ou à l’intérieur d’une liste, ou vers un autre personnage)&nbsp;: faire un <i>glisser-déposer</i> en vous servant de la poignée <span class="ff-fas">&#xf58e;</span> . Si la liste de destination est repliée, maintenant votre objet une demi-seconde sur son nom pour qu’elle s’ouvre automatiquement.</p>
 		<p><b>Partager</b> le contenu d’un contenant&nbsp;: cliquer sur la case <span class="ff-fas clr-secondary-dark">&#xe533;</span>. Les autres membres du groupe pourront voir ce contenu (mais pas le modifier).</p>
 		<p><b>Calcul automatique des dégâts</b> des armes blanches&nbsp;:</p>
 		<ol>
@@ -461,12 +462,18 @@ function color_modifier($original_score, $actual_score)
 
 </article>
 
+<!-- Modal pour les jets -->
 <dialog data-type="character-sheet-roll" class="ta-center">
 	<button data-role="close-modal" class="ff-fas">&#xf00d;</button>
 	<p><span data-content="label"></span> – <span data-content="score"></span></p>
-	<label>
-		Modificateur <input type="text" data-type="test-modifier-value" class="ta-center" style="width: 5ch">
-	</label>
+	<div class="grid gap-½ mt-½">
+		<label>
+			Modificateur <input type="text" data-type="test-modifier-value" class="ta-center" style="width: 5ch">
+		</label>
+		<label>
+			Jet secret pour le MJ <input type="checkbox" data-type="secret-test-checkbox">
+		</label>
+	</div>
 	<button class="btn-primary mt-1 mx-auto" data-type="send-test">Faire le jet</button>
 </dialog>
 

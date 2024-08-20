@@ -15,8 +15,8 @@ export function updateDOM(selector, source) {
 	const targetElement = document.querySelector(selector)
 	morphdom(targetElement, sourceElement, {
 		onBeforeElUpdated: function (fromEl, toEl) {
-			// keep <details> state (open/close)
-			if (fromEl.tagName === "DETAILS" && fromEl.classList === toEl.classList) toEl.open = fromEl.open;
+			// keep <details> state (open/close) if id are the same
+			if (fromEl.tagName === "DETAILS" && fromEl.id === toEl.id) toEl.open = fromEl.open;
 			if (fromEl.dataset.morhpdom === "ignore") return false;
 		}
 	});

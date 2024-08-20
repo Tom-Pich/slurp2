@@ -156,7 +156,7 @@
 		<p>À chaque tentative après la première, le pirate reçoit un malus de -3 cumulatif à son jet de compétence. Après un échec, il existe une chance (qui dépend du niveau de sécurisation) que la machine-cible détecte une tentative d’intrusion et réagisse en conséquence (selon ce que le programmeur a prévu&nbsp;: déconnexion, effacement des données, pistage de l’attaquant, déclenchement d’un périphérique, etc).</p>
 		
 		<h5>Tentative impossible</h5>
-		<p>Si le score net de l’attaquant en <i>Piraterie informatique</i> tombe en-dessous de 3, l’attaque est tout simplement impossible. Aucun jet ne pourra réussir (mais le pirate ne le saura pas forcément, il peut faire sa tentative et déclencher une alerte.</p>
+		<p>Si le score net de l’attaquant en <i>Piraterie informatique</i> tombe en-dessous de 3, l’attaque est tout simplement impossible. Aucun jet ne pourra réussir (mais le pirate ne le saura pas forcément, il peut faire sa tentative et déclencher une alerte).</p>
 		
 		<h4>Procédure d’attaque préparée</h4>
 		<p>Si l’attaquant connaît l’existence d’une faille de sécurité dans le système qu’il attaque, il fait son jet comme si le niveau de sécurisation de la cible était de 1.</p>

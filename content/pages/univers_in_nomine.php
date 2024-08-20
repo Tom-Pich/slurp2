@@ -9,7 +9,8 @@ $repo_powers = new PowerRepository("ins");
 
 ?>
 
-<article><!-- Personnage -->
+<!-- Personnage -->
+<article>
 	<h2>Personnage</h2>
 
 	<details>
@@ -112,7 +113,8 @@ $repo_powers = new PowerRepository("ins");
 
 </article>
 
-<article><!-- Archanges & Princes-Démons -->
+<!-- Archanges & Princes-Démons -->
+<article>
 	<h2>Archanges &amp; Princes-démons</h2>
 
 	<details>
@@ -363,7 +365,7 @@ $repo_powers = new PowerRepository("ins");
 	<details>
 		<summary class="h3">
 			<div>
-				<?php if ($_SESSION["Statut"] == 3) { ?><a href="gestion-listes?req=pouvoir&id=0" class="nude ff-far">&#xf044;</a><?php } ?>
+				<?php if ($_SESSION["Statut"] == 3) { ?><a href="gestion-listes?req=pouvoir&id=0" class="edit-link ff-far">&#xf044;</a><?php } ?>
 				Pouvoirs d’Anges
 			</div>
 		</summary>
@@ -385,7 +387,7 @@ $repo_powers = new PowerRepository("ins");
 	<details>
 		<summary class="h3">
 			<div>
-				<?php if ($_SESSION["Statut"] == 3) { ?><a href="gestion-listes?req=pouvoir&id=0" class="nude ff-far">&#xf044;</a><?php } ?>
+				<?php if ($_SESSION["Statut"] == 3) { ?><a href="gestion-listes?req=pouvoir&id=0" class="edit-link ff-far">&#xf044;</a><?php } ?>
 				Pouvoirs de Démons
 			</div>
 		</summary>

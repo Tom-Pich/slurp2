@@ -24,6 +24,7 @@ figcaption {text-align: center; font-style: italic;}
 	@include media { width: 100%; min-height: 0; border: 1px solid var(--clr-text); box-shadow: none; }
 	h2 {background: black; color: white; padding: .15em .30em; font-size: var(--fs-500); box-shadow: 0 2px 1px silver; margin: -1em 0 1rem;}
 	h4 {margin: .75em 0 .25em; font-size: var(--fs-450);}
+	h5 { margin: .75em 0 .25em; font-size: var(--fs-400); }
 	p {margin: .5em 0;}
 }
 

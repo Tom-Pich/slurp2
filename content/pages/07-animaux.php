@@ -5,6 +5,7 @@ use App\Repository\CreatureRepository;
 $creature_repo = new CreatureRepository;
 ?>
 
+<!-- Caractéristiques des animaux  -->
 <article>
 	<h2>Caractéristiques des animaux</h2>
 
@@ -63,6 +64,7 @@ $creature_repo = new CreatureRepository;
 	</details>
 </article>
 
+<!-- Combat -->
 <article>
 	<h2>Combat</h2>
 
@@ -91,6 +93,7 @@ $creature_repo = new CreatureRepository;
 
 </article>
 
+<!-- Quelques annimaux -->
 <article>
 	<h2>
 		<?php if ($_SESSION["Statut"] == 3) { ?>
@@ -115,6 +118,47 @@ $creature_repo = new CreatureRepository;
 		</details>
 	<?php } ?>
 
+</article>
+
+<!-- Considérations diverses -->
+<article>
+	<h2>Considérations diverses</h2>
+
+	<details>
+		<summary class="h3">Voyager à cheval</summary>
+
+		<h4>Distance en 1 heure</h4>
+
+		<p><b>Marche&nbsp;</b>: environ 7 km. C'est une allure tranquille qui permet au cheval de conserver son énergie.</p>
+		<p><b>Trot&nbsp;:</b> environ 14 km en une heure. Cette allure est idéale pour les longues distances car elle est rapide tout en étant moins fatigante que le galop.</p>
+		<p><b>Galop&nbsp;:</b> sur une courte distance, un cheval peut galoper environ 20 kilomètres en une heure, selon sa condition physique. Le galop est très exigeant et ne peut être maintenu longtemps sans pauses.</p>
+
+		<h4>Distance par jour</h4>
+		<p>
+			En moyenne, un cheval peut parcourir 30 km en une journée, principalement au trot ou au pas. Les chevaux bien hydratés, entraînés, en bonne santé et reposés sont capable de marcher pendant environ 8 heures, couvrant une distance d'environ 50 km.<br>
+			Cependant, peu de cavaliers peuvent rester en selle pendant aussi longtemps.
+		</p>
+		<div class="bg-grey-900 p-½ flow">
+			<h5>Rythme normal</h5>
+			<p>Avec un cheval moyen en bonne santé et norma&shy;lement chargé (un cavalier portant une armure légère + équipement de voyage), pour estimer la distance parcourue en une journée faire un jet d’<i>Équitation</i>&nbsp;:</p>
+			<p class="ta-center">distance parcourue = 30&nbsp;km + (MR+1)×5&nbsp;km</p>
+			<p>En cas d’échec, la distance parcourue est de 30 km.</p>
+		</div>
+		<p>Ce rythme est maintenable quasi-indéfiniment dans le temps. Il est adapté pour de longs voyages</p>
+
+		<h4>Course d'endurance</h4>
+		<p>Un excellent cavalier associé à un excellent cheval très bien entraîné peut parcourir 160 kilomètres en 14 à 15 heures.</p>
+		<div class="bg-grey-900 p-½ flow">
+			<h5>Rythme soutenu</h5>
+			<p>À creuser</p>
+			<ul>
+				<li>fatigue du cheval</li>
+				<li>degré d’intensité imposé par le cavalier</li>
+			</ul>
+		</div>
+		
+		<p class="mt-1 ta-right">Source&nbsp;: <a href="https://www.hudada.fr/blog/combien-de-temps-peut-courir-un-cheval/36/">hudada.com</a></p>
+	</details>
 </article>
 
 <script type="module" src="/scripts/creatures.js"></script>

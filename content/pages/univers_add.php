@@ -122,9 +122,11 @@ $creatures_repo = new CreatureRepository;
 
 </article>
 
-<article><!-- Équipement -->
+<!-- Équipement -->
+<article>
 	<h2>Équipement</h2>
 
+	<!-- Système monétaire -->
 	<details>
 		<summary class="h3">Système monétaire</summary>
 
@@ -150,6 +152,7 @@ $creatures_repo = new CreatureRepository;
 
 	</details>
 
+	<!-- Armes -->
 	<details>
 		<summary class="h3">Armes</summary>
 
@@ -178,6 +181,7 @@ $creatures_repo = new CreatureRepository;
 
 	</details>
 
+	<!-- Armures & boucliers -->
 	<details>
 		<summary class="h3">Armures &amp; boucliers</summary>
 
@@ -314,6 +318,7 @@ $creatures_repo = new CreatureRepository;
 
 	</details>
 
+	<!-- Équipement divers -->
 	<details>
 		<summary class="h3">Équipement divers</summary>
 
@@ -472,8 +477,12 @@ $creatures_repo = new CreatureRepository;
 				<td>3 pc&nbsp;; -</td>
 			</tr>
 			<tr>
+				<td>Outre, 2 L</td>
+				<td>5 pc&nbsp;; -</td>
+			</tr>
+			<tr>
 				<td>Outre, 5 L</td>
-				<td>10 pc&nbsp;; -</td>
+				<td>8 pc&nbsp;; -</td>
 			</tr>
 			<tr>
 				<td>Bouteille de céramique, 1 L</td>
@@ -484,8 +493,12 @@ $creatures_repo = new CreatureRepository;
 				<td>5 pc&nbsp;; 2 kg</td>
 			</tr>
 			<tr>
-				<td>Torche, 1 heure</td>
+				<td>Torche, ½ heure</td>
 				<td>½ pc&nbsp;; 0,5 kg</td>
+			</tr>
+			<tr>
+				<td>Torche, 1 heure</td>
+				<td>1 pc&nbsp;; 0,75 kg</td>
 			</tr>
 			<tr>
 				<td>Lanterne</td>
@@ -582,8 +595,9 @@ $creatures_repo = new CreatureRepository;
 		</table>
 	</details>
 
+	<!-- Nourriture & logement -->
 	<details>
-		<summary class="h3">Nourriture et logement</summary>
+		<summary class="h3">Nourriture &amp; logement</summary>
 		<table class="left-1 fs-300 alternate-o mt-1">
 			<tr>
 				<td>Couchage dans un dortoir</td>
@@ -592,6 +606,10 @@ $creatures_repo = new CreatureRepository;
 			<tr>
 				<td>Chambre, auberge moyenne</td>
 				<td>4-10 pc</td>
+			</tr>
+			<tr>
+				<td>Écurie et avoine, 1 cheval</td>
+				<td>1 pc</td>
 			</tr>
 			<tr>
 				<td>Repas dans une taverne</td>
@@ -636,6 +654,7 @@ $creatures_repo = new CreatureRepository;
 		</table>
 	</details>
 
+	<!-- Objets spéciaux & services magiques -->
 	<details>
 		<summary class="h3">Objets spéciaux &amp; services magiques</summary>
 
@@ -665,7 +684,8 @@ $creatures_repo = new CreatureRepository;
 
 </article>
 
-<article><!-- Magie -->
+<!-- Magie -->
+<article>
 	<h2>Magie</h2>
 
 	<details>

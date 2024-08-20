@@ -4,7 +4,7 @@ define("IS_ONLINE", $_SERVER['HTTP_HOST'] === 'jdr.pichegru.net');
 define("DB_ACTIVE", true);
 define("TABLE_PREFIX", "");
 define("GENERIC_PASSWORD", $_ENV["GENERIC_PASSWORD"]);
-define("VERSION", "3.12.4"); // 3.12 : gestion plus large des modif de caractéristiques
+define("VERSION", "3.12.7"); // 3.12 : gestion plus large des modifs de caractéristiques
 define("PRODUCTION", true); // run webpack before switching to true
 
 if (IS_ONLINE){

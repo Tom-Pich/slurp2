@@ -11,8 +11,9 @@ $articles = [
 	"almisie" => ["title" => "Almisie", "section" => "Villes de Burgonnie"],
 	"imegie" => ["title" => "Imégie", "section" => "Villes de Burgonnie"],
 	"auberge-vieille-tour" => ["title" => "Auberge de la Vieille Tour", "parent" => "imegie"],
-	"stomilie" => ["title" => "Stomilie", "section" => "Villes de Burgonnie"],
 	"port-goshal" => ["title" => "Port Goshal", "section" => "Villes de Burgonnie"],
+	"stomilie" => ["title" => "Stomilie", "section" => "Villes de Burgonnie"],
+	
 
 	"arcania" => ["title" => "Arcania", "section" => "Organisations"],
 	"atrimisme" => ["title" => "Atrimisme", "section" => "Organisations"],

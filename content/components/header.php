@@ -80,7 +80,7 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 		<nav>
 			<ul>
 				<li>
-					<h4>Règles principales</h4>
+					<h4>Règles</h4>
 					<ul class="sub-menu" style="--height: 14rem;">
 						<li><a href="/personnages"><?= $pages_data['personnages']["title"] ?></a></li>
 						<li><a href="/avdesav-comp-sorts"><?= $pages_data['avdesav-comp-sorts']["title"] ?></a></li>
@@ -104,6 +104,7 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 					<h4>Univers de jeu</h4>
 					<ul class="sub-menu">
 						<li><a href="/adapted-dungeons-dragons"><?= $pages_data['adapted-dungeons-dragons']["title"] ?></a></li>
+						<li><a href="/wiki/paorn">Wiki Paorn</a></li>
 						<li><a href="/in-nomine"><?= $pages_data['in-nomine']["title"] ?></a></li>
 						<li><a href="/cthulhu"><?= $pages_data['cthulhu']["title"] ?></a></li>
 					</ul>
@@ -114,10 +115,7 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 						<li><a href="/ecrire-scenario"><?= $pages_data['ecrire-scenario']["title"] ?></a></li>
 						<li><a href="/aide-de-jeu-medfan"><?= $pages_data['aide-de-jeu-medfan']["title"] ?></a></li>
 						<li><a href="/bibliotheque-liens"><?= $pages_data['bibliotheque-liens']["title"] ?></a></li>
-						<li><a href="/wiki/paorn">Wiki Paorn</a></li>
-						<?php if ($_SESSION['Statut'] >= 3) { ?>
-							<li><a href="/test">Test</a></li>
-						<?php } ?>
+						<?php if ($_SESSION['Statut'] >= 3) { ?> <li><a href="/test">Test</a></li> <?php } ?>
 					</ul>
 				</li>
 				<li>
