@@ -74,9 +74,9 @@ class AvDesavRepository extends AbstractRepository
 		$query = $this->db->query("SELECT DISTINCT Catégorie FROM av_desav");
 		$items = $query->fetchAll(\PDO::FETCH_ASSOC);
 		$query->closeCursor();
-		$categories = [];
+		$categories = ["Mixtes", "Avantages", "Désavantages physiques", "Désavantages sociaux", "Désavantages mentaux", "Désavantages vertueux", "Traits de caractère", "Caractéristiques secondaires", "PNJ", "Avantages surnaturels", "Psi"]; // default order
 		foreach ($items as $item) {
-			$categories[] = $item["Catégorie"];
+			if (!in_array($item["Catégorie"], $categories)) $categories[] = $item["Catégorie"];
 		}
 		return $categories;
 	}
@@ -85,7 +85,7 @@ class AvDesavRepository extends AbstractRepository
 		//id Nom Catégorie Coût Niv Pouvoir Description
 		
 		// correcting accented indexes
-		$data["Categorie"] = $data["Catégorie"];
+		$data["Categorie"] = htmlspecialchars($data["Catégorie"]);
 		unset($data["Catégorie"]);
 		$data["Cout"] = $data["Coût"];
 		unset($data["Coût"]);
@@ -99,7 +99,7 @@ class AvDesavRepository extends AbstractRepository
 		//id Nom Catégorie Coût Niv Pouvoir Description
 		
 		// correcting accented indexes
-		$data["Categorie"] = $data["Catégorie"];
+		$data["Categorie"] = htmlspecialchars($data["Catégorie"]);
 		unset($data["Catégorie"]);
 		$data["Cout"] = $data["Coût"];
 		unset($data["Coût"]);

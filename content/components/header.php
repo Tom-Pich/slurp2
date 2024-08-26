@@ -107,6 +107,7 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 						<li><a href="/wiki/paorn">Wiki Paorn</a></li>
 						<li><a href="/in-nomine"><?= $pages_data['in-nomine']["title"] ?></a></li>
 						<li><a href="/cthulhu"><?= $pages_data['cthulhu']["title"] ?></a></li>
+						<li><a href="/ombres-esteren"><?= $pages_data['ombres-esteren']["title"] ?></a></li>
 					</ul>
 				</li>
 				<li>

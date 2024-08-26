@@ -242,9 +242,9 @@ body.wiki {
 		h5 {font-size: var(--fs-450); }
 		p {text-align: justify; /* margin: var(--flow-space) 0 0; */}
 
-		details:has(summary h3) { margin-top: 2em; @include flow; }
+		/* details:has(summary h3) { margin-top: 2em; @include flow; }
 		summary:has(h3), > h3 { margin-bottom: 1em; border-bottom: 1px solid var(--clr-text); overflow: hidden; }
-		summary:has(h3)::after { font-size: var(--fs-600);}
+		summary:has(h3)::after { font-size: var(--fs-600);} */
 	}
 /* 	.article-content-wrapper {
 		display: flex; gap: var(--dynamic-space-3-5); margin-top: var(--dynamic-space-1-2);

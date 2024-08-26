@@ -42,7 +42,6 @@ originInputs.forEach((checkbox) => {
 });
 
 // reactivity to keyword input
-let keywordDelayId;
 keywordInput.addEventListener("keyup", (e) => {
   filterContent()
   //if (keywordDelayId) clearTimeout(keywordDelayId);
@@ -86,12 +85,12 @@ function filterSpells() {
   hideEmptyCategories();
 
   // hide title "Collèges spéciaux" if needed
-  const specialColleges = qsa("[data-role=spells-wrapper] h4 ~ details:not(.hidden");
+ /*  const specialColleges = qsa("[data-role=spells-wrapper] h4 ~ details:not(.hidden");
   const specialCollegesTitle = qs("[data-role=spells-wrapper] h4");
   if (specialCollegesTitle) {
     if (!specialColleges.length) specialCollegesTitle.classList.add("hidden");
     else specialCollegesTitle.classList.remove("hidden");
-  }
+  } */
 }
 
 // Filter skills by keyword

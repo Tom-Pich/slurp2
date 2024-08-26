@@ -342,7 +342,6 @@ class Character
 			!$kit_combattant ? $character["Compétences"][] = ["id" => 26] : null; // Esquive
 			$character["Compétences"][] = ["id" => 181]; // Furtivité
 			$character["Compétences"][] = ["id" => 127]; // Culture générale
-			!($kit_ange || $kit_demon) ? $character["Compétences"][] = ["id" => 200] : null; // Langue maternelle
 			$character["Compétences"][] = ["id" => 148]; // Baratin
 			$character["Compétences"][] = ["id" => 147]; // Acteur
 		}

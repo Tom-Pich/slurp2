@@ -6,6 +6,7 @@ use App\Repository\AvDesavRepository;
 use App\Repository\CreatureRepository;
 use App\Repository\SpellRepository;
 use App\Rules\ArmorsController;
+use App\Rules\EquipmentListController;
 
 $avdesav_repo = new AvDesavRepository;
 $spells_repo = new SpellRepository;
@@ -34,7 +35,7 @@ $creatures_repo = new CreatureRepository;
 
 		<h4>Avantages &amp; désavantages spécifiques</h4>
 		<?php
-		$avdesav_list = $avdesav_repo->getAvDesavByCategory("ADD");
+		$avdesav_list = $avdesav_repo->getAvDesavByCategory("AD&amp;D");
 		foreach ($avdesav_list as $avdesav) {
 			$avdesav->displayInRules(show_edit_link: $_SESSION["Statut"] === 3);
 		}
@@ -157,9 +158,9 @@ $creatures_repo = new CreatureRepository;
 		<summary class="h3">Armes</summary>
 
 		<?php
-		$weapons = array_filter(WeaponsController::weapons, fn ($weapon) => !(in_array($weapon["catégorie"], ["exclu", "spéciale"]) || in_array($weapon["nom"], ["Javelot", "Sarbacane", "Rapière", "Sabre", "Trident"])));
+		$weapons = array_filter(WeaponsController::weapons, fn($weapon) => isset($weapon["prix"][0]));
 		//$weapons = Sorter::sort($weapons, "nom");
-		WeaponsController::displayWeaponsList($weapons, false, true, "prix-add");
+		WeaponsController::displayWeaponsList($weapons, false, true, 0);
 		?>
 
 		<h4>Notes diverses</h4>
@@ -182,20 +183,55 @@ $creatures_repo = new CreatureRepository;
 	</details>
 
 	<!-- Armures & boucliers -->
+	 <?php
+	 // parameters for displayed armors and armor options
+	 $price_index = 0;
+	 $with_magic_modifiers = true;
+	 $armors = array_filter(ArmorsController::armors, fn($armor) => isset($armor["prix"][$price_index]))
+	 ?>
 	<details>
 		<summary class="h3">Armures &amp; boucliers</summary>
 
 		<h4>Armures</h4>
 
+		<p>Les poids des armures incluent des vêtements légers. Ils sont donnés pour une armure «&nbsp;hypothétique&nbsp;» complète couvrant tout sauf le visage. De telles armures n’existent généralement pas. Il est donc préférable, pour être plus réaliste, de confectionner une armure composite, c’est-à-dire formée de plusieurs pièces d’armures différentes. Voir paragraphe suivant.</p>
+
+		<table class="left-1 alternate-e">
+			<tr>
+				<th>Armure</th>
+				<th>RD</th>
+				<th>Poids</th>
+				<th>pc</th>
+			</tr>
+			<?php foreach ($armors as $armor) { ?>
+				<tr>
+					<td><?= $armor["nom"] . ($armor["notes"] ? "<sup>" . $armor["notes"] . "</sup>" : "") ?></td>
+					<td><?= $armor["RD"] ?></td>
+					<td><?= $armor["pds"] ?> kg</td>
+					<td><?= $armor["prix"][0] ?></td>
+				</tr>
+			<?php } ?>
+		</table>
+
+		<details>
+			<summary>
+				<h4>Notes</h4>
+			</summary>
+			<?php foreach (ArmorsController::armors_notes as $index => $note) { ?>
+				<p><b><?= $index ?>&nbsp;:</b> <?= $note ?></p>
+			<?php } ?>
+		</details>
+
+		<h4>Armures composites</h4>
 		<p>Composez votre armure en respectant un certain réalisme. Le prix et le poids d’une armure dépendent de plusieurs facteurs.</p>
 
 		<ul>
 			<li>
-				<b>sa taille&nbsp;:</b>
-				<ul>
+				<b>sa taille&nbsp;:</b> <i>grande</i> (homme de forte carrure), <i>moyenne</i>, <i>petite</i> (femme, elfe, nain), ou <i>très petite</i> (hobbit)
+				<!-- <ul>
 					<li>petite (femme, elfe, nain)&nbsp;: poids ×0.8, prix ×0.9</li>
 					<li>très petite (hobbit)&nbsp;: poids ×0.6, prix ×0.8</li>
-				</ul>
+				</ul> -->
 
 			</li>
 			<li><b>son type</b> (cuir, cotte de maille&hellip;)</li>
@@ -203,94 +239,7 @@ $creatures_repo = new CreatureRepository;
 			<li><b>son niveau d’enchantement</b> (ici, seul l’impact sur le poids est calculé).</li>
 		</ul>
 
-		<div class="mt-2 p-1 bg-accent fs-300" id="armor-widget">
-
-			<p>Sélectionner des paramètres globaux si vous le souhaitez</p>
-
-			<div class="grid ai-center" style="grid-template-columns: 1fr 1fr;">
-				<span>Taille de l’armure</span>
-				<select id="armor-size">
-					<?php foreach (ArmorsController::armor_sizes as $size) { ?>
-						<option data-weight="<?= $size["mult_poids"] ?>" data-price="<?= $size["mult_prix"] ?>"><?= ucfirst($size["nom"]) ?></option>
-					<?php } ?>
-				</select>
-			</div>
-
-			<div class="grid ai-center mt-½" style="grid-template-columns: 1fr 1fr;">
-				<span>Type global</span>
-				<select id="armor-type">
-					<option value="0" data-weight="0" data-price="0">–</option>
-					<?php foreach (ArmorsController::armors as $index => $armor) { ?>
-						<option value="<?= $index ?>"><?= ucfirst($armor["nom"]) ?></option>
-					<?php } ?>
-				</select>
-			</div>
-
-			<div class="grid ai-center mt-½" style="grid-template-columns: 1fr 1fr;">
-				<span>Qualité globale</span>
-				<select id="armor-quality">
-					<?php foreach (ArmorsController::armor_qualities as $index => $data) { ?>
-						<option value="<?= $index ?>"><?= ucfirst($data["nom"]) ?></option>
-					<?php } ?>
-				</select>
-			</div>
-
-			<div class="grid ai-center mt-½" style="grid-template-columns: 1fr 1fr;">
-				<span>Enchantement global</span>
-				<select id="armor-enchantment">
-					<option value="0">Non magique</option>
-					<option value="1">+1 ou +2</option>
-					<option value="2">+2 ou +3</option>
-				</select>
-			</div>
-
-			<table class="alternate-e mt-2 left-1">
-				<tr>
-					<th></th>
-					<th style="width: 9ch">Poids</th>
-					<th style="width: 9ch">Prix</th>
-				</tr>
-				<!-- Parties d’armure -->
-				<?php foreach (ArmorsController::armor_parts as $index => $part) { ?>
-					<tr data-type="armor-row" data-weight="<?= $part["mult_poids"] ?>" data-price="<?= $part["mult_prix"] ?>">
-						<td class="py-½">
-
-							<div class="flex-s gap-½">
-								<b class="fl-1"><?= $part["nom"] ?></b>
-								<label>(½) <input type="checkbox"></label>
-							</div>
-
-							<select class="full-width mt-¼" data-type="armor-type">
-								<option value="0" data-weight="0" data-price="0">–</option>
-								<?php foreach (ArmorsController::armors as $index => $armor) { ?>
-									<option value="<?= $index ?>" data-weight="<?= $armor["poids"] ?>" data-price="<?= $armor["prix-add"] ?>"><?= ucfirst($armor["nom"]) ?></option>
-								<?php } ?>
-							</select>
-
-							<select class="full-width mt-¼" data-type="armor-quality">
-								<?php foreach (ArmorsController::armor_qualities as $index => $data) { ?>
-									<option value="<?= $index ?>" data-weight="<?= $data["mult_poids"] ?>" data-price="<?= $data["mult_prix"] ?>"><?= ucfirst($data["nom"]) ?></option>
-								<?php } ?>
-							</select>
-
-							<select class="full-width mt-¼" data-type="armor-enchantment">
-								<option value="0" data-weight="1">Non magique</option>
-								<option value="1" data-weight="0.67">+1 ou +2</option>
-								<option value="2" data-weight="0.5">+2 ou +3</option>
-							</select>
-						</td>
-						<td></td>
-						<td></td>
-					</tr>
-				<?php } ?>
-				<tr id="armor-total">
-					<th>Total</th>
-					<th></th>
-					<th></th>
-				</tr>
-			</table>
-
-		</div>
+		<?php include "content/components/widget-armor-composer.php"; ?>
 
 		<h4>Qualité des armures</h4>
 		<p>
@@ -310,19 +259,17 @@ $creatures_repo = new CreatureRepository;
 				<tr>
 					<td><?= $shield["nom"] ?></td>
 					<td><?= $shield["DP"] ?></td>
-					<td><?= $shield["poids"] ?> kg</td>
-					<td><?= $shield["prix-add"] ?> pc</td>
+					<td><?= $shield["pds"] ?> kg</td>
+					<td><?= $shield["prix"][0] ?> pc</td>
 				</tr>
 			<?php } ?>
 		</table>
 
 	</details>
 
-	<!-- Équipement divers -->
+	<!-- Vêtements -->
 	<details>
-		<summary class="h3">Équipement divers</summary>
-
-		<h4>Vêtements</h4>
+		<summary class="h3">Vêtements</summary>
 		<table class="left-1 fs-300 alternate-o">
 			<tr>
 				<td>Haillons*</td>
@@ -351,6 +298,10 @@ $creatures_repo = new CreatureRepository;
 			<tr>
 				<td>Tunique</td>
 				<td>30 pc&nbsp;; 0,25 kg</td>
+			</tr>
+			<tr>
+				<td>Ceinture de cuir</td>
+				<td>7 pc&nbsp;; 0,15 kg</td>
 			</tr>
 			<tr>
 				<td>Veste de cuir (souple, RD1)</td>
@@ -409,6 +360,99 @@ $creatures_repo = new CreatureRepository;
 			* Les vêtements incluent un pantalon, une chemise, une ceinture et des sous-vêtements, mais ni chaussures, ni veste, ni cape.<br>
 			** Les vêtements d’hiver sont plus chauds et plus épais. Ils incluent une veste ou autre protection légère (tunique) contre le froid.
 		</p>
+	</details>
+
+	<!-- Équipement divers -->
+	<details>
+		<summary class="h3">Équipement divers</summary>
+
+		<h4>Équipement de voyage</h4>
+		<table class="left-1 fs-300 alternate-o">
+			<tr>
+				<td>Set pour manger (cuillère, petit couteau, bol en bois)</td>
+				<td>5 pc&nbsp;; 0,25 kg</td>
+			</tr>
+			<tr>
+				<td>Bourse</td>
+				<td>2 pc&nbsp;; -</td>
+			</tr>
+			<tr>
+				<td>Sacoche / Besace</td>
+				<td>10 pc&nbsp;; 0,25 kg</td>
+			</tr>
+			<tr>
+				<td>Sac à dos</td>
+				<td>15 pc&nbsp;; 0,5 kg</td>
+			</tr>
+			<tr>
+				<td>Outre, 1 L</td>
+				<td>3 pc&nbsp;; -</td>
+			</tr>
+			<tr>
+				<td>Outre, 2 L</td>
+				<td>5 pc&nbsp;; -</td>
+			</tr>
+			<tr>
+				<td>Outre, 5 L</td>
+				<td>8 pc&nbsp;; -</td>
+			</tr>
+			<tr>
+				<td>Bouteille de céramique, 1 L</td>
+				<td>3 pc&nbsp;; 0,5 kg</td>
+			</tr>
+			<tr>
+				<td>Grosse bouteille de céramique, 5 L</td>
+				<td>5 pc&nbsp;; 2 kg</td>
+			</tr>
+			<tr>
+				<td>Torche, ½ heure</td>
+				<td>½ pc&nbsp;; 0,5 kg</td>
+			</tr>
+			<tr>
+				<td>Torche, 1 heure</td>
+				<td>1 pc&nbsp;; 0,75 kg</td>
+			</tr>
+			<tr>
+				<td>Petite lanterne</td>
+				<td>20 pc&nbsp;; 0.5 kg</td>
+			</tr>
+			<tr>
+				<td>Huile de lampe (0,5 L, 24h)</td>
+				<td>2 pc&nbsp;; 0,5 kg</td>
+			</tr>
+			<tr>
+				<td>Briquet à amadou</td>
+				<td>5 pc</td>
+			</tr>
+			<tr>
+				<td>Tente 4 places (+ 2 perches de 2 m)</td>
+				<td>150 pc&nbsp;; 15 kg</td>
+			</tr>
+			<tr>
+				<td>Couverture (laine)</td>
+				<td>10 pc&nbsp;; 2 kg</td>
+			</tr>
+			<tr>
+				<td>Sac de couchage (pour grand froid)</td>
+				<td>100 pc&nbsp;; 6 kg</td>
+			</tr>
+			<tr>
+				<td>Cordelette (diam. 0,5 cm, 40 kg), 10 m</td>
+				<td>3 pc&nbsp;; 0,2 kg</td>
+			</tr>
+			<tr>
+				<td>Corde (diam. 1 cm, 150 kg), 10 m</td>
+				<td>5 pc&nbsp;; 0,75 kg</td>
+			</tr>
+			<tr>
+				<td>Grosse corde (diam. 2 cm, 600 kg), 10 m</td>
+				<td>15 pc&nbsp;; 3 kg</td>
+			</tr>
+			<tr>
+				<td>Grappin léger (supporte 150kg)</td>
+				<td>20 pc&nbsp;; 1 kg</td>
+			</tr>
+		</table>
 
 		<h4>Équipement spécial</h4>
 		<table class="left-1 fs-300 alternate-o">
@@ -454,91 +498,21 @@ $creatures_repo = new CreatureRepository;
 			</tr>
 		</table>
 
-		<h4>Équipement de voyage</h4>
-		<table class="left-1 fs-300 alternate-o">
-			<tr>
-				<td>Set pour manger (cuillère, petit couteau...)</td>
-				<td>5 pc&nbsp;; 0,25 kg</td>
-			</tr>
-			<tr>
-				<td>Bourse</td>
-				<td>2 pc&nbsp;; -</td>
-			</tr>
-			<tr>
-				<td>Sacoche / Besace</td>
-				<td>10 pc&nbsp;; 0,25 kg</td>
-			</tr>
-			<tr>
-				<td>Sac à dos</td>
-				<td>15 pc&nbsp;; 0,5 kg</td>
-			</tr>
-			<tr>
-				<td>Outre, 1 L</td>
-				<td>3 pc&nbsp;; -</td>
-			</tr>
-			<tr>
-				<td>Outre, 2 L</td>
-				<td>5 pc&nbsp;; -</td>
-			</tr>
-			<tr>
-				<td>Outre, 5 L</td>
-				<td>8 pc&nbsp;; -</td>
-			</tr>
-			<tr>
-				<td>Bouteille de céramique, 1 L</td>
-				<td>3 pc&nbsp;; 0,5 kg</td>
-			</tr>
-			<tr>
-				<td>Grosse bouteille de céramique, 5 L</td>
-				<td>5 pc&nbsp;; 2 kg</td>
-			</tr>
-			<tr>
-				<td>Torche, ½ heure</td>
-				<td>½ pc&nbsp;; 0,5 kg</td>
-			</tr>
-			<tr>
-				<td>Torche, 1 heure</td>
-				<td>1 pc&nbsp;; 0,75 kg</td>
-			</tr>
-			<tr>
-				<td>Lanterne</td>
-				<td>20 pc&nbsp;; 1 kg</td>
-			</tr>
-			<tr>
-				<td>Huile de lampe (0,5 L, brûle pendant 24h)</td>
-				<td>2 pc&nbsp;; 0,5 kg</td>
-			</tr>
-			<tr>
-				<td>Briquet à amadou</td>
-				<td>5 pc</td>
-			</tr>
-			<tr>
-				<td>Tente 4 places (+ 2 perches de 2 m)</td>
-				<td>150 pc&nbsp;; 15 kg</td>
-			</tr>
-			<tr>
-				<td>Couverture (grosse laine)</td>
-				<td>20 pc&nbsp;; 2,5 kg</td>
-			</tr>
-			<tr>
-				<td>Sac de couchage (pour grand froid)</td>
-				<td>100 pc&nbsp;; 6 kg</td>
-			</tr>
-			<tr>
-				<td>Corde (diam. 1 cm, 150 kg), 10 m</td>
-				<td>5 pc&nbsp;; 0,75 kg</td>
-			</tr>
-			<tr>
-				<td>Grosse corde (diam. 2 cm, 550 kg), 10 m</td>
-				<td>150 pc&nbsp;; 4 kg</td>
-			</tr>
-			<tr>
-				<td>Grappin léger (supporte 150kg)</td>
-				<td>20 pc&nbsp;; 1 kg</td>
-			</tr>
-		</table>
+	</details>
 
-		<h4>Animaux et harnachement</h4>
+	<!-- Nourriture & logement -->
+	<details>
+		<summary class="h3">Nourriture &amp; logement</summary>
+		<?php
+		$items = array_filter(EquipmentListController::equipment_list, fn($item) => in_array($item[3], ["auberge", "nourriture"]));
+		EquipmentListController::displayEquipmentList($items, 0);
+		?>
+	</details>
+
+	<!-- Animaux -->
+	<details>
+		<summary class="h3">Animaux et harnachement</summary>
+
 		<table class="left-1 fs-300 alternate-o">
 			<tr>
 				<td>Ane</td>
@@ -591,65 +565,6 @@ $creatures_repo = new CreatureRepository;
 			<tr>
 				<td>Porc (60 kg)</td>
 				<td>45 pc</td>
-			</tr>
-		</table>
-	</details>
-
-	<!-- Nourriture & logement -->
-	<details>
-		<summary class="h3">Nourriture &amp; logement</summary>
-		<table class="left-1 fs-300 alternate-o mt-1">
-			<tr>
-				<td>Couchage dans un dortoir</td>
-				<td>2 pc</td>
-			</tr>
-			<tr>
-				<td>Chambre, auberge moyenne</td>
-				<td>4-10 pc</td>
-			</tr>
-			<tr>
-				<td>Écurie et avoine, 1 cheval</td>
-				<td>1 pc</td>
-			</tr>
-			<tr>
-				<td>Repas dans une taverne</td>
-				<td>2-4 pc</td>
-			</tr>
-			<tr>
-				<td>Chope de bière dans une taverne</td>
-				<td>½ pc</td>
-			</tr>
-			<tr>
-				<td>Ration de voyageur (un repas)</td>
-				<td>2 pc&nbsp;; 0,25 kg</td>
-			</tr>
-			<tr>
-				<td>Fromage, 1 kg</td>
-				<td>2-5 pc</td>
-			</tr>
-			<tr>
-				<td>Lard, 1 kg</td>
-				<td>3 pc</td>
-			</tr>
-			<tr>
-				<td>Viande de porc, 1 kg</td>
-				<td>2-3 pc</td>
-			</tr>
-			<tr>
-				<td>Œufs, la douzaine</td>
-				<td>1 pc</td>
-			</tr>
-			<tr>
-				<td>Pain, 1 kg</td>
-				<td>1 pc</td>
-			</tr>
-			<tr>
-				<td>Vin, 1 litre</td>
-				<td>1-3 pc</td>
-			</tr>
-			<tr>
-				<td>Liqueur, 1 litre</td>
-				<td>3-6 pc</td>
 			</tr>
 		</table>
 	</details>
@@ -1253,5 +1168,4 @@ $creatures_repo = new CreatureRepository;
 </article>
 
 <script type="module" src="/scripts/magical-items.js?v=<?= VERSION ?>"></script>
-<script type="module" src="/scripts/armor-calculator.js?v=<?= VERSION ?>"></script>
 <script type="module" src="/scripts/creatures.js?v=<?= VERSION ?>"></script>

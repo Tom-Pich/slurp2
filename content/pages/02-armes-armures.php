@@ -176,13 +176,14 @@ use App\Rules\WeaponsController;
 
 </article>
 
+<!-- Armes antiques & médiévales -->
 <article>
 	<h2>Armes antiques &amp; médiévales</h2>
 
 	<details>
 		<summary class="h3">Arc &amp; Arbalète</summary>
 		<?php
-		$weapons = array_filter(WeaponsController::weapons, fn ($weapon) => $weapon["catégorie"] === "arc-arbalète");
+		$weapons = array_filter(WeaponsController::weapons, fn($weapon) => $weapon["cat"] === "arc");
 		WeaponsController::displayWeaponsList($weapons);
 		?>
 		<p class="fs-300">Poids des flèches et carreaux&nbsp;: 50 g</p>
@@ -191,7 +192,7 @@ use App\Rules\WeaponsController;
 	<details>
 		<summary class="h3">Épées, couteaux &amp; sabres</summary>
 		<?php
-		$weapons = array_filter(WeaponsController::weapons, fn ($weapon) => $weapon["catégorie"] === "épée-couteau");
+		$weapons = array_filter(WeaponsController::weapons, fn($weapon) => $weapon["cat"] === "épée");
 		WeaponsController::displayWeaponsList($weapons);
 		?>
 	</details>
@@ -199,7 +200,7 @@ use App\Rules\WeaponsController;
 	<details>
 		<summary class="h3">Haches, masses &amp; fléaux</summary>
 		<?php
-		$weapons = array_filter(WeaponsController::weapons, fn ($weapon) => $weapon["catégorie"] === "hache-masse");
+		$weapons = array_filter(WeaponsController::weapons, fn($weapon) => $weapon["cat"] === "h-m");
 		WeaponsController::displayWeaponsList($weapons);
 		?>
 	</details>
@@ -207,7 +208,7 @@ use App\Rules\WeaponsController;
 	<details>
 		<summary class="h3">Lances &amp; armes d’hast</summary>
 		<?php
-		$weapons = array_filter(WeaponsController::weapons, fn ($weapon) => $weapon["catégorie"] === "lance");
+		$weapons = array_filter(WeaponsController::weapons, fn($weapon) => $weapon["cat"] === "lance");
 		WeaponsController::displayWeaponsList($weapons);
 		?>
 	</details>
@@ -215,7 +216,7 @@ use App\Rules\WeaponsController;
 	<details>
 		<summary class="h3">Bâtons, gourdins et cailloux</summary>
 		<?php
-		$weapons = array_filter(WeaponsController::weapons, fn ($weapon) => $weapon["catégorie"] === "gourdin-caillou");
+		$weapons = array_filter(WeaponsController::weapons, fn($weapon) => $weapon["cat"] === "g-c");
 		WeaponsController::displayWeaponsList($weapons);
 		?>
 	</details>
@@ -223,36 +224,17 @@ use App\Rules\WeaponsController;
 	<details>
 		<summary class="h3">Armes diverses</summary>
 		<?php
-		$weapons = array_filter(WeaponsController::weapons, fn ($weapon) => $weapon["catégorie"] === "divers");
+		$weapons = array_filter(WeaponsController::weapons, fn($weapon) => $weapon["cat"] === "divers");
 		WeaponsController::displayWeaponsList($weapons);
 		?>
 	</details>
 
 	<details>
 		<summary class="h3">Armes spéciales</summary>
-		<div class="flex-s fw-600 fs-300 gap-½ mt-½">
-			<div style="width: 10ch"></div>
-			<div class="fl-1">Dégâts, Prt</div>
-			<div class="ta-center" style="width: 3.5ch">Fm</div>
-			<div class="ta-center" style="width: 3.5ch">Pds</div>
-			<div style="width: 1ch"></div>
-		</div>
 		<?php
-		$weapons_in_category = array_filter(WeaponsController::weapons, fn ($weapon) => $weapon["catégorie"] === "spéciale");
-		$is_odd = true;
-		foreach ($weapons_in_category as $weapon => $data) { ?>
-			<details class="fs-300 <?= $is_odd ? "bg-grey-900" : "" ?>">
-				<summary class="flex-s gap-½">
-					<div style="width: 10ch"><?= $weapon ?><?= $data["notes"] ? ("<sup>" . $data["notes"] . "</sup>") : "" ?></div>
-					<div class="fl-1"><?= $data["dégâts"] ?></div>
-					<div class="ta-center" style="width: 3.5ch"><?= $data["Fmin"] ?></div>
-					<div class="ta-center" style="width: 3.5ch"><?= $data["poids"] ?></div>
-				</summary>
-				<p><?= $data["description"] ?></p>
-			</details>
-		<?php
-			$is_odd = !$is_odd;
-		} ?>
+		$weapons = array_filter(WeaponsController::weapons, fn($weapon) => $weapon["cat"] === "spéciale");
+		WeaponsController::displaySpecialWeapon($weapons);
+		?>
 	</details>
 
 	<details class="mt-1">
@@ -267,6 +249,7 @@ use App\Rules\WeaponsController;
 
 </article>
 
+<!-- Armes à feu -->
 <article>
 	<h2>Armes à feu</h2>
 
@@ -275,19 +258,19 @@ use App\Rules\WeaponsController;
 
 		<h4>Génériques, NT6</h4>
 		<?php
-		$weapons = array_filter(WeaponsController::firearms, fn ($weapon) => $weapon["catégorie"] === "arme-de-poing-nt6");
+		$weapons = array_filter(WeaponsController::firearms, fn($weapon) => $weapon["cat"] === "arme-de-poing-nt6");
 		WeaponsController::displayWeaponsList($weapons, true);
 		?>
 
 		<h4>Génériques, NT7</h4>
 		<?php
-		$weapons = array_filter(WeaponsController::firearms, fn ($weapon) => $weapon["catégorie"] === "arme-de-poing-nt7");
+		$weapons = array_filter(WeaponsController::firearms, fn($weapon) => $weapon["cat"] === "arme-de-poing-nt7");
 		WeaponsController::displayWeaponsList($weapons, true, false);
 		?>
 
 		<h4>Génériques, NT8</h4>
 		<?php
-		$weapons = array_filter(WeaponsController::firearms, fn ($weapon) => $weapon["catégorie"] === "arme-de-poing-nt8");
+		$weapons = array_filter(WeaponsController::firearms, fn($weapon) => $weapon["cat"] === "arme-de-poing-nt8");
 		WeaponsController::displayWeaponsList($weapons, true, false);
 		?>
 
@@ -295,7 +278,7 @@ use App\Rules\WeaponsController;
 		<p>Conçu au début des années 1980. Premier pistolet semi-automatique pouvant tirer du .357 magnum, .44 magnum et .50AE (plus puissante munition à ce jour pour un pistolet semi-auto). En plus de présenter une capacité limitée (7 à 9 coups selon les modèles), sa masse et son encombrement le rendent difficile à porter en permanence. Il n’est pas employé par les forces militaires ou de police à cause de sa taille et de son coût.</p>
 		<img src="assets/img_equipement/desert-eagle-50ae.png" height="70" class="mx-auto">
 		<?php
-		$weapons = array_filter(WeaponsController::firearms, fn ($weapon) => $weapon["catégorie"] === "desert-eagle");
+		$weapons = array_filter(WeaponsController::firearms, fn($weapon) => $weapon["cat"] === "desert-eagle");
 		WeaponsController::displayWeaponsList($weapons, true, false);
 		?>
 
@@ -306,19 +289,19 @@ use App\Rules\WeaponsController;
 
 		<h4>Génériques, NT6</h4>
 		<?php
-		$weapons = array_filter(WeaponsController::firearms, fn ($weapon) => $weapon["catégorie"] === "fusil-nt6");
+		$weapons = array_filter(WeaponsController::firearms, fn($weapon) => $weapon["cat"] === "fusil-nt6");
 		WeaponsController::displayWeaponsList($weapons, true);
 		?>
 
 		<h4>Génériques, NT7</h4>
 		<?php
-		$weapons = array_filter(WeaponsController::firearms, fn ($weapon) => $weapon["catégorie"] === "fusil-nt7");
+		$weapons = array_filter(WeaponsController::firearms, fn($weapon) => $weapon["cat"] === "fusil-nt7");
 		WeaponsController::displayWeaponsList($weapons, true, false);
 		?>
 
 		<h4>Génériques, NT8</h4>
 		<?php
-		$weapons = array_filter(WeaponsController::firearms, fn ($weapon) => $weapon["catégorie"] === "fusil-nt8");
+		$weapons = array_filter(WeaponsController::firearms, fn($weapon) => $weapon["cat"] === "fusil-nt8");
 		WeaponsController::displayWeaponsList($weapons, true, false);
 		?>
 		<p class="fs-300">* lunette de visée +3 intégrée</p>
@@ -331,7 +314,7 @@ use App\Rules\WeaponsController;
 		</p>
 		<img src="assets/img_equipement/winchester-model70.png" height="70" class="mx-auto">
 		<?php
-		$weapons = array_filter(WeaponsController::firearms, fn ($weapon) => $weapon["catégorie"] === "winchester-classic-hunter");
+		$weapons = array_filter(WeaponsController::firearms, fn($weapon) => $weapon["cat"] === "winchester-classic-hunter");
 		WeaponsController::displayWeaponsList($weapons, true, false);
 		?>
 
@@ -339,7 +322,7 @@ use App\Rules\WeaponsController;
 		<p>Le HK416 est un fusil d’assaut de calibre 5,56N. Fabriqué depuis 2005, il est devenu le fusil standard de l’armée française en 2017. C’est une arme très fiable (<i>Malf</i> 18).</p>
 		<img src="assets/img_equipement/hk-416.png" height="70" class="mx-auto">
 		<?php
-		$weapons = array_filter(WeaponsController::firearms, fn ($weapon) => $weapon["catégorie"] === "hk-416");
+		$weapons = array_filter(WeaponsController::firearms, fn($weapon) => $weapon["cat"] === "hk-416");
 		WeaponsController::displayWeaponsList($weapons, true, false);
 		?>
 
@@ -348,7 +331,7 @@ use App\Rules\WeaponsController;
 	<details>
 		<summary class="h3">Shotguns</summary>
 		<?php
-		$weapons = array_filter(WeaponsController::firearms, fn ($weapon) => $weapon["catégorie"] === "shotgun");
+		$weapons = array_filter(WeaponsController::firearms, fn($weapon) => $weapon["cat"] === "shotgun");
 		WeaponsController::displayWeaponsList($weapons, true);
 		?>
 		<p class="fs-300">Si la crosse est sciée, +1 à la Fmin, +1 au Rcl et le poids de l’arme est diminué de 0,5 kg.<br>
@@ -361,19 +344,19 @@ use App\Rules\WeaponsController;
 
 		<h4>Génériques, NT6</h4>
 		<?php
-		$weapons = array_filter(WeaponsController::firearms, fn ($weapon) => $weapon["catégorie"] === "mitraillette-nt6");
+		$weapons = array_filter(WeaponsController::firearms, fn($weapon) => $weapon["cat"] === "mitraillette-nt6");
 		WeaponsController::displayWeaponsList($weapons, true);
 		?>
 
 		<h4>Génériques, NT7</h4>
 		<?php
-		$weapons = array_filter(WeaponsController::firearms, fn ($weapon) => $weapon["catégorie"] === "mitraillette-nt7");
+		$weapons = array_filter(WeaponsController::firearms, fn($weapon) => $weapon["cat"] === "mitraillette-nt7");
 		WeaponsController::displayWeaponsList($weapons, true, false);
 		?>
 
 		<h4>Génériques, NT8</h4>
 		<?php
-		$weapons = array_filter(WeaponsController::firearms, fn ($weapon) => $weapon["catégorie"] === "mitraillette-nt8");
+		$weapons = array_filter(WeaponsController::firearms, fn($weapon) => $weapon["cat"] === "mitraillette-nt8");
 		WeaponsController::displayWeaponsList($weapons, true, false);
 		?>
 
@@ -384,7 +367,7 @@ use App\Rules\WeaponsController;
 		</p>
 		<img src="assets/img_equipement/ingram-mac-10.png" height="70" class="mx-auto">
 		<?php
-		$weapons = array_filter(WeaponsController::firearms, fn ($weapon) => $weapon["catégorie"] === "ingram-mac-10");
+		$weapons = array_filter(WeaponsController::firearms, fn($weapon) => $weapon["cat"] === "ingram-mac-10");
 		WeaponsController::displayWeaponsList($weapons, true, false);
 		?>
 
@@ -423,6 +406,7 @@ use App\Rules\WeaponsController;
 
 </article>
 
+<!-- Armures & boucliers -->
 <article>
 	<h2>Armures &amp; boucliers</h2>
 
@@ -440,7 +424,7 @@ use App\Rules\WeaponsController;
 				<tr>
 					<td><?= $armor["nom"] . ($armor["notes"] ? "<sup>" . $armor["notes"] . "</sup>" : "") ?></td>
 					<td><?= $armor["RD"] ?></td>
-					<td><?= $armor["poids"] ?> kg</td>
+					<td><?= $armor["pds"] ?> kg</td>
 				</tr>
 			<?php } ?>
 		</table>
@@ -452,8 +436,8 @@ use App\Rules\WeaponsController;
 
 		<h4>Qualité des armures</h4>
 		<p>
-			<b>Bonne qualité&nbsp;:</b> poids ×<?= ArmorsController::armor_qualities["bq"]["mult_poids"] ?>, prix ×<?= ArmorsController::armor_qualities["bq"]["mult_prix"] ?><br>
-			<b>Très bonne qualité&nbsp;:</b> +1 en RD, poids ×<?= ArmorsController::armor_qualities["tbq"]["mult_poids"] ?>, prix ×<?= ArmorsController::armor_qualities["tbq"]["mult_prix"] ?>
+			<b>Bonne qualité&nbsp;:</b> poids ×<?= ArmorsController::armor_qualities["bq"]["mult_pds"] ?>, prix ×<?= ArmorsController::armor_qualities["bq"]["mult_prix"] ?><br>
+			<b>Très bonne qualité&nbsp;:</b> +1 en RD, poids ×<?= ArmorsController::armor_qualities["tbq"]["mult_pds"] ?>, prix ×<?= ArmorsController::armor_qualities["tbq"]["mult_prix"] ?>
 		</p>
 
 		<h4>Pièces d’armure</h4>
@@ -467,16 +451,16 @@ use App\Rules\WeaponsController;
 			<?php foreach (ArmorsController::armor_parts as $part) { ?>
 				<tr>
 					<td><?= $part["nom"] ?><?= $part["notes"] ? ("<sup>" . $part["notes"] . "</sup>") : "" ?></td>
-					<td><?= $part["mult_poids"] ?></td>
+					<td><?= $part["mult_pds"] ?></td>
 					<td><?= $part["mult_prix"] ?></td>
 				</tr>
 			<?php } ?>
 		</table>
 
 		<div class="mt-½">
-			<p><b>(1)</b> la protection du cou est normalement assurée par la pièce d’armure du torse. Mais pour certains types d’armures (cuir, brigandine, maille), il est possible de rattacher cette protection à la pièce protégeant la tête.</p>
-			<p><b>(2)</b> il est possible de ne protéger que le devant. Moitié du coût et moitié du torse</p>
-			<p><b>(3)</b> il est possible de ne protéger que la moitié des jambes, notamment en portant une cotte protégeant le torse et descendant jusqu’à mi-jambes. Moitié du poids et moitié du coût.</p>
+		<?php foreach (ArmorsController::armor_parts_notes as $index => $note) { ?>
+				<p><b><?= $index ?></b> <?= $note ?></p>
+			<?php } ?>
 		</div>
 	</details>
 
@@ -493,7 +477,7 @@ use App\Rules\WeaponsController;
 				<tr>
 					<td><?= $shield["nom"] ?></td>
 					<td><?= $shield["DP"] ?></td>
-					<td><?= $shield["poids"] ?> kg</td>
+					<td><?= $shield["pds"] ?> kg</td>
 				</tr>
 			<?php } ?>
 		</table>

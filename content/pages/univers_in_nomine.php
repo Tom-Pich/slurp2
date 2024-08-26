@@ -76,7 +76,7 @@ $repo_powers = new PowerRepository("ins");
 		<h4>Désavantages surnaturels</h4>
 		<p>Ces désavantages sont des défauts d'incarnation.</p>
 		<?php
-		$avdesav_list = $repo_avdesav->getAvDesavByCategory("INS");
+		$avdesav_list = $repo_avdesav->getAvDesavByCategory("In Nomine");
 		$avdesav_list = array_filter($avdesav_list, fn ($avdesav) => !in_array($avdesav->id, [165, 166]));
 		foreach ($avdesav_list as $avdesav) {
 			$avdesav->displayInRules();
@@ -325,6 +325,7 @@ $repo_powers = new PowerRepository("ins");
 
 </article>
 
+<!-- Pouvoirs -->
 <article>
 	<h2>Pouvoirs</h2>
 

@@ -82,13 +82,8 @@ $affichage = $_POST["affichage"] ?? "categorie";
 		$avdesav_categories = $avdesav_repo->getDistinctCategories();
 		foreach ($avdesav_categories as $category) {
 			$avdesav_list = $avdesav_repo->getAvDesavByCategory($category);
-			if ($category === "ADD") {
-				$category = "AD&amp;D";
-			}
-			if ($category === "INS") {
-				$category = "In Nomine";
-			} ?>
-			<details>
+	?>
+			<details class="<?= $category === "Psi" ? "mb-1" : "" ?>">
 				<summary class="h3"><?= $category ?></summary>
 				<?php if ($category === "PNJ") { ?>
 					<p class="mt-1">Certains PNJ peuvent vous fournir aide et assis&shy;tance. Le coût de ces PNJ, en tant qu’<i>Avantage</i>, dépend de l’ampleur de l’aide qu’ils peuvent offrir. Cette aide est sincère et sans autre contrepartie qu’une aide équivalente et/ou une loyauté de la part du PJ lorsque nécessaire.<br>
@@ -101,7 +96,7 @@ $affichage = $_POST["affichage"] ?? "categorie";
 						<li><b>Aide très importante (30 ou 60 pts) :</b> résout à peu près tous les problèmes du PJ, dans la mesure du possible.</li>
 					</ul>
 
-					<p>D’autres PNJ peuvent être des <i>Désavantages</i> : les <i>Ennemis</i> et les <i>Subordonnés</i>.</p>
+					<p>D’autres PNJ peuvent être des <i>Désavantages</i>&nbsp;: les <i>Ennemis</i> et les <i>Subordonnés</i>.</p>
 
 				<?php } elseif ($category === "Caractéristiques secondaires") { ?>
 					<p>Modifier les caractéristiques secondaires compte comme un <i>Avantage</i> ou un <i>Désavantage</i>. Ces modifications doivent rester exceptionnelles et justifiées, sauf pour les PdM supplémentaires.</p>
@@ -131,7 +126,8 @@ $affichage = $_POST["affichage"] ?? "categorie";
 		$skills_categories = $skills_repo->getDistinctCategories();
 		foreach ($skills_categories as $category) {
 			$skills_list = $skills_repo->getSkillsByCategory($category) ?>
-			<details>
+
+			<details class="<?= $category === "Voleur - espion" ? "mb-1" : "" ?>">
 				<summary class="h3"><?= $category ?></summary>
 				<?php if ($category == "Professionnelle") { ?>
 					<p>Les compétences ci-dessous sont des exemples non limitatifs de compétences professionnelles. En cas de besoin d’une nouvelle compétence, parlez-en à votre MJ webmaster qui ajoutera la compétence nécessaire.</p>
@@ -200,18 +196,16 @@ $affichage = $_POST["affichage"] ?? "categorie";
 		$colleges = $colleges_repo->getAllColleges();
 		foreach ($colleges as $college) {
 			$spells = $spells_repo->getSpellsByCollege($college->id);
-			if (!empty($spells)) {
-				if ($college->id === 22) { ?><h4>Collèges spéciaux</h4><?php } ?>
+	?>
+			<details class="<?= $college->id === 21 ? "mb-1" : "" ?>">
+				<summary class="h3"><?= $college->name ?></summary>
+				<p><?= $college->description ?></p>
+				<?php foreach ($spells as $spell) {
+					$spell->displayInRules(show_edit_link: $_SESSION["Statut"] === 3, data: ["name" => "", "cost-mult" => 0, "colleges-list" => $all_colleges_names]);
+				} ?>
+			</details>
 
-				<details>
-					<summary class="h3"><?= $college->name ?></summary>
-					<p><?= $college->description ?></p>
-					<?php foreach ($spells as $spell) {
-						$spell->displayInRules(show_edit_link: $_SESSION["Statut"] === 3, data: ["name" => "", "cost-mult" => 0, "colleges-list" => $all_colleges_names]);
-					} ?>
-				</details>
 	<?php }
-		}
 	} ?>
 
 </article>

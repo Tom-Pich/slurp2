@@ -32,9 +32,10 @@ figcaption {text-align: center; font-style: italic;}
 .hidden {display: none;}
 .border-bottom-grey-700 {border-bottom: 1px solid var(--grey-700);}
 .widget{background-color: var(--clr-accent-background)}
-:is(div, p):nth-child(odd).alternate-o {background-color: var(--grey-900);}
+:is(div, p, details):nth-child(odd).alternate-o {background-color: var(--grey-900);}
 .cursor-pointer { cursor: pointer; }
 .edit-link { color: inherit; text-decoration: none; }
+.col-2-s { grid-template-columns: 1fr 1fr; }
 
 .float-right { float: right; margin-left: var(--dynamic-space-1-2); max-width: 50%; }
 .clear-right { clear: right; }
@@ -49,6 +50,8 @@ details[open] {padding-bottom: .5em;}
 summary{cursor: pointer; list-style-type: none; display: flex; gap: 0.5em; justify-content: space-between; align-items: center;}
 summary::after {content: "\2261"; color:inherit}
 details[open] > summary::after{content:"\00D7";}
+
+summary.h3 + * { margin-top: .5em; }
 
 summary.h4 {font-weight: bold; font-size: var(--fs-400); font-family: var(--ff-accent);}
 details.liste summary::after {content: none;}
@@ -77,6 +80,7 @@ table {
 	&.alternate-o { tr:nth-child(odd){background-color: var(--grey-900);} }
 	&.left-1 { :is(td, th):nth-child(1){text-align: left;} }
 	&.left-2 { :is(td, th):nth-child(2){text-align: left;} }
+	&.right-2 { :is(td, th):nth-child(2){text-align: right;} }
 
 	&.weapons {
 		font-size: var(--fs-300); margin-top: .5em;

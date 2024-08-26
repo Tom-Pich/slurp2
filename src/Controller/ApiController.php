@@ -32,9 +32,11 @@ class ApiController
 
 	public function getWeaponDamages($for, $notes, $hands = null)
 	{
+		$display_also_1M = false;
 		preg_match_all('/[TBP]\.[te]([\+-][0-9]+){0,}/', $notes, $matches);
 		$dice_codes = $matches[0];
 		if (str_contains($notes, "†")) {
+			$display_also_1M = true; // display 1M and 2M-opt damages on character sheet
 			$hands = "2M-opt";
 		} elseif (str_contains($notes, "‡")) {
 			$hands = "2M";
@@ -45,7 +47,19 @@ class ApiController
 			$damages[] = $damage;
 		}
 		$stringified_damages = join("/", $damages);
-		$stringified_damages = $stringified_damages === "" ? "Aucun code dégâts valide" : $stringified_damages;
+		$stringified_damages = $stringified_damages === "" ? "Code dégâts non valide" : $stringified_damages;
+
+		if ($display_also_1M){
+			$damages_1M = [];
+			foreach ($dice_codes as $code) {
+				$damage = Equipment::evaluateDamages($for, $code, "1M");
+				$damages_1M[] = $damage;
+			}
+			$stringified_1M_damages = join("/", $damages_1M);
+			if (!empty($stringified_1M_damages)){
+				$stringified_damages = $stringified_1M_damages . " (1M) – " . $stringified_damages . " (2M)";
+			}
+		}
 
 		$this->response["data"] = ["damages" => $stringified_damages];
 		$this->sendResponse();

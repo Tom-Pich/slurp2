@@ -223,7 +223,7 @@ function color_modifier($original_score, $actual_score)
 				<summary class="h4 gap-1 ai-center" data-role="container-title-wrapper">
 					<h4 class="mt-0 flex-s gap-½ fl-1">
 						<div class="fl-1"><?= $sublist["nom"] ?></div>
-						<div><?= $sublist["sur-soi"] ? (round($sublist["poids"], 1) . "&nbsp;kg") : "" ?></div>
+						<div><?= $sublist["sur-soi"] ? (round($sublist["poids"] ?? 0, 1) . "&nbsp;kg") : "" ?></div>
 					</h4>
 				</summary>
 

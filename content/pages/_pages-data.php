@@ -81,6 +81,11 @@ $pages_data = [
 		"description" => "Quelques éléments pour jouer un <i>Cthulhu</i>", 
 		"file" => "univers_cthulhu",
 	],
+	"ombres-esteren" => [
+		"title" => "Les ombres d’Esteren",
+		"description" => "Une adaptation libre des <i>Ombres d’Esteren</i>", 
+		"file" => "univers_ombres_esteren",
+	],
 
 	// Aides de jeu
 	"ecrire-scenario" => [
