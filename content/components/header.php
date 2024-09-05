@@ -81,7 +81,7 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 			<ul>
 				<li>
 					<h4>Règles</h4>
-					<ul class="sub-menu" style="--height: 14rem;">
+					<ul class="sub-menu" style="--height: 20rem;">
 						<li><a href="/personnages"><?= $pages_data['personnages']["title"] ?></a></li>
 						<li><a href="/avdesav-comp-sorts"><?= $pages_data['avdesav-comp-sorts']["title"] ?></a></li>
 						<li><a href="/armes-armures"><?= $pages_data['armes-armures']["title"] ?></a></li>
@@ -90,16 +90,19 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 						<li><a href="/blessures-dangers"><?= $pages_data['blessures-dangers']["title"] ?></a></li>
 						<li><a href="/magie"><?= $pages_data['magie']["title"] ?></a></li>
 						<li><a href="/animaux"><?= $pages_data['animaux']["title"] ?></a></li>
+						<li><a href="/psioniques"><?= $pages_data['psioniques']["title"] ?> (&beta;)</a></li>
+						<li><a href="/vehicules"><?= $pages_data['vehicules']["title"] ?> (&beta;)</a></li>
+						<li><a href="/high-tech"><?= $pages_data['high-tech']["title"] ?> (&beta;)</a></li>
 					</ul>
 				</li>
-				<li>
+				<!-- <li>
 					<h4>En version bêta</h4>
 					<ul class="sub-menu">
 						<li><a href="/psioniques"><?= $pages_data['psioniques']["title"] ?></a></li>
 						<li><a href="/vehicules"><?= $pages_data['vehicules']["title"] ?></a></li>
 						<li><a href="/high-tech"><?= $pages_data['high-tech']["title"] ?></a></li>
 					</ul>
-				</li>
+				</li> -->
 				<li>
 					<h4>Univers de jeu</h4>
 					<ul class="sub-menu">

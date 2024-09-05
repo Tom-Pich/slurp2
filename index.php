@@ -184,6 +184,19 @@ if ($path_segments[1] === "api") {
 			$controller->getNPC($post);
 			break;
 
+		case "/api/fright-check" :
+			Firewall::check(isset($_POST["fright-level"]));
+			$frightLevel = (int) $_POST["fright-level"];
+			$sfScore = (int) $_POST["sf-score"];
+			$sanScore = (int) $_POST["san-score"];
+			$frightcheckMR = (int) $_POST["frightcheck-MR"];
+			$frighcheckCriticalStatus = (int) $_POST["frightcheck-critical"];
+			$frighcheckSymbol = htmlspecialchars($_POST["frightcheck-symbol"]);
+			$rolls = explode(",", $_POST["rolls"]);
+			$rolls = array_map(fn ($x) => (int) $x, $rolls);
+			$controller->getFrightcheckResult($frightLevel, $sfScore, $sanScore, $frightcheckMR, $frighcheckCriticalStatus, $frighcheckSymbol, $rolls);
+			break;
+
 		default:
 			Firewall::redirect_to_404();
 	}

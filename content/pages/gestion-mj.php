@@ -219,7 +219,7 @@ foreach ($characters_id as $character) {
 					<input type="checkbox" name="kit_base">
 					<b>Kit de base</b>
 				</label>
-				<p><i>Esquive</i>, <i>Furtivité</i>, <i>Culture générale</i>, <i>Langue maternelle</i>, <i>Baratin</i>, <i>Acteur</i></p>
+				<p><i>Esquive</i>, <i>Furtivité</i>, <i>Culture générale</i>, <i>Baratin</i>, <i>Acteur</i></p>
 			</div>
 			<div class="card">
 				<label for="kit_combattant">

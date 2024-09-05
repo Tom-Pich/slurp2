@@ -143,7 +143,7 @@ function color_modifier($original_score, $actual_score)
 						<div class="fl-1">
 							<?= $counter["label"] ?>
 							<?php if ($counter["unit"] !== "%") { ?>
-								(<?= $counter["max"] ?> <?= $counter["unit"] ?>)
+								(<?= $counter["max"] . ($counter["unit"] ? " " . $counter["unit"] : "") ?>)
 							<?php } ?>
 						</div>
 						<meter min="0" low="<?= $counter["max"] / 3.99 ?>" high="<?= $counter["max"] / 2 ?>" optimum="<?= $counter["max"] / 1.99 ?>" max="<?= $counter["max"] ?>" value="<?= $counter["current"] ?>" title="<?= $counter["current"] ?> <?= $counter["unit"] ?>" style="width: 6ch"></meter>
@@ -211,7 +211,7 @@ function color_modifier($original_score, $actual_score)
 	<form id="form-equipment"> <!-- action="/submit/equipment-list" method="post" -->
 
 		<?php
-		$n_obj = 0;
+		//$n_obj = 0;
 		foreach ($character->equipment as $sublist) {
 			$sublist["lieu"] = in_array($sublist["lieu"], ["pi", "pe"]) ? ($sublist["lieu"] . "_" . $character->id) : $sublist["lieu"];
 		?>
@@ -241,7 +241,7 @@ function color_modifier($original_score, $actual_score)
 					<?php if ($sublist["id"]) { ?>
 						<label class="ff-fas clr-warning cursor-pointer" title="transformer en objet simple (si vide seulement !)">
 							&#xf057;
-							<input type="checkbox" name="objet[<?= $sublist["id"] ?>][Contenant-off]" <?= $sublist["non-vide"] ? "disabled" : "" ?> hidden>
+							<input type="checkbox" name="sub-list[<?= $sublist["id"] ?>][Contenant-off]" <?= $sublist["non-vide"] ? "disabled" : "" ?> hidden>
 						</label>
 						<label class="ff-fas clr-secondary-dark cursor-pointer group-share-input px-¼" title="rendre visible pour le groupe">
 							&#xe533;
@@ -253,9 +253,9 @@ function color_modifier($original_score, $actual_score)
 
 				<!-- Items list -->
 				<?php foreach ($sublist["liste"] as $item) {
-					$n_obj++ ?>
+					/* $n_obj++ */ ?>
 
-					<details class="items-list" id="item-<?= $n_obj ?>" data-role="item-wrapper">
+					<details class="items-list" id="item-<?= $item->id ?>" data-role="item-wrapper"><!-- ancien id: item-{$n_obj} -->
 						<summary class="grid gap-½ ai-center">
 							<div class="ff-fas" draggable="true" data-role="item-grip">&#xf58e;</div>
 							<input name="objet[<?= $item->id ?>][Nom]" type="text" value="<?= $item->name ?>" placeholder="Nouvel objet" <?= $item->isContainer ? "class=\"fw-600\"" : "" ?>>

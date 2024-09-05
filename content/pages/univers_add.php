@@ -160,7 +160,7 @@ $creatures_repo = new CreatureRepository;
 		<?php
 		$weapons = array_filter(WeaponsController::weapons, fn($weapon) => isset($weapon["prix"][0]));
 		//$weapons = Sorter::sort($weapons, "nom");
-		WeaponsController::displayWeaponsList($weapons, false, true, 0);
+		WeaponsController::displayWeaponsList($weapons, false, true, 0, "pc");
 		?>
 
 		<h4>Notes diverses</h4>
@@ -183,22 +183,22 @@ $creatures_repo = new CreatureRepository;
 	</details>
 
 	<!-- Armures & boucliers -->
-	 <?php
-	 // parameters for displayed armors and armor options
-	 $price_index = 0;
-	 $with_magic_modifiers = true;
-	 $armors = array_filter(ArmorsController::armors, fn($armor) => isset($armor["prix"][$price_index]))
-	 ?>
 	<details>
+		<?php
+		// parameters for displayed armors and armor options
+		$price_index = 0;
+		$with_magic_modifiers = true;
+		$armors = array_filter(ArmorsController::armors, fn($armor) => isset($armor["prix"][$price_index]))
+		?>
 		<summary class="h3">Armures &amp; boucliers</summary>
 
 		<h4>Armures</h4>
 
-		<p>Les poids des armures incluent des vêtements légers. Ils sont donnés pour une armure «&nbsp;hypothétique&nbsp;» complète couvrant tout sauf le visage. De telles armures n’existent généralement pas. Il est donc préférable, pour être plus réaliste, de confectionner une armure composite, c’est-à-dire formée de plusieurs pièces d’armures différentes. Voir paragraphe suivant.</p>
+		<p>Armures «&nbsp;hypothétiques&nbsp;» complètes, données pour infos (voir la page <a href="/armes-armures">Armes &amp; armures</a> pour plus de détails). Vous <i>devez</i> construire votre armure composite.</p>
 
 		<table class="left-1 alternate-e">
 			<tr>
-				<th>Armure</th>
+				<th></th>
 				<th>RD</th>
 				<th>Poids</th>
 				<th>pc</th>
@@ -213,54 +213,29 @@ $creatures_repo = new CreatureRepository;
 			<?php } ?>
 		</table>
 
-		<details>
-			<summary>
-				<h4>Notes</h4>
-			</summary>
+		<details class="mt-½">
+		<summary class="fw-700">Notes</summary>
 			<?php foreach (ArmorsController::armors_notes as $index => $note) { ?>
 				<p><b><?= $index ?>&nbsp;:</b> <?= $note ?></p>
 			<?php } ?>
 		</details>
 
-		<h4>Armures composites</h4>
-		<p>Composez votre armure en respectant un certain réalisme. Le prix et le poids d’une armure dépendent de plusieurs facteurs.</p>
-
-		<ul>
-			<li>
-				<b>sa taille&nbsp;:</b> <i>grande</i> (homme de forte carrure), <i>moyenne</i>, <i>petite</i> (femme, elfe, nain), ou <i>très petite</i> (hobbit)
-				<!-- <ul>
-					<li>petite (femme, elfe, nain)&nbsp;: poids ×0.8, prix ×0.9</li>
-					<li>très petite (hobbit)&nbsp;: poids ×0.6, prix ×0.8</li>
-				</ul> -->
-
-			</li>
-			<li><b>son type</b> (cuir, cotte de maille&hellip;)</li>
-			<li><b>sa qualité</b></li>
-			<li><b>son niveau d’enchantement</b> (ici, seul l’impact sur le poids est calculé).</li>
-		</ul>
-
 		<?php include "content/components/widget-armor-composer.php"; ?>
 
-		<h4>Qualité des armures</h4>
-		<p>
-			Bonne qualité&nbsp;: Même RD&nbsp;; poids -10&nbsp;%&nbsp;; coût ×1,25<br>
-			Très bonne qualité&nbsp;: RD+1&nbsp;; poids -20&nbsp;%&nbsp;; coût ×4
-		</p>
-
-		<h4>Boucliers</h4>
+		<h4 class="mt-2">Boucliers</h4>
 		<table class="left-1 alternate-e">
 			<tr>
-				<th>Bouclier</th>
+				<th></th>
 				<th>DP</th>
 				<th>Poids</th>
-				<th>Prix</th>
+				<th>pc</th>
 			</tr>
 			<?php foreach (ArmorsController::shields as $shield) { ?>
 				<tr>
 					<td><?= $shield["nom"] ?></td>
 					<td><?= $shield["DP"] ?></td>
 					<td><?= $shield["pds"] ?> kg</td>
-					<td><?= $shield["prix"][0] ?> pc</td>
+					<td><?= $shield["prix"][0] ?></td>
 				</tr>
 			<?php } ?>
 		</table>
@@ -270,234 +245,30 @@ $creatures_repo = new CreatureRepository;
 	<!-- Vêtements -->
 	<details>
 		<summary class="h3">Vêtements</summary>
-		<table class="left-1 fs-300 alternate-o">
-			<tr>
-				<td>Haillons*</td>
-				<td>2 pc&nbsp;; 1 kg</td>
-			</tr>
-			<tr>
-				<td>Vêtements pauvres*</td>
-				<td>10 pc&nbsp;; 1 kg</td>
-			</tr>
-			<tr>
-				<td>Vêtements moyens*</td>
-				<td>40 pc&nbsp;; 1 kg</td>
-			</tr>
-			<tr>
-				<td>Vêtements bourgeois*</td>
-				<td>200 pc&nbsp;; 1 kg</td>
-			</tr>
-			<tr>
-				<td>Vêtements nobles*</td>
-				<td>1000 pc+&nbsp;; 1 kg</td>
-			</tr>
-			<tr>
-				<td>Vêtements d’hiver** (RD1)</td>
-				<td>prix ×2&nbsp;; 2,5 kg</td>
-			</tr>
-			<tr>
-				<td>Tunique</td>
-				<td>30 pc&nbsp;; 0,25 kg</td>
-			</tr>
-			<tr>
-				<td>Ceinture de cuir</td>
-				<td>7 pc&nbsp;; 0,15 kg</td>
-			</tr>
-			<tr>
-				<td>Veste de cuir (souple, RD1)</td>
-				<td>75 pc&nbsp;; 1,5 kg</td>
-			</tr>
-			<tr>
-				<td>Pardessus chaud (cuir et laine, RD1)</td>
-				<td>50 pc&nbsp;; 3kg</td>
-			</tr>
-			<tr>
-				<td>Sandales</td>
-				<td>2 pc&nbsp;; -</td>
-			</tr>
-			<tr>
-				<td>Mocassins</td>
-				<td>5 pc&nbsp;; 0,25 kg</td>
-			</tr>
-			<tr>
-				<td>Chaussures bourgeoises, de ville</td>
-				<td>25 pc&nbsp;; 0,25 kg</td>
-			</tr>
-			<tr>
-				<td>Chaussures de marche cuir souple (RD1)</td>
-				<td>15 pc&nbsp;; 0,5 kg</td>
-			</tr>
-			<tr>
-				<td>Cape basique</td>
-				<td>20 pc&nbsp;; 0,5 kg</td>
-			</tr>
-			<tr>
-				<td>Cape en belle fourrure</td>
-				<td>500 pc&nbsp;; 1,5 kg</td>
-			</tr>
-			<tr>
-				<td>Cape lourde (tissu épais)</td>
-				<td>40 pc&nbsp;; 1 kg</td>
-			</tr>
-			<tr>
-				<td>Chapeau de feutre</td>
-				<td>5 pc&nbsp;; -</td>
-			</tr>
-			<tr>
-				<td>Chapeau de paille</td>
-				<td>2 pc&nbsp;; -</td>
-			</tr>
-			<tr>
-				<td>Gants en cuir souple</td>
-				<td>10 pc&nbsp;; -</td>
-			</tr>
-			<tr>
-				<td>Gants en laine</td>
-				<td>5 pc&nbsp;; -</td>
-			</tr>
-		</table>
-		<p>
-			* Les vêtements incluent un pantalon, une chemise, une ceinture et des sous-vêtements, mais ni chaussures, ni veste, ni cape.<br>
-			** Les vêtements d’hiver sont plus chauds et plus épais. Ils incluent une veste ou autre protection légère (tunique) contre le froid.
-		</p>
+		<?php
+		$items = array_filter(EquipmentListController::equipment_list, fn($item) => in_array($item[3], ["vêtements"]));
+		EquipmentListController::displayEquipmentList($items, 0);
+		?>
+
+		<p><?= join("<br>", EquipmentListController::cloth_notes) ?></p>
 	</details>
 
-	<!-- Équipement divers -->
+	<!-- Équipement de voyage -->
 	<details>
-		<summary class="h3">Équipement divers</summary>
+		<summary class="h3">Équipement de voyage</summary>
+		<?php
+		$items = array_filter(EquipmentListController::equipment_list, fn($item) => in_array($item[3], ["voyage"]));
+		EquipmentListController::displayEquipmentList($items, 0);
+		?>
+	</details>
 
-		<h4>Équipement de voyage</h4>
-		<table class="left-1 fs-300 alternate-o">
-			<tr>
-				<td>Set pour manger (cuillère, petit couteau, bol en bois)</td>
-				<td>5 pc&nbsp;; 0,25 kg</td>
-			</tr>
-			<tr>
-				<td>Bourse</td>
-				<td>2 pc&nbsp;; -</td>
-			</tr>
-			<tr>
-				<td>Sacoche / Besace</td>
-				<td>10 pc&nbsp;; 0,25 kg</td>
-			</tr>
-			<tr>
-				<td>Sac à dos</td>
-				<td>15 pc&nbsp;; 0,5 kg</td>
-			</tr>
-			<tr>
-				<td>Outre, 1 L</td>
-				<td>3 pc&nbsp;; -</td>
-			</tr>
-			<tr>
-				<td>Outre, 2 L</td>
-				<td>5 pc&nbsp;; -</td>
-			</tr>
-			<tr>
-				<td>Outre, 5 L</td>
-				<td>8 pc&nbsp;; -</td>
-			</tr>
-			<tr>
-				<td>Bouteille de céramique, 1 L</td>
-				<td>3 pc&nbsp;; 0,5 kg</td>
-			</tr>
-			<tr>
-				<td>Grosse bouteille de céramique, 5 L</td>
-				<td>5 pc&nbsp;; 2 kg</td>
-			</tr>
-			<tr>
-				<td>Torche, ½ heure</td>
-				<td>½ pc&nbsp;; 0,5 kg</td>
-			</tr>
-			<tr>
-				<td>Torche, 1 heure</td>
-				<td>1 pc&nbsp;; 0,75 kg</td>
-			</tr>
-			<tr>
-				<td>Petite lanterne</td>
-				<td>20 pc&nbsp;; 0.5 kg</td>
-			</tr>
-			<tr>
-				<td>Huile de lampe (0,5 L, 24h)</td>
-				<td>2 pc&nbsp;; 0,5 kg</td>
-			</tr>
-			<tr>
-				<td>Briquet à amadou</td>
-				<td>5 pc</td>
-			</tr>
-			<tr>
-				<td>Tente 4 places (+ 2 perches de 2 m)</td>
-				<td>150 pc&nbsp;; 15 kg</td>
-			</tr>
-			<tr>
-				<td>Couverture (laine)</td>
-				<td>10 pc&nbsp;; 2 kg</td>
-			</tr>
-			<tr>
-				<td>Sac de couchage (pour grand froid)</td>
-				<td>100 pc&nbsp;; 6 kg</td>
-			</tr>
-			<tr>
-				<td>Cordelette (diam. 0,5 cm, 40 kg), 10 m</td>
-				<td>3 pc&nbsp;; 0,2 kg</td>
-			</tr>
-			<tr>
-				<td>Corde (diam. 1 cm, 150 kg), 10 m</td>
-				<td>5 pc&nbsp;; 0,75 kg</td>
-			</tr>
-			<tr>
-				<td>Grosse corde (diam. 2 cm, 600 kg), 10 m</td>
-				<td>15 pc&nbsp;; 3 kg</td>
-			</tr>
-			<tr>
-				<td>Grappin léger (supporte 150kg)</td>
-				<td>20 pc&nbsp;; 1 kg</td>
-			</tr>
-		</table>
-
-		<h4>Équipement spécial</h4>
-		<table class="left-1 fs-300 alternate-o">
-			<tr>
-				<td>Outils de crochetage</td>
-				<td>30 pc</td>
-			</tr>
-			<tr>
-				<td>Outils de crochetage BQ, (+1 crochetage)</td>
-				<td>200 pc</td>
-			</tr>
-			<tr>
-				<td>Serpe d’or (pour druide)</td>
-				<td>500 pc&nbsp;; 0,25 kg</td>
-			</tr>
-			<tr>
-				<td>Trousse premiers secours (+1 comp.)</td>
-				<td>30 pc&nbsp;; 1 kg</td>
-			</tr>
-			<tr>
-				<td>Labo d’alchimie improvisé (-2 comp.)</td>
-				<td>50 pc&nbsp;; 4 kg</td>
-			</tr>
-			<tr>
-				<td>Labo d’alchimie portable (-1 comp.)</td>
-				<td>250 pc&nbsp;; 8 kg</td>
-			</tr>
-			<tr>
-				<td>Labo d’alchimie - atelier domestique</td>
-				<td>1200 pc</td>
-			</tr>
-			<tr>
-				<td>Labo d’alchimie, très équipé (+1 comp.)</td>
-				<td>4800 pc</td>
-			</tr>
-			<tr>
-				<td>Gourde en mithrill (10 doses de potions)</td>
-				<td>300 pc&nbsp;; 0,1 kg</td>
-			</tr>
-			<tr>
-				<td>Caltrops, la centaine</td>
-				<td>10 pc&nbsp;; 0,5 kg</td>
-			</tr>
-		</table>
-
+	<!-- Équipement spécial -->
+	<details>
+		<summary class="h3">Équipement spécial</summary>
+		<?php
+		$items = array_filter(EquipmentListController::equipment_list, fn($item) => in_array($item[3], ["spécial"]));
+		EquipmentListController::displayEquipmentList($items, 0);
+		?>
 	</details>
 
 	<!-- Nourriture & logement -->
@@ -513,60 +284,10 @@ $creatures_repo = new CreatureRepository;
 	<details>
 		<summary class="h3">Animaux et harnachement</summary>
 
-		<table class="left-1 fs-300 alternate-o">
-			<tr>
-				<td>Ane</td>
-				<td>120 pc</td>
-			</tr>
-			<tr>
-				<td>Mule</td>
-				<td>500 pc</td>
-			</tr>
-			<tr>
-				<td>Cheval de selle</td>
-				<td>700 pc</td>
-			</tr>
-			<tr>
-				<td>Cheval de guerre</td>
-				<td>2500 pc</td>
-			</tr>
-			<tr>
-				<td>Cheval de guerre lourd</td>
-				<td>3000 pc</td>
-			</tr>
-			<tr>
-				<td>Selle, mors et rênes</td>
-				<td>100 pc</td>
-			</tr>
-			<tr>
-				<td>Sacoches de selle</td>
-				<td>50 pc</td>
-			</tr>
-			<tr>
-				<td>Ration d’avoine (par jour et par bête)</td>
-				<td>2 kg&nbsp;; 1 pc</td>
-			</tr>
-			<tr>
-				<td>Carriole (pour un cheval, transporte 1 tonne)</td>
-				<td>400 pc</td>
-			</tr>
-			<tr>
-				<td>Mouton (50 kg)</td>
-				<td>50 pc</td>
-			</tr>
-			<tr>
-				<td>Bœuf</td>
-				<td>850 pc</td>
-			</tr>
-			<tr>
-				<td>Poule</td>
-				<td>2 pc</td>
-			</tr>
-			<tr>
-				<td>Porc (60 kg)</td>
-				<td>45 pc</td>
-			</tr>
-		</table>
+		<?php
+		$items = array_filter(EquipmentListController::equipment_list, fn($item) => in_array($item[3], ["animaux"]));
+		EquipmentListController::displayEquipmentList($items, 0);
+		?>
 	</details>
 
 	<!-- Objets spéciaux & services magiques -->

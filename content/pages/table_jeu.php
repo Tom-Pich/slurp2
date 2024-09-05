@@ -35,14 +35,14 @@ $nbre_competences = 15;
 						<option value="Furtivité"></option>
 					</datalist>
 					<input type="text" data-type="score" style="width: 7ch" class="ta-center" placeholder="score" title="score">
-					<input type="text" data-type="modif" style="width: 7ch" class="ta-center" placeholder="modif" title="Modif (vide = zéro)">
+					<input type="text" data-type="modif" style="width: 7ch" class="ta-center" placeholder="±" title="Modif (vide = zéro)">
 					<button class="nude">🎲</button>
 				</form>
 			<?php } ?>
 		</fieldset>
 
 	</div>
-	
+
 	<div class="widgets-column">
 		<!-- Protagonistes -->
 		<fieldset data-name="opponents" hidden>
@@ -52,11 +52,12 @@ $nbre_competences = 15;
 				<div class="mt-1" data-role="opponent-wrapper" data-opponent="<?= $i ?>">
 					<div class="flex-s gap-½">
 						<input type="text" class="fl-1" data-type="name" placeholder="Nom">
-						<select data-type="category" style="width: 6ch" title="nbh: non biologique humanoïde, nbx: non biologique quelconque, ins: ange/démon">
+						<select data-type="category" style="width: 6ch" title="nbh: non bio humanoïde, nbx: non bio quelconque, ins: ange/démon, ci: créature insectoïde">
 							<option value="std">std</option>
 							<option value="nbh">nbh</option>
 							<option value="nbx">nbx</option>
 							<option value="ins">ins</option>
+							<option value="ci">ci</option>
 						</select>
 						<input type="text" style="width: 5ch" data-type="dex" class="ta-center" placeholder="Dex" title="Dextérité" value="<?= $i === 0 ? 11 : "" ?>">
 						<input type="text" style="width: 5ch" data-type="san" class="ta-center" placeholder="San" title="Santé" value="<?= $i === 0 ? 12 : "" ?>">
@@ -81,17 +82,6 @@ $nbre_competences = 15;
 			<form class="flex-s ai-flex-between">
 				<div class="fl-1 ta-center">
 					<input type="text" size="5" data-type="dice-expression" class="ta-center" placeholder="xd±y" value="3d" title="xd(y)(+-/* z)">
-				</div>
-				<button class="nude">🎲</button>
-			</form>
-		</fieldset>
-
-		<!-- jet de réaction -->
-		<fieldset data-name="widget-reaction" hidden>
-			<legend>Jet de réaction</legend>
-			<form class="flex-s ai-flex-between">
-				<div class="fl-1 ta-center">
-					<input type="text" size="5" data-type="reaction-modifier" class="ta-center" placeholder="±x" title="Modificateur de réaction">
 				</div>
 				<button class="nude">🎲</button>
 			</form>
@@ -142,6 +132,29 @@ $nbre_competences = 15;
 				</div>
 				<button class="nude">🎲</button>
 			</form>
+		</fieldset>
+
+		<!-- Test de frayeur -->
+		<fieldset data-name="fright-check" hidden>
+			<legend>Test de frayeur</legend>
+			<form class="flex-s gap-½" id="test-frayeur-widget">
+				<div class="fl-1">
+					<div class="flex-s gap-½ ai-center">
+						<select data-type="fright-level" title="Intensité de la peur" class="fl-1">
+							<option value="1">niv. I</option>
+							<option value="2">niv. II</option>
+							<option value="3">niv. III</option>
+							<option value="4">niv. IV</option>
+							<option value="5">niv. V</option>
+						</select>
+						<input type="text" style="width: 6ch" class="ta-center" data-type="sf-score" placeholder="S.-F." title="score de Sang-Froid">
+						<input type="text" style="width: 6ch" class="ta-center" data-type="sf-modif" placeholder="±" title="Modificateur">
+						<input type="text" style="width: 6ch" class="ta-center" data-type="san-score" placeholder="San" title="Score de Santé">
+					</div>
+				</div>
+				<button class="nude">🎲</button>
+			</form>
+
 		</fieldset>
 
 		<!-- État général -->
@@ -284,7 +297,7 @@ $nbre_competences = 15;
 		</fieldset>
 
 		<!-- Generate NPC -->
-		 <fieldset data-name="npc-generator" hidden >
+		<fieldset data-name="npc-generator" hidden>
 			<legend>Générer un PNJ</legend>
 			<form class="flex-s gap-½">
 				<div class="fl-1 flex-s gap-½">
@@ -304,7 +317,18 @@ $nbre_competences = 15;
 				<button class="nude">🎲</button>
 			</form>
 
-		 </fieldset>
+		</fieldset>
+
+		<!-- jet de réaction -->
+		<fieldset data-name="widget-reaction" hidden>
+			<legend>Jet de réaction</legend>
+			<form class="flex-s ai-flex-between">
+				<div class="fl-1 ta-center">
+					<input type="text" size="5" data-type="reaction-modifier" class="ta-center" placeholder="±x" title="Modificateur de réaction">
+				</div>
+				<button class="nude">🎲</button>
+			</form>
+		</fieldset>
 
 	</div>
 

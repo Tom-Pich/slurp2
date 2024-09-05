@@ -3,7 +3,7 @@
 namespace App\Lib;
 
 abstract class DiceManager
-{	
+{
 	/**
 	 * ip2dice
 	 * Converts a number in to a dice expression
@@ -65,7 +65,7 @@ abstract class DiceManager
 		foreach ($dices as $key => $value) {
 			$dices[$key] = (int) rtrim($value, "d");
 		}
-		$dices_sum = array_reduce($dices, function ($sum, $x){
+		$dices_sum = array_reduce($dices, function ($sum, $x) {
 			$sum += $x;
 			return $sum;
 		}) ?? 0;
@@ -99,40 +99,38 @@ abstract class DiceManager
 				$dices_sum += 1;
 				$fixed_sum = 0;
 				break;
-				
+
 			case -2:
-				if($dices_sum >= 2){
+				if ($dices_sum >= 2) {
 					$dices_sum -= 1;
 					$fixed_sum = 2;
 				}
 				break;
 			case -3:
-				if($dices_sum >= 2){
+				if ($dices_sum >= 2) {
 					$dices_sum -= 1;
 					$fixed_sum = 1;
 				}
 				break;
 			case -4:
-				if($dices_sum >= 2){
+				if ($dices_sum >= 2) {
 					$dices_sum -= 1;
 					$fixed_sum = 0;
 				}
 				break;
 			case -5:
-				if($dices_sum >= 3){
+				if ($dices_sum >= 3) {
 					$dices_sum -= 2;
 					$fixed_sum = 2;
-				}
-				elseif ($dices_sum === 2){
+				} elseif ($dices_sum === 2) {
 					$dices_sum -= 1;
 					$fixed_sum = -1;
 				}
 			case -6:
-				if($dices_sum >= 3){
+				if ($dices_sum >= 3) {
 					$dices_sum -= 2;
 					$fixed_sum = 1;
-				}
-				elseif ($dices_sum === 2){
+				} elseif ($dices_sum === 2) {
 					$dices_sum -= 1;
 					$fixed_sum = -2;
 				}
@@ -163,7 +161,7 @@ abstract class DiceManager
 		if ($ref == 0) {
 			return 0;
 		}
-		return (int) round(($value / $ref - 1) * 10)*($excess_is_bad ? -1 : 1);
+		return (int) round(($value / $ref - 1) * 10) * ($excess_is_bad ? -1 : 1);
 	}
 
 	/**
@@ -173,7 +171,7 @@ abstract class DiceManager
 	 * @param int $roll the roll result (3d6)
 	 * @return bool success status of the roll
 	 */
-	public static function check_is_successfull(int $score, int $roll):bool
+	public static function isSuccess(int $score, int $roll): bool
 	{
 		if ($roll <= 4) {
 			return true; // automatic success
@@ -182,5 +180,20 @@ abstract class DiceManager
 		} else {
 			return $roll <= $score;
 		}
+	}
+
+	/**
+	 * transform a MR into a number between 0.1 and 3
+	 * if MR = 0, ratio = 1
+	 * ratio is < 1 when MR > 0
+	 * @param int $mr
+	 */
+	public static function mr2ratio(int $mr)
+	{
+		if ($mr >= 0) $ratio = 1 - 0.1 * $mr; // MR 0 → 1 ; MR 5 → 0.5
+		else $ratio = 1 - 0.2 * $mr; // MR -1 → 1.2 ; MR -5 → 2; MR -10 → -3
+		$ratio = max($ratio, 0.1); // min 0.1
+		$ratio = min($ratio, 3); // max 3
+		return $ratio;
 	}
 }

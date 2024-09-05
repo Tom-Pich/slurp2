@@ -12,8 +12,8 @@ foreach (ArmorsController::armor_sizes as $index => $size) {
 $armors = array_filter(ArmorsController::armors, fn($armor) => isset($armor["prix"][$price_index]))
 ?>
 
-<div class="widget mt-1 p-½ fs-300" id="armor-widget">
-
+<details class="widget mt-1 p-½ fs-300" id="armor-widget">
+	<summary><h5>Constructeur d’armure composite</h5></summary>
 	<p>Sélectionner des paramètres globaux si vous le souhaitez. Vous pourrez ensuite affiner éléments par élément.</p>
 
 	<div class="grid col-2-s ai-center">
@@ -50,8 +50,8 @@ $armors = array_filter(ArmorsController::armors, fn($armor) => isset($armor["pri
 		<span>Enchantement global</span>
 		<select id="armor-enchantment">
 			<option value="0">Non magique</option>
-			<option value="1">+1 ou +2</option>
-			<option value="2">+2 ou +3</option>
+			<option value="1">+1 à +2</option>
+			<option value="2">+3 à +5</option>
 		</select>
 	</div>
 
@@ -61,6 +61,7 @@ $armors = array_filter(ArmorsController::armors, fn($armor) => isset($armor["pri
 			<th style="width: 9ch">Poids</th>
 			<th style="width: 9ch">Prix</th>
 		</tr>
+
 		<!-- Parties d’armure -->
 		<?php foreach (ArmorsController::armor_parts as $index => $part) { ?>
 			<tr data-type="armor-row" data-weight="<?= $part["mult_pds"] ?>" data-price="<?= $part["mult_prix"] ?>">
@@ -68,7 +69,7 @@ $armors = array_filter(ArmorsController::armors, fn($armor) => isset($armor["pri
 
 					<div class="flex-s gap-½">
 						<b class="fl-1"><?= $part["nom"] ?></b>
-						<label>(½) <input type="checkbox"></label>
+						<label class="<?= $part["notes"] === "(2)" ? "" : "hidden" ?>">(½) <input type="checkbox"></label>
 					</div>
 
 					<select class="full-width mt-¼" data-type="armor-type">
@@ -86,8 +87,8 @@ $armors = array_filter(ArmorsController::armors, fn($armor) => isset($armor["pri
 
 					<select class="full-width mt-¼ <?= $with_magic_modifiers ? "" : "hidden" ?>" data-type="armor-enchantment">
 						<option value="0" data-weight="1">Non magique</option>
-						<option value="1" data-weight="0.67">+1 ou +2</option>
-						<option value="2" data-weight="0.5">+2 ou +3</option>
+						<option value="1" data-weight="0.67">+1 à +2</option>
+						<option value="2" data-weight="0.5">+3 à +5</option>
 					</select>
 
 				</td>
@@ -102,6 +103,6 @@ $armors = array_filter(ArmorsController::armors, fn($armor) => isset($armor["pri
 		</tr>
 	</table>
 
-</div>
+</details>
 
 <script type="module" src="/scripts/armor-calculator.js?v=<?= VERSION ?>" defer></script>

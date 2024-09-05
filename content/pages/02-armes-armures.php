@@ -410,13 +410,14 @@ use App\Rules\WeaponsController;
 <article>
 	<h2>Armures &amp; boucliers</h2>
 
+	<!-- Armures antiques & médiévales -->
 	<details>
 		<summary class="h3">Armures antiques &amp; médiévales</summary>
-		<p>Les poids des armures incluent des vêtements légers. Ils sont donnés pour une armure «&nbsp;hypothétique&nbsp;» complète couvrant tout sauf le visage. De telles armures n’existent généralement pas. Il est donc préférable, pour être plus réaliste, de confectionner une armure composite, c’est-à-dire formée de plusieurs pièces d’armures différentes. Voir paragraphe suivant.</p>
+		<p>Les poids des armures incluent des vêtements légers. Ils sont donnés pour une armure «&nbsp;hypo&shy;thétique&nbsp;» complète couvrant tout sauf le visage. De telles armures n’existent généralement pas. Il est donc préférable, pour être plus réaliste, de confectionner une armure composite, c’est-à-dire formée de plusieurs pièces d’armures différentes. Voir paragraphe suivant.</p>
 
 		<table class="left-1 alternate-e">
 			<tr>
-				<th>Armure</th>
+				<th></th>
 				<th>RD</th>
 				<th>Poids</th>
 			</tr>
@@ -434,11 +435,20 @@ use App\Rules\WeaponsController;
 			<p><b><?= $index ?>&nbsp;:</b> <?= $note ?></p>
 		<?php } ?>
 
+		<h4>Taille des armures</h4>
+		<p>La taille d’une armure a un impact sur son prix et son poids. En terme de jeu, on distingue les tailles suivantes&nbsp;:</p>
+		<ul>
+			<?php foreach (ArmorsController::armor_sizes as $size) { ?>
+				<li><b><?= $size["nom"] ?></b> (<?= $size["notes"] ?>)&nbsp;: coût ×<?= $size["mult_prix"] ?>, poids ×<?= $size["mult_pds"] ?></li>
+			<?php } ?>
+		</ul>
+
 		<h4>Qualité des armures</h4>
 		<p>
 			<b>Bonne qualité&nbsp;:</b> poids ×<?= ArmorsController::armor_qualities["bq"]["mult_pds"] ?>, prix ×<?= ArmorsController::armor_qualities["bq"]["mult_prix"] ?><br>
 			<b>Très bonne qualité&nbsp;:</b> +1 en RD, poids ×<?= ArmorsController::armor_qualities["tbq"]["mult_pds"] ?>, prix ×<?= ArmorsController::armor_qualities["tbq"]["mult_prix"] ?>
 		</p>
+		<p>Une armure de <i>Très bonne qualité</i> n’existe pas dans un contexte médiéval réaliste. Elle doit être réalisée avec des alliages modernes, ou exotiques.</p>
 
 		<h4>Pièces d’armure</h4>
 		<p>Le prix et le poids des différentes pièces d’une armure se calculent à partir de ceux d’une armure complète.</p>
@@ -458,12 +468,13 @@ use App\Rules\WeaponsController;
 		</table>
 
 		<div class="mt-½">
-		<?php foreach (ArmorsController::armor_parts_notes as $index => $note) { ?>
+			<?php foreach (ArmorsController::armor_parts_notes as $index => $note) { ?>
 				<p><b><?= $index ?></b> <?= $note ?></p>
 			<?php } ?>
 		</div>
 	</details>
 
+	<!-- Boucliers -->
 	<details>
 		<summary class="h3">Boucliers antiques</summary>
 		<p>Boucliers de bois et mince couche d’acier</p>
@@ -483,6 +494,7 @@ use App\Rules\WeaponsController;
 		</table>
 	</details>
 
+	<!-- Armures modernes -->
 	<details>
 		<summary class="h3">Armures modernes</summary>
 		<p><b>Casque de fantassin (NT6/7)&nbsp;:</b> RD5/6 ; 2/1,5 kg.</p>

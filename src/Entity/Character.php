@@ -339,7 +339,7 @@ class Character
 
 		// Kits
 		if ($kit_base) {
-			!$kit_combattant ? $character["Compétences"][] = ["id" => 26] : null; // Esquive
+			$character["Compétences"][] = ["id" => 26]; // Esquive
 			$character["Compétences"][] = ["id" => 181]; // Furtivité
 			$character["Compétences"][] = ["id" => 127]; // Culture générale
 			$character["Compétences"][] = ["id" => 148]; // Baratin
@@ -369,6 +369,8 @@ class Character
 			$character["MPP"] = ["pouvoirs"];
 			$character["Avdesav"][] = ["id" => 166]; // Pack Démon
 		}
+
+		$character["Compétences"] = array_unique($character["Compétences"]); // filtering duplicate values
 
 		$character["Caractéristiques"] = json_encode($character["Caractéristiques"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 		$character["MPP"] = json_encode($character["MPP"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);

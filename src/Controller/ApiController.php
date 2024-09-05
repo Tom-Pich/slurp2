@@ -12,6 +12,7 @@ use App\Rules\WoundController;
 use App\Rules\ExplosionController;
 use App\Rules\ObjectController;
 use App\Rules\ReactionController;
+use App\Rules\MentalHealthController;
 use App\Generator\NPCGenerator;
 
 class ApiController
@@ -170,6 +171,12 @@ class ApiController
 	public function getNPC(array $parameters)
 	{
 		$this->response["data"] = NPCGenerator::generateNPC($parameters);
+		$this->sendResponse();
+	}
+
+	public function getFrightcheckResult (int $frightLevel, int $sfScore, int $sanScore, int $frightcheckMR, int $frighcheckCriticalStatus, string $frighcheckSymbol, array $rolls)
+	{
+		$this->response["data"] = MentalHealthController::getFrighcheckEffects($frightLevel, $sfScore, $sanScore, $frightcheckMR, $frighcheckCriticalStatus, $frighcheckSymbol, $rolls);
 		$this->sendResponse();
 	}
 

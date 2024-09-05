@@ -45,6 +45,7 @@ foreach (Spell::cost_as_power as $cost) {
 	<details>
 		<summary class="h3">Avantages &amp; Désavantages</summary>
 		<p><b>• Alphabétisation&nbsp;:</b> <i>Semi-alphabétisation</i> par défaut. <i>Illettrisme</i>&nbsp;: -5 pts&nbsp;; <i>Alphabétisation</i>&nbsp;: 5 pts.</p>
+		<p><b>• Richesse&nbsp;:</b> la richesse moyenne de départ est de 250 daols de braise.</p>
 		<p><b>• Statut – varigal (5 pts)&nbsp;:</b> les varigaux sont généralement bien accueillis où qu’ils aillent.</p>
 	</details>
 
@@ -143,34 +144,32 @@ foreach (Spell::cost_as_power as $cost) {
 	<!-- Armes -->
 	<details>
 		<summary class="h3">Armes</summary>
-		<p>Les prix sont donnés en daols de braise (dB)</p>
+
 		<?php
 		$weapons = array_filter(WeaponsController::weapons, fn($weapon) => isset($weapon["prix"][1]));
 		//$weapons = Sorter::sort($weapons, "nom");
-		WeaponsController::displayWeaponsList($weapons, false, true, 1);
+		WeaponsController::displayWeaponsList($weapons, false, true, 1, "dB");
 		?>
 	</details>
 
 	<!-- Armures & boucliers -->
-	<?php
-	// parameters for displayed armors and armor options
-	$price_index = 1;
-	$with_magic_modifiers = false;
-	$excluded_sizes = ["xs"];
-	$armors = array_filter(ArmorsController::armors, fn($armor) => isset($armor["prix"][$price_index]))
-	?>
 	<details>
+		<?php
+		// paramètres des armures
+		$price_index = 1;
+		$with_magic_modifiers = false;
+		$excluded_sizes = ["xs"];
+		$armors = array_filter(ArmorsController::armors, fn($armor) => isset($armor["prix"][$price_index]))
+		?>
 		<summary class="h3">Armures &amp; boucliers</summary>
-
-		<p>Les prix sont donnés en daols de braise (dB)</p>
 
 		<h4>Armures</h4>
 
-		<p>Les poids des armures incluent des vêtements légers. Ils sont donnés pour une armure «&nbsp;hypothétique&nbsp;» complète couvrant tout sauf le visage. De telles armures n’existent généralement pas. Il est donc préférable, pour être plus réaliste, de confectionner une armure composite, c’est-à-dire formée de plusieurs pièces d’armures différentes. Voir paragraphe suivant.</p>
+		<p>Armures «&nbsp;hypothétiques&nbsp;» complètes, données pour infos (voir la page <a href="/armes-armures">Armes &amp; armures</a> pour plus de détails). Vous <i>devez</i> construire votre armure composite.</p>
 
 		<table class="left-1 alternate-e">
 			<tr>
-				<th>Armure</th>
+				<th></th>
 				<th>RD</th>
 				<th>Poids</th>
 				<th>dB</th>
@@ -185,31 +184,33 @@ foreach (Spell::cost_as_power as $cost) {
 			<?php } ?>
 		</table>
 
-		<details>
-			<summary>
-				<h4>Notes</h4>
-			</summary>
+		<details class="mt-½">
+			<summary class="fw-700">Notes</summary>
 			<?php foreach (ArmorsController::armors_notes as $index => $note) { ?>
 				<p><b><?= $index ?>&nbsp;:</b> <?= $note ?></p>
 			<?php } ?>
 		</details>
 
-		<h4>Armures composites</h4>
-		<p>Composez votre armure en respectant un certain réalisme. Le prix et le poids d’une armure dépendent de plusieurs facteurs.</p>
-
-		<ul>
-			<li><b>sa taille&nbsp;:</b> <i>grande</i> (homme de forte carrure), <i>moyenne</i> ou <i>petite</i> (femme)</li>
-			<li><b>son type</b> (cuir, cotte de maille&hellip;)</li>
-			<li><b>sa qualité</b></li>
-		</ul>
-
 		<?php include "content/components/widget-armor-composer.php"; ?>
 
-		<h4>Qualité des armures</h4>
-		<p>
-			Bonne qualité&nbsp;: Même RD&nbsp;; poids -10&nbsp;%&nbsp;; coût ×1,25<br>
-			Très bonne qualité&nbsp;: RD+1&nbsp;; poids -20&nbsp;%&nbsp;; coût ×4
-		</p>
+		<h4 class="mt-2">Boucliers</h4>
+		<table class="left-1 alternate-e">
+			<tr>
+				<th></th>
+				<th>DP</th>
+				<th>Poids</th>
+				<th>dB</th>
+			</tr>
+			<?php foreach (ArmorsController::shields as $shield) {
+				if (isset($shield["prix"][1])){ ?>
+				<tr>
+					<td><?= $shield["nom"] ?></td>
+					<td><?= $shield["DP"] ?></td>
+					<td><?= $shield["pds"] ?> kg</td>
+					<td><?= $shield["prix"][1] ?></td>
+				</tr>
+			<?php }} ?>
+		</table>
 
 	</details>
 
@@ -225,9 +226,13 @@ foreach (Spell::cost_as_power as $cost) {
 		<summary class="h3">Cartouches de flux</summary>
 		<p>
 			Le Flux est souvent conditionné sous forme de cartouches à l’enveloppe métallique très fine. Une cartouche standard contient une unique charge (environ 100 mL). C’est un cylindre de 3,6 cm de diamètre et 10 cm de haut. Elle pèse 130 g lorsqu’elle est pleine, et 45 g vide.<br>
-			Il existe aussi des cartouches « medium » renfermant trois charges, ainsi que des bobonnes blindées renfermant 30 charges (3 L).
+			Il existe aussi des cartouches «&nbsp;medium&nbsp;» renfermant trois charges, ainsi que des bobonnes blindées renfermant 30 charges (3 L).
 		</p>
-		<p>Dans le royaume de Taol-Kaer, une cartouche de flux minéral (le moins cher), coûte 10db</p>
+		<h4>Prix, Taol-Kaer</h4>
+		<?php
+		$items = array_filter(EquipmentListController::esteren_flux, fn($item) => in_array($item[3], ["flux-taol-kaer"]));
+		EquipmentListController::displayEquipmentList($items, 1);
+		?>
 	</details>
 
 </article>

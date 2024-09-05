@@ -2,8 +2,13 @@
 <article>
 	<h2>Bases du combat</h2>
 
-	<p class="mt-0">Chaque tour (ou round) dure trois secondes.<br>
-		Le terme «&nbsp;hex&nbsp;» désigne un hexagone de «&nbsp;diamètre&nbsp;» moyen égal à 1 m. C’est l’espace qu’occupe un humain lorsqu’il combat.</p>
+	<details>
+		<summary class="h3">Tour de combat et hex</summary>
+		<p>
+			Chaque tour (ou round) dure trois secondes.<br>
+			Le terme «&nbsp;hex&nbsp;» désigne un hexagone de «&nbsp;diamètre&nbsp;» moyen égal à 1 m. C’est l’espace qu’occupe un humain lorsqu’il combat.
+		</p>
+	</details>
 
 	<details>
 		<summary class="h3">Surprise</summary>

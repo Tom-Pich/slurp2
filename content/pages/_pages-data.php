@@ -11,6 +11,7 @@ $pages_data = [
 		"title" => "Personnages",
 		"description" => "Les règles concernant la création de personnage",
 		"file" => "01a-personnage",
+		//"body-class" => "page-standard-v4",
 	],
 	"avdesav-comp-sorts" => [
 		"title" => "Listes pour le personnage",

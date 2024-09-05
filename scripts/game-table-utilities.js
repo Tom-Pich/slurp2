@@ -108,7 +108,7 @@ export function scoreTester(score, roll) {
 	if (critical === -1) outcomeSymbol = "😖"
 	if (critical === 1) outcomeSymbol = "😎"
 
-	return { "MR": MR, "symbol": outcomeSymbol }
+	return { "MR": MR, "symbol": outcomeSymbol, "critical": critical }
 }
 
 /**
@@ -121,6 +121,8 @@ export async function fetchResult(url, data) {
 		method: "post",
 		body: data,
 	})
+		//.then(response => response.text()) // debug
+		//.then(response => console.log(response)) // debug
 		.then(response => response.json())
 		.then(response => response.data)
 }

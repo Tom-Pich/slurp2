@@ -189,7 +189,14 @@ class WoundController
 
 	/**
 	 * return an array with all wound effects
+	 * @param string $category : catégorie de créature (std, nbh, nbx, ins)
+	 * @param int $dex : dextérité de la victime
+	 * @param int $san : santé de la victime
+	 * @param int $pdvm : pdv max de la victime
+	 * @param int $pdv : pdv actuel de la victime
 	 * @param int $pain_resistance : -1, 0 or 1;
+	 * @param int $raw_dmg : dégâts bruts;
+	 * @param int $rd : RD de la victime;
 	 * @param string $dmg_type : br, tr, pe, mn, b0, b1, b2, b3, exp
 	 * @param string $bullet_type : std, bpa, bpc
 	 * @param string $localisation : torse,  coeur, crane, visage, cou, jambe, bras, pied, main, oeil, org_gen
@@ -197,13 +204,15 @@ class WoundController
 	 */
 	public static function getWoundEffects(string $category, int $dex, int $san, int $pdvm, int $pdv, int $pain_resistance, int $raw_dmg, int $rd, string $dmg_type, string $bullet_type, string $localisation, array $rolls): array
 	{
-		// sanitizing string entries
-		$category = !in_array($category, ["std", "nbh", "nbx", "ins"]) ? "std" : $category;
+		// correcting uncorrect entries
+		$category = !in_array($category, ["std", "nbh", "nbx", "ins", "ci"]) ? "std" : $category;
+		$pain_resistance = max($pain_resistance, -1);
+		$pain_resistance = min($pain_resistance, 1);
 		$dmg_type = !in_array($dmg_type, ["br", "tr", "pe", "mn", "b0", "b1", "b2", "b3", "exp"]) ? "br" : $dmg_type;
 		$bullet_type = !in_array($bullet_type, ["std", "bpa", "bpc"]) ? "std" : $bullet_type;
 		$localisation = !in_array($localisation, ["torse",  "coeur", "crane", "visage", "cou", "jambe", "bras", "pied", "main", "oeil", "org_gen"]) ? "torse" : $localisation;
 
-		// base result array
+		// default result array
 		$result = [
 			//"categorie" => $category,
 			//"dex" => $dex,
@@ -214,7 +223,7 @@ class WoundController
 			"dégâts bruts" => $raw_dmg,
 			"RD" => $rd,
 			"type dégâts" => $dmg_type,
-			//"type balle" => $bullet_type,
+			"type balle" => null,
 			"localisation" => $localisation,
 			//"jets" => $rolls,
 			"dégâts effectifs" => "",
@@ -233,10 +242,6 @@ class WoundController
 			return $result; // unable to do any process
 		}
 
-		// localisations : torse, coeur, crane, visage, cou, jambe, bras, pied, main, oeil, org_gen
-		// dmg type : br, tr, pe, mn, b0, b1, b2, b3, exp | b0: (-), b2: (+), (b3): (++)
-		// bullet type : std, bpa, bpc | bpa: balle perce-armure, bpc: balle à pointe creuse
-
 		// base values
 		$dmg_multipliers = ["br" => 1, "tr" => 1.5, "pe" => 2, "mn" => 1, "b0" => 0.5, "b1" => 1, "b2" => 1.5, "b3" => 2, "exp" => 1];
 		$limits = [
@@ -251,6 +256,7 @@ class WoundController
 		$is_bullet = in_array($dmg_type, ["b0", "b1", "b2", "b3"]);
 		$is_armor_piercing_bullet = $is_bullet && $bullet_type === "bpa";
 		$is_hollow_point_bullet = $is_bullet && $bullet_type === "bpc";
+		if($is_bullet) $result["type balle"] = $bullet_type;
 
 		$is_perforating = $is_bullet || $dmg_type === "pe"; // b0, b1, b2, b3, pe
 		$is_penetrating = $is_perforating || $dmg_type === "tr"; // b0, b1, b2, b3, pe, tr
@@ -259,7 +265,6 @@ class WoundController
 		$localisation = $localisation === "coeur" && $dmg_type === "tr" ? "torse" : $localisation;
 		$localisation = $dmg_type === "exp" ? "torse" : $localisation;
 		$localisation = $localisation === "oeil" && !$is_perforating ? "visage" : $localisation;
-		$result["type balle"] = $bullet_type;
 		$result["localisation"] = $localisation;
 
 		$is_member = in_array($localisation, ["bras", "main", "pied", "jambe"]);
@@ -268,6 +273,17 @@ class WoundController
 		$is_head = in_array($localisation, ["crane", "visage", "oeil"]);
 		$is_skull = in_array($localisation, ["crane", "oeil"]);
 		$is_sensitive = in_array($localisation, ["visage", "org_gen", "crane", "oeil"]);
+
+		// default specific creature category parameters
+		$skull_dmg_factor = 4;
+		$no_minimal_penetrating_dmg = false;
+		$cannot_be_stunned = false;
+		$is_hard_to_stun = false;
+		$cannot_be_knocked_out = false;
+		$can_hardly_fall = false;
+		$automatic_death_threshold = -3; // pdvm mult threshold for automatic death
+		$pdvm_multiplier_for_rcl = 1;
+		$extra_cranial_rd = true;
 
 		// changes for special categories
 		if (in_array($category, ["nbh", "nbx"])) {
@@ -279,23 +295,35 @@ class WoundController
 			$no_minimal_penetrating_dmg = true;
 			$cannot_be_stunned = true;
 			$cannot_be_knocked_out = true;
-			$automatic_death = 0; // pdvm mult threshold for automatic death (default -3) → automatic death at 0×pdvm
+			$automatic_death_threshold = 0;
 		}
 
-		if ($category === "ins") {
+		elseif ($category === "ins") {
 			$pdvm_multiplier_for_rcl = .5; // double pdv don't count for recoil
 		}
 
+		elseif ($category === "ci"){
+			// créature insectoïde
+			$is_sensitive = false;
+			$skull_dmg_factor = 2;
+			$pain_resistance = 1;
+			$is_hard_to_stun = true;
+			$extra_cranial_rd = false;
+			$can_hardly_fall = true;
+			$limits = [ "bras" => .33, "jambe" => .33, "pied" => .33, "main" => .33 ];
+		}
+
 		// ––– recoil ––––––––––––
-		$limited_raw_dmg = $is_perforating ? min($raw_dmg, ($pdvm + $rd) * ($limits[$localisation] ?? 1)) : $raw_dmg;
-		$rcl_dmg = $limited_raw_dmg * $rcl[$dmg_type];
+		$limited_rcl_raw_dmg = $is_perforating ? min($raw_dmg, ($pdvm + $rd) * ($limits[$localisation] ?? 1)) : $raw_dmg;
+		$rcl_dmg = $limited_rcl_raw_dmg * $rcl[$dmg_type];
 		$rcl_pdvm = $pdvm * ($pdvm_multiplier_for_rcl ?? 1);
 		$rcl_distance = $rcl_dmg / $rcl_pdvm * 3;
 		if ($rcl_distance <= 1) $rcl_distance = 0;
 		if ($rcl_distance > 2) $rcl_distance = 2 + ($rcl_distance - 2) ** 0.5; // distance > 2 → use square root of distance
 		$rcl_modif = DiceManager::getModifier($rcl_dmg * ($is_head ? 3 : 1), 0.8 * $rcl_pdvm);
+		if ($can_hardly_fall) $rcl_modif += 5;
 		$result["recul"] = floor($rcl_distance * 2) / 2;
-		if ($rcl_modif <= 3)  $result["chute"] = !DiceManager::check_is_successfull($dex + $rcl_modif, $rolls[0]);
+		if ($rcl_modif <= 3)  $result["chute"] = !DiceManager::isSuccess($dex + $rcl_modif, $rolls[0]);
 
 		// ––– armor and special bullet types
 		$rd = $is_armor_piercing_bullet ? floor($rd / 2) : $rd;
@@ -316,7 +344,7 @@ class WoundController
 
 		$actual_dmg = $net_dmg * $dmg_multiplier;
 		if ($localisation === "crane") {
-			$cranial_rd = .2 * $pdvm;
+			$cranial_rd = $extra_cranial_rd ? .2 * $pdvm : 0;
 			if ($is_armor_piercing_bullet) $cranial_rd *= 0.5;
 			if ($is_hollow_point_bullet) $cranial_rd *= 1.5;
 			if ($net_dmg <= $cranial_rd) {
@@ -325,7 +353,7 @@ class WoundController
 				$actual_dmg = $cranial_rd + ($net_dmg - $cranial_rd) * $dmg_multiplier;
 			}
 		}
-		if ($rd === 0 && $is_penetrating && !$actual_dmg && empty($no_minimal_penetrating_dmg)) $actual_dmg = 1;
+		if ($rd === 0 && $is_penetrating && !$actual_dmg && !$no_minimal_penetrating_dmg) $actual_dmg = 1;
 
 		$result["dégâts effectifs"] = floor($actual_dmg);
 		$pdv -= !$is_member ? $result["dégâts effectifs"] : 0;
@@ -345,14 +373,15 @@ class WoundController
 		$severe_hit_to_leg = $is_leg && $is_significant_wound_to_member;
 		$incapacitated_leg = $is_leg && $is_incapacitating_wound_to_member;
 		$fall_modifier = DiceManager::getModifier($actual_dmg * ($severe_hit_to_leg ? 1.5 : 1), .5 * $pdvm);
-		$general_fall_check = $fall_modifier <= 3 && !DiceManager::check_is_successfull($san + $fall_modifier, $rolls[1]);
+		if ($can_hardly_fall) $fall_modifier += 5;
+		$general_fall_check = $fall_modifier <= 3 && !DiceManager::isSuccess($san + $fall_modifier, $rolls[1]);
 		$result["chute"] = $result["chute"] || $general_fall_check || $incapacitated_leg;
 
 		// ––– stunning
 		$stun_level = 0;
 		$might_be_stunned = $is_significant_wound || $is_significant_wound_to_member || $is_sensitive || $pain_resistance <= -1 && $actual_dmg > 0;
 
-		if ($might_be_stunned && empty($cannot_be_stunned)) {
+		if ($might_be_stunned && !$cannot_be_stunned) {
 
 			$stun_base_threshold = $is_sensitive ? 0.1 * $pdvm : 0.25 * $pdvm;
 			$stun_base_threshold *= ($pain_resistance <= -1) ? 0.5 : 1;
@@ -368,9 +397,10 @@ class WoundController
 			$stun_level += $localisation === "org_gen" ? 2 : 0;
 			$stun_level += ($is_significant_wound_to_member) ? 1 : 0;
 			$stun_level += ($is_incapacitating_wound_to_member) ? 1 : 0; // if this is true, then line before is also true
-			$stun_level -= DiceManager::check_is_successfull($san - 2 * ($stun_level - 1), $rolls[2]) ? 1 : 0;
+			$stun_level -= DiceManager::isSuccess($san - 2 * ($stun_level - 1), $rolls[2]) ? 1 : 0;
 			$stun_level -= $pain_resistance;
 			$stun_level = min($stun_level, 3);
+			if ($is_hard_to_stun) $stun_level = min($stun_level, 2);
 
 			switch ($stun_level) {
 				case 3:
@@ -380,25 +410,27 @@ class WoundController
 
 				case 2:
 					$duration = max($rolls[2] - $san + 5, 0);
+					if ($is_hard_to_stun) $duration = floor($duration/2);
 					$result["sonné"] = "Sonné niv.2 pendant " . $duration + 1 . " action" . ($duration ? "s" : "");
 					break;
 
 				case 1:
 					$duration = max($rolls[2] - $san, 0);
+					if ($is_hard_to_stun) $duration = floor($duration/2);
 					$result["sonné"] = "Sonné niv.1 pendant " . $duration + 1 . " action" . ($duration ? "s" : "");
 					break;
 			}
 		}
 
 		// ––– knock out
-		if ($is_head && empty($cannot_be_knocked_out)) {
+		if ($is_head && !$cannot_be_knocked_out) {
 			$knock_out_modifier = round(-2*($actual_dmg-1) + ($is_penetrating ? 5 : 0));
-			$result["perte de conscience"] = !DiceManager::check_is_successfull($san + $knock_out_modifier, $rolls[3]);
+			$result["perte de conscience"] = !DiceManager::isSuccess($san + $knock_out_modifier, $rolls[3]);
 		}
 
 		// ––– death
 		$is_severly_wounded = $pdv <= -$pdvm && $is_major_wound || $pdv <= -1.5 * $pdvm && $is_significant_wound || $pdv <= -2 * $pdvm && $actual_dmg;
-		$is_automatically_dead = $pdv <= ($automatic_death ?? -3) * $pdvm;
+		$is_automatically_dead = $pdv <= $automatic_death_threshold * $pdvm;
 
 		if ($is_automatically_dead) {
 			$result["mort"] = "Le personnage est mort&nbsp;! 😵";
@@ -406,16 +438,16 @@ class WoundController
 			$pdv_death_modifier = 5 * ($pdv / $pdvm + 1);
 			$dmg_death_modifier = - ($actual_dmg / $pdvm - 0.5) * 5;
 			$death_modifier = (int) round(($pdv_death_modifier + $dmg_death_modifier) / 2);
-			$result["mort"] = !DiceManager::check_is_successfull($san + $death_modifier, $rolls[4]) ? "Mort en " . round($rolls[5] / 2.5) * 5 . " secondes" : false;
+			$result["mort"] = !DiceManager::isSuccess($san + $death_modifier, $rolls[4]) ? "Mort en " . round($rolls[5] / 2.5) * 5 . " secondes" : false;
 		} elseif ($is_vital && $is_significant_wound) {
 			$death_modifier = DiceManager::getModifier($actual_dmg, 0.67 * $pdvm);
-			$result["mort"] = !DiceManager::check_is_successfull($san + $death_modifier, $rolls[4]) ? "Mort immédiate&nbsp;! 😵" : false;
+			$result["mort"] = !DiceManager::isSuccess($san + $death_modifier, $rolls[4]) ? "Mort immédiate&nbsp;! 😵" : false;
 		}
 
 		// ––– special random effects
 		$effects_modifier = DiceManager::getModifier($actual_dmg, $pdvm * 0.75);
 		$purely_random_parameter = $localisation === "visage" ? random_int(0, 2) <= 1 : random_int(0, 1) === 0;
-		$has_random_effect = $is_significant_wound && !DiceManager::check_is_successfull($san + $effects_modifier, $rolls[6]) && $purely_random_parameter && !in_array($category, ["nbh", "nbx"]) ;
+		$has_random_effect = $is_significant_wound && !DiceManager::isSuccess($san + $effects_modifier, $rolls[6]) && $purely_random_parameter && !in_array($category, ["nbh", "nbx"]) ;
 		//var_dump($has_random_effect);
 		if ($has_random_effect) {
 

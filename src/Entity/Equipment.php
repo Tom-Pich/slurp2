@@ -123,7 +123,7 @@ class Equipment
 			if (!empty($state)) {
 				$counter = TextParser::parseObjectCounter($item->name);
 				if (!empty($counter)) {
-					!isset($state["Compteurs-equipement"]) ? $state["Compteurs-equipement"] = [] : "";
+					if (!isset($state["Compteurs-equipement"])) $state["Compteurs-equipement"] = [];
 					$state["Compteurs-equipement"][] = $counter;
 				}
 			}
@@ -154,7 +154,7 @@ class Equipment
 				$formatted_item["Nom"] = trim(strip_tags($item["Nom"]), "* ");
 
 				$formatted_item["Contenant"] = (bool) $item["Contenant"];
-				if ($item["Contenant-off"] === "on" && empty($repo->getEquipmentFromPlace("ct_" . $id))) {
+				if (!empty($post["sub-list"][$id]["Contenant-off"]) && empty($repo->getEquipmentFromPlace("ct_" . $id))) {
 					$formatted_item["Contenant"] = false;
 				}
 				if (substr($item["Nom"], 0, 1) === "*") {
@@ -164,7 +164,7 @@ class Equipment
 				$formatted_item["Notes"] = strip_tags($item["Notes"]);
 				isset($item["Secret"]) ? $formatted_item["Secret"] = strip_tags($item["Secret"]) : "";
 				$formatted_item["Lieu"] = strip_tags($item["Lieu"]);
-				$formatted_item["Groupe"] = !empty($post["sub-list"][$id]["Groupe"]) ? (int) $post["sub-list"][$id]["Groupe"] : null;  //$item["Groupe"] ?? null;
+				$formatted_item["Groupe"] = !empty($post["sub-list"][$id]["Groupe"]) ? (int) $post["sub-list"][$id]["Groupe"] : null;
 				$formatted_item["Ordre"] = $order;
 
 				// prevent putting container in itself

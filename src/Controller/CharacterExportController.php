@@ -37,7 +37,7 @@ class CharacterExportController
 		fwrite($myfile, $avdesavs . "\n\n");
 
 		// Compétences
-		$skills = "### Compétences\n";
+		$skills = "## Compétences\n";
 		foreach ($character->skills as $skill) {
 			$skills .= sprintf("%s – %s ; ", $skill["label"], $skill["score"]);
 		}
@@ -47,7 +47,7 @@ class CharacterExportController
 		// Magie
 		if ($character->special_traits["magerie"]) {
 
-			fwrite($myfile, "### Collèges & Sorts" . "\n");
+			fwrite($myfile, "## Collèges & Sorts" . "\n");
 
 			foreach ($character->colleges as $college) {
 				$colleges_block = sprintf("%s [%s] – %s\n", htmlspecialchars_decode($college["name"]), $college["points"], $college["score"]);
@@ -63,11 +63,11 @@ class CharacterExportController
 		// Pouvoirs
 		if ($character->special_traits["pouvoirs"]) {
 
-			fwrite($myfile, "### Pouvoirs" . "\n");
+			fwrite($myfile, "## Pouvoirs" . "\n");
 
 			$powers_block = "";
 			foreach ($character->powers as $pouvoir) {
-				$powers_block .= sprintf("%s [%s] – %s\n", $pouvoir["label"], $pouvoir["points"], $pouvoir["score"]);
+				$powers_block .= sprintf("%s – %s\n", $pouvoir["label"], $pouvoir["score"]);
 			}
 			fwrite($myfile, $powers_block . "\n");
 		}
@@ -75,7 +75,7 @@ class CharacterExportController
 		// Psi
 		if ($character->special_traits["psi"]) {
 
-			fwrite($myfile, "### Aptitudes psioniques" . "\n");
+			fwrite($myfile, "## Aptitudes psioniques" . "\n");
 
 			foreach ($character->disciplines as $discipline) {
 				$psi_block = sprintf("%s Niv. %s", $discipline["nom"], $discipline["niv"]);
@@ -98,14 +98,14 @@ class CharacterExportController
 		}
 
 		// Possessions
-		fwrite($myfile, "### Possessions" . "\n");
+		fwrite($myfile, "## Possessions" . "\n");
 		foreach ($character->equipment as $place) {
 			if (!empty($place["liste"])) {
 				$sublist_block = $place["nom"] . "\n";
 				foreach ($place["liste"] as $item) {
 					$sublist_block .= sprintf("- %s (%s kg)", $item->name, $item->weight);
 					if ($item->notes) {
-						$sublist_block .= (" – " . $item->name);
+						$sublist_block .= (" – " . $item->notes);
 					}
 					if ($item->secret) {
 						$sublist_block .= (" – " . $item->secret);

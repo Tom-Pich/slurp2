@@ -12,14 +12,14 @@ class WeaponsController
 		['nom' => 'Arc composite', 'deg' => 'P.e+3, 15/F×8', 'Fm' => 10, 'pds' => 1.5, 'cat' => 'arc', 'prix' => [300],],
 		['nom' => 'Arc court (pour nain)', 'deg' => 'P.e+1, 10/F×4', 'Fm' => 9, 'pds' => 0.8, 'cat' => 'exclu', 'prix' => [100],],
 		['nom' => 'Arbalète légère', 'deg' => 'P.1d+2, 15/30', 'Fm' => NULL, 'pds' => 2, 'cat' => 'arc', 'prix' => [150],],
-		['nom' => 'Arbalète moyenne', 'deg' => 'P.2d+1, 20/60', 'Fm' => 8, 'pds' => 3, 'cat' => 'arc', 'prix' => [150],],
+		['nom' => 'Arbalète moyenne', 'deg' => 'P.2d+1, 20/60', 'Fm' => 8, 'pds' => 3, 'cat' => 'arc', 'prix' => [150, 50],],
 		['nom' => 'Arbalète lourde', 'deg' => 'P.3d, 20/100', 'Fm' => 10, 'pds' => 6, 'cat' => 'arc', 'prix' => [300],],
 
 		['nom' => 'Épée longue', 'deg' => 'T.t+1 - P.e+2', 'Fm' => 10, 'pds' => 1.25, 'cat' => 'épée', 'prix' => [600, 70],],
 		['nom' => 'Épée bâtarde', 'deg' => 'T.t+1 - P.e+2', 'Fm' => 11, 'pds' => 1.5, 'notes' => '(M)', 'cat' => 'épée', 'prix' => [750],],
 		['nom' => 'Épée courte', 'deg' => 'T.t - P.e+1', 'Fm' => 7, 'pds' => 1, 'cat' => 'épée', 'prix' => [400],],
 		['nom' => 'Épée à 2 mains', 'deg' => 'T.t+3 - P.e+3', 'Fm' => 12, 'pds' => 2.5, 'cat' => 'épée', 'prix' => [900],],
-		['nom' => 'Poignard', 'deg' => 'T.t-2 - P.e+1, 7/F-2', 'Fm' => NULL, 'pds' => 0.5, 'notes' => '(PA)', 'cat' => 'épée', 'prix' => [40],],
+		['nom' => 'Poignard', 'deg' => 'T.t-2 - P.e+1, 7/F-2', 'Fm' => NULL, 'pds' => 0.5, 'notes' => '(PA)', 'cat' => 'épée', 'prix' => [40, 4],],
 		['nom' => 'Couteau', 'deg' => 'T.t-3 - P.e, 7/F-2', 'Fm' => NULL, 'pds' => 0.25, 'notes' => '(PA)(L)', 'cat' => 'épée', 'prix' => [30],],
 		['nom' => 'Rapière', 'deg' => 'P.e+1', 'Fm' => NULL, 'pds' => 0.75, 'notes' => '(PF)(L)', 'cat' => 'épée', 'prix' => [NULL],],
 		['nom' => 'Sabre', 'deg' => 'T.t - P.e+1', 'Fm' => 7, 'pds' => 1, 'notes' => '(PF)', 'cat' => 'épée', 'prix' => [NULL],],
@@ -162,9 +162,8 @@ class WeaponsController
 	 * @param  ?int $price_index price index to be used (no price if NULL)
 	 * @return void
 	 */
-	static function displayWeaponsList(array $weapons, bool $is_firearms_list = false, bool $display_headers = true, ?int $price_index = null): void
-	{
-?>
+	static function displayWeaponsList(array $weapons, bool $is_firearms_list = false, bool $display_headers = true, ?int $price_index = null, ?string $currency = null): void
+	{ ?>
 		<table class="weapons <?= $display_headers ? "" : "alternate-o" ?>">
 			<?php if ($display_headers) { ?>
 				<tr>
@@ -172,7 +171,7 @@ class WeaponsController
 					<th>Dég, Prt<?= $is_firearms_list ? ", VdT, Cps, Rcl" : "" ?></th>
 					<th>Fm</th>
 					<th>Pds</th>
-					<?php if (is_int($price_index)) { ?><th>$</th><?php } ?>
+					<?php if (is_int($price_index)) { ?><th><?= $currency ?? "$" ?></th><?php } ?>
 				</tr>
 			<?php }
 			foreach ($weapons as $weapon) {
@@ -215,8 +214,7 @@ class WeaponsController
 				</summary>
 				<p><?= $weapon["description"] ?></p>
 			</details>
-<?php
-		}
+		<?php }
 	}
 
 	public static function burstHits(int $rcl, int $bullets, int $mr)

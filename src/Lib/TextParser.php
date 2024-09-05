@@ -173,10 +173,10 @@ class TextParser
 		preg_match($regexp_counter2, $name, $matches2);
 		if (!empty($matches1)) {
 			return [
-				"label" => isset($matches1[1]) ? trim($matches1[1]) : "erreur de format&nbsp;!",
+				"label" => isset($matches1[1]) ? trim($matches1[1], " \t([") : "erreur de format&nbsp;!",
 				"current" => (float) $matches1[2] ?? 0,
 				"max" => (float) $matches1[3] ?? 10,
-				"unit" => isset($matches1[4]) ? trim($matches1[4]) : "",
+				"unit" => isset($matches1[4]) ? trim($matches1[4], " \t)]") : "",
 			];
 		} elseif (!empty($matches2)) {
 			return [
