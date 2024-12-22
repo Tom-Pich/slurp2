@@ -11,17 +11,20 @@ $pages_data = [
 		"title" => "Personnages",
 		"description" => "Les règles concernant la création de personnage",
 		"file" => "01a-personnage",
-		//"body-class" => "page-standard-v4",
+		//"css-version" => 4,
 	],
 	"avdesav-comp-sorts" => [
 		"title" => "Listes pour le personnage",
 		"description" => "Tous les avantages, désavantages, compétences et sorts",
 		"file" => "01b-listes",
+		//"css-version" => 4,
 	],
 	"armes-armures" => [
 		"title" => "Armes &amp; armures",
 		"description" => "Règles et listes portant sur les armes et les armures",
-		"file" => "02-armes-armures",],
+		"file" => "02-armes-armures",
+		//"css-version" => 4,
+	],
 	"bases-systeme" => [
 		"title" => "Bases du système",
 		"description" => "Les fondamentaux des règles",

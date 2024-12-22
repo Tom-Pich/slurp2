@@ -5,7 +5,7 @@
 	<p>Avant de noter quoi que ce soit pour votre scénario, commencez par les étapes ci-dessous&hellip;</p>
 
 	<details><!-- Pour qui ? -->
-		<summary class="h3">Style, durée et difficulté</summary>
+		<summary><h3>Style, durée et difficulté</h3></summary>
 
 		<p>Première étape&nbsp;: avoir une idée du style de scénario que vous allez écrire, de sa durée, de sa difficulté&hellip; Et cela dépend de vos joueurs.</p>
 		<p>Réflechissez à chacun des points ci-dessous. Rien ne vous oblige à prendre une décision tout de suite, mais les avoir en tête va vous permettre de clarifier et canaliser vos idées pour la suite.</p>
@@ -30,7 +30,7 @@
 	</details>
 
 	<details><!-- Types d’intrigue -->
-		<summary class="h3">Les 36 types d’intrigues</summary>
+		<summary><h3>Les 36 types d’intrigues</h3></summary>
 		<p>Source&nbsp;: <a href="http://fudge.ouvaton.org/GrandeListe.html" target="_blank">36 types d’intrigues, par John Ross</a>.</p>
 
 		<h4>Récupérer un Machin</h4>
@@ -488,7 +488,7 @@
 
 	<!-- Structure (linéaire, semi-ouverte, ouverte) -->
 	<details>
-		<summary class="h3">Linéaire ou ouvert&nbsp;?</summary>
+		<summary><h3>Linéaire ou ouvert&nbsp;?</h3></summary>
 		<p>Vous avez trois structures possibles. Votre choix dépend de l’expérience de vos joueurs et du temps que vous êtes prêt à consacrer à votre préparation.</p>
 
 		<!-- Structure linéaire -->
@@ -573,7 +573,7 @@
 	</details>
 
 	<details><!-- Thèmes -->
-		<summary class="h3">Thèmes</summary>
+		<summary><h3>Thèmes</h3></summary>
 		<p>Le thème du scénario est le concept ou l’idée autour duquel ou de laquelle tourne le scénario. On peut distinguer deux types de thèmes, non exclusifs.</p>
 
 		<details><!-- Thème structurel -->
@@ -601,7 +601,7 @@
 	</details>
 
 	<details><!-- Chasse aux idées -->
-		<summary class="h3">La chasse aux idées</summary>
+		<summary><h3>La chasse aux idées</h3></summary>
 
 		<p>Quelques pistes pour avoir des idées.</p>
 
@@ -634,7 +634,7 @@
 	</details>
 
 	<details><!-- Fiche de scénario -->
-		<summary class="h3">Préparer votre fiche de scénario</summary>
+		<summary><h3>Préparer votre fiche de scénario</h3></summary>
 
 		<p>Préparer un document avec les trois grandes sections ci-dessous. Laissez-les vides pour l’instant. Le guide pour les compléter se trouve dans les sections suivantes</p>
 
@@ -694,7 +694,7 @@
 	<p>Elle va évoluer tout au long de votre travail de création&nbsp;: vous y ajouterez des idées ou des questions, et retirerez ce qui n’est plus pertinent ou ce qui a été intégré à l’écriture de votre scénario.</p>
 
 	<details><!-- Idées en vrac -->
-		<summary class="h3">Idées en vrac</summary>
+		<summary><h3>Idées en vrac</h3></summary>
 
 		<p>Noter les idées intéressantes qui vous viennent à l’esprit, sur tout et n’importe quoi.</p>
 		<p>Une ou deux idées fortes peuvent suffire. Les PJ doivent pouvoir avoir un rôle intéressant dans l’intrigue.</p>
@@ -738,7 +738,7 @@
 
 	<!-- L’antagoniste -->
 	<details>
-		<summary class="h3">L’antagoniste</summary>
+		<summary><h3>L’antagoniste</h3></summary>
 		<p>L’antagoniste a généralement une grande importance dans un scénario. Cet antagoniste doit être détaillé et être générateur d’idées.</p>
 
 		<details><!-- Sa nature -->
@@ -816,12 +816,12 @@
 
 	<!-- But du scénario -->
 	<details>
-		<summary class="h3">But du scénario</summary>
+		<summary><h3>But du scénario</h3></summary>
 		<p>Idées relatives au dénouement du scénario&nbsp;: quel est son but, comment l’atteindre et quelle sera la scène finale. Pensez-y très tôt, même s’il est lointain, car il va vous permettre de canaliser votre écriture.</p>
 	</details>
 
 	<details><!-- Éléments des PJ -->
-		<summary class="h3">Éléments des PJ</summary>
+		<summary><h3>Éléments des PJ</h3></summary>
 		<p>Notez dans cette partie les éléments des PJ exploitables dans le scénario (compétences, pouvoirs, éléments de background, trait de caractère, faiblesse, objectif, secret, ennemi, être cher, etc).</p>
 		<p>Reliez-les à des idées en vrac lorsque c’est possible, ainsi qu’à d’éventuelles accroches appropriées.</p>
 		<p>Essayez de connaître les éléments suivants pour chacun des PJ&nbsp;:</p>
@@ -845,7 +845,7 @@
 	</details>
 
 	<details><!-- Éléments de l’univers -->
-		<summary class="h3">Éléments de l’univers</summary>
+		<summary><h3>Éléments de l’univers</h3></summary>
 		<p>Notez les éléments de l’univers de jeu exploitables pour le scénario, à relier si possible aux idées en vrac.</p>
 		<p>Cela permet de donner au scénario une saveur particulière en accord avec celle de l’univers de jeu, et permettra aux joueurs (et aux personnages) d’améliorer leur connaissance de cet univers. D’ailleurs, vous pouvez faire apparaître des éléments iconiques de votre univers de jeu, même si ce n’est qu’en tant que figurant ou décor sans importance. Cela renforcera la présence du décor spécifique et la saveur de votre univers de jeu.</p>
 		<p>Les PNJ importants de votre univers de jeu devraient aussi être détaillés (historique, secrets et intrigues, ambitions, attaches etc. &ndash; comme un PJ), même si vous ne prévoyez pas pour eux un rôle important dans votre histoire. D’une part, cela permettra de donner plus de profondeur au monde, d’autre part, cela vous permettra soit de complexifier l’intrigue du scénario en cours de rédaction, soit de poser des éléments précurseurs de scénarios futurs (§ D4 et B5).</p>
@@ -853,7 +853,7 @@
 	</details>
 
 	<details><!-- Ouvertures -->
-		<summary class="h3">Ouvertures</summary>
+		<summary><h3>Ouvertures</h3></summary>
 		<p>Pensez éventuellement à des éléments annonciateurs des scénarios à venir ou pouvant être utilisés pour donner une suite à votre scénario. Plus il y en a, plus l’écriture des scénarios suivants en sera facilitée.</p>
 	</details>
 
@@ -865,7 +865,7 @@
 	<p>Écrire en style télé&shy;graphique est suffisant.</p>
 
 	<details><!-- Contexte & causes -->
-		<summary class="h3">Contexte &amp; causes</summary>
+		<summary><h3>Contexte &amp; causes</h3></summary>
 		<p>Expliquer le pourquoi du comment de l’intrigue ainsi que le contexte dans lequel elle s’inscrit.</p>
 		<p>Le contexte du scénario décrit la situation (politique, géographique, social, etc), l’histoire et les particularités qui ont permis l’émergence des causes de votre scénario.</p>
 		<p>Les éléments les plus important de l’intrigue (PNJ, événements) doivent y trouver leur justification, et c’est également dans cette partie que l’on développe les motivations et les moyens de l’antagoniste.</p>
@@ -873,13 +873,13 @@
 	</details>
 
 	<details><!-- Synopsis -->
-		<summary class="h3">Synopsis</summary>
+		<summary><h3>Synopsis</h3></summary>
 		<p>Décrire brièvement les différentes étapes probables du scénario, depuis l’introduction jusqu’à la scène finale.</p>
 		<p>Cette section ne sert pas à y noter des informations (elles seront décrites dans la scène ou la section d’annexes appropriée), mais seulement à avoir une idée claire des différentes étapes.</p>
 	</details>
 
 	<details><!-- Introduction -->
-		<summary class="h3">Introduction</summary>
+		<summary><h3>Introduction</h3></summary>
 
 		<p>
 			Si besoin, faites le point sur la <b>situation de départ des PJ</b>. Où sont-ils au début du scénario&nbsp;? Que font-ils&nbsp;? La réponse à ces questions va avoir un impact sur la crédibilité de votre scénario et son introduction. Il est important que la situation initiale soit donc clairement définie au départ.
@@ -946,7 +946,7 @@
 	</details>
 
 	<details><!-- Développement -->
-		<summary class="h3">Développement du scénario</summary>
+		<summary><h3>Développement du scénario</h3></summary>
 		<p>Le scénario doit avoir un but ultime (révélé rapidement ou par étapes) et proposer des objectifs intermédiaires clairs et réalisables qui mènent à son achèvement.</p>
 
 		<!-- Le plan -->
@@ -1085,7 +1085,7 @@
 	</details>
 
 	<details><!-- Paroxysme et épilogue -->
-		<summary class="h3">Paroxysme &amp; Épilogue</summary>
+		<summary><h3>Paroxysme &amp; Épilogue</h3></summary>
 		<p>Un scénario doit se terminer par un paroxysme. C’est la séquence <b>la plus importante du scénario</b>. Elle doit donc être traitée avec plus de détails que n’importe quel autre élément de l’aventure. C’est elle qui va le plus contribuer aux souvenirs qu’auront vos joueurs du scénario.</p>
 		<p>Le paroxysme <b>doit</b> exister. Même si les joueurs ont manqué une partie de l’aventure, ils doivent parvenir jusqu’au paroxysme. Celui-ci constitue l’apogée de l’action et de l’émotion et amène à la conclusion du scénario. Il doit s’agir d’un feu d’artifice mêlant grand spectacle, émotions à leur comble et enjeux décisifs.</p>
 		<p>Le paroxysme est la résolution (au sens musical, et non mathématique) logique et cohérente, de l’accumulation naturelle de la tension et de l’excitation générées par le scénario. Il prend la forme d’un choix (clair, mais pas forcément simple) et/ou d’une tâche à accomplir et doit être plus qu’un simple combat contre le «&nbsp;boss de fin de niveau&nbsp;»&nbsp;: il doit être original. S’il y a un combat final, le paroxysme doit créer une ambiguïté morale à propos de ce combat, comme par exemple l’obligation de sacrifier des innocents pour éliminer le Grand Méchant. Le choix qu’il propose ne doit pas être simple ou évident. Pensez aux solutions «&nbsp;faciles&nbsp;» de votre scénario et faites en sorte de les éliminer. Si l’intrigue implique un paroxysme prévisible, arrangez-vous pour qu’une ou plusieurs des actions prévisibles ne soient pas réalisables au moment du paroxysme&nbsp;: rendez leur plan inopérant, surtout s’il est relativement banal.</p>
@@ -1107,14 +1107,14 @@
 
 	<!-- Généralités -->
 	<details>
-		<summary class="h3">Généralités</summary>
+		<summary><h3>Généralités</h3></summary>
 		<p>Cette section décrit tous les PNJ et créatures rencontrées, les lieux visités, etc. et, si besoin, une chronologie du scénario.</p>
 		<p>Cela permet de clarifier l'élaboration du scénario, de faciliter la recherche d’informations au cours du jeu et le recyclage de ces éléments dans d’autres scénarios. N’hésitez pas à piocher dans les aides de jeu professionnelles ou dans d’autres scénario.</p>
 	</details>
 
 	<!-- PNJ -->
 	<details>
-		<summary class="h3">PNJ</summary>
+		<summary><h3>PNJ</h3></summary>
 		<p>Pour chaque PNJ ou monstre, noter son nom, sa description et un court résumé de sa fonction, ses objectifs et sa personnalité et éventuellement des objets ou informations importants qu’il détient.</p>
 		<p>La description minimale pour un PNJ secondaire est sa stature (petit ou grand, maigre ou gros, etc), son équipement (même si cela se résume à quelques haillons) ainsi que l’impression générale qu’il dégage (un air de fouine, calme ou agité, etc).</p>
 		<p>Il peut être utile de préparer quelques PNJ «&nbsp;génériques&nbsp;» (aubergiste, marchand, etc) ainsi qu’une liste de nom, et d’adresse, au cas où.</p>
@@ -1122,14 +1122,14 @@
 
 	<!-- Lieu -->
 	<details>
-		<summary class="h3">Lieux</summary>
+		<summary><h3>Lieux</h3></summary>
 		<p>Pour chaque lieu important où les PJ sont susceptibles de se rendre préparer un bref descriptif (architecture, ambiance, localisation) ainsi que son rôle dans l’histoire (rencontre, objets ou information qu’il contient).</p>
 		<p>Comme pour les PNJ, vous pouvez préparer quelques lieux génériques (auberge, port, château du seigneur local), bien que cela demande beaucoup de travail, travail qui pourra toutefois être réutilisé plus tard.</p>
 	</details>
 
 	<!-- Chronologie -->
 	<details>
-		<summary class="h3">Chronologie</summary>
+		<summary><h3>Chronologie</h3></summary>
 		<p>Il est parfois plus clair de noter sur un organigramme chronologique les événements du scénario, pour suivre les actions complexes de plusieurs PNJ. Cette chronologie ne doit pas nécessairement être rigide. Il est parfois suffisant de dresser la liste des événements dans l’ordre chronologique probable sans préciser de dates. Cela permet de visualiser l’enchaînement logique des événements afin d’y détecter une éventuelle faille, tout en disposant de la souplesse nécessaire pour servir l’histoire&nbsp;: gérer les variations de tension, pénaliser des joueurs trop lents, les remettre sur les rails.</p>
 		<p>Cet organigramme peut être étoffé au fur et à mesure du jeu (surtout en campagne).</p>
 		<p>On peut y ajouter, en cours de jeu, les actions des PJ.</p>
@@ -1142,7 +1142,7 @@
 
 	<!-- En cours de jeu -->
 	<details>
-		<summary class="h3">En cours de jeu</summary>
+		<summary><h3>En cours de jeu</h3></summary>
 		<p>Bien doser les périodes apparemment infructueuses et les succès. Au besoin, glisser un intermède où il y aura de l’action.</p>
 		<p>Mieux vaut quelques combats intenses qu’une suite d’escarmouches sans risques.</p>
 		<p>Garder un intermède sous le coude pour rattraper la sauce si le scénario part en sucette (par l’action des joueurs ou à cause d’une erreur conceptuelle) ou faire diversion en cas de problème.</p>
@@ -1151,14 +1151,14 @@
 
 	<!-- Préparer le scénario suivant -->
 	<details>
-		<summary class="h3">Pour préparer le scénario suivant</summary>
+		<summary><h3>Pour préparer le scénario suivant</h3></summary>
 		<p>Préparez l’introduction de 2 ou 3 scénarios différents. Ainsi, à la fin d’un scénario, vous pourrez proposer à vos joueurs plusieurs pistes vers lesquelles s’orienter.</p>
 		<p>Réutilisez des éléments du scénario pour les prochains que vous écrirez. Vous réutiliserez des éléments déjà rencontrés pour donner aux joueurs une impression de profondeur du monde&nbsp;; et pour vous-même, cela vous épargnera du travail.</p>
 	</details>
 
 	<!-- Illustration et musique -->
 	<details>
-		<summary class="h3">Illustrations et musique</summary>
+		<summary><h3>Illustrations et musique</h3></summary>
 		<p>Préparer des illustrations et une ambiance sonore (bruitage et/ou musique).</p>
 		<p>Pour ce qui est de la bande sonore, <a href="https://environment.ambient-mixer.com/" target="_blank">Ambient-mixer</a> permet de mixer plusieurs pistes (bruitages et/ou musique). Créez une ou plusieurs listes de lecture pour démarrer rapidement la lecture d’une série de morceaux préalablement choisis.</p>
 	</details>

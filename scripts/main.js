@@ -3,12 +3,12 @@ import { qs, qsa } from "./utilities";
 // connection and disconnection
 const connectionBtn = qs("#connection-btn")
 const connectionDialog = qs("#connexion-dialog")
-qs("[data-action=close-modal]").addEventListener("click", () => {
+qs("[data-role=close-modal]").addEventListener("click", () => {
 	connectionDialog.close();
 })
 if (connectionBtn.dataset.state === "0") {
 	connectionBtn.addEventListener("click", () => {
-		connectionDialog.show();
+		connectionDialog.showModal();
 	})
 } else {
 	connectionBtn.addEventListener("click", () => { window.open("/submit/log-out", "_self") })

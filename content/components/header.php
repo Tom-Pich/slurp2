@@ -1,4 +1,5 @@
 <?php
+
 use App\Repository\CharacterRepository;
 
 global $pages_data;
@@ -14,7 +15,12 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 	<meta name="google-site-verification" content="Yap48CUfjcjJnXZufVRoH0B0KB5-_UXQArZJiRkn_Qs">
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=yes">
 	<meta name="description" content="<?= $page["description"] ?>">
-	<link rel="stylesheet" href="/styles.min.css?v=<?= VERSION ?>">
+	<?php if ($page["css-version"] ?? 3 === 4): ?>
+		<link rel="stylesheet" href="/styles-v4.min.css?v=<?= VERSION ?>">
+	<?php else: ?>
+		<link rel="stylesheet" href="/styles.min.css?v=<?= VERSION ?>">
+	<?php endif ?>
+	
 	<link rel="shortcut icon" href="/assets/img/favicon.ico">
 	<title><?= $page["title"] ?></title>
 
@@ -32,21 +38,21 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 
 <body class="<?= $page["body-class"] ?>">
 
-	<header>
+	<header class="main-header">
 
-		<a id="logo" href="/" title="Accueil"><img src="/assets/img/favicon.ico" width="40" height="40"></a>
-
-		<!-- Titres -->
-		<div class="px-1">
-			<h2>SLURP</h2>
-			<h1><?= $page["title"] ?></h1>
+		<div class="titles-wrapper flex-s gap-1">
+			<a href="/" title="Accueil"><img src="/assets/img/favicon.ico" width="64" height="64"></a>
+			<div>
+				<h2 class="fs-900">SLURP</h2>
+				<h1 class="fs-700"><?= $page["title"] ?></h1>
+			</div>
 		</div>
 
 		<!-- login et bouton connexion/déconnexion -->
 		<div id="login-element" <?= DB_ACTIVE ? "" : "hidden" ?>>
 
 			<div class="flex-s gap-½ ai-center jc-center fs-500"> <!-- href="/mon-compte" -->
-				<?php if($_SESSION["Statut"]){ ?>
+				<?php if ($_SESSION["Statut"]) { ?>
 					<b><a href="/mon-compte" title="Mon compte"><?= $_SESSION['login']; ?></a></b>
 				<?php } else { ?>
 					<b>Se connecter</b>
@@ -56,9 +62,9 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 				</button>
 			</div>
 
-			<dialog id="connexion-dialog" class="p-1">
-				<button class="nude ff-fas" data-action="close-modal">&#xf00d;</button>
-				<form method="post" action="/submit/log-in" class="grid gap-½ mt-2">
+			<dialog id="connexion-dialog" style="max-width: 300px;">
+				<button class="ff-fas" data-role="close-modal">&#xf00d;</button>
+				<form method="post" action="/submit/log-in" class="grid gap-1 mt-2">
 					<input type="text" name="login" placeholder="Nom d’utilisateur" required>
 					<input type="password" name="password" placeholder="Mot de passe" required>
 					<input hidden name="token" value="<?= $_SESSION["token"] ?>">
@@ -75,7 +81,7 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 
 		</div>
 
-		<button id="show-nav-on-mobile" class="nude fs-600 fw-600 ff-fas">&#xf0c9;</button>
+		<button id="show-nav-on-mobile" class="nude fs-600 fw-600 ff-fas text-shadow">&#xf0c9;</button>
 
 		<nav>
 			<ul>
@@ -95,14 +101,6 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 						<li><a href="/high-tech"><?= $pages_data['high-tech']["title"] ?> (&beta;)</a></li>
 					</ul>
 				</li>
-				<!-- <li>
-					<h4>En version bêta</h4>
-					<ul class="sub-menu">
-						<li><a href="/psioniques"><?= $pages_data['psioniques']["title"] ?></a></li>
-						<li><a href="/vehicules"><?= $pages_data['vehicules']["title"] ?></a></li>
-						<li><a href="/high-tech"><?= $pages_data['high-tech']["title"] ?></a></li>
-					</ul>
-				</li> -->
 				<li>
 					<h4>Univers de jeu</h4>
 					<ul class="sub-menu">

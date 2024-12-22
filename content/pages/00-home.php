@@ -10,7 +10,7 @@
 	<p>Il y a également un système de <b>création et de gestion des personnages</b>, ainsi qu’un <b>tchat intégrant des fonctionnalités de jeu</b>, mais il faut disposer d’un compte. Cette partie du site n’est pas ouverte au public (ça nécessiterait de redimensionner le site), mais vous n’en avez pas besoin pour jouer. Si vous êtes intéressé par une exploitation commerciale ou une démonstration, n’hésitez pas à me contacter. &#128522;</p>
 
 	<h4>Qui suis-je&nbsp;?</h4>
-	<p>Professeur de physique et d’informatique, et maintenant concepteur de sites et applications web, je suis passionné de JdR depuis le début des années 90. La crise sanitaire du COVID m’a donné envie de jouer à distance avec mon groupe de joueurs. Pour y parvenir dans des conditions optimales, j’ai développé ce site, que j’améliore continûment.</p>
+	<p>Professeur de physique et d’informatique, développeur web professionnel depuis 2022, je suis passionné de JdR depuis le début des années 90. La crise sanitaire du COVID m’a donné envie de jouer à distance avec mon groupe de joueurs. Pour y parvenir dans des conditions optimales, j’ai développé ce site, que j’améliore continûment.</p>
 
 	<h4>Mentions légales</h4>
 	<p>Ce site ne collecte pas de données personnelles. Les données collectées sont anonymes et servent à enrichir votre expérience sur ce site. En naviguant sur ce site, vous acceptez cette collecte de données anonymes.</p>

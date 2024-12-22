@@ -5,11 +5,11 @@ $repo_skills = new SkillRepository;
 
 <article><h2>Personnage</h2>
 
-	<details><summary class="h3">Points de personnage</summary>
+	<details><summary><h3>Points de personnage</h3></summary>
 		<p><b>Investigateur débutant&nbsp;:</b> 80 à 100 pts</p>
 	</details>
 
-	<details><summary class="h3">Avantages &amp; désavantages</summary>
+	<details><summary><h3>Avantages &amp; désavantages</h3></summary>
 		<p><b>• Alphabétisation :</b> entre 0 (<i>Alphabétisé</i>) et -10 pts (<i>Illettré</i>).</p>
 		<p><b>• Magerie (5 pts / niv) :</b> +1 par niveau pour lancer des sorts. Permet également de savoir si un objet touché est magique.</p>
 		<p><b>• Richesse de base :</b> 750 $ pour les États-Unis de 1920. Le personnage dispose généralement de 20 % de sa richesse de base sous forme de liquidité (compte en banque ou autre).<br/>
@@ -17,7 +17,7 @@ $repo_skills = new SkillRepository;
 		Coût de la vie : 70 $ pour un <i>Statut social</i> de 0.</p>
 	</details>
 
-	<details><summary class="h3">Compétences</summary>
+	<details><summary><h3>Compétences</h3></summary>
 		<?php
 			$skill_cthulhu = $repo_skills->getSkill(197);
 			$skill_cthulhu->displayInRules();
@@ -28,12 +28,12 @@ $repo_skills = new SkillRepository;
 
 <article><h2>Magie</h2>
 
-	<details><summary class="h3">Généralités</summary>
+	<details><summary><h3>Généralités</h3></summary>
 		<p>La magie de Chtulhu est une magie étrange, dangereuse et chaotique qui ne suit pas les règles standards.</p>
 		<p>Utiliser la magie ne nécessite pas l’avantage <i>Magerie</i> (mais ce dernier facilite sa pratique).</p>
 	</details>
 
-	<details><summary class="h3">Lancer un sort</summary>
+	<details><summary><h3>Lancer un sort</h3></summary>
 	<p>La description d’un sort contient tous les renseignements nécessaires.</p>
 	<p>Lancer un sort est généralement dommageable pour la santé mentale du sorcier. Cela nécessite souvent un rituel long et compliqué, ainsi que des composantes matérielles et/ou des conditions particulières. Il peut parfois être nécessaire de sacrifier définitivement un ou plusieurs points de <i>Volonté</i> et/ou PdE pour pouvoir lancer un sort. La plupart des sorts ont un coût énergétique élevé.</p>
 	<p>Les sorts ne s’apprennent pas&nbsp;: les chances de succès pour les lancer dépendent, entre autres, du nombre de PdM investis dans le sort. Un jet de 16 est toujours un échec.</p>
@@ -43,13 +43,13 @@ $repo_skills = new SkillRepository;
 
 <article><h2>Grimoires</h2>
 
-	<details><summary class="h3">Caractéristiques</summary>
+	<details><summary><h3>Caractéristiques</h3></summary>
 		<p>Chaque grimoire a deux caractéristiques chiffrées :</p>
 		<p><b>• Contenu (de 1 à 10) :</b> indique la quantité d’informations sur le Mythe.</p>
 		<p><b>• Clarté (de 0 à -5) :</b> indépendamment de son contenu, un ouvrage peut être rédigé et/ou traduit de manière plus ou moins claire.</p>
 	</details>
 
-	<details><summary class="h3">Lecture d’un grimoire</summary>
+	<details><summary><h3>Lecture d’un grimoire</h3></summary>
 		<h4>Lecture superficielle</h4>
 		<p>Parcourir un ouvrage du Mythe afin de savoir de quoi il traite et quels types de sortilèges il contient. La lecture superficielle d’un grimoire prend une heure pour 10 à 100 pages.</p>
 		<p>- jet de <i>Langue</i> ou d'<i>Int</i> (plus faible) modifié par sa <i>Clarté</i> pour comprendre de quoi parle le livre.</p>
@@ -65,7 +65,7 @@ $repo_skills = new SkillRepository;
 		Le lecteur doit réussir des jets de <i>Recherches</i> s’il a déjà lu le grimoire (au moins superficiellement) pour la trouver.</p>
 	</details>
 
-	<details><summary class="h3">Apprentissage des sorts</summary>
+	<details><summary><h3>Apprentissage des sorts</h3></summary>
 		<p>Certains grimoires contiennent des sorts. Pour comprendre un sort (et donc pouvoir essayer de le lancer), il faut réussir un jet d’<i>Int</i> + <i>Magerie</i> + <i>Clarté</i> de l’ouvrage.</p>
 	</details>
 

@@ -17,7 +17,7 @@ $creatures_repo = new CreatureRepository;
 	<h2>Personnage</h2>
 
 	<details>
-		<summary class="h3">Points de personnage</summary>
+		<summary><h3>Points de personnage</h3></summary>
 		<p><b>Personnage débutant&nbsp;:</b> 120 pts</p>
 		<ul>
 			<li><b>Caractéristiques&nbsp;:</b> 60 à 90 pts</li>
@@ -28,7 +28,7 @@ $creatures_repo = new CreatureRepository;
 	</details>
 
 	<details>
-		<summary class="h3">Avantages &amp; Désavantages</summary>
+		<summary><h3>Avantages &amp; Désavantages</h3></summary>
 		<p><b>• Alphabétisation&nbsp;:</b> semi-alphabétisation par défaut. <i>Illettrisme</i>&nbsp;: -5 pts&nbsp;; <i>Alphabétisation</i>&nbsp;: 5 pts.</p>
 		<p><b>• Magerie&nbsp;:</b> peut être innée jusqu’au niveau 3. Un personnage peut gagner, au cours de sa vie, jusqu’à 2 niveaux. La version «&nbsp;AD&amp;D&nbsp;» de cet avantage coûte 5 pts de moins que le coût standard à cause des pénalités imposées par les armures.</p>
 		<p><b>• Richesse de base&nbsp;:</b> 1000 pc pour un aventurier sans attache. Un personnage «&nbsp;installé&nbsp;» (profession et domicile) dispose de 20&nbsp;% de cette somme en argent et des possessions en adéquation avec son niveau de richesse.</p>
@@ -43,7 +43,7 @@ $creatures_repo = new CreatureRepository;
 	</details>
 
 	<details>
-		<summary class="h3">Races non humaines</summary>
+		<summary><h3>Races non humaines</h3></summary>
 		<p>Éléments à prendre en compte pour créer un personnage non humain&nbsp;:</p>
 		<p>• Caractéristiques<br>
 			• Taille&nbsp;: <i>Taille peu pratique</i>, PdV, <i>Vitesse réduite</i>.<br>
@@ -53,7 +53,7 @@ $creatures_repo = new CreatureRepository;
 	</details>
 
 	<details>
-		<summary class="h3">Mages &amp; lanceurs de sorts</summary>
+		<summary><h3>Mages &amp; lanceurs de sorts</h3></summary>
 
 		<h4>Avantages &amp; compétences nécessaires</h4>
 		<p>Lancer des sorts nécessite <i>Magerie</i>. Les sorts s’apprennent dans les livres (<i>Alphabétisation</i>) ou avec un professeur. Implique une certaine connaissance des arcanes (<i>Sciences occultes</i>). Les sorts <i>Projectiles</i> nécessitent la compétence <i>Lancer de sorts</i>.</p>
@@ -65,7 +65,7 @@ $creatures_repo = new CreatureRepository;
 	</details>
 
 	<details>
-		<summary class="h3">Prêtres &amp; serviteurs de divinité</summary>
+		<summary><h3>Prêtres &amp; serviteurs de divinité</h3></summary>
 
 		<h4>Avantages, désavantages &amp; compétences nécessaires</h4>
 		<p>Si le personnage fait partie d’un clergé «&nbsp;reconnu&nbsp;», il faut l’avantage <i>Statut religieux</i>.</p>
@@ -108,7 +108,7 @@ $creatures_repo = new CreatureRepository;
 	</details>
 
 	<details>
-		<summary class="h3">Kits de personnage</summary>
+		<summary><h3>Kits de personnage</h3></summary>
 		<h4>Druide</h4>
 		<p>• <b>Dévotion (-10 pts)&nbsp;:</b> protéger la Nature (venir en aide aux animaux blessés, empêcher la destruction de la Nature, ne pas prélever plus de vies que le strict nécessaire), mener une vie frugale, assister aux réunions de druides deux fois par an (solstice d’été et solstice d’hiver).</p>
 		<p>• <b>Vœux (-15 pts)&nbsp;:</b> Pacifisme (légitime défense)</p>
@@ -129,7 +129,7 @@ $creatures_repo = new CreatureRepository;
 
 	<!-- Système monétaire -->
 	<details>
-		<summary class="h3">Système monétaire</summary>
+		<summary><h3>Système monétaire</h3></summary>
 
 		<h4>Système monétaire</h4>
 		<p>1 po = 20 pa = 80 pc</p>
@@ -155,7 +155,7 @@ $creatures_repo = new CreatureRepository;
 
 	<!-- Armes -->
 	<details>
-		<summary class="h3">Armes</summary>
+		<summary><h3>Armes</h3></summary>
 
 		<?php
 		$weapons = array_filter(WeaponsController::weapons, fn($weapon) => isset($weapon["prix"][0]));
@@ -190,7 +190,7 @@ $creatures_repo = new CreatureRepository;
 		$with_magic_modifiers = true;
 		$armors = array_filter(ArmorsController::armors, fn($armor) => isset($armor["prix"][$price_index]))
 		?>
-		<summary class="h3">Armures &amp; boucliers</summary>
+		<summary><h3>Armures &amp; boucliers</h3></summary>
 
 		<h4>Armures</h4>
 
@@ -244,7 +244,7 @@ $creatures_repo = new CreatureRepository;
 
 	<!-- Vêtements -->
 	<details>
-		<summary class="h3">Vêtements</summary>
+		<summary><h3>Vêtements</h3></summary>
 		<?php
 		$items = array_filter(EquipmentListController::equipment_list, fn($item) => in_array($item[3], ["vêtements"]));
 		EquipmentListController::displayEquipmentList($items, 0);
@@ -255,7 +255,7 @@ $creatures_repo = new CreatureRepository;
 
 	<!-- Équipement de voyage -->
 	<details>
-		<summary class="h3">Équipement de voyage</summary>
+		<summary><h3>Équipement de voyage</h3></summary>
 		<?php
 		$items = array_filter(EquipmentListController::equipment_list, fn($item) => in_array($item[3], ["voyage"]));
 		EquipmentListController::displayEquipmentList($items, 0);
@@ -264,7 +264,7 @@ $creatures_repo = new CreatureRepository;
 
 	<!-- Équipement spécial -->
 	<details>
-		<summary class="h3">Équipement spécial</summary>
+		<summary><h3>Équipement spécial</h3></summary>
 		<?php
 		$items = array_filter(EquipmentListController::equipment_list, fn($item) => in_array($item[3], ["spécial"]));
 		EquipmentListController::displayEquipmentList($items, 0);
@@ -273,7 +273,7 @@ $creatures_repo = new CreatureRepository;
 
 	<!-- Nourriture & logement -->
 	<details>
-		<summary class="h3">Nourriture &amp; logement</summary>
+		<summary><h3>Nourriture &amp; logement</h3></summary>
 		<?php
 		$items = array_filter(EquipmentListController::equipment_list, fn($item) => in_array($item[3], ["auberge", "nourriture"]));
 		EquipmentListController::displayEquipmentList($items, 0);
@@ -282,7 +282,7 @@ $creatures_repo = new CreatureRepository;
 
 	<!-- Animaux -->
 	<details>
-		<summary class="h3">Animaux et harnachement</summary>
+		<summary><h3>Animaux et harnachement</h3></summary>
 
 		<?php
 		$items = array_filter(EquipmentListController::equipment_list, fn($item) => in_array($item[3], ["animaux"]));
@@ -292,7 +292,7 @@ $creatures_repo = new CreatureRepository;
 
 	<!-- Objets spéciaux & services magiques -->
 	<details>
-		<summary class="h3">Objets spéciaux &amp; services magiques</summary>
+		<summary><h3>Objets spéciaux &amp; services magiques</h3></summary>
 
 		<h4>Objets spéciaux</h4>
 		<p><b>Dague à poison&nbsp;:</b> dague à lame creuse. Réserve de poison dans le manche (1 à 3 doses) qui sont toutes expulsées par la pointe de la lame en cas de choc (même si l’armure n’est pas traversée). Dégâts&nbsp;: P.e (pas de dégâts tranchants). Solide comme arme «&nbsp;bon marché&nbsp;». (500 pc&nbsp;; 0,25 kg)</p>
@@ -325,7 +325,7 @@ $creatures_repo = new CreatureRepository;
 	<h2>Magie</h2>
 
 	<details>
-		<summary class="h3">Magie et armure</summary>
+		<summary><h3>Magie et armure</h3></summary>
 		<p>
 			<b>Le port d’une armure</b> entraîne des pénalités pour lancer un sort (mais pas un pouvoir).<br>
 			Ces pénalités modifient le <i>score brut</i> du sort (comme celles dues à un fluide faible). Tout se passe comme si, localement, l’armure portée diminuait le fluide entourant le lanceur de sort.<br>
@@ -354,7 +354,7 @@ $creatures_repo = new CreatureRepository;
 	</details>
 
 	<details>
-		<summary class="h3">Sorts</summary>
+		<summary><h3>Sorts</h3></summary>
 
 		<h4>Sorts de Soins</h4>
 		<p>Tous ces sorts nécessitent de toucher le sujet.</p>
@@ -375,7 +375,7 @@ $creatures_repo = new CreatureRepository;
 	</details>
 
 	<details>
-		<summary class="h3">Potions</summary>
+		<summary><h3>Potions</h3></summary>
 
 		<details class="mt-½">
 			<summary class="h4">Fabrication et prix de vente des potions</summary>
@@ -610,7 +610,7 @@ $creatures_repo = new CreatureRepository;
 	</details>
 
 	<details>
-		<summary class="h3">Objets magiques</summary>
+		<summary><h3>Objets magiques</h3></summary>
 
 		<details class="mt-½">
 			<summary class="h4">Fabrication d’objets magiques</summary>
@@ -784,7 +784,7 @@ $creatures_repo = new CreatureRepository;
 	</details>
 
 	<details>
-		<summary class="h3">Familiers</summary>
+		<summary><h3>Familiers</h3></summary>
 		<p>En plus des familiers cités dans les RdB, il est possible pour un mage d’avoir d’autres familiers plus exotiques.</p>
 
 		<p>Pour disposer d’un démon en tant que familier, le mage doit d’abord l’invoquer (avec le sort <i>Invocation de démon</i>), puis l’asservir (avec le sort <i>Asservissement de démon</i>).</p>
@@ -817,7 +817,7 @@ $creatures_repo = new CreatureRepository;
 	</h2>
 
 	<details>
-		<summary class="h3">Règles générales d’adaptation</summary>
+		<summary><h3>Règles générales d’adaptation</h3></summary>
 
 		<h4>Caractéristiques</h4>
 
@@ -874,7 +874,7 @@ $creatures_repo = new CreatureRepository;
 	$categories = $creatures_repo->getDistinctCategories("ADD");
 	foreach ($categories as $categorie) { ?>
 		<details>
-			<summary class="h3"><?= $categorie ?></summary>
+			<summary><h3><?= $categorie ?></h3></summary>
 			<div class="mt-½">
 				<?php
 				$creatures = $creatures_repo->getCreaturesByCategory($categorie, "ADD");

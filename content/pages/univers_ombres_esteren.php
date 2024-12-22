@@ -17,16 +17,14 @@ foreach (Spell::cost_as_power as $cost) {
 }
 ?>
 
-
-<!-- Intro -->
-<article>
-	<p>
-		Cette adaptation est en pleine écriture&hellip;<br>
-		Au début, ça va être un peu le bordel&hellip; 😅
-	</p>
+<!-- Personnages -->
+<article class="as-start">
+	<h2>Personnage</h2>
 
 	<details>
-		<summary class="h3">Lexique</summary>
+		<summary>
+			<h3>Rôles et status particuliers</h3>
+		</summary>
 		<ul>
 			<li><b>demorthèn&nbsp;:</b> représentant de la nature, il peut entrer en contact avec les esprits et leur demander d’accomplir des tâches particulières. Il est le gardien des anciennes traditions péninsulaires et il est souvent considéré avec respect. Les apprentis demorthèn sont appelés <i>ionnthèn</i></li>
 			<li><b>dàmàthair&nbsp;:</b> femme ayant la responsabilité, dans une communauté, de l’éducation des enfants et de la protection des plus faibles lors des attaques.</li>
@@ -35,23 +33,29 @@ foreach (Spell::cost_as_power as $cost) {
 		</ul>
 	</details>
 
-</article>
-
-<!-- Personnages -->
-<article>
-	<h2>Personnage</h2>
-
-	<!-- Avantages & désavantagesq -->
+	<!-- Avantages & désavantages -->
 	<details>
-		<summary class="h3">Avantages &amp; Désavantages</summary>
+		<summary>
+			<h3>Avantages &amp; Désavantages</h3>
+		</summary>
 		<p><b>• Alphabétisation&nbsp;:</b> <i>Semi-alphabétisation</i> par défaut. <i>Illettrisme</i>&nbsp;: -5 pts&nbsp;; <i>Alphabétisation</i>&nbsp;: 5 pts.</p>
 		<p><b>• Richesse&nbsp;:</b> la richesse moyenne de départ est de 250 daols de braise.</p>
 		<p><b>• Statut – varigal (5 pts)&nbsp;:</b> les varigaux sont généralement bien accueillis où qu’ils aillent.</p>
+
+		<h4>Avantages &amp; désavantages spécifiques</h4>
+		<div class="mt-½">
+			<?php
+			$don_sigil_ran = $avdesav_repo->getAvDesav(187);
+			$don_sigil_ran->displayInRules(show_edit_link: $_SESSION["Statut"] === 3);
+			?>
+		</div>
 	</details>
 
 	<!-- Demorthen -->
 	<details>
-		<summary class="h3">Demorthèn</summary>
+		<summary>
+			<h3>Demorthèn</h3>
+		</summary>
 		<p>Spécificité des personnages demorthèn ou ionnthèn.</p>
 
 		<h4>Avantages &amp; désavantages</h4>
@@ -59,15 +63,10 @@ foreach (Spell::cost_as_power as $cost) {
 			<li><b>Statut (5/10 pts)&nbsp;:</b> en Tri-Kazel, les demorthèn sont respectés. La plupart des habitants du royaume les considèrent avec déférence et leur font confiance. Le statut de <i>demorthèn</i> est donc un avantage à 10 pts. Le statut de <i>ionnthèn</i> (apprenti) vaut 5 pts.</li>
 			<li><b>Dévotion (-5 pts)&nbsp;:</b> les traditions demorthèn ne sont pas extrêmement contraignantes. Un demorthèn se doit d’assister aux <i>tsioghairs</i> et de rendre un culte aux C’maogh, les esprits de la Nature.</li>
 			<li><b>Vœux (-10 pts)&nbsp;:</b> maintenir l’équilibre des cycles naturels, rendre un culte aux C’maogh, ne pas utiliser ses pouvoirs à des fins personnelles, guider et protéger la communauté dont le demorthèn a la charge, transmettre le savoir traditionnel.</li>
-			<li><b>Don pour la Sigil Rann&nbsp;:</b> si le demorthèn dispose de pouvoirs, il doit également avoir cet avantage au niveau 1 minimum (voir ci-dessous)</i>.</li>
+			<li><b>Don pour la Sigil Rann&nbsp;:</b> si le demorthèn dispose de pouvoirs, il doit également avoir cet avantage au niveau 1 minimum.</li>
 		</ul>
 
-		<div class="mt-1">
-			<?php
-			$don_sigil_ran = $avdesav_repo->getAvDesav(187);
-			$don_sigil_ran->displayInRules(show_edit_link: $_SESSION["Statut"] === 3);
-			?>
-		</div>
+
 
 		<h4>Compétences</h4>
 		<p>Les demorthèn ont deux compétences spécifiques&nbsp;: <i>Savoirs demorthèn</i> et <i>Sigil Rann</i> (voir ci-dessous).</p>
@@ -87,7 +86,9 @@ foreach (Spell::cost_as_power as $cost) {
 
 	<!-- Membre du Temple -->
 	<details>
-		<summary class="h3">Membre du temple</summary>
+		<summary>
+			<h3>Membre du temple</h3>
+		</summary>
 
 
 		<p>Spécificité des personnages appartenant à un ordre du temple.</p>
@@ -110,12 +111,14 @@ foreach (Spell::cost_as_power as $cost) {
 </article>
 
 <!-- Équipement -->
-<article>
+<article class="as-start">
 	<h2>Équipement</h2>
 
 	<!-- Système monétaire -->
 	<details>
-		<summary class="h3">Système monétaire</summary>
+		<summary>
+			<h3>Système monétaire</h3>
+		</summary>
 		<h4>Pièces</h4>
 		<p>daols de braise (dB); daols d’azur (dA); daols de givre (dG)</p>
 		<p>1 dG = 10 dA = 100 dB</p>
@@ -143,7 +146,9 @@ foreach (Spell::cost_as_power as $cost) {
 
 	<!-- Armes -->
 	<details>
-		<summary class="h3">Armes</summary>
+		<summary>
+			<h3>Armes</h3>
+		</summary>
 
 		<?php
 		$weapons = array_filter(WeaponsController::weapons, fn($weapon) => isset($weapon["prix"][1]));
@@ -161,15 +166,15 @@ foreach (Spell::cost_as_power as $cost) {
 		$excluded_sizes = ["xs"];
 		$armors = array_filter(ArmorsController::armors, fn($armor) => isset($armor["prix"][$price_index]))
 		?>
-		<summary class="h3">Armures &amp; boucliers</summary>
-
-		<h4>Armures</h4>
+		<summary>
+			<h3>Armures &amp; boucliers</h3>
+		</summary>
 
 		<p>Armures «&nbsp;hypothétiques&nbsp;» complètes, données pour infos (voir la page <a href="/armes-armures">Armes &amp; armures</a> pour plus de détails). Vous <i>devez</i> construire votre armure composite.</p>
 
 		<table class="left-1 alternate-e">
 			<tr>
-				<th></th>
+				<th>Armure</th>
 				<th>RD</th>
 				<th>Poids</th>
 				<th>dB</th>
@@ -184,38 +189,37 @@ foreach (Spell::cost_as_power as $cost) {
 			<?php } ?>
 		</table>
 
-		<details class="mt-½">
-			<summary class="fw-700">Notes</summary>
-			<?php foreach (ArmorsController::armors_notes as $index => $note) { ?>
-				<p><b><?= $index ?>&nbsp;:</b> <?= $note ?></p>
-			<?php } ?>
-		</details>
+		<?php foreach (ArmorsController::armors_notes as $index => $note) { ?>
+			<p class="fs-300"><?= $index ?>&nbsp;: <?= $note ?></p>
+		<?php } ?>
 
 		<?php include "content/components/widget-armor-composer.php"; ?>
 
-		<h4 class="mt-2">Boucliers</h4>
-		<table class="left-1 alternate-e">
+		<table class="mt-2 left-1 alternate-e">
 			<tr>
-				<th></th>
+				<th>Bouclier</th>
 				<th>DP</th>
 				<th>Poids</th>
 				<th>dB</th>
 			</tr>
 			<?php foreach (ArmorsController::shields as $shield) {
-				if (isset($shield["prix"][1])){ ?>
-				<tr>
-					<td><?= $shield["nom"] ?></td>
-					<td><?= $shield["DP"] ?></td>
-					<td><?= $shield["pds"] ?> kg</td>
-					<td><?= $shield["prix"][1] ?></td>
-				</tr>
-			<?php }} ?>
+				if (isset($shield["prix"][1])) { ?>
+					<tr>
+						<td><?= $shield["nom"] ?></td>
+						<td><?= $shield["DP"] ?></td>
+						<td><?= $shield["pds"] ?> kg</td>
+						<td><?= $shield["prix"][1] ?></td>
+					</tr>
+			<?php }
+			} ?>
 		</table>
 
 	</details>
 
 	<details>
-		<summary class="h3">Prix en vrac</summary>
+		<summary>
+			<h3>Prix en vrac</h3>
+		</summary>
 		<?php
 		$items = array_filter(EquipmentListController::equipment_list, fn($item) => in_array($item[3], ["auberge", "nourriture"]));
 		EquipmentListController::displayEquipmentList($items, 1);
@@ -223,7 +227,9 @@ foreach (Spell::cost_as_power as $cost) {
 	</details>
 
 	<details>
-		<summary class="h3">Cartouches de flux</summary>
+		<summary>
+			<h3>Cartouches de flux</h3>
+		</summary>
 		<p>
 			Le Flux est souvent conditionné sous forme de cartouches à l’enveloppe métallique très fine. Une cartouche standard contient une unique charge (environ 100 mL). C’est un cylindre de 3,6 cm de diamètre et 10 cm de haut. Elle pèse 130 g lorsqu’elle est pleine, et 45 g vide.<br>
 			Il existe aussi des cartouches «&nbsp;medium&nbsp;» renfermant trois charges, ainsi que des bobonnes blindées renfermant 30 charges (3 L).
@@ -238,20 +244,21 @@ foreach (Spell::cost_as_power as $cost) {
 </article>
 
 <!-- Demorthén -->
-<article>
+<article class="as-start">
 	<h2>Les démorthèn</h2>
 
 	<details>
-		<summary class="h3">Généralités</summary>
-
-		<p>Les demorthèn sont à la fois les guides spirituels des Tri-Kazéliens et les détenteurs des secrets qui permettent d’influencer les esprits naturels, les C’maogh. Dispersés dans toute la péninsule, ils se consacrent surtout à maintenir l’équilibre entre les besoins des communautés humaines et la préservation de la nature environnante.</p>
-
-		<p>La philosophie demorthèn impose des règles implicites mais essentielles. Le maintien de l’équilibre et des cycles naturels tout comme le culte des esprits en sont les bases. C’est le respect de ces préceptes qui font de ces hommes les détenteurs d’un pouvoir et d’un lien particulier avec la nature. L’utilisation de leur savoir au service de leurs ambitions personnelles, par goût du pouvoir ou jalousie, ou encore pour assouvir une vengeance personnelle, va à l’encontre des principes ancestraux. C’est généralement lors des <i>Tsioghairs</i> que sont rapportés et jugés les déviances de certains. Le demorthèn incriminé parait alors devant le conseil afin de se justifier. S’il est reconnu coupable, il encourt une confiscation de ses pierres oghamiques pour un temps, déterminé selon sa faute. Dans des cas extrêmes, lorsque qu’un demorthèn non seulement enfreint l’éthique mais détourne ou dévoie son pouvoir, la sanction peut aller jusqu’au bannissement ou même la mort. Ces derniers sont alors appelés <i>morcails</i>, signifiant «&nbsp;corrompu&nbsp;» dans l’ancienne langue.</p>
+		<summary>
+			<h3>Généralités</h3>
+		</summary>
+		<p>Les demorthèn sont à la fois les guides spirituels des Tri-Kazéliens et les détenteurs des secrets qui permettent d’influencer les esprits de la Nature, les C’maogh. Ils se consacrent surtout à maintenir l’équilibre entre les besoins des communautés humaines et la préservation de la nature environnante.</p>
 	</details>
 
 	<!-- Acquérir un pouvoir -->
 	<details>
-		<summary class="h3">Acquérir un pouvoir</summary>
+		<summary>
+			<h3>Acquérir un pouvoir</h3>
+		</summary>
 
 		<h4>Domaines</h4>
 		<p>Les demorthèn peuvent acquérir des pouvoirs choisis dans les 7 collèges suivants&nbsp;: Animal, Élémentaire (les 4 éléments), Soin et Végétal.</p>
@@ -266,13 +273,15 @@ foreach (Spell::cost_as_power as $cost) {
 		<h4>Coût des pouvoirs</h4>
 		<p>
 			Les pouvoirs de demorthèn s’acquiert pour un coût de 30&nbsp;% du coût normal (<?= join(" / ", $demorthen_power_cost) ?>).<br>
-			Ceci est dû au fait que pour pouvoir être utilisé, le demorthèn doit être (1) en possession de la pierre oghamique associée au pouvoir et (2) entrer en contact avec un esprit de la Nature (voir ci-dessous).
+			Ceci est dû au fait que pour pouvoir être utilisé, le demorthèn doit être (1) en possession de la pierre oghamique associée au pouvoir et (2) entrer en contact avec un esprit de la Nature, ce qui est un processus assez long et incertain (voir ci-dessous).
 		</p>
 	</details>
 
 	<!-- Utiliser un pouvoir -->
 	<details>
-		<summary class="h3">Utiliser un pouvoir</summary>
+		<summary>
+			<h3>Utiliser un pouvoir</h3>
+		</summary>
 
 		<h4>Invoquer un esprit de la Nature</h4>
 		<p>Avant de lancer un pouvoir, le demorthèn doit entrer en contact avec un esprit de la nature associé au domaine (collège) du pouvoir.</p>
@@ -295,7 +304,9 @@ foreach (Spell::cost_as_power as $cost) {
 
 	<!-- Récupération PdM -->
 	<details>
-		<summary class="h3">Récupération du Rindath</summary>
+		<summary>
+			<h3>Récupération du Rindath</h3>
+		</summary>
 		<p>Les points de <i>Rindath</i> (PdM), se récupèrent en méditant ou en dormant.</p>
 		<h4>Par la méditation</h4>
 		<p>La table ci-dessous donne le nombre de PdM récupérés par heure de méditation</p>
@@ -335,12 +346,14 @@ foreach (Spell::cost_as_power as $cost) {
 </article>
 
 <!-- Temple -->
-<article>
+<article class="as-start">
 	<h2>Le Temple</h2>
 
 	<!-- Préceptes du Temple -->
 	<details>
-		<summary class="h3">Les préceptes du Temple</summary>
+		<summary>
+			<h3>Les préceptes du Temple</h3>
+		</summary>
 
 		<p>Pour les Tri-Kazeliens en général, les préceptes du Temple semblent bien plus durs et plus stricts que les traditions enseignées par les demorthèn. En effet, afin d'obtenir les faveurs du Dieu Unique, les hommes et les femmes doivent vivre une vie calme et ascétique, loin des excès qui corrompent le corps comme l'esprit. Les couleurs vives distraient le regard, l'alcool détourne l'esprit de la pensée du Créateur et les débauches poussent à la propagation de maladies qui ravagent les populations. II existe ainsi toute une série d'Ordonnances donnés par le Dieu Unique à Soustraine, que ses héritiers, les Hiérophantes du Temple, continuent à transmettre aux fidèles.</p>
 
@@ -349,7 +362,9 @@ foreach (Spell::cost_as_power as $cost) {
 
 	<!-- les Écrits et les Ordonnances -->
 	<details>
-		<summary class="h3">Les Écrits et les Ordonnances</summary>
+		<summary>
+			<h3>Les Écrits et les Ordonnances</h3>
+		</summary>
 
 		<p>
 			Le prophète Soustraine passa beaucoup de temps à retranscrire sa révélation. Il a ainsi écrit un ouvrage de quelque six cents pages dont le contenu est très varié&nbsp;: poèmes, psaumes, histoires, paraboles, dessins, le tout formant un ensemble complexe et parfois cryptique.<br>
@@ -370,7 +385,9 @@ foreach (Spell::cost_as_power as $cost) {
 
 	<!-- Les six ordres -->
 	<details>
-		<summary class="h3">Les six ordres</summary>
+		<summary>
+			<h3>Les six ordres</h3>
+		</summary>
 		<p>Tous ces ordres sont mixtes</p>
 		<ul>
 			<li>Les prêtres</li>
@@ -385,16 +402,20 @@ foreach (Spell::cost_as_power as $cost) {
 </article>
 
 <!-- Magience -->
-<article>
+<article class="as-start">
 	<h2>La Magience</h2>
 
 	<details>
-		<summary class="h3">Types de Flux</summary>
+		<summary>
+			<h3>Types de Flux</h3>
+		</summary>
 		<p>Animal, végétal, minéral et fossile.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Flux fossile</summary>
+		<summary>
+			<h3>Flux fossile</h3>
+		</summary>
 		<p>Aussi rare que pécieux, le Flux fosssile possèdent trois qualités essentielles&nbsp;:</p>
 		<ul>
 			<li>Il n’a pas besoin d’être extrait et peut être directement raffiné.</li>

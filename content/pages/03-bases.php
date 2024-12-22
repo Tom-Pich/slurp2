@@ -10,27 +10,51 @@ use App\Repository\SkillRepository;
 
 ?>
 
-<article> <!-- Intro -->
-	<p>Il y a principalement 2 types de jets à SLURP. Tous se font avec des d6.</p>
-	<ul>
-		<li>Les <b>jets des réussite</b>, avec 3d6, visant à tester une compétence ou une caractéristique. Le jet est réussi s'il est inférieur ou égal au score, ajusté par certains modificateurs.</li>
-		<li>Les <b>jets de dégâts</b>, avec un nombre variable de d6.</li>
-	</ul>
-	<p>Pour les jets de dégâts inférieurs à 1d-1, utiliser les correspondances suivantes&nbsp;: 1d-2 → 1d5-1, 1d-3 → 1d4-1, 1d-4 → 1d3-1, 1d-5 → 1d2-1</p>
-</article>
-
-<article><!-- Jet de réussite -->
-	<h2>Jet de réussite</h2>
-
+<!-- Intro -->
+<article>
+	<h2>Généralités sur les jets</h2>
 	<details>
-		<summary class="h3">Principes de base</summary>
-		<p class="ta-center mt-1"><b>Jet (3d) &le; score ± modificateurs</b></p>
-		<p class="mt-1">3 et 4 sont toujours une réussite, 17 et 18 sont toujours des échecs.</p>
-		<p>Le <b>score brut</b> est le score sans aucun modificateur. Le <b>score net</b> est le score après application des différents modificateurs ci-dessous.</p>
+		<summary>
+			<h3>Types de jets</h3>
+		</summary>
+		<p>Il y a 3 types de jets à SLURP. Tous se font avec des d6.</p>
+		<p>L’abbréviation «&nbsp;d&nbsp;» signifie d6.</p>
+		<ul>
+			<li>Les <b>jets des réussite</b>, avec 3d6, visant à tester une compétence ou une caractéristique. Le jet est réussi s'il est inférieur ou égal au score, ajusté par certains modificateurs.</li>
+			<li>Les <b>jets de dégâts</b>, avec un nombre variable de d6.</li>
+			<li>Les jets de réaction, qui se font avec 1d6</li>
+		</ul>
+	</details>
+	<details>
+		<summary>
+			<h3>Dégâts inférieurs à 1d-1</h3>
+		</summary>
+		<p>Pour les jets de dégâts inférieurs à 1d-1, utiliser les correspondances suivantes&nbsp;: 1d-2 → 1d5-1, 1d-3 → 1d4-1, 1d-4 → 1d3-1, 1d-5 → 1d2-1</p>
 	</details>
 
+	
+</article>
+
+<!-- Jet de réussite -->
+<article>
+	<h2>Jet de réussite</h2>
+
+	<!-- Principes de bas -->
 	<details>
-		<summary class="h3">Difficulté</summary>
+		<summary>
+			<h3>Principes de base</h3>
+		</summary>
+		<p>Un jet est réussi si&nbsp;:</p>
+		<p class="ta-center mt-1"><b>Résultat du jet (3d) &le; score ± modificateurs</b></p>
+		<p class="mt-1">3 et 4 sont toujours une réussite, 17 et 18 sont toujours des échecs.</p>
+		<p>Le <b>score brut</b> est le score sans aucun modificateur. Le <b>score net</b> est le score après application des différents modificateurs de circonstances ci-dessous.</p>
+	</details>
+
+	<!-- Difficulté -->
+	<details>
+		<summary>
+			<h3>Difficulté</h3>
+		</summary>
 		<p>Difficulté intrinsèque de l’action, sans tenir compte de l’état du personnage.</p>
 		<table class="alternate-e left-1">
 			<tr>
@@ -72,23 +96,31 @@ use App\Repository\SkillRepository;
 		</table>
 	</detailS>
 
+	<!-- Autres modificateurs -->
 	<details>
-		<summary class="h3">Autres modificateurs</summary>
-		<ul>
-			<li><b>État du personnage :</b> PdV, PdF, encombrement, etc.</li>
+		<summary>
+			<h3>Autres modificateurs</h3>
+		</summary>
+		<ul class="mt-½">
+			<li><b>État du personnage&nbsp;:</b> PdV, PdF, encom&shy;brement, etc. Voir les sections correspondantes.</li>
 			<li><b>Matériel utilisé</b> pour entreprendre l’action.</li>
-			<li><b>Environnement :</b> obscurité, sol instable, etc.</li>
+			<li><b>Environnement&nbsp;:</b> obscurité, sol instable, etc.</li>
 			<li><b>Main dextre / main «&nbsp;faible&nbsp;» :</b> effectuer une action avec sa main «&nbsp;faible&nbsp;» qui nécessiterait l’usage de la main dextre se fait généralement à -3.</li>
 		</ul>
 	</detailS>
 
 	<details>
-		<summary class="h3">Marge de réussite</summary>
+		<summary>
+			<h3>Marge de réussite</h3>
+		</summary>
+		<p class="ta-center fw-700">MR = score net – résultat du jet</p>
 		<p>Le MJ interprète librement la marge de réussite (MR), ou la marge d’échec (ME).</p>
 	</details>
 
 	<details>
-		<summary class="h3">Réussite et échec critiques</summary>
+		<summary>
+			<h3>Réussite et échec critiques</h3>
+		</summary>
 		<table class="alternate-e">
 			<tr>
 				<th width="10%">Jet</th>
@@ -118,12 +150,16 @@ use App\Repository\SkillRepository;
 	</details>
 
 	<details>
-		<summary class="h3">Duel</summary>
+		<summary>
+			<h3>Duel</h3>
+		</summary>
 		<p>Comparer la MR des deux opposants. La victoire d’un des protagonistes est d’autant plus nette que la différence des MR (&Delta;MR) est grande. L'égalité bénéficie au défenseur</p>
 	</details>
 
 	<details>
-		<summary class="h3">Jets de probabilité</summary>
+		<summary>
+			<h3>Jets de probabilité</h3>
+		</summary>
 		<p>Lorsque il faut faire un jet sous «&nbsp;rien&nbsp;», consulter la table ci-dessous.</p>
 
 		<table class="alternate-e left-1">
@@ -169,7 +205,9 @@ use App\Repository\SkillRepository;
 	<h2>Exploits physiques</h2>
 
 	<details>
-		<summary class="h3">Déplacement</summary>
+		<summary>
+			<h3>Déplacement</h3>
+		</summary>
 		<p>La caractéristique secondaire <i>Vitesse</i> indique la <b>vitesse de marche</b> (en km/h) du personnage lorsque celui-ci adopte une marche rapide pour un temps long (en voyage ou en randonnée, par exemple).</p>
 		<p>Lorsque le personnage veut faire un <b>sprint</b>, la <i>Vitesse</i> correspond à sa vitesse en m/s dans des conditions optimales.<br />
 			Ajouter 1/8<sup>e</sup> de la compétence <i>Course</i> (arrondi au quart de point).</p>
@@ -177,12 +215,16 @@ use App\Repository\SkillRepository;
 	</details>
 
 	<details>
-		<summary class="h3">Saut</summary>
+		<summary>
+			<h3>Saut</h3>
+		</summary>
 		<p>Pour réussir à sauter suffisamment loin ou haut, jet de <i>Saut</i>. Les malus d’<i>Encombrement</i> sont doublés.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Soulever et déplacer des objets</summary>
+		<summary>
+			<h3>Soulever et déplacer des objets</h3>
+		</summary>
 		<p>Il est possible de soulever ou déplacer un poids, en kg, allant jusqu’à :</p>
 		<ul>
 			<li><b>À une main :</b> 3×<i>For</i></li>
@@ -194,7 +236,9 @@ use App\Repository\SkillRepository;
 	</details>
 
 	<details>
-		<summary class="h3">Nage</summary>
+		<summary>
+			<h3>Nage</h3>
+		</summary>
 		<p>En cas d’échec à un jet de <i>Nage</i>, perte de 1 PdF. Refaire un jet toutes les 5 secondes, jusqu’à ce qu’il y ait noyade, sauvetage ou un jet de <i>Nage</i> réussi.</p>
 		<p><i>Encombrement</i> : dépend de la densité de l’équipement.</p>
 		<p>Vitesse de nage : 1/10<sup>e</sup> de la compétence en <i>Nage</i> en sprint.</p>
@@ -202,8 +246,10 @@ use App\Repository\SkillRepository;
 	</details>
 
 	<details>
-		<summary class="h3">Retenir sa respiration</summary>
-		<ul>
+		<summary>
+			<h3>Retenir sa respiration</h3>
+		</summary>
+		<ul class="mt-½">
 			<li><b>Au repos :</b> <i>San</i>×6 secondes.</li>
 			<li><b>Activité physique modérée :</b> <i>San</i>×2 secondes.</li>
 			<li><b>Exercice physique important :</b> <i>San</i> secondes.</li>
@@ -218,12 +264,16 @@ use App\Repository\SkillRepository;
 	<h2>Encombrement</h2>
 
 	<details>
-		<summary class="h3">Principes de base</summary>
+		<summary>
+			<h3>Principes de base</h3>
+		</summary>
 		<p>L’<i>Encombrement</i> dépend du poids porté par le personnage et de sa <i>For</i>. Il réduit la <i>Vitesse</i> et affecte également toutes les compétences nécessitant une certaine liberté de mouvement.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Niveaux d’encombrement</summary>
+		<summary>
+			<h3>Niveaux d’encombrement</h3>
+		</summary>
 		<table class="alternate-e left-2 mt-1">
 			<tr>
 				<th>Poids (kg)</th>
@@ -253,7 +303,9 @@ use App\Repository\SkillRepository;
 	<h2>Fatigue</h2>
 
 	<details>
-		<summary class="h3">Perte de points de Fatigue</summary>
+		<summary>
+			<h3>Perte de points de Fatigue</h3>
+		</summary>
 		<p>Des points de fatigue (PdF) peuvent être perdus suite à des efforts physiques, à un manque de sommeil, de nourriture, d’eau, à des températures extrêmes ou à un manque d’air.</p>
 
 		<h4>Efforts physiques</h4>
@@ -270,7 +322,9 @@ use App\Repository\SkillRepository;
 	</details>
 
 	<details>
-		<summary class="h3">État de fatigue et malus</summary>
+		<summary>
+			<h3>État de fatigue et malus</h3>
+		</summary>
 
 		<p>
 			La fatigue affecte toutes les caractéristiques du personnage.<br />
@@ -297,8 +351,10 @@ use App\Repository\SkillRepository;
 	</details>
 
 	<details>
-		<summary class="h3">Récupération</summary>
-		<p>Le MJ décide du rythme de récupération en fonction des conditions de repos et du type d’effort fourni (peu intense et de longue durée, ou l’invers). La seule règle est que l’on est « frais et dispo » qu’après une nuit de sommeil.</p>
+		<summary>
+			<h3>Récupération</h3>
+		</summary>
+		<p>Le MJ décide du rythme de récupération en fonction des conditions de repos et du type d’effort fourni. La seule règle est que l’on est «&nbsp;frais et dispo&nbsp;» qu’après une nuit de sommeil.</p>
 		<p><b>Règle de coin de table&nbsp;:</b> en se reposant après un effort, on peut récupérer au maximum un quart des PdF dépensés.</p>
 		<p>Des PdF perdus par un manque de nourriture ou d’eau ne peuvent être regagnés qu’en mangeant ou en s’hydratant.</p>
 		<p>Ne tenir compte des PdF que si cela est important dans le jeu. Dans la plupart des situations, les PdF n’ont aucune importance.</p>
@@ -312,20 +368,26 @@ use App\Repository\SkillRepository;
 
 	<!-- Points d’Équilibre Psychique -->
 	<details>
-		<summary class="h3">Points d’Équilibre Psychique</summary>
-		<p>L’équilibre psychique d’un personnage est quantifié par les <i>Points d’Équilibre Psychique</i> (PdE).</p>
+		<summary>
+			<h3>Points d’Équilibre Psychique</h3>
+		</summary>
+		<p>L’équilibre psychique d’un personnage (sa santé mentale) est quantifié par les <i>Points d’Équilibre Psychique</i> (PdE).</p>
 	</details>
 
 	<!-- Jet de Sang-Froid et PdE -->
 	<details>
-		<summary class="h3">Jet de Sang-Froid et PdE</summary>
+		<summary>
+			<h3>Jet de Sang-Froid et PdE</h3>
+		</summary>
 		<p>Des PdE peuvent être perdus au cours de trois types de situations&nbsp;: un traumatisme, une peur extrême ou un stress intense.</p>
 		<p>Lorsque plusieurs effets peuvent advenir (traumatisant et stressant, par exemple), un seul jet de <i>Sang-Froid</i> est à faire. Les conséquences sont déterminées à partir de cet unique jet.</p>
 	</details>
 
 	<!-- Traumatisme -->
 	<details>
-		<summary class="h3">Traumatisme</summary>
+		<summary>
+			<h3>Traumatisme</h3>
+		</summary>
 		<p>Un événement traumatisant provoque un choc psychologique. Il n’est pas nécessairement effrayant ni directement menaçant (perte d’un être cher, être témoin d’actes de barbarie, etc.).</p>
 		<p>Il peut entraîner la perte de PdE : faire un jet de <i>Sang-froid</i> pour résister au traumatisme. En cas de réussite, la perte de PdE est divisée par 2. Ce jet de <i>Sang-froid</i> peut être assorti d’un modificateur, mais ce modificateur ne dépendra, en général, pas de l’ampleur du traumatisme, qui est quantifié par la perte de PdE, mais de l’état ou du vécu du personnage.</p>
 
@@ -367,7 +429,9 @@ use App\Repository\SkillRepository;
 
 	<!-- Peur & terreur -->
 	<details>
-		<summary class="h3">Peur &amp; Terreur</summary>
+		<summary>
+			<h3>Peur &amp; Terreur</h3>
+		</summary>
 		<p>Lorsqu’un événement terrifie le personnage, un jet de <i>Sang-froid</i> (appelé dans ce cas <i>Test de Frayeur</i>) doit être fait pour savoir comment le personnage réagit.</p>
 		<p>L’intensité de la peur potentiellement provoquée est quantifiée de I (un peu effrayant) à V (terreur surnaturelle absolue).</p>
 		<p>Un modificateur peut s’appliquer à ce jet, mais il ne dépend par de l’intensité de la peur. Il peut dépendre de l’état du personnage et des conditions extérieures à l’événement terrifiant, et devrait être dans la fourchette [-3&nbsp;; +3].</p>
@@ -499,7 +563,9 @@ use App\Repository\SkillRepository;
 
 	<!-- Stress -->
 	<details>
-		<summary class="h3">Stress</summary>
+		<summary>
+			<h3>Stress</h3>
+		</summary>
 		<p>Une situation de stress se présente lorsque le personnage craint pour sa vie (à tort ou à raison).</p>
 		<p>Dans une telle situation, faire un jet de <i>Sang-froid</i> pour déterminer comment le personnage réagit au stress, assorti d’un éventuel malus.</p>
 		<p>Si ce jet est raté, le personnage gagne un niveau de stress.<br />
@@ -526,7 +592,9 @@ use App\Repository\SkillRepository;
 
 	<!-- État psychologique général -->
 	<details>
-		<summary class="h3">État psychologique général</summary>
+		<summary>
+			<h3>État psychologique général</h3>
+		</summary>
 
 		<table class="alternate-e left-2 mt-1">
 			<tr>
@@ -559,7 +627,9 @@ use App\Repository\SkillRepository;
 
 	<!-- Récupération des PdE -->
 	<details>
-		<summary class="h3">Récupération des PdE</summary>
+		<summary>
+			<h3>Récupération des PdE</h3>
+		</summary>
 		<p>Les PdE se récupèrent à raison de 1 par semaine, dans un endroit calme, et rassurant, en compagnie de gens mentalement sains et amicaux, à mener des activités ordinaires. Il est également possible de récupérer 1 ou 2 PdE si le personnage obtient une victoire sur ce qui a été la cause de sa perte de PdE (décision du MJ).</p>
 		<p>Un personnage peut racheter des PdE perdus définitivement en prenant un nouveau désavantage mental, en lien avec ce qui a causé la perte de PdE.</p>
 	</details>
@@ -571,18 +641,24 @@ use App\Repository\SkillRepository;
 	<h2>Jet de réaction</h2>
 
 	<details>
-		<summary class="h3">Introduction</summary>
+		<summary>
+			<h3>Introduction</h3>
+		</summary>
 		<p>La réaction d’un PNJ <i>peut</i> être déterminée aléatoirement par un <i>Jet de Réaction</i> (JR) avec 1d.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Modificateurs aux jets de réaction</summary>
+		<summary>
+			<h3>Modificateurs aux jets de réaction</h3>
+		</summary>
 		<p><b>Modificateurs liés au PJ :</b> avantages et désavantages ayant un impact sur les JR, ainsi que son comportement.</p>
 		<p><b>A priori, caractère, culture et humeur du PNJ</b>, qui peuvent impliquer un modificateur de -2 à +2 aux JR, ou qui peuvent annuler des modificateurs aux JR du PJ, si le PNJ n’est pas sensible à une <i>Disgrâce sociale</i>, par exemple.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Résultat du jet de réaction</summary>
+		<summary>
+			<h3>Résultat du jet de réaction</h3>
+		</summary>
 		<table class="alternate-e left-2">
 			<?php foreach (ReactionController::reactions as $index => $reaction) { ?>
 				<tr>
@@ -594,7 +670,9 @@ use App\Repository\SkillRepository;
 	</details>
 
 	<details>
-		<summary class="h3">Utilisation d’une compétence sociale</summary>
+		<summary>
+			<h3>Utilisation d’une compétence sociale</h3>
+		</summary>
 		<p>L’utilisation d’une compétence sociale appropriée, lorsque cela est possible (discrétion du MJ) peut modifier le résultat du jet de réaction&nbsp;:</p>
 		<ul>
 			<li>Une réussite améliorera la réaction d’un niveau.</li>
@@ -609,13 +687,17 @@ use App\Repository\SkillRepository;
 	<h2>Règles diverses</h2>
 
 	<details>
-		<summary class="h3">Vieillissement</summary>
+		<summary>
+			<h3>Vieillissement</h3>
+		</summary>
 		<p>À partir de 50 ans, faire un jet de <i>San</i> + NT médical–3 tous les ans. À partir de 70 ans, jetez les dés tous les 6 mois et à 90 ans, tous les 3 mois.<br />
 			Un échec entraîne la perte d’un pt de San et des conséquences (maladies ou autres) dépendant de la ME et du MJ.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Statuts sociaux</summary>
+		<summary>
+			<h3>Statuts sociaux</h3>
+		</summary>
 		<p>Exemples d’échelles de statuts sociaux.</p>
 		<table class="alternate-e">
 			<tr>
@@ -692,7 +774,9 @@ use App\Repository\SkillRepository;
 	</details>
 
 	<details>
-		<summary class="h3">Niveaux technologiques</summary>
+		<summary>
+			<h3>Niveaux technologiques</h3>
+		</summary>
 		<table class="alternate-e left-2">
 			<tr>
 				<th colspan="2">Niveaux technologiques et époque correspondante</th>
@@ -745,7 +829,9 @@ use App\Repository\SkillRepository;
 	</details>
 
 	<details>
-		<summary class="h3">Probabilité avec 3d</summary>
+		<summary>
+			<h3>Probabilité avec 3d</h3>
+		</summary>
 		<table class="alternate-e">
 			<tr>
 				<th width="10%">3d</th>

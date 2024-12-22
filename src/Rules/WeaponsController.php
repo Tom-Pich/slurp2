@@ -6,7 +6,7 @@ class WeaponsController
 {
 
 	const weapons = [
-		// prix : [AD&D]
+		// prix : [AD&D, Ombres d’Esteren]
 		['nom' => 'Arc moyen', 'deg' => 'P.e+2, 15/F×5', 'Fm' => 10, 'pds' => 1, 'cat' => 'arc', 'prix' => [100],],
 		['nom' => 'Arc long', 'deg' => 'P.e+3, 15/F×8', 'Fm' => 11, 'pds' => 1.5, 'cat' => 'arc', 'prix' => [200],],
 		['nom' => 'Arc composite', 'deg' => 'P.e+3, 15/F×8', 'Fm' => 10, 'pds' => 1.5, 'cat' => 'arc', 'prix' => [300],],
@@ -32,7 +32,7 @@ class WeaponsController
 		['nom' => 'Masse à 2 mains', 'deg' => 'B.t+4 - B.e+3', 'Fm' => 14, 'pds' => 4, 'notes' => '(A)', 'cat' => 'h-m', 'prix' => [80],],
 		['nom' => 'Marteau de guerre', 'deg' => 'P.t+2 - B.t+2', 'Fm' => 11, 'pds' => 1.5, 'notes' => '(M)(A)', 'cat' => 'h-m', 'prix' => [100],],
 		['nom' => 'Marteau à 2 mains', 'deg' => 'P.t+4 - B.t+4', 'Fm' => 13, 'pds' => 3, 'notes' => '(A)', 'cat' => 'h-m', 'prix' => [140],],
-		['nom' => 'Fléau', 'deg' => 'B.t+2', 'Fm' => 12, 'pds' => 2, 'notes' => '(M)(A)(PA)(1)', 'cat' => 'h-m', 'prix' => [80],],
+		['nom' => 'Fléau', 'deg' => 'B.t+2', 'Fm' => 12, 'pds' => 2, 'notes' => '(M-A-PA-1)', 'cat' => 'h-m', 'prix' => [80],],
 		['nom' => 'Fléau à 2 mains', 'deg' => 'B.t+4', 'Fm' => 13, 'pds' => 4, 'notes' => '(A)(PA)(1)', 'cat' => 'exclu', 'prix' => [100],],
 
 		['nom' => 'Hallebarde', 'deg' => 'T.t+4 - P.t+4 - P.e+3', 'Fm' => 13, 'pds' => 4, 'notes' => '(A*)', 'cat' => 'lance', 'prix' => [150],],
@@ -45,7 +45,7 @@ class WeaponsController
 		['nom' => 'Bâton', 'deg' => 'B.t+1 - B.e+1', 'Fm' => 9, 'pds' => 1.5, 'notes' => '(3)', 'cat' => 'g-c', 'prix' => [0],],
 		['nom' => 'Caillou', 'deg' => 'B.e, 7/F×1.5', 'Fm' => 7, 'pds' => 0.5, 'cat' => 'g-c', 'prix' => [0],],
 
-		['nom' => 'Fléchette', 'deg' => 'P.e-2, 7/F-2', 'Fm' => NULL, 'pds' => 0.05, 'notes' => '(L)(5)', 'cat' => 'divers', 'prix' => [2],],
+		['nom' => 'Fléchette', 'deg' => 'P.e-2, 7/F-2', 'Fm' => NULL, 'pds' => 0.05, 'notes' => '(L-5)', 'cat' => 'divers', 'prix' => [2],],
 		['nom' => 'Fronde', 'deg' => 'B.t, 10/F×3', 'Fm' => NULL, 'pds' => 0.25, 'cat' => 'divers', 'prix' => [2],],
 		['nom' => 'Lance de joute', 'deg' => 'P.e+3', 'Fm' => 12, 'pds' => 3, 'cat' => 'divers', 'prix' => [NULL],],
 		['nom' => 'Lance-javelot', 'deg' => 'P.t+1, 10/F×2', 'Fm' => 7, 'pds' => 1, 'cat' => 'exclu', 'prix' => [NULL],],
@@ -55,16 +55,16 @@ class WeaponsController
 
 		[
 			'nom' => 'Grand filet',
-			'deg' => 'voir details, 3/–',
+			'deg' => '3/–',
 			'Fm' => 12,
 			'pds' => 8,
 			'cat' => 'spéciale',
 			'prix' => [NULL],
-			'description' => '1 round pour l’apprêter. L’Esquive est la seule défense possible. Trois jets de Dex-4, pas forcément consécutifs, pour se libérer (Dex-6 pour des animaux ou des êtres humains n’ayant qu’une main disponible). Si trois jets consécutifs sont ratés, la victime est tellement emmêlée qu’il faudra couper le filet pour la libérer.',
+			'description' => '1 round pour l’apprêter. L’<i>Esquive</i> est la seule défense possible. Trois jets de <i>Dex</i>-4, pas forcément consécutifs, pour se libérer (<i>Dex</i>-6 pour des animaux ou des êtres humains n’ayant qu’une main disponible). Si trois jets consécutifs sont ratés, la victime est tellement emmêlée qu’il faudra couper le filet pour la libérer.',
 		],
 		[
 			'nom' => 'Petit filet',
-			'deg' => 'voir details, 3/–',
+			'deg' => '3/–',
 			'Fm' => 8,
 			'pds' => 2.5,
 			'cat' => 'spéciale',
@@ -73,7 +73,7 @@ class WeaponsController
 		],
 		[
 			'nom' => 'Fouet',
-			'deg' => 'voir details',
+			'deg' => '',
 			'Fm' => 8,
 			'pds' => 1,
 			'cat' => 'spéciale',
@@ -82,7 +82,7 @@ class WeaponsController
 		],
 		[
 			'nom' => 'Lasso',
-			'deg' => 'voir details, 5/–',
+			'deg' => '5/–',
 			'Fm' => 7,
 			'pds' => 1.5,
 			'cat' => 'spéciale',
@@ -91,7 +91,7 @@ class WeaponsController
 		],
 		[
 			'nom' => 'Bolas',
-			'deg' => 'voir details, 7/F×1.5',
+			'deg' => '7/F×1.5',
 			'Fm' => 8,
 			'pds' => 1,
 			'cat' => 'spéciale',
@@ -160,14 +160,16 @@ class WeaponsController
 	 * @param  bool $is_firearms_list display firearms data in header
 	 * @param  bool $display_headers add header for table
 	 * @param  ?int $price_index price index to be used (no price if NULL)
+	 * @param ?string $currency currency symbol in table header
+	 * @param ?string $table_title text content of first cell of table head
 	 * @return void
 	 */
-	static function displayWeaponsList(array $weapons, bool $is_firearms_list = false, bool $display_headers = true, ?int $price_index = null, ?string $currency = null): void
+	static function displayWeaponsList(array $weapons, bool $is_firearms_list = false, bool $display_headers = true, ?int $price_index = null, ?string $currency = null, ?string $table_title = null): void
 	{ ?>
 		<table class="weapons <?= $display_headers ? "" : "alternate-o" ?>">
 			<?php if ($display_headers) { ?>
 				<tr>
-					<th></th>
+					<th><?= $table_title ? $table_title : "" ?></th>
 					<th>Dég, Prt<?= $is_firearms_list ? ", VdT, Cps, Rcl" : "" ?></th>
 					<th>Fm</th>
 					<th>Pds</th>
@@ -208,13 +210,37 @@ class WeaponsController
 			<details class="fs-300 alternate-o">
 				<summary class="flex-s gap-½">
 					<div style="width: 10ch"><?= $weapon["nom"] ?><?= !empty($weapon["notes"]) ? ("<sup>" . $weapon["notes"] . "</sup>") : "" ?></div>
-					<div class="fl-1"><?= $weapon["deg"] ?></div>
+					<div class="fl-1"><?= "voir détails" . ($weapon["deg"] ? ", " .$weapon["deg"] : "") ?></div>
 					<div class="ta-center" style="width: 3.5ch"><?= $weapon["Fm"] ?></div>
 					<div class="ta-center" style="width: 3.5ch"><?= $weapon["pds"] ?></div>
 				</summary>
 				<p><?= $weapon["description"] ?></p>
 			</details>
 		<?php }
+	}
+
+	public static function displaySpecialWeapon_v4(array $weapons)
+	{
+		foreach ($weapons as $w):
+		?>
+			<!-- <details class="fs-300 alternate-o">
+				<summary><?= $w["nom"] ?></summary>
+				<div style="padding-bottom: .5em">
+					<p><?= $w["description"] ?></p>
+				</div>
+			</details> -->
+			<div class="fs-300">
+				<div class="flex-s fw-700">
+					<div class="fl-1"><?= $w["nom"] ?></div>
+					<div>Fmin&nbsp;: <?= $w["Fm"] ?> – Pds&nbsp;: <?= $w["pds"] ?>&nbsp;kg</div>
+				</div>
+				<div>
+					<?= $w["description"] ?>
+					<?= $w["deg"] ? "<b>Portée&nbsp;:</b> " . $w["deg"] : "" ?>
+				</div>
+			</div>
+		<?php
+		endforeach;
 	}
 
 	public static function burstHits(int $rcl, int $bullets, int $mr)

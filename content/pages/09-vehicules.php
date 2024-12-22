@@ -4,7 +4,7 @@
 </article>
 	
 <article><h2>Caractéristiques</h2>
-	<details><summary class="h3">Accélération (Acc)</summary>
+	<details><summary><h3>Accélération (Acc)</h3></summary>
 		<p>
 			<b>Nulle (0) :</b> Accélération très faible, sans effet en termes de jeu. C’est le cas des gros véhicules (camion, bus, gros navires) ou de ceux disposant d’un moyen de propulsion peu efficace (vélo, voilier, dirigeable).<br/>
 			<b>Faible (1) :</b> Camion vide, camionnette chargée, voiture poussive.<br/>
@@ -17,11 +17,11 @@
 		<p>Si le véhicule est chargé, son <i>Acc</i> est diminuée de 1, sans toutefois pouvoir être inférieure à 0.</p>
 	</details>
 
-	<details><summary class="h3">Vitesse maximale (Vm)</summary>
+	<details><summary><h3>Vitesse maximale (Vm)</h3></summary>
 		<p>Dans l’espace, c’est l’<i>Acc</i> qui joue le rôle de cette caractéristique.</p>
 	</details>
 
-	<details><summary class="h3">Maniabilité (Ma)</summary>
+	<details><summary><h3>Maniabilité (Ma)</h3></summary>
 		<p>Plus la <i>Maniabilité</i> d’un véhicule est grande, plus des écarts de mouvements brusques et des virages serrés sont possibles.</p>
 		<p>
 			<b>Nulle (0) :</b> Ne peut faire aucun écart. Lent et lourd à manœuvrer. Semi-remorque ou camion chargé. Tout véhicule d’une échelle de taille supérieure à 3 a automatiquement une maniabilité de zéro.<br/>
@@ -35,11 +35,11 @@
 		<p>Si le véhicule est chargé, sa <i>Ma</i> est diminuée de 1, sans toutefois pouvoir être inférieure à 0.</p>
 	</details>
 
-	<details><summary class="h3">Résistance aux dégâts (RD)</summary>
+	<details><summary><h3>Résistance aux dégâts (RD)</h3></summary>
 		<p>La RD d’un véhicule fonctionne exactement comme celle d’une armure. Elle dépend grandement de la partie considérée. Par défaut, le score indiqué correspond à la carrosserie. Les tables de localisation doivent indiquer la RD de chaque partie du véhicule.</p>
 	</details>
 
-	<details><summary class="h3">Points de Structure (PdS)</summary>
+	<details><summary><h3>Points de Structure (PdS)</h3></summary>
 		<p>Les points de Structure sont les PdV du véhicule. Pour un véhicule en métal de longueur <i>L</i> ayant les proportions d’une voiture : PdS = 13×<i>L</i><sup>0,96</sup>.</p>
 		<p>Un véhicule ayant une forme plus compacte aura 10% de PdS en plus, un véhicule cubique ou sphérique en aura 20% en plus. À l’inverse, un véhicule fin ou très fin aura 10 à 20 % de PdS en moins.</p>
 		<h4>Quelques ordres de grandeur indicatifs</h4>
@@ -48,11 +48,11 @@
 		26 à 33 PdS pour une moto</p>
 	</details>
 
-	<details><summary class="h3">Intégrité</summary>
+	<details><summary><h3>Intégrité</h3></summary>
 		<p>Cette caractéristique mesure la robustesse du véhicule, sa résistance aux mauvais traitements (choc, conditions extrêmes, attaque, etc.).</p>
 	</details>
 
-	<details><summary class="h3">Malfonction (Mlf)</summary>
+	<details><summary><h3>Malfonction (Mlf)</h3></summary>
 		<p>Ce score mesure la fiabilité du véhicule. Le score par défaut est de 18 pour un véhicule fiable. Mais il peut baisser avec l’âge du véhicule, selon la qualité de son entretien, selon la technologie utilisée pour le fabriquer et selon son niveau d’endommagement. Le MJ fait un jet de Malfonction à chaque fois qu’il l’estime nécessaire.</p>
 	</details>
 
@@ -60,7 +60,7 @@
 
 <article><h2>Actions</h2>
 
-	<details><summary class="h3">Jet de Contrôle</summary>
+	<details><summary><h3>Jet de Contrôle</h3></summary>
 		<p>Un jet de <i>Contrôle</i> est un jet sous la compétence utilisée pour diriger le véhicule. Il est nécessaire chaque fois qu’il y a une prise de risque.</p>
 		<p>Le MJ estime la difficulté de la manœuvre en tenant compte de la <i>Ma</i> du véhicule. Si le jet est raté, voir <i>Échec au jet de Contrôle</i>.</p>
 
@@ -69,7 +69,7 @@
 		
 	</details>
 
-	<details><summary class="h3">Poursuites</summary>
+	<details><summary><h3>Poursuites</h3></summary>
 		<p>Ces règles de poursuite n’ont pas vocation à être très rigoureuses. Elles sont conçues pour permettre un maximum de fluidité en donnant un cadre aux estimations du MJ.</p>
 		<p>Les poursuites se gèrent par des duels successifs de jet de Contrôle.</p>
 
@@ -103,7 +103,7 @@
 
 	</details>
 
-	<details><summary class="h3">Échec au jet de Contrôle</summary>
+	<details><summary><h3>Échec au jet de Contrôle</h3></summary>
 		<p>En cas d’échec, les conséquences varient selon la ME du jet de contrôle, du type de véhicule et de la nature du terrain dans lequel ce véhicule se déplace. Pour une voiture, cela peut aller d’un simple dérapage à une sortie de route suivie de tonneaux. Le tableau suivant permet d’estimer les conséquences d’un jet de <i>Contrôle</i> raté.</p>
 
 		<table class="alternate-e left-2">
@@ -123,7 +123,7 @@
 
 	</details>
 
-	<details><summary class="h3">Collision</summary>
+	<details><summary><h3>Collision</h3></summary>
 		<p>Une collision est un choc entre un véhicule et un obstacle (autre véhicule, bâtiment, être-vivant). La gravité de la collision est estimée par le MJ pour déterminer les dégâts reçus par le véhicule. Les calculs sont gérés par le widget de la <a href="table-jeu"><i>Table de jeu</i></a>.</p>
 		
 		<h4>Conséquences pour les passagers</h4>
@@ -139,11 +139,11 @@
 		<p>Le véhicule qui éperonne subit des dégâts dont la gravité est d’un niveau inférieur à ce qu’il subirait sans son éperon (qui peut par ailleurs lui procurer une RD importante à l’endroit de l’impact).</p>
 	</details>
 
-	<details><summary class="h3">Attaque</summary>
+	<details><summary><h3>Attaque</h3></summary>
 		<p>Une attaque d’un véhicule est traitée comme une attaque à distance.</p>
 	</details>
 
-	<details><summary class="h3">Défense</summary>
+	<details><summary><h3>Défense</h3></summary>
 		<h4>Se rendre plus difficile à toucher</h4>
 		<p>Si un pilote tente des manœuvres acrobatiques pour se rendre difficile à toucher. Il revient au MJ d’établir un lien entre la MR du jet de Contrôle du pilote et le malus infligé à l’attaquant.</p>
 		
@@ -165,7 +165,7 @@
 
 	<p>Les effets des dégâts sur un véhicule suivent les règles décrites au chapitre <i>Combat</i>.</p>
 
-	<details><summary class="h3">Perte de contrôle du véhicule</summary>
+	<details><summary><h3>Perte de contrôle du véhicule</h3></summary>
 		<p>Lorsqu’un véhicule subit des dégâts, il faut faire un jet de <i>Contrôle</i> dont la difficulté dépend des dégâts reçus par le véhicule.</p>
 		<table class="alternate-e left-1">
 			<tr><th>Dégâts reçus</th>	<th>Difficulté</th></tr>
@@ -177,7 +177,7 @@
 
 	</details>
 
-	<details><summary class="h3">Dégâts aux occupants</summary>
+	<details><summary><h3>Dégâts aux occupants</h3></summary>
 
 		<h4>Dégâts «&nbsp;très localisés&nbsp;»</h4>
 		<p>Un occupant n’est blessé que si cet événement est tiré sur la table de localisation. Les dégâts sont calculés sur la base des dégâts bruts en tenant compte de la RD traversée (vitre ou carrosserie, etc.)</p>
@@ -199,7 +199,7 @@
 
 	</details>
 
-	<details><summary class="h3">État général</summary>
+	<details><summary><h3>État général</h3></summary>
 		<p>Si un véhicule est endommagé, cela affecte ses performances. Les modificateurs de <i>Ma</i>, <i>Acc</i> et <i>Vm</i> donnés ci-dessous sont indépendants et cumulables avec tout autre effet secondaire.</p>
 		<table class="alternate-o left-2">
 			<tr>
@@ -227,7 +227,7 @@
 		<p>Remarque : la <i>Ma</i> et l’<i>Acc</i> d’un véhicule ne peuvent jamais être négatives.</p>
 	</details>
 
-	<details><summary class="h3">Types d’effets secondaires</summary>
+	<details><summary><h3>Types d’effets secondaires</h3></summary>
 		<p>Les effets secondaires des dégâts sur un véhicule sont de 6 catégories différentes. Chaque type de véhicule devrait avoir sa propre table d’effets secondaires.</p>
 		<table class="alternate-o left-2">
 			<tr><th>1</th>	<td>Convertisseur d’énergie : Moteur, réacteur.</td></tr>
@@ -241,7 +241,7 @@
 </article>
 
 <article><h2>Règles spécifiques</h2>
-	<details><summary class="h3">Voiture à moteur thermique</summary>
+	<details><summary><h3>Voiture à moteur thermique</h3></summary>
 		<p>Une voiture non-blindée a une RD 5 pour la carrosserie (+1 à +2 pour une voiture ancienne ou de luxe) et 3 pour les vitres.</p>
 
 		<table class="alternate-e left-1">
@@ -269,7 +269,7 @@
 		</table>
 	</details>
 
-	<details><summary class="h3">Moto à moteur thermique</summary>
+	<details><summary><h3>Moto à moteur thermique</h3></summary>
 		<p>Une moto à une RD générale de 3.</p>
 		<p>Pour les effets secondaires, voir <i>voiture à moteur thermique</i>.</p>
 		<p>Une chute sans collision est considérée comme une collision <i>légère</i> ou <i>moyenne</i> selon les circonstances. <br/>

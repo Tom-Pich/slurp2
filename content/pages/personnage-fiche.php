@@ -24,22 +24,46 @@ function color_modifier($original_score, $actual_score)
 
 <div id="ws-data" hidden data-session-id="<?= $_SESSION["id"] ?>" data-ws-key="<?= WS_KEY ?>"></div>
 
-<!-- Description, caractéristiques, état perso & Avantages-Désavantages -->
-<article>
+<!-- Nom + accès éditeur -->
+<div class="flex-s gap-1 jc-space-between ai-center">
+	<h3 id="character-name" data-id="<?= $character->id ?>" data-gm="<?= $character->id_gm ?>">
+		<?= $character->name ?>
+	</h3>
+	<a href="personnage-gestion?perso=<?= $character->id ?>" title="Éditer – Alt+Shift+E" accesskey="e" class="ff-fas edit-link">&#xf013;</a>
+</div>
 
-	<div class="flex-s ai-center mt-½ gap-½">
-		<h3 class="fl-1" id="character-name" data-id="<?= $character->id ?>" data-gm="<?= $character->id_gm ?>"><?= $character->name ?></h3>
-		<a href="personnage-gestion?perso=<?= $character->id ?>" title="Éditer – Alt+Shift+E" accesskey="e" class="btn ff-fas no-print">&#xf013;</a>
-	</div>
-	<div class="ta-center mt-½ fs-300 no-print">
-		Pts&nbsp;: <?= $character->points ?> | éco&nbsp;: <?= $character->points - $character->points_count["total"] ?>
-	</div>
-	<div class="mt-1">
+<!-- Points -->
+<div class="fs-300 no-print">
+	Pts&nbsp;: <?= $character->points ?> | éco&nbsp;: <?= $character->points - $character->points_count["total"] ?>
+</div>
+
+<!-- Description -->
+<details class="no-print mt-½">
+	<summary>
+		<h3>Description</h3>
+	</summary>
+	<div class="mt-½ ta-justify">
 		<?= nl2br($character->description) ?>
 	</div>
+</details>
 
-	<!-- Caractéristiques -->
-	<div class="flex-s gap-¾ mt-1 jc-center">
+<!-- Background -->
+<?php if (!empty($character->background)): ?>
+	<details class="no-print mt-½">
+		<summary>
+			<h3>Background</h3>
+		</summary>
+		<div class="mt-½ flow ta-justify"><?= TextParser::pseudoMDParser($character->background) ?></div>
+	</details>
+<?php endif; ?>
+
+<!-- Caractéristiques -->
+<fieldset>
+
+	<legend>Caractéristiques</legend>
+
+	<!-- Caractéristiques principale -->
+	<div class="flex-s gap-½ fs-450 jc-space-between">
 		<?php foreach ($attributes_names as $attr_name) { ?>
 			<div data-type="throwable-wrapper">
 				<b data-type="throwable-label"><?= $attr_name ?></b>
@@ -51,7 +75,7 @@ function color_modifier($original_score, $actual_score)
 	</div>
 
 	<!-- Caractéristiques secondaires -->
-	<div class="flex-s gap-¾ jc-center mt-½">
+	<div class="flex-s gap-½ jc-space-between mt-½ py-½" style="border-top: .5px solid var(--grey-900)">
 		<div>
 			<b>Dégâts</b>
 			<span <?= color_modifier($character->raw_attributes["For"], $character->attributes["For"] + $character->modifiers["Dégâts"]) ?>>
@@ -82,210 +106,174 @@ function color_modifier($original_score, $actual_score)
 	</div>
 
 	<!-- PdV, PdF, PdM, PdE -->
-	<div class="flex-s gap-¾ jc-center mt-½">
+	<div class="flex-s gap-½ jc-space-between" style="border-top: .5px solid var(--grey-900); padding-top: .75em;">
 		<?php foreach ($pdx_names as $pdx_name) {
 			$pdxm = $character->attributes[$pdx_name];
 			//$pdx = TextParser::evalString($character->state[$pdx_name]);
 			$pdx = $character->state[$pdx_name];
 		?>
-			<div class="ta-center <?= $pdx_name === "PdM" && !$character_uses_pdm ? "clr-grey-500" : "" ?>">
+			<div class="ta-center <?= $pdx_name === "PdM" && !$character_uses_pdm ? "clr-grey-500" : "" ?>" style="line-height: 1.2em;">
 				<b><?= $pdx_name ?></b> <?= $pdxm ?><br>
 				<meter min="0" low="<?= $pdxm * 0.26 ?>" high="<?= $pdxm * 0.5 ?>" optimum="<?= $pdxm * 0.51 ?>" max="<?= $pdxm ?>" value="<?= $pdx ?>" title="<?= $pdx ?>" name="<?= $pdx_name ?>"></meter>
 			</div>
 		<?php } ?>
 	</div>
+</fieldset>
 
-	<!-- État du personnage -->
-	<fieldset class="mt-1">
-		<legend>État</legend>
+<!-- État du personnage -->
+<fieldset>
+	<legend>État</legend>
 
-		<ul>
-			<?php if ($character_uses_pdm) { ?>
-				<li>
-					<?php  ?>
-					<div class="grid gap-½ ai-center mb-½" style="grid-template-columns: auto 1fr">
-						<b>PdM</b>
-						<input type="text" name="pdm_counter" data-pdm-max="<?= $character->attributes["PdM"] ?>" data-pdm-current="<?= $character->state["PdM"] ?>">
-						<!--  value="|?= $character->state["PdM"] === $character->attributes["PdM"] ? "" : $character->state["PdM"] ?|" -->
-					</div>
-				</li>
-			<?php } ?>
+	<ul>
+		<?php if ($character_uses_pdm) { ?>
 			<li>
-				<b>Encombrement&nbsp;:</b>
-				<?= $character->carried_weight ?> kg –
-				<?= $character->state["Encombrement"]["name"] ?>
+				<?php  ?>
+				<div class="grid gap-½ ai-center" style="grid-template-columns: auto 1fr">
+					<b>PdM</b>
+					<input type="text" name="pdm_counter" data-pdm-max="<?= $character->attributes["PdM"] ?>" data-pdm-current="<?= $character->state["PdM"] ?>" style="padding-bottom: .1em;">
+					<!--  value="|?= $character->state["PdM"] === $character->attributes["PdM"] ? "" : $character->state["PdM"] ?|" -->
+				</div>
 			</li>
-			<?php if ($character->state["Fatigue"]["dex-modifier"]) { ?>
-				<li><b>Fatigue&nbsp;:</b> <?= $character->state["Fatigue"]["name"] ?></li>
-			<?php } ?>
-			<?php if ($character->state["Stress"]["sf-modifier"]) { ?>
-				<li>
-					<b>Stress&nbsp;:</b>
-					<?= $character->state["Stress"]["name"] ?>
-					<?= $character->state["Stress"]["pde-loss"] ? "– perte de " . $character->state["Stress"]["pde-loss"] . " PdE" : "" ?>
-				</li>
-			<?php } ?>
-			<?php if ($character->state["Santé-mentale"]["sf-modifier"]) { ?>
-				<li><b>Santé mentale&nbsp;:</b> <?= $character->state["Santé-mentale"]["description"] ?></li>
-			<?php } ?>
-			<?php if ($character->state["Blessures"]["dex-modifier"]) { ?>
-				<li><b>Blessures générales&nbsp;:</b> <?= $character->state["Blessures"]["name"] ?></li>
-			<?php } ?>
-			<?php foreach ($character->state["Membres"] as $member) { ?>
-				<li><?= $member ?></li>
-			<?php } ?>
-			<?php foreach ($character->state["Autres"] as $other_element) { ?>
-				<li><?= trim($other_element) ?></li>
-			<?php } ?>
-			<?php foreach ($character->state["Compteurs-equipement"] ?? [] as $counter) { ?>
-				<li>
-					<div class="flex-s ai-first-baseline">
-						<div class="fl-1">
-							<?= $counter["label"] ?>
-							<?php if ($counter["unit"] !== "%") { ?>
-								(<?= $counter["max"] . ($counter["unit"] ? " " . $counter["unit"] : "") ?>)
-							<?php } ?>
-						</div>
-						<meter min="0" low="<?= $counter["max"] / 3.99 ?>" high="<?= $counter["max"] / 2 ?>" optimum="<?= $counter["max"] / 1.99 ?>" max="<?= $counter["max"] ?>" value="<?= $counter["current"] ?>" title="<?= $counter["current"] ?> <?= $counter["unit"] ?>" style="width: 6ch"></meter>
+		<?php } ?>
+		<li>
+			<b>Encombrement&nbsp;:</b>
+			<?= $character->carried_weight ?> kg –
+			<?= $character->state["Encombrement"]["name"] ?>
+		</li>
+		<?php if ($character->state["Fatigue"]["dex-modifier"]) { ?>
+			<li><b>Fatigue&nbsp;:</b> <?= $character->state["Fatigue"]["name"] ?></li>
+		<?php } ?>
+		<?php if ($character->state["Stress"]["sf-modifier"]) { ?>
+			<li>
+				<b>Stress&nbsp;:</b>
+				<?= $character->state["Stress"]["name"] ?>
+				<?= $character->state["Stress"]["pde-loss"] ? "– perte de " . $character->state["Stress"]["pde-loss"] . " PdE" : "" ?>
+			</li>
+		<?php } ?>
+		<?php if ($character->state["Santé-mentale"]["sf-modifier"]) { ?>
+			<li><b>Santé mentale&nbsp;:</b> <?= $character->state["Santé-mentale"]["description"] ?></li>
+		<?php } ?>
+		<?php if ($character->state["Blessures"]["dex-modifier"]) { ?>
+			<li><b>Blessures générales&nbsp;:</b> <?= $character->state["Blessures"]["name"] ?></li>
+		<?php } ?>
+		<?php foreach ($character->state["Membres"] as $member) { ?>
+			<li><?= $member ?></li>
+		<?php } ?>
+		<?php foreach ($character->state["Autres"] as $other_element) { ?>
+			<li><?= trim($other_element) ?></li>
+		<?php } ?>
+		<?php foreach ($character->state["Compteurs-equipement"] ?? [] as $counter) { ?>
+			<li>
+				<div class="flex-s ai-first-baseline">
+					<div class="fl-1">
+						<?= $counter["label"] ?>
+						<?php if ($counter["unit"] !== "%") { ?>
+							(<?= $counter["max"] . ($counter["unit"] ? " " . $counter["unit"] : "") ?>)
+						<?php } ?>
 					</div>
-				</li>
-			<?php } ?>
-		</ul>
-		<!-- pour calcul dégâts armes (character.js) -->
-		<div id="for-deg" hidden><?= $character->attributes["For"] + $character->modifiers["Dégâts"] ?></div>
-	</fieldset>
+					<meter min="0" low="<?= $counter["max"] / 3.99 ?>" high="<?= $counter["max"] / 2 ?>" optimum="<?= $counter["max"] / 1.99 ?>" max="<?= $counter["max"] ?>" value="<?= $counter["current"] ?>" title="<?= $counter["current"] ?> <?= $counter["unit"] ?>" style="width: 6ch"></meter>
+				</div>
+			</li>
+		<?php } ?>
+	</ul>
+	<!-- pour calcul dégâts armes (character.js) -->
+	<div id="for-deg" hidden><?= $character->attributes["For"] + $character->modifiers["Dégâts"] ?></div>
+</fieldset>
 
-	<!-- Avantages, Désavantages & Travers -->
-	<h4 class="mt-1">Avantages &amp; Désavantages</h4>
+<!-- Portraits -->
+<?php
+if (count($character->group_members) === 0) $group_size = "none";
+elseif (count($character->group_members) <= 2) $group_size = "small";
+elseif (count($character->group_members) <= 4) $group_size = "medium";
+else $group_size = "big";
+?>
+
+<div class="portraits-wrapper group-<?= $group_size ?> mt-1 no-print">
+
+	<div class="aspect-square"><img src="<?= $character->portrait ?>" class="fit-cover"></div>
+
+	<div class="group-portraits" data-role="members-wrapper"><!-- flex-s gap-½ fl-wrap -->
+		<?php if ($character->id_group < 100) {
+			foreach ($character->group_members as $group_member) { ?>
+				<div data-place="pi_<?= $group_member->id ?>" data-role="item-transfer" data-name="<?= $group_member->name ?>">
+					<div class="aspect-square"><img src="<?= $group_member->portrait ?>" title="<?= $group_member->description ?>" class="fit-cover"></div>
+					<div class="ta-center <?= $group_size === "big" ? "fs-200" : "fs-300" ?>"><?= strtok($group_member->name, " ") ?></div>
+				</div>
+		<?php }
+		} ?>
+	</div>
+
+</div>
+
+<!--Notes -->
+<?php if (!empty($character->notes)) { ?>
+	<details class="mt-1 no-print">
+		<summary>
+			<h3>Notes</h3>
+		</summary>
+		<div class="mt-½ flow">
+			<?= TextParser::pseudoMDParser($character->notes) ?>
+		</div>
+	</details>
+<?php } ?>
+
+<!-- Avantages, Désavantages & Travers -->
+<fieldset class="flow">
+	<legend>Avantages &amp; Désavantages</legend>
+	<!-- <h4 class="mt-1">Avantages &amp; Désavantages</h4> -->
 	<?php
 	foreach (["Zéro", "Avantage", "Désavantage", "Réputation", "Travers"] as $categorie) {
 		$sublist = [];
 		foreach ($character->avdesav as $avdesav) {
-			if ($avdesav["catégorie"] === $categorie) {
-				$sublist[] = $avdesav;
-			}
+			if ($avdesav["catégorie"] === $categorie) $sublist[] = $avdesav;
 		}
 	?>
-		<div class="mt-¾">
-			<?php foreach ($sublist as $avdesav) {
-				if ($avdesav["catégorie"] !== "Travers") : ?>
+		<?php if (count($sublist)): ?>
+			<div>
+				<?php foreach ($sublist as $avdesav) {
+					if ($avdesav["catégorie"] !== "Travers") : ?>
 
-					<details class="liste" tabindex="-1">
-						<summary>
-							<div><?= $avdesav["nom"] ?></div>
+						<details class="liste" tabindex="-1">
+							<summary>
+								<div><?= $avdesav["nom"] ?></div>
+								<div><?= $avdesav["points"] ?></div>
+							</summary>
+							<div class="mt-½ fs-300 ta-justify"><?= $avdesav["description"] ?? "" ?></div>
+						</details>
+
+					<?php else : ?>
+
+						<div class="flex-s gap-½">
+							<div class="fl-1"><?= $avdesav["nom"] ?></div>
 							<div><?= $avdesav["points"] ?></div>
-						</summary>
-						<div class="mt-½"><?= $avdesav["description"] ?? "" ?></div>
-					</details>
+						</div>
 
-				<?php else : ?>
+					<?php endif ?>
 
-					<div class="flex-s gap-½">
-						<div class="fl-1"><?= $avdesav["nom"] ?></div>
-						<div><?= $avdesav["points"] ?></div>
-					</div>
-
-				<?php endif ?>
-
-			<?php } ?>
-		</div>
+				<?php } ?>
+			</div>
+		<?php endif; ?>
 	<?php } ?>
-
-</article>
+</fieldset>
 
 <!-- Compétences -->
-<article>
-	<h4 class="mb-½">Compétences</h4>
+<fieldset>
+	<legend>Compétences</legend>
+	<!-- <h4 class="mb-½">Compétences</h4> -->
 	<?php foreach ($character->skills as $comp) {	?>
-		<div class="flex-s alternate-o" data-type="throwable-wrapper">
+		<div class="flex-s" data-type="throwable-wrapper">
 			<div class="fl-1" data-type="throwable-label"><?= $comp["label"] ?></div>
 			<div <?= color_modifier($comp["raw-base"], $comp["base"]) ?> data-type="throwable-score"><?= $comp["score"] ?></div>
 		</div>
 	<?php } ?>
-</article>
+</fieldset>
 
-<!-- Possessions, sorts & pouvoirs -->
-<article>
+<!-- Magie -->
+<?php if ($character->special_traits["magerie"]): ?>
+	<fieldset>
+		<legend>Magie</legend>
 
-	<!-- Possessions -->
-	<form id="form-equipment"> <!-- action="/submit/equipment-list" method="post" -->
-
-		<?php
-		//$n_obj = 0;
-		foreach ($character->equipment as $sublist) {
-			$sublist["lieu"] = in_array($sublist["lieu"], ["pi", "pe"]) ? ($sublist["lieu"] . "_" . $character->id) : $sublist["lieu"];
-		?>
-
-			<!-- Container wrapper -->
-			<details class="mb-1 p-½ border-grey-700" data-role="container-wrapper" data-place="<?= $sublist["lieu"] ?>" title="<?= $sublist["lieu"] ?>" tabindex="-1" id="container-wrapper-<?= $sublist["lieu"] ?>">
-
-				<!-- Container title -->
-				<summary class="h4 gap-1 ai-center" data-role="container-title-wrapper">
-					<h4 class="mt-0 flex-s gap-½ fl-1">
-						<div class="fl-1"><?= $sublist["nom"] ?></div>
-						<div><?= $sublist["sur-soi"] ? (round($sublist["poids"] ?? 0, 1) . "&nbsp;kg") : "" ?></div>
-					</h4>
-				</summary>
-
-				<!-- Container controls -->
-				<div class="flex-s ai-center gap-1 py-½" data-role="container-controls">
-
-					<button class="ff-fas nude clr-primary p-¼" title="ajouter un objet" data-role="add-item" type="button">
-						&#xf055;
-					</button>
-					<div class="flex-s gap-½ fl-1">
-						<button class="ff-fas nude" title="monter le bloc" data-role="container-up" type="button">&#xf0aa;</button>
-						<button class="ff-fas nude" title="descendre le bloc" data-role="container-down" type="button">&#xf0ab;</button>
-					</div>
-
-					<?php if ($sublist["id"]) { ?>
-						<label class="ff-fas clr-warning cursor-pointer" title="transformer en objet simple (si vide seulement !)">
-							&#xf057;
-							<input type="checkbox" name="sub-list[<?= $sublist["id"] ?>][Contenant-off]" <?= $sublist["non-vide"] ? "disabled" : "" ?> hidden>
-						</label>
-						<label class="ff-fas clr-secondary-dark cursor-pointer group-share-input px-¼" title="rendre visible pour le groupe">
-							&#xe533;
-							<input type="checkbox" hidden name="sub-list[<?= $sublist["id"] ?>][Groupe]" <?= !empty($sublist["groupe"]) ? "checked" : "" ?> value="<?= $character->id_group ?>" data-ping-all>
-						</label>
-					<?php } ?>
-
-				</div>
-
-				<!-- Items list -->
-				<?php foreach ($sublist["liste"] as $item) {
-					/* $n_obj++ */ ?>
-
-					<details class="items-list" id="item-<?= $item->id ?>" data-role="item-wrapper"><!-- ancien id: item-{$n_obj} -->
-						<summary class="grid gap-½ ai-center">
-							<div class="ff-fas" draggable="true" data-role="item-grip">&#xf58e;</div>
-							<input name="objet[<?= $item->id ?>][Nom]" type="text" value="<?= $item->name ?>" placeholder="Nouvel objet" <?= $item->isContainer ? "class=\"fw-600\"" : "" ?>>
-							<input name="objet[<?= $item->id ?>][Poids]" title="poids" type="text" value="<?= $item->weight ?>" class="ta-center <?= ($item->weight === null && $item->id) ? "manquant" : "" ?> <?= $item->isContainer ? "clr-grey-700" : "" ?>">
-						</summary>
-						<div class="grid">
-							<input name="objet[<?= $item->id ?>][Notes]" type="text" value="<?= $item->notes ?>" placeholder="Notes" data-role="item-notes">
-							<?php if ($_SESSION["Statut"] >= 2 && ($character->id_gm === $_SESSION["id"] || !$character->id_gm)) { ?>
-								<input name="objet[<?= $item->id ?>][Secret]" type="text" value="<?= $item->secret ?>" placeholder="Notes du MJ" class="clr-warning" data-role="item-notes">
-							<?php } ?>
-							<input hidden name="objet[<?= $item->id ?>][Lieu]" value="<?= $item->place ?>" data-role="item-place">
-							<input hidden name="objet[<?= $item->id ?>][Contenant]" value="<?= $item->isContainer ?>">
-						</div>
-					</details>
-
-				<?php } ?>
-
-				<div data-role=free-slot style="height: 0.75em;"></div>
-
-			</details>
-		<?php } ?>
-
-		<div id="item-transfer"><!-- temporary wrapper for item transfer, used in character.js --></div>
-		<input type="hidden" name="id_perso" value="<?= $character->id ?>">
-
-	</form>
-
-	<!-- Magie, pouvoirs, psioniques -->
-	<?php if ($character->special_traits["magerie"]) { ?>
-		<h4 class="mt-1 mb-½">Magie</h4>
+		<!-- <h4 class="mt-1 mb-½">Magie</h4> -->
 		<?php foreach ($character->colleges as $college) { ?>
 
 			<details class="liste">
@@ -298,17 +286,17 @@ function color_modifier($original_score, $actual_score)
 					if (in_array($college["id"], $sort["data"]->colleges) && (max($sort["scores"]) >= 12)) { ?>
 
 						<details class="sous-liste">
-							<summary>
-								<div>
+							<summary data-type="throwable-wrapper">
+								<div data-type="throwable-label">
 									<?= $sort["label"] ?>
 									<?php if (!in_array($sort["data"]->class, ["Enchantement"])) { ?>
 										[<?= $sort["readable_costs"] ?>]
 									<?php } ?>
 								</div>
-								<div><?= $sort["readable_scores"] ?></div>
+								<div data-type="throwable-score"><?= $sort["readable_scores"] ?></div>
 							</summary>
 
-							<div class="fs-300">
+							<div class="fs-300 ta-justify">
 								<?= $sort["data"]->displayFullDescription($sort["readable_time"]) ?>
 							</div>
 						</details>
@@ -317,93 +305,138 @@ function color_modifier($original_score, $actual_score)
 				} ?>
 
 			</details>
-		<?php }
-	}
+		<?php } ?>
 
-	if ($character->special_traits["pouvoirs"]) { ?>
-		<h4 class="mt-1 mb-½">Pouvoirs</h4>
-		<div>
-			<?php
-			foreach ($character->powers as $pouvoir) {
-				$type = $pouvoir["data"]->specific["Type"] ?? $pouvoir["origine"];
-			?>
-				<details class="liste">
-					<summary>
-						<div><?= $pouvoir["label"] ?></div>
-						<div <?= color_modifier(0, $character->modifiers["Int"]) ?>><?= $pouvoir["score"] ?></div>
-					</summary>
-					<div class="fs-300">
-						<?php if ($type === "sort") {
-							$pouvoir["data"]->data->displayFullDescription();
-						} else { ?>
-							<div class="mt-½">
-								<?= $pouvoir["data"]->data->description ?>
-							</div>
-						<?php } ?>
-					</div>
-				</details>
-			<?php } ?>
-		</div>
-	<?php } ?>
+	</fieldset>
+<?php endif; ?>
 
-	<?php if ($character->special_traits["psi"]) {	?>
-		<h4 class="mt-1 mb-½">Psi</h4>
+<!-- Pouvoirs -->
+<?php if ($character->special_traits["pouvoirs"]): ?>
+	<fieldset>
+		<legend>Pouvoirs</legend>
+		<?php
+		foreach ($character->powers as $pouvoir) {
+			$type = $pouvoir["data"]->specific["Type"] ?? $pouvoir["origine"];
+		?>
+			<details class="liste">
+				<summary data-type="throwable-wrapper">
+					<div data-type="throwable-label"><?= $pouvoir["label"] ?></div>
+					<div data-type="throwable-score" <?= color_modifier(0, $character->modifiers["Int"]) ?>><?= $pouvoir["score"] ?></div>
+				</summary>
+				<div class="fs-300 ta-justify">
+					<?php if ($type === "sort") {
+						$pouvoir["data"]->data->displayFullDescription();
+					} else { ?>
+						<div class="mt-½">
+							<?= $pouvoir["data"]->data->description ?>
+						</div>
+					<?php } ?>
+				</div>
+			</details>
+		<?php } ?>
+	</fieldset>
+<?php endif ?>
+
+<!-- Psi -->
+<?php if ($character->special_traits["psi"]):	?>
+	<fieldset>
+		<legend>Psi</legend>
 		<?php foreach ($character->disciplines as $discipline) { ?>
 			<details class="liste">
 				<summary>
 					<div><?= $discipline["nom"] ?></div>
 					<div>Niv. <?= $discipline["niv"] ?></div>
 				</summary>
-
 				<?php if (isset($discipline["notes"])) { ?>
 					<div class="mt-½"><i><?= $discipline["notes"] ?></i></div>
 				<?php } ?>
-
 				<?php foreach ($character->psi as $pouvoir) {
 					if (in_array($discipline["id"], $pouvoir["data"]->data->colleges) && $pouvoir["readable-score"]) { ?>
-
 						<details class="sous-liste">
-							<summary>
-								<div><?= $pouvoir["data"]->name ?> (<?= $pouvoir["data"]->data->readableNiv ?>) [<?= $pouvoir["readable-cost"] ?>]</div>
-								<div <?= color_modifier(0, $character->modifiers["Int"]) ?>><?= $pouvoir["readable-score"] ?></div>
+							<summary data-type="throwable-wrapper">
+								<div data-type="throwable-label"><?= $pouvoir["data"]->name ?> (<?= $pouvoir["data"]->data->readableNiv ?>) [<?= $pouvoir["readable-cost"] ?>]</div>
+								<div data-type="throwable-score" <?= color_modifier(0, $character->modifiers["Int"]) ?>><?= $pouvoir["readable-score"] ?></div>
 							</summary>
-							<div class="fs-300">
+							<div class="fs-300 ta-justify">
 								<?php $pouvoir["data"]->data->displayFullDescription(); ?>
 							</div>
 						</details>
-
 				<?php }
 				} ?>
-
 			</details>
-	<?php }
-	} ?>
+		<?php } ?>
+	</fieldset>
+<?php endif ?>
 
-</article>
-
-<!-- Divers -->
-<article>
-
-	<!-- Portraits -->
-	<div class="mt-½ no-break-inside">
-		<img src="<?= $character->portrait ?>" width="180" class="mx-auto" />
-
-		<div class="flex-s mt-1 gap-1 jc-center fl-wrap" data-role="members-wrapper">
-			<?php if ($character->id_group < 100) {
-				foreach ($character->group_members as $group_member) { ?>
-					<div data-place="pi_<?= $group_member->id ?>" data-role="item-transfer" data-name="<?= $group_member->name ?>" style="max-width: 8em;">
-						<img height="<?= count($character->group_members) < 5 ? 70 : 60 ?>" src="<?= $group_member->portrait ?>" class="mx-auto" title="<?= $group_member->description ?>" />
-						<div class="ta-center"><?= $group_member->name ?></div>
+<!-- Possessions -->
+<fieldset>
+	<legend>Possessions</legend>
+	<form id="form-equipment" class="flow"> <!-- action="/submit/equipment-list" method="post" -->
+		<?php
+		//$n_obj = 0;
+		foreach ($character->equipment as $sublist) {
+			$sublist["lieu"] = in_array($sublist["lieu"], ["pi", "pe"]) ? ($sublist["lieu"] . "_" . $character->id) : $sublist["lieu"];
+		?>
+			<!-- Container wrapper -->
+			<details data-role="container-wrapper" data-place="<?= $sublist["lieu"] ?>" title="<?= $sublist["lieu"] ?>" tabindex="-1" id="container-wrapper-<?= $sublist["lieu"] ?>">
+				<!-- Container title -->
+				<summary class="h4 gap-1 ai-center" data-role="container-title-wrapper">
+					<h4 class="mt-0 flex-s gap-½ fl-1">
+						<div class="fl-1"><?= $sublist["nom"] ?></div>
+						<div><?= $sublist["sur-soi"] ? (round($sublist["poids"] ?? 0, 1) . "&nbsp;kg") : "" ?></div>
+					</h4>
+				</summary>
+				<!-- Container controls -->
+				<div class="flex-s ai-center gap-1 py-½" data-role="container-controls">
+					<button class="ff-fas nude clr-primary p-¼" title="ajouter un objet" data-role="add-item" type="button">
+						&#xf055;
+					</button>
+					<div class="flex-s gap-½ fl-1">
+						<button class="ff-fas nude" title="monter le bloc" data-role="container-up" type="button">&#xf0aa;</button>
+						<button class="ff-fas nude" title="descendre le bloc" data-role="container-down" type="button">&#xf0ab;</button>
 					</div>
-			<?php }
-			} ?>
-		</div>
-
-	</div>
+					<?php if ($sublist["id"]) { ?>
+						<label class="ff-fas clr-warning cursor-pointer" title="transformer en objet simple (si vide seulement !)">
+							&#xf057;
+							<input type="checkbox" name="sub-list[<?= $sublist["id"] ?>][Contenant-off]" <?= $sublist["non-vide"] ? "disabled" : "" ?> hidden>
+						</label>
+						<label class="ff-fas clr-secondary-dark cursor-pointer group-share-input px-¼" title="rendre visible pour le groupe">
+							&#xe533;
+							<input type="checkbox" hidden name="sub-list[<?= $sublist["id"] ?>][Groupe]" <?= !empty($sublist["groupe"]) ? "checked" : "" ?> value="<?= $character->id_group ?>" data-ping-all>
+						</label>
+					<?php } ?>
+				</div>
+				<!-- Items list -->
+				<?php foreach ($sublist["liste"] as $item) {
+					/* $n_obj++ */ ?>
+					<details class="items-list" id="item-<?= $item->id ?>" data-role="item-wrapper"><!-- ancien id: item-{$n_obj} -->
+						<summary class="grid gap-½ ai-center">
+							<div class="ff-fas" draggable="true" data-role="item-grip">&#xf58e;</div>
+							<input name="objet[<?= $item->id ?>][Nom]" type="text" value="<?= $item->name ?>" placeholder="Nouvel objet" <?= $item->isContainer ? "class=\"fw-600\"" : "" ?>>
+							<input name="objet[<?= $item->id ?>][Poids]" title="poids" type="text" value="<?= $item->weight ?>" class="ta-center <?= ($item->weight === null && $item->id) ? "manquant" : "" ?> <?= $item->isContainer ? "clr-grey-700" : "" ?>">
+						</summary>
+						<div class="grid fs-300">
+							<input name="objet[<?= $item->id ?>][Notes]" type="text" value="<?= $item->notes ?>" placeholder="Notes" data-role="item-notes">
+							<?php if ($_SESSION["Statut"] >= 2 && ($character->id_gm === $_SESSION["id"] || !$character->id_gm)) { ?>
+								<input name="objet[<?= $item->id ?>][Secret]" type="text" value="<?= $item->secret ?>" placeholder="Notes du MJ" class="clr-warning" data-role="item-notes">
+							<?php } ?>
+							<input hidden name="objet[<?= $item->id ?>][Lieu]" value="<?= $item->place ?>" data-role="item-place">
+							<input hidden name="objet[<?= $item->id ?>][Contenant]" value="<?= $item->isContainer ?>">
+						</div>
+					</details>
+				<?php } ?>
+				<div data-role=free-slot style="height: 0.75em;"></div>
+			</details>
+		<?php } ?>
+		<div id="item-transfer" class="mt-0"><!-- temporary wrapper for item transfer, used in character.js --></div>
+		<input type="hidden" name="id_perso" value="<?= $character->id ?>">
+	</form>
 
 	<!-- Mode d’emploi form équipement -->
 	<details class="mt-1 flow no-print">
-		<summary class="fw-700">Mode d’emploi de la liste de possessions</summary>
+		<summary>
+			<h3>Mode d’emploi de la liste de possessions</h3>
+		</summary>
 		<p><b>Ajouter un objet&nbsp;:</b> cliquer sur <span class="ff-fas clr-primary">&#xf055;</span> dans l’emplacement désiré.</p>
 		<p><b>Supprimer un objet&nbsp;:</b> effacer son nom. Attention&nbsp;: si vous effacez un objet-contenant, vous perdrez tout son contenu avec&nbsp;!</p>
 		<p><b>Transformer un objet en contenant&nbsp;:</b> Insérer * devant son nom.</p>
@@ -424,31 +457,15 @@ function color_modifier($original_score, $actual_score)
 
 	</details>
 
-	<!--Notes -->
-	<?php if (!empty($character->notes)) { ?>
-		<details class="no-print">
-			<summary class="h3">Notes</summary>
-			<div class="mt-½">
-				<?= TextParser::pseudoMDParser($character->notes) ?>
-			</div>
-		</details>
-	<?php } ?>
-
-	<!-- Background -->
-	<?php if (!empty($character->background)) { ?>
-		<details class="no-print">
-			<summary class="h3">Background</summary>
-			<div class="mt-½"><?= TextParser::pseudoMDParser($character->background) ?></div>
-		</details>
-	<?php } ?>
-
 	<!-- Équipement de groupe -->
 	<?php
 	$equipement_repo = new EquipmentRepository;
 	$possessions_communes = $equipement_repo->getCommonGroupEquipment($character->id_group);
 	if ($possessions_communes) { ?>
-		<details class="flow no-print">
-			<summary class="h3">Possessions de groupe</summary>
+		<details class="mt-½ flow no-print">
+			<summary>
+				<h3>Possessions de groupe</h3>
+			</summary>
 			<?php foreach ($possessions_communes as $key => $liste_contenant) {
 				$liste_contenant_string = implode("&nbsp;; ", array_map(function ($item) {
 					$counter = TextParser::parseObjectCounter($item["Nom"]);
@@ -459,13 +476,15 @@ function color_modifier($original_score, $actual_score)
 			<?php } ?>
 		</details>
 	<?php } ?>
-
-</article>
+</fieldset>
 
 <!-- Modal pour les jets -->
 <dialog data-type="character-sheet-roll" class="ta-center">
 	<button data-role="close-modal" class="ff-fas">&#xf00d;</button>
-	<p><span data-content="label"></span> – <span data-content="score"></span></p>
+	<div class="flex-s gap-1 jc-center ai-center">
+		<div data-content="label"></div>
+		<input type="text" data-content="score" class="ta-center" style="width: 8ch"></input>
+	</div>
 	<div class="grid gap-½ mt-½">
 		<label>
 			Modificateur <input type="text" data-type="test-modifier-value" class="ta-center" style="width: 5ch">

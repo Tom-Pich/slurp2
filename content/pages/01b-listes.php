@@ -13,7 +13,7 @@ $spells_repo = new SpellRepository;
 $affichage = $_POST["affichage"] ?? "categorie";
 ?>
 
-<article class="flow" data-morhpdom="ignore"><!-- Introduction -->
+<article class="as-start" data-morhpdom="ignore"><!-- Introduction -->
 
 	<h4>Affichage par catégories</h4>
 	<p>L’affichage par catégorie permet l’accès aux règles générales sur certaines catégories d’avantages &amp; désavantages, compétences et sorts.</p>
@@ -27,7 +27,7 @@ $affichage = $_POST["affichage"] ?? "categorie";
 	</ul>
 
 	<!-- formulaire de sélection -->
-	<fieldset>
+	<fieldset class="mt-1">
 		<form action="avdesav-comp-sorts" data-role="filter-form">
 			<div class="flex-s">
 				<div class="fl-1"><b>Affichage&nbsp;:</b></div>
@@ -67,7 +67,7 @@ $affichage = $_POST["affichage"] ?? "categorie";
 </article>
 
 <!-- Avantages & Désavantages -->
-<article data-role="avdesavs-wrapper">
+<article class="as-start" data-role="avdesavs-wrapper">
 	<h2>
 		<?php if ($_SESSION["Statut"] === 3) { ?><a href="gestion-listes?req=avdesav&id=0" class="edit-link ff-far">&#xf044;&nbsp;</a><?php } ?>
 		Avantages &amp; Désavantages
@@ -84,7 +84,7 @@ $affichage = $_POST["affichage"] ?? "categorie";
 			$avdesav_list = $avdesav_repo->getAvDesavByCategory($category);
 	?>
 			<details class="<?= $category === "Psi" ? "mb-1" : "" ?>">
-				<summary class="h3"><?= $category ?></summary>
+				<summary><h3><?= $category ?></h3></summary>
 				<?php if ($category === "PNJ") { ?>
 					<p class="mt-1">Certains PNJ peuvent vous fournir aide et assis&shy;tance. Le coût de ces PNJ, en tant qu’<i>Avantage</i>, dépend de l’ampleur de l’aide qu’ils peuvent offrir. Cette aide est sincère et sans autre contrepartie qu’une aide équivalente et/ou une loyauté de la part du PJ lorsque nécessaire.<br>
 						Deux valeurs en points sont données&nbsp;: la 1<sup>ère</sup> correspond à une aide occasionnelle, la deuxième à une aide possible en toutes circonstances (sauf cas de force majeure).
@@ -111,7 +111,7 @@ $affichage = $_POST["affichage"] ?? "categorie";
 </article>
 
 <!-- Compétences -->
-<article data-role="skills-wrapper">
+<article class="as-start" data-role="skills-wrapper">
 	<h2>
 		<?php if ($_SESSION["Statut"] === 3) { ?><a href="gestion-listes?req=competence&id=0" class="edit-link ff-far">&#xf044;&nbsp;</a><?php } ?>
 		Compétences
@@ -128,7 +128,7 @@ $affichage = $_POST["affichage"] ?? "categorie";
 			$skills_list = $skills_repo->getSkillsByCategory($category) ?>
 
 			<details class="<?= $category === "Voleur - espion" ? "mb-1" : "" ?>">
-				<summary class="h3"><?= $category ?></summary>
+				<summary><h3><?= $category ?></h3></summary>
 				<?php if ($category == "Professionnelle") { ?>
 					<p>Les compétences ci-dessous sont des exemples non limitatifs de compétences professionnelles. En cas de besoin d’une nouvelle compétence, parlez-en à votre MJ webmaster qui ajoutera la compétence nécessaire.</p>
 
@@ -179,7 +179,7 @@ $affichage = $_POST["affichage"] ?? "categorie";
 </article>
 
 <!-- Sorts -->
-<article data-role="spells-wrapper">
+<article class="as-start" data-role="spells-wrapper">
 	<h2>
 		<?php if ($_SESSION["Statut"] == 3) { ?><a href="gestion-listes?req=sort&id=0" class="edit-link ff-far">&#xf044;&nbsp;</a><?php } ?>
 		Sorts
@@ -198,7 +198,7 @@ $affichage = $_POST["affichage"] ?? "categorie";
 			$spells = $spells_repo->getSpellsByCollege($college->id);
 	?>
 			<details class="<?= $college->id === 21 ? "mb-1" : "" ?>">
-				<summary class="h3"><?= $college->name ?></summary>
+				<summary><h3><?= $college->name ?></h3></summary>
 				<p><?= $college->description ?></p>
 				<?php foreach ($spells as $spell) {
 					$spell->displayInRules(show_edit_link: $_SESSION["Statut"] === 3, data: ["name" => "", "cost-mult" => 0, "colleges-list" => $all_colleges_names]);

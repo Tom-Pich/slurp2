@@ -14,19 +14,28 @@ $attributes = [
 ];
 ?>
 
-<article><!-- Concevoir son personnage -->
+<!-- Concevoir son personnage -->
+<article class="as-start">
 	<h2>Concevoir son personnage</h2>
 
+	<!-- Introduction -->
 	<details>
-		<summary class="h3">Introduction</summary>
+		<summary>
+			<h3>Introduction</h3>
+		</summary>
 		<p>Un personnage se construit à partir de points de personnage (généralement entre 80 et 120 pts).</p>
-		<p>Ces points permettent de définir les <b>Caractéristiques</b>&nbsp;, <b>Avantages, Désavantages &amp; Travers</b> &nbsp;, <b>Compétences</b> et enfin les <b>Sorts &amp; pouvoirs</b> traités dans les parties <i>Magie</i>, <i>Psioniques</i> et/ou <i>Univers</i>.</p>
+		<p>Ces points permettent de définir les <b>Carac&shy;téristiques</b>, <b>Avantages, Désavantages &amp; Travers</b>, <b>Compétences</b> et enfin les <b>Sorts &amp; pouvoirs</b> traités dans les parties <i>Magie</i>, <i>Psioniques</i> et/ou <i>Univers</i>.</p>
 	</details>
 
+	<!-- Ébauche -->
 	<details>
-		<summary class="h3">Ébauche</summary>
+		<summary>
+			<h3>Ébauche</h3>
+		</summary>
 		<p>Avant de se lancer dans l’aspect technique de la création d’un personnage, il faut commencer par l’ébaucher.</p>
-		<p><b>Nom&nbsp;:</b> éviter les clichés et respecter l’ambiance de l’univers de jeu.</p>
+
+		<h4>Nom</h4>
+		<p>Éviter les clichés et respecter l’ambiance de l’univers de jeu.</p>
 
 		<h4>Métier &amp; position social</h4>
 		<ul>
@@ -75,8 +84,11 @@ $attributes = [
 		</ul>
 	</details>
 
+	<!-- Traits de caractères -->
 	<details>
-		<summary class="h3">Traits de caractères</summary>
+		<summary>
+			<h3>Traits de caractères</h3>
+		</summary>
 
 		<p>Une liste de traits de caractères qui peut aider à ébaucher la personnalité de son personnage.</p>
 
@@ -239,18 +251,23 @@ $attributes = [
 
 </article>
 
-<article><!-- Caractéristiques -->
+<!-- Caractéristiques -->
+<article class="as-start">
 	<h2>Caractéristiques</h2>
 
 	<details>
-		<summary class="h3">Introduction</summary>
+		<summary>
+			<h3>Introduction</h3>
+		</summary>
 		<p>Les 6 <b>caractéristiques principales</b> constituent la charpente du personnage. Elles ont un impact sur de nombreux aspects de celui-ci, dont notamment le coût à payer pour obtenir un score donné dans une compétence.<br>
 			Un score de 10 (médiocre) est gratuit et constitue le score par défaut.</p>
 		<p>Les <b>caractéristiques secondaires</b> sont calculées à partir des caractéristiques principales et peuvent être modifiées par un <i>Avantage</i> ou un <i>Désavantage</i> adéquat, dans une certaine mesure.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Caractéristiques principales</summary>
+		<summary>
+			<h3>Caractéristiques principales</h3>
+		</summary>
 
 		<div class="flex-s">
 			<h4 class="fl-1">Force (For)</h4>
@@ -376,7 +393,9 @@ $attributes = [
 	</details>
 
 	<details>
-		<summary class="h3">Caractéristiques secondaires</summary>
+		<summary>
+			<h3>Caractéristiques secondaires</h3>
+		</summary>
 		<p>Elles sont basées les caractéristiques principales.</p>
 
 		<h4>Dégâts de base</h4>
@@ -417,29 +436,27 @@ $attributes = [
 		</div>
 		<p>Vitesse de déplacement, en mètres par seconde. Voir le chapitre <i>Bases du système</i>.</p>
 
-		<h4>Points de vie et autres&hellip;</h4>
-
-		<div class="flex-s mt-½ fw-600">
-			<div class="fl-1">Points de vie (PdV)</div>
-			<div><?= Attribute::pdv ?></div>
+		<div class="flex-s">
+			<h4 class="fl-1">Points de vie (PdV)</h4>
+			<h4><?= Attribute::pdv ?></h4>
 		</div>
 		<div>Capacité à encaisser des blessures.</div>
 
-		<div class="flex-s mt-½ fw-600">
-			<div class="fl-1">Points de fatigue (PdF)</div>
-			<div><?= Attribute::pdf ?></div>
+		<div class="flex-s">
+			<h4 class="fl-1">Points de fatigue (PdF)</h4>
+			<h4><?= Attribute::pdf ?></h4>
 		</div>
 		<div>Capacité à résister à l’effort, à la privation de sommeil, au manque de nourriture, etc. Voir le chapitre <i>Bases du système</i>.</div>
 
-		<div class="flex-s mt-½ fw-600">
-			<div class="fl-1">Points de magie (PdM)</div>
-			<div><?= Attribute::pdm ?></div>
+		<div class="flex-s">
+			<h4 class="fl-1">Points de magie (PdM)</h4>
+			<h4><?= Attribute::pdm ?></h4>
 		</div>
 		<div>Réserve d’énergie pour l’utilisation de sorts et de pouvoirs magiques.</div>
 
-		<div class="flex-s mt-½ fw-600">
-			<div class="fl-1">Points d’équilibre psychique (PdE)</div>
-			<div><?= Attribute::pde ?></div>
+		<div class="flex-s">
+			<h4 class="fl-1">Points d’équilibre psychique (PdE)</h4>
+			<h4><?= Attribute::pde ?></h4>
 		</div>
 		<div>Mesure de la santé mentale du personnage.</div>
 
@@ -449,29 +466,40 @@ $attributes = [
 
 </article>
 
-<article><!-- Avantages & Désavantages -->
+<article class="as-start"><!-- Avantages & Désavantages -->
 	<h2>Avantages, Désavantages &amp; Travers</h2>
 
 	<details>
-		<summary class="h3">Introduction</summary>
-		<p>Les <i>Avantages</i> et les <i>Désavantages</i> recouvrent tout ce qui ne relève pas d’une caractéristique ou d’une compétence. Vous trouverez ci-dessous les règles les concernant. La liste complète avec la description de chaque avantage et désavantage est visible sur la page <a href="avdesav-comp-sorts">Liste pour le personnage</a>.</p>
+		<summary>
+			<h3>Introduction</h3>
+		</summary>
+		<p>Les <i>Avantages</i> et les <i>Désavantages</i> recouvrent tout ce qui ne relève pas d’une caractéristique ou d’une compétence. Vous trouverez ci-dessous les règles les concernant. La liste complète avec la description de chaque avantage et désavantage est visible sur la page <a href="avdesav-comp-sorts">Listes pour le personnage</a>.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Règle du 12</summary>
+		<summary>
+			<h3>Règle du 12</h3>
+		</summary>
 		<p>• <b>Avantage&nbsp;:</b> si un jet sous une caractéristique est nécessaire pour le faire fonctionner, le score de base <i>minimum</i> de cette caractéristique et considéré comme valant 12 (en dehors de modificateurs d’état ou de circonstances).</p>
 		<p>• <b>Désavantage&nbsp;:</b> si un jet est nécessaire pour y échapper, le score <i>maximum</i> de ce jet est de 12.</p>
-		<div class="exemple">L’avantage <i>Intuition</i> nécessite un jet d’<i>Int</i> pour fonctionner. Si l’<i>Int</i> du personnage est inférieure à 12, elle est considérée comme valant 12 pour ce jet. Mais si le personnage est blessé ou fatigué, les modificateurs normaux s’appliquent à cette base de 12.</div>
+		<details class="exemple">
+			<summary>Exemple</summary>
+			L’avantage <i>Intuition</i> nécessite un jet d’<i>Int</i> pour fonctionner. Si l’<i>Int</i> du personnage est inférieure à 12, elle est considérée comme valant 12 pour ce jet. Mais si le personnage est blessé ou fatigué, les modificateurs normaux s’appliquent à cette base de 12.
+		</details>
 	</details>
 
 	<details>
-		<summary class="h3">Limites de désavantages</summary>
+		<summary>
+			<h3>Limites de désavantages</h3>
+		</summary>
 		<p>Un maximum de –40 pts de désavantages est suggéré à la création d’un personnage, sans quoi le personnage peut devenir très contraignant à jouer, ou incohérent.</p>
 		<p>Une même contrainte peut parfois être décrite par différents désavantages. En choisir un et un seul pour rendre compte d’une contrainte donnée.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Traits de caractère</summary>
+		<summary>
+			<h3>Traits de caractère</h3>
+		</summary>
 		<p>Les <i>Traits de caractères</i> sont des <i>Désavantages</i> influençant le comportement du personnage, sans effet direct en terme de règles. Le joueur peut d’ailleurs les définir lui-même.</p>
 		<p>Pour être plus qu’un simple <i>Travers</i>, un <i>Trait de caractère</i> doit respecter l’une au moins des conditions suivantes&nbsp;:</p>
 		<ul>
@@ -499,7 +527,9 @@ $attributes = [
 	</details>
 
 	<details>
-		<summary class="h3">Vivre ses désavantages</summary>
+		<summary>
+			<h3>Vivre ses désavantages</h3>
+		</summary>
 		<p>Il y a plusieurs manières possibles de «&nbsp;vivre&nbsp;» ses désavantages mentaux et traits de caractère. Certaines de ces manières permettent d’obtenir des points de personnages supplémentaires.</p>
 		<p>• <b>Par défaut (0 pt)&nbsp;:</b> le personnage les assume pleinement (sans pour autant en être fier).</p>
 		<p>• <b>C’est normal (0 pt)&nbsp;:</b> les personnes n’en souffrant pas sont considérés comme «&nbsp;anormaux&nbsp;» et traités selon le caractère du personnage.</p>
@@ -513,13 +543,17 @@ $attributes = [
 	</details>
 
 	<details>
-		<summary class="h3">Après la création du personnage</summary>
+		<summary>
+			<h3>Après la création du personnage</h3>
+		</summary>
 		<p>Un personnage peut gagner un <i>Avantage</i> ou hériter d’un <i>Désavantage</i> (ou encore racheter un <i>Désavantage</i>) au cours du jeu par la logique des événements (<i>Richesse</i>, <i>Réputation</i>, mais aussi <i>Borgne</i>, <i>Ennemi</i>, etc.) Dans ce cas, cela ne coûte ni ne rapporte aucun point de personnage.</p>
 		<p>Il est également possible d’acquérir un <i>Avantage</i> ou un <i>Désavantage</i> ou de racheter un <i>Désavantage</i> si cela n’est pas incompatible avec la logique de l’<i>Avantage</i>/<i>Désavantage</i> (on ne rachète pas le désavantage <i>Borgne</i>, par exemple, mais on peut racheter une <i>Malchance</i> ou un <i>Trait de caractère</i>).</p>
 	</details>
 
 	<details>
-		<summary class="h3">Travers</summary>
+		<summary>
+			<h3>Travers</h3>
+		</summary>
 		<p><i>Trait de caractère</i> mineur (-1 pt) ne constituant pas un désavantage. À la création, il est possible de prendre jusqu’à 5 travers.<br>
 			Un <i>Travers</i> peut être racheté ou changé, si un événement justifie un léger changement de personnalité.</p>
 		<p><b>Quelques catégories de travers&nbsp;:</b> croyance, objectif mineur, goût ou dégoût, habitude, expression, manière particulière de se vêtir, un amour non partagé, des loisirs particuliers, un divertissement préféré, etc.</p>
@@ -527,16 +561,20 @@ $attributes = [
 
 </article>
 
-<article><!-- Compétences -->
+<article class="as-start"><!-- Compétences -->
 	<h2>Compétences</h2>
 
 	<details>
-		<summary class="h3">Introduction</summary>
+		<summary>
+			<h3>Introduction</h3>
+		</summary>
 		<p>Les <i>Compétences</i> sont des connaissances ou des savoir-faire qui peuvent être appris et développés. La plupart d’entre elles possèdent un score <i>par défaut</i>, qui ne coûte rien et qui se calcule d’après les caractéristiques.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Scores</summary>
+		<summary>
+			<h3>Scores</h3>
+		</summary>
 		<p>Le score d’une compétence dépend&nbsp;:</p>
 		<ul>
 			<li>de la ou des <b>caractéristique(s)</b> sur laquelle ou lesquelles elle est basée,</li>
@@ -573,7 +611,8 @@ $attributes = [
 
 		<p><b>Score par défaut&nbsp;:</b> score en l’absence de points investis dans la compétence. La plupart des compétences ont un score par défaut&nbsp;; celles qui n’en ont pas ont une difficulté notée entre parenthèse.</p>
 
-		<div class="exemple">
+		<details class="exemple">
+			<summary>Exemple de calculs de score</summary>
 			<p>
 				Soit un personnage ayant <i>For</i> 12, <i>Dex 13</i> et <i>Int</i> 11.<br>
 				Soit les compétences <i>Nage</i> [FD(-2)] et <i>Baratin</i> [I-4].
@@ -606,24 +645,30 @@ $attributes = [
 					<td>11+0 = 11</td>
 				</tr>
 			</table>
-		</div>
+		</details>
 
 	</details>
 
 	<details>
-		<summary class="h3">Spécialisations</summary>
+		<summary>
+			<h3>Spécialisations</h3>
+		</summary>
 		<p><b>Spécialisation obligatoire&nbsp;:</b> compétences repérées par «&nbsp;(type)&nbsp;». Chaque spécialité est une compétence distincte.</p>
 		<p><b>Spécialisation optionnelle&nbsp;:</b> 1 pt par +1. Max 5 pts. Pas plus de pts dans la spécialité que dans la compétence de base.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Compétence de background</summary>
+		<summary>
+			<h3>Compétence de background</h3>
+		</summary>
 		<p>Compétence très peu utile dans le jeu mais nécessaire d’après l’historique du personnage (décision du MJ).<br>
 			Coût divisé par deux (y compris pour une spécialité optionnelle).</p>
 	</details>
 
 	<details>
-		<summary class="h3">Compétences proches</summary>
+		<summary>
+			<h3>Compétences proches</h3>
+		</summary>
 		<p>Certaines compétences sont proches les unes des autres. En maîtriser une facilite la maîtrise des autres.</p>
 
 		<p>Toutes les compétences appartenant à un même groupe reçoivent un bonus de points de personnage égal au quart des points investis dans toutes les autres compétences du même groupe.</p>

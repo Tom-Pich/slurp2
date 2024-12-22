@@ -9,12 +9,16 @@ use App\Entity\Spell;
 
 	<!-- Principes directeurs -->
 	<details>
-		<summary class="h3">Principes directeurs</summary>
+		<summary>
+			<h3>Principes directeurs</h3>
+		</summary>
 		<p>La magie décrite ici est plutôt «&nbsp;mécanique&nbsp;» (un sort entraîne un effet élémentaire, toujours plus ou moins le même), relativement simple et rapide à mettre en œuvre. Elle convient pour des univers de type médiéval-fantastique classiques et consiste à utiliser une énergie appelée fluide pour affecter la réalité.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Terminologie</summary>
+		<summary>
+			<h3>Terminologie</h3>
+		</summary>
 		<p>
 			<b>Hex&nbsp;:</b> surface hexagonale de «&nbsp;diamètre&nbsp;» moyen égal à 1 m.<br />
 			<b>Sujet&nbsp;:</b> objet, personne ou créature affectée par le sort. Parfois appelé « cible » pour les sorts hostiles.<br />
@@ -25,8 +29,8 @@ use App\Entity\Spell;
 	</details>
 
 	<details>
-		<summary class="h3">
-			<div>L’avantage <i>Magerie</i></div>
+		<summary>
+			<h3>L’avantage <i>Magerie</i></h3>
 		</summary>
 		<p>Nécessaire pour pouvoir apprendre et lancer des sorts. Il comporte 5 niveaux.<br />
 			Aucun sort de niveau de puissance supérieur au niveau de <i>Magerie</i> de l’initiateur ne peut être lancé.</p>
@@ -98,12 +102,16 @@ use App\Entity\Spell;
 	</details>
 
 	<details>
-		<summary class="h3">Apprendre un Collège de magie</summary>
+		<summary>
+			<h3>Apprendre un Collège de magie</h3>
+		</summary>
 		<p>Un collège de magie est un ensemble de connaissances sur l’utilisation de la magie appliquée à un domaine particulier. Chaque collège est une <b>compétence I(-8)</b>. Voir la <a href="avdesav-comp-sorts">liste des sorts par collège</a> pour avoir la liste des collèges existants.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Apprendre un sort</summary>
+		<summary>
+			<h3>Apprendre un sort</h3>
+		</summary>
 		<p>Un sort est une <i>spécialisation optionnelle</i> d’un collège. Le score d’un sort est également assorti d’un modificateur qui dépend de son niveau de puissance (voir <i>Lancer un sort</i> plus loin)</p>
 		<p class="mt-1 ta-center"><b>score brut (sort) = score (collège) + pts investis – modificateur de puissance</b></p>
 		<p>Un sort ayant plusieurs niveaux de puissance possèdera donc des scores différents selon le niveau auquel il est utilisé.</p>
@@ -119,7 +127,9 @@ use App\Entity\Spell;
 	</details>
 
 	<details>
-		<summary class="h3">Niveau de puissance des sorts</summary>
+		<summary>
+			<h3>Niveau de puissance des sorts</h3>
+		</summary>
 		<p>La puissance d’un sort ou d’un pouvoir est quantifiée en niveaux de puissance, de I à V.</p>
 
 		<h4>Niveau I - Faible</h4>
@@ -144,7 +154,9 @@ use App\Entity\Spell;
 	</details>
 
 	<details>
-		<summary class="h3">Classes de sorts</summary>
+		<summary>
+			<h3>Classes de sorts</h3>
+		</summary>
 		<p>Les sorts sont divisés en classes, qui régissent leur fonctionnement général (portée, zone affectée, etc.).</p>
 
 		<details>
@@ -205,14 +217,18 @@ use App\Entity\Spell;
 <article>
 	<h2>Lancer un sort</h2>
 	<details>
-		<summary class="h3">Modificateurs</summary>
+		<summary>
+			<h3>Modificateurs</h3>
+		</summary>
 		<p><b>État de l’initiateur&nbsp;:</b> la fatigue, les blessures et l’encombrement imposent les mêmes malus pour le lancer d’un sort que pour des actions physiques.</p>
 		<p><b>Distance de la cible&nbsp;:</b> voir la description de la classe ou du sort.</p>
 		<p><b>Jeter des sorts en en prolongeant d’autres&nbsp;:</b> si le sort actif nécessite une concentration, un autre sort peut être jeté à -3. Les sorts nécessitant une concentration le mentionnent dans leur description. Sinon (y compris dans le cas d’un sort projectile gardé « &nbsp;en main&nbsp;»), il peut être jeté à -1. Les sorts permanents ne sont pas considérés comme des sorts en cours. Ces pénalités sont cumulatives.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Caractéristiques générales des sorts</summary>
+		<summary>
+			<h3>Caractéristiques générales des sorts</h3>
+		</summary>
 		<table class="alternate-e">
 			<tr>
 				<th rowspan="2">Niv.</th>
@@ -264,7 +280,9 @@ use App\Entity\Spell;
 	</details>
 
 	<details>
-		<summary class="h3">Réduction du coût énergétique</summary>
+		<summary>
+			<h3>Réduction du coût énergétique</h3>
+		</summary>
 		<p>Le coût énergétique d’un sort diminue pour une compétence élevée&nbsp;:</p>
 		<p>• -1 PdM à un niveau &ge; 15<br />
 			• -2 PdM à un niveau &ge; 17<br />
@@ -273,7 +291,9 @@ use App\Entity\Spell;
 	</details>
 
 	<details>
-		<summary class="h3">Temps et rituel nécessaire</summary>
+		<summary>
+			<h3>Temps et rituel nécessaire</h3>
+		</summary>
 		<p>Un temps d’incantation est nécessaire avant de pouvoir lancer un sort. Ce <i>Temps nécessaire</i> peut être <i>rapide</i> ou <i>long</i> (voir description du sort). La valeur exacte de ce temps nécessaire dépend de son niveau de puissance.</p>
 		<p>Ce temps peut être raccourci grâce à un score de compétence élevé (sauf si le sort nécessite toujours un rituel ou un objet spécifique).</p>
 		<p>Dans tous les cas, <b>un seul sort peut être lancé chaque seconde</b>, même s'il peut être lancé de manière instantanée.</p>
@@ -319,13 +339,17 @@ use App\Entity\Spell;
 	</details>
 
 	<details>
-		<summary class="h3">Durée et prolongation</summary>
+		<summary>
+			<h3>Durée et prolongation</h3>
+		</summary>
 		<p>Certains sorts ont une durée de base mentionnée dans leur description. Si l'initiateur ne précise rien, son sort aura cette durée. Il peut préciser que son sort durera moins longtemps que la normale (aucun surcoût, aucun malus). S'il veut interrompre un sort avant la fin de sa durée, il doit payer 1 PdM sauf si le sort ne lui en a coûté aucun.</p>
 		<p><b>Prolonger un sort&nbsp;:</b> aucun jet n’est nécessaire, l’initiateur paye la moitié du coût de base du sort pour le prolonger de sa durée de base (ou moins s'il le spécifie). L’initiateur doit être conscient et éveillé, même si la prolongation ne lui coûte aucun PdM.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Modificateurs de longue distance</summary>
+		<summary>
+			<h3>Modificateurs de longue distance</h3>
+		</summary>
 		<p>Lorsqu’un sort agit à longue distance, utiliser le tableau ci-dessous pour déterminer le malus associé à la distance entre l’initiateur et le sujet.</p>
 		<table class="alternate-e left-1">
 			<tr>
@@ -376,7 +400,9 @@ use App\Entity\Spell;
 	</details>
 
 	<details>
-		<summary class="h3">Réussite, échec et échec critique</summary>
+		<summary>
+			<h3>Réussite, échec et échec critique</h3>
+		</summary>
 		<p><b>Réussite&nbsp;:</b> le sort a été lancé et son coût énergétique doit être payé (même si la cible a résisté au sort).</p>
 		<p><b>Réussite critique&nbsp;:</b> le sort a fonctionné mieux que prévu (discrétion du MJ). Pas de dépense de PdM.</p>
 		<p><b>Échec&nbsp;:</b> le sort n’a pas agi. L’initiateur perd la moitié des PdM qu’aurait dû lui coûter le sort (sauf pour les sorts d’<i>Information</i> qui gardent leur coût énergétique normal).</p>
@@ -390,7 +416,9 @@ use App\Entity\Spell;
 	<h2>Effets génériques des sorts</h2>
 
 	<details>
-		<summary class="h3">Table des effets génériques</summary>
+		<summary>
+			<h3>Table des effets génériques</h3>
+		</summary>
 		<p>Afin de simplifier la description des sorts, des effets «&nbsp;génériques&nbsp;» sont définis en fonction du niveau du sort.</p>
 		<table class="alternate-e left-1">
 			<tr>
@@ -468,7 +496,9 @@ use App\Entity\Spell;
 	</details>
 
 	<details>
-		<summary class="h3">Modificateurs spécifiques</summary>
+		<summary>
+			<h3>Modificateurs spécifiques</h3>
+		</summary>
 		<p><b>Dex (bonus)&nbsp;:</b> standard ; <b>(malus)</b>&nbsp;: standard ×2<br />
 			<b>Int (bonus)&nbsp;:</b> standard ; <b>(malus)&nbsp;:</b> standard ×2<br />
 			<b>San&nbsp;:</b> standard ×2<br />
@@ -479,7 +509,9 @@ use App\Entity\Spell;
 	</details>
 
 	<details>
-		<summary class="h3">Détruire un objet inanimé</summary>
+		<summary>
+			<h3>Détruire un objet inanimé</h3>
+		</summary>
 		<p>Certains sorts ne peuvent provoquer des dégâts qu’à des objets inanimés.</p>
 		<p><b>Niv. I&nbsp;:</b> Objet facile à briser à mains nues (verre, panier d’osier...)<br />
 			<b>Niv. II&nbsp;:</b> Objet pouvant être détruit avec une hache ou une masse par un homme normal, en une minute max.<br />
@@ -490,7 +522,9 @@ use App\Entity\Spell;
 	</details>
 
 	<details>
-		<summary class="h3">Invocation de créatures</summary>
+		<summary>
+			<h3>Invocation de créatures</h3>
+		</summary>
 		<p><b>Niv. I&nbsp;:</b> créature faible (chien de guerre, gobelin).<br />
 			<b>Niv. II&nbsp;:</b> créature moyenne (humain moyen avec une arme simple, très petit démon).<br />
 			<b>Niv. III&nbsp;:</b> créature assez puissante (humain bien entraîné avec du matériel de qualité, démon mineur).<br />
@@ -506,7 +540,9 @@ use App\Entity\Spell;
 <article>
 	<h2>Résister à un sort</h2>
 	<details>
-		<summary class="h3">Jet de résistance</summary>
+		<summary>
+			<h3>Jet de résistance</h3>
+		</summary>
 		<p>Duel entre une caractéristique de la cible (mentionnée dans la description du sort) et le score modifié de l’initiateur. Pour la calcul de la MR de l'initiateur&nbsp;:</p>
 		<p><b>Cible = créature&nbsp;:</b> score limité à 16 et MR limitée à 8.<br />
 			<b>Cible = autre sort&nbsp;:</b> aucune limite
@@ -515,12 +551,16 @@ use App\Entity\Spell;
 	</details>
 
 	<details>
-		<summary class="h3">Effets d’une résistance réussie</summary>
+		<summary>
+			<h3>Effets d’une résistance réussie</h3>
+		</summary>
 		<p>Si la résistance est réussie, le sort n’agit pas mais les PdM nécessaires sont dépensés. Si le sujet est vivant et conscient, il ressentira une légère torsion mentale ou physique (selon la nature du sort) mais rien d’autre. L’initiateur saura que son sort a rencontré une résistance.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Résistance et tentatives répétées</summary>
+		<summary>
+			<h3>Résistance et tentatives répétées</h3>
+		</summary>
 		<p>L’initiateur peut tenter de relancer le sort, avec un malus de -1 cumulatif pour chaque résistance réussie, si la cible est un être vivant. Après trois échecs, l’initiateur ne peut plus faire de tentatives pour une journée. Si la résistance est due à celle d’un autre sort, l’initiateur n’a la droit qu’à une unique tentative.</p>
 	</details>
 
@@ -531,28 +571,44 @@ use App\Entity\Spell;
 	<h2>Points de magie</h2>
 
 	<details>
-		<summary class="h3">PdM et lancer de sorts</summary>
+		<summary>
+			<h3>PdM et lancer de sorts</h3>
+		</summary>
 		<p>Lorsque les PdM arrivent à 0, le mage ne peut plus lancer de sort. Il n’est pas possible d’avoir un nombre de PdM négatifs.</p>
 	</details>
 
 
 	<details>
-		<summary class="h3">Récupération</summary>
+		<summary>
+			<h3>Récupération</h3>
+		</summary>
 		<p>1 PdM par 15 minutes de repos (conversation banale autorisée) dans un environnement calme. Toute cause de stress et de tension (bruits, agitation, inconfort) empêche la récupération. Le maintien d'un sort qui ne demande aucune concentration n'empêche pas la récupération de PdM.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Dépenser des PdF</summary>
+		<summary>
+			<h3>Dépenser des PdF</h3>
+		</summary>
 		<p>Un initiateur peut appliquer une partie ou la totalité du coût énergétique du sort à ses PdF au lieu de l’appliquer à ses PdM. La fatigue causée de cette manière est considérée comme une fatigue normale. -1 au jet de compétence pour chaque PdF utilisé.</p>
 	</details>
 </article>
 
+<!-- Fluide -->
 <article>
 	<h2>Fluide</h2>
-	<p>Le « fluide » est l'énergie subtile manipulée par la magie. Il n'est pas nécessairement le même partout. Sa densité et son orientation peuvent varier.</p>
 
 	<details>
-		<summary class="h3">Niveaux de fluide</summary>
+		<summary>
+			<h3>Définition</h3>
+		</summary>
+		<p>Le «&nbsp;fluide&nbsp;» est l'énergie subtile manipulée par la magie. Il n'est pas nécessairement le même partout. Sa densité et son orientation peuvent varier.</p>
+	</details>
+
+
+	<details>
+		<summary>
+			<h3>Niveaux de fluide</h3>
+		</summary>
 		<p>La magie n’agit que si le fluide de la zone le permet. Il existe plusieurs niveaux de fluide.</p>
 		<p><b>Fluide élevé&nbsp;:</b> récupération 2 fois plus rapide des PdM. Coût énergétique des sorts divisé par 2. Échecs critiques spectaculaires.</p>
 		<p><b>Fluide normal&nbsp;:</b> les sorts agissent selon les règles normales.</p>
@@ -563,28 +619,128 @@ use App\Entity\Spell;
 	</details>
 
 	<details>
-		<summary class="h3">Perception du fluide</summary>
+		<summary>
+			<h3>Perception du fluide</h3>
+		</summary>
 		<p>Un mage ne sait pas automatiquement quel est le niveau de fluide d’une région, mais, à chaque fois qu’il traverse une frontière entre deux niveaux de fluide, il doit faire un jet pour détecter le changement et savoir si le niveau de fluide a augmenté ou diminué.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Fluide orienté</summary>
+		<summary>
+			<h3>Fluide orienté</h3>
+		</summary>
 		<p>Dans certaines régions, le fluide est orienté, ce qui le rend favorable à certains types de magie et hostile à d’autres.<br />
 			Au MJ de définir les effets exacts, mais typiquement, il s’agira de bonus s’appliquant à un, ou éventuellement plusieurs, collèges et/ou des malus s’appliquant à d’autres collèges. Mais ce ne sont pas les seuls effets possibles&nbsp;: augmentation du <i>Temps nécessaire</i>, augmentation du coût énergétique, etc. sont autant d’autres effets possibles.</p>
 	</details>
 </article>
 
+<!-- Créer/modifier un sort -->
+<article>
+	<h2>Créer ou modifier un sort</h2>
+	<!-- <p>Un mage peut inventer des sorts ou modifier les caractéristiques de sorts qu’il connaît.</p> -->
+
+	<details>
+		<summary>
+			<h3>Modifier un sort existant</h3>
+		</summary>
+		<p>Au moment de lancer un sort, qu’il soit improvisé ou connu, un mage peut en changer certaines caractéristiques.</p>
+		<h4>Sort <i>Régulier</i> en sort de <i>Zone</i></h4>
+		<p>La zone de base est de 3 m. Le niveau du sort est augmenté de 1.</p>
+		<h4>Durée de base augmentée</h4>
+		<p>La durée de base change de catégorie&nbsp;: 1 minute devient 10 minutes, 10 minutes deviennent 1h, 1h devient une journée, etc. Le niveau du sort est augmenté de 1. Ne fonctionne pas avec des sorts très brefs.</p>
+		<h4>Portée augmentée</h4>
+		<p>Doubler la portée d’un sort → coût énergétique ×2<br />
+			Appliquer les modificateurs de longue distance → augmente le niveau de puissance de 1.</p>
+	</details>
+
+	<details>
+		<summary>
+			<h3>Inventer un nouveau sort</h3>
+		</summary>
+		<p>Un mage peut inventer un nouveau sort, soit en l’improvisant, soit pour l’apprendre.</p>
+		<p>Il faut d’abord déterminer son niveau de puissance, sa classe et son collège.</p>
+		<p>Un sort d'<b>Invocation</b> appartient soit au collège <i>Animalier</i>, soit au collège d'<i>Emprise mentale</i>, soit au collège de <i>Seuils</i> selon la nature de la créature invoquée</p>
+		<h4>Temps nécessaire</h4>
+		<p>Si un sort a un intérêt au combat, il est doit être rapide à lancer, sinon il est long.</p>
+		<h4>Durée</h4>
+		<p>La durée (choisie par le MJ) doit être la durée minimale pour que le sort ait un intérêt.<br />
+			- instantané / 1s<br />
+			- un combat (1 minute)<br />
+			- une séquence (10 minutes)<br />
+			- longue durée (1h / 10h / un jour / une semaine)<br />
+			- permanent</p>
+		<h4>Sort dérivé d’un autre collège</h4>
+		<p>Il est possible d’adapter à un collège certains sorts dont l’effet principal ne relève pas de ce collège. Cela a pour conséquences d’introduire des limitations légères au sort.</p>
+		<h4>Effet spécialisé</h4>
+		<p>Il est possible de créer des variantes d’un sort standard ayant des effets spécialisés ou restreints. Leurs effets sont d’autant plus efficaces qu’ils sont spécialisés.</p>
+		<h4>Effets multiples</h4>
+		<p>De manière générale, si un sort possède des effets multiples, son niveau de puissance est augmenté de 1 par rapport au sort «&nbsp;standard&nbsp;» le plus puissant ayant le même effet. Ces effets multiples ne peuvent pas relever de différents collèges. Pour cela, il est nécessaire de lancer plusieurs sorts à la suite.</p>
+		<h4>Sorts à contraintes augmentées</h4>
+		<p>Il est possible d’inventer (mais pas d’improviser) un sort qui demande plus de temps pour être lancé que la version normale, ou qui demande certaines conditions particulières (composantes matérielles, par exemple). La puissance de tels sorts est alors baissée d’un niveau (ou de deux dans les cas extrêmes).</p>
+	</details>
+
+</article>
+
+<!-- Magie collective -->
+<article>
+	<h2>Magie collective</h2>
+
+	<details>
+		<summary>
+			<h3>Définition</h3>
+		</summary>
+		<p>La magie collective désigne le lancer collectif d’un sort. Elle permet de disposer d’une grande réserve de PdM. La magie rituelle est plus lente (10 fois le temps normal) car elle implique une cérémonie complexe.</p>
+	</details>
+
+
+	<details>
+		<summary>
+			<h3>Rituel</h3>
+		</summary>
+		<p>Les mages doivent être reliés physiquement d’une certaine manière (peu importe laquelle) pour former un <i>Cercle</i>. L’un d’eux sera l’initiateur et effectuera tous les jets. Le coût en PdM est partagé entre les mages unis comme souhaité, bien que ceux qui ne connaissent pas le sort à 15+ ne puissent apporter que 3 PdM de contribution (mais ils doivent connaître le sort). Si le lien physique est brisé pendant l’incantation, l’initiateur doit tout reprendre depuis le début. Si l’un des mages est blessé, cela entraîne les mêmes effets que si c’était l’initiateur. Si l’un des mages unis est assommé ou tué, tous les autres sont sonnés mentalement.</p>
+		<p>Du fait que la cérémonie inhérente aux sorts rituels ne peut être accélérée, ni la compétence de l’initiateur ni celle d’un autre ne peuvent réduire le temps ou le coût nécessaire à son exécution. L’avantage <i>Chance</i> ne peut être utilisé pour la magie collective.</p>
+	</details>
+
+	<details>
+		<summary>
+			<h3>Réussites &amp; échecs</h3>
+		</summary>
+		<p>Un sort jeté par rituel est plus difficile à coordonner qu’un sort régulier. 16 est toujours un échec, 17 et 18 sont toujours des échecs critiques. Toute l’énergie nécessaire est dépensée à la fin de l’incantation, que le sort réussisse ou échoue.</p>
+	</details>
+
+	<details>
+		<summary>
+			<h3>Maintenir un sort de magie rituelle</h3>
+		</summary>
+		<p>Un <i>Cercle</i> peut être maintenu malgré les arrivées et départs de participants. Ceci n’est pas possible pendant qu’un sort est jeté, mais si le <i>Cercle</i> ne fait que prolonger des sorts, sa composition peut varier.</p>
+	</details>
+
+	<details>
+		<summary>
+			<h3>Échange d’énergie contre compétence</h3>
+		</summary>
+		<p>En fournissant plus de PdM que nécessaires, l’initiateur obtient un bonus à son jet de compétence&nbsp;: + 1 pour 20 %, +2 pour 40 %, +3 pour 60 %, +4 pour 100%, et +1 pour chaque 100% supplémentaire. Cette méthode peut être utilisée, entre autres, pour fabriquer des objets magiques avec un score de pouvoir important.</p>
+	</details>
+
+
+</article>
+
+<!-- Pouvoirs magiques -->
 <article>
 	<h2>Pouvoirs magiques</h2>
 
 	<details>
-		<summary class="h3">Définition</summary>
+		<summary>
+			<h3>Définition</h3>
+		</summary>
 		<p>Un pouvoir est la capacité instinctive à lancer un sort. Il est lancé de façon innée et ne peut être appris. À l’exception des points détaillés ci-dessous, un pouvoir fonctionne exactement comme le sort équivalent.<br />
 			Il existe également des pouvoirs de type <i>Avantage</i>, qui sont toujours actifs et fonctionnent alors comme un avantage classique.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Coût en points de personnage</summary>
+		<summary>
+			<h3>Coût en points de personnage</h3>
+		</summary>
 		<table class="left-1">
 			<tr>
 				<th>Puissance</th>
@@ -609,7 +765,9 @@ use App\Entity\Spell;
 
 
 	<details>
-		<summary class="h3">Jet de réussite</summary>
+		<summary>
+			<h3>Jet de réussite</h3>
+		</summary>
 		<p>Le score de base est l’<i>Int</i> (la règle du 12 s’applique, c’est-à-dire que quelque soit l’<i>Int</i> du personnage, son score minimum vaut 12).</p>
 		<h4>Amélioration du score</h4>
 		<p>Le score de compétence d’un pouvoir peut être amélioré à raison de 2 pts de personnage pour chaque +1 souhaité.</p>
@@ -619,13 +777,17 @@ use App\Entity\Spell;
 	</details>
 
 	<details>
-		<summary class="h3">Coût énergétique, Temps nécessaire &amp; rituels</summary>
+		<summary>
+			<h3>Coût énergétique, Temps nécessaire &amp; rituels</h3>
+		</summary>
 		<p>Ces trois paramètres n'évoluent pas avec le score de compétence.</p>
 		<p>Le déclenchement d’un pouvoir ne nécessite aucun geste ni aucune parole mais demande tout de même un temps de concentration durant lequel il n’est possible de se déplacer que d’un mètre par seconde.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Améliorations et limitations</summary>
+		<summary>
+			<h3>Améliorations et limitations</h3>
+		</summary>
 		<p>Il est possible d'améliorer ou de limiter l'utilisation d'un pouvoir.</p>
 		<p>En fonction de l’étendue des limitations et/ou des améliorations, le MJ attribue un multiplicateur de coût en pts de personnage à l’achat du pouvoir. Ce multiplicateur n'a pas d'influence sur le coût de l'amélioration du score de ce pouvoir.</p>
 
@@ -690,86 +852,14 @@ use App\Entity\Spell;
 	</details>
 </article>
 
-<article>
-	<h2>Créer ou modifier un sort</h2>
-	<p>Un mage peut inventer des sorts ou modifier les caractéristiques de sorts qu’il connaît.</p>
-
-	<details>
-		<summary class="h3">Modifier un sort existant</summary>
-		<p>Au moment de lancer un sort, qu’il soit improvisé ou connu, un mage peut en changer certaines caractéristiques.</p>
-		<h4>Sort <i>Régulier</i> en sort de <i>Zone</i></h4>
-		<p>La zone de base est de 3 m. Le niveau du sort est augmenté de 1.</p>
-		<h4>Durée de base augmentée</h4>
-		<p>La durée de base change de catégorie&nbsp;: 1 minute devient 10 minutes, 10 minutes deviennent 1h, 1h devient une journée, etc. Le niveau du sort est augmenté de 1. Ne fonctionne pas avec des sorts très brefs.</p>
-		<h4>Portée augmentée</h4>
-		<p>Doubler la portée d’un sort → coût énergétique ×2<br />
-			Appliquer les modificateurs de longue distance → augmente le niveau de puissance de 1.</p>
-	</details>
-
-	<details>
-		<summary class="h3">Inventer un nouveau sort</summary>
-		<p>Un mage peut inventer un nouveau sort, soit en l’improvisant, soit pour l’apprendre.</p>
-		<p>Il faut d’abord déterminer son niveau de puissance, sa classe et son collège.</p>
-		<p>Un sort d'<b>Invocation</b> appartient soit au collège <i>Animalier</i>, soit au collège d'<i>Emprise mentale</i>, soit au collège de <i>Seuils</i> selon la nature de la créature invoquée</p>
-		<h4>Temps nécessaire</h4>
-		<p>Si un sort a un intérêt au combat, il est doit être rapide à lancer, sinon il est long.</p>
-		<h4>Durée</h4>
-		<p>La durée (choisie par le MJ) doit être la durée minimale pour que le sort ait un intérêt.<br />
-			- instantané / 1s<br />
-			- un combat (1 minute)<br />
-			- une séquence (10 minutes)<br />
-			- longue durée (1h / 10h / un jour / une semaine)<br />
-			- permanent</p>
-		<h4>Sort dérivé d’un autre collège</h4>
-		<p>Il est possible d’adapter à un collège certains sorts dont l’effet principal ne relève pas de ce collège. Cela a pour conséquences d’introduire des limitations légères au sort.</p>
-		<h4>Effet spécialisé</h4>
-		<p>Il est possible de créer des variantes d’un sort standard ayant des effets spécialisés ou restreints. Leurs effets sont d’autant plus efficaces qu’ils sont spécialisés.</p>
-		<h4>Effets multiples</h4>
-		<p>De manière générale, si un sort possède des effets multiples, son niveau de puissance est augmenté de 1 par rapport au sort «&nbsp;standard&nbsp;» le plus puissant ayant le même effet. Ces effets multiples ne peuvent pas relever de différents collèges. Pour cela, il est nécessaire de lancer plusieurs sorts à la suite.</p>
-		<h4>Sorts à contraintes augmentées</h4>
-		<p>Il est possible d’inventer (mais pas d’improviser) un sort qui demande plus de temps pour être lancé que la version normale, ou qui demande certaines conditions particulières (composantes matérielles, par exemple). La puissance de tels sorts est alors baissée d’un niveau (ou de deux dans les cas extrêmes).</p>
-	</details>
-
-</article>
-
-<article>
-	<h2>Magie collective</h2>
-
-	<details>
-		<summary class="h3">Définition</summary>
-		<p>La magie collective désigne le lancer collectif d’un sort. Elle permet de disposer d’une grande réserve de PdM. La magie rituelle est plus lente (10 fois le temps normal) car elle implique une cérémonie complexe.</p>
-	</details>
-
-
-	<details>
-		<summary class="h3">Rituel</summary>
-		<p>Les mages doivent être reliés physiquement d’une certaine manière (peu importe laquelle) pour former un <i>Cercle</i>. L’un d’eux sera l’initiateur et effectuera tous les jets. Le coût en PdM est partagé entre les mages unis comme souhaité, bien que ceux qui ne connaissent pas le sort à 15+ ne puissent apporter que 3 PdM de contribution (mais ils doivent connaître le sort). Si le lien physique est brisé pendant l’incantation, l’initiateur doit tout reprendre depuis le début. Si l’un des mages est blessé, cela entraîne les mêmes effets que si c’était l’initiateur. Si l’un des mages unis est assommé ou tué, tous les autres sont sonnés mentalement.</p>
-		<p>Du fait que la cérémonie inhérente aux sorts rituels ne peut être accélérée, ni la compétence de l’initiateur ni celle d’un autre ne peuvent réduire le temps ou le coût nécessaire à son exécution. L’avantage <i>Chance</i> ne peut être utilisé pour la magie collective.</p>
-	</details>
-
-	<details>
-		<summary class="h3">Réussites &amp; échecs</summary>
-		<p>Un sort jeté par rituel est plus difficile à coordonner qu’un sort régulier. 16 est toujours un échec, 17 et 18 sont toujours des échecs critiques. Toute l’énergie nécessaire est dépensée à la fin de l’incantation, que le sort réussisse ou échoue.</p>
-	</details>
-
-	<details>
-		<summary class="h3">Maintenir un sort de magie rituelle</summary>
-		<p>Un <i>Cercle</i> peut être maintenu malgré les arrivées et départs de participants. Ceci n’est pas possible pendant qu’un sort est jeté, mais si le <i>Cercle</i> ne fait que prolonger des sorts, sa composition peut varier.</p>
-	</details>
-
-	<details>
-		<summary class="h3">Échange d’énergie contre compétence</summary>
-		<p>En fournissant plus de PdM que nécessaires, l’initiateur obtient un bonus à son jet de compétence&nbsp;: + 1 pour 20 %, +2 pour 40 %, +3 pour 60 %, +4 pour 100%, et +1 pour chaque 100% supplémentaire. Cette méthode peut être utilisée, entre autres, pour fabriquer des objets magiques avec un score de pouvoir important.</p>
-	</details>
-
-
-</article>
-
+<!-- Objets magiques -->
 <article>
 	<h2>Objets magiques</h2>
 
 	<details>
-		<summary class="h3">Utilisation</summary>
+		<summary>
+			<h3>Utilisation</h3>
+		</summary>
 		<p>Il existe 2 types d’objets magiques&nbsp;: ceux en veille perpétuelle et ceux à usage ponctuel.</p>
 
 		<p><b>Score de pouvoir&nbsp;:</b> tous les objets possèdent un score de pouvoir. Pour qu’un objet magique fonctionne, il faut que ce score soit ≥ 15, en tenant compte d’un éventuel modificateur dû à un fluide faible.</p>
@@ -792,7 +882,9 @@ use App\Entity\Spell;
 	</details>
 
 	<details>
-		<summary class="h3">Création</summary>
+		<summary>
+			<h3>Création</h3>
+		</summary>
 
 		<p>À chaque objet magique est associé un sort d’enchantement spécifique pour le créer.<br />
 			Un sort d’enchantement est au minimum niveau III, appartient au collège d’<i>Enchantement</i> et ne peut jamais être improvisé.</p>
@@ -849,12 +941,21 @@ use App\Entity\Spell;
 
 </article>
 
+<!-- Alchimie -->
 <article>
 	<h2>Alchimie</h2>
-	<p>L’alchimie est la science de fabrication de potions magiques et autres « produits » alchimiques. Seule la compétence <i>Alchimie</i> est nécessaire.</p>
 
 	<details>
-		<summary class="h3">Utilisation d’objets alchimiques</summary>
+		<summary>
+			<h3>Définition</h3>
+		</summary>
+		<p>L’alchimie est la science de fabrication de potions magiques et autres « produits » alchimiques. Seule la compétence <i>Alchimie</i> est nécessaire.</p>
+	</details>
+
+	<details>
+		<summary>
+			<h3>Utilisation d’objets alchimiques</h3>
+		</summary>
 
 		<h4>Forme des objets alchimiques</h4>
 		<p><b>Potions&nbsp;:</b> une dose correspond à environ 25 mL (une petite gorgée) de liquide et affecte une créature de taille humaine instantanément. Les potions perdent leur pouvoir après une journée si elles sont exposées à l’air libre ou mélangées à d’autres substances.</p>
@@ -877,13 +978,17 @@ use App\Entity\Spell;
 	</details>
 
 	<details>
-		<summary class="h3">Détection et analyse</summary>
+		<summary>
+			<h3>Détection et analyse</h3>
+		</summary>
 		<p>Un élixir est un objet magique et peut être détecté comme tel. Un alchimiste peut également savoir qu’il s’agit d’un élixir (sans connaître sa nature) en l’examinant rapidement et en réussissant un jet d’<i>Alchimie</i>.</p>
 		<p>Pour analyser un élixir, un alchimiste doit disposer de son laboratoire et réussir un jet d’<i>Alchimie</i>. L’analyse prend 10 minutes. Sans laboratoire, le jet est à -5.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Fabrication</summary>
+		<summary>
+			<h3>Fabrication</h3>
+		</summary>
 		<p>Chaque alchimiste est un expert dans la création d’un certain nombre d’élixirs égal au quart de son score en <i>Alchimie</i> ; tous les autres élixirs nécessitent le recours à des manuels et sont créés à -1.</p>
 
 		<h4>Temps et coût de fabrication</h4>
@@ -932,16 +1037,21 @@ use App\Entity\Spell;
 	</details>
 </article>
 
+<!-- Familier -->
 <article>
 	<h2>Familier</h2>
 
 	<details>
-		<summary class="h3">Définition</summary>
+		<summary>
+			<h3>Définition</h3>
+		</summary>
 		<p>Les <i>Familiers</i> sont de petits animaux ou esprits qui veillent au bien-être de leur maître et le servent. Sauf indications contraires, un familier a les caractéristiques normales d’un membre de son espèce. Un personnage ne gagnera pas de points d’expérience pour une session où son familier est mort. Si on lui vole son familier, il doit immédiatement tenter de le retrouver.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Acquérir un familier</summary>
+		<summary>
+			<h3>Acquérir un familier</h3>
+		</summary>
 		<p>Pour pouvoir prétendre à un familier, un personnage doit connaître le collège <i>Animalier</i> (les pouvoirs raciaux ne sont pas pris en compte) ou avoir l’avantage <i>Magerie</i> au niveau 3. Il n’est pas possible d’avoir plus d’un familier à la fois.</p>
 		<p>Un personnage peut commencer le jeu avec un familier, ou en invoquer un au cours d’une partie&nbsp;: pas de sort particulier, dure une semaine entière pendant laquelle rien d’autre ne pourra être entrepris. Jet d’Int-6. Un jet réussi fait immédiatement apparaître le familier désiré.</p>
 		<p>Un familier magique coûte le même nombre de points qu’un animal familier normal (voir <i>Avantages &amp; Désavantages</i> &ndash; PNJ), plus le coût éventuel de ses aptitudes spéciales ci-dessous.</p>
@@ -951,7 +1061,9 @@ use App\Entity\Spell;
 	</details>
 
 	<details>
-		<summary class="h3">Pouvoirs conférés</summary>
+		<summary>
+			<h3>Pouvoirs conférés</h3>
+		</summary>
 		<p>Si un familier confère un ou des pouvoirs à son maître, ces pouvoirs fonctionnent comme des pouvoirs «&nbsp;normaux&nbsp;» et ne coûtent que la moitié du coût normal en point de personnage. Ils ne peuvent plus être utilisés si le familier est inconscient, et le mage a -1 à son jet de compétence par mètre de distance entre lui et le familier au moment du déclenchement du pouvoir.</p>
 		<p>Si le pouvoir conféré est de type <i>Avantage surnaturel</i> (<i>Régénération</i>, <i>Immunité</i>), ses effets sont diminués si le familier est à plus de 30 m ou inconscient, et annulés si celui-ci est à plus de 100 m ou mort.</p>
 
@@ -962,7 +1074,9 @@ use App\Entity\Spell;
 	</details>
 
 	<details>
-		<summary class="h3">Limitations des familiers</summary>
+		<summary>
+			<h3>Limitations des familiers</h3>
+		</summary>
 		<p><b>Le mage souffre des blessures de son familier (-15 pts)&nbsp;:</b> Si le familier est blessé, le mage subira le même nombre de points de dégâts. Si le familier est sonné ou assommé, le mage devra faire un jet de San ou il subira les mêmes effets que son compagnon. Si le familier meurt, le mage se retrouve immédiatement à -PdV<sub>max</sub>, avec toutes les conséquences que cela suppose.</p>
 		<p><b>Le familier est un démon&nbsp;:</b> cette limitation suppose que le familier n’a pas été invoqué comme tel. Le fait que ce soit un démon est le résultat d’un événement inattendu.<br />
 			Il s'agit de l’esprit d’un démon mineur dans le corps d’un animal. Ce démon n’a aucun pouvoir particulier. Il œuvre à ses propres fins, et non pas à celles du mage. Lorsqu’une tâche lui est imposée, un jet réussi d’<i>Int</i> lui permettra de trouver un moyen de pervertir l’ordre du mage. Le familier ne peut causer directement d’ennuis à son maître. Son but est de semer la zizanie et de cultiver le mal. Le coût dépend de l’<i>Int</i> du démon qui vaut au minimum 8&nbsp;: 5×(Int–6).<br />

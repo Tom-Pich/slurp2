@@ -1,10 +1,10 @@
 {
   "name": "slurp-v3",
-  "version": "3.12",
+  "version": "3.14",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --watch --style=compressed ./sass/main.scss:./styles.min.css",
+    "sass": "sass --watch --style=compressed ./sass/main.scss:./styles.min.css ./sass/v4/main.scss:./styles-v4.min.css",
     "webpack": "webpack --config webpack.config.js"
   },
   "keywords": [],

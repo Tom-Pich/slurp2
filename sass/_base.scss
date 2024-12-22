@@ -65,6 +65,7 @@ $scale: (100, 200, 300, 400, 450, 500, 600, 700, 800, 900, 1000);
 	--clr-warning: firebrick;
 	
 
+	--black: black;
 	--grey-300: hsl(0 0% 30%);
 	--grey-500: hsl(0 0% 50%);
 	--grey-700: hsl(0 0% 70%);
@@ -95,7 +96,7 @@ $scale: (100, 200, 300, 400, 450, 500, 600, 700, 800, 900, 1000);
 html {color-scheme: dark light;}
 :has(:target){ scroll-behavior: smooth; scroll-padding-top: 10em; }
 body {font-family: var(--ff-base); color: var(--clr-text); font-size: var(--fs-400); line-height: 1.5; background-color: var(--clr-background); }
-h1, h2, h3, h4, h5, h6 {font-family: var(--ff-accent); line-height: 1.1; color: var(--clr-text-accent); text-wrap: balance; letter-spacing: -.02em;}
+h1, h2, h3, h4, h5, h6 {font-family: var(--ff-accent); line-height: 1.1; text-wrap: balance; letter-spacing: -.02em;}
 h1 {font-size: var(--fs-900);}
 h2 {font-size: var(--fs-800); --flow-space: 1.5em}
 h3 {font-size: var(--fs-700);}
@@ -110,23 +111,6 @@ ul, ol {padding-left: 1.5em; --flow-space: .5em;}
 sub, sup {line-height: 0; font-size: 0.7em;}
 strong { font-weight: 700; color: var(--clr-primary) }
 em { color: var(--clr-primary) }
-
-// Navigation
-nav {
-	ul {list-style: none; padding: 0;}
-	> ul {display: flex; gap: 1em;}
-	li > ul {position: absolute; max-height: 0; overflow: hidden; transition: all .3s; width: max-content; }
-	li:hover > ul {max-height: var(--height, 10rem); z-index:1;}
-	li {position: relative; cursor: pointer; }
-	a {text-decoration: none; color: inherit;}
-
-	@include media { 
-		position: absolute; top: 0; left: 0; background-color: var(--clr-background); width: 0; overflow: hidden; transition: all .2s;
-		> ul {display: block; margin-left: 1em;}
-		li > ul {position: static; max-height: none; margin-left: 1em;}
-		&.active { width: 100vw; }
-	 }
-}
 
 // Form
 button, input[type=submit], .btn {
@@ -187,9 +171,9 @@ textarea {resize: vertical; min-height: 8em; width: 100%;}
 .px { @include sizes(padding-inline); @include dynamic-sizes(padding-inline); }
 .py { @include sizes(padding-block); @include dynamic-sizes(padding-block); }
 
-.ta-center {text-align: center;}
-.ta-justify {text-align: justify;}
-.ta-right {text-align: right;}
+.ta-center {text-align: center !important;}
+.ta-justify {text-align: justify !important; hyphens: auto;}
+.ta-right {text-align: right !important;}
 
 .ff-base { font-family: var(--ff-base) ;}
 .ff-accent { font-family: var(--ff-accent) ;}
@@ -214,7 +198,10 @@ textarea {resize: vertical; min-height: 8em; width: 100%;}
 .bg-accent { background-color: var(--clr-accent-background);}
 .bg-background {background-color: var(--clr-background);}
 
+.border { border: 1px solid currentColor; }
 .border-grey-700 {border: 1px solid var(--grey-700) !important;}
+.border-none { border: none; }
+.border-radius-1 { border-radius: 1em; }
 
 .nude {border: none; padding: 0;}
 

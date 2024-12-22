@@ -304,25 +304,35 @@ const modifierInput = testDialog.querySelector("[data-type=test-modifier-value]"
 let label, score;
 
 throwableItems.forEach((item) => {
-  item.addEventListener("click", () => {
+  item.addEventListener("click", (e) => {
+
+	const wrapper = item.closest("[data-type=throwable-wrapper]");
+	const isThrowableInSummary = wrapper.tagName === "SUMMARY";
+
+	// click on label in summary → only open details, don’t roll
+	if (isThrowableInSummary && e.target.dataset.type === "throwable-label" ) return;
+
+	e.preventDefault();
+
     testDialog.showModal();
     modifierInput.focus();
     modifierInput.value = ""; // reset modifier value
 
-    const wrapper = item.closest("[data-type=throwable-wrapper]");
+    
     label = trimModifier(wrapper.querySelector("[data-type=throwable-label]").innerText);
-    score = parseInt(wrapper.querySelector("[data-type=throwable-score]").innerText);
+    score = wrapper.querySelector("[data-type=throwable-score]").innerText;
     testDialog.querySelector("[data-content=label]").innerText = label;
-    testDialog.querySelector("[data-content=score]").innerText = score;
+    testDialog.querySelector("[data-content=score]").value = score;
   });
 });
 
 testDialogBtn.addEventListener("click", (e) => {
   const modifier = int(modifierInput.value);
   const readableModif = modifier === 0 ? "" : explicitSign(modifier);
+  const effectiveScore = parseInt(testDialog.querySelector("[data-content=score]").value);
   const rollResult = roll("3d").result;
-  const outcome = scoreTester(score + modifier, rollResult);
-  const messageContent = `${label} (${score}${readableModif}) → ${rollResult} (MR ${outcome.MR} ${outcome.symbol})`;
+  const outcome = scoreTester(effectiveScore + modifier, rollResult);
+  const messageContent = `${label} (${effectiveScore}${readableModif}) → ${rollResult} (MR ${outcome.MR} ${outcome.symbol})`;
   const isSecretTest = testDialog.querySelector("[data-type=secret-test-checkbox]").checked;
   const recipients = isSecretTest ? [gmId] : [];
   const message = new Message(sessionId, wsKey, "chat-roll", messageContent, recipients, outcome.symbol);

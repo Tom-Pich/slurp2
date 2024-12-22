@@ -62,7 +62,7 @@ foreach ($characters_id as $character) {
 
 	<?php foreach ($groups as $group) { ?>
 		<details data-group="<?= $group->id ?>">
-			<summary class="h3"><?= $group->id ?>. <?= $group->name ?></summary>
+			<summary><h3><?= $group->id ?>. <?= $group->name ?></h3></summary>
 			<div class="flex gap-½ fl-wrap mt-½">
 				<?php
 				$group_characters = array_filter($characters, fn ($x) => $x->id_group === $group->id);

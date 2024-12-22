@@ -14,7 +14,7 @@ $repo_powers = new PowerRepository("ins");
 	<h2>Personnage</h2>
 
 	<details>
-		<summary class="h3">Points de personnage</summary>
+		<summary><h3>Points de personnage</h3></summary>
 		<p><b>Personnage débutant&nbsp;:</b> 230 pts (anges) ou 220 pts (démons)</p>
 		<ul>
 			<li><b>Caractéristiques&nbsp;:</b> 100 à 130 pts</li>
@@ -25,13 +25,13 @@ $repo_powers = new PowerRepository("ins");
 	</details>
 
 	<details>
-		<summary class="h3">Incarnation &amp; supérieur</summary>
+		<summary><h3>Incarnation &amp; supérieur</h3></summary>
 		<p>Les anges et démons s’incarnent dans un corps humain <b>créé</b> pour l’occasion (contrairement à la version officielle du jeu).</p>
 		<p>Chaque ange ou démon est affilié à un <i>Archange</i> ou à un <i>Prince-Démon</i>. Ce choix va guider la création du personnage et sa philosophie une fois incarné.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Avantages &amp; Désavantages</summary>
+		<summary><h3>Avantages &amp; Désavantages</h3></summary>
 		<p><b>• Alphabétisation&nbsp;:</b> les anges et démons savent lire et écrire toutes les langues de l’Humanité.</p>
 		<p><b>• Richesse&nbsp;:</b> les anges et le démons s’incarnent nus&nbsp;! Le problème du financement se règle ensuite par leur QG ou par leur propres moyens.</p>
 		<p><b>• PdM supplémentaires&nbsp;:</b> un ange ou un démon a le droit d’acheter 1 PdM supplémentaire pour chaque niveau de pouvoir dont il dispose (y compris les pouvoirs de type <i>Avantage surnaturel</i>, qui sont considérés comme de niveau I). Un pouvoir de niveau IV permet donc d’acheter jusqu'à 4 PdM supplémentaire.</p>
@@ -86,7 +86,7 @@ $repo_powers = new PowerRepository("ins");
 	</details>
 
 	<details>
-		<summary class="h3">Compétences</summary>
+		<summary><h3>Compétences</h3></summary>
 		<p>Certains anges et démons se sont déjà incarnés sur Terre dans le passé. Ils ont eu l’occasion d'apprendre des compétences variées qu'ils maîtrisent encore au cours de leurs incarnations ultérieures. Les compétences «&nbsp;récentes&nbsp;» telles que l’informatique sont rarement maîtrisées par les personnages au moment de leur incarnation, mais ils sont tout à fait capables de les développer. Ainsi, la liberté de choix de compétences pour les personnages est très grande.</p>
 		<p>
 			<b>• Projection magique&nbsp;:</b> toucher sa cible avec un pouvoir d’<i>Attaque à distance</i>. Il s'agit de la compétence <i>Lancer de sort</i> renommée pour l’occasion.<br>
@@ -95,7 +95,7 @@ $repo_powers = new PowerRepository("ins");
 	</details>
 
 	<details>
-		<summary class="h3">Serviteurs &amp; Familiers</summary>
+		<summary><h3>Serviteurs &amp; Familiers</h3></summary>
 		Les anges et les démons peuvent avoir des serviteurs sous leurs ordres. Ce sont des <i>Serviteurs de Dieu</i> pour les anges et des <i>Familiers</i> pour les démons.
 		<h4>Serviteurs de Dieu</h4>
 		<p>Ce sont des humains au courant du <i>Grand Jeu</i> et totalement dévoués aux forces du Bien.</p>
@@ -118,12 +118,12 @@ $repo_powers = new PowerRepository("ins");
 	<h2>Archanges &amp; Princes-démons</h2>
 
 	<details>
-		<summary class="h3">Généralités</summary>
+		<summary><h3>Généralités</h3></summary>
 		<p>Les Archanges et les Princes-Démons peuvent s’incarner à volonté sur Terre. Ce sont eux qui dirigent les forces du Bien et du Mal.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Archanges</summary>
+		<summary><h3>Archanges</h3></summary>
 
 		<details class="liste">
 			<summary class="clr-grey-500"><div><b>Alain</b>, Archange des Cultures</div></summary>
@@ -239,7 +239,7 @@ $repo_powers = new PowerRepository("ins");
 	</details>
 
 	<details>
-		<summary class="h3">Princes-démons</summary>
+		<summary><h3>Princes-démons</h3></summary>
 
 		<p>
 			•&nbsp;<b>Abalam</b>, Prince de le Folie<br>
@@ -330,7 +330,7 @@ $repo_powers = new PowerRepository("ins");
 	<h2>Pouvoirs</h2>
 
 	<details>
-		<summary class="h3">Règles générales sur les pouvoirs</summary>
+		<summary><h3>Règles générales sur les pouvoirs</h3></summary>
 
 		<p>Un personnage débutant choisit 3 ou 4 pouvoirs au maximum.</p>
 
@@ -364,11 +364,11 @@ $repo_powers = new PowerRepository("ins");
 	?>
 
 	<details>
-		<summary class="h3">
-			<div>
+		<summary>
+			<h3>
 				<?php if ($_SESSION["Statut"] == 3) { ?><a href="gestion-listes?req=pouvoir&id=0" class="edit-link ff-far">&#xf044;</a><?php } ?>
 				Pouvoirs d’Anges
-			</div>
+			</h3>
 		</summary>
 		<?php
 		foreach ($categories as $categorie) {
@@ -386,11 +386,11 @@ $repo_powers = new PowerRepository("ins");
 	</details>
 
 	<details>
-		<summary class="h3">
-			<div>
+		<summary>
+			<h3>
 				<?php if ($_SESSION["Statut"] == 3) { ?><a href="gestion-listes?req=pouvoir&id=0" class="edit-link ff-far">&#xf044;</a><?php } ?>
 				Pouvoirs de Démons
-			</div>
+			</h3>
 		</summary>
 		<?php
 		foreach ($categories as $categorie) {
@@ -413,26 +413,26 @@ $repo_powers = new PowerRepository("ins");
 	<h2>Vie des anges &amp; démons</h2>
 
 	<details>
-		<summary class="h3">Incarnation</summary>
+		<summary><h3>Incarnation</h3></summary>
 		<p>Les anges et démons s’incarnent dans un corps «&nbsp;créé&nbsp;» pour l’occasion. Il peut arriver, de manière exceptionnelle, qu’ils s’incarnent dans le corps d’un être humain qui vient de mourir, toujours dans un but bien précis.</p>
 		<p>Un ange ou un démon nouvellement incarné n’a donc aucune identité officielle. Il s’incarne nu dans un endroit approprié (à la manière de <i>Terminator</i>). Le corps présente des traits lui permettant de passer pour un natif de la région où il s’est incarné.</p>
 		<p>Ces corps ne vieillissent pas, ce qui peut obliger un ange ou un démon incarné depuis un certain temps à changer d’identité pour éviter d’éveiller les soupçons.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Souvenirs</summary>
+		<summary><h3>Souvenirs</h3></summary>
 		<p>Au moment de leur incarnation, anges et démons ne se souviennent de rien. Ni de leurs éventuelles précédentes incarnations (le <i>Grand Jeu</i> a commencé après la mort du Christ), ni de leur vie au Paradis ou en Enfer. Ces souvenirs peuvent revenir par bribe au cours du temps, dans des circonstances exceptionnelles (sur un 111 ou un 666 lors d’un jet de dés, ou après une expérience traumatisante ou un stress intense).</p>
 	</details>
 
 	<details>
-		<summary class="h3">Grades</summary>
+		<summary><h3>Grades</h3></summary>
 		<p>- Le <i>Grade 1</i> est obtenu dès que l’ange ou le démon réussit correctement une mission.</p>
 		<p>- Le <i>Grade 2</i> est obtenu dès que l’ange ou le démon possède 2 pouvoirs de niveau IV et 10 PdM supplémentaires.</p>
 		<p>- Le <i>Grade 3</i> est obtenu lors d’une action particulièrement éclatante ou d’une mission particulièrement réussie.</p>
 	</details>
 
 	<details>
-		<summary class="h3">Mort</summary>
+		<summary><h3>Mort</h3></summary>
 		<p>Lorsqu’un ange ou un démon meurt, son corps disparaît dans un petit «&nbsp;pops&nbsp;» sonore (sauf s’il s’est incarné dans un corps humain déjà existant). Ceci est également vrai pour toutes ses parties, y compris son sang, ainsi que tout ce qu’il portait. Le personnage retourne au Paradis ou en Enfer, jusqu'à une nouvelle incarnation.</p>
 	</details>
 
@@ -442,7 +442,7 @@ $repo_powers = new PowerRepository("ins");
 	<h2>Pour le MJ</h2>
 
 	<details>
-		<summary class="h3">Missions &amp; points de personnage</summary>
+		<summary><h3>Missions &amp; points de personnage</h3></summary>
 		<p>À <i>In Nomine</i>, les points de personnage sont divisés en deux groupes&nbsp;:</p>
 		<ul>
 			<li>Les points classiques, servant à quantifier l’expérience acquise&nbsp;;</li>
@@ -453,7 +453,7 @@ $repo_powers = new PowerRepository("ins");
 	</details>
 
 	<details>
-		<summary class="h3">Organisation des forces du Bien</summary>
+		<summary><h3>Organisation des forces du Bien</h3></summary>
 		<p>Les anges nouvellement incarnés sont contactés par un ange déjà incarné appartenant à un QG des forces du Bien. Il existe plusieurs QG dans le monde, mais pas dans tous les pays. Un QG rassemble quelques anges haut-gradés plus quelques humains dans la confidence du <i>Grand Jeu</i>. Ces QG sont des bureaux secrets disposant d’une technologie de pointe et de moyens financiers très importants.</p>
 		<p>Les missions des démons ont un des objectifs généraux suivants&nbsp;:</p>
 		<ul>
@@ -472,7 +472,7 @@ $repo_powers = new PowerRepository("ins");
 	</details>
 
 	<details>
-		<summary class="h3">Organisation des forces du Mal</summary>
+		<summary><h3>Organisation des forces du Mal</h3></summary>
 		<p>Les forces du Mal sont organisées à la manière de cellules terroristes&nbsp;: un démon de grade 3 gère un ou plusieurs groupes de démons. Il leur attribue des missions et s’occupe des différents aspects administratifs de ses subordonnés.<br>
 			Un démon nouvellement incarné est accueilli par un «&nbsp;parrain&nbsp;» qui se charge de lui donner des vêtements et le minimum vital pour s’insérer dans la société sans se faire remarquer.</p>
 		<p>Les missions des démons ont un des objectifs généraux suivants&nbsp;:</p>
@@ -493,7 +493,7 @@ $repo_powers = new PowerRepository("ins");
 	</details>
 
 	<details>
-		<summary class="h3">Monde des rêves</summary>
+		<summary><h3>Monde des rêves</h3></summary>
 		<p>Une personne en train de rêver de manière naturelle est généralement seule dans son rêve. L’utilisation d’un pouvoir de rêve (<i>Rêve</i> ou <i>Cauchemar</i>) permet de pénétrer dans le rêve de la cible.</p>
 		<p>Lorsqu’un personnage tente de rejoindre un rêve, le <i>Maître du rêve</i> peut tenter de s’y opposer. Faire un duel de compétence en pouvoir de rêve (ou <i>Volonté</i>, selon le plus avantageux).</p>
 
@@ -550,7 +550,7 @@ $repo_powers = new PowerRepository("ins");
 	</details>
 
 	<details>
-		<summary class="h3">Advanced Clochers &amp; Cathédrales</summary>
+		<summary><h3>Advanced Clochers &amp; Cathédrales</h3></summary>
 		<p>Les églises bénéficient de grades comme les anges. Le grade d’une église dépend de sa taille, de son ancienneté, de sa fréquentation et éventuellement d’événements exceptionnels qui se seraient passés en son sein.</p>
 
 		<h4>Pouvoirs</h4>

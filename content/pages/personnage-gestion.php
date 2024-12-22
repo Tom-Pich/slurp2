@@ -37,34 +37,6 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 			<a href="personnage-fiche?perso=<?= $character->id ?>" class="btn btn-primary ff-fas" title="Retour à la fiche de perso">&#xf2bb;</a>
 		</div>
 
-		<!-- Portrait -->
-		<div class="mt-1">
-			<img src="<?= $character->portrait ?>" class="fit-cover mx-auto" style="max-height: 350px; max-width: 80%;">
-			<label title="Sélectionner une image" class="btn btn-primary mx-auto mt-½">
-				Télécharger image (max. 500 ko)
-				<input type="file" name="image" data-role=add-portrait hidden>
-			</label>
-			<p id="file" class="ta-center clr-grey-500"></p>
-		</div>
-
-		<h4>Description</h4>
-		<p>Cette description sera visible par les autres membres du groupe. Soyez évocateur, sans être trop long.</p>
-		<textarea name="Description" form="noyau" placeholder="Description du personnage" class="mt-1" style="min-height: 12em;"><?= $character->description ?></textarea>
-
-		<!-- Background -->
-		<details class="mt-1">
-			<summary class="h3">Background</summary>
-			<textarea name="Background" form="noyau" placeholder="Background du personnage" class="mt-½" style="min-height: 12em;"><?= $character->background ?></textarea>
-		</details>
-
-		<!-- Notes -->
-		<details class="mt-1">
-			<summary class="h3">Notes</summary>
-			<textarea name="Notes" form="noyau" placeholder="Notes diverses" class="mt-½" style="min-height: 12em;"><?= $character->notes ?></textarea>
-		</details>
-
-		<p class="mt-1 fs-300">Le background et les notes peuvent être mis en forme&nbsp;: *<b>gras</b>*, _<i>italique</i>_ et **<b>titre</b></p>
-
 		<!-- Bilan pts -->
 		<fieldset class="mt-1">
 			<legend>Bilan des points de personnage</legend>
@@ -87,6 +59,35 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 				<?php } ?>
 			</ul>
 		</fieldset>
+
+		<!-- Portrait -->
+		<div class="mt-1">
+			<img src="<?= $character->portrait ?>" class="fit-cover mx-auto" style="max-height: 350px; max-width: 80%;">
+			<label title="Sélectionner une image" class="btn btn-primary mx-auto mt-½">
+				Télécharger image (max. 500 ko)
+				<input type="file" name="image" data-role=add-portrait hidden>
+			</label>
+			<p class="mt-½ ta-center fs-300">Utiliser un format proche du carré.</p>
+			<p id="file" class="ta-center clr-grey-500"></p>
+		</div>
+
+		<h4>Description</h4>
+		<p>Cette description sera visible par les autres membres du groupe. Soyez évocateur, sans être trop long.</p>
+		<textarea name="Description" form="noyau" placeholder="Description du personnage" class="mt-1" style="min-height: 12em;"><?= $character->description ?></textarea>
+
+		<!-- Background -->
+		<details class="mt-1">
+			<summary><h3>Background</h3></summary>
+			<textarea name="Background" form="noyau" placeholder="Background du personnage" class="mt-½" style="min-height: 12em;"><?= $character->background ?></textarea>
+		</details>
+
+		<!-- Notes -->
+		<details class="mt-1">
+			<summary><h3>Notes</h3></summary>
+			<textarea name="Notes" form="noyau" placeholder="Notes diverses" class="mt-½" style="min-height: 12em;"><?= $character->notes ?></textarea>
+		</details>
+
+		<p class="mt-1 fs-300">Le background et les notes peuvent être mis en forme&nbsp;: *<b>gras</b>*, _<i>italique</i>_ et **<b>titre</b></p>
 
 	</article>
 
@@ -141,7 +142,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 		<!-- Mode d’emploi Avdésav -->
 		<details class="mt-3-5 border-bottom-grey-700">
-			<summary class="h3">Avantages &amp; Désavantages</summary>
+			<summary><h3>Avantages &amp; Désavantages</h3></summary>
 			<div class="mt-½">
 				<p>
 					<b>Nom&nbsp;:</b> à ne modifier que si une précision est nécessaire.<br>
@@ -215,7 +216,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 		<!-- Mode d’emploi compétences -->
 		<details class="mt-3-5">
-			<summary class="h3">Compétences</summary>
+			<summary><h3>Compétences</h3></summary>
 			<div class="border-bottom-grey-700 mt-½">
 				<p>
 					<b>Nom&nbsp;:</b> préciser éventuellement le nom de la compétence<br>
@@ -286,7 +287,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 			<!-- Mode d’emploi collège et sorts -->
 			<details class="mt-3-5">
-				<summary class="h3">Collèges &amp; sorts</summary>
+				<summary><h3>Collèges &amp; sorts</h3></summary>
 				<div class="border-bottom-grey-700 mt-½">
 					<p>
 						<b>Collèges&nbsp;:</b> même principe que pour les compétences. Vous pouvez ajouter un modificateur entre parenthèse à côté du nom.<br>
@@ -365,7 +366,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 			<!-- Mode d’emploi pouvoirs -->
 			<details  class="mt-3-5">
-				<summary class="h3">Pouvoirs</summary>
+				<summary><h3>Pouvoirs</h3></summary>
 				<div class="border-bottom-grey-700 mt-½">
 					<p>
 						<b>Ajouter un pouvoir&nbsp;:</b> sélectionner le pouvoir souhaité. Il sera ajouté à son coût minimum.<br>
@@ -504,7 +505,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 			<!-- Mode d’emploi psi -->
 			<details  class="mt-3-5">
-				<summary class="h3">Psi</summary>
+				<summary><h3>Psi</h3></summary>
 				<div class="bored-bottom-grey-700 mt-½">
 					<p>
 						<b>Ajouter une nouvelle discipline&nbsp;:</b> sélectionner la discipline souhaitée. Elle sera ajoutée au niveau 1.<br>

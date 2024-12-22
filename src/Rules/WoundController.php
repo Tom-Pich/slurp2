@@ -189,7 +189,7 @@ class WoundController
 
 	/**
 	 * return an array with all wound effects
-	 * @param string $category : catégorie de créature (std, nbh, nbx, ins)
+	 * @param string $category : catégorie de créature (std, nbh, nbx, ins, ci)
 	 * @param int $dex : dextérité de la victime
 	 * @param int $san : santé de la victime
 	 * @param int $pdvm : pdv max de la victime
@@ -299,6 +299,7 @@ class WoundController
 		}
 
 		elseif ($category === "ins") {
+			// ange ou démon INS
 			$pdvm_multiplier_for_rcl = .5; // double pdv don't count for recoil
 		}
 

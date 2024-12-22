@@ -1,6 +1,6 @@
 <article><h2>Armes</h2>
 
-	<details><summary class="h3">Lance-roquette portatif</summary>
+	<details><summary><h3>Lance-roquette portatif</h3></summary>
 		<p><a href="http://gurb3d6.blogspot.com/2016/11/how-gurps-works-explaining-how-you-roll.html">Article de blog</a> synthétisant les règles de GURPS</p>
 		<p>
 			Une munition HEAT (<i>High Explosive Anti Tank</i>), aussi appelée <i>charge creuse</i> en français, divise la RD de la cible par 10, les dégâts passant la RD provoque une explosion interne.<br/>
@@ -17,7 +17,7 @@
 		<p>* avec lunette de visée</p>
 	</details>
 
-	<details><summary class="h3">Lance-grenade</summary>
+	<details><summary><h3>Lance-grenade</h3></summary>
 		<p>
 			Un lance grenade tire des projectiles de très gros calibre à faible vélocité (de l’ordre de 70 m·s<sup>-1</sup>).<br/>
 			Leur portée est de l’ordre de quelque dizaines de mètres en tir tendu, à quelques centaines de mètre en tir en cloche.<br/>
@@ -26,14 +26,14 @@
 		</p>
 	</details>
 
-	<details><summary class="h3">Missiles guidés</summary>
+	<details><summary><h3>Missiles guidés</h3></summary>
 		<p>Ces missiles (ou torpilles) ont une portée de 2 à 3 km pour les plus petits. Ils se déplacent à une vitesse de l’ordre de 150 à 330 m·s<sup>-1</sup>. Si le temps de vol du missile est supérieur à une seconde, son opérateur peut le guider – sinon, il est traité comme un missile simple. L’opérateur doit pouvoir rester concentré pendant tout le temps de déplacement. Au moment de l’impact, faire un jet de la compétence appropriée (<i>Missile guidé</i>). La difficulté de ce jet dépend de la taille et de la vitesse de la cible, ainsi que de sa visibilité, mais <i>pas</i> de la portée du tir.</p>
 		<p>Des contre-mesures sont possibles, notamment par un brouillage électromagnétique du système de guidage.</p>
 		<p>Ces missiles ont une tête à charge creuse (HEAT) et donc un diviseur de RD de 10. Il provoque des dégâts exérieurs (voir <i>Projectile à charge creuse</i>).</p>
 		<p><b>Missile 125 mm&nbsp;:</b> dég. 6d×7(10)&nbsp;; vit.&nbsp;: 150 m·s<sup>-1</sup>&nbsp;; portée&nbsp;: 3 km</p>
 	</details>
 
-	<details><summary class="h3">Missiles à tête chercheuse</summary>
+	<details><summary><h3>Missiles à tête chercheuse</h3></summary>
 		<p>Les missiles de ce type disposent de leurs propres senseur et calculateur. Un missile guidé doit d’abord être « verrouillé » sur sa cible.</p>
 
 		<h4>Acquisition de la cible</h4>
@@ -52,7 +52,7 @@
 
 <article><h2>Piratage informatique</h2>
 
-	<details><summary class="h3">Objectif d’un piratage</summary>
+	<details><summary><h3>Objectif d’un piratage</h3></summary>
 		<p>Le piratage d’un ordinateur peut avoir trois objectifs différents&nbsp;:</p>
 		<ul>
 			<li><b>Obtenir un accès illégitime</b> à des données, des programmes ou des périphériques de la cible.<br/></li>
@@ -61,7 +61,7 @@
 		</ul>
 	</details>
 
-	<details><summary class="h3">Paramètres matériels</summary>
+	<details><summary><h3>Paramètres matériels</h3></summary>
 		<p>La tentative de piratage dépend des paramètres suivants&nbsp;:</p>
 		<ul class="mt-1">
 			<li><b>Puissance</b> des ordinateurs impliqués, aussi bien l’ordinateur de l’attaquant que l’ordinateur cible (pour certaines formes d’attaques)</li>
@@ -78,7 +78,7 @@
 		</ul>
 	</details>
 
-	<details><summary class="h3">Niveau de sécurisation d’un ordinateur</summary>
+	<details><summary><h3>Niveau de sécurisation d’un ordinateur</h3></summary>
 		<p>Le niveau de sécurisation d’un ordinateur dépend des compétences de son administrateur, de la qualité des programmes installés dessus (absence de faille&hellip;) et du que les dispositifs de sécurisation installés (antivirus, mur de feu, etc&hellip;) soient bien à jour.</p>
 		<p>On distingue 5 niveaux de sécurisation&nbsp;:</p>
 		<table class="alternate-e left-2">
@@ -106,7 +106,7 @@
 		</table>
 	</details>
 
-	<details><summary class="h3">Force brute</summary>
+	<details><summary><h3>Force brute</h3></summary>
 		<p>C’est le mode d’attaque le plus basique. Il consiste à essayer tous les mots de passe et clés de cryptage possible jusqu’à trouver le bon.</p>
 		<p>Si le mot de passe est long et que le niveau de sécurité de l’ordinateur n’est pas faible, le temps nécessaire pour être sûr de trouver le mot de passe est extrêmement long&nbsp;: de 23&thinsp;000 ans (8 caractères) à 1 milliard de milliards de fois l’âge de l’Univers (clé de 128 bits), à raison de 1000 essais par seconde.</p>
 		<p>Il faut également tenir compte du fait qu’après un certain nombre de tentatives infructueuses, l’accès peut être bloqué pendant un certain temps et une alerte peut être lancée.</p>
@@ -126,7 +126,7 @@
 
 	</details>
 
-	<details><summary class="h3">Faille de sécurité</summary>
+	<details><summary><h3>Faille de sécurité</h3></summary>
 		<p>C’est le mode d’attaque le plus efficace. Il nécessite cependant de connaître une faille de sécurité dans un élément logiciel ou matériel de l’ordinateur cible.</p>
 		<p>Découvrir une nouvelle faille de sécurité est un travail de longue haleine (plusieurs semaines voire plusieurs mois). Un pirate qui découvre une faille de sécurité la garde généralement pour lui, car si elle est souvent exploitée, elle finit par être découverte et colmatée par une mise à jour.</p>
 		
@@ -176,12 +176,12 @@
 		
 	</details>
 
-	<details><summary class="h3">Déni de service</summary>
+	<details><summary><h3>Déni de service</h3></summary>
 		<p>Une attaque par déni de service consiste à submerger un serveur de requêtes non valides qui vont finir par le déborder. Cela va causer un ralentissement important du trafic, voire un plantage du serveur. Un serveur peut être plus ou moins bien configuré pour résister aux attaques de ce type.</p>
 		<p>Une attaque de ce type sera d’autant plus efficace que le nombre de machine envoyant des requêtes non valide est élevé. S’il n’y a qu’une seule machine qui attaque, sa puissance doit être nettement supérieure à celle du serveur (ce qui va être généralement difficile) pour pouvoir le déborder.</p>
 	</details>
 
-	<details><summary class="h3">Techniques d’espionnage</summary>
+	<details><summary><h3>Techniques d’espionnage</h3></summary>
 		<p>Pour faciliter une attaque, il est souvent nécessaire de procéder à une phase d’espionnage préalable.</p>
 		
 		<h4>Ingénierie sociale</h4>

@@ -6,11 +6,11 @@ $creature_repo = new CreatureRepository;
 ?>
 
 <!-- Caractéristiques des animaux  -->
-<article>
+<article class="as-start">
 	<h2>Caractéristiques des animaux</h2>
 
 	<details>
-		<summary class="h3">Force &amp; Points de vie</summary>
+		<summary><h3>Force &amp; Points de vie</h3></summary>
 
 		<p>Le poids est la base de calcul permettant d’estimer les PdV et la For d’une créature. Toutes proportions gardées, le poids d’une créature augmente comme le cube de sa taille.</p>
 
@@ -20,7 +20,7 @@ $creature_repo = new CreatureRepository;
 	</details>
 
 	<details>
-		<summary class="h3">Autres caractéristiques</summary>
+		<summary><h3>Autres caractéristiques</h3></summary>
 		<p><b>Dextérité :</b> Les prédateurs et autres animaux très agiles ont 14 en Dex, voire plus. Les animaux assez agiles ont 12, les autres ont 10. Ces valeurs peuvent varier de &plusmn; 1 pt selon les individus.</p>
 		<p><b>Intelligence :</b> 2 pour un insecte, 3 pour un reptile, 4 pour un mammifère peu intelligent (cheval), 5 pour un mammifère assez intelligent (chien), 6 pour un mammifère très intelligent (chimpanzé, dauphin, etc). Un écart de &plusmn; 1 pt par rapport à ces valeurs de référence est possible mais rare.</p>
 		<p><b>Santé :</b> 14 pour un animal robuste et endurant, 12 pour un animal moyen, 10 pour un animal fragile. Ces valeurs peuvent varier de &plusmn; 1 pt.</p>
@@ -65,11 +65,11 @@ $creature_repo = new CreatureRepository;
 </article>
 
 <!-- Combat -->
-<article>
+<article class="as-start">
 	<h2>Combat</h2>
 
 	<details>
-		<summary class="h3">Dégâts des animaux</summary>
+		<summary><h3>Dégâts des animaux</h3></summary>
 		<p>Les dégâts sont basés sur la <i>For</i> de l’animal, sauf les dégâts de piétinement qui sont basés sur son poids.</p>
 
 		<?php include "content/components/widget-creature-dmg.php" ?>
@@ -85,7 +85,7 @@ $creature_repo = new CreatureRepository;
 	</details>
 
 	<details>
-		<summary class="h3">Autres caractéristiques de combat</summary>
+		<summary><h3>Autres caractéristiques de combat</h3></summary>
 		<p><b>RD :</b> Une fourrure ou une peau épaisse apporte une RD de 1, de même qu'une couche de graisse épaisse. Certains animaux au cuir épais ont une RD naturelle de 3 ou 4 (éléphant, crocodile, etc).</p>
 		<p><b>Attaque(s) :</b> le jet d’attaque est basé sur la <i>Dex</i>.</p>
 		<p><b>Esquive :</b> <i>Dex</i> à <i>Dex</i>-3 selon que l’animal soit, ou pas, habitué à se battre.</p>
@@ -94,7 +94,7 @@ $creature_repo = new CreatureRepository;
 </article>
 
 <!-- Quelques annimaux -->
-<article>
+<article class="as-start">
 	<h2>
 		<?php if ($_SESSION["Statut"] == 3) { ?>
 			<a href="gestion-listes?req=creature&id=0" class="edit-link ff-far">&#xf044;&nbsp;</a>
@@ -106,7 +106,7 @@ $creature_repo = new CreatureRepository;
 	$categories = $creature_repo->getDistinctCategories("RdB");
 	foreach ($categories as $categorie) { ?>
 		<details>
-			<summary class="h3"><?= $categorie ?></summary>
+			<summary><h3><?= $categorie ?></h3></summary>
 			<div class="mt-½">
 				<?php
 				$creatures = $creature_repo->getCreaturesByCategory($categorie);
@@ -121,11 +121,11 @@ $creature_repo = new CreatureRepository;
 </article>
 
 <!-- Considérations diverses -->
-<article>
+<article class="as-start">
 	<h2>Considérations diverses</h2>
 
 	<details>
-		<summary class="h3">Voyager à cheval</summary>
+		<summary><h3>Voyager à cheval</h3></summary>
 
 		<h4>Distance en 1 heure</h4>
 

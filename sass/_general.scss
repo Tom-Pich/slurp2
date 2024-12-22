@@ -1,16 +1,18 @@
 :root {
 	font-size: 14px;
+	@media print { font-size: 8px; }
 }
 
-body {background: url("/assets/img/bg-paper.png") fixed repeat; @include media {background-image: none;}}
+//body {background: url("/assets/img/bg-paper.png") fixed repeat; @include media {background-image: none;}}
+body:has(nav.active){ overflow: hidden; }
 main {
-	padding: var(--dynamic-space-½-2); display: flex; min-height: 72vh; flex-wrap: wrap; justify-content: center; gap: 1em;
+	padding: var(--dynamic-space-½-2); display: flex; min-height: calc(100vh - 230px); flex-wrap: wrap; justify-content: center; gap: 1em;
 	@include media {flex-direction: column;}
 }
 
 h1 {font-size: var(--fs-800);}
 h3 {font-size: var(--fs-600);}
-.h3 {font-weight: bold; font-size: var(--fs-400); background: silver; padding: 0.25em .5em; font-family: var(--ff-accent); margin-top: 0.5em; line-height: 1.5em;}
+/* .h3 {font-weight: bold; font-size: var(--fs-400); background: silver; padding: 0.25em .5em; font-family: var(--ff-accent); margin-top: 0.5em; line-height: 1.5em;} */
 h4 {font-size: var(--fs-500);}
 
 dfn {text-decoration: underline #777; cursor: help;}
@@ -19,46 +21,75 @@ dfn {text-decoration: underline #777; cursor: help;}
 figure img {margin: 0 auto;} */
 figcaption {text-align: center; font-style: italic;}
 
+fieldset.flow { > :nth-child(2) {margin-top: 0;} }
+
 :is(.standard-page, .gestionnaire-mj, .gestionnaire-listes) article {
-	width: 350px; background: white; box-shadow: 2px 2px 2px silver; padding: .5em; min-height: 250px; margin-top: 1em;
+	width: 350px; background: white; box-shadow: 2px 2px 5px silver; padding: .5em; min-height: 250px; margin-top: 1em; @include flow;
 	@include media { width: 100%; min-height: 0; border: 1px solid var(--clr-text); box-shadow: none; }
 	h2 {background: black; color: white; padding: .15em .30em; font-size: var(--fs-500); box-shadow: 0 2px 1px silver; margin: -1em 0 1rem;}
 	h4 {margin: .75em 0 .25em; font-size: var(--fs-450);}
 	h5 { margin: .75em 0 .25em; font-size: var(--fs-400); }
-	p {margin: .5em 0;}
+	p {margin: .5em 0; text-align: justify; hyphens: auto;}
 }
 
 // Utility classes
 .hidden {display: none;}
+.bg-black { background-color: var(--black); }
 .border-bottom-grey-700 {border-bottom: 1px solid var(--grey-700);}
 .widget{background-color: var(--clr-accent-background)}
 :is(div, p, details):nth-child(odd).alternate-o {background-color: var(--grey-900);}
 .cursor-pointer { cursor: pointer; }
 .edit-link { color: inherit; text-decoration: none; }
 .col-2-s { grid-template-columns: 1fr 1fr; }
+.aspect-square { aspect-ratio: 1; }
 
 .float-right { float: right; margin-left: var(--dynamic-space-1-2); max-width: 50%; }
 .clear-right { clear: right; }
 .float-left { float: left; margin-right: var(--dynamic-space-1-2);  max-width: 50%; }
 
+.as-start { align-self: flex-start !important; }
+
 // pagination classes
-.exemple {background: var(--grey-900); border-radius: .25em; padding: 2em .5em 1em; margin-top: 1em; position: relative}
-.exemple::before{content:"Exemple"; position: absolute; top: .5em; left: .5em; font-weight: bold; font-family: Rubik;}
+div.exemple {background: var(--grey-900); border-radius: .25em; padding: 2em .5em 1em; margin-top: 1em; position: relative}
+div.exemple::before{content:"Exemple"; position: absolute; top: .5em; left: .5em; font-weight: bold; font-family: Rubik;}
+
+
 
 // Details & summary (nothing in _base.scss) ––––––––––––––––––––––––––––––––––––––––––––––––––––––
+details { --flow-space: .5em; }
 details[open] {padding-bottom: .5em;}
-summary{cursor: pointer; list-style-type: none; display: flex; gap: 0.5em; justify-content: space-between; align-items: center;}
+summary { cursor: pointer; list-style-type: none; display: flex; gap: 0.5em; justify-content: space-between; align-items: center;}
 summary::after {content: "\2261"; color:inherit}
 details[open] > summary::after{content:"\00D7";}
+summary :is(h3, h4, h5, h6) { font-size: inherit; }
 
 summary.h3 + * { margin-top: .5em; }
+summary:has(h3) {
+	font-weight: bold; font-size: var(--fs-400); background: var(--grey-900); padding: 0.25em .5em; font-family: var(--ff-accent);
+}
+summary:has(h4) { font-weight: bold; font-size: var(--fs-450); }
 
 summary.h4 {font-weight: bold; font-size: var(--fs-400); font-family: var(--ff-accent);}
-details.liste summary::after {content: none;}
-details.liste[open] {background: LightGrey; padding: 5px;}
-details.liste[open] > summary {font-weight: bold;}
+
+details.liste {
+	--flow-space: 0;
+	&:first-of-type { margin-top: .5em; }
+	summary::after {content: none;}
+
+	&[open]{
+		background: var(--grey-900); padding: .25em;
+		> summary {font-weight: bold;}
+	}
+}
+
 details.sous-liste summary {margin-top: 1px}
 details.sous-liste p {padding: 0 5px; font-size: .95em; margin-top: 1px;}
+
+details.exemple {
+	border: .5px solid var(--clr-primary-dark); padding: .25em .5em; position: relative;
+	&::before { content: "\f0eb"; font-family: "FA6 Regular"; position: absolute; top: -.5em; left: -.5em; transform: rotate(-10deg);  background-color: white; color: var(--clr-primary-dark) }
+	summary { color: var(--clr-primary-dark); font-weight: 700; }
+}
 
 // Forms, button ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 button, input[type=submit], .btn {border-radius: .25em}
