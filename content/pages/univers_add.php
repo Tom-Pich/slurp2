@@ -13,7 +13,8 @@ $spells_repo = new SpellRepository;
 $creatures_repo = new CreatureRepository;
 ?>
 
-<article><!-- Personnages -->
+<!-- Personnages -->
+<article class="as-start">
 	<h2>Personnage</h2>
 
 	<details>
@@ -124,7 +125,7 @@ $creatures_repo = new CreatureRepository;
 </article>
 
 <!-- Équipement -->
-<article>
+<article class="as-start">
 	<h2>Équipement</h2>
 
 	<!-- Système monétaire -->
@@ -321,7 +322,7 @@ $creatures_repo = new CreatureRepository;
 </article>
 
 <!-- Magie -->
-<article>
+<article class="as-start">
 	<h2>Magie</h2>
 
 	<details>
@@ -808,7 +809,8 @@ $creatures_repo = new CreatureRepository;
 
 </article>
 
-<article><!-- Créatures -->
+<!-- Créatures -->
+<article class="as-start">
 	<h2>
 		<?php if ($_SESSION["Statut"] == 3) { ?>
 			<a href="gestion-listes?req=creature&id=0" class="ff-far edit-link">&#xf044;&nbsp;</a>

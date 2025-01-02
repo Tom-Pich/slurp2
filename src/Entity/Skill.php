@@ -118,17 +118,68 @@ class Skill implements RulesItem
 	 * @param  int $difficulty
 	 * @return float $points
 	 */
-	public static function niv2cost(int $niv, int $difficulty): float
+	public static function niv2cost(int $niv, int $difficulty, string $base): float|int
 	{
-		$x = $niv - 1 - $difficulty / 2;
-		if ($niv <= $difficulty) {
-			$points = 0;
-		} elseif ($niv <= 0) {
-			$points = 2 ** $x;
-		} else {
-			//$points = (int)round(0.499 * $x ** 1.98 + 0.786 * $x + .857);
-			$points = (int)round(.5 * ($x + 1) ** 2);
+		$test = 6;
+
+		if ($test === 1) {
+			$niv_p4 = 3 + $difficulty / 2; // $difficulty = -2, -4, -6 or -8
+			$niv_p10 = 5;
+			$x = $niv - 1 - $difficulty / 2;
+			if ($niv <= $difficulty) $points = 0;
+			elseif ($niv <= $niv_p4) $points = 2 ** $x;
+			elseif ($niv <= $niv_p10) $points = 4 + ($niv - $niv_p4) * 4;
+			else $points = 12 + ($niv - $niv_p10) * 10 - $difficulty * 2;
+			return (float) $points;
 		}
+
+		if ($test === 2) {
+			$niv_½ = $difficulty / 2;
+			$niv_p5 = 5 + $difficulty / 2;
+			$niv_p10 = 5;
+			if ($niv === $niv_½) return 0.5;
+			if ($niv === $niv_½ + 1) return 1;
+			if ($niv === $niv_½ + 2) return 2;
+			if ($niv === $niv_½ + 3) return 4;
+			if ($niv === $niv_½ + 4) return 7;
+			if ($niv <= $niv_p10) return 5 + ($niv - ($niv_p5 - 1)) * 5;
+			return (2 - $difficulty / 2) * 5 + ($niv - $niv_p10) * 10;
+		}
+
+		if ($test === 3) {
+			$niv_½ = $difficulty / 2; // -1, -2, -3, -4
+			$niv_p4 = 3 + $difficulty / 2; // 2, 1, 0, -1
+			if ($niv <= $niv_p4) return 2 ** ($niv - $niv_½ - 1);
+			return 4 + ($niv - $niv_p4) * 4;
+		}
+
+		if ($test === 4) {
+			if ($niv <= 0) return $niv - $difficulty;
+			return ($niv + 3) * $niv / 2  - $difficulty;
+		}
+
+		if ($test === 5) {
+			$niv_½ = $difficulty / 2;
+			$niv_p5 = 5 + $difficulty / 2;
+			if ($niv <= $difficulty) return 0;
+			if ($niv <= $niv_½ + 4) return 2 ** ($niv - $niv_½ - 1);
+			return 15 + ($niv - $niv_p5) * 5;
+		}
+
+		if ($test === 6) {
+			$niv_½ = $difficulty / 2;
+			$niv_c = 4 + $difficulty / 2; // high level threshold
+			$x = $niv - $niv_½;
+			if ($niv <= $difficulty) return 0;
+			if ($niv <= $niv_c) return 2 ** ($x - 1); // ½ - 1 - 2 - 4 - 8
+			if ($base === "I") return 4 * $x - 8; // intellectual skills - high level
+			return ($x ** 2 + $x - 4) / 2; // other skills - high level
+		}
+
+		$x = $niv - 1 - $difficulty / 2;
+		if ($niv <= $difficulty) $points = 0;
+		elseif ($niv <= 0) $points = 2 ** $x;
+		else $points = (int)round(.5 * ($x + 1) ** 2);
 
 		return (float) $points;
 	}
@@ -140,16 +191,29 @@ class Skill implements RulesItem
 	 * @param  int $difficulty
 	 * @return int
 	 */
-	public static function cost2niv(float $points, int $difficulty): int
+	public static function cost2niv(float $points, int $difficulty, string $base): int|float
 	{
-		if ($points < 0.5) {
-			$niv = $difficulty;
-		} elseif ($points < -$difficulty) {
-			$niv = floor(log($points, 2) + 1 + $difficulty / 2);
-		} else {
-			$niv = floor((2 * floor($points)) ** .5 + $difficulty / 2);
+		$test = 6;
+
+		if ($test === 5) {
+			if ($points < .5) return $difficulty; // pts = 0
+			if ($points < 1) return $difficulty / 2; // pts = ½  
+			if ($points < 2) return $difficulty / 2 + 1; // pts = 1  
+			if ($points < 5) return $difficulty / 2 + 2; // pts = 2
+			$points = floor($points / 5) * 5; // round to lowest multiple of 5;
+			return 2 + $points / 5 + $difficulty / 2;
 		}
-		return (int) $niv;
+
+		if ($test = 6) {
+			if ($points < .5) return $difficulty; // pts = 0
+			if ($points <= 8) return floor(log($points, 2) + 1 + $difficulty / 2); // ½ - 1 - 2 - 4 - 8
+			if ($base === "I") return floor(($points+8)/4) + $difficulty / 2; // intellectual skills - high level
+			return floor((-1 + (17 + 8 * $points) ** 0.5) / 2) + $difficulty / 2; // other skills - high level
+		}
+
+		if ($points < 0.5) return $difficulty;
+		elseif ($points < -$difficulty) return floor(log($points, 2) + 1 + $difficulty / 2);
+		else return floor((2 * floor($points)) ** .5 + $difficulty / 2);
 	}
 
 	/**
@@ -173,19 +237,15 @@ class Skill implements RulesItem
 		foreach ($skills as $skill) {
 
 			$skill_entity = $skill_repo->getSkill($skill["id"]);
-			//if (empty($skill_entity)) break;
 
 			// default label
-			if (empty($skill["label"])) {
-				$skill["label"] = $skill_entity->name;
-			}
+			if (empty($skill["label"])) $skill["label"] = $skill_entity->name;
 
 			// default niv or impossible niv
-			if (!isset($skill["niv"]) || $skill["niv"] < $skill_entity->difficulty / 2) {
-				$skill["niv"] = $skill_entity->difficulty;
-			}
-			if (isset(self::special_skills[$skill["id"]])){
-				// skills with default level different from standard defaults.
+			if (!isset($skill["niv"]) || $skill["niv"] < $skill_entity->difficulty / 2) $skill["niv"] = $skill_entity->difficulty;
+
+			// skills with default level different from standard defaults.
+			if (isset(self::special_skills[$skill["id"]])) {
 				$min_level = self::special_skills[$skill["id"]]["min-level"];
 				$skill["niv"] = max($skill["niv"], $min_level);
 			}
@@ -193,22 +253,26 @@ class Skill implements RulesItem
 			// difficulty
 			$skill["difficulty"] = $skill_entity->difficulty;
 
+			// description
+			$skill["description"] = $skill_entity->description;
+
 			// skill base value
 			$attr_number = 0;
 			$attr_sum = 0;
 			$raw_attr_sum = 0;
 			foreach (str_split($skill_entity->base) as $letter) {
 				$attr_sum += $attr[$attr_match[$letter]]; // sum of current state attributes
-				$raw_attr_sum += $raw_attr[$attr_match[$letter]]; // sum of un modified attributes
+				$raw_attr_sum += $raw_attr[$attr_match[$letter]]; // sum of unmodified attributes
 				$attr_number++;
 			}
+			$skill["entity-base"] = $skill_entity->base;
 			$skill["base"] = (int) floor($attr_sum / $attr_number);
 			$skill["raw-base"] = (int) floor($raw_attr_sum / $attr_number);
 
 			// modifier (label, mémoire infaillible, extra encumbrance penalty)
 			$skill["modif"] = TextParser::parseModif($skill["label"]); // from label
 			$is_mental_very_hard = $skill_entity->difficulty === -8 && $skill_entity->base === "I"; // affected by mémoire infaillible
-			$skill["modif"] += $is_mental_very_hard ? floor($special_traits["mult-memoire-infaillible"] / 2) : 0 ;
+			$skill["modif"] += $is_mental_very_hard ? floor($special_traits["mult-memoire-infaillible"] / 2) : 0;
 			$is_extra_affected_by_encumbrance = in_array($skill["id"], self::mvt_skills);
 			$skill["modif"] += $is_extra_affected_by_encumbrance ? $modifiers["Encombrement"] : 0;
 
@@ -221,14 +285,15 @@ class Skill implements RulesItem
 			}
 
 			// processing skill base cost
-			$skill["points"] = self::niv2cost($skill["niv"], $skill_entity->difficulty);
+			$skill["points"] = self::niv2cost($skill["niv"], $skill_entity->difficulty, $skill_entity->base);
 			if ($skill_entity->base === "I" && $skill_entity->difficulty > -8) {
 				$skill["points"] /= $special_traits["mult-memoire-infaillible"]; // "Mémoire infaillible" divider (1, 2 or 4)
 			}
-			if (isset(self::special_skills[$skill["id"]])){
-				// skills with min level different form standard default
+
+			// skills with min level different form standard default
+			if (isset(self::special_skills[$skill["id"]])) {
 				$min_level = self::special_skills[$skill["id"]]["min-level"];
-				$skill["points"] = self::niv2cost($skill["niv"], $skill_entity->difficulty) - self::niv2cost($min_level, $skill_entity->difficulty);
+				$skill["points"] = self::niv2cost($skill["niv"], $skill_entity->difficulty, $skill_entity->base) - self::niv2cost($min_level, $skill_entity->difficulty, $skill_entity->base);
 			}
 
 			// processing skill speciality bonus (with limits)
@@ -256,10 +321,8 @@ class Skill implements RulesItem
 			// adding skill points to relevant group(s)
 			foreach (self::skills_groups as $group => $id_list) {
 				if (in_array($skill["id"], $id_list)) {
-					$skill["groups"][] = $group;
-					if (empty($pool[$group])) {
-						$pool[$group] = 0;
-					}
+					$skill["groups"][$group] = 0;
+					if (empty($pool[$group])) $pool[$group] = 0;
 					$pool[$group] += $skill["points"];
 				}
 			}
@@ -274,36 +337,33 @@ class Skill implements RulesItem
 
 			// if skill belongs to one or more groups
 			if (isset($skill["groups"])) {
-				$proc_skills[$index]["groups_points"] = 0; // set group points to 0
-				foreach ($skill["groups"] as $skill_group) {
-					$proc_skills[$index]["groups_points"] += $pool[$skill_group]; // add skill points to each related group
-				}
 
-				// add ¼ of all other related skill points and get total points invested in skill
-				$proc_skills[$index]["total_points"] = .75 * $skill["points"] + 0.25 * $proc_skills[$index]["groups_points"]; 
-				
+				// update skill group points
+				foreach ($skill["groups"] as $group => $group_points) $proc_skills[$index]["groups"][$group] = $pool[$group];
+
 				// evaluate what would be the skill niv with these total virtual points
-				$free_points = 0;
-				if (isset(self::special_skills[$skill["id"]])){
+				/* $free_points = 0;
+				if (isset(self::special_skills[$skill["id"]])) {
 					// get free points due to default non standard skill level
 					$min_level = self::special_skills[$skill["id"]]["min-level"];
-					$free_points = self::niv2cost($min_level, $skill["difficulty"]);
-				}
-				$virtual_points = $proc_skills[$index]["total_points"] + $free_points;
+					$free_points = self::niv2cost($min_level, $skill["difficulty"], $skill["entity-base"]);
+				} */
+
+				// calculate total virtual points (base points + group points)
+				$virtual_points = $skill["points"];
+				$skill["groups"] = $proc_skills[$index]["groups"];
+				foreach ($skill["groups"] as $group => $group_points) $virtual_points += 0.25*($group_points - $skill["points"]);
+				$proc_skills[$index]["total_points"] = $virtual_points;
 				$virtual_points *= (!empty($skill["background"]) ? 2 : 1);
-				$virtual_niv = self::cost2niv($virtual_points, $skill["difficulty"]);
-				
+				$virtual_niv = self::cost2niv($virtual_points, $skill["difficulty"], $skill["entity-base"]);
+
 				// get the group modif from the difference between this virtual niv and the actual raw niv
 				$proc_skills[$index]["group_modif"] = $virtual_niv - $skill["niv"];
-				if(is_numeric($proc_skills[$index]["score"])){
-					$proc_skills[$index]["score"] += $proc_skills[$index]["group_modif"];
-				}
+				if (is_numeric($proc_skills[$index]["score"])) $proc_skills[$index]["score"] += $proc_skills[$index]["group_modif"];
 			}
 
 			// special skills retroaction on character modifiers
-			if ($skill["id"] === 58) {
-				$modifiers["Vitesse"] += ((int) $skill["score"] ?? 0) / 8; // Courses
-			}
+			if ($skill["id"] === 58) $modifiers["Vitesse"] += ((int) $skill["score"] ?? 0) / 8; // Courses
 		}
 
 		$proc_skills = Sorter::sort($proc_skills, "label");
@@ -311,7 +371,8 @@ class Skill implements RulesItem
 		return [$proc_skills, $points, $modifiers];
 	}
 
-	public static function processSubmitSkill($post){
+	public static function processSubmitSkill($post)
+	{
 		// id, Nom, Catégorie, Base, Difficulté, Description
 		$skill["id"] = (int) $post["id"];
 		$skill["Nom"] = $post["Nom"];
@@ -329,5 +390,17 @@ class Skill implements RulesItem
 		} elseif ($skill["Nom"] && !$skill["id"]) {
 			$repo->createSkill($skill);
 		}
+	}
+
+	/** 
+	 * Display skill cost in rules
+	 */
+	public static function displaySkillCost(int $niv, int $difficulty)
+	{
+		$cost_std = self::niv2cost($niv, $difficulty, "D");
+		$cost_int = self::niv2cost($niv, $difficulty, "I");
+		if ($cost_std < 0.5) return "–";
+		if ($cost_std === .5) return "½";
+		return $cost_std === $cost_int ? $cost_std : $cost_std . "/" . $cost_int;
 	}
 }

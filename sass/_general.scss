@@ -43,11 +43,13 @@ fieldset.flow { > :nth-child(2) {margin-top: 0;} }
 .col-2-s { grid-template-columns: 1fr 1fr; }
 .aspect-square { aspect-ratio: 1; }
 
-.float-right { float: right; margin-left: var(--dynamic-space-1-2); max-width: 50%; }
-.clear-right { clear: right; }
-.float-left { float: left; margin-right: var(--dynamic-space-1-2);  max-width: 50%; }
+//.float-right { float: right; margin-left: var(--dynamic-space-1-2); max-width: 50%; }
+//.clear-right { clear: right; }
+.float-left { float: left; margin: 0.25rem 1rem 0.25rem 0 ;  max-width: 50%; }
 
 .as-start { align-self: flex-start !important; }
+
+.no-break { break-inside: avoid; }
 
 // pagination classes
 div.exemple {background: var(--grey-900); border-radius: .25em; padding: 2em .5em 1em; margin-top: 1em; position: relative}
@@ -63,11 +65,10 @@ summary::after {content: "\2261"; color:inherit}
 details[open] > summary::after{content:"\00D7";}
 summary :is(h3, h4, h5, h6) { font-size: inherit; }
 
-summary.h3 + * { margin-top: .5em; }
+//summary.h3 + * { margin-top: .5em; }
 summary:has(h3) {
 	font-weight: bold; font-size: var(--fs-400); background: var(--grey-900); padding: 0.25em .5em; font-family: var(--ff-accent);
 }
-summary:has(h4) { font-weight: bold; font-size: var(--fs-450); }
 
 summary.h4 {font-weight: bold; font-size: var(--fs-400); font-family: var(--ff-accent);}
 

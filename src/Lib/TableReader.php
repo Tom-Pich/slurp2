@@ -54,13 +54,16 @@ class TableReader
 	/**
 	 * return a random array element, with equal probability for each element
 	 * @param array $array the source array
-	 * @return any the picked element
+	 * @return array the partial or total random array
 	 */
-	static function pickRandomArrayElement(array $array){
+	static function pickRandomArrayElements(array $array, int $qty = 1): array
+	{
+		if ($qty < 1) $qty = 1;
 		$length = count($array);
-		if (!$length) return "";
-		$random_int = random_int(0, $length-1);
-		return $array[$random_int];
+		$qty = min($qty, $length);
+		shuffle($array);
+		if (!$length) return [];
+		return array_slice($array, 0, $qty);
 	}
 
 }

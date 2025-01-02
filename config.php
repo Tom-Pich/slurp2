@@ -4,8 +4,8 @@ define("IS_ONLINE", $_SERVER['HTTP_HOST'] === 'jdr.pichegru.net');
 define("DB_ACTIVE", true);
 define("TABLE_PREFIX", "");
 define("GENERIC_PASSWORD", $_ENV["GENERIC_PASSWORD"]);
-define("VERSION", "3.14.2"); // 3.14 : refonte design fiche perso
-define("DATE_VERSION", "décembre 2024");
+define("VERSION", "3.16.1"); // 3.16 : fenêtre chat modulaire + amélioration fiche perso gestionnaire
+define("DATE_VERSION", "janvier 2025");
 define("PRODUCTION", true); // run webpack before switching to true
 
 if (IS_ONLINE){
@@ -16,7 +16,7 @@ if (IS_ONLINE){
 }
 else {
 	define("DB_HOST", "localhost");
-	define("DB_NAME", "site_jdr");
+	define("DB_NAME", "perso_jdr");
 	define("DB_USER", "root");
 	define("DB_PASSWORD", "");
 }

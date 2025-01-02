@@ -10,7 +10,7 @@ $repo_powers = new PowerRepository("ins");
 ?>
 
 <!-- Personnage -->
-<article>
+<article class="as-start">
 	<h2>Personnage</h2>
 
 	<details>
@@ -114,7 +114,7 @@ $repo_powers = new PowerRepository("ins");
 </article>
 
 <!-- Archanges & Princes-Démons -->
-<article>
+<article class="as-start">
 	<h2>Archanges &amp; Princes-démons</h2>
 
 	<details>
@@ -326,7 +326,7 @@ $repo_powers = new PowerRepository("ins");
 </article>
 
 <!-- Pouvoirs -->
-<article>
+<article class="as-start">
 	<h2>Pouvoirs</h2>
 
 	<details>
@@ -409,7 +409,8 @@ $repo_powers = new PowerRepository("ins");
 
 </article>
 
-<article>
+<!-- Vie des anges & démons -->
+<article class="as-start">
 	<h2>Vie des anges &amp; démons</h2>
 
 	<details>
@@ -438,7 +439,8 @@ $repo_powers = new PowerRepository("ins");
 
 </article>
 
-<article>
+<!-- Pour le MJ -->
+<article class="as-start">
 	<h2>Pour le MJ</h2>
 
 	<details>

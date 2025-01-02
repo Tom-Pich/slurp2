@@ -12,7 +12,7 @@
 </div>
 
 <img src="/assets/img_paorn/blason-imegie.png" width="70px" class="float-left">
-<p class="mt-0">Cité paresseuse aux maisons blanchies à la chaux, Imégie (également nommée la <i>Ville blanche</i>) est la ville la plus peuplée de l’Artaille avec 25000 habitants. C'est également la capitale de cette province.</p>
+<p>Cité paresseuse aux maisons blanchies à la chaux, Imégie (également nommée la <i>Ville blanche</i>) est la ville la plus peuplée de l’Artaille avec 25000 habitants. C'est également la capitale de cette province.</p>
 <p>
 	Elle s’étend sur une superficie de 175 ha (2,6 km dans sa plus grande longueur, de la porte de Mineurs au nord-est jusqu'aux murailles de St-Almer au sud-ouest). La citée est divisée en deux parties&nbsp;: la vieille ville, ou ville haute, au sud-ouest, et la ville basse. Ces deux parties sont séparées par une fortification intérieure et communiquent par la <i>Vieille Porte</i>.
 </p>
@@ -30,7 +30,7 @@
 	<p>
 		250 personnes sont nobles à Imégie, répartie en 5 grandes familles.<br>
 		Famille Levere : la plus ancienne et la plus puissante de la région. <br>
-		Famille Borlano : alliée de la famille Elmour. Ils possèdent les mines au nord de la ville. Largement impliqués dans la politique de la ville.<br>
+		Famille Borlano : alliée de la famille Lévère. Ils possèdent les mines au nord de la ville. Largement impliqués dans la politique de la ville.<br>
 		Famille Abella : principalement établie à Almisie, mais dont quelques membres résident à Imégie.
 	</p>
 
@@ -79,9 +79,9 @@
 			<b>Suartone Brax</b>, chef de la famille Brax a le titre de <i>Bailli principal des douanes du Prince</i>. Il est en charge de la gestion des douanes du port de marchandise. C’est lui qui coordonne le contrôle des marchandises et des navires, ainsi que la collecte des taxes.
 		</p>
 
-		<div class="flow">
-			<p><b>Eldric Brax</b>, fils aîné de la famille. 32 ans, stature élancée et athlétique. Cheveux noirs soigneusement coiffés en arrière, révélant un front haut et des traits anguleux. Yeux perçants, d'un bleu glacial, suggérant une intelligence vive et une certaine ruse. Il porte une barbe de trois jours, ajoutant à son allure un air de mystère et de danger. Vêtu de vêtements de haute qualité, souvent dans des tons sombres, il privilégie les tenues discrètes mais élégantes, adaptées à ses activités clandestines. Une bague en argent orne son doigt, symbole de son appartenance à la haute bourgeoisie.</p>
-			<div class="bg-grey-900 p-1 width-fit-content flow">
+		<div class="flex gap-1">
+			<p class="fl-2"><b>Eldric Brax</b>, fils aîné de la famille. 32 ans, stature élancée et athlétique. Cheveux noirs soigneusement coiffés en arrière, révélant un front haut et des traits anguleux. Yeux perçants, d'un bleu glacial, suggérant une intelligence vive et une certaine ruse. Il porte une barbe de trois jours, ajoutant à son allure un air de mystère et de danger. Vêtu de vêtements de haute qualité, souvent dans des tons sombres, il privilégie les tenues discrètes mais élégantes, adaptées à ses activités clandestines. Une bague en argent orne son doigt, symbole de son appartenance à la haute bourgeoisie.</p>
+			<div class="border p-1 flow fl-1">
 				<p>
 					For 12, Dex 12, Int 12, San 11, Per 11, Vol 10<br>
 					PdV 11

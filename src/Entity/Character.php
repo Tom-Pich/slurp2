@@ -21,7 +21,7 @@ class Character
 {
 	public int $id;
 	public int $id_player;
-	public int $id_group;
+	public ?int $id_group;
 	public int $id_gm;
 	public string $name;
 	public string $status;
@@ -70,10 +70,15 @@ class Character
 			$this->state = json_decode($bd_data["État"], true);
 			$this->pdxm = json_decode($bd_data["Calculs"], true);
 
-			if ($this->id_group === 100) {
+			/* if ($this->id_group === 100) {
 				$this->id_gm = 0;
 			} elseif ($this->id_group > 100) {
 				$this->id_gm = $this->id_group - 100;
+			} else {
+				$this->id_gm = (new GroupRepository)->getGroup($this->id_group)->id_gm ?? 0;
+			} */
+			if (empty($this->id_group)) {
+				$this->id_gm = 0;
 			} else {
 				$this->id_gm = (new GroupRepository)->getGroup($this->id_group)->id_gm ?? 0;
 			}
@@ -81,11 +86,11 @@ class Character
 	}
 
 	/**
-	 * checkClearance \
-	 * return True if \
-	 * (1) character exists, \
-	 * (2) request made by character owner or admin
+	 * checkClearance – return True if on of theses conditions
+	 * (1) user is admin 
+	 * (2) request made by character owner
 	 * (3) request made by group owner
+	 * (4) request made by gm status and character as no group
 	 * @return bool
 	 */
 	public function checkClearance(): bool
@@ -98,7 +103,7 @@ class Character
 		$is_admin = $_SESSION["Statut"] === 3;
 		$is_character_owner = $this->id_player === $_SESSION["id"];
 		$is_group_owner = $_SESSION["Statut"] === 2 && $_SESSION["id"] === $this->id_gm;
-		$is_test_character = $_SESSION["Statut"] === 2 && $this->id_gm === 100;
+		$is_test_character = $_SESSION["Statut"] === 2 && $this->id_group === NULL;
 
 		$has_clearance = $is_admin || $is_character_owner || $is_group_owner || $is_test_character;
 		return $has_clearance;
@@ -193,7 +198,7 @@ class Character
 				$this->state["Membres"] = TextParser::parsePseudoArray2Array($this->state["Membres"]);
 				$explicit_damages = [];
 				foreach ($this->state["Membres"] as $member => $damage) {
-					$explicit_damages[] = "<b>Blessures " . WoundController::member_abbreviation[$member]["full-name"] . " ($damage)</b>&nbsp;: " . WoundController::getMemberEffects($damage, $this->attributes["PdV"], WoundController::member_abbreviation[$member]["member"], $this->special_traits["resistance-douleur"])["description"];
+					$explicit_damages[] = "<b>" . ucfirst(WoundController::member_abbreviation[$member]["full-name"]) . " ($damage)</b>&nbsp;: " . WoundController::getMemberEffects($damage, $this->attributes["PdV"], WoundController::member_abbreviation[$member]["member"], $this->special_traits["resistance-douleur"])["description"];
 				}
 				$this->state["Membres"] = $explicit_damages;
 			}
@@ -297,7 +302,7 @@ class Character
 
 		// ––– Group members
 		$this->group_members = [];
-		if ($this->id_group < 100) {
+		if (!empty($this->id_group)) {
 			$ids = $repo->getCharactersFromGroup($this->id_group);
 			foreach ($ids as $id) {
 				if ($id !== $this->id) {
@@ -318,7 +323,7 @@ class Character
 		// Valeurs par défaut
 		$character = [
 			"id_joueur" => (int) $post["createur"],
-			"id_groupe" => 100,
+			"id_groupe" => NULL,
 			"Nom" => "Nouveau perso",
 			"Statut" => "Création",
 			"Pts" => 120,
@@ -339,7 +344,7 @@ class Character
 
 		// Kits
 		if ($kit_base) {
-			$character["Compétences"][] = ["id" => 26]; // Esquive
+			if(!$kit_combattant) $character["Compétences"][] = ["id" => 26]; // Esquive
 			$character["Compétences"][] = ["id" => 181]; // Furtivité
 			$character["Compétences"][] = ["id" => 127]; // Culture générale
 			$character["Compétences"][] = ["id" => 148]; // Baratin
@@ -352,25 +357,23 @@ class Character
 			$character["Compétences"][] = ["id" => 26, "label" => "Esquive (+1)", "niv" => 0]; // Esquive
 		}
 		if ($kit_magicien) {
-			$caracs["Int"] = 13;
+			$character["Caractéristiques"] = ["Int" => 13];
 			$character["Avdesav"][] = ["id" => 24, "nom" => "Magerie 1", "points" => 15]; // Magerie
 			$character["Avdesav"][] = ["id" => 6, "nom" => "Alphabétisation", "points" => 5]; // Alphabétisation
 			$character["Compétences"][] = ["id" => 144, "label" => "Sciences occultes", "niv" => -1]; // Sciences occultes
 		}
 		if ($kit_ange) {
 			$character["Pts"] = 230;
-			$character["Caractéristiques"] = ["For" => 14, "Dex" => 10, "Int" => 10, "San" => 12, "Per" => 10, "Vol" => 12];
+			$character["Caractéristiques"] = ["For" => 14, "San" => 12, "Vol" => 12];
 			$character["MPP"] = ["pouvoirs"];
 			$character["Avdesav"][] = ["id" => 165]; // Pack Ange
 		}
 		if ($kit_demon) {
 			$character["Pts"] = 220;
-			$character["Caractéristiques"] = ["For" => 14, "Dex" => 10, "Int" => 10, "San" => 12, "Per" => 10, "Vol" => 10];
+			$character["Caractéristiques"] = ["For" => 14, "San" => 12];
 			$character["MPP"] = ["pouvoirs"];
 			$character["Avdesav"][] = ["id" => 166]; // Pack Démon
 		}
-
-		$character["Compétences"] = array_unique($character["Compétences"]); // filtering duplicate values
 
 		$character["Caractéristiques"] = json_encode($character["Caractéristiques"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 		$character["MPP"] = json_encode($character["MPP"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
@@ -378,7 +381,6 @@ class Character
 		$character["Compétences"] = json_encode($character["Compétences"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 
 		$character["Calculs"] = json_encode($character["Calculs"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-		//$character["État"] = json_encode($character["État"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 		$character["Sorts"] = json_encode($character["Sorts"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 		$character["Pouvoirs"] = json_encode($character["Pouvoirs"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 		$character["Psi"] = json_encode($character["Psi"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
@@ -486,7 +488,7 @@ class Character
 					$f_college["niv"] = (int) $college["former-niv"] + (int) $college["score"] - (int) $college["former-score"];
 					$f_college["modif"] = TextParser::parseModif($college["name"]);
 				} else {
-					$f_college["niv"] = Skill::cost2niv(1, -8);
+					$f_college["niv"] = Skill::cost2niv(1, -8, "I");
 					$f_college["modif"] = 0;
 				}
 				if (!$f_college["modif"]) {
@@ -612,7 +614,7 @@ class Character
 					unset($f_pouvoir["modif"]);
 				}
 				$f_pouvoir["catégorie"] = "pouvoir";
-				$f_pouvoir["niv"] > Skill::cost2niv(0, -6) ? $character["Psi"][] = $f_pouvoir : "";
+				$f_pouvoir["niv"] > Skill::cost2niv(0, -6, "I") ? $character["Psi"][] = $f_pouvoir : "";
 			}
 		}
 
@@ -659,7 +661,7 @@ class Character
 		// État – ajouts récents : San,
 
 		$character = [
-			// commented values are not be updated by manager
+			// commented values are not updated by manager
 			"id" => (int) $post["id"],
 			"id_joueur" => (int) $post["id_joueur"],
 			"id_groupe" => (int) $post["id_groupe"],
@@ -725,8 +727,10 @@ class Character
 		$character["État"] = json_encode($character["État"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 		if ($character["État"] === "[]") $character["État"] = "{}";
 
+		$group_repo = new GroupRepository;
+		if (!in_array($character["id_groupe"], $group_repo->getExistingGroups())) $character["id_groupe"] = NULL;
+
 		// Update database
-		$repo = new CharacterRepository;
 		$repo->updateCharactermanager($character);
 	}
 

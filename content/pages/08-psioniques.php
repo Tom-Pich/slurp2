@@ -19,7 +19,8 @@ $niv_min = min(array_keys($_POST["niv"]));
 $niv_max = max(array_keys($_POST["niv"]));
 ?>
 
-<article>
+<!-- Généralités -->
+<article class="as-start">
 	<h2>Généralités</h2>
 
 	<details>
@@ -91,7 +92,8 @@ $niv_max = max(array_keys($_POST["niv"]));
 
 </article>
 
-<article>
+<!-- Utiliser un pouvoir -->
+<article class="as-start">
 	<h2>Utiliser un pouvoir</h2>
 
 	<details>
@@ -185,7 +187,8 @@ $niv_max = max(array_keys($_POST["niv"]));
 
 </article>
 
-<article data-role="spells-wrapper">
+<!-- Liste des pouvoirs -->
+<article class="as-start" data-role="spells-wrapper">
 	<h2>
 		<?php if ($_SESSION["Statut"] === 3) { ?><a href="gestion-listes?req=psi&id=0" class="nude ff-far">&#xf044;</a><?php } ?>
 		Liste des pouvoirs
@@ -247,4 +250,5 @@ $niv_max = max(array_keys($_POST["niv"]));
 	?>
 
 </article>
+
 <script type="module" src="/scripts/spells-powers-filter.js?v=2" defer></script>

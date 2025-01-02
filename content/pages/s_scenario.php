@@ -1,10 +1,12 @@
-<article><!-- Préalables – incubez sans succomber -->
+<!-- Préalables – incubez sans succomber -->
+<article>
 	<h2>Incubez sans succomber</h2>
 
 	<p>Ceci est une version mise à jour de <a href="https://ptgptb.fr/ecrire-un-scenario" target="_blank">mon article</a> sur ptgptb.fr. Il s’agit d’un guide méthodologique pour rédiger un scénario.</p>
 	<p>Avant de noter quoi que ce soit pour votre scénario, commencez par les étapes ci-dessous&hellip;</p>
 
-	<details><!-- Pour qui ? -->
+	<!-- Pour qui ? -->
+	<details>
 		<summary><h3>Style, durée et difficulté</h3></summary>
 
 		<p>Première étape&nbsp;: avoir une idée du style de scénario que vous allez écrire, de sa durée, de sa difficulté&hellip; Et cela dépend de vos joueurs.</p>
@@ -29,7 +31,8 @@
 
 	</details>
 
-	<details><!-- Types d’intrigue -->
+	<!-- Types d’intrigue -->
+	<details>
 		<summary><h3>Les 36 types d’intrigues</h3></summary>
 		<p>Source&nbsp;: <a href="http://fudge.ouvaton.org/GrandeListe.html" target="_blank">36 types d’intrigues, par John Ross</a>.</p>
 
@@ -572,7 +575,8 @@
 		<p>Variez les structures de scénario (linéaire, semi-ouvert ou ouvert). Vous pouvez même créer un scénario composite dont l’une des composantes est ouverte et l’autre linéaire.</p>
 	</details>
 
-	<details><!-- Thèmes -->
+	<!-- Thèmes -->
+	<details>
 		<summary><h3>Thèmes</h3></summary>
 		<p>Le thème du scénario est le concept ou l’idée autour duquel ou de laquelle tourne le scénario. On peut distinguer deux types de thèmes, non exclusifs.</p>
 
@@ -600,7 +604,8 @@
 		</details>
 	</details>
 
-	<details><!-- Chasse aux idées -->
+	<!-- Chasse aux idées -->
+	<details>
 		<summary><h3>La chasse aux idées</h3></summary>
 
 		<p>Quelques pistes pour avoir des idées.</p>
@@ -633,22 +638,25 @@
 		<p><b>Goûts et aspirations</b> des joueurs et de leur personnages.</p>
 	</details>
 
-	<details><!-- Fiche de scénario -->
+	<!-- Fiche de scénario -->
+	<details class="flow">
 		<summary><h3>Préparer votre fiche de scénario</h3></summary>
 
 		<p>Préparer un document avec les trois grandes sections ci-dessous. Laissez-les vides pour l’instant. Le guide pour les compléter se trouve dans les sections suivantes</p>
 
-		<details><!-- Notes -->
+		<!-- Notes -->
+		<details>
 			<summary class="h4 px-½" style="background-color: var(--clr-primary-light)">Notes</summary>
 
-			<p>Une section temporaire qui évolue constamment. C’est le lieu où incubent vos idées et vos questions sur le scénario. Elle reflète le bouillonnement de vos idées. Certaines vont intégrer le scénario, d’autres vont y rester avant de mûrir et d’évoluer, d’autres encore seront abandonnées.</p>
+			<p>Une section temporaire qui évolue constamment. Vous pouvez la traiter à part, sur un brouillon ou un fichier temporaire. C’est le lieu où incubent vos idées et vos questions sur le scénario. Elle reflète le bouillonnement de vos idées. Certaines vont intégrer le scénario, d’autres vont y rester avant de mûrir et d’évoluer, d’autres encore seront abandonnées.</p>
 			<p><b>Pendant votre préparation préparation</b>, notez-y vos idées, les questions auxquelles vous devez répondre et les éléments à intégrer dans le scénario.</p>
 			<p><b>Pendant le jeu</b>, noter les déroulements des actions, les questions qui surgissent, les points à détailler pour la prochaine fois.</p>
 
 		</details>
 
-		<details><!-- Scénario -->
-			<summary class="h4 px-½ mt-½" style="background-color: var(--clr-secondary-light)">Scénario</summary>
+		<!-- Scénario -->
+		<details>
+			<summary class="h4 px-½" style="background-color: var(--clr-secondary-light)">Scénario</summary>
 
 			<p>C’est dans cette section que vous écrirez votre scénario. Elle comprend plusieurs parties.</p>
 
@@ -669,14 +677,16 @@
 				On va noter dans cette partie le déroulement du scénario en lui-même. Comme le scénario ne se déroulera pas comme prévu, on y ajoutera au fur et à mesure, des notes sur ce qu’ont effectivement fait les joueurs.<br>
 				Vous pouvez même déjà noter «&nbsp;Acte 1, Acte 2, Acte 3&hellip;&nbsp;». Vous mettrez les titres quand vous aurez les idées claires.
 			</p>
+			<p>Le dernier acte annonce le paroxysme du scénario, qui se déroule lors de sa dernière scène.</p>
 
-			<h4>Le dénouement</h4>
-			<p>C’est l’acte final, composé d’un paroxysme et d’un épilogue.</p>
+			<h4>L’épilogue</h4>
+			<p>Une scène courte qui permet le retour à la normal. Il peut éventuellement préparer les personnages (et les joueurs) au scénario suivant.</p>
 
 		</details>
 
-		<details><!-- Annexes -->
-			<summary class="h4 px-½ mt-½" style="background-color: var(--clr-accent-light)">Annexes</summary>
+		<!-- Annexes -->
+		<details>
+			<summary class="h4 px-½" style="background-color: var(--clr-accent-light)">Annexes</summary>
 			<p>
 				On mettra dans cette partie toutes les informations «&nbsp;statiques&nbsp;», c’est-à-dire celles qui ne relèvent pas d’actions. PNJ, lieux, légendes, histoires, objets&hellip;<br>
 				Si ce que vous avez à noter peut éventuellement être utilisé dans un autre scénario, ou dans une suite, c’est probablement que ça a sa place dans cette section.
@@ -688,7 +698,8 @@
 
 </article>
 
-<article><!-- Notes -->
+<!-- Notes -->
+<article>
 	<h2 style="background-color: var(--clr-primary-dark)">Notes</h2>
 	<p>Cette section est un brouillon. Notez-y tout ce qui vous vient à l’esprit&nbsp;: idées, PNJ, questions&hellip;</p>
 	<p>Elle va évoluer tout au long de votre travail de création&nbsp;: vous y ajouterez des idées ou des questions, et retirerez ce qui n’est plus pertinent ou ce qui a été intégré à l’écriture de votre scénario.</p>
@@ -859,12 +870,14 @@
 
 </article>
 
-<article><!-- Scénario -->
+<!-- Scénario -->
+<article>
 	<h2 style="background-color: var(--clr-secondary-dark)">Scénario</h2>
-	<p>C’est dans cette section que vous allez écrire votre scénario proprement dit&nbsp;: sa raison d’être (<i>Contexte &amp; causes</i>) et son déroulement (<i>Introduction</i>, <i>Développement</i> et <i>Paroxysme</i>).</p>
+	<p>C’est dans cette section que vous allez écrire votre scénario proprement dit&nbsp;: sa raison d’être (<i>Contexte &amp; causes</i>) et son déroulement (<i>Introduction</i>, <i>Développement</i>, <i>Paroxysme</i>, <i>Épilogue</i>).</p>
 	<p>Écrire en style télé&shy;graphique est suffisant.</p>
 
-	<details><!-- Contexte & causes -->
+	<!-- Contexte & causes -->
+	<details>
 		<summary><h3>Contexte &amp; causes</h3></summary>
 		<p>Expliquer le pourquoi du comment de l’intrigue ainsi que le contexte dans lequel elle s’inscrit.</p>
 		<p>Le contexte du scénario décrit la situation (politique, géographique, social, etc), l’histoire et les particularités qui ont permis l’émergence des causes de votre scénario.</p>
@@ -872,13 +885,15 @@
 		<p>Il s’agit d’une partie très importante car elle influe non seulement sur la cohérence et la crédibilité de votre scénario, mais aussi sur la complexité de l’intrigue que vous allez développer. Cette partie peut également être génératrice d’idées.</p>
 	</details>
 
-	<details><!-- Synopsis -->
+	<!-- Synopsis -->
+	<details>
 		<summary><h3>Synopsis</h3></summary>
 		<p>Décrire brièvement les différentes étapes probables du scénario, depuis l’introduction jusqu’à la scène finale.</p>
 		<p>Cette section ne sert pas à y noter des informations (elles seront décrites dans la scène ou la section d’annexes appropriée), mais seulement à avoir une idée claire des différentes étapes.</p>
 	</details>
 
-	<details><!-- Introduction -->
+	<!-- Introduction -->
+	<details>
 		<summary><h3>Introduction</h3></summary>
 
 		<p>
@@ -945,7 +960,8 @@
 
 	</details>
 
-	<details><!-- Développement -->
+	<!-- Développement -->
+	<details>
 		<summary><h3>Développement du scénario</h3></summary>
 		<p>Le scénario doit avoir un but ultime (révélé rapidement ou par étapes) et proposer des objectifs intermédiaires clairs et réalisables qui mènent à son achèvement.</p>
 
@@ -953,24 +969,24 @@
 		<details>
 			<summary class="h4">Le plan</summary>
 
-			<p>L’écriture de ce plan n’est pas nécessairement strictement chronologique. Si la structure de votre scénario est ouverte ou semi-ouverte, le plan peut être découpé par thème. Voir notamment le <i>Modèle insulaire</i>, dans la partie <i>Linéaire ou ouvert&nbsp;? – Structure semi-ouverte</i>.</p>
+			<p>L’écriture de ce plan n’est pas nécessairement strictement chronologique. Si la structure de votre scénario est ouverte ou semi-ouverte, le plan peut être découpé par thème. Voir notamment le <i>Modèle insulaire</i>, dans la partie <i>Linéaire ou ouvert&nbsp;? Structure semi-ouverte</i>.</p>
 
 			<h5>Les actes</h5>
-			<p>Découpez votre scénario en différents «&nbsp;<b>actes</b>&nbsp;». Chaque acte doit avoir un objectif clair (au moins pour le MJ).</p>
-			<p>Un acte peut présenter des pistes vers des intrigues secondaires et quelques fausses pistes (2 ou 3 maximum).</p>
+			<p>Découpez votre scénario en différents «&nbsp;actes&nbsp;». Chaque acte doit avoir un objectif clair (au moins pour le MJ).</p>
+			<p>Un acte peut présenter des pistes vers des intrigues secondaires et quelques fausses pistes (2 ou 3).</p>
 			<p>Il peut être intéressant de finir un acte sur un «&nbsp;mini-paroxysme&nbsp;», afin de moduler la tension en cours de partie et peut-être dévoiler un aspect de ce que sera le <i>paroxysme</i> final.</p>
 
 			<h5>Les scènes</h5>
-			<p>Un acte peut-être découpée en <b>scènes</b>, chaque scène correspondant à un environnement particulier. Une scène est une mini-aventure&nbsp;: on y trouve une accroche rapide qui mène à une situation et une ou plusieurs solutions. Les scènes ne doivent pas, généralement, être conçues de manière trop rigide, c’est-à-dire exigeant des actions très précises des joueurs ou être trop dépendantes des scènes précédentes pour bien fonctionner.</p>
+			<p>Un acte peut-être découpé en scènes, chaque scène correspondant à un environnement particulier. Une scène est une mini-aventure&nbsp;: on y trouve une accroche rapide qui mène à une situation et une ou plusieurs solutions. Les scènes ne doivent pas, généralement, être conçues de manière trop rigide, c’est-à-dire exigeant des actions très précises des joueurs ou être trop dépendantes des scènes précédentes pour bien fonctionner. Voir également ci-dessous le <i>format IARR</i>.</p>
 		</details>
 
 		<!-- Objectifs d’une scène -->
 		<details>
 			<summary class="h4">Objectif(s) d’une scène</summary>
 			<p>Chaque scène doit avoir une (ou plusieurs) raisons d’être. En voici les principales&nbsp;:</p>
-			<ul class="flow">
+			<ul class="flow ta-justify">
 				<li><b>Augmenter la tension</b>, que cette tension soit psychologique (découverte de détails dévoilant peu à peu l’horrible vérité, ou plonger les personnages dans des circonstances étranges ou inquiétantes), physique (combat, pièges, le tout à un rythme soutenu) ou relationnelle (conflits entre personnage ou même conflit intérieur d’un personnage).</li>
-				<li><b>Fournir des obstacles.</b> Prévoir des obstacles est capital. Cela permet d’éviter la sensation de «&nbsp;se promener&nbsp;» dans le scénario. L’obstacle peut être physique (une porte gardée, des archives non ouvertes au public, un indice difficile à repérer) ou relationnel (un PNJ qui s’oppose aux objectifs des PJ). Cela peut aussi être des difficultés à découvrir des informations. Ces obstacles servent d’autant mieux le scénario s’ils sont totalement imprévus par les joueurs.</li>
+				<li><b>Fournir des obstacles.</b> Prévoir des obstacles permet d’éviter la sensation de «&nbsp;se promener&nbsp;» dans le scénario. L’obstacle peut être physique (une porte gardée, des archives non ouvertes au public, un indice difficile à repérer) ou relationnel (un PNJ qui s’oppose aux objectifs des PJ). Cela peut aussi être des difficultés à découvrir des informations. Ces obstacles servent d’autant mieux le scénario s’ils sont totalement imprévus par les joueurs.</li>
 				<li><b>Atteindre un objectif.</b> Ces scènes constituent un mini-paroxysme (trouver le suspect principal, vaincre le bras droit du méchant). Elles peuvent permettre aux joueurs d’imaginer une partie du paroxysme, pour qu’ils en soient plus conscients lorsqu’il viendra. Elles orientent ou confirment les joueurs dans la bonne orientation et permettent de donner de la cohésion aux aventures longues.</li>
 				<li><b>Dégager une ambiance.</b> Ces scènes permettent d’immerger les joueurs dans un monde indépendant et vivant, où personne n’est juste un «&nbsp;accessoire&nbsp;». Elles sont souvent descriptives, soit par un récit direct du MJ, soit par l’intermédiaire d’un PNJ haut en couleur. Elles aident les joueurs à penser comme leur personnage et favorisent le roleplay. Elles peuvent également préparer les joueurs aux événements qui surviendront à l’apogée de l’histoire.</li>
 				<li><b>Découvrir un indice / éclaircir un mystère.</b> Ce genre de scène fournit une pièce du puzzle de l’intrigue – sans nécessairement que les joueurs en aient conscience immédiatement. Elle permet de faire un pas vers la compréhension de l’intrigue.</li>
@@ -1084,13 +1100,20 @@
 
 	</details>
 
-	<details><!-- Paroxysme et épilogue -->
-		<summary><h3>Paroxysme &amp; Épilogue</h3></summary>
-		<p>Un scénario doit se terminer par un paroxysme. C’est la séquence <b>la plus importante du scénario</b>. Elle doit donc être traitée avec plus de détails que n’importe quel autre élément de l’aventure. C’est elle qui va le plus contribuer aux souvenirs qu’auront vos joueurs du scénario.</p>
+	<!-- Paroxysme et épilogue -->
+	<details>
+		<summary><h3>Paroxysme</h3></summary>
+		<p>Un scénario <i>doit</i> se terminer par un paroxysme. C’est la séquence <b>la plus importante du scénario</b>. Elle doit donc être traitée avec plus de détails que n’importe quel autre élément de l’aventure. C’est elle qui va le plus contribuer aux souvenirs qu’auront vos joueurs du scénario.</p>
 		<p>Le paroxysme <b>doit</b> exister. Même si les joueurs ont manqué une partie de l’aventure, ils doivent parvenir jusqu’au paroxysme. Celui-ci constitue l’apogée de l’action et de l’émotion et amène à la conclusion du scénario. Il doit s’agir d’un feu d’artifice mêlant grand spectacle, émotions à leur comble et enjeux décisifs.</p>
 		<p>Le paroxysme est la résolution (au sens musical, et non mathématique) logique et cohérente, de l’accumulation naturelle de la tension et de l’excitation générées par le scénario. Il prend la forme d’un choix (clair, mais pas forcément simple) et/ou d’une tâche à accomplir et doit être plus qu’un simple combat contre le «&nbsp;boss de fin de niveau&nbsp;»&nbsp;: il doit être original. S’il y a un combat final, le paroxysme doit créer une ambiguïté morale à propos de ce combat, comme par exemple l’obligation de sacrifier des innocents pour éliminer le Grand Méchant. Le choix qu’il propose ne doit pas être simple ou évident. Pensez aux solutions «&nbsp;faciles&nbsp;» de votre scénario et faites en sorte de les éliminer. Si l’intrigue implique un paroxysme prévisible, arrangez-vous pour qu’une ou plusieurs des actions prévisibles ne soient pas réalisables au moment du paroxysme&nbsp;: rendez leur plan inopérant, surtout s’il est relativement banal.</p>
 
 		<p>Enfin, la résolution du paroxysme ne doit pas reposer sur un simple jet de dés. Il vaut mieux prévoir des solutions de rattrapage en cas de poisse, sous peine de frustrer les joueurs.</p>
+
+	</details>
+
+	<!-- Épilogue -->
+	<details>
+		<summary><h3>Épilogue</h3></summary>
 
 		<p>Après le paroxysme vient l’épilogue. Celui-ci doit être bref et ne comporter que quelques actions ordinaires, pour ne pas perdre l’intensité du paroxysme. Vous pouvez également prévoir une scène ouvrant de nouvelles perspectives qui annonce le prochain scénario en proposant au moins deux pistes aux joueurs qui mèneront vers des scénarios distincts. Vos joueurs ne s’en sentiront que plus libres de choisir le destin de leur personnage.</p>
 
@@ -1099,7 +1122,8 @@
 
 </article>
 
-<article><!-- Annexes -->
+<!-- Annexes -->
+<article>
 	<h2 style="background-color: var(--clr-accent-dark)">Annexes</h2>
 
 	<p>Dans cette section, vous noterez toutes les informations «&nbsp;statiques&nbsp;», c’est-à-dire celles dont vous pourrez avoir besoin à différents moment du scénario.</p>
@@ -1137,7 +1161,8 @@
 
 </article>
 
-<article><!-- Conseils divers -->
+<!-- Conseils divers -->
+<article>
 	<h2>Conseils divers</h2>
 
 	<!-- En cours de jeu -->
@@ -1161,6 +1186,32 @@
 		<summary><h3>Illustrations et musique</h3></summary>
 		<p>Préparer des illustrations et une ambiance sonore (bruitage et/ou musique).</p>
 		<p>Pour ce qui est de la bande sonore, <a href="https://environment.ambient-mixer.com/" target="_blank">Ambient-mixer</a> permet de mixer plusieurs pistes (bruitages et/ou musique). Créez une ou plusieurs listes de lecture pour démarrer rapidement la lecture d’une série de morceaux préalablement choisis.</p>
+	</details>
+
+	<!-- Écrire une campagne -->
+	<details>
+		<summary><h3>Et en campagne&nbsp;?</h3></summary>
+		<p>Reprenez l’organisation suggérée pour un scénario unique, mais cette fois, chaque scène est un scénario complet.</p>
+		<p>Vous allez donc avoir la structure suivante sur votre document&nbsp;:</p>
+		<div class="border p-½">
+			<h4 class="mt-0">Titre de la campagne</h4>
+			<p>
+				Notes de campagne<br>
+				Contexte et causes de la campagne<br>
+				Synopsis de la campagne
+			</p>
+			<p class="fw-700" style="margin-bottom: 0">Scénario 1</p>
+			<ul>
+				<li>Notes</li>
+				<li>Contexte &amp; causes</li>
+				<li>Synopsis</li>
+				<li>Scènes</li>
+				<li>Annexes du scénario</li>
+			</ul>
+			<p class="fw-700">Scénario 2</p>
+			<p class="fw-700">(&hellip;)</p>
+			<p>Annexes de la campagne</p>
+		</div>
 	</details>
 
 	<p class="mt-2">

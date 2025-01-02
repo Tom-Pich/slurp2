@@ -43,22 +43,14 @@ originInputs.forEach((checkbox) => {
 
 // reactivity to keyword input
 keywordInput.addEventListener("keyup", (e) => {
-  filterContent()
-  //if (keywordDelayId) clearTimeout(keywordDelayId);
-  //keywordDelayId = setTimeout(filterContent, 200);
+	filterSpells();
+	filterSkills();
+	filterAvdesavs();
 });
-
-// Filter all content
-function filterContent(){
-  filterSpells();
-  filterSkills();
-  filterAvdesavs();
-}
 
 // Filter spells by level and/or origin and/or keyword
 function filterSpells() {
   const spells = qsa("[data-role=spells-wrapper] .liste");
-  //const collegeWrappers = qsa("[data-role=spells-wrapper] > details:not(.liste");
 
   const origins = [];
   originInputs.forEach((checkbox) => {
@@ -73,7 +65,7 @@ function filterSpells() {
   const keyword = keywordInput.value;
 
   spells.forEach((spell) => {
-    const spellName = spell.querySelector("summary div:first-of-type").innerText;
+    const spellName = spell.querySelector("summary div:first-of-type").textContent;
     const spellNameMatchesKeyword = keywordMatch(spellName, keyword) || keyword.length <= 2;
     if (spell.dataset.nivMin > max || spell.dataset.nivMax < min || !origins.includes(spell.dataset.origin) || !spellNameMatchesKeyword) {
       spell.classList.add("hidden");
@@ -84,13 +76,6 @@ function filterSpells() {
 
   hideEmptyCategories();
 
-  // hide title "Collèges spéciaux" if needed
- /*  const specialColleges = qsa("[data-role=spells-wrapper] h4 ~ details:not(.hidden");
-  const specialCollegesTitle = qs("[data-role=spells-wrapper] h4");
-  if (specialCollegesTitle) {
-    if (!specialColleges.length) specialCollegesTitle.classList.add("hidden");
-    else specialCollegesTitle.classList.remove("hidden");
-  } */
 }
 
 // Filter skills by keyword
@@ -137,5 +122,7 @@ function hideEmptyCategories() {
 function keywordMatch(expression, keyword) {
   const normalizedKeyword = keyword.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   const normalizedExpression = expression.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  //console.log(normalizedKeyword);
+  //console.log(normalizedExpression);
   return normalizedExpression.includes(normalizedKeyword)
 }

@@ -1,4 +1,5 @@
-<article class="flow"> <!-- Ressources documentaires -->
+<!-- Ressources documentaires -->
+<article class="flow as-start">
 
 	<h2>Ressources documentaires</h2>
 
@@ -13,7 +14,8 @@
 
 </article>
 
-<article class="flow"> <!-- Générateurs -->
+<!-- Générateurs -->
+<article class="flow as-start"> 
 
 	<h2>Générateurs aléatoires</h2>
 
@@ -47,7 +49,8 @@
 
 </article>
 
-<article class="flow"><!-- Outils -->
+<!-- Outils -->
+<article class="flow as-start">
 	<h2>Outils numériques</h2>
 
 	<h3>Plateforme VTT</h3>

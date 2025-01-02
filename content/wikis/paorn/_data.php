@@ -5,8 +5,8 @@ $description = "Diverses notes à propos de Paorn";
 
 $articles = [
 
-	"artaille" => ["title" => "Artaille", "section" => "Région"],
-	"lauria" => ["title" => "Lauria", "section" => "Région"],
+	"artaille" => ["title" => "Artaille", "section" => "Régions"],
+	"lauria" => ["title" => "Lauria", "section" => "Régions"],
 
 	"almisie" => ["title" => "Almisie", "section" => "Villes de Burgonnie"],
 	"imegie" => ["title" => "Imégie", "section" => "Villes de Burgonnie"],

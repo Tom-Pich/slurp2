@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Creature;
 use App\Entity\Attribute;
+use App\Entity\Character;
 use App\Entity\Equipment;
 use App\Lib\TextParser;
 use App\Rules\CriticalController;
@@ -177,6 +178,16 @@ class ApiController
 	public function getFrightcheckResult (int $frightLevel, int $sfScore, int $sanScore, int $frightcheckMR, int $frighcheckCriticalStatus, string $frighcheckSymbol, array $rolls)
 	{
 		$this->response["data"] = MentalHealthController::getFrighcheckEffects($frightLevel, $sfScore, $sanScore, $frightcheckMR, $frighcheckCriticalStatus, $frighcheckSymbol, $rolls);
+		$this->sendResponse();
+	}
+
+	public function getCharacter(int $id)
+	{
+		$character = new Character($id);
+		$character->processCharacter();
+		$character_array = get_object_vars($character);
+		$this->response["data"] = $character_array;
+		//foreach ($character_array as $property => $value) $this->response["data"] ;
 		$this->sendResponse();
 	}
 

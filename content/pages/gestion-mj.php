@@ -29,25 +29,26 @@ foreach ($characters_id as $character) {
 
 <div id="ws-data" hidden data-session-id="<?= $_SESSION["id"] ?>" data-ws-key="<?= WS_KEY ?>"></div>
 
-<article><!-- Objets orphelins -->
+<!-- Objets orphelins -->
+<article>
 	<h2>Objets orphelins</h2>
-	<form id="items-form" class="grid gap-¼"><!-- method="post" action="/submit/equipment-list" -->
+	<form id="items-form" class="grid">
 		<?php
 		$n = 0;
 		foreach ($liste_objets_orphelins as $objet) { ?>
-			<div class="flex-s fl-wrap gap-½ ai-first-baseline">
-				<div class="ta-right" style="width: 4ch"><?= $objet->id ?></div class="ta-right">
-				<input type="text" name="objet-gestionnaire[<?= $n ?>][Nom]" value="<?= $objet->name ?>" size="30" placeholder="Nom de l’objet">
-				<div>
+			<div class="grid single-item-wrapper gap-½">
+				<div class="ta-right fs-300" style="grid-area: id; align-self: center"><?= $objet->id ?></div>
+				<input type="text" name="objet-gestionnaire[<?= $n ?>][Nom]" value="<?= $objet->name ?>" placeholder="Nom de l’objet"  style="grid-area: name">
+				<div class="flex-s ai-center">
 					<label class="ff-fas">
 						&#xf187;
 						<input type="checkbox" name="objet-gestionnaire[<?= $n ?>][Contenant]" <?= $objet->isContainer ? "checked" : "" ?> title="contenant ?">
 					</label>
 				</div>
-				<input type="text" name="objet-gestionnaire[<?= $n ?>][Poids]" value="<?= $objet->weight ?>" size="2" placeholder="Pds" class="ta-center" title="poids">
-				<input type="text" name="objet-gestionnaire[<?= $n ?>][Lieu]" value="<?= $objet->place ?>" size="5" class="ta-center" placeholder="Lieu">
-				<input type="text" name="objet-gestionnaire[<?= $n ?>][Notes]" value="<?= $objet->notes ?>" class="fl-1" placeholder="Notes">
-				<input type="text" name="objet-gestionnaire[<?= $n ?>][Secret]" value="<?= $objet->secret ?>" class="fl-1 clr-warning" placeholder="Notes du MJ">
+				<input type="text" name="objet-gestionnaire[<?= $n ?>][Poids]" value="<?= $objet->weight ?>" class="ta-center" placeholder="Pds" title="poids">
+				<input type="text" name="objet-gestionnaire[<?= $n ?>][Lieu]" value="<?= $objet->place ?>" class="ta-center" placeholder="Lieu">
+				<input type="text" name="objet-gestionnaire[<?= $n ?>][Notes]" value="<?= $objet->notes ?>" placeholder="Notes" style="grid-area: notes">
+				<input type="text" name="objet-gestionnaire[<?= $n ?>][Secret]" value="<?= $objet->secret ?>" class="clr-warning" placeholder="Notes du MJ"  style="grid-area: notes-mj">
 				<input hidden name="objet-gestionnaire[<?= $n ?>][id]" value="<?= $objet->id ?>">
 			</div>
 		<?php
@@ -57,12 +58,13 @@ foreach ($characters_id as $character) {
 	</form>
 </article>
 
-<article><!-- Groupes et personnages -->
+<!-- Groupes et personnages -->
+<article>
 	<h2>Groupes &amp; Personnages</h2>
 
 	<?php foreach ($groups as $group) { ?>
 		<details data-group="<?= $group->id ?>">
-			<summary><h3><?= $group->id ?>. <?= $group->name ?></h3></summary>
+			<summary><h3><?= $group->id ?? "X" ?>. <?= $group->name ?></h3></summary>
 			<div class="flex gap-½ fl-wrap mt-½">
 				<?php
 				$group_characters = array_filter($characters, fn ($x) => $x->id_group === $group->id);
@@ -140,13 +142,13 @@ foreach ($characters_id as $character) {
 
 						<div class="flex-s gap-½ mt-½">
 							<input type="text" name="Pts" value="<?= $perso->points ?>" style="width: 5ch" class="ta-center" title="Pts de perso">
-							<input type="text" name="id_groupe" value="<?= $perso->id_group ?>" style="width: 5ch" class="ta-center" title="groupe">
-							<select name="id_joueur" class="fl-1">
+							<input type="text" name="id_groupe" value="<?= $perso->id_group ?>" style="width: 5ch" class="ta-center" title="groupe" placeholder="Gr">
+							<select name="id_joueur" class="fl-1" title="joueur">
 								<?php foreach ($users as $user) { ?>
 									<option value="<?= $user->id ?>" <?= $user->id === $perso->id_player ? "selected" : "" ?>><?= $user->login ?></option>
 								<?php } ?>
 							</select>
-							<select name="Statut" class="fl-1">
+							<select name="Statut" class="fl-1" title="statut">
 								<option <?= $perso->status === "Création" ? "selected" : "" ?>>Création</option>
 								<option <?= $perso->status === "Actif" ? "selected" : "" ?>>Actif</option>
 								<option <?= $perso->status === "Archivé" ? "selected" : "" ?>>Archivé</option>
@@ -195,6 +197,11 @@ foreach ($characters_id as $character) {
 							<!--  -->
 							<textarea name="État[Autres]" placeholder="Autres éléments d’état" title="Autres éléments d’état – séparateur ;"><?= $perso->state["Autres"] ?? "" ?></textarea>
 						</div>
+						
+						<!-- Détails du personnage -->
+						<div class="mt-½ flow" data-role="character-summary">
+							<!-- asynchronous fill with template -->
+						</div>
 
 						<input hidden name="Calculs[PdVm]" value="<?= $perso->pdxm["PdVm"] ?? "" ?>">
 						<input hidden name="Calculs[PdFm]" value="<?= $perso->pdxm["PdFm"] ?? "" ?>">
@@ -212,6 +219,7 @@ foreach ($characters_id as $character) {
 
 <article><!-- Créer un personnage -->
 	<h2>Créer un personnage</h2>
+	<p>Les kits sont cumulatifs. En cas de conflit, les derniers (dans l’ordre de lecture) écrasent les premiers.</p>
 	<form method="post" action="/submit/create-character">
 		<div class="flex gap-1">
 			<div class="card">
@@ -222,7 +230,7 @@ foreach ($characters_id as $character) {
 				<p><i>Esquive</i>, <i>Furtivité</i>, <i>Culture générale</i>, <i>Baratin</i>, <i>Acteur</i></p>
 			</div>
 			<div class="card">
-				<label for="kit_combattant">
+				<label>
 					<input type="checkbox" name="kit_combattant">
 					<b>Kit Combattant</b>
 				</label>
@@ -240,7 +248,7 @@ foreach ($characters_id as $character) {
 					<input type="checkbox" name="kit_ange">
 					<b>Kit Ange</b>
 				</label>
-				<p><i>Pack Ange</i>, <i>Force</i> 14, <i>Santé</i> et <i>Volonté</i> à 12</p>
+				<p><i>Pack Ange</i>, <i>Force</i> 14, <i>Santé</i> 12, <i>Volonté</i> 12</p>
 			</div>
 			<div class="card">
 				<label>
@@ -262,7 +270,7 @@ foreach ($characters_id as $character) {
 			<div class="flex gap-1 fl-wrap jc-center">
 
 				<?php foreach ($groups as $group) {
-					if ($group->id < 100) {
+					if ($group->id !== NULL) {
 				?>
 						<div class="card">
 							<div class="flex-s gap-½">
@@ -273,7 +281,9 @@ foreach ($characters_id as $character) {
 								<div style="width: 3ch">MJ</div>
 								<select name="groupes[<?= $group->id ?>][MJ]" class="fl-1">
 									<?php foreach ($users as $user) { ?>
+										<?php if ($user->status >= 2): ?>
 										<option value="<?= $user->id ?>" <?= $user->id === $group->id_gm ? "selected" : "" ?>><?= $user->login ?></option>
+										<?php endif; ?>
 									<?php } ?>
 								</select>
 							</div>
@@ -292,5 +302,19 @@ foreach ($characters_id as $character) {
 		</form>
 	</article>
 <?php } ?>
+
+<template id="character-details">
+	For <span data-content="For" ></span>&nbsp;;
+	Dex <span data-content="Dex" ></span>&nbsp;;
+	Int <span data-content="Int" ></span>&nbsp;;
+	San <span data-content="San" ></span>&nbsp;;
+	Per <span data-content="Per" ></span>&nbsp;;
+	Vol <span data-content="Vol" ></span>
+
+	<p data-content="Avantage"></p>
+	<p data-content="Désavantage"></p>
+	<p data-content="Travers"></p>
+	<p data-content="Réputation"></p>
+</template>
 
 <script type="module" src="/scripts/characters-manager<?= PRODUCTION ? ".min" : "" ?>.js?v=<?= VERSION ?>" defer></script>

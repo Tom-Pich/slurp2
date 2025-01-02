@@ -46,9 +46,9 @@ class PsiPower implements RulesItem
 			$known_power_data = array_filter($raw_powers, fn ($x) => $x["id"] === $power_entity->id);
 			$known_power_data = array_values($known_power_data)[0] ?? [];
 			$f_power["id"] = $power_entity->id;
-			$f_power["niv"] = $known_power_data["niv"] ?? Skill::cost2niv(0, -6);
+			$f_power["niv"] = $known_power_data["niv"] ?? Skill::cost2niv(0, -6, "I");
 			$f_power["modif"] = $known_power_data["modif"] ?? 0;
-			$f_power["points"] = Skill::niv2cost($f_power["niv"], -6);
+			$f_power["points"] = Skill::niv2cost($f_power["niv"], -6, "I");
 
 			// best discipline niv of power
 			$discipline_niv = 0;

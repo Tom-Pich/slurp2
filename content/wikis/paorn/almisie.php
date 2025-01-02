@@ -9,7 +9,7 @@
 
 <img src="/assets/img_paorn/blason-almisie.png" width="70px" class="float-left">
 
-<p class="mt-0">Almisie est une ville réputée pour son artisanat, en particulier pour ses cristalleries. Les artisans d'Almisie sont célèbres pour leur habileté à façonner des objets en cristal d'une finesse et d'une beauté inégalées. Dans les environs de la ville sont produits des vins réputés dans tout Paorn, dont les vignobles s'étendent à perte de vue sur les collines environnantes. Malgré sa relative richesse, Almisie ne possède pas de murs d'enceinte, mais ses troupes sont largement suffisantes pour assurer sa sécurité contre d'éventuels pillards.</p>
+<p>Almisie est une ville réputée pour son artisanat, en particulier pour ses cristalleries. Les artisans d'Almisie sont célèbres pour leur habileté à façonner des objets en cristal d'une finesse et d'une beauté inégalées. Dans les environs de la ville sont produits des vins réputés dans tout Paorn, dont les vignobles s'étendent à perte de vue sur les collines environnantes. Malgré sa relative richesse, Almisie ne possède pas de murs d'enceinte, mais ses troupes sont largement suffisantes pour assurer sa sécurité contre d'éventuels pillards.</p>
 
 <p>
 	Elle compte environ 20.000 habitants, soit presque autant que la capitale, Imégie. N’étant pas ceinte par des murailles, la ville s’étend sur une assez grande surface (150 ha). Les maisons d'Almisie sont principalement construites en pierre locale, avec des toits de tuiles rouges qui brillent sous le soleil. Dans la partie la plus ancienne de la ville, les rues pavées sont bordées de fontaines et de statues, témoignant de la prospérité de la cité.<br>
@@ -22,6 +22,7 @@
 
 <h3>PNJ, groupes & organisations</h3>
 
+<h4>Edar Valmor, seigneur d’Almisie, cousin du prince Sémilis d’Imégie</h4>
 <div class="wiki-right-element flow">
 	<figure>
 		<img src="/assets/img_paorn/pnj-edar-valmor.jpg" />
@@ -29,8 +30,6 @@
 	</figure>
 </div>
 
-<h4>Dirigeant de la ville</h4>
-<p><b>Edar Valmor, seigneur d’Almisie, cousin du prince Sémilis d’Imégie.</b></p>
 <p>Edar Valmor est un homme d'une quarantaine d'années, de stature imposante et d'allure noble. Ses cheveux noirs, parsemés de quelques mèches grises, sont toujours soigneusement coiffés. Ses yeux perçants, d'un bleu profond, reflètent une intelligence vive et une détermination sans faille.</p>
 
 <p>Edar est un homme complexe, à la fois charismatique et calculateur. Il est connu pour son esprit stratégique et sa capacité à naviguer habilement dans les eaux troubles de la politique. Bien qu'il soit respecté par ses sujets pour sa gestion efficace de la ville et son soutien à l'artisanat local, il est également craint pour sa détermination implacable à protéger les intérêts d'Almisie, même au détriment de ses relations familiales.</p>

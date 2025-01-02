@@ -37,7 +37,7 @@ class College
 			if (isset($item["Pts"]) && $item["Catégorie"] === "Collège") {
 				$item["id"] = $item["id_RdB"];
 				unset($item["id_RdB"]);
-				$item["niv"] = Skill::cost2niv($item["Pts"], -8);
+				$item["niv"] = Skill::cost2niv($item["Pts"], -8, "I");
 				unset($item["Pts"]);
 				$item["modif"] = isset($item["Modif"]) ? (int) $item["Modif"] : 0;
 				unset($item["Modif"]);
@@ -69,7 +69,7 @@ class College
 				$id = $item["id"];
 				$college_entity = $repo->getCollege($id);
 				$item["name"] = $college_entity->name;
-				$item["points"] = Skill::niv2cost($item["niv"], -8);
+				$item["points"] = Skill::niv2cost($item["niv"], -8, "I");
 				$item["modif"] = $item["modif"] ?? 0; 
 				$item["score"] = $attributes["Int"] + $item["niv"] + $item["modif"] + $modifiers["Magie"] + $special_traits["magerie"] - 3 + floor($special_traits["mult-memoire-infaillible"]/2);
 

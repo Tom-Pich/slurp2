@@ -196,6 +196,13 @@ if ($path_segments[1] === "api") {
 			$rolls = array_map(fn ($x) => (int) $x, $rolls);
 			$controller->getFrightcheckResult($frightLevel, $sfScore, $sanScore, $frightcheckMR, $frighcheckCriticalStatus, $frighcheckSymbol, $rolls);
 			break;
+		
+		case "/api/get-character":
+			Firewall::filter(2);
+			Firewall::check(isset($_POST["id"]));
+			$id = (int) $_POST["id"];
+			$controller->getCharacter($id);
+			break;
 
 		default:
 			Firewall::redirect_to_404();

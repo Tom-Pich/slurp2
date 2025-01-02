@@ -5,7 +5,7 @@ use App\Rules\WeaponsController;
 ?>
 
 <!-- Caractéristiques -->
-<article>
+<article class="as-start">
 	<h2>Caractéristiques</h2>
 
 	<!-- Dégâts -->
@@ -209,7 +209,7 @@ use App\Rules\WeaponsController;
 </article>
 
 <!-- Armes antiques & médiévales -->
-<article>
+<article class="as-start">
 	<h2>Armes antiques &amp; médiévales</h2>
 
 	<details>
@@ -296,7 +296,7 @@ use App\Rules\WeaponsController;
 </article>
 
 <!-- Armes à feu -->
-<article>
+<article class="as-start">
 	<h2>Armes à feu</h2>
 
 	<!-- Armes de poing -->
@@ -451,7 +451,7 @@ use App\Rules\WeaponsController;
 </article>
 
 <!-- Armures & boucliers -->
-<article>
+<article class="as-start">
 	<h2>Armures &amp; boucliers</h2>
 
 	<!-- Armures antiques & médiévales -->

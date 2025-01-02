@@ -564,6 +564,7 @@ $attributes = [
 <article class="as-start"><!-- Compétences -->
 	<h2>Compétences</h2>
 
+	<!-- Introduction -->
 	<details>
 		<summary>
 			<h3>Introduction</h3>
@@ -571,6 +572,7 @@ $attributes = [
 		<p>Les <i>Compétences</i> sont des connaissances ou des savoir-faire qui peuvent être appris et développés. La plupart d’entre elles possèdent un score <i>par défaut</i>, qui ne coûte rien et qui se calcule d’après les caractéristiques.</p>
 	</details>
 
+	<!-- Scores -->
 	<details>
 		<summary>
 			<h3>Scores</h3>
@@ -582,8 +584,8 @@ $attributes = [
 			<li>de sa <b>difficulté&nbsp;:</b> <i>facile</i> (-2), <i>moyenne</i> (-4), <i>ardue</i> (-6) ou <i>très ardue</i> (-8)</li>
 		</ul>
 		<p> La <i>base</i> de la compétence est la moyenne des caractéristiques sur lesquelles elle est basée (ou la valeur de la caractéristique si elle n’est basée que sur une seule caractéristique).</p>
-		<p>La table ci-dessous indique le coût en points de personnage pour obtenir un <i>niveau</i> donné dans une compétence en fonction de sa difficulté.</p>
-		<p>Ce niveau s’ajoute à la base pour calculer le score.</p>
+		<p>La table ci-dessous indique le coût en points de personnage pour obtenir un <i>niveau</i> donné dans une compétence en fonction de sa difficulté. Lorsque <b>deux valeurs</b> sont données, la deuxième ne s’applique qu’aux compétences exclusivement basées sur l’<i>int</i>.</p>
+		<p>Ce niveau s’ajoute à la base pour calculer le score brut de la compétence.</p>
 
 		<table class="alternate-e">
 			<tr>
@@ -593,20 +595,17 @@ $attributes = [
 				<th>-6</th>
 				<th>-8</th>
 			</tr>
-			<?php
-			for ($niv = -4; $niv <= 12; $niv++) { ?>
+			<?php for ($niv = -4; $niv <= 10; $niv++): ?>
 
 				<tr>
 					<td><?= $niv > 0 ? "+" . $niv : $niv ?></td>
-					<td><?= Skill::niv2cost($niv, -2) >= .5 ? Skill::niv2cost($niv, -2) : "–"  ?></td>
-					<td><?= Skill::niv2cost($niv, -4) >= .5 ? Skill::niv2cost($niv, -4) : "–"  ?></td>
-					<td><?= Skill::niv2cost($niv, -6) >= .5 ? Skill::niv2cost($niv, -6) : "–"  ?></td>
-					<td><?= Skill::niv2cost($niv, -8) >= .5 ? Skill::niv2cost($niv, -8) : "–"  ?></td>
+					<td><?= Skill::displaySkillCost($niv, -2) ?></td>
+					<td><?= Skill::displaySkillCost($niv, -4) ?></td>
+					<td><?= Skill::displaySkillCost($niv, -6) ?></td>
+					<td><?= Skill::displaySkillCost($niv, -8) ?></td>
 				</tr>
 
-			<?php
-			}
-			?>
+			<?php endfor; ?>
 		</table>
 
 		<p><b>Score par défaut&nbsp;:</b> score en l’absence de points investis dans la compétence. La plupart des compétences ont un score par défaut&nbsp;; celles qui n’en ont pas ont une difficulté notée entre parenthèse.</p>
@@ -617,7 +616,7 @@ $attributes = [
 				Soit un personnage ayant <i>For</i> 12, <i>Dex 13</i> et <i>Int</i> 11.<br>
 				Soit les compétences <i>Nage</i> [FD(-2)] et <i>Baratin</i> [I-4].
 			</p>
-			<p>Voici quelques exemples de scores obtenus en fonction des points de personnage investi dans chacune des compétences</p>
+			<p>Voici quelques exemples de scores obtenus en fonction des points de personnage investis dans chacune des compétences</p>
 			<table>
 				<tr>
 					<th>Points</th>
@@ -673,7 +672,7 @@ $attributes = [
 
 		<p>Toutes les compétences appartenant à un même groupe reçoivent un bonus de points de personnage égal au quart des points investis dans toutes les autres compétences du même groupe.</p>
 
-		<p>Une compétence peut appartenir à deux groupes différents. Dans ce cas, elle reçoit des points de bonus de chacun des groupes (jusqu’à 2 pts de bonus par groupe).</p>
+		<p>Une compétence peut appartenir à deux groupes différents. Dans ce cas, elle reçoit des points de bonus de chacun des groupes.</p>
 
 		<p>Ces calculs sont gérés de manière complètement automatisée par la fiche de personnage.</p>
 
@@ -704,10 +703,14 @@ $attributes = [
 
 		<p>Et autres, selon la décision du MJ.</p>
 
-		<div class="exemple">
-			<p>Investir 13 pts dans la compétence <i>Épée</i> permet aux autres compétences proches d’obtenir un bonus en points de 13÷4 = 3,25 pts limité à 2 pts.</p>
-			<p>Si le personnage souhaite ajouter 2 pts dans la compétence <i>Hache/Masse</i>, cela lui fera un total de 4 pts dans cette compétence. En retour, la compétence <i>Épée</i> bénéficiera d’un bonus de 0,5 pt.</p>
-		</div>
+		<details class="exemple">
+			<summary>Exemple</summary>
+			<p>Investir 13 pts dans la compétence <i>Épée</i> (<i>Dex</i>+3) permet aux autres compétences proches d’obtenir un bonus en points de 13÷4 = 3,25 pts (arrondi à 3 pts).</p>
+			<p>
+				Par conséquent, le personnage aura 3 pts gratuits dans sa compétence <i>Hache/Masse</i>, ce qui lui permettra de l’avoir à <i>Dex</i>.<br>
+				En ajoutant 1 pt supplémentaire dans cette compétence, ça fera 4 points au total, soit un score de <i>Dex</i>+1.
+			</p>
+		</details>
 	</details>
 
 </article>

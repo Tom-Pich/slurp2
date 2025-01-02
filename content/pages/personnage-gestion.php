@@ -141,14 +141,12 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 		</div>
 
 		<!-- Mode d’emploi Avdésav -->
-		<details class="mt-3-5 border-bottom-grey-700">
+		<details class="mt-3-5">
 			<summary><h3>Avantages &amp; Désavantages</h3></summary>
 			<div class="mt-½">
 				<p>
 					<b>Nom&nbsp;:</b> à ne modifier que si une précision est nécessaire.<br>
 					<b>Coût&nbsp;:</b> coût en pts de personnage. Par défaut, le coût choisi est celui le plus proche de zéro<br>
-					<b>Case 1&nbsp;:</b> coût affiché sur la fiche de personnage. Nécessaire s’il y a plusieurs coûts possibles.<br>
-					<b>Case 2&nbsp;:</b> non affiché sur la fiche de personnage (mais pris en compte). Utile pour les avantages type <i>PdM supp</i>.
 				</p>
 				<p><b>Pour supprimer un élément,</b> effacer son nom.</p>
 			</div>
@@ -217,9 +215,9 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 		<!-- Mode d’emploi compétences -->
 		<details class="mt-3-5">
 			<summary><h3>Compétences</h3></summary>
-			<div class="border-bottom-grey-700 mt-½">
+			<div class="mt-½">
 				<p>
-					<b>Nom&nbsp;:</b> préciser éventuellement le nom de la compétence<br>
+					<b>Nom&nbsp;:</b> ajouter une précision au nom de la compétence si nécessaire.<br>
 					<b>Modificateur&nbsp;:</b> ajouter le modificateur entre parenthèse à côté du nom. Par exemple&nbsp;: (+2) ou (-1).<br>
 					<b>Compétence de background&nbsp;:</b> ajoutez une astéristique à côté du nom.<br>
 					<b>Spécialité&nbsp;:</b> indiquer, à côté du nom et entre parenthèses, le nom de la spécialité <i>optionnelle</i>, et le bonus souhaité. Par exemple&nbsp;: Commerce (joaillerie +3).<br>

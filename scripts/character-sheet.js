@@ -342,6 +342,7 @@ testDialogBtn.addEventListener("click", (e) => {
 
 testDialog.addEventListener("keydown", (e) => {
   if (e.keyCode === 13) {
+	e.preventDefault();
     testDialogBtn.click();
   }
 });

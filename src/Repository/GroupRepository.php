@@ -19,22 +19,23 @@ class GroupRepository extends AbstractRepository
 		return $group;
 	}
 
-	public function getGMGroups(int $id)
+	public function getGMGroups(int $id): array
 	{
 		$query = $this->db->prepare("SELECT * FROM groupes WHERE MJ = ?");
 		$query->execute([$id]);
 		$items = $query->fetchAll(\PDO::FETCH_ASSOC);
 		$query->closeCursor();
-		$items[] = ["id" => 100, "Nom" => "Persos test", "MJ" => 0];
-		$items[] = ["id" => 100 + $id, "Nom" => "Mes PNJ", "MJ" => 0];
+		//$items[] = ["id" => 100, "Nom" => "Persos test", "MJ" => 0];
+		//$items[] = ["id" => 100 + $id, "Nom" => "Mes PNJ", "MJ" => 0];
 		$groups = [];
 		foreach ($items as $item){
 			$groups[] = new Group($item);
 		}
+		$groups[] = new Group(["id" => NULL, "Nom" => "Personnages test", "MJ" => 0]);
 		return $groups;
 	}
 
-	public function getAllGroups()
+	public function getAllGroups(): array
 	{
 		$query = $this->db->query("SELECT * FROM groupes");
 		$items = $query->fetchAll(\PDO::FETCH_ASSOC);
@@ -44,13 +45,13 @@ class GroupRepository extends AbstractRepository
 			$groups[] = new Group($item);
 		}
 
-		$groups[] = new Group(["id" => 100, "Nom" => "Personnages test", "MJ" => 0]);
+		$groups[] = new Group(["id" => NULL, "Nom" => "Personnages test", "MJ" => 0]);
 
-		$users_repo = new UserRepository;
+		/* $users_repo = new UserRepository;
 		$gm_users = $users_repo->getGMUsers();
 		foreach ($gm_users as $gm){
 			$groups[] = new Group(["id" => 100 + $gm->id, "Nom" => "PNJ de " . $gm->login, "MJ" => $gm->id]);
-		}
+		} */
 		return $groups;
 	}
 
@@ -64,5 +65,12 @@ class GroupRepository extends AbstractRepository
 		$query = $this->db->prepare("INSERT INTO groupes (Nom, MJ) VALUES (:Nom, :MJ)");
 		$query->execute($data);
 		$query->closeCursor();
+	}
+
+	public function getExistingGroups(): array
+	{
+		$query = $this->db->query("SELECT id FROM groupes");
+		$items = $query->fetchAll(\PDO::FETCH_COLUMN);
+		return $items;
 	}
 }

@@ -111,7 +111,7 @@ class AvDesav implements RulesItem
 				</div>
 				<div><?= $this->displayCost($data["cost-mult"]) ?></div>
 			</summary>
-			<?= $this->description ?>
+			<div class="ta-justify"><?= $this->description ?></div>
 		</details>
 <?php
 	}

@@ -1,32 +1,27 @@
 <?php
 
+use App\Entity\Skill;
+use App\Lib\TableReader;
 use App\Entity\Character;
-use App\Repository\CharacterRepository;
-use App\Repository\EquipmentRepository;
-use App\Rules\MentalHealthController;
+
 
 ini_set('xdebug.var_display_max_depth', 10);
 ini_set("xdebug.var_display_max_data", -1);
 
-$ch_repo = new CharacterRepository;
-$raw_c = $ch_repo->getCharacterRawData(1);
-$raw_c["Description"] = "...description...";
-$raw_c["Background"] = "...background...";
-$raw_c["Notes"] = "...notes...";
-/* $perso = new Character(35);
-$perso->processCharacter(); */
-/* $repo = new EquipmentRepository;
-$objects = $repo->getCharacterEquipment(31); */
+/* foreach ([ .15, 0.45, 0.5, .75, 1, 1.5, 2, 3.5, 4, 5, 7, 8, 10, 12, 13, 15, 16, 18, 19, 20, 21, 25, 26, 32 ] as $pts){
+	echo $pts . " pts → " . Skill::cost2niv($pts, -4, "D") . "<br>";
+}; */
 
-$symbols = ["🟢", "🔴", "😖", "😎" ];
-$result = MentalHealthController::getFrighcheckEffects(7, 12, 12, -1, 0, $symbols[1], [ 17, 17, 17, 17, 17, 17, 17 ]);
+/* $char = new Character(31);
+$char->processCharacter();
+echo "<pre>";
+foreach ($char->skills as $skill){
+	$skill["description"] = "(&hellip;)";
+	print_r($skill);
+}
+echo "</pre>"; */
 
+include "content/components/chat-window.php";
 
 ?>
-
-<pre class="mt-1">
-	<?php print_r($raw_c) ?>
-</pre>
-
-
-<script type="module" src="/scripts/unit-tests.js"></script>
+<!-- <script type="module" src="/scripts/unit-tests.js"></script> -->

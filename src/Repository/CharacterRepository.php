@@ -104,9 +104,9 @@ class CharacterRepository extends AbstractRepository
 	 */
 	public function getCharactersFromGM(int $id): array
 	{
-		$query_string = "SELECT p.id FROM persos p LEFT JOIN groupes g ON p.id_groupe = g.id WHERE g.MJ = ? OR p.id_groupe = 100 OR p.id_groupe = ?";
+		$query_string = "SELECT p.id FROM persos p LEFT JOIN groupes g ON p.id_groupe = g.id WHERE g.MJ = ? OR p.id_groupe IS NULL";
 		$query = $this->db->prepare($query_string);
-		$query->execute([$id, 100+$id]);
+		$query->execute([$id]);
 		$items = $query->fetchAll(\PDO::FETCH_ASSOC);
 		$query->closeCursor();
 		return $items;
