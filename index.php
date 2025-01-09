@@ -19,6 +19,7 @@ use App\Controller\PageController;
 use App\Repository\UserRepository;
 use App\Controller\Error404Controller;
 use App\Controller\CharacterExportController;
+use App\Repository\CharacterRepository;
 
 (new DotEnv(__DIR__ . '/.env'))->load();
 require_once "config.php";
@@ -35,7 +36,7 @@ if (!isset($_SESSION["Statut"]) or !DB_ACTIVE) {
 	$_SESSION["token"] = Firewall::generateToken(16);
 	$_SESSION["time"] = time();
 } else {
-	$_SESSION["time"] >= (time() - 3600) || !$_SESSION["id"] ? $_SESSION["time"] = time() : LogController::logout();
+	$_SESSION["time"] >= (time() - 3600*3) || !$_SESSION["id"] ? $_SESSION["time"] = time() : LogController::logout();
 }
 
 // ––– $pages_data ––––––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -109,13 +110,12 @@ if ($path_segments[1] === "api") {
 			break;
 
 		case "/api/general-state":
-			Firewall::check(isset($_POST["san"]) && isset($_POST["pdvm"]) && isset($_POST["pdv"]) && isset($_POST["pain-resistance"]) && isset($_POST["members"]));
-			$san = (int) $_POST["san"];
-			$pdvm = (int) $_POST["pdvm"];
-			$pdv = (int) $_POST["pdv"];
+			Firewall::check(isset($_POST["pdvm"]) && isset($_POST["pdv"]) && isset($_POST["pain-resistance"]) && isset($_POST["members"]));
+			$pdvm = (int) $_POST["pdvm"] > 0 ? (int) $_POST["pdvm"] : 10;
+			$pdv = $_POST["pdv"] !== "" ? (int) $_POST["pdv"] : $pdvm;
 			$pain_resistance = (int) $_POST["pain-resistance"];
-			$members = trim($_POST["members"]);
-			$controller->getGeneralState($san, $pdvm, $pdv, $pain_resistance, $members);
+			$members = strtoupper(trim($_POST["members"]));
+			$controller->getGeneralState($pdvm, $pdv, $pain_resistance, $members);
 			break;
 
 		case "/api/wound-effects":
@@ -124,7 +124,7 @@ if ($path_segments[1] === "api") {
 			$dex = (int) $_POST["dex"];
 			$san = (int) $_POST["san"];
 			$pdvm = (int) $_POST["pdvm"];
-			$pdv = (int) $_POST["pdv"];
+			$pdv = $_POST["pdv"] !== "" ? (int) $_POST["pdv"] : $pdvm = (int) $_POST["pdvm"];
 			$pain_resistance = (int) $_POST["pain-resistance"];
 			$raw_dmg = (int) $_POST["raw-dmg"];
 			$rd = (int) $_POST["rd"];
@@ -132,7 +132,7 @@ if ($path_segments[1] === "api") {
 			$bullet_type = htmlspecialchars($_POST["bullet-type"]);
 			$localisation = htmlspecialchars($_POST["localisation"]);
 			$rolls = explode(",", $_POST["rolls"]);
-			$rolls = array_map(fn ($x) => (int) $x, $rolls);
+			$rolls = array_map(fn($x) => (int) $x, $rolls);
 			$controller->getWoundEffects($category, $dex, $san, $pdvm, $pdv, $pain_resistance, $raw_dmg, $rd, $dmg_type, $bullet_type, $localisation, $rolls);
 			break;
 
@@ -165,7 +165,7 @@ if ($path_segments[1] === "api") {
 			$objectType = htmlspecialchars(strtolower($_POST["objectType"]));
 			$localisation = htmlspecialchars(strtolower($_POST["localisation"]));
 			$rolls = explode(",", $_POST["rolls"]);
-			$rolls = array_map(fn ($x) => (int) $x, $rolls);
+			$rolls = array_map(fn($x) => (int) $x, $rolls);
 			$controller->getObjectDamageEffects($pdsm, $pds, $integrite, $rd, $rawDamages, $dmgType, $objectType, $localisation, $rolls);
 			break;
 
@@ -177,14 +177,11 @@ if ($path_segments[1] === "api") {
 
 		case "/api/npc-generator":
 			$post = [];
-			foreach ($_POST as $parameter => $value) {
-				//Firewall::check(isset($_POST[$parameter]));
-				$post[$parameter] = htmlspecialchars($_POST[$parameter]);
-			}
+			foreach ($_POST as $parameter => $value) $post[$parameter] = htmlspecialchars($_POST[$parameter]);
 			$controller->getNPC($post);
 			break;
 
-		case "/api/fright-check" :
+		case "/api/fright-check":
 			Firewall::check(isset($_POST["fright-level"]));
 			$frightLevel = (int) $_POST["fright-level"];
 			$sfScore = (int) $_POST["sf-score"];
@@ -193,17 +190,19 @@ if ($path_segments[1] === "api") {
 			$frighcheckCriticalStatus = (int) $_POST["frightcheck-critical"];
 			$frighcheckSymbol = htmlspecialchars($_POST["frightcheck-symbol"]);
 			$rolls = explode(",", $_POST["rolls"]);
-			$rolls = array_map(fn ($x) => (int) $x, $rolls);
+			$rolls = array_map(fn($x) => (int) $x, $rolls);
 			$controller->getFrightcheckResult($frightLevel, $sfScore, $sanScore, $frightcheckMR, $frighcheckCriticalStatus, $frighcheckSymbol, $rolls);
 			break;
-		
+
 		case "/api/get-character":
 			Firewall::filter(2);
 			Firewall::check(isset($_POST["id"]));
 			$id = (int) $_POST["id"];
+			$character_repo = new CharacterRepository;
+			$allowed_character_ids = $_SESSION["Statut"] === 3 ? $character_repo->getAllCharacters() : $character_repo->getCharactersFromGM($_SESSION["id"]);
+			if (!in_array($id, $allowed_character_ids)) (new Error404Controller)->show();
 			$controller->getCharacter($id);
 			break;
-
 		default:
 			Firewall::redirect_to_404();
 	}
@@ -340,7 +339,7 @@ elseif ($path_segments[1] === "submit") {
 }
 
 // character pages
-elseif (in_array($path_segments[1], ["personnage-fiche", "personnage-gestion"]) && empty($path_segments[2]) ) {
+elseif (in_array($path_segments[1], ["personnage-fiche", "personnage-gestion"]) && empty($path_segments[2])) {
 	Firewall::filter(1);
 	Firewall::check(!empty($_GET["perso"] && (int) $_GET["perso"]));
 	$character = new Character((int) $_GET["perso"]);
@@ -373,13 +372,13 @@ else if ($path_segments[1] === "wiki" && !empty($path_segments[2]) && count($pat
 	}
 	$is_root_page = empty($path_segments[3]);
 	$article = $is_root_page ? null : $articles[$path_segments[3]] ?? null;
-	$page_data = [ "body-class" => "wiki", "file" => "wiki-template", "wiki" => $wiki, "articles" => $articles ];
-	if($is_root_page){
+	$page_data = ["body-class" => "wiki", "file" => "wiki-template", "wiki" => $wiki, "articles" => $articles];
+	if ($is_root_page) {
 		$page_data["title"] = $title;
 		$page_data["description"] = $description;
 		$page_data["current-article"] = "home";
 		$page = new PageController($page_data);
-	} elseif (!empty($article)){
+	} elseif (!empty($article)) {
 		$page_data["title"] = "Wiki " . ucfirst($wiki) . " – " . $article["title"];
 		$page_data["description"] = "";
 		$page_data["current-article"] = $path_segments[3];

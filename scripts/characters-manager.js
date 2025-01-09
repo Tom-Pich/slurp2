@@ -1,4 +1,4 @@
-import { qs, qsa, calculate } from "./utilities.js";
+import { qs, qsa, calculate, getInnerText } from "./utilities.js";
 import { wsURL, Message } from "./ws-utilities.js";
 import { updateDOM } from "./update-dom.js";
 
@@ -16,9 +16,8 @@ ws.onmessage = (rawMessage) => {
         fetch("gestionnaire-mj")
             .then((response) => response.text())
             .then((response) => {
-                updateDOM(`#state-form-character-${message.content}`, response);
+                updateDOM(`#state-form-character-${message.content}`, response).then(() => getCharacterDetails(parseInt(message.content)));
             });
-		setTimeout(() => { getCharacterDetails(parseInt(message.content)) }, 200);
     }
 };
 
@@ -94,27 +93,49 @@ function submitCharacterForm(form) {
 // character forms events
 const characterStateForms = qsa("[data-role=character-state-form]");
 characterStateForms.forEach((form) => {
+    const saveBtn = form.querySelector("[data-role=save-character]");
+    let allowSaveBtnColorChange = true;
+
     // if form submitted manually (with "enter" key)
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         submitCharacterForm(form);
     });
 
-    let timeoutId;
+    // submit form with save-character btn
+    saveBtn.addEventListener("click", () => {
+        submitCharacterForm(form);
+    });
+
+    // highlight save btn on change
+    form.addEventListener("change", () => {
+        if (allowSaveBtnColorChange) saveBtn.classList.add("clr-warning");
+        allowSaveBtnColorChange = true;
+    });
+
+    form.addEventListener("keydown", (e) => {
+        if (e.ctrlKey && e.key === "s") {
+            e.preventDefault();
+            submitCharacterForm(form);
+            allowSaveBtnColorChange = false;
+        }
+    });
+
+    //let timeoutId;
 
     // submit form on keyup with delay : 🖐️ provoque 2 pings – un pour le keyup, un autre pour le change
-    form.addEventListener("keyup", (e) => {
+    /* form.addEventListener("keyup", (e) => {
         if (timeoutId) clearTimeout(timeoutId);
         timeoutId = setTimeout(function () {
             submitCharacterForm(form);
         }, 3000);
-    });
+    }); */
 
     // submit form on change
-    form.addEventListener("change", (e) => {
+    /* form.addEventListener("change", (e) => {
         if (timeoutId) clearTimeout(timeoutId);
         submitCharacterForm(form);
-    });
+    }); */
 });
 
 // submit items form and update
@@ -156,7 +177,7 @@ function getCharacterDetails(id) {
         .then((response) => response.json())
         .then((response) => response.data)
         .then((data) => {
-            //console.log(data);
+            // console.log(data);
             fillCharacterSummary(id, data);
         });
 }
@@ -167,22 +188,51 @@ function fillCharacterSummary(id, data) {
     const template = qs("#character-details");
     const clone = template.content.cloneNode(true);
 
-    ["For", "Dex", "Int", "San", "Per", "Vol"].forEach((attr) => {
+    // Description
+    fillValueInTemplate(clone, "Description", data.description);
+
+    // Caractéristiques
+    ["For", "Dex", "Int", "San", "Per", "Vol", "Réflexes", "Sang-Froid", "Vitesse"].forEach((attr) => {
         fillValueInTemplate(clone, attr, data.attributes[attr]);
     });
 
-	const ignoredAvdesav = []; // liste des AvDésav inutiles pou le MJ
-	const avdesavCategories = ["Avantage", "Désavantage", "Travers", "Réputation"];
-	avdesavCategories.forEach( category => {
-		const filteredElements = data.avdesav.filter((elem) => elem.catégorie === category && !ignoredAvdesav.includes(elem.id));
-		const displayedElement = [];
-		filteredElements.forEach((elem) => displayedElement.push(`${elem.label} (${elem.points})`));
-		fillValueInTemplate(clone, category, displayedElement.join(", "));
-	})
+    // Dégâts
+    fillValueInTemplate(clone, "Dégâts", data.attributes["Dégâts"].estoc + "/" + data.attributes["Dégâts"].taille);
 
+    // Avantages & Désavantages
+    const ignoredAvdesav = []; // liste des AvDésav inutiles pou le MJ
+    const avdesavCategories = ["Avantage", "Désavantage", "Travers", "Réputation"];
+    avdesavCategories.forEach((category) => {
+        const filteredElements = data.avdesav.filter((elem) => elem.catégorie === category && !ignoredAvdesav.includes(elem.id));
+        const displayedElements = [];
+        filteredElements.forEach((elem) => {
+			let displayedElement;
+			if (elem.description) displayedElement = `<span title="${getInnerText(elem.description)}">${elem.nom} (${elem.points})</span>`
+			else displayedElement = `${elem.nom} (${elem.points})`
+            displayedElements.push(displayedElement);
+        });
+        fillValueInTemplate(clone, category, displayedElements.join(", "));
+    });
+
+    const colleges = data.colleges.map((college) => `${college.name}–${college.score}`);
+    const displayedColleges = colleges.length ? `<b>Collèges&nbsp;:</b> ${colleges.join(", ")}` : "";
+    fillValueInTemplate(clone, "Collèges", displayedColleges);
+
+    const powers = data.powers.map((power) => power.nom);
+    const displayedPowers = powers.length ? `<b>Pouvoirs&nbsp;:</b> ${powers.join(", ")}` : "";
+    fillValueInTemplate(clone, "Pouvoirs", displayedPowers);
+
+    fillValueInTemplate(clone, "Encombrement", `${data.state.Encombrement.name} (${data.carried_weight}&nbsp;kg)`);
+
+    const equipment = data.equipment[0].liste;
+    const displayedEquipment = equipment.map((item) => `<span title="${item.notes} – ${item.secret}">${item.name}</span>`);
+    fillValueInTemplate(clone, "Équipement", displayedEquipment.join(", "));
+
+    cardSummaryWrapper.innerHTML = "";
     cardSummaryWrapper.appendChild(clone);
 }
 
 function fillValueInTemplate(template, label, value) {
-    template.querySelector(`[data-content=${label}]`).innerHTML = value;
+    if (value === "") template.querySelector(`[data-content=${label}]`).remove();
+    else template.querySelector(`[data-content=${label}]`).innerHTML = value;
 }

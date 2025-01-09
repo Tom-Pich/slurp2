@@ -20,11 +20,6 @@ class ApiController
 {
 	private array $response;
 
-	/**
-	 * getStrengthDamages – Route: api/strength-damages?strength=int
-	 *
-	 * @return void
-	 */
 	public function getStrengthDamages($val)
 	{
 		$data = Attribute::getDamages($val);
@@ -114,7 +109,7 @@ class ApiController
 		$this->sendResponse();
 	}
 
-	public function getGeneralState(int $san, int $pdvm, int $pdv, int $pain_resistance, string $members)
+	public function getGeneralState(int $pdvm, int $pdv, int $pain_resistance, string $members)
 	{
 		$this->response["data"]["general"] = WoundController::getGeneralEffects($pdv, $pdvm, $pain_resistance)["description"];
 
@@ -151,7 +146,7 @@ class ApiController
 				$localisations[] = $name;
 			}
 		} else {
-			$localisations[] = "–––";
+			$localisations[] = "–";
 		}
 		$this->response["data"] = $localisations;
 		$this->sendResponse();
@@ -187,7 +182,6 @@ class ApiController
 		$character->processCharacter();
 		$character_array = get_object_vars($character);
 		$this->response["data"] = $character_array;
-		//foreach ($character_array as $property => $value) $this->response["data"] ;
 		$this->sendResponse();
 	}
 

@@ -11,7 +11,7 @@ use App\Repository\SkillRepository;
 ?>
 
 <!-- Intro -->
-<article>
+<!-- <article>
 	<h2>Généralités sur les jets</h2>
 	<details>
 		<summary>
@@ -29,11 +29,11 @@ use App\Repository\SkillRepository;
 		<summary>
 			<h3>Dégâts inférieurs à 1d-1</h3>
 		</summary>
-		<p>Pour les jets de dégâts inférieurs à 1d-1, utiliser les correspondances suivantes&nbsp;: 1d-2 → 1d5-1, 1d-3 → 1d4-1, 1d-4 → 1d3-1, 1d-5 → 1d2-1</p>
+		Pour les jets de dégâts inférieurs à 1d-1, utiliser les correspondances suivantes&nbsp;: 1d-2 → 1d5-1, 1d-3 → 1d4-1, 1d-4 → 1d3-1, 1d-5 → 1d2-1
 	</details>
 
 	
-</article>
+</article> -->
 
 <!-- Jet de réussite -->
 <article>

@@ -3,65 +3,24 @@ body.home {
 }
 
 body.gestionnaire-mj {
-	main {flex-direction: column;}
-	article {width: unset; max-width: 100%; }
-	article#liste-personnages {scroll-margin-top: 50px;}
-	#items-form { gap: .25em; @include media ($brp-s) { gap: .5em; } }
+	main {display: block;}
+	article {width: unset; max-width: 100%; min-height: unset; padding-bottom: 1em; }
+	article:not(:first-of-type){margin-top: 2em;}
+	//article#liste-personnages {scroll-margin-top: 50px;}
+	//#items-form { gap: .25em; @include media ($brp-s) { gap: .5em; } }
 	.card {
-		width: 350px; border: 1px solid var(--grey-900); border-radius: 1em; padding: var(--dynamic-space-½-1); max-width: 100%;
-		@include media ($brp-s) { width: 100%; }
+		/* width: 350px; */ border: 1px solid var(--grey-900); border-radius: 1em; padding: var(--dynamic-space-½-1); max-width: 100%;
+		@include media ($brp-s) { /* width: 100%; */ }
 	}
 	.single-item-wrapper {
 		grid-template-columns: 4ch 1fr 4ch 5ch 7ch 1fr 1fr; grid-template-areas: "id name container weight location notes notes-mj";
+		border: .5px solid var(--grey-700); border-radius: .5em; padding: .15em;
+		input[type=text] { border: none; }
 		@include media ($brp-s) {
 			grid-template-columns: 4ch 1fr 4ch 5ch 7ch;
 			grid-template-areas: "id name container weight location" "id notes notes-mj notes-mj notes-mj"; }
 	}
 }
-
-/* body.personnage-fiche-ancienne-version {
-
-	article {
-		min-height: 450px; width: 350px; background: var(--white);
-		@include media { width: 100%; min-height: 0; box-shadow: none; } // box-shadow: 2px 2px 2px silver; padding: .5em;
-	}
-	details.objet summary {padding: 0;}
-	details summary.h4 {font-size: var(--fs-500); font-weight: 700; padding: 0;}
-
-	.clr-grey-500 meter {opacity: .1;}
-
-	input[type=text] {border: none; border-bottom: 0.5px solid var(--grey-900)}
-	input[type=text]:focus {outline: none; border: .5px solid hsl(207, 44%, 49%, .5);}
-
-	#form-equipment {
-		.group-share-input:has(:checked) { background-color: var(--clr-secondary-dark); color: var(--white); border-radius: .25em; }
-	}
-
-	details.items-list{
-		transition: all .1s;
-		summary {grid-template-columns: 1ch 1fr 5ch 1ch;}
-		
-		&.drag-over {padding-bottom: 2em;}
-	}
-
-	[data-type=throwable-wrapper] {cursor:alias; &:hover { background-color: var(--grey-900); }}
-
-	details.liste > summary {margin-top: 3px;}
-
-	@media print { // fiche perso en A4 portrait
-		width: 20cm; margin: 0;
-		//border: 1px solid black;
-		background-image: none; font-size: 11px; color: black;
-
-		header, meter, footer, .no-print, [data-role=container-controls] {display: none}
-		main { display: block; column-count: 3; column-gap: .5cm; column-rule: 1px solid var(--grey-900); padding: .5cm; min-height: 0; }
-		article { width: auto; min-height: 0; box-shadow: none; padding: 0; }
-		article:not(:first-of-type) { margin-top: 1cm; }
-		h4, legend { font-size: 14px; break-inside: avoid; }
-		details.liste[open] {background-color: transparent;}
-		[data-role=container-wrapper], .no-break-inside { break-inside: avoid; }
-	}
-} */
 
 body.personnage-fiche {
 
@@ -72,14 +31,15 @@ body.personnage-fiche {
 		> div > h2 {display: none;}
 	}
 
-	main { display: flex; gap: .5em;  max-width: 1600px; margin-inline: auto; }
-	.character-sheet-wrapper { columns: 280px auto; column-gap: .5em; flex: 1; }
+	main { gap: .5em;  max-width: 1600px; margin-inline: auto; @include media { display: block; } }
+	.character-sheet-wrapper { columns: 250px auto; column-gap: .5em; flex: 1;/*  @include media($brp-s) { columns: unset; } */ }
 
 	fieldset { border: 1px solid var(--grey-700); break-inside: avoid-column; margin-top: 1em; max-height: 600px; overflow-y: auto; }
 
 	summary:has(h3) { border-radius: .5em; }
 
 	.clr-grey-500 meter {opacity: .1;}
+	.pdx-meter { width: 100%; }
 
 	details.liste {
 		&[open] { background-color: unset; padding: unset; padding-block: .25em }
@@ -127,7 +87,7 @@ body.personnage-fiche {
 		}
 	}
 
-	#chat-container { border: 1px solid black; width: 280px; }
+	#chat-container { border: 1px solid black; @include media-min($brp-m) {width: 280px;} @include media ($brp-m) { margin-top: 1em; } }
 
 	@media print {
 		header, meter, footer, .no-print, [data-role=container-controls] { display: none; }
@@ -189,7 +149,7 @@ body.table-jeu {
 	}
 
 	#chat-container {
-		width: 350px; align-self: flex-start;
+		width: 350px; align-self: flex-start; @include media () { width: 100%; }
 	}
 }
 

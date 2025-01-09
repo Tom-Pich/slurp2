@@ -1,15 +1,15 @@
 $brp-nav: 480px;
 .main-header { 
 	background: linear-gradient(180deg, #fff0 0%, black 100%), url(/assets/img/bg-header-std.jpg) no-repeat center/cover;
-	color: white; padding: var(--dynamic-space-1-2); padding-bottom: 0.25em;
-	display: grid; grid-template-columns: 1fr auto; row-gap: var(--dynamic-space-1-2);
+	color: white; padding: 1em; padding-bottom: 0.25em;
+	display: grid; grid-template-columns: 1fr auto; row-gap: 1em;
 	grid-template-areas: 'text login' 'nav nav';
 	@include media ($brp-s) { grid-template-areas: 'text nav-btn' 'login login' 'nav nav'; }
 	a { text-decoration: none; color: inherit; }
 	a:hover { color: var(--clr-primary-500) }
 
 	.titles-wrapper > a > img { max-width: clamp(32px, 5vw, 64px ); height: auto;}
-	#login-element { grid-area: login }
+	#login-element { grid-area: login; padding-inline: 1em; align-self: center; }
 	#show-nav-on-mobile {
 		justify-self: end; align-self: flex-start; position: relative; z-index: 10;
 		@include media-min ($brp-nav) { display: none; }
@@ -51,40 +51,4 @@ $brp-nav: 480px;
 
 }
 
-/* header{
-	background: linear-gradient(180deg, #fff0 0%, black 100%), url(/assets/img/bg-header-std.jpg) no-repeat center/cover;
-	color: white; padding: var(--dynamic-space-1-2); padding-bottom: 0.25em; min-height: 18vh;
-	display: grid; grid-template-columns: 50px 1fr 150px;
-
-	@include media {grid-template-columns: 50px 1fr 30px; min-height: 0; padding-bottom: 1em;}
-
-	h1, h2, h3, h4 {color: inherit;}
-	h4 {font-size: var(--fs-400);}
-	a {text-decoration: none; color: inherit;}
-
-	#logo img { width: 4em; height: auto; transition: all .3s;}
-	#show-nav-on-mobile {display: none; @include media {display: block; grid-column: 3; grid-row: 1; align-self: start; z-index: 2;}}
-	#login-element { @include media {grid-column: 2; grid-row: 2; margin-top: .5em;} }
-
-	#connexion-dialog{
-		position: fixed; top: 30%; left: 50%; transform: translateX(-50%); width: 250px; background: var(--clr-background); box-shadow: 5px 5px 7px silver; z-index: 10;
-		> button {position: absolute; top: .5em; right: 1em;}
-	}
-
-	nav {
-		grid-column: 1/span 3; margin-top: 2em; background-color: black; line-height: 1.6; z-index: 1;
-		li > ul {padding: 0 1em; background-color: black;}
-		li:hover > ul { padding: .5em 1em; }
-
-		@include media {
-			margin-top: 0; overflow: hidden;
-			> ul > li {margin-top: .75em;}
-			> ul > li > ul { padding: .5em 1em; }
-			&.active {padding: 1em; min-height: 100dvh}
-		}
-	}
-
-} */
-
-footer{
-	background: var(--grey-900); text-align: center; padding: 1em var(--dynamic-space-1-2) ; font-size: var(fs-300); min-height: 10vh}
+footer { background: var(--grey-900); text-align: center; padding: 1em var(--dynamic-space-1-2) ; font-size: var(--fs-300); min-height: 10vh }

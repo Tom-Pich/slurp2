@@ -36,7 +36,7 @@ function updateCharacter(id) {
   fetch("personnage-fiche?perso=" + id)
     .then((response) => response.text())
     .then((response) => {
-      updateDOM("main", response);
+      updateDOM("#character-sheet", response);
       //containerOpenCloseStateManager() // useless: updateDOM keeps track of <details> state
       fillPdMCount();
     });
@@ -175,6 +175,7 @@ formEquipment.addEventListener("click", (e) => {
 				<input name="nouvel-objet[${newObjectNumber}][Nom]"	type="text" placeholder = "Nouvel objet" >
 				<input name="nouvel-objet[${newObjectNumber}][Poids]" type="text" class="ta-center">
 				<input hidden name="nouvel-objet[${newObjectNumber}][Lieu]" value="${containerWrapper.dataset.place}">
+				<input hidden name="nouvel-objet[${newObjectNumber}][MJ]" value="${gmId}">
 			</summary>
 			<div class="italic ta-center mt-½">
 				Enregistrer les modifications avant de pouvoir ajouter des notes

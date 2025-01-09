@@ -105,22 +105,20 @@ class EquipmentRepository extends AbstractRepository
 		return $group_list;
 	}
 
-	public function getOrphanEquiment(): array
+	public function getOrphanEquiment($id = NULL): array
 	{
-		$items_query = $this->db->query("SELECT id, Lieu FROM objets");
+		if($id === NULL) $items_query = $this->db->query("SELECT id, Lieu FROM objets");
+		else {
+			$items_query = $this->db->prepare("SELECT id, Lieu FROM objets WHERE MJ IN (0, ?)");
+			$items_query->execute([$id]);
+		}
 		$full_items_id_place_list = $items_query->fetchAll(\PDO::FETCH_ASSOC);
 
 		$characters_query = $this->db->query("SELECT id FROM persos");
-		$full_characters_id_list = [];
-		while ($character = $characters_query->fetch(\PDO::FETCH_ASSOC)) {
-			$full_characters_id_list[] = $character["id"];
-		}
+		$full_characters_id_list = $characters_query->fetchAll(\PDO::FETCH_COLUMN);
 
 		$container_query = $this->db->query("SELECT id FROM objets WHERE Contenant = 1");
-		$full_container_id_list = [];
-		while ($container = $container_query->fetch(\PDO::FETCH_ASSOC)) {
-			$full_container_id_list[] = $container["id"];
-		}
+		$full_container_id_list = $container_query->fetchAll(\PDO::FETCH_COLUMN);
 
 		$orphan_items = [];
 		foreach ($full_items_id_place_list as $item) {
@@ -168,9 +166,9 @@ class EquipmentRepository extends AbstractRepository
 	public function setEquipment($data): void
 	{
 		if (isset($data["Secret"])) {
-			$query = $this->db->prepare("UPDATE objets set Nom = :Nom, Contenant = :Contenant , Poids = :Poids, Notes = :Notes, Secret = :Secret, Lieu = :Lieu, Groupe = :Groupe, Ordre = :Ordre WHERE id = :id");
+			$query = $this->db->prepare("UPDATE objets set Nom = :Nom, Contenant = :Contenant , Poids = :Poids, Notes = :Notes, Secret = :Secret, Lieu = :Lieu, Groupe = :Groupe, Ordre = :Ordre, MJ = :MJ WHERE id = :id");
 		} else {
-			$query = $this->db->prepare("UPDATE objets set Nom = :Nom, Contenant = :Contenant , Poids = :Poids, Notes = :Notes, Lieu = :Lieu, Groupe = :Groupe, Ordre = :Ordre WHERE id = :id");
+			$query = $this->db->prepare("UPDATE objets set Nom = :Nom, Contenant = :Contenant , Poids = :Poids, Notes = :Notes, Lieu = :Lieu, Groupe = :Groupe, Ordre = :Ordre, MJ = :MJ WHERE id = :id");
 		}
 
 		$query->execute($data);
@@ -186,7 +184,7 @@ class EquipmentRepository extends AbstractRepository
 
 	public function createEquipment($data): void
 	{
-		$query = $this->db->prepare("INSERT into objets (Nom, Contenant, Poids, Notes, Secret, Lieu, Groupe, Ordre) values (:Nom, :Contenant, :Poids, :Notes, :Secret, :Lieu, :Groupe, :Ordre)");
+		$query = $this->db->prepare("INSERT into objets (Nom, Contenant, Poids, Notes, Secret, Lieu, Groupe, Ordre, MJ) values (:Nom, :Contenant, :Poids, :Notes, :Secret, :Lieu, :Groupe, :Ordre, :MJ)");
 		$query->execute($data);
 		$query->closeCursor();
 	}

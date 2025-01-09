@@ -269,6 +269,10 @@ class Character
 		// ––– skills
 		$raw_skills = json_decode($raw_data["Compétences"], true);
 		[$this->skills, $this->points_count["skills"], $this->modifiers] = Skill::processSkills($raw_skills, $this->raw_attributes, $this->attributes, $this->modifiers, $this->special_traits);
+		
+		// rounding Vitesse after potential effect of skills
+		$this->attributes["Vitesse"] = round($this->attributes["Vitesse"], 1);
+		$this->raw_attributes["Vitesse"] = round($this->raw_attributes["Vitesse"], 1);
 
 		// ––– colleges & spells
 		$raw_colleges_spells = json_decode($raw_data["Sorts"], true);
@@ -284,7 +288,7 @@ class Character
 		[$this->disciplines, $this->points_count["disciplines"]] = Discipline::processDisciplines($raw_psis);
 		[$this->psi, $this->points_count["psi"]] = PsiPower::processPowers($raw_psis, $this->disciplines, $this->attributes);
 
-		// ––– pquipment
+		// ––– equipment
 		$equipment_repo = new EquipmentRepository;
 		$raw_equipment = $equipment_repo->getCharacterEquipment($this->id);
 		[$this->equipment, $this->state] = Equipment::processEquipmentList($raw_equipment, $this->state);
@@ -709,7 +713,7 @@ class Character
 			"Sang-Froid" => (int) $post["État"]["Sang-Froid"],
 			"Magie" => (int) $post["État"]["Magie"],
 
-			"Membres" => strip_tags(trim($post["État"]["Membres"])),
+			"Membres" => strip_tags(strtoupper(trim($post["État"]["Membres"]))),
 			"Autres" => strip_tags(trim($post["État"]["Autres"])),
 		];
 

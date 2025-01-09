@@ -252,6 +252,7 @@ class Skill implements RulesItem
 
 			// difficulty
 			$skill["difficulty"] = $skill_entity->difficulty;
+			$skill["type"] = $skill_entity->displayType();
 
 			// description
 			$skill["description"] = $skill_entity->description;
@@ -269,7 +270,7 @@ class Skill implements RulesItem
 			$skill["base"] = (int) floor($attr_sum / $attr_number);
 			$skill["raw-base"] = (int) floor($raw_attr_sum / $attr_number);
 
-			// modifier (label, mémoire infaillible, extra encumbrance penalty)
+			// modifiers (bonus from label, mémoire infaillible, extra encumbrance penalty)
 			$skill["modif"] = TextParser::parseModif($skill["label"]); // from label
 			$is_mental_very_hard = $skill_entity->difficulty === -8 && $skill_entity->base === "I"; // affected by mémoire infaillible
 			$skill["modif"] += $is_mental_very_hard ? floor($special_traits["mult-memoire-infaillible"] / 2) : 0;
@@ -290,7 +291,7 @@ class Skill implements RulesItem
 				$skill["points"] /= $special_traits["mult-memoire-infaillible"]; // "Mémoire infaillible" divider (1, 2 or 4)
 			}
 
-			// skills with min level different form standard default
+			// skills with min level different from standard default
 			if (isset(self::special_skills[$skill["id"]])) {
 				$min_level = self::special_skills[$skill["id"]]["min-level"];
 				$skill["points"] = self::niv2cost($skill["niv"], $skill_entity->difficulty, $skill_entity->base) - self::niv2cost($min_level, $skill_entity->difficulty, $skill_entity->base);
@@ -341,16 +342,15 @@ class Skill implements RulesItem
 				// update skill group points
 				foreach ($skill["groups"] as $group => $group_points) $proc_skills[$index]["groups"][$group] = $pool[$group];
 
-				// evaluate what would be the skill niv with these total virtual points
-				/* $free_points = 0;
+				// get free points due to default non standard skill level
+				$free_points = 0;
 				if (isset(self::special_skills[$skill["id"]])) {
-					// get free points due to default non standard skill level
 					$min_level = self::special_skills[$skill["id"]]["min-level"];
 					$free_points = self::niv2cost($min_level, $skill["difficulty"], $skill["entity-base"]);
-				} */
+				}
 
 				// calculate total virtual points (base points + group points)
-				$virtual_points = $skill["points"];
+				$virtual_points = $skill["points"] + $free_points;
 				$skill["groups"] = $proc_skills[$index]["groups"];
 				foreach ($skill["groups"] as $group => $group_points) $virtual_points += 0.25*($group_points - $skill["points"]);
 				$proc_skills[$index]["total_points"] = $virtual_points;

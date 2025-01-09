@@ -31,7 +31,7 @@ class EquipmentListController
 		["Tunique", 0.25, ["30 pc"], "vêtements"],
 		["Ceinture de cuir", 0.15, ["7 pc"], "vêtements"],
 		["Veste de cuir (souple, RD1)", 1.5, ["75 pc"], "vêtements"],
-		["Pardessus chaud (cuir et laine, RD1)", 3, ["50 pc"], "vêtements"],
+		["Pelisse (cuir et laine, RD1)", 2, ["50 pc"], "vêtements"],
 		["Sandales", NULL, ["2 pc"], "vêtements"],
 		["Mocassins", 0.25, ["5 pc"], "vêtements"],
 		["Chaussures bourgeoises, de ville", 0.25, ["25 pc"], "vêtements"],

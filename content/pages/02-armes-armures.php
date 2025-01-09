@@ -14,32 +14,141 @@ use App\Rules\WeaponsController;
 			<h3>Dégâts</h3>
 		</summary>
 		<p>Les dégâts d’une arme sont caractérisés par un <i>Type</i> et une <i>Étendue</i>.</p>
-		<p><b>Types de dégâts&nbsp;:</b> broyage (B), perforant (P) et tranchant (T).</p>
-		<p><b>L’étendue des dégâts</b> d’une arme blanche dépend de la <i>For</i> de son utilisateur et de l’arme (voir les caractéristiques des armes, plus loin).</p>
+		
+		<p>
+			<b>Types de dégâts – </b> Pour les armes blanche, il existe trois types de dégâts&nbsp;: broyage (B), perforant (P) et tranchant (T). Sur une créature vivante, à valeurs égales, les dégâts perforants sont plus efficaces que les dégâts tranchants, eux-mêmes plus efficaces que les dégâts de broyage. Ces différences sont gérées sur la <a href="/table-jeu">table de jeu</a>. Voir aussi <i>Effets d’une blessure</i> sur la page <a href="/blessures-dangers">Blessures et dangers</a>.<br>
+			Les dégâts causés par les armes à feu sont traités plus loin dans cette section.
+		</p>
+		
+		<p><b>L’étendue des dégâts</b> d’une arme blanche dépend de la <i>For</i> de son utilisateur – plus précisemment de ses <i>dégâts de base</i> – et de l’arme elle-même (voir les caractéristiques des armes, plus loin).</p>
 
 		<details class="exemple">
 			<summary>Exemple de calcul de dégâts</summary>
-			Soit un personnage avec <i>For</i> 12. Ses dégâts de base sont 1d-1 pour l’estoc et 1d+2 pour la taille.<br>
-			S’il manie une épée longue (dégâts P.e+2, T.t+1), il fera, en estoc, des dégâts perforants (P) dont l’étendue est (1d-1)+2 soit 1d+2.<br>
-			En taille, il causera des dégâts tranchants (T) d’une étendue de (1d+2)+1 = 1d+3, que l’on transforme en 2d (voir ci-dessous).
+			<p>Soit un personnage avec <i>For</i> 12. Ses dégâts de base sont 1d-1 pour l’estoc (e) et 1d+2 pour la taille (t).</p>
+			<p>
+				S’il manie une épée longue (dont les caractéristiques de dégâts sont P.e+2, T.t+1), il fera, en estoc, des dégâts perforants (P) dont l’étendue est de <i>estoc</i>+2 soit (1d-1)+2 ce qui donne 1d+1.<br>
+				En taille, il causera des dégâts tranchants (T) d’une étendue de <i>taille</i>+1 soit (1d+2)+1 = 1d+3, que l’on transforme en 2d (voir ci-dessous <i>Cumul des modificateurs</i>).
+			</p>
 		</details>
 
+		<!-- cumul modificateurs -->
 		<details class="mt-1 border p-¼">
 			<summary class="fw-600">Cumul de modificateurs</summary>
-			<p>Si, après addition du modificateur de dégâts <i>de l’arme</i> aux dégâts de base, il apparaît un bonus &ge; +3, ce bonus se transforme&nbsp;: +3 = +1d&nbsp;; +6 = +2d-1&nbsp;; +7 = +2d.</p>
-			<p>De même, s’il apparaît un malus &le; -2, ce bonus se transforme&nbsp;: -2 = -1d+2&nbsp;; -3 = -1d+1&nbsp;; -4 = -1d&nbsp;; -5 = -2d+2&nbsp;; -6 = -2d+1&nbsp;; -7 = -2d.</p>
+			<p>Si, après addition calcul des dégâts d’une arme, il apparaît un terme fixe &ge; +3 (par exemple 2d+4), ce terme fixe se transforme en terme variable.</p>
+			<table class="alternate-e">
+				<tr>
+					<th>Terme fixe</th>
+					<th>Terme variable</th>
+				</tr>
+				<tr>
+					<td>+3</td>
+					<td>+1d</td>
+				</tr>
+				<tr>
+					<td>+4</td>
+					<td>+1d+1</td>
+				</tr>
+				<tr>
+					<td>+5</td>
+					<td>+1d+2</td>
+				</tr>
+				<tr>
+					<td>+6</td>
+					<td>+2d-1</td>
+				</tr>
+				<tr>
+					<td>+7</td>
+					<td>+2d</td>
+				</tr>
+			</table>
+
+			<p>L’idée est que la valeur du terme fixe soit toujours la plus petite possible.</p>
+			
+			<p>De même, s’il apparaît un terme fixe &le; -2, ce terme fixe se transforme en terme variable.</p>
+			<table class="alternate-e">
+				<tr>
+					<th>Terme fixe</th>
+					<th>Terme variable</th>
+				</tr>
+				<tr>
+					<td>-2</td>
+					<td>-1d+2</td>
+				</tr>
+				<tr>
+					<td>-3</td>
+					<td>-1d+1</td>
+				</tr>
+				<tr>
+					<td>-4</td>
+					<td>-1d</td>
+				</tr>
+				<tr>
+					<td>-5</td>
+					<td>-1d-1</td>
+				</tr>
+				<tr>
+					<td>-6</td>
+					<td>-2d+1</td>
+				</tr>
+				<tr>
+					<td>-7</td>
+					<td>-2d</td>
+				</tr>
+			</table>
+
+			<p>Là encore, l’idée reste la même&nbsp;: le terme fixe doit être le plus petit possible. Toutefois, on ne permettra pas d’arriver à 0d. Par exemple, 2d-6 ne devient pas 0d+1. Dans ces cas limites, on calcule l’espérance mathématique du jet et on consulte la table ci-dessous pour obtenir la valeur corrigée. <i>Rappel&nbsp;: l’espérance sur 1d vaut 3,5</i>.</p>
+
+			<table class="alternate-e">
+				<tr>
+					<th>Espérance</th>
+					<th>Avec 1d</th>
+					<th>Valeur corrigée</th>
+				</tr>
+				<tr>
+					<td>1,5</td>
+					<td>1d-2</td>
+					<td>1d5-1</td>
+				</tr>
+				<tr>
+					<td>0,5 à 1</td>
+					<td>1d-3</td>
+					<td>1d4-1</td>
+				</tr>
+				<tr>
+					<td>-0,5 à 0</td>
+					<td>1d-4</td>
+					<td>1d3-1</td>
+				</tr>
+				<tr>
+					<td>-1 ou pire</td>
+					<td>1d-5</td>
+					<td>1d2-1</td>
+				</tr>
+			</table>
+
+			<p><b>Exemples</b></p>
+			<ul>
+				<li>2d+4 → 2d+1d+1 → 3d+1</li>
+				<li>3d+10 → 3d+7+3 → 3d+2d+1d → 6d</li>
+				<li>5d-3 → 5d-1d+1 → 4d+1</li>
+				<li>2d-6 → espérance 1 → 1d4-1</li>
+				<li>2d-7 → espérance 0 → 1d3-1</li>
+			</ul>
 		</details>
 
-		<p>Le widget de la <a href="table-jeu">Table de jeu</a> vous permet de déterminer les dégâts d’une arme en entrant la <i>For</i> d’un personnage et le code dégâts d’une arme.</p>
+		<p>Le widget de la <a href="table-jeu">Table de jeu</a> vous permet de déterminer les dégâts d’une arme en entrant la <i>For</i> d’un personnage et le code dégâts de l’arme qu’il utilise.</p>
 
 		<h4>Armes à deux mains</h4>
-		<p>Une arme pouvant être maniée aussi bien à une main qu’à deux mains reçoit, lorsqu’elle est maniée à deux mains (widget&nbsp;: 2M opt.), un bonus aux dégâts égal au nombre de dés de dégâts que l’utilisateur a en <i>taille</i>.<br>
-			Une arme conçue spécifiquement pour être maniée à deux mains – son nom l’indique (widget&nbsp;: 2M), reçoit le même bonus, -1.</p>
+		<p>
+			Une arme pouvant être maniée aussi bien à une main qu’à deux mains (par exemple une épée bâtarde, ou une hache) reçoit, lorsqu’elle est maniée à deux mains, un bonus aux dégâts égal au nombre de dés de dégâts que l’utilisateur a en <i>taille</i>  (sur le widget, choisir 2M opt.).<br>
+			Une arme conçue spécifiquement pour être maniée à deux mains – son nom l’indique, reçoit le même bonus, -1  (sur le widget, choisir 2M).
+		</p>
 
 		<h4>Dégâts minimums</h4>
 		<p>Contre une RD 0, une arme perforante ou tranchante inflige toujours un minimum de 1 pt de dégât.</p>
 	</details>
 
+	<!-- Force minimale -->
 	<details>
 		<summary>
 			<h3>Force minimale</h3>
@@ -49,11 +158,12 @@ use App\Rules\WeaponsController;
 		<p>La <b>Fmin</b> d’une arme pouvant être maniée aussi bien à une main qu’à deux mains est réduite de 1 si elle est maniée à deux mains.</p>
 	</details>
 
+	<!-- Armes devant être apprêtées -->
 	<details>
 		<summary>
 			<h3>Armes devant être apprêtées</h3>
 		</summary>
-		<p>Certaines armes lourdes, longues ou mal équilibrées doivent être apprêtées après chaque utilisation (attaque et/ou parade). Si l’utilisateur s’en sert en début de round, il ne peut plus l’utiliser jusqu’au round suivant. S’il l’utilise en fin de round, il perd l’initiative au round suivant et ne peut pas se servir de cette arme pour parer en début de round.</p>
+		<p>Certaines armes lourdes, longues ou mal équilibrées doivent être apprêtées après chaque utilisation (attaque et/ou parade). Cet apprêt dure le temps d’une action, pendant laquelle l’arme ne pourra pas être utilisée (voir <i>Déroulement d’un tour de combat</i> sur la page <a href="/combat">Combat</a>).</p>
 		<p>Si la <i>For</i> du porteur est supérieure de 5 pts à la Fmin de l’arme, il peut l’apprêter instantanément.</p>
 	</details>
 
@@ -116,8 +226,10 @@ use App\Rules\WeaponsController;
 		<p>Réserve de munitions dans le chargeur.</p>
 
 		<h4>Recul (Rcl)</h4>
-		<p>Correspond à la pénalité minimale en cas de tirs successifs, pour les armes à feu à répétition. Si le tireur a visé avant sont tir, la pénalité de recul est multipliée par deux.<br>
-			Si la <i>For</i> de l’utilisateur est supérieure d’au moins 5 à la <i>Fmin</i> de l’arme, le <i>Rcl</i> est diminué de 1, sans toutefois pouvoir être annulé.</p>
+		<p>
+			Correspond à la pénalité minimale en cas de tirs successifs, pour les armes à feu à répétition. Si le tireur a visé avant son tir, la pénalité de recul est multipliée par deux.<br>
+			Si la <i>For</i> de l’utilisateur est supérieure d’au moins 5 à la <i>Fmin</i> de l’arme, le <i>Rcl</i> est diminué de 1, sans toutefois pouvoir être annulé.
+		</p>
 	</details>
 
 	<details>

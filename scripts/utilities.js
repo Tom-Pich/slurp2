@@ -96,3 +96,8 @@ export function explicitSign(int){
 	if (int > 0) return `+${int}`
 	return `${int}`
 }
+
+export function getInnerText(html){
+	const doc = new DOMParser().parseFromString(html, 'text/html');
+	return doc.body.textContent || "";
+}

@@ -382,15 +382,64 @@ class NPCGenerator
 			"Weber"
 		],
 		"male-taol-kaer" => [
-			"Aessan", "Alban", "Algwich", "Arenthel", "Baorìg", "Dalaigh", "Deorn", "Doern", "Ean", "Erald", 
-			"Erwan", "Fanch", "Goater", "Harald", "Herven", "Irvan", "Irwin", "Jaeron", "Jobenn", "Jos", 
-			"Keogh", "Liam", "Loeg", "Manec", "Maorn", "Meog", "Mòr", "Naelen", "Nar", "Octar", "Osvan", 
-			"Tadh", "Teren", "Vaugh", "Venec", "Wylard"
+			"Aessan",
+			"Alban",
+			"Algwich",
+			"Arenthel",
+			"Baorìg",
+			"Dalaigh",
+			"Deorn",
+			"Doern",
+			"Ean",
+			"Erald",
+			"Erwan",
+			"Fanch",
+			"Goater",
+			"Harald",
+			"Herven",
+			"Irvan",
+			"Irwin",
+			"Jaeron",
+			"Jobenn",
+			"Jos",
+			"Keogh",
+			"Liam",
+			"Loeg",
+			"Manec",
+			"Maorn",
+			"Meog",
+			"Mòr",
+			"Naelen",
+			"Nar",
+			"Octar",
+			"Osvan",
+			"Tadh",
+			"Teren",
+			"Vaugh",
+			"Venec",
+			"Wylard"
 		],
 		"female-taol-kaer" => [
-			"Aïnlis", "Arven", "Céliane", "Dyánnair", "Édel", "Édena", "Glen", "Jili", "Léna", 
-			"Louane", "Maella", "Maiwenn", "Malataria", "Maoda", "Neala", "Rodina", "Wailen", 
-			"Yldiane", "Zaig"
+			"Aïnlis",
+			"Arven",
+			"Cyàn",
+			"Deilen",
+			"Dyànair",
+			"Édel",
+			"Édena",
+			"Ghilair",
+			"Glen",
+			"Jili",
+			"Maella",
+			"Maiwenn",
+			"Maoda",
+			"Neala",
+			"Neamis",
+			"Rodina",
+			"Thailis",
+			"Wailen",
+			"Yldiane",
+			"Zaig"
 		],
 	];
 
@@ -462,7 +511,7 @@ class NPCGenerator
 	];
 
 	const specialTraits = [
-		"value" => ["pommettes saillantes", "visage anguleux", "boîteux", "borgne", "marque de naissance au visage", "yeux vairrons", "sourcils épais", "voix rauque", "voix agréable", "cicatrice(s)", "tatouages", "dents proéminentes", "tâches de rousseur", "démarche gracieuse", "mèches rebelles", ],
+		"value" => ["pommettes saillantes", "visage anguleux", "boîteux", "borgne", "marque de naissance au visage", "yeux vairrons", "sourcils épais", "voix rauque", "voix agréable", "cicatrice(s)", "tatouages", "dents proéminentes", "tâches de rousseur", "démarche gracieuse", "mèches rebelles",],
 		"w-default" => [2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 		"w-warrior" => [2, 2, 1, 1, 1, 1, 1, 2, 1, 3, 1, 1, 1, 0, 1],
 	];
@@ -491,30 +540,36 @@ class NPCGenerator
 	{
 		$gender = $parameters["gender"] ?? "male";
 		$region = $parameters["region"] ?? "artaille";
-		//$profile = $parameters["profile"] ?? "standard";
+		$profile = $parameters["profile"] ?? "standard";
+		$name_only = isset($parameters["name-only"]);
 
 		// selecting weight arrays
-		$w_hair_length = self::weightArraySelector(self::hairLength, $parameters);
-		$w_hair_type = self::weightArraySelector(self::hairType, $parameters);
-		$w_hair_color = self::weightArraySelector(self::hairColor, $parameters);
-		$w_facial_hair = self::weightArraySelector(self::facialHair, $parameters);
-		$w_eyes = self::weightArraySelector(self::eyes, $parameters);
-		$w_corpulence = self::weightArraySelector(self::corpulence, $parameters);
-		$w_size = self::weightArraySelector(self::size, $parameters);
-		$w_beauty = self::weightArraySelector(self::beauty, $parameters);
-		$w_intelligence = self::weightArraySelector(self::intelligence, $parameters);
-		$w_social = self::weightArraySelector(self::social, $parameters);
-		$w_special_traits = self::weightArraySelector(self::specialTraits, $parameters);
+		if (!$name_only) {
+			$parameters = [ "gender" => $gender, "region" => $region, "profile" => $profile ];
+			$w_hair_length = self::weightArraySelector(self::hairLength, $parameters);
+			$w_hair_type = self::weightArraySelector(self::hairType, $parameters);
+			$w_hair_color = self::weightArraySelector(self::hairColor, $parameters);
+			$w_facial_hair = self::weightArraySelector(self::facialHair, $parameters);
+			$w_eyes = self::weightArraySelector(self::eyes, $parameters);
+			$w_corpulence = self::weightArraySelector(self::corpulence, $parameters);
+			$w_size = self::weightArraySelector(self::size, $parameters);
+			$w_beauty = self::weightArraySelector(self::beauty, $parameters);
+			$w_intelligence = self::weightArraySelector(self::intelligence, $parameters);
+			$w_social = self::weightArraySelector(self::social, $parameters);
+			$w_special_traits = self::weightArraySelector(self::specialTraits, $parameters);
+		}
 
 		// generating name
 		$parameters["name"] = "Table de noms manquante";
-		if (isset(self::names[$gender . "-" . $region])){
+		if (isset(self::names[$gender . "-" . $region])) {
 			$parameters["name"] = TableReader::pickRandomArrayElements(self::names[$gender . "-" . $region])[0];
 		}
 		if (isset(self::names["surname-" . $region])) {
 			$surname = TableReader::pickRandomArrayElements(self::names["surname-" . $region])[0];
 			$parameters["name"] .= (" " . $surname);
 		}
+
+		if ($name_only) return $parameters;
 
 		// generating hair description
 		$hair_length = TableReader::getWeightedResult(self::hairLength["value"], $w_hair_length);

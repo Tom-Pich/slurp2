@@ -38,8 +38,6 @@ export async function flushMsg(type, label = null) {
 	const key = window.chat.key;
 	const ws = window.chat.ws;
 
-	console.log(id)
-
     // extract recipients from entry (like /1,2)
     const recipientsRegexp = /^\/(\d+,){0,10}\d+/;
     const recipientsRegexpResult = recipientsRegexp.exec(inputEntry.value);
@@ -53,7 +51,7 @@ export async function flushMsg(type, label = null) {
     // handle inline tests and rolls
     const inlineTestRegexp = /#\d{1,2}([+-]\d{1,2})?(?=\s|$)/g; // search for expressions like #7 or #13-2 followed by a space or the end of the expression
     const inlineRollRegexp = /#(\d+)d(\d{0,3})([+-/*]*)([0-9\.]+)*/g; // search for expressions like #1d+2 or #6d*2
-	const inlineDamageRegexp = /\D(\d+)d(\d{0,3})([+-/*]*)([0-9\.]+)*/g; // search for expressions like D1d+2
+	const inlineDamageRegexp = /D(\d+)d(\d{0,3})([+-/*]*)([0-9\.]+)*/g; // search for expressions like D1d+2
     const inlineTestRegexpResult = inputEntry.value.match(inlineTestRegexp);
     const inlineRollRegexpResult = inputEntry.value.match(inlineRollRegexp);
     const inlineDamageRegexpResult = inputEntry.value.match(inlineDamageRegexp);
@@ -65,7 +63,6 @@ export async function flushMsg(type, label = null) {
         });
         scores.forEach((score) => {
             const rollResult = roll("3d").result;
-            console.log(score);
             const netScore = calculate(score);
             const outcome = scoreTester(netScore, rollResult);
             const detailledResult = `[ ${score} → ${rollResult} (MR ${outcome.MR} ${outcome.symbol}) ]`;
@@ -89,7 +86,6 @@ export async function flushMsg(type, label = null) {
 	if (inlineDamageRegexpResult){
 		const expressions = [];
         inlineDamageRegexpResult.forEach((match) => {
-            console.log(match);
             expressions.push(match.replace("D", "")); // extract roll expressions
         });
 		const promises = expressions.map(async (expression) => {

@@ -2,20 +2,65 @@
 
 use \App\Rules\ObjectController;
 
-$nbre_protagonistes = 7;
-$nbre_competences = 15;
+$nbre_protagonistes = $_SESSION["Statut"] >= 2 ? 6 : 1;
+$nbre_competences = $_SESSION["Statut"] >= 2 ? 8 : 3;
 ?>
 
 <div id="widgets-container">
 
 	<button id="widgets-help-dialog-btn" class="ff-fas btn-primary px-½ py-¼" data-role="open-dialog" data-dialog-name="widgets-help" title="configuration des widgets">&#xf085;</button>
 
+	<!-- Protagonistes -->
+	<fieldset data-name="opponents" hidden>
+		<legend class="flex-s gap-1 ai-center">
+			Protagonistes
+			<div class="flex-s gap-½">
+				<button class="nude ff-fas" data-role="set-opponent-number" value="1">&#xf055;</button>
+				<button class="nude ff-fas" data-role="set-opponent-number" value="-1">&#xf056;</button>
+			</div>
+		</legend>
+
+		<?php for ($i = 1; $i <= $nbre_protagonistes; $i++) { ?>
+			<div class="<?= $i === 1 ? "" : "mt-½" ?> flex-s" data-role="opponent-wrapper" data-opponent="<?= $i ?>">
+				<div class="px-½ bg-black flex-s jc-center ai-center clr-white fw-700" data-role="opponent-number"><?= $i ?></div>
+				<div class="fl-1">
+					<div class="flex-s gap-¼">
+
+						<input type="text" class="fl-1" name="name" placeholder="Nom">
+						<select name="category" style="width: 7ch" title="nbh: non bio humanoïde, nbx: non bio quelconque, ins: ange/démon, ci: créature insectoïde">
+							<option value="std">std</option>
+							<option value="nbh">nbh</option>
+							<option value="nbx">nbx</option>
+							<option value="ins">ins</option>
+							<option value="ci">ci</option>
+						</select>
+						<input type="text" style="width: 5ch" name="dex" class="ta-center" placeholder="Dex" title="Dextérité" value="<?= $i === 0 ? 11 : "" ?>">
+						<input type="text" style="width: 5ch" name="san" class="ta-center" placeholder="San" title="Santé" value="<?= $i === 0 ? 12 : "" ?>">
+						<input type="text" style="width: 5ch" name="pain-resistance" class="ta-center" placeholder="Doul." title="Résistance à la douleur (-1, 0, 1)">
+					</div>
+					<div class="flex-s gap-¼ mt-¼">
+						<input type="text" style="width: 6ch" name="pdvm" class="ta-center" placeholder="PdVm" title="PdV maxi" value="<?= $i === 0 ? 12 : "" ?>">
+						<input type="text" style="width: 6ch" name="pdv" class="ta-center" placeholder="PdV" title="PdV actuels" value="<?= $i === 0 ? 12 : "" ?>">
+						<input type="text" class="fl-1" style="width: 6ch" name="members" placeholder="Blessures membres" title="Par exemple BD 2, PG 1">
+					</div>
+				</div>
+			</div>
+		<?php } ?>
+
+	</fieldset>
+
 	<!-- test caractéristique / compétence -->
 	<fieldset data-name="score-tester">
-		<legend>Jets de réussite</legend>
+		<legend class="flex-s gap-1 ai-center">
+			Jets de réussite
+			<div class="flex-s gap-½">
+				<button class="nude ff-fas" data-role="set-score-number" value="1">&#xf055;</button>
+				<button class="nude ff-fas" data-role="set-score-number" value="-1">&#xf056;</button>
+			</div>
+		</legend>
 		<?php for ($i = 1; $i <= $nbre_competences; $i++) { ?>
-			<form class="flex-s gap-½ mt-¼">
-				<input type="text" style="width: 70%" data-type="skill-name" data-skill-number=<?= $i ?> placeholder="Comp. ou carac." list="liste-carac-comp">
+			<form class="flex-s gap-½ <?= $i !== 1 ? "mt-¼" : "" ?>">
+				<input type="text"class="fl-1" data-type="skill-name" data-skill-number=<?= $i ?> placeholder="Comp. ou carac." list="liste-carac-comp">
 				<datalist id="liste-carac-comp">
 					<option value="Force"></option>
 					<option value="Dextérité"></option>
@@ -23,6 +68,7 @@ $nbre_competences = 15;
 					<option value="Santé"></option>
 					<option value="Perception"></option>
 					<option value="Volonté"></option>
+					<option value="Réflexes"></option>
 					<option value="Esquive"></option>
 					<option value="Hache/Masse"></option>
 					<option value="Épée"></option>
@@ -32,48 +78,31 @@ $nbre_competences = 15;
 					<option value="Culture générale"></option>
 					<option value="Furtivité"></option>
 				</datalist>
-				<input type="text" data-type="score" style="width: 7ch" class="ta-center" placeholder="score" title="score">
-				<input type="text" data-type="modif" style="width: 7ch" class="ta-center" placeholder="±" title="Modif (vide = zéro)">
+				<input type="text" data-type="score" style="width: 6ch" class="ta-center" placeholder="score" title="score">
+				<input type="text" data-type="modif" style="width: 6ch" class="ta-center" placeholder="±" title="Modif (vide = zéro)">
 				<button class="nude">🎲</button>
 			</form>
 		<?php } ?>
 	</fieldset>
 
-	<!-- Protagonistes -->
-	<fieldset data-name="opponents" hidden>
-		<legend>Protagonistes</legend>
-
-		<?php for ($i = 1; $i <= $nbre_protagonistes; $i++) { ?>
-			<div class="mt-1" data-role="opponent-wrapper" data-opponent="<?= $i ?>">
-				<div class="flex-s gap-½">
-					<input type="text" class="fl-1" data-type="name" placeholder="Nom">
-					<select data-type="category" style="width: 6ch" title="nbh: non bio humanoïde, nbx: non bio quelconque, ins: ange/démon, ci: créature insectoïde">
-						<option value="std">std</option>
-						<option value="nbh">nbh</option>
-						<option value="nbx">nbx</option>
-						<option value="ins">ins</option>
-						<option value="ci">ci</option>
-					</select>
-					<input type="text" style="width: 5ch" data-type="dex" class="ta-center" placeholder="Dex" title="Dextérité" value="<?= $i === 0 ? 11 : "" ?>">
-					<input type="text" style="width: 5ch" data-type="san" class="ta-center" placeholder="San" title="Santé" value="<?= $i === 0 ? 12 : "" ?>">
-					<input type="text" style="width: 5ch" data-type="pain-resistance" class="ta-center" placeholder="Doul." title="Résistance à la douleur (-1, 0, 1)">
-				</div>
-				<div class="flex-s gap-½ mt-½">
-					<input type="text" style="width: 6ch" data-type="pdvm" class="ta-center" placeholder="PdVm" title="PdV maxi" value="<?= $i === 0 ? 12 : "" ?>">
-					<input type="text" style="width: 6ch" data-type="pdv" class="ta-center" placeholder="PdV" title="PdV actuels" value="<?= $i === 0 ? 12 : "" ?>">
-					<input type="text" class="fl-1" style="width: 6ch" data-type="members" placeholder="Blessures membres" title="Par exemple BD 2, PG 1">
-				</div>
-			</div>
-		<?php } ?>
-
-	</fieldset>
-
 	<!-- jet de dés simple -->
 	<fieldset data-name="simple-roll">
 		<legend>Jet de dés simple</legend>
-		<form class="flex-s ai-flex-between">
+		<form class="flex-s">
 			<div class="fl-1 ta-center">
-				<input type="text" size="5" data-type="dice-expression" class="ta-center" placeholder="xd±y" value="3d" title="xd(y)(+-/* z)">
+				<input type="text" name="dice-expression" class="ta-center" placeholder="xd±y" value="3d" title="xd(y)(+-/* z)">
+			</div>
+			<button class="nude">🎲</button>
+		</form>
+	</fieldset>
+
+	<!-- Compteur de round -->
+	<fieldset data-name="round-counter">
+		<legend>Compteur de round</legend>
+		<form class="flex-s gap-½">
+			<div class="flex-s gap-½ fl-1">
+				<input type="text" data-type="round-number" class="ta-center" placeholder="round" title="N° du round" value="1">
+				<input type="text" data-type="initiative-order" class="fl-1" placeholder="Ordre initiative" title="Entrez le n° des opposants dans l’ordre d’initiative">
 			</div>
 			<button class="nude">🎲</button>
 		</form>
@@ -91,7 +120,7 @@ $nbre_competences = 15;
 				<option value="2M">2 mains</option>
 			</select>
 			<div class="fw-500 ta-center">ou</div>
-			<input type="text" style="width: 5ch" data-type="dice-code" class="ta-center" placeholder="xd±y" title="Expression des dégâts de type xd(y)(+-/* z)">
+			<input type="text" style="width: 7ch" data-type="dice-code" class="ta-center" placeholder="xd±y" title="Expression des dégâts de type xd(y)(+-/* z)">
 			<button class="nude">🎲</button>
 		</form>
 	</fieldset>
@@ -115,7 +144,7 @@ $nbre_competences = 15;
 	<!-- rafale -->
 	<fieldset data-name="widget-burst" hidden>
 		<legend>Tir en rafale</legend>
-		<form class="flex-s gap-½" id="burst-widget">
+		<form class="flex-s gap-½">
 			<div class="flex-s gap-½ fl-1 jc-space-between">
 				<input type="text" class="fl-1 ta-center" data-type="rcl" placeholder="Rcl" title="Rcl de l’arme">
 				<input type="text" class="fl-1 ta-center" data-type="fired-bullets" placeholder="Balles" title="Nombre de balles tirées">
@@ -153,10 +182,8 @@ $nbre_competences = 15;
 	<fieldset data-name="general-health-state" hidden>
 		<legend>État général &amp; PdV</legend>
 		<form class="flex-s gap-½" id="general-state-widget">
-			<select class="fl-1" data-type="name-selector">
-				<?php for ($i = 1; $i <= $nbre_protagonistes; $i++) { ?>
-					<option value="<?= $i ?>">Protagoniste <?= $i ?></option>
-				<?php } ?>
+			<select class="fl-1" name="opponent-selector">
+				<!-- filled with opponent.setReactivity() -->
 			</select>
 			<button class="nude">🎲</button>
 		</form>
@@ -169,10 +196,11 @@ $nbre_competences = 15;
 
 			<div class="fl-1">
 				<div class="flex-s gap-½">
-					<select class="fl-1" data-type="name-selector">
-						<?php for ($i = 1; $i <= $nbre_protagonistes; $i++) { ?>
-							<option value="<?= $i ?>">Protagoniste <?= $i ?></option>
-						<?php } ?>
+					<select class="fl-1" name="opponent-selector">
+						<!-- filled with setOpponentReactivity -->
+						<?php /* for ($i = 1; $i <= $nbre_protagonistes; $i++) { */ ?>
+						<!-- <option value="<?= $i ?>">Protagoniste <?= $i ?></option> -->
+						<?php /* } */ ?>
 					</select>
 					<input type="text" style="width: 6ch" class="ta-center" data-type="raw-dmg" placeholder="xd±y" title="Dégâts bruts">
 					<input type="text" style="width: 6ch" class="ta-center" data-type="rd" placeholder="RD" title="RD localisation">
@@ -216,9 +244,9 @@ $nbre_competences = 15;
 	</fieldset>
 
 	<!-- Explosion -->
-	<fieldset data-name="explosion" hidden>
+	<fieldset data-name="explosion-widget" hidden>
 		<legend>Explosions</legend>
-		<form class="flex-s gap-½" id="explosion-widget">
+		<form class="flex-s gap-½">
 			<div class="fl-1">
 				<div class="flex-s gap-½ ai-center">
 					<input type="text" data-type="explosion-dmg" class="ta-center fl-1" placeholder="xd±y" title="Dégâts de l’explosion">
@@ -231,7 +259,7 @@ $nbre_competences = 15;
 		</form>
 	</fieldset>
 
-	<!-- dégâts objets -->
+	<!-- Dégâts objets -->
 	<fieldset data-name="object-damages" hidden>
 		<legend>Dégâts aux objets</legend>
 		<form class="flex-s gap-½" id="object-damages-widget">
@@ -246,7 +274,7 @@ $nbre_competences = 15;
 				<div class="flex-s mt-½ gap-½">
 					<select class="fl-1" data-type="object-damages-damages-type" title="Type de dégâts">
 						<option value="normaux">Normaux</option>
-						<option value="tres-localises">Localisés</option>
+						<option value="localises">Localisés</option>
 					</select>
 					<select class="fl-1" data-type="object-damages-object-type" title="Type d’objet">
 						<?php foreach (ObjectController::object_types as $index => $object) { ?>
@@ -255,7 +283,7 @@ $nbre_competences = 15;
 					</select>
 
 					<select class="fl-1" data-type="object-damages-localisation-options" title="localisation des dégâts">
-						<?php foreach (ObjectController::object_types["voiture"]["localisations"] as $index => $object) { ?>
+						<?php foreach (ObjectController::object_types["générique"]["localisations"] as $index => $object) { ?>
 							<option><?= ucfirst($index) ?></option>
 						<?php } ?>
 					</select>
@@ -284,34 +312,35 @@ $nbre_competences = 15;
 		</form>
 	</fieldset>
 
-	<!-- Generate NPC -->
+	<!-- Générateur PNJ -->
 	<fieldset data-name="npc-generator" hidden>
 		<legend>Générer un PNJ</legend>
 		<form class="flex-s gap-½">
 			<div class="fl-1 flex-s gap-½">
-				<select class="fl-1" data-type="gender">
+				<select class="fl-1" name="gender">
 					<option value="male">Masculin</option>
 					<option value="female">Féminin</option>
 				</select>
-				<select class="fl-1" data-type="region" title="Région d’origine">
+				<select class="fl-1" name="region" title="Région d’origine">
 					<option value="artaille">Artaille</option>
 					<option value="french">Français</option>
 					<option value="taol-kaer">Taol Kaer</option>
 				</select>
-				<select class="fl-1" data-type="profile" title="profil du PNJ">
+				<select class="fl-1" name="profile" title="profil du PNJ">
 					<option value="standard">Standard</option>
 					<option value="warrior">Guerrier</option>
 				</select>
+				<input type="checkbox" name="name-only" title="seulement un nom">
 			</div>
 			<button class="nude">🎲</button>
 		</form>
 
 	</fieldset>
 
-	<!-- jet de réaction -->
+	<!-- Jet de réaction -->
 	<fieldset data-name="widget-reaction" hidden>
 		<legend>Jet de réaction</legend>
-		<form class="flex-s ai-flex-between">
+		<form class="flex-s">
 			<div class="fl-1 ta-center">
 				<input type="text" size="5" data-type="reaction-modifier" class="ta-center" placeholder="±x" title="Modificateur de réaction">
 			</div>
@@ -343,3 +372,11 @@ $nbre_competences = 15;
 </dialog>
 
 <script type="module" src="/scripts/game-table<?= PRODUCTION ? ".min" : "" ?>.js?v=<?= VERSION ?>" defer></script>
+
+<!-- <script>
+	const opponent1 = document.querySelector("[data-role=opponent-wrapper]");
+	const newOpponent = opponent1.cloneNode(true);
+	const opponentsWrapper = document.querySelector("[data-name=opponents]")
+	opponentsWrapper.appendChild(newOpponent);
+	console.log(newOpponent)
+</script> -->

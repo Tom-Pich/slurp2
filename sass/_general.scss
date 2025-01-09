@@ -6,7 +6,7 @@
 //body {background: url("/assets/img/bg-paper.png") fixed repeat; @include media {background-image: none;}}
 body:has(nav.active){ overflow: hidden; }
 main {
-	padding: var(--dynamic-space-½-2); display: flex; min-height: calc(100vh - 230px); flex-wrap: wrap; justify-content: center; gap: 1em;
+	padding: var(--dynamic-space-½-2); display: flex; min-height: calc(100vh - 210px); flex-wrap: wrap; justify-content: center; gap: 1em;
 	@include media {flex-direction: column;}
 }
 
@@ -41,6 +41,7 @@ fieldset.flow { > :nth-child(2) {margin-top: 0;} }
 .cursor-pointer { cursor: pointer; }
 .edit-link { color: inherit; text-decoration: none; }
 .col-2-s { grid-template-columns: 1fr 1fr; }
+.col-auto-fit { grid-template-columns: repeat(auto-fit, minmax(var(--col-min-width, 100px), 1fr)) }
 .aspect-square { aspect-ratio: 1; }
 
 //.float-right { float: right; margin-left: var(--dynamic-space-1-2); max-width: 50%; }

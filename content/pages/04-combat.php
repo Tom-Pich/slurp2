@@ -2,62 +2,115 @@
 <article>
 	<h2>Bases du combat</h2>
 
+	<!-- Tour de combat -->
 	<details>
 		<summary>
-			<h3>Tour de combat et hex</h3>
+			<h3>Tour de combat</h3>
 		</summary>
-		<p>
-			Chaque tour (ou round) dure trois secondes.<br>
-			Le terme «&nbsp;hex&nbsp;» désigne un hexagone de «&nbsp;diamètre&nbsp;» moyen égal à 1 m. C’est l’espace qu’occupe un humain lorsqu’il combat.
-		</p>
+		<p>Chaque <b>tour</b> (ou round) dure trois secondes. Lors d’un tour, un personnage impliqué dans un combat au contact a le droit à deux actions qui sont, dans les cas les plus courants, <b>une</b> attaque et <b>une</b> défense.</p>
 	</details>
 
+	<!-- Surprise -->
 	<details>
 		<summary>
 			<h3>Surprise</h3>
 		</summary>
-		<p>Si l’opposant peut éventuellement être surpris, il faut faire un <b>jet de <i>Réflexes</i></b> pour le déterminer.</p>
+		<p>Si l’opposant peut éventuellement être surpris, il doit faire un <b>jet de <i>Réflexes</i></b> pour le déterminer, assorti d’éventuels modificateurs déterminés par le MJ selon la situation.</p>
+		<p><b>Réussite&nbsp;:</b> l’opposant n’est pas surpris.</p>
 		<p><b>ME &le; 3&nbsp;:</b> Surprise <i>partielle</i>. Agit en dernier lors du tour.</p>
 		<p><b>ME > 3&nbsp;:</b> Surprise <i>totale</i>. N’agit pas lors du premier tour. Au 2<sup>e</sup> tour, -5 au jet d’initiative.</p>
 		<p>Un personnage ayant <i>Réflexes de combat</i> ne peut jamais être totalement surpris.</p>
 	</details>
 
+	<!-- Initiative -->
 	<details>
 		<summary>
 			<h3>Initiative</h3>
 		</summary>
 
-		<p>Pour déterminer qui agit en premier au cours d’un round (s’il y a un doute), il faut faire un <b>Duel de <i>Réflexes</i></b> entre les opposants.</p>
+		<p>L’initiative sert à déterminer <i>l’ordre des attaques</i> de chaque protagoniste impliqué dans un combat.</p>
+
+		<p>
+			Cet ordre est déterminé par la <b>MR d’un jet de <i>Réflexes</i></b> de chaque protagoniste.<br>
+			Il peut être soit redéterminé à chaque round, soit conservé pour les rounds suivants si le MJ le désire, de manière à accélérer le combat.
+		</p>
+
+		<p>Certaines situations particulières (une <i>Attaque massive</i> ou une <i>Défense massive</i>, par exemple), puvent affecter l’initiative.</p>
 
 		<h4>Modificateurs</h4>
-		<p>À ce jet s’appliquent tous les modificateurs habituels plus un malus dû au poids de l’arme&nbsp;: -1 par kg (arrondir le poids de l’arme à l’entier inférieur).<br>
-			Ce malus ne s’applique que si l’arme doit être bougée. Il ne s’applique bien sûr pas à, par exemple, une arbalète lourde pointant dans la direction de sa cible.</p>
+		<p>
+			À ce jet s’appliquent tous les modificateurs habituels (de fatigue, de blessures, d’encombrement&hellip;) plus un malus dû au poids de l’arme&nbsp;: -1 par kg (arrondir le poids de l’arme à l’entier inférieur).<br>
+			Ce malus ne s’applique que si l’arme doit être bougée. Il ne s’applique pas à, par exemple, une arbalète lourde pointant dans la direction de sa cible.
+		</p>
 
 		<h4>Initiative et sorts</h4>
-		<p>Tenir compte du <i>Temps nécessaire</i>.</p>
-		<p>En cas de doute, la MR du sort ou du pouvoir remplace le jet de <i>Réflexes</i>.</p>
+		<p>Si un lanceur de sort ou un utilisateur de pouvoir est impliqué dans un combat, il doit également faire un jet de <i>Réflexes</i> avec un modificateur qui dépend du <i>Temps nécessaire</i> au lancer du sort.</p>
+
+		<table class="alternate-e">
+			<tr>
+				<th>Temps nécessaire</th>
+				<th>Modificateur</th>
+			</tr>
+			<tr>
+				<td>0</td>
+				<td>0</td>
+			</tr>
+			<tr>
+				<td>1 s</td>
+				<td>-3</td>
+			</tr>
+			<tr>
+				<td>2 s</td>
+				<td>-6</td>
+			</tr>
+			<tr>
+				<td>3 s</td>
+				<td>tour suivant* +0</td>
+			</tr>
+			<tr>
+				<td>4 s</td>
+				<td>tour suivant* -3</td>
+			</tr>
+			<tr>
+				<td>5 s</td>
+				<td>tour suivant* -6</td>
+			<tr>
+				<td>6 s</td>
+				<td>2 tours après* +0</td>
+			</tr>
+		</table>
+
+		<p>*Le sort prend un tour complet pour être lancé. Le modificateur s’applique au jet de <i>Réflexes</i> du tour suivant.</p>
 
 		<h4>Armes de taille très différentes</h4>
 		<p>L’attaquant ayant l’arme la plus courte doit d’abord réussir une défense contre l’arme la plus longue avant de pouvoir s’approcher et attaquer.</p>
 
+		<details class="exemple">
+			<summary>Exemple</summary>
+			<p>Un combattant C fait face à 2 opposants O1 et O2. Il est associé à un mage M. Le mage lance un sort dont le <i>Temps nécessaire</i> est de 1 seconde. Pour déterminer l’ordre des attaques, chaque protagoniste fait un jet de <i>Réflexes</i> (le mage le fait à -3). Le premier à agir est celui qui a la plus grande MR, puis vient le tour de celui qui a la deuxième meilleure MR, etc.</p>
+		</details>
+
 	</details>
 
+	<!-- Déroulement d’un tour de combat -->
 	<details>
 		<summary>
 			<h3>Déroulement d’un tour de combat</h3>
 		</summary>
-		<p>Un protagoniste a deux opportunités d’action par round (généralement une attaque et une défense). La première au début du round et la deuxième au milieu du round.</p>
-		<p class="ta-center mt-1"><b>Attaque puis Défense</b> ou <b>Défense puis Attaque</b></p>
-		<p class="mt-1">Au cours d’un tour de combat, le déplacement maximum est de 3 m, sauf en cas de <i>Déplacement</i> (voir ci-dessous).</p>
-		<p>Possibilité de porter une 2<sup>e</sup> attaque si l’adversaire est sonné et que l’attaquant peut encore disposer d’une défense dans le tour.</p>
-		<p>Le joueur peut choisir une <b>attaque spéciale</b> <i>ou</i> une <b>défense spéciale</b> par tour (mais ce n’est pas une obligation). <b>Attention&nbsp;:</b> certaines défenses spéciales exigent d’avoir laissé l’initiative à son adversaire. Ces manœuvres ne peuvent donc pas être choisies si l’initiative a été perdue aux dés, mais seulement si elle a été volontairement laissé à l’adversaire.</p>
+		<p>Les différents protagoniste d’un combat au contact portent leur <b>attaque dans l’ordre de l’initiative</b>.</p>
+		<p>Un combattant a le droit à jusqu’à trois défenses par tour, voire quatre s’il renonce à porter une attaque. Voir <i>Défense</i>, plus loin, pour plus de détails</p>
+		<p>Un combattant peut porter <b>deux attaques</b> dans le même tour si son adversaire n’est pas en état de porter lui-même une attaque (s’il est sonné, par exemple).</p>
+		<p>Un combattant peut toujours <b>remplacer son attaque par une défense supplémentaire</b> (recommandé s’il est débordé par ses adversaires).</p>
+		<p>Au cours d’un tour de combat, le déplacement maximum est de 3 m, sauf en cas de <i>Déplacement</i> (voir ci-dessous).</p>
+		<p>Le joueur <i>peut</i> choisir de faire une <b>attaque massive</b> <i>ou</i> une <b>défense massive</b> lors d’un tour.</p>
 	</details>
 
+	<!-- Déplacement -->
 	<details>
 		<summary>
 			<h3>Déplacement</h3>
 		</summary>
-		<p>Une attaque normale et une défense normale à -3. Déplacement à 80&nbsp;% de la <i>Vitesse</i>.</p>
+		<p>Si le personnage choisit de se déplacer de plus de 3&nbsp;m lors d’un tour, il conserve ses deux possibilités d’action, mais ne peut faire ni attaque massive, ni défense massive, et ses attaques et défenses subissent un malus de -3. Son déplacement est limité à 80&nbsp;% de sa <i>Vitesse</i> en mètre.</p>
 	</details>
 </article>
 
@@ -70,10 +123,13 @@
 		<summary>
 			<h3>Modificateurs d’attaque</h3>
 		</summary>
-		<p><b>1. État du personnage&nbsp;:</b> PdV, PdF, <i>Encombrement</i>, heaume, armures superposées, usage de la main «&nbsp;faible&nbsp;».</p>
-		<p><b>2. Fmin de l’arme&nbsp;:</b> voir le chapitre «&nbsp;Armes &amp; armures&nbsp;«.</p>
-		<p><b>3. <i>Attaque Massive</i></b> (voir ci-dessous).</p>
-		<p><b>4. Difficulté&nbsp;:</b> position de l’attaquant, taille de la cible, localisation, etc, au jugé du MJ.</p>
+		<p>Un jet d’attaque est soumis aux modificateurs suivants&nbsp;:</p>
+		<ol>
+			<li><b>État du personnage&nbsp;:</b> PdV, PdF, <i>Encombrement</i>, heaume, armures superposées, usage de la main «&nbsp;faible&nbsp;»&hellip;</li>
+			<li><b>Fmin de l’arme&nbsp;:</b> voir <a href="/armes-armures">Armes &amp; armures</a>.</li>
+			<li><b><i>Attaque Massive</i></b> (voir ci-dessous).</li>
+			<li><b>Difficulté de l’attaque&nbsp;:</b> position de l’attaquant, taille de la cible, localisation, etc, au jugé du MJ.</li>
+		</ol>
 		<p>À moins d’une bonne raison, en situation de combat «&nbsp;classique&nbsp;», une attaque se fera sans malus de difficulté.</p>
 	</details>
 
@@ -82,7 +138,10 @@
 		<summary>
 			<h3>Attaque massive</h3>
 		</summary>
-		<table class="alternate-e left-1 mt-½">
+		<p>Un attaquant peut choisir de porter une attaque <i>massive</i> plutôt qu’une attaque normale. Ce choix peut se faire <i>en cours</i> de tour.</p>
+		<p>Cela a pour effet de rendre son attaque plus efficace, mais son action suivante (qui ne pourra être ni une attaque massive, ni une défense massive) sera pénalisée.</p>
+
+		<table class="alternate-e left-1 fs-300 mt-½">
 			<tr>
 				<th></th>
 				<th>Bénéfices</th>
@@ -91,7 +150,7 @@
 			<tr>
 				<th>Précise</th>
 				<td>+4 au jet d’attaque</td>
-				<td rowspan="4">-3 à la prochaine action <b>et</b> perte initiative prochain tour<sup>(2)</sup></td>
+				<td rowspan="4">-3 à la prochaine action <b>et</b> attaque en dernier lors du prochain tour.</td>
 			</tr>
 			<tr>
 				<th>Puissante</th>
@@ -106,8 +165,7 @@
 				<td>Pas de limite de MR à l'attaque</td>
 			</tr>
 		</table>
-		<p>(1) avec une arme de taille à apprêter, il n’est pas possible de faire deux attaques, mais il est possible d’affecter plusieurs cibles proches en une seule attaque. Un combattant humain est limité à 2 cibles, mais une créature plus grande peut en affecter plus (décision du MJ).</p>
-		<p>(2) si l'action a eu lieu en 2<sup>e</sup> partie du round.</p>
+		<p class="fs-300">(1) avec une arme de taille à apprêter (hache, hallebarde), il n’est pas possible de faire deux attaques, mais il est possible d’affecter plusieurs cibles proches en un seul mouvement (que l’on traite avec deux jets d’attaque séparés). Un combattant humain est limité à 2 cibles, mais une créature plus grande peut en affecter plus (décision du MJ).</p>
 	</details>
 
 	<!-- Coups spéciaux -->
@@ -267,23 +325,80 @@
 <article>
 	<h2>Défense</h2>
 
+	<!-- Types de défenses -->
 	<details>
 		<summary>
-			<h3>Types de défenses</h3>
+			<h3>Types de défense</h3>
 		</summary>
-		<p>Pour avoir le droit à un jet de défense, le personnage <i>doit</i> pouvoir voir l’attaque arriver.</p>
-		<p>
-			<b>Esquive&nbsp;:</b> maximum 3 esquives par tour, mais -2 cumulatif après la première défense du tour, ainsi que -2 supplémentaire à toutes les esquives au-delà de la première.<br>
-			Ainsi, une esquive après une première parade se fait à -2. Mais une esquive après une première esquive se fait à -4 (-2 car il s’agit de la deuxième défense du tour, et encore -2 car il ne s’agit pas de la première esquive du tour).
-		</p>
-		<p><b>Blocage&nbsp;:</b> <i>Bouclier</i> -3 + DP</p>
-		<p><b>Parade&nbsp;:</b> <i>Arme</i> -3 (sauf exceptions mentionnées dans la table des armes)<br>
-			Une parade est possible seulement si l’arme est apprêtée. Si l’arme pare une arme 3 fois plus lourde, elle a 33% de chance de se briser.</p>
+		<ul class="mt-1">
+			<li><b>Esquive&nbsp;:</b> compétence <i>Esquive</i></li>
+			<li><b>Blocage&nbsp;:</b> compétence <i>Bouclier</i> -3 + DP</li>
+			<li><b>Parade&nbsp;:</b> compétence <i>Arme</i> -3*</li>
+		</ul>
+		<p>*généralement, ce malus vaut -3, mais il y a des exceptions, mentionnées dans la <a href="/armes-armures">table des armes</a>. Une parade est possible seulement si l’arme est apprêtée.</p>
 	</details>
 
+	<!-- Nombre de défenses -->
 	<details>
 		<summary>
-			<h3>Modificateurs de défenses</h3>
+			<h3>Nombre de défenses</h3>
+		</summary>
+		<p>Un combattant a droit à <b>une défense par tour</b>. S’il renonce à attaquer, il a droit à une deuxième défense.</p>
+		<p>Pour avoir le droit à un jet de défense, le personnage ne doit <b>pas être surpris</b> par l’attaque.</p>
+		<p>Un défenseur ne peut opposer qu’<b>une seule défense par attaque</b> (sauf en cas de <i>Défense massive</i> – voir ci-dessous).</p>
+
+		<h4>Défenses d’urgence</h4>
+		<p>Il est permis d’avoir jusqu’à <i>deux</i> défenses supplémentaires par tour, en plus de la défense «&nbsp;de droit&nbsp;» du tour (ou des deux défenses, si le combattant a renoncé à attaquer lors de ce tour). Elles sont qualifiées de <i>défenses d’urgence</i> et suivent les règles ci-dessous.</p>
+		<ul class="ta-justify">
+			<li>Ces défenses subissent un<b> malus supplémentaire</b>&nbsp;: -3 pour la première et -5 pour la seconde.</li>
+			<li>L’action précédant la défense d’urgence, ainsi que l’action suivante ne peuvent pas être des <b>attaques massives</b>.</li>
+			<li>L’arme ou le bouclier utilisé pour cette défense ne doit <b>pas avoir été utilisé</b> lors de l’action précédente et ne pourront pas être utilisé pour l’action suivante.</li>
+		</ul>
+
+		<details class="exemple mt-1">
+			<summary>Exemple</summary>
+
+			<p>Un combattant C fait face à 2 opposants (O1 et O2). Il arrive en 2<sup>e</sup> dans l’ordre d’initiative. Voici un déroulement possible du tour.</p>
+			<p>On note <i>défense+</i> la première défense d’urgence, et <i>défense++</i> la deuxième défense d’urgence.</p>
+
+			<ul>
+				<li><b>O1 – attaque C</b></li>
+				<li>C – défense</li>
+				<li><b>C – attaque O1</b></li>
+				<li><b>O2 – attaque</b></li>
+				<li>C – défense+</li>
+			</ul>
+
+			<p class="mt-1">Un combattant C fait face à 3 opposants (O1, O2 et O3). Il arrive en 3<sup>e</sup> dans l’ordre d’initiative. Voici un déroulement possible du tour si C choisit d’attaquer.</p>
+
+			<ul>
+				<li><b>O1 – attaque</b></li>
+				<li>C – défense</li>
+				<li><b>O2 – attaque</b></li>
+				<li>C – défense+</li>
+				<li><b>C – attaque O1</b></li>
+				<li>O1 – défense</li>
+				<li><b>O3 – attaque</b></li>
+				<li>C – défense++</li>
+			</ul>
+
+			<p>La même configuration, mais C choisit de se défendre plutôt que d’attaquer.</p>
+			<ul>
+				<li><b>O1 – attaque</b></li>
+				<li>C – défense</li>
+				<li><b>O2 – attaque</b></li>
+				<li>C – défense (pas d’attaque)</li>
+				<li><b>O3 – attaque</b></li>
+				<li>C – défense+</li>
+			</ul>
+			<p>On remarque que cette stratégie permet à C de remplacer la défense d’urgence n°2 par une défense normale.</p>
+		</details>
+	</details>
+
+	<!-- Modificateurs de défenses -->
+	<details>
+		<summary>
+			<h3>Modificateurs de défense</h3>
 		</summary>
 		<p><b>1. État du personnage&nbsp;:</b> comme pour <i>Attaque au contact</i>. -4 s’il est <i>sonné</i>.</p>
 		<p><b>2. <i>Défense spéciale</i></b>.</p>
@@ -291,11 +406,16 @@
 		<p><b>4. Conditions de défense&nbsp;:</b> déséquilibre, obscurité, position du défenseur, au jugé du MJ.</p>
 	</details>
 
+	<!-- Défense massive -->
 	<details>
 		<summary>
 			<h3>Défense massive</h3>
 		</summary>
-		<table class="alternate-e left-1">
+		<p>Un défenseur peut choisir d’effectuer une défense massive plutôt qu’une défense normale. Ce choix peut se faire en cours de tour pour les défenses <i>reculée</i> ou <i>multiple</i>.</p>
+
+		<p>Cela a pour effet de rendre sa défense plus efficace, mais nécessite certaines exigences et/ou a certaines conséquences pour l’action suivante.</p>
+
+		<table class="alternate-e left-1 fs-300 mt-½">
 			<tr>
 				<th></th>
 				<th>Bénéfices</th>
@@ -304,33 +424,32 @@
 			<tr>
 				<th>Préparée</th>
 				<td>+2 au jet de défense</td>
-				<td rowspan="3">avoir laissé l’initiative à son adversaire</td>
+				<td rowspan="2">avoir <i>volontairement</i> laissé son adversaire attaquer en premier.</td>
 			</tr>
 			<tr>
 				<th>Feintée</th>
-				<td>+2 à l’attaque suivante (initiative automatique, attaque normale seulement)</td>
+				<td>+2 à l’attaque suivante (initiative automatique)</td>
 				<!-- cellule fusionnée -->
 			</tr>
 			<tr>
 				<th>Rupture</th>
 				<td><i>Esquive</i> +3 pour quitter le combat. Cette esquive s’oppose à toutes les attaques du tour.</td>
-				<!-- cellule fusionnée -->
+				<td>aucune attaque possible pour le reste du tour. Agit en dernier au prochain tour.</td>
 			</tr>
 			<tr>
 				<th>Reculée</th>
 				<td>+2 au jet de défense</td>
-				<td>reculer de 1 m, -3 au jet d’attaque suivant (ou perte initiative prochain tour)<sup>(1)</sup>
-				</td>
+				<td>reculer de 1 m, -3 au jet d’attaque suivant, agit en dernier au prochain tour.</td>
 			</tr>
 			<tr>
 				<th>Multiple</th>
-				<td>2 défenses différentes pour une même attaque</td>
-				<td>-3 au jet d’attaque suivant (ou perte initiative prochain tour)<sup>(1)</sup></td>
+				<td>2 défenses différentes pour une même attaque, comptant comme une seule action</td>
+				<td>-3 au jet d’attaque suivant, agit en dernier au prochain tour.</td>
 			</tr>
 		</table>
-		<p>(1) si l'action a eu lieu en 2<sup>e</sup> partie du round.</p>
 	</details>
 
+	<!-- Contre une attaque à distance -->
 	<details>
 		<summary>
 			<h3>Contre une attaque à distance</h3>
@@ -340,6 +459,7 @@
 		<p><b>Armes à projectiles&nbsp;:</b> dans le cas d’un style de jeu «&nbsp;cinématographique&nbsp;», si le projectile est visible, que la cible n’est pas surprise et que la distance de tir est «&nbsp;raisonnable&nbsp;», le personnage peut tenter d’esquiver le projectile avec un malus important (-5).</p>
 	</details>
 
+	<!-- Défenses à mains nues -->
 	<details>
 		<summary>
 			<h3>Défenses à mains nues</h3>
@@ -348,6 +468,15 @@
 		<p><b>Pour se libérer d'une saisie ou d'une immboilisation&nbsp;:</b> duels de For, Dex ou <i>Judo/Lutte</i> entre les opposants.</p>
 		<p>Ces deux types de défense sont soumis aux modificateurs d'<b>état du personnage</b> comme pour une défense avec un arme.</p>
 		<p>Il est possible de choisir une des <i>Défenses spéciales</i> du paragraphe «&nbsp;Défense&nbsp;»</p>
+	</details>
+
+	<!-- Parer ou bloquer un coup puissant -->
+	<details>
+		<summary>
+			<h3>Parer ou bloquer un coup puissant</h3>
+		</summary>
+		<p>Si l’arme pare une arme 3 fois plus lourde, elle a 33% de chance de se briser</p>
+		<p class="clr-warning">À developper</p>
 	</details>
 
 </article>

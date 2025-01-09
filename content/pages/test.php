@@ -1,27 +1,32 @@
 <?php
 
-use App\Entity\Skill;
-use App\Lib\TableReader;
 use App\Entity\Character;
-
+use App\Lib\TextParser;
+use App\Repository\EquipmentRepository;
+use App\Rules\WoundController;
 
 ini_set('xdebug.var_display_max_depth', 10);
 ini_set("xdebug.var_display_max_data", -1);
 
-/* foreach ([ .15, 0.45, 0.5, .75, 1, 1.5, 2, 3.5, 4, 5, 7, 8, 10, 12, 13, 15, 16, 18, 19, 20, 21, 25, 26, 32 ] as $pts){
-	echo $pts . " pts → " . Skill::cost2niv($pts, -4, "D") . "<br>";
-}; */
+$tests = [
+	" blap 4, blup 5",
+	"bla bli",
+	";bla 4;",
+	" bla bli : blu",
+	"",
+	"bla",
+]
 
-/* $char = new Character(31);
-$char->processCharacter();
-echo "<pre>";
-foreach ($char->skills as $skill){
-	$skill["description"] = "(&hellip;)";
-	print_r($skill);
-}
-echo "</pre>"; */
+//$char = new Character(36);
+//$char->processCharacter();
 
-include "content/components/chat-window.php";
+//$equipment_repo = new EquipmentRepository;
+//$liste_objets_orphelins = $equipment_repo->getOrphanEquiment();
 
 ?>
+<pre>
+<?php
+print_r(WoundController::getWoundEffects("std", 10, 10, 10, 10, 0, 3, 0, "tr", "", "visage", [10,10,10,10,10,10,10]))
+?>
+</pre>
 <!-- <script type="module" src="/scripts/unit-tests.js"></script> -->

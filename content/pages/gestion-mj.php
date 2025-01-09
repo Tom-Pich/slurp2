@@ -12,19 +12,28 @@ $equipment_repo = new EquipmentRepository;
 $group_repo = new GroupRepository;
 $character_repo = new CharacterRepository;
 
-$liste_objets_orphelins = $equipment_repo->getOrphanEquiment();
+$liste_objets_orphelins = $equipment_repo->getOrphanEquiment($_SESSION["id"]);
 for ($k = 0; $k < 3; $k++) {
-	$liste_objets_orphelins[] = new Equipment();
+	$nouvel_objet = new Equipment();
+	$nouvel_objet->id_gm = $_SESSION["id"];
+	$liste_objets_orphelins[] = $nouvel_objet;
 }
 
 $admin = $_SESSION["Statut"] === 3;
 $users = $user_repo->getAllUsers();
 $groups = $admin ? $group_repo->getAllGroups() : $group_repo->getGMGroups($_SESSION["id"]);
 $characters_id = $admin ? $character_repo->getAllCharacters() : $character_repo->getCharactersFromGM($_SESSION["id"]);
+
 $characters = [];
-foreach ($characters_id as $character) {
-	$characters[] = new Character($character["id"]);
-}
+foreach ($characters_id as $id) $characters[] = new Character($id);
+$statusOrder = ["Actif", "Création", "Archivé", "Mort"];
+
+// sort characters by status
+usort($characters, function ($a, $b) use ($statusOrder) {
+	$posA = array_search($a->status, $statusOrder);
+	$posB = array_search($b->status, $statusOrder);
+	return $posA - $posB;
+});
 ?>
 
 <div id="ws-data" hidden data-session-id="<?= $_SESSION["id"] ?>" data-ws-key="<?= WS_KEY ?>"></div>
@@ -32,13 +41,13 @@ foreach ($characters_id as $character) {
 <!-- Objets orphelins -->
 <article>
 	<h2>Objets orphelins</h2>
-	<form id="items-form" class="grid">
+	<form id="items-form" class="grid gap-½">
 		<?php
 		$n = 0;
 		foreach ($liste_objets_orphelins as $objet) { ?>
-			<div class="grid single-item-wrapper gap-½">
+			<div class="grid single-item-wrapper gap-½-1">
 				<div class="ta-right fs-300" style="grid-area: id; align-self: center"><?= $objet->id ?></div>
-				<input type="text" name="objet-gestionnaire[<?= $n ?>][Nom]" value="<?= $objet->name ?>" placeholder="Nom de l’objet"  style="grid-area: name">
+				<input type="text" name="objet-gestionnaire[<?= $n ?>][Nom]" value="<?= $objet->name ?>" placeholder="Nom de l’objet" style="grid-area: name">
 				<div class="flex-s ai-center">
 					<label class="ff-fas">
 						&#xf187;
@@ -48,8 +57,9 @@ foreach ($characters_id as $character) {
 				<input type="text" name="objet-gestionnaire[<?= $n ?>][Poids]" value="<?= $objet->weight ?>" class="ta-center" placeholder="Pds" title="poids">
 				<input type="text" name="objet-gestionnaire[<?= $n ?>][Lieu]" value="<?= $objet->place ?>" class="ta-center" placeholder="Lieu">
 				<input type="text" name="objet-gestionnaire[<?= $n ?>][Notes]" value="<?= $objet->notes ?>" placeholder="Notes" style="grid-area: notes">
-				<input type="text" name="objet-gestionnaire[<?= $n ?>][Secret]" value="<?= $objet->secret ?>" class="clr-warning" placeholder="Notes du MJ"  style="grid-area: notes-mj">
+				<input type="text" name="objet-gestionnaire[<?= $n ?>][Secret]" value="<?= $objet->secret ?>" class="clr-warning" placeholder="Notes du MJ" style="grid-area: notes-mj">
 				<input hidden name="objet-gestionnaire[<?= $n ?>][id]" value="<?= $objet->id ?>">
+				<input hidden name="objet-gestionnaire[<?= $n ?>][MJ]" value="<?= $objet->id_gm ?>">
 			</div>
 		<?php
 			$n++;
@@ -64,10 +74,12 @@ foreach ($characters_id as $character) {
 
 	<?php foreach ($groups as $group) { ?>
 		<details data-group="<?= $group->id ?>">
-			<summary><h3><?= $group->id ?? "X" ?>. <?= $group->name ?></h3></summary>
-			<div class="flex gap-½ fl-wrap mt-½">
+			<summary>
+				<h3><?= $group->id ?? "X" ?>. <?= $group->name ?></h3>
+			</summary>
+			<div class="grid col-auto-fit gap-½ mt-½" style="--col-min-width: 350px">
 				<?php
-				$group_characters = array_filter($characters, fn ($x) => $x->id_group === $group->id);
+				$group_characters = array_filter($characters, fn($x) => $x->id_group === $group->id);
 				foreach ($group_characters as $perso) {
 
 					// ratio des PdV, PdF, PdM et PdE
@@ -85,47 +97,28 @@ foreach ($characters_id as $character) {
 					$r_pde = !$pdem ? 0 : ($pde ? $pde / $pdem * 100 : 0);
 
 					// style des indicateurs d’état des PdV, PdF, PdM et PdE
-					if ($r_pdv > 75) {
-						$style_pdv = "background : linear-gradient(90deg, DarkSeaGreen $r_pdv%, white $r_pdv%);";
-					} elseif ($r_pdv > 50) {
-						$style_pdv = "background : linear-gradient(90deg, BlanchedAlmond $r_pdv%, white $r_pdv%);";
-					} elseif ($r_pdv > 25) {
-						$style_pdv = "background : linear-gradient(90deg, LightSalmon $r_pdv%, white $r_pdv%);";
-					} elseif ($r_pdv > 0) {
-						$style_pdv = "background : linear-gradient(90deg, LightCoral $r_pdv%, white $r_pdv%);";
-					} elseif ($r_pdv == 0 and $pdv == "") {
-						$style_pdv = "background : none;";
-					} else {
-						$style_pdv = "background : LightCoral;";
-					}
+					if ($r_pdv > 75) $style_pdv = "background : linear-gradient(90deg, DarkSeaGreen $r_pdv%, white $r_pdv%);";
+					elseif ($r_pdv > 50) $style_pdv = "background : linear-gradient(90deg, BlanchedAlmond $r_pdv%, white $r_pdv%);";
+					elseif ($r_pdv > 25) $style_pdv = "background : linear-gradient(90deg, LightSalmon $r_pdv%, white $r_pdv%);";
+					elseif ($r_pdv > 0) $style_pdv = "background : linear-gradient(90deg, LightCoral $r_pdv%, white $r_pdv%);";
+					elseif ($r_pdv == 0 and $pdv === "") $style_pdv = "background : none;";
+					else $style_pdv = "background : LightCoral;";
 
-					if ($r_pdf > 50) {
-						$style_pdf = "background : linear-gradient(90deg, DarkSeaGreen $r_pdf%, white $r_pdf%);";
-					} elseif ($r_pdf > 25) {
-						$style_pdf = "background : linear-gradient(90deg, BlanchedAlmond $r_pdf%, white $r_pdf%);";
-					} elseif ($r_pdf > 10) {
-						$style_pdf = "background : linear-gradient(90deg, LightSalmon $r_pdf%, white $r_pdf%);";
-					} elseif ($r_pdf > 0) {
-						$style_pdf = "background : linear-gradient(90deg, LightCoral $r_pdf%, white $r_pdf%);";
-					} elseif ($r_pdf == 0 and $pdf == "") {
-						$style_pdf = "background : none;";
-					} else {
-						$style_pdf = "background : LightCoral;";
-					}
+					if ($r_pdf > 50) $style_pdf = "background : linear-gradient(90deg, DarkSeaGreen $r_pdf%, white $r_pdf%);";
+					elseif ($r_pdf > 25) $style_pdf = "background : linear-gradient(90deg, BlanchedAlmond $r_pdf%, white $r_pdf%);";
+					elseif ($r_pdf > 10) $style_pdf = "background : linear-gradient(90deg, LightSalmon $r_pdf%, white $r_pdf%);";
+					elseif ($r_pdf > 0) $style_pdf = "background : linear-gradient(90deg, LightCoral $r_pdf%, white $r_pdf%);";
+					elseif ($r_pdf == 0 and $pdf == "") $style_pdf = "background : none;";
+					else $style_pdf = "background : LightCoral;";
 
 					$style_pdm = "background : linear-gradient(90deg, LightBlue $r_pdm%, white $r_pdm%);";
 
-					if ($r_pde > 50) {
-						$style_pde = "background : linear-gradient(90deg, DarkSeaGreen $r_pde%, white $r_pde%);";
-					} elseif ($r_pde > 25) {
-						$style_pde = "background : linear-gradient(90deg, LightSalmon $r_pde%, white $r_pde%);";
-					} elseif ($r_pde > 0) {
-						$style_pde = "background : linear-gradient(90deg, LightCoral $r_pde%, white $r_pde%);";
-					} elseif ($r_pde == 0 and $pde == "") {
-						$style_pde = "background : none;";
-					} else {
-						$style_pde = "background : LightCoral;";
-					} ?>
+					if ($r_pde > 50) $style_pde = "background : linear-gradient(90deg, DarkSeaGreen $r_pde%, white $r_pde%);";
+					elseif ($r_pde > 25) $style_pde = "background : linear-gradient(90deg, LightSalmon $r_pde%, white $r_pde%);";
+					elseif ($r_pde > 0) $style_pde = "background : linear-gradient(90deg, LightCoral $r_pde%, white $r_pde%);";
+					elseif ($r_pde == 0 and $pde == "") $style_pde = "background : none;";
+					else $style_pde = "background : LightCoral;";
+				?>
 
 					<form class="card" data-role="character-state-form" id="state-form-character-<?= $perso->id ?>">
 
@@ -136,8 +129,13 @@ foreach ($characters_id as $character) {
 								<?= $perso->id ?>. <?= $perso->name ?>
 								<span id="confirm-export-<?= $perso->id ?>"></span>
 							</h4>
-							<a href="personnage-fiche?perso=<?= $perso->id ?>" target="_blank" class="ff-fas fs-500 btn nude" title="voir fiche">&#xf2c2;</a>
-							<button type="button" data-role="export-character" title="exporter" class="nude ff-fas fs-500" data-id="<?= $perso->id ?>">&#xf56e;</button>
+							<button data-role="save-character" type="submit" title="enregistrer (Ctrl+S)" class="nude ff-fas fs-500" data-id="<?= $perso->id ?>">
+								&#xf0c7;
+							</button>
+							<a href="personnage-fiche?perso=<?= $perso->id ?>" target="_blank" class="ff-fas fs-500 btn nude" title="voir la fiche">
+								&#xf2c2;
+							</a>
+							<button type="button" data-role="export-character" title="exporter en txt" class="nude ff-fas fs-500" data-id="<?= $perso->id ?>">&#xf56e;</button>
 						</div>
 
 						<div class="flex-s gap-½ mt-½">
@@ -194,10 +192,9 @@ foreach ($characters_id as $character) {
 
 						<!-- Autres éléments d’état -->
 						<div class="flex-s gap-½ mt-½">
-							<!--  -->
-							<textarea name="État[Autres]" placeholder="Autres éléments d’état" title="Autres éléments d’état – séparateur ;"><?= $perso->state["Autres"] ?? "" ?></textarea>
+							<textarea name="État[Autres]" placeholder="Autres éléments d’état" title="Autres éléments d’état" style="min-height: 5em;"><?= $perso->state["Autres"] ?? "" ?></textarea>
 						</div>
-						
+
 						<!-- Détails du personnage -->
 						<div class="mt-½ flow" data-role="character-summary">
 							<!-- asynchronous fill with template -->
@@ -219,9 +216,9 @@ foreach ($characters_id as $character) {
 
 <article><!-- Créer un personnage -->
 	<h2>Créer un personnage</h2>
-	<p>Les kits sont cumulatifs. En cas de conflit, les derniers (dans l’ordre de lecture) écrasent les premiers.</p>
+	<p>Les kits sont cumulatifs. En cas de conflit sur certaines valeurs, les dernières (dans l’ordre de lecture) écrasent les premières.</p>
 	<form method="post" action="/submit/create-character">
-		<div class="flex gap-1">
+		<div class="grid col-auto-fit gap-½" style="--col-min-width: 250px">
 			<div class="card">
 				<label>
 					<input type="checkbox" name="kit_base">
@@ -267,7 +264,7 @@ foreach ($characters_id as $character) {
 	<article id="gestionnaire-groupes"><!-- Groupes -->
 		<h2>Groupes</h2>
 		<form action="/submit/groups" method="POST" autocomplete="off">
-			<div class="flex gap-1 fl-wrap jc-center">
+			<div class="grid col-auto-fit gap-½ fl-wrap jc-center" style="--col-min-width: 250px">
 
 				<?php foreach ($groups as $group) {
 					if ($group->id !== NULL) {
@@ -282,7 +279,7 @@ foreach ($characters_id as $character) {
 								<select name="groupes[<?= $group->id ?>][MJ]" class="fl-1">
 									<?php foreach ($users as $user) { ?>
 										<?php if ($user->status >= 2): ?>
-										<option value="<?= $user->id ?>" <?= $user->id === $group->id_gm ? "selected" : "" ?>><?= $user->login ?></option>
+											<option value="<?= $user->id ?>" <?= $user->id === $group->id_gm ? "selected" : "" ?>><?= $user->login ?></option>
 										<?php endif; ?>
 									<?php } ?>
 								</select>
@@ -292,7 +289,7 @@ foreach ($characters_id as $character) {
 				} ?>
 
 				<div class="card">
-					<div class="ta-center italic">Entrez un nom pour créer un nouveau groupe</div>
+					<div class="ta-center italic">Entrez un nom pour créer un groupe</div>
 					<input type="text" name="groupes[0][Nom]" class="full-width mt-½" placeholder="Nom du groupe">
 					<input hidden name="groupes[0][MJ]" value="1">
 				</div>
@@ -304,17 +301,32 @@ foreach ($characters_id as $character) {
 <?php } ?>
 
 <template id="character-details">
-	For <span data-content="For" ></span>&nbsp;;
-	Dex <span data-content="Dex" ></span>&nbsp;;
-	Int <span data-content="Int" ></span>&nbsp;;
-	San <span data-content="San" ></span>&nbsp;;
-	Per <span data-content="Per" ></span>&nbsp;;
-	Vol <span data-content="Vol" ></span>
+
+	<p data-content="Description"></p>
+
+	<p>
+		<b>For</b> <span data-content="For"></span>&nbsp;;
+		<b>Dex</b> <span data-content="Dex"></span>&nbsp;;
+		<b>Int</b> <span data-content="Int"></span>&nbsp;;
+		<b>San</b> <span data-content="San"></span>&nbsp;;
+		<b>Per</b> <span data-content="Per"></span>&nbsp;;
+		<b>Vol</b> <span data-content="Vol"></span><br>
+		<b>Dég.</b> <span data-content="Dégâts"></span>&nbsp;;
+		<b>Réf.</b> <span data-content="Réflexes"></span>&nbsp;;
+		<b>S.-F.</b> <span data-content="Sang-Froid"></span>&nbsp;;
+		<b>Vit.</b> <span data-content="Vitesse"></span>&nbsp;;
+	</p>
 
 	<p data-content="Avantage"></p>
 	<p data-content="Désavantage"></p>
 	<p data-content="Travers"></p>
 	<p data-content="Réputation"></p>
+
+	<p data-content="Collèges"></p>
+	<p data-content="Pouvoirs"></p>
+
+	<p class="mt-1 mb-0 fw-700">Encombrement <span data-content="Encombrement"></span></p>
+	<p class="mt-0" data-content="Équipement"></p>
 </template>
 
 <script type="module" src="/scripts/characters-manager<?= PRODUCTION ? ".min" : "" ?>.js?v=<?= VERSION ?>" defer></script>

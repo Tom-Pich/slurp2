@@ -235,10 +235,10 @@ class AvDesav implements RulesItem
 			$points_avdesav += (float)$avdesav["points"];
 
 			// Formating label for character sheet
-			$avdesav['label'] = $avdesav['nom'];
+			/* $avdesav['label'] = $avdesav['nom'];
 			if (in_array("aff_coût", $avdesav['options'])) {
 				$avdesav['label'] .= " (" . $avdesav['points'] . ")";
-			}
+			} */
 
 			$avdesavs[] = $avdesav;
 		}

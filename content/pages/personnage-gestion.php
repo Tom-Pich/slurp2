@@ -21,7 +21,7 @@ $attributes_names = ["For", "Dex", "Int", "San", "Per", "Vol"];
 $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 ?>
 
-<form id="noyau" method="post" action="/submit/update-character" enctype="multipart/form-data">
+<form id="noyau" data-ws-key="<?= WS_KEY ?>" data-session-id="<?= $_SESSION["id"] ?>" enctype="multipart/form-data">
 
 	<input hidden name="id" value="<?= $character->id ?>">
 	<input hidden name="Pts" value="<?= $character->points ?>">
@@ -33,7 +33,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 		<!-- Nom, sauvegarde et retour fiche perso -->
 		<div class="flex-s jc-space-between gap-1 ai-first-baseline">
 			<input name="Nom" type="text" value="<?= $character->name ?>" class="fs-500 fw-600 fl-1 px-½">
-			<button type="submit" class="ff-fas btn-primary" title="Enregistrer – Alt+Shift+S" accesskey="s">&#xf0c7;</button>
+			<button type="submit" class="ff-fas btn-primary" title="Enregistrer – Ctrl+S">&#xf0c7;</button>
 			<a href="personnage-fiche?perso=<?= $character->id ?>" class="btn btn-primary ff-fas" title="Retour à la fiche de perso">&#xf2bb;</a>
 		</div>
 
@@ -145,7 +145,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 			<summary><h3>Avantages &amp; Désavantages</h3></summary>
 			<div class="mt-½">
 				<p>
-					<b>Nom&nbsp;:</b> à ne modifier que si une précision est nécessaire.<br>
+					<b>Nom&nbsp;:</b> ajouter une précision <i>si nécessaire</i>.<br>
 					<b>Coût&nbsp;:</b> coût en pts de personnage. Par défaut, le coût choisi est celui le plus proche de zéro<br>
 				</p>
 				<p><b>Pour supprimer un élément,</b> effacer son nom.</p>
@@ -217,9 +217,9 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 			<summary><h3>Compétences</h3></summary>
 			<div class="mt-½">
 				<p>
-					<b>Nom&nbsp;:</b> ajouter une précision au nom de la compétence si nécessaire.<br>
+					<b>Nom&nbsp;:</b> ajouter une précision <i>si nécessaire</i>.<br>
 					<b>Modificateur&nbsp;:</b> ajouter le modificateur entre parenthèse à côté du nom. Par exemple&nbsp;: (+2) ou (-1).<br>
-					<b>Compétence de background&nbsp;:</b> ajoutez une astéristique à côté du nom.<br>
+					<b>Compétence de background&nbsp;:</b> ajoutez une astérisque à côté du nom.<br>
 					<b>Spécialité&nbsp;:</b> indiquer, à côté du nom et entre parenthèses, le nom de la spécialité <i>optionnelle</i>, et le bonus souhaité. Par exemple&nbsp;: Commerce (joaillerie +3).<br>
 					<b>Score&nbsp;:</b> indiquer le score souhaité. Si ce score est inférieur au score par défaut, il sera automatiquement ramené au score par défaut.<br>
 					<b>Pts &nbsp;:</b> cette valeur est <i>calculée</i> à partir du score souhaité et des différents paramètres que vous avez indiqués (modificateur, &hellip;)<br>
@@ -237,6 +237,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 				<div class="flex-s gap-½ ai-first-baseline">
 					<input type="text" name="Compétences[<?= $n_post ?>][label]" value="<?= $comp['label'] ?>" class="fl-1">
+					<div class="fs-300 ta-center" style="width: 6ch" title="type"><?= $comp['type'] ?></div>
 					<div class="fs-300 ta-center" style="width: 3ch" title="points"><?= $comp['points'] ?></div>
 					<input type="text" name="Compétences[<?= $n_post ?>][score]" value="<?= $comp['score'] ?>" size="2" class="ta-center" title="score">
 					<input type="hidden" name="Compétences[<?= $n_post ?>][former-score]" value="<?= (int) $comp['score'] ? $comp['score'] : $comp["virtual-score"] ?>">
@@ -286,7 +287,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 			<!-- Mode d’emploi collège et sorts -->
 			<details class="mt-3-5">
 				<summary><h3>Collèges &amp; sorts</h3></summary>
-				<div class="border-bottom-grey-700 mt-½">
+				<div class="mt-½">
 					<p>
 						<b>Collèges&nbsp;:</b> même principe que pour les compétences. Vous pouvez ajouter un modificateur entre parenthèse à côté du nom.<br>
 						<b>Sorts&nbsp;:</b> préciser le nombre de points investis dans chaque sort (max 5). Vous pouvez ajouter un modificateur à côté du nom du sort.

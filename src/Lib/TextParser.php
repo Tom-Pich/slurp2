@@ -114,15 +114,15 @@ class TextParser
 	 */
 	public static function parsePseudoArray2Array(string $text): array
 	{
-		$text = trim($text);
-		$text = rtrim($text, ";, ");
+		//$text = trim($text);
+		$text = trim($text, ";, ");
+
 		// check if string format seems correct
 		$text = preg_replace("/\s{1,}[,;]/", ";", $text);
 		$uncorrect_pattern = "/[^\s:;,]+\s+[^\s:;,]+\s+/";
 		preg_match($uncorrect_pattern, $text, $matches);
-		if (!empty($matches)) {
-			return [];
-		}
+		if (!empty($matches)) return [];
+
 		// parse string format
 		$elements_separator_regexp = "/\s{0,}[,;]\s{0,}/";
 		$text = preg_replace($elements_separator_regexp, ";", $text);
@@ -134,6 +134,7 @@ class TextParser
 			$exploded_element = explode(" ", $element);
 			$indexed_array[$exploded_element[0]] = $exploded_element[1] ?? NULL;
 		}
+		$indexed_array = array_filter($indexed_array, fn($value, $key) => $value !== null && $key !== "", ARRAY_FILTER_USE_BOTH);
 		return $indexed_array;
 	}
 
@@ -342,7 +343,7 @@ class TextParser
 			"#(\S)\"#" => "$1 »",
 			"#« #" => "« ",
 			"# »#" => " »",
-			
+
 			/* "#\s{1,}#" => " ",
 			"# {1,}#" => " ",
 			"#  #" => " ", */
@@ -359,14 +360,14 @@ class TextParser
 	 */
 	public static function evalString($value): int|float
 	{
-		if(is_int($value) || is_float($value)) return $value;
+		if (is_int($value) || is_float($value)) return $value;
 		if (!is_string($value)) return 0;
 
 		// sanitizing expression
 		$value = preg_replace('/,/', '.', $value); // comma into dot
 
 		// return 0 if not valid string
-		if (preg_match('/[^0-9+\-. ]/',$value)) return 0;
+		if (preg_match('/[^0-9+\-. ]/', $value)) return 0;
 
 		$result = eval("return $value;");
 		if (is_null($result)) $result = 0;

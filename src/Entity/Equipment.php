@@ -21,6 +21,7 @@ class Equipment
 	public ?int $visibleByGroupId;
 	public int $order;
 	public ?string $containerName = null;
+	public int $id_gm;
 
 	public function __construct($data = [])
 	{
@@ -37,6 +38,7 @@ class Equipment
 		if (substr($this->place, 0, 3) === "ct_") {
 			$this->containerName = $repo->getEquipment((int)substr($this->place, 3))->name;
 		}
+		$this->id_gm = $data["MJ"] ?? 0;
 	}
 
 	public static function isCarried(int $id): bool
@@ -166,6 +168,7 @@ class Equipment
 				$formatted_item["Lieu"] = strip_tags($item["Lieu"]);
 				$formatted_item["Groupe"] = !empty($post["sub-list"][$id]["Groupe"]) ? (int) $post["sub-list"][$id]["Groupe"] : null;
 				$formatted_item["Ordre"] = $order;
+				$formatted_item["MJ"] = (int) $item["MJ"];
 
 				// prevent putting container in itself
 				$container_is_in_itself = $formatted_item["id"] == substr($formatted_item["Lieu"], 3) && substr($formatted_item["Lieu"], 0, 3) === "ct_" ;
@@ -187,6 +190,7 @@ class Equipment
 			$formatted_item["Lieu"] = strip_tags($item["Lieu"]);
 			$formatted_item["Groupe"] = null;
 			$formatted_item["Ordre"] = 99;
+			$formatted_item["MJ"] = (int) $item["MJ"];
 			if (!empty($formatted_item["Nom"])) {
 				$repo->createEquipment($formatted_item);
 			}
@@ -204,6 +208,7 @@ class Equipment
 			$formatted_item["Lieu"] = strip_tags($item["Lieu"]);
 			$formatted_item["Groupe"] = null;
 			$formatted_item["Ordre"] = 99;
+			$formatted_item["MJ"] = (int) $item["MJ"];
 			if ($formatted_item["id"] && $formatted_item["Nom"]) {
 				$repo->setEquipment($formatted_item);
 			} elseif ($formatted_item["id"] && !$formatted_item["Nom"]) {

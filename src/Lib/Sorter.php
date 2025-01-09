@@ -15,6 +15,22 @@ abstract class Sorter
 	static public function sort(array $array, string $key = "", bool $reverse = false) : array
 	{
 		if ($key) {
+			usort($array, function ($a, $b) use ($key, $reverse) {
+				if (is_numeric($a[$key])) {
+					$compare = $reverse ? $b[$key] - $a[$key] : $a[$key] - $b[$key];
+				}
+				else {
+					$compare = $reverse ? strcoll($b[$key], $a[$key]) : strcoll($a[$key], $b[$key]);
+				}
+				return $compare;
+			});
+		} else {
+			usort($array, function ($a, $b) use ($reverse) {
+				return $reverse ? strcoll($a, $b) : strcoll($a, $b);
+			});
+		}
+		return $array;
+		/* if ($key) {
 			uasort($array, function ($a, $b) use ($key, $reverse) {
 				if (is_numeric($a[$key])) {
 					$compare = $reverse ? $b[$key] - $a[$key] : $a[$key] - $b[$key];
@@ -29,7 +45,7 @@ abstract class Sorter
 				return $reverse ? strcoll($a, $b) : strcoll($a, $b);
 			});
 		}
-		return array_values($array);
+		return array_values($array); */
 	}
 
 	static public function sortPowersByName(array $array)

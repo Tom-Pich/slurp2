@@ -24,7 +24,7 @@ function color_modifier($original_score, $actual_score)
 
 <div id="ws-data" hidden data-session-id="<?= $_SESSION["id"] ?>" data-ws-key="<?= WS_KEY ?>"></div>
 
-<div class="character-sheet-wrapper fl-1">
+<div id="character-sheet" class="character-sheet-wrapper fl-1">
 
 	<!-- Description, caractéristiques, état, portraits -->
 	<div class="no-break">
@@ -104,7 +104,7 @@ function color_modifier($original_score, $actual_score)
 				<div>
 					<b>Vit</b>
 					<span <?= color_modifier($character->raw_attributes["Vitesse"], $character->attributes["Vitesse"]) ?>>
-						<?= round($character->attributes["Vitesse"], 1) ?>
+						<?= $character->attributes["Vitesse"] ?>
 					</span>
 				</div>
 			</div>
@@ -117,7 +117,7 @@ function color_modifier($original_score, $actual_score)
 				?>
 					<div class="ta-center <?= $pdx_name === "PdM" && !$character_uses_pdm ? "clr-grey-500" : "" ?>" style="line-height: 1.2em;">
 						<b><?= $pdx_name ?></b> <?= $pdxm ?><br>
-						<meter min="0" low="<?= $pdxm * 0.26 ?>" high="<?= $pdxm * 0.5 ?>" optimum="<?= $pdxm * 0.51 ?>" max="<?= $pdxm ?>" value="<?= $pdx ?>" title="<?= $pdx ?>" name="<?= $pdx_name ?>" style="width: 7ch"></meter>
+						<meter class="pdx-meter" min="0" low="<?= $pdxm * 0.26 ?>" high="<?= $pdxm * 0.5 ?>" optimum="<?= $pdxm * 0.51 ?>" max="<?= $pdxm ?>" value="<?= $pdx ?>" title="<?= $pdx ?>" name="<?= $pdx_name ?>"></meter>
 					</div>
 				<?php } ?>
 			</div>
@@ -426,6 +426,7 @@ function color_modifier($original_score, $actual_score)
 								<?php } ?>
 								<input hidden name="objet[<?= $item->id ?>][Lieu]" value="<?= $item->place ?>" data-role="item-place">
 								<input hidden name="objet[<?= $item->id ?>][Contenant]" value="<?= $item->isContainer ?>">
+								<input hidden name="objet[<?= $item->id ?>][MJ]" value="<?= $character->id_gm ?>">
 							</div>
 						</details>
 					<?php } ?>

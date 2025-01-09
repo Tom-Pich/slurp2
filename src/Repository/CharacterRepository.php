@@ -97,17 +97,24 @@ class CharacterRepository extends AbstractRepository
 	}
 	
 	/**
-	 * getCharactersFromGM - array like [[id=> xx,]...]
+	 * get the ids of all characters of a GM
 	 *
 	 * @param  int $id
 	 * @return array of characters id of the GM
 	 */
 	public function getCharactersFromGM(int $id): array
 	{
+		// check if id matches a GM status
+		$query = $this->db->prepare("SELECT Statut FROM utilisateurs WHERE id = ?");
+		$query->execute([$id]);
+		$status = $query->fetch(\PDO::FETCH_COLUMN);
+		if ($status === 1 || !$status) return [];
+		
+		// fetch characters id (characters without group are included)
 		$query_string = "SELECT p.id FROM persos p LEFT JOIN groupes g ON p.id_groupe = g.id WHERE g.MJ = ? OR p.id_groupe IS NULL";
 		$query = $this->db->prepare($query_string);
 		$query->execute([$id]);
-		$items = $query->fetchAll(\PDO::FETCH_ASSOC);
+		$items = $query->fetchAll(\PDO::FETCH_COLUMN);
 		$query->closeCursor();
 		return $items;
 	}
@@ -115,7 +122,7 @@ class CharacterRepository extends AbstractRepository
 	public function getAllCharacters(): array
 	{
 		$query = $this->db->query("SELECT id FROM persos");
-		$items = $query->fetchAll(\PDO::FETCH_ASSOC);
+		$items = $query->fetchAll(\PDO::FETCH_COLUMN);
 		return $items;
 	}
 

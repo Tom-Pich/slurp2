@@ -1,4 +1,4 @@
-# SLURP v3.12 – Le moteur de JdR universel
+# SLURP v3.16 – Le moteur de JdR universel
 
 Ce projet contient le code source de mon application permettant de faire des parties de SLURP en ligne. SLURP est un moteur de règles universelles de JdR sur table. C’est un _fork_ de GURPS de ma propre invention. Le projet a démarré en 2000. 
 
