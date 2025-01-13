@@ -348,10 +348,11 @@ $creatures_repo = new CreatureRepository;
 			<li>Le malus total ne peut être supérieur à celui qu’aurait le mage en portant l’armure complète.</li>
 			<li>On arrondit le malus à l’inférieur</li>
 		</ul>
-		<div class="exemple">
+		<details class="exemple">
+			<summary>Exemple</summary>
 			Un mage porte une protection de maille couvrant le torse, ainsi qu’un protection de cuir lourd couvrant la tête (mais pas le visage).<br>
 			À la louche, on dit -2 pour la cotte de maille sur le torse et -2×⅓ pour la tête, soit un malus total de -2.
-		</div>
+		</details>
 	</details>
 
 	<details>

@@ -6,44 +6,53 @@ $pages_data = [
 		"description" => "Système de jeu de rôle Souple Léger Universel Rapide et Précis",
 		"file" => "00-home",
 		"body-class" => "home",
+		"version" => 4,
+		"aside-left" => "aside-image-1",
+		"aside-right" => "aside-home",
 	],
 	"personnages" => [
 		"title" => "Personnages",
 		"description" => "Les règles concernant la création de personnage",
 		"file" => "01a-personnage",
-		//"css-version" => 4,
+		"version" => 4,
+		//"aside-left" => "aside-intro-personnage",
+		//"aside-right" => "aside-right-test",
 	],
 	"avdesav-comp-sorts" => [
 		"title" => "Listes pour le personnage",
 		"description" => "Tous les avantages, désavantages, compétences et sorts",
 		"file" => "01b-listes",
-		//"css-version" => 4,
+		"version" => 4,
 	],
 	"armes-armures" => [
 		"title" => "Armes &amp; armures",
 		"description" => "Règles et listes portant sur les armes et les armures",
 		"file" => "02-armes-armures",
-		//"css-version" => 4,
+		"version" => 4,
 	],
 	"bases-systeme" => [
 		"title" => "Bases du système",
 		"description" => "Les fondamentaux des règles",
 		"file" => "03-bases",
+		"version" => 4,
 	],
 	"combat" => [
 		"title" => "Combat",
 		"description" => "Toutes les règles concernant les différentes situations de combat",
 		"file" => "04-combat",
+		"version" => 4,
 	],
 	"blessures-dangers" => [
 		"title" => "Blessures &amp; dangers",
 		"description" => "Les blessures et leurs effets, la guérison et les effets de divers dangers",
 		"file" => "05-blessures-dangers",
+		"version" => 4,
 	],
 	"magie" => [
 		"title" => "Magie",
 		"description" => "Les règles sur la magie – sorts, pouvoirs magiques, objets magiques, alchimie&hellip;",
 		"file" => "06-magie",
+		"version" => 4,
 	],
 	"animaux" => [
 		"title" => "Animaux", 
@@ -112,15 +121,17 @@ $pages_data = [
 		"title" => "Test", 
 		"description" => "", 
 		"file" => "test",
-		"body-class" => "test",
+		"body-class" => "basic-page",
 	],
 
 	// Personnage (fiche et gestionnaire)
 	"personnage-fiche" => [
-		"title" => "Personnage", 
+		"title" => "", // nom du perso 
 		"description" => "", 
-		"file" => "personnage_fiche",
+		"file" => "personnage-fiche",
 		"body-class" => "personnage-fiche",
+		"version" => 4,
+		"aside-right" => "chat-window",
 	],
 	"personnage-gestion" => [
 		"title" => "Gestionnaire de personnages", 
@@ -134,8 +145,10 @@ $pages_data = [
 		"title" => "Gestionnaire du MJ", 
 		"description" => "", 
 		"file" => "gestion-mj",
-		"body-class" => "gestionnaire-mj",
+		"body-class" => "standard-page gestionnaire-mj",
 		"access-restriction" => 2,
+		"version" => 4,
+		"aside-right" => "chat-window",
 	],
 	"gestion-listes" => [
 		"title" => "Gestionnaire des RdB",
@@ -147,7 +160,9 @@ $pages_data = [
 	"mon-compte" => [
 		"title" => "Mon compte",
 		"description" => "",
+		"body-class" => "basic-page",
 		"file" => "gestion-compte",
+		"version" => 4,
 	],
 
 	// Table de jeu
@@ -156,14 +171,17 @@ $pages_data = [
 		"description" => "Un ensemble de widget permettant la gestion de la partie assistée par ordinateur, ainsi qu’une fenêtre de tchat",
 		"file" => "table_jeu",
 		"body-class" => "table-jeu",
+		"version" => 4,
+		"aside-right" => "chat-window"
 	],
 
 	// Licence
 	"licence" => [
 		"title" => "Licence",
 		"description" => "Licence d’utilisation du JdR SLURP.",
+		"body-class" => "basic-page",
 		"file" => "licence",
-		"body-class" => "licence"
+		"version" => 4,
 	]
 	
 	

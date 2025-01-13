@@ -166,7 +166,7 @@ class WeaponsController
 	 */
 	static function displayWeaponsList(array $weapons, bool $is_firearms_list = false, bool $display_headers = true, ?int $price_index = null, ?string $currency = null, ?string $table_title = null): void
 	{ ?>
-		<table class="weapons <?= $display_headers ? "" : "alternate-o" ?>">
+		<table class="weapons<?= $display_headers ? "" : " alternate-o" ?>">
 			<?php if ($display_headers) { ?>
 				<tr>
 					<th><?= $table_title ? $table_title : "" ?></th>

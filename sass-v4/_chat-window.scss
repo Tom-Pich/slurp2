@@ -1,0 +1,46 @@
+#chat-container {
+	border: 1px solid var(--grey-700); background: white; padding: 1em; border-radius: .75em; position: relative; height: fit-content; break-inside: avoid;
+	@include media($brp-s) {width: 100%;}
+
+	#connected-users{
+		border-bottom: .5px solid var(--grey-700); margin-bottom: 5px; min-height: 1.9em; padding-right: 2em;
+		@include media { min-height: 0; }
+	}
+	#chat-dialog-wrapper{overflow-x: hidden; height: 40vh; padding-right: .75em; @include media { height: 24vh; }}
+	#chat-help-dialog-btn { position: absolute; top: .5em; right: .5em;}
+	#chat-input-wrapper {/* display: grid; width: 100%; */ background: #fff; border-top: 1px solid var(--grey-700); padding-top: 0.5em; margin-top: 1em;}
+	#msg-input {min-height: 5em; border: 1px solid var(--grey-900); margin-top: .5em; resize: none; /* @include media { height: 4em; } */}
+
+	.chat-message-wrapper {
+		.chat-message-header { font-weight: 600; font-size: var(--fs-300);}
+		.chat-message-content {
+			background-color: var(--user-color, white); max-width: 90%; width: fit-content; position: relative;
+			border-radius: .5em; padding: .25em .5em; margin: .25em 0; box-shadow: 1px 1px 3px #0003;
+			&::before { display: block; position: absolute; right: 0; transform: translateX(100%) ; top: .25em; }
+		}
+
+		&.self-message {
+			--user-color: var(--grey-900); text-align: right;
+			.chat-message-content {margin-left: auto;}
+			.chat-message-content::before { transform: translateX(-100%); left: 0.4em; right: unset; }
+		}
+		
+		// bg color depends on user id modulo 7 (see game-table.js)
+		&.bg-color-user-1 { --user-color: hsl(200, 50%, 90%); }
+		&.bg-color-user-2 { --user-color: hsl(220, 50%, 90%); }
+		&.bg-color-user-3 { --user-color: hsl(190, 50%, 90%); }
+		&.bg-color-user-4 { --user-color: hsl(55, 50%, 90%); }
+		&.bg-color-user-5 { --user-color: hsl(47, 50%, 90%); }
+		&.bg-color-user-6 { --user-color: hsl(270, 50%, 90%); }
+		&.bg-color-user-7 { --user-color: hsl(240, 50%, 90%); }
+
+		.chat-roll::before { content:"🎲" ; }
+		&.is-private .chat-message-content::before { content:"🤫" ; }
+		&.is-private .chat-message-content.chat-roll::before { content:"🤫🎲" ; }
+
+		&.same-routing {
+			margin-top: .5em;
+			.chat-message-header { display: none }
+		}
+	}
+}

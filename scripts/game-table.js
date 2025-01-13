@@ -7,7 +7,7 @@ import { roll, getLocalisation, fetchDamageExpression, scoreTester, fetchResult,
 const inputEntry = qs("#msg-input");
 
 const allWidgets = qsa("fieldset[data-name]");
-const widgetForms = qsa("#widgets-container form");
+const widgetForms = qsa("#page-content form");
 
 let opponents = qsa("[data-role=opponent-wrapper]");
 let scoreWidgets = qsa("[data-name=score-tester] form");
@@ -106,7 +106,7 @@ roundCounterWidget.addEventListener("submit", (e) => {
 
 // reaction test
 reactionWidget.addEventListener("submit", async (e) => {
-    const reactionModifier = int(reactionWidget.querySelector("[data-type=reaction-modifier]").value);
+    const reactionModifier = int(reactionWidget.querySelector("[data-type=reaction-modifier]").value.trim("+"));
     const reactionTest = roll("1d").result + reactionModifier;
     let data = new FormData();
     data.append("reaction-test", reactionTest);

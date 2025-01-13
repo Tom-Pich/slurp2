@@ -1,0 +1,122 @@
+@font-face { font-family: "Rubik"; font-weight: 300 900; font-style: normal; font-display: swap; src: url('/assets/fonts/rubik-regular.woff2') format('woff2-variations');}
+@font-face { font-family: "Rubik"; font-weight: 300 900; font-style: italic; font-display: swap; src: url('/assets/fonts/rubik-italic.woff2') format('woff2-variations');}
+@font-face { font-family: "Open Sans"; font-weight: 300 800; font-stretch: 75% 100%; font-style: normal; font-display: swap;src: url('/assets/fonts/opensans-regular.woff2') format('woff2-variations');}
+@font-face { font-family: "Open Sans"; font-weight: 300 800; font-stretch: 75% 100%; font-style: italic; font-display: swap; src: url('/assets/fonts/opensans-italic.woff2') format('woff2-variations');}
+
+:root{
+	--ff-base: 'Open Sans', 'sans-serif';
+	--ff-accent: 'Rubik', 'sans-serif';
+	--page-content-areas: "main main main";
+	--col-width: 370px;
+	@include media($brp-l) { --col-width: 350px; }
+	@include media { --col-width: 100%; }
+
+	--clr-primary-500: hsl(208, 60%, 40%);
+	--clr-primary-900: hsl(208, 40%, 80%);
+	--clr-secondary-500: hsl(140, 40%, 30%);
+
+	@media print { font-size: 8px; }
+}
+
+body:has(nav.active){ max-height: 100dvh; overflow: hidden; }
+
+// page default structure
+aside, header, footer, #page-content {padding: 1em;}
+aside, section, article { @include flow; }
+section, article { padding: .5em; }
+
+main {
+	display: grid; min-height: calc(100vh - 215px);
+	grid-template-columns: var(--col-width) 1fr var(--col-width);
+	@include media ($brp-l) { grid-template-columns: var(--col-width) 1fr; }
+	@include media { grid-template-columns: 1fr; }
+	&:has(aside.left:empty) { @include media-min () {grid-template-columns: 1fr var(--col-width);} }
+	&:has(aside.right:empty) { grid-template-columns: var(--col-width) 1fr; }
+	&:has(aside.right:empty):has(aside.left:empty){ grid-template-columns: 1fr; }
+}
+
+aside:empty { display: none; }
+footer { background: var(--grey-900); text-align: center; font-size: var(--fs-300); }
+
+// basic tags
+h1 { font-size: var(--fs-700) }
+h2 { font-size: var(--fs-600) }
+h3 { font-size: var(--fs-500) }
+h4 { font-size: var(--fs-450) }
+h5 { font-size: var(--fs-400) }
+p, ol, ul { text-align: justify; hyphens: auto; }
+dfn {text-decoration: underline var(--clr-700); cursor: help;}
+
+// utilities
+.nude { padding: 0; border: none; }
+.as-start { align-self: flex-start !important; }
+:is(ol, ul).bold-bullet li::marker { font-weight: 700; }
+.gap-¼ { gap: .25em; }
+.mt-¼ { margin-top: .25em; }
+.px-¼ { padding-inline: .25em }
+.edit-link { color: inherit; text-decoration: none; }
+.bg-black { background-color: var(--black); }
+.no-break { break-inside: avoid; }
+.fs-200 { font-size: var(--fs-200) }
+[draggable=true]{cursor: move;}
+.cursor-pointer { cursor: pointer; }
+.clr-invalid { color: var(--clr-invalid); }
+.clr-secondary-500 { color: var(--clr-secondary-500); }
+.ai-first-baseline { align-items: first baseline; }
+
+// forms & buttons
+input, select, textarea { padding: .25em; }
+.btn-square { width: 1.75em; aspect-ratio: 1; display: grid; place-content: center; line-height: 0; padding: 0; }
+label:has(input:disabled) { opacity: 0.5; }
+
+details {
+	@include flow; --flow-space: .5em; --marker-closed: "☰"; // ☰ or ≡ ?
+
+	&.exemple {
+		border: .5px solid var(--clr-primary-500); padding: .25em .5em; position: relative;
+		&::before { content: "\f0eb"; font-family: "fas"; position: absolute; top: -.5em; left: -.25em; transform: rotate(-10deg); background-color: white; color: var(--clr-primary-500) }
+		summary { color: var(--clr-primary-500); font-weight: 700; }
+	}
+
+	&.liste {
+		--flow-space: 0; --marker-closed: none; --marker-open: none;
+		&:first-of-type { margin-top: .5em; }
+		summary {display: flex; padding-right: 0; }
+		summary > div:first-child { flex: 1; }
+		&[open]{
+			background: var(--grey-900); padding: .25em;
+			> summary {font-weight: bold;}
+		}
+	}
+
+}
+
+table {
+	width: 100%;
+
+	th, td {padding: 0 .25em; text-align: center;}
+	tr:nth-child(even){background-color: var(--grey-900);}
+
+	&.alternate-o {
+		tr:nth-child(odd){background-color: var(--grey-900);}
+		tr:nth-child(even){background-color: unset;}
+	}
+	&.left-1 { :is(td, th):nth-child(1){text-align: left;} }
+	&.left-2 { :is(td, th):nth-child(2){text-align: left;} }
+	&.right-2 { :is(td, th):nth-child(2){text-align: right;} }
+
+	&.weapons {
+		font-size: var(--fs-300);
+		:is(td, th):nth-child(1){text-align: left;}
+		:is(td, th):nth-child(2){text-align: left;}
+	}
+
+	caption {font-style: italic; caption-side: bottom; margin: .25em 0;}
+}
+
+fieldset {
+	border: 1px solid var(--grey-700); border-radius: 0.75em; padding: 0.25em 0.75em 0.75em; break-inside: avoid; 
+	legend { padding: 0 0.5em; font-weight: bold; font-family: var(--ff-accent); font-size: var(--fs-500); }
+	//&.widget legend {font-size: var(--fs-400); font-weight: 500;}
+	&.flow { > :nth-child(2) {margin-top: 0;} }
+}

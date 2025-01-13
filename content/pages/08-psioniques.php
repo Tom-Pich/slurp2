@@ -55,9 +55,10 @@ $niv_max = max(array_keys($_POST["niv"]));
 
 		<h4>Maîtrise de plusieurs disciplines</h4>
 		<p>Le coût des disciplines est dégressif&nbsp;: la discipline ayant le niveau le plus élévé est payée normalement, les autres disciplines peuvent être acquises à un coût réduit de moitié.</p>
-		<div class="exemple">
-			Un joueur décide d'acquérir les disciplines <i>Télépathie</i> au niveau 3 et <i>Psychométabolisme</i> au niveau 2. La discipline <i>Télépathie</i> ayant le niveau le plus élevé, elle lui coûte 20 pts. <i>Psychométabolisme</i> lui coûte la moitié des points s’il la prend à un niveau inférieur ou égal à 3.
-		</div>
+		<details class="exemple">
+			<summary>Exemple</summary>
+			<p>Un joueur décide d'acquérir les disciplines <i>Télépathie</i> au niveau 3 et <i>Psychométabolisme</i> au niveau 2. La discipline <i>Télépathie</i> ayant le niveau le plus élevé, elle lui coûte 20 pts. <i>Psychométabolisme</i> lui coûte la moitié des points s’il la prend à un niveau inférieur ou égal à 3.</p>
+		</details>
 	</details>
 
 	<details>

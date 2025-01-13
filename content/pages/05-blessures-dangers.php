@@ -48,7 +48,7 @@ use App\Rules\WoundController;
 			Les seuils sont donnés en pourcentage des PdV maximum.<br>
 			Un malus s’appliquant à la <i>For</i> n’affecte pas ses PdVm et ses PdFm.</p>
 
-		<table class="alternate-e left-2">
+		<table class="left-2">
 			<tr>
 				<th style="width: 20%">PdV</th>
 				<th>Effets</th>
@@ -79,7 +79,7 @@ use App\Rules\WoundController;
 			Utiliser le widget <i>Seuils de blessures</i> sur la <a href="table-jeu">Table de jeu</a> pour déterminer l’état d’un membre en fonction des dégâts qu’il a reçu.
 		</p>
 
-		<table class="alternate-e">
+		<table>
 			<tr>
 				<th>Membre</th>
 				<th>PdVm</th>
@@ -94,7 +94,7 @@ use App\Rules\WoundController;
 		</table>
 
 		<p>Voici les seuils d’états des membres</p>
-		<table class="alternate-e left-2">
+		<table class="left-2">
 			<tr>
 				<th>% PdVm</th>
 				<th>État</th>
@@ -113,7 +113,7 @@ use App\Rules\WoundController;
 	<!-- Hémorragie -->
 	<details>
 		<summary><h3>Hémorragie</h3></summary>
-		<p class="clr-warning italic ta-center">Règle à revoir et à passer en gestion automatique.</p>
+		<p class="clr-invalid italic ta-center">Règle à revoir et à passer en gestion automatique.</p>
 		<p><i>Attention</i>&nbsp;: cette règle est optionnelle car elle augmente <i>drastiquement</i> la mortalité en l’absence de soins magiques.</p>
 		<p>Une blessure peut provoquer une hémorragie. Jet de <i>San</i> à -1 pour chaque tranche complète de 25&nbsp;% des PdVm perdus, une fois par minute&nbsp;:</p>
 		<p>Pour une <b>blessure à un membre</b>, le jet de <i>San</i> se fait sans malus si le membre n’a pas de blessure invalidante, à -1 s’il a reçu une blessure invalidante et à -2 s’il est détruit.</p>
@@ -160,7 +160,7 @@ use App\Rules\WoundController;
 		</p>
 
 		<h4>État et jet de guérison</h4>
-		<table class="alternate-e">
+		<table>
 			<tr>
 				<th>% PdVm</th>
 				<th>Modificateur au jet de guérison</th>
@@ -259,7 +259,7 @@ use App\Rules\WoundController;
 
 		<p>La durée de l’inconscience dépend de la fraction des PdV restant et d’un ou plusieurs jet de <i>San</i>. Consultez la table ci-dessous.</p>
 
-		<table class="alternate-e left-2 mt-1">
+		<table class="left-2 mt-1">
 			<colgroup>
 				<col style="width: 8ch">
 			</colgroup>
@@ -311,7 +311,7 @@ use App\Rules\WoundController;
 	<details>
 		<summary><h3>Rétablissement de blessures invalidantes</h3></summary>
 		<p>Après une blessure <i>invalidante</i>, la victime doit faire un jet de <i>San</i> pour déterminer comment se rétablira l’invalidité (si elle se rétablit&hellip;).</p>
-		<table class="alternate-e left-2">
+		<table class="left-2">
 			<colgroup>
 				<col style="width: 5em">
 			</colgroup>
@@ -375,7 +375,7 @@ use App\Rules\WoundController;
 		<p>La vélocité maximale en atmosphère terrestre, pour un être humain, est atteinte après 50 m de chute.</p>
 		<p><b>Localisation des dégâts&nbsp;:</b> faire un jet de localisation tous les 5 mètres de chute et répartir les dégâts entre les différentes parties affectées.</p>
 
-		<table class="alternate-e">
+		<table>
 			<tr>
 				<th>3d</th>
 				<th>Pieds en premier</th>

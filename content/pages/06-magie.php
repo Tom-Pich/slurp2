@@ -15,27 +15,29 @@ use App\Entity\Spell;
 		<p>La magie décrite ici est plutôt «&nbsp;mécanique&nbsp;» (un sort entraîne un effet élémentaire, toujours plus ou moins le même), relativement simple et rapide à mettre en œuvre. Elle convient pour des univers de type médiéval-fantastique classiques et consiste à utiliser une énergie appelée fluide pour affecter la réalité.</p>
 	</details>
 
+	<!-- Terminologie -->
 	<details>
 		<summary>
 			<h3>Terminologie</h3>
 		</summary>
 		<p>
-			<b>Hex&nbsp;:</b> surface hexagonale de «&nbsp;diamètre&nbsp;» moyen égal à 1 m.<br />
-			<b>Sujet&nbsp;:</b> objet, personne ou créature affectée par le sort. Parfois appelé « cible » pour les sorts hostiles.<br />
-			<b>Initiateur&nbsp;:</b> le lanceur du sort ou du pouvoir.<br />
-			<b>Coût énergétique&nbsp;:</b> quantité de PdM requis pour lancer le sort.<br />
+			<b>Hex&nbsp;:</b> surface hexagonale de «&nbsp;diamètre&nbsp;» moyen égal à 1 m.<br>
+			<b>Sujet&nbsp;:</b> objet, personne ou créature affectée par le sort. Parfois appelé « cible » pour les sorts hostiles.<br>
+			<b>Initiateur&nbsp;:</b> le lanceur du sort ou du pouvoir.<br>
+			<b>Coût énergétique&nbsp;:</b> quantité de PdM requis pour lancer le sort.<br>
 			<b>Score brut</b> d'un sort&nbsp;: score ne tenant compte d'aucun modificateur à l'exception du modificateur dû au niveau de fluide
 		</p>
 	</details>
 
+	<!-- L’avantage Magerie -->
 	<details>
 		<summary>
 			<h3>L’avantage <i>Magerie</i></h3>
 		</summary>
-		<p>Nécessaire pour pouvoir apprendre et lancer des sorts. Il comporte 5 niveaux.<br />
+		<p>Nécessaire pour pouvoir apprendre et lancer des sorts. Il comporte 5 niveaux.<br>
 			Aucun sort de niveau de puissance supérieur au niveau de <i>Magerie</i> de l’initiateur ne peut être lancé.</p>
 
-		<table class="alternate-e">
+		<table class="fs-300">
 			<tr>
 				<th>Niv.</th>
 				<th>Coût</th>
@@ -92,15 +94,16 @@ use App\Entity\Spell;
 			</tr>
 		</table>
 
-		<p><b>Coût&nbsp;:</b> Coût du niveau en points de personnage.<br />
-			<b>Int&nbsp;:</b> Intelligence minimale requise pour acquérir ce niveau.<br />
-			<b>Modificateur&nbsp;:</b> bonus aux scores des collèges.<br />
-			<b>Détection&nbsp;:</b> score pour savoir si un objet touché est magique ou percevoir une perturbation du fluide. Un seul jet peut être fait pour chaque objet ou chaque perturbation.<br />
-			<b>PdM&nbsp;:</b> nombre de PdM supplémentaires maximum que peut acquérir un mage.<br />
+		<p><b>Coût&nbsp;:</b> Coût du niveau en points de personnage.<br>
+			<b>Int&nbsp;:</b> Intelligence minimale requise pour acquérir ce niveau.<br>
+			<b>Modificateur&nbsp;:</b> bonus aux scores des collèges.<br>
+			<b>Détection&nbsp;:</b> score pour savoir si un objet touché est magique ou percevoir une perturbation du fluide. Un seul jet peut être fait pour chaque objet ou chaque perturbation.<br>
+			<b>PdM&nbsp;:</b> nombre de PdM supplémentaires maximum que peut acquérir un mage.<br>
 			<b>Impro&nbsp;:</b> limite du score de compétence du collège en cas d'improvisation.
 		</p>
 	</details>
 
+	<!-- Apprendre un collège -->
 	<details>
 		<summary>
 			<h3>Apprendre un Collège de magie</h3>
@@ -108,6 +111,7 @@ use App\Entity\Spell;
 		<p>Un collège de magie est un ensemble de connaissances sur l’utilisation de la magie appliquée à un domaine particulier. Chaque collège est une <b>compétence I(-8)</b>. Voir la <a href="avdesav-comp-sorts">liste des sorts par collège</a> pour avoir la liste des collèges existants.</p>
 	</details>
 
+	<!-- Apprendre un sort -->
 	<details>
 		<summary>
 			<h3>Apprendre un sort</h3>
@@ -126,6 +130,7 @@ use App\Entity\Spell;
 		<p>Certains sorts appartiennent à plusieurs collèges à la fois. La connaissance d’un seul de ces collèges est suffisante pour pouvoir apprendre le sort.</p>
 	</details>
 
+	<!-- Niveau de puissance -->
 	<details>
 		<summary>
 			<h3>Niveau de puissance des sorts</h3>
@@ -153,22 +158,25 @@ use App\Entity\Spell;
 		<p><b>Exemples&nbsp;:</b> ressusciter, se téléporter, passer à travers les murs, tuer instantanément une victime très résistante, etc.</p>
 	</details>
 
+	<!-- Classes de sorts -->
 	<details>
 		<summary>
 			<h3>Classes de sorts</h3>
 		</summary>
 		<p>Les sorts sont divisés en classes, qui régissent leur fonctionnement général (portée, zone affectée, etc.).</p>
 
+		<!-- Régulier -->
 		<details>
-			<summary class="h4">Régulier</summary>
+			<summary><h4>Régulier</h4></summary>
 			<p><b>Zone d’effet&nbsp;:</b> un sujet à la fois. Pour un sujet sensiblement plus gros qu’un être humain, le coût énergétique est augmenté sans excéder le double du coût normal. L’augmentation du coût est laissée à l’appréciation du MJ, mais ne s'applique qu'à des sujets très gros (éléphant ou géant, par exemple).</p>
 			<p><b>Portée&nbsp;:</b> -1 par mètre entre le sujet et l’initiateur (min. -1 si ce dernier ne touche pas le sujet)&nbsp;; -3 si l’initiateur ne peut ni toucher ni voir le sujet (voir par des substituts magiques fonctionne).</p>
 			<p><b>Diriger le sort&nbsp;:</b> 2 manières possibles de diriger ces sorts. L’initiateur peut affecter un hex donné (par exemple, «&nbsp;l’hex derrière cette porte&nbsp;») ou un sujet donné (par exemple «&nbsp;Untel dans la pièce à côté&nbsp;»). Aucune barrière physique ne s’oppose à un sort régulier. Un sort régulier ne frappe jamais une victime par erreur, sauf en cas d’échec critique.</p>
 			<p><b>Sorts de type «&nbsp;Jaillissements&nbsp;»&nbsp;:</b> ce sont des sorts réguliers un peu particuliers. Ils nécessitent un jet pour réussir le sort, en tenant compte de la portée voulue, puis un autre en <i>Lancer de sort</i> pour toucher la cible. Considéré comme une attaque à distance. En termes de difficulté, ces sorts ont la même précision qu’une pierre lancée à la main. On peut y opposer une <i>Esquive</i> ou un <i>Blocage</i> (sauf si le <i>Jaillissement</i> n’est pas visible).</p>
 		</details>
 
+		<!-- Zone -->
 		<details>
-			<summary class="h4">Zone</summary>
+			<summary><h4>Zone</h4></summary>
 			<p>Ces sorts affectent une zone circulaire et tous ceux qui se trouvent à l’intérieur. Pour le reste, ils fonctionnent comme les sorts <i>Réguliers</i>. Ces sorts peuvent être lancés sur un objet inanimé&nbsp;; la zone sera centrée sur cet objet et suivra ses déplacements.</p>
 			<p><b>Portée&nbsp;:</b> comme les sorts réguliers, la distance à prendre en compte est la distance qui sépare l'initiateur de la limite la plus proche de la zone</p>
 			<p><b>Taille de la zone&nbsp;:</b> la description des sorts de zone mentionne une <i>Zone de base</i> (qui vaut 3 mètres si elle n’est pas précisée). C’est le <i>diamètre</i> de la zone d’effet, en mètres, pour un coût énergétique standard. Augmenter le diamètre de la zone implique une augmentation proportionnelle du coût énergétique.</p>
@@ -178,35 +186,40 @@ use App\Entity\Spell;
 			<p><b>Sorts de type «&nbsp;Mur&nbsp;»&nbsp;:</b> ces sorts de zone créent un mur de 4 m de haut maximum qui doivent pouvoir s'inscrire dans la zone. Ils peuvent l'entourer mais ce n'est pas une obligation. Le signe de leur courbure doit être constant (un mur ne peut pas avoir une forme de "S", mais il peut être droit ou courbé comme une parenthèse, que ce soit selon l'axe horizontal comme l'axe vertical). Ils peuvent donc constituer un dôme si l'initiateur le souhaite. Toutefois, une fois que la forme du mur est définie, elle ne peut plus être changée pendant la durée du sort.</p>
 		</details>
 
+		<!-- Projectiles -->
 		<details>
-			<summary class="h4">Projectile</summary>
+			<summary><h4>Projectile</h4></summary>
 			<p>L’usage de ces sorts nécessite 2 étapes&nbsp;: créer le projectile (compétence dans le sort), puis le lancer (compétence <i>Lancer de sort</i>). Un projectile se déplace toujours en ligne droite. La précision d’un tel sort (pour déterminer la difficulté du tir) est comparable à celle d’un pistolet moderne. La portée ½D des sorts de <i>Projectiles</i> est de 25 m.</p>
 			<p><b>Défenses&nbsp;:</b> un sort de projectile peut être bloqué ou esquivé, mais seul les projectiles solides (tel que <i>Couteau ailé</i>) peuvent être parés. Une armure protège normalement, sauf mention contraire.</p>
-			<p><b>Projectile «&nbsp;en main&nbsp;»&nbsp;:</b> l'initiateur peut conserver son projectile en main quand celui-ci est prêt à être lancé. Il peut se déplacer, viser et lancer le projectile au moment voulu. C’est le seul type de sort dont l’effet puisse être retardé.<br />
+			<p><b>Projectile «&nbsp;en main&nbsp;»&nbsp;:</b> l'initiateur peut conserver son projectile en main quand celui-ci est prêt à être lancé. Il peut se déplacer, viser et lancer le projectile au moment voulu. C’est le seul type de sort dont l’effet puisse être retardé.<br>
 				En cas de blessure, un jet de <i>Volonté</i> est nécessaire. En cas d’échec, le projectile est perdu. Un projectile solide tombera simplement au sol, mais d’autres (boules de feu, éclairs) se retourneront contre leur initiateur.</p>
 		</details>
 
+		<!-- Blocage -->
 		<details>
-			<summary class="h4">Blocage</summary>
-			<p>Un sort de <i>Blocage</i> peut être jeté instantanément en guise de défense contre une attaque physique ou un autre sort. Un seul sort de <i>Blocage</i> peut être jeté à la fois. Il interrompt toute concentration en cours. Les sorts de blocage ne peuvent être improvisés. Si l’initiateur a déjà effectué une action au cours de la même seconde (attaque, défense…) le sort est lancé à -5.<br />
+			<summary><h4>Blocage</h4></summary>
+			<p>Un sort de <i>Blocage</i> peut être jeté instantanément en guise de défense contre une attaque physique ou un autre sort. Un seul sort de <i>Blocage</i> peut être jeté à la fois. Il interrompt toute concentration en cours. Les sorts de blocage ne peuvent être improvisés. Si l’initiateur a déjà effectué une action au cours de la même seconde (attaque, défense…) le sort est lancé à -5.<br>
 				En termes de <i>rituel nécessaire</i>, l'initiateur doit être capable d'accomplir le rituel associé au score qu'il a dans son sort de <i>Blocage</i> (voir <i>Rituel nécessaire</i> plus loin).</p>
 		</details>
 
+		<!-- Information -->
 		<details>
-			<summary class="h4">Information</summary>
-			<p>Jet de compétence fait secrètement par le MJ. Si le sort réussit, le MJ donne à l’initiateur les informations demandées, leur qualité dépendant de la MR. Si le sort échoue, l’initiateur ne perçoit rien. En cas d’échec critique, le MJ ment au joueur. L’initiateur dépense toujours le coût énergétique intégral, que le sort réussisse ou échoue.<br />
-				La plupart ne peuvent être tentés qu’une fois par jour pour chaque initiateur (ou groupe d’initiateurs, en cas de magie rituelle). Les sorts de <i>Recherche</i> font exception à la règle, sauf s'ils portent sur une cible spécifique.<br />
-				Avec les sorts de <i>Recherche</i>, tout objet connu peut être exclu si l’initiateur le souhaite (-1 à la compétence par objet ignoré).<br />
+			<summary><h4>Information</h4></summary>
+			<p>Jet de compétence fait secrètement par le MJ. Si le sort réussit, le MJ donne à l’initiateur les informations demandées, leur qualité dépendant de la MR. Si le sort échoue, l’initiateur ne perçoit rien. En cas d’échec critique, le MJ ment au joueur. L’initiateur dépense toujours le coût énergétique intégral, que le sort réussisse ou échoue.<br>
+				La plupart ne peuvent être tentés qu’une fois par jour pour chaque initiateur (ou groupe d’initiateurs, en cas de magie rituelle). Les sorts de <i>Recherche</i> font exception à la règle, sauf s'ils portent sur une cible spécifique.<br>
+				Avec les sorts de <i>Recherche</i>, tout objet connu peut être exclu si l’initiateur le souhaite (-1 à la compétence par objet ignoré).<br>
 				La portée d’un sort d’information est gérée de la même manière que celle d’un sort régulier, sauf mention contraire. Certains sorts d’information sont également des sorts de zone. Ils cumulent alors les règles s’appliquant à ces deux types de sorts.</p>
 		</details>
 
+		<!-- Enchantement -->
 		<details>
-			<summary class="h4">Enchantement</summary>
+			<summary><h4>Enchantement</h4></summary>
 			<p>Ces sorts permettent de créer des objets magiques. Ils fonctionnent un peu différemment des autres sorts (voir <i>Création d’objet magique</i>).</p>
 		</details>
 
+		<!-- Sorts spéciaux -->
 		<details>
-			<summary class="h4">Sorts spéciaux</summary>
+			<summary><h4>Sorts spéciaux</h4></summary>
 			<p>Ils n’obéissent à aucune règle énoncée ci-dessus. Tout est indiqué dans la description du sort.</p>
 		</details>
 	</details>
@@ -229,10 +242,10 @@ use App\Entity\Spell;
 		<summary>
 			<h3>Caractéristiques générales des sorts</h3>
 		</summary>
-		<table class="alternate-e">
+		<table>
 			<tr>
 				<th rowspan="2">Niv.</th>
-				<th rowspan="2">Modif. de<br /> puissance</th>
+				<th rowspan="2">Modif. de<br> puissance</th>
 				<th rowspan="2">Coût en PdM</th>
 				<th colspan="2">Tps nécessaire*</th>
 			</tr>
@@ -284,8 +297,8 @@ use App\Entity\Spell;
 			<h3>Réduction du coût énergétique</h3>
 		</summary>
 		<p>Le coût énergétique d’un sort diminue pour une compétence élevée&nbsp;:</p>
-		<p>• -1 PdM à un niveau &ge; 15<br />
-			• -2 PdM à un niveau &ge; 17<br />
+		<p>• -1 PdM à un niveau &ge; 15<br>
+			• -2 PdM à un niveau &ge; 17<br>
 			• -3 PdM à un niveau &ge; 19, et ainsi de suite.</p>
 		<p>Cette réduction s’applique au coût de lancer du sort et au coût de maintien. Le score à prendre en compte est le score brut. Un sort suffisamment maîtrisé peut donc devenir gratuit à prolonger voire à lancer.</p>
 	</details>
@@ -298,7 +311,7 @@ use App\Entity\Spell;
 		<p>Ce temps peut être raccourci grâce à un score de compétence élevé (sauf si le sort nécessite toujours un rituel ou un objet spécifique).</p>
 		<p>Dans tous les cas, <b>un seul sort peut être lancé chaque seconde</b>, même s'il peut être lancé de manière instantanée.</p>
 
-		<table class="alternate-e left-2">
+		<table class="left-2">
 			<tr>
 				<th width="10%">Score brut</th>
 				<th>Rituel nécessaire</th>
@@ -351,7 +364,7 @@ use App\Entity\Spell;
 			<h3>Modificateurs de longue distance</h3>
 		</summary>
 		<p>Lorsqu’un sort agit à longue distance, utiliser le tableau ci-dessous pour déterminer le malus associé à la distance entre l’initiateur et le sujet.</p>
-		<table class="alternate-e left-1">
+		<table class="left-1">
 			<tr>
 				<th>Distance</th>
 				<th>Modif.</th>
@@ -420,7 +433,7 @@ use App\Entity\Spell;
 			<h3>Table des effets génériques</h3>
 		</summary>
 		<p>Afin de simplifier la description des sorts, des effets «&nbsp;génériques&nbsp;» sont définis en fonction du niveau du sort.</p>
-		<table class="alternate-e left-1">
+		<table class="left-1 fs-300">
 			<tr>
 				<th>Type d’effets</th>
 				<th>I</th>
@@ -487,10 +500,10 @@ use App\Entity\Spell;
 			</tr>
 		</table>
 
-		<p><b>(1)</b> Pour rester compétitifs avec les progrès technologiques, ces bonus sont plus importants pour de NT élevés&nbsp;: ×1,5 à NT6, ×2 à NT7 et ×3 à NT8.<br />
-			<b>(2)</b> Attaque physique classique. La RD est prise en compte. ×1,5 à NT 7+<br />
-			<b>(3)</b> Dégâts perforants, explosifs ou sans prise en compte de la RD. ×1,5 à NT 7+<br />
-			<b>(4)</b> Les dégâts sont soit répétés dans le temps (jusqu'à 10 fois), soit dans l’espace (jusqu'à 10 projectiles par sort, comme une arme automatique). ×1,5 à NT 7+<br />
+		<p><b>(1)</b> Pour rester compétitifs avec les progrès technologiques, ces bonus sont plus importants pour de NT élevés&nbsp;: ×1,5 à NT6, ×2 à NT7 et ×3 à NT8.<br>
+			<b>(2)</b> Attaque physique classique. La RD est prise en compte. ×1,5 à NT 7+<br>
+			<b>(3)</b> Dégâts perforants, explosifs ou sans prise en compte de la RD. ×1,5 à NT 7+<br>
+			<b>(4)</b> Les dégâts sont soit répétés dans le temps (jusqu'à 10 fois), soit dans l’espace (jusqu'à 10 projectiles par sort, comme une arme automatique). ×1,5 à NT 7+<br>
 			<b>(5)</b> Quand des effets sont mentionnés pour un niveau de puissance V, il s’agit des effets obtenus lorsque le sort coûte 15 PdM, sauf mention contraire. Les effets peuvent être plus puissants encore si le coût énergétique est augmenté. Ceci n’est valable que pour les sorts de niveau V.
 		</p>
 	</details>
@@ -499,11 +512,11 @@ use App\Entity\Spell;
 		<summary>
 			<h3>Modificateurs spécifiques</h3>
 		</summary>
-		<p><b>Dex (bonus)&nbsp;:</b> standard ; <b>(malus)</b>&nbsp;: standard ×2<br />
-			<b>Int (bonus)&nbsp;:</b> standard ; <b>(malus)&nbsp;:</b> standard ×2<br />
-			<b>San&nbsp;:</b> standard ×2<br />
-			<b>Per&nbsp;:</b> standard ×2<br />
-			<b>Jet de réaction&nbsp;:</b> standard ×2<br />
+		<p><b>Dex (bonus)&nbsp;:</b> standard ; <b>(malus)</b>&nbsp;: standard ×2<br>
+			<b>Int (bonus)&nbsp;:</b> standard ; <b>(malus)&nbsp;:</b> standard ×2<br>
+			<b>San&nbsp;:</b> standard ×2<br>
+			<b>Per&nbsp;:</b> standard ×2<br>
+			<b>Jet de réaction&nbsp;:</b> standard ×2<br>
 			<b>Jet de défenses ou de résistance&nbsp;:</b> standard ×2
 		</p>
 	</details>
@@ -513,10 +526,10 @@ use App\Entity\Spell;
 			<h3>Détruire un objet inanimé</h3>
 		</summary>
 		<p>Certains sorts ne peuvent provoquer des dégâts qu’à des objets inanimés.</p>
-		<p><b>Niv. I&nbsp;:</b> Objet facile à briser à mains nues (verre, panier d’osier...)<br />
-			<b>Niv. II&nbsp;:</b> Objet pouvant être détruit avec une hache ou une masse par un homme normal, en une minute max.<br />
-			<b>Niv. III&nbsp;:</b> Comme ci-dessus mais pendant un temps beaucoup plus long.<br />
-			<b>Niv. IV&nbsp;:</b> Effets similaires à ceux d’une grenade<br />
+		<p><b>Niv. I&nbsp;:</b> Objet facile à briser à mains nues (verre, panier d’osier...)<br>
+			<b>Niv. II&nbsp;:</b> Objet pouvant être détruit avec une hache ou une masse par un homme normal, en une minute max.<br>
+			<b>Niv. III&nbsp;:</b> Comme ci-dessus mais pendant un temps beaucoup plus long.<br>
+			<b>Niv. IV&nbsp;:</b> Effets similaires à ceux d’une grenade<br>
 			<b>Niv. V&nbsp;:</b> Comme un engin de chantier de type bulldozer.
 		</p>
 	</details>
@@ -525,10 +538,10 @@ use App\Entity\Spell;
 		<summary>
 			<h3>Invocation de créatures</h3>
 		</summary>
-		<p><b>Niv. I&nbsp;:</b> créature faible (chien de guerre, gobelin).<br />
-			<b>Niv. II&nbsp;:</b> créature moyenne (humain moyen avec une arme simple, très petit démon).<br />
-			<b>Niv. III&nbsp;:</b> créature assez puissante (humain bien entraîné avec du matériel de qualité, démon mineur).<br />
-			<b>Niv. IV&nbsp;:</b> créature puissante.<br />
+		<p><b>Niv. I&nbsp;:</b> créature faible (chien de guerre, gobelin).<br>
+			<b>Niv. II&nbsp;:</b> créature moyenne (humain moyen avec une arme simple, très petit démon).<br>
+			<b>Niv. III&nbsp;:</b> créature assez puissante (humain bien entraîné avec du matériel de qualité, démon mineur).<br>
+			<b>Niv. IV&nbsp;:</b> créature puissante.<br>
 			<b>Niv. V&nbsp;:</b> créature très puissante (démon majeur).
 		</p>
 		<p><i>Remarque</i>&nbsp;: une créature ayant des pouvoirs et avantages significativement plus élevés que son niveau de puissance «&nbsp;apparent&nbsp;» pourra être considérée comme appartenant à une catégorie de puissance supérieure. De même si la créature souffre d’une limitation importante ou si elle représente un danger pour son invocateur elle peut passer dans la catégorie de puissance inférieure. Ainsi, un démon majeur pourra être invoquer par un sort de niveau IV seulement car son invocation est réellement dangereuse pour son initiateur.</p>
@@ -544,7 +557,7 @@ use App\Entity\Spell;
 			<h3>Jet de résistance</h3>
 		</summary>
 		<p>Duel entre une caractéristique de la cible (mentionnée dans la description du sort) et le score modifié de l’initiateur. Pour la calcul de la MR de l'initiateur&nbsp;:</p>
-		<p><b>Cible = créature&nbsp;:</b> score limité à 16 et MR limitée à 8.<br />
+		<p><b>Cible = créature&nbsp;:</b> score limité à 16 et MR limitée à 8.<br>
 			<b>Cible = autre sort&nbsp;:</b> aucune limite
 		</p>
 		<p>Résister à un sort de niveau V se fait toujours à -3, en plus de la MR du sort.</p>
@@ -612,7 +625,7 @@ use App\Entity\Spell;
 		<p>La magie n’agit que si le fluide de la zone le permet. Il existe plusieurs niveaux de fluide.</p>
 		<p><b>Fluide élevé&nbsp;:</b> récupération 2 fois plus rapide des PdM. Coût énergétique des sorts divisé par 2. Échecs critiques spectaculaires.</p>
 		<p><b>Fluide normal&nbsp;:</b> les sorts agissent selon les règles normales.</p>
-		<p><b>Fluide faible&nbsp;:</b> -5 aux sorts et aux pouvoirs. Ce malus s’applique à la compétence brute. Il a donc une influence sur l’incantation et la réduction de coût énergétique d’un sort. Ce malus <i>n’empêche pas</i> le mage de lancer un sort même si son score est inférieur à 12 à cause de cela.<br />
+		<p><b>Fluide faible&nbsp;:</b> -5 aux sorts et aux pouvoirs. Ce malus s’applique à la compétence brute. Il a donc une influence sur l’incantation et la réduction de coût énergétique d’un sort. Ce malus <i>n’empêche pas</i> le mage de lancer un sort même si son score est inférieur à 12 à cause de cela.<br>
 			Le score de pouvoir des objets magiques est aussi à -5, ce qui empêche les objets magiques ayant un score de pouvoir inférieur à 20 d’agir. Les échecs critiques n’ont que peu d’effet. Le rythme de récupération des PdM est divisé par 2.</p>
 		<p><b>Fluide nul&nbsp;:</b> personne ne peut utiliser la magie. Les objets magiques n’agissent pas. Aucune récupération de PdM.</p>
 		<p>Des niveaux de fluide intermédiaires sont possibles.</p>
@@ -629,7 +642,7 @@ use App\Entity\Spell;
 		<summary>
 			<h3>Fluide orienté</h3>
 		</summary>
-		<p>Dans certaines régions, le fluide est orienté, ce qui le rend favorable à certains types de magie et hostile à d’autres.<br />
+		<p>Dans certaines régions, le fluide est orienté, ce qui le rend favorable à certains types de magie et hostile à d’autres.<br>
 			Au MJ de définir les effets exacts, mais typiquement, il s’agira de bonus s’appliquant à un, ou éventuellement plusieurs, collèges et/ou des malus s’appliquant à d’autres collèges. Mais ce ne sont pas les seuls effets possibles&nbsp;: augmentation du <i>Temps nécessaire</i>, augmentation du coût énergétique, etc. sont autant d’autres effets possibles.</p>
 	</details>
 </article>
@@ -649,7 +662,7 @@ use App\Entity\Spell;
 		<h4>Durée de base augmentée</h4>
 		<p>La durée de base change de catégorie&nbsp;: 1 minute devient 10 minutes, 10 minutes deviennent 1h, 1h devient une journée, etc. Le niveau du sort est augmenté de 1. Ne fonctionne pas avec des sorts très brefs.</p>
 		<h4>Portée augmentée</h4>
-		<p>Doubler la portée d’un sort → coût énergétique ×2<br />
+		<p>Doubler la portée d’un sort → coût énergétique ×2<br>
 			Appliquer les modificateurs de longue distance → augmente le niveau de puissance de 1.</p>
 	</details>
 
@@ -663,11 +676,11 @@ use App\Entity\Spell;
 		<h4>Temps nécessaire</h4>
 		<p>Si un sort a un intérêt au combat, il est doit être rapide à lancer, sinon il est long.</p>
 		<h4>Durée</h4>
-		<p>La durée (choisie par le MJ) doit être la durée minimale pour que le sort ait un intérêt.<br />
-			- instantané / 1s<br />
-			- un combat (1 minute)<br />
-			- une séquence (10 minutes)<br />
-			- longue durée (1h / 10h / un jour / une semaine)<br />
+		<p>La durée (choisie par le MJ) doit être la durée minimale pour que le sort ait un intérêt.<br>
+			- instantané / 1s<br>
+			- un combat (1 minute)<br>
+			- une séquence (10 minutes)<br>
+			- longue durée (1h / 10h / un jour / une semaine)<br>
 			- permanent</p>
 		<h4>Sort dérivé d’un autre collège</h4>
 		<p>Il est possible d’adapter à un collège certains sorts dont l’effet principal ne relève pas de ce collège. Cela a pour conséquences d’introduire des limitations légères au sort.</p>
@@ -733,7 +746,7 @@ use App\Entity\Spell;
 		<summary>
 			<h3>Définition</h3>
 		</summary>
-		<p>Un pouvoir est la capacité instinctive à lancer un sort. Il est lancé de façon innée et ne peut être appris. À l’exception des points détaillés ci-dessous, un pouvoir fonctionne exactement comme le sort équivalent.<br />
+		<p>Un pouvoir est la capacité instinctive à lancer un sort. Il est lancé de façon innée et ne peut être appris. À l’exception des points détaillés ci-dessous, un pouvoir fonctionne exactement comme le sort équivalent.<br>
 			Il existe également des pouvoirs de type <i>Avantage</i>, qui sont toujours actifs et fonctionnent alors comme un avantage classique.</p>
 	</details>
 
@@ -791,7 +804,7 @@ use App\Entity\Spell;
 		<p>Il est possible d'améliorer ou de limiter l'utilisation d'un pouvoir.</p>
 		<p>En fonction de l’étendue des limitations et/ou des améliorations, le MJ attribue un multiplicateur de coût en pts de personnage à l’achat du pouvoir. Ce multiplicateur n'a pas d'influence sur le coût de l'amélioration du score de ce pouvoir.</p>
 
-		<table class="alternate-e left-1">
+		<table class="left-1">
 			<tr>
 				<th>Limitation ou amélioration</th>
 				<th>Mult.</th>
@@ -833,21 +846,21 @@ use App\Entity\Spell;
 		<p>L'importance d’une amélioration donnée ou d’une limitation donnée peut dépendre de la nature du pouvoir et de l’univers de jeu. Elle doit être évaluée au cas par cas par le MJ en se basant sur le tableau ci-dessus.</p>
 
 		<h4>Exemples d’améliorations</h4>
-		<p>Déclenchement accéléré<br />
-			Réduction du coût énergétique. Pour les sorts de Zone, préciser la taille maximale de la zone gratuite.<br />
-			Réussite automatique (le pouvoir fonctionne comme un <i>Avantage</i>.</p>
+		<p>Déclenchement accéléré<br>
+			Réduction du coût énergétique. Pour les sorts de Zone, préciser la taille maximale de la zone gratuite.<br>
+			Réussite automatique (le pouvoir fonctionne comme un <i>Avantage</i>).</p>
 
 		<h4>Exemples de limitations</h4>
-		<p>Aucun entraînement possible&nbsp;: le score ne peut être amélioré.<br />
-			Augmentation du coût énergétique<br />
-			Condition d’utilisation spécifique portant sur le sujet ou les circonstances de l’utilisation du pouvoir.<br />
-			Contact physique uniquement<br />
-			Déclenchement involontaire<br />
-			Déclenchement long<br />
-			Délai&nbsp;: délai minimum entre deux utilisations consécutives.<br />
-			Effets limités à l’initiateur<br />
-			Effets secondaires<br />
-			En cas de stress uniquement<br />
+		<p>Aucun entraînement possible&nbsp;: le score ne peut être amélioré.<br>
+			Augmentation du coût énergétique<br>
+			Condition d’utilisation spécifique portant sur le sujet ou les circonstances de l’utilisation du pouvoir.<br>
+			Contact physique uniquement<br>
+			Déclenchement involontaire<br>
+			Déclenchement long<br>
+			Délai&nbsp;: délai minimum entre deux utilisations consécutives.<br>
+			Effets limités à l’initiateur<br>
+			Effets secondaires<br>
+			En cas de stress uniquement<br>
 			Peu fiable&nbsp;: le pouvoir ne se déclenche pas toujours, indépendamment du niveau de compétence.</p>
 	</details>
 </article>
@@ -886,13 +899,13 @@ use App\Entity\Spell;
 			<h3>Création</h3>
 		</summary>
 
-		<p>À chaque objet magique est associé un sort d’enchantement spécifique pour le créer.<br />
+		<p>À chaque objet magique est associé un sort d’enchantement spécifique pour le créer.<br>
 			Un sort d’enchantement est au minimum niveau III, appartient au collège d’<i>Enchantement</i> et ne peut jamais être improvisé.</p>
 
 		<h4>Prérequis</h4>
 		<p>
-			Le score du sort d’enchantement doit être ≥ 15 pour pouvoir créer un objet.<br />
-			Beaucoup de sorts d’enchantement ont un ou plusieurs collège(s) et/ou sort(s) prérequis.<br />
+			Le score du sort d’enchantement doit être ≥ 15 pour pouvoir créer un objet.<br>
+			Beaucoup de sorts d’enchantement ont un ou plusieurs collège(s) et/ou sort(s) prérequis.<br>
 			Le mage doit posséder un grimoire décrivant le processus d’enchantement, sauf s’il connaît le sort à 20+.
 		</p>
 
@@ -904,24 +917,24 @@ use App\Entity\Spell;
 
 		<h4>Déroulement de l’enchantement</h4>
 		<p>
-			Pour les sorts d'enchantement nécessitant une journée ou plus, le mage doit y consacrer 8 h par jour. Le reste du temps il se repose et peut mener des activités non stressantes.<br />
-			S’il est interrompu pendant son travail, il sera un peu fatigué (-1d PdF, -2d PdM) et devra rester concentré sur son enchantement. Toute utilisation d’un autre sort sera à -3. S’il cesse sa concentration, il perd une journée de travail.<br />
-			Un magicien qui est importuné alors qu’il ne travaille pas activement sur son enchantement ne subit aucune pénalité pour lancer un autre sort.<br />
+			Pour les sorts d'enchantement nécessitant une journée ou plus, le mage doit y consacrer 8 h par jour. Le reste du temps il se repose et peut mener des activités non stressantes.<br>
+			S’il est interrompu pendant son travail, il sera un peu fatigué (-1d PdF, -2d PdM) et devra rester concentré sur son enchantement. Toute utilisation d’un autre sort sera à -3. S’il cesse sa concentration, il perd une journée de travail.<br>
+			Un magicien qui est importuné alors qu’il ne travaille pas activement sur son enchantement ne subit aucune pénalité pour lancer un autre sort.<br>
 			Un mage ne peut travailler que sur un seul enchantement à la fois.
 		</p>
 
 		<h4>Réussite et échec</h4>
 		<p>
-			À la fin du dernier jour de l’enchantement, faire un jet de compétence. Le mage doit dépenser l’intégralité des PdM nécessaires. S’il n’a pas utilisé d’autres sorts que son sort d’enchantement au cours de la journée, le mage dispose de tous ses PdM.<br />
-			16 est toujours un échec, et 17 ou 18 est un échec critique.<br />
-			Un échec entraîne la dépense de tous les PdM nécessaires et les matériaux nécessaires ne sont plus utilisables (hormis l’objet lui-même).<br />
+			À la fin du dernier jour de l’enchantement, faire un jet de compétence. Le mage doit dépenser l’intégralité des PdM nécessaires. S’il n’a pas utilisé d’autres sorts que son sort d’enchantement au cours de la journée, le mage dispose de tous ses PdM.<br>
+			16 est toujours un échec, et 17 ou 18 est un échec critique.<br>
+			Un échec entraîne la dépense de tous les PdM nécessaires et les matériaux nécessaires ne sont plus utilisables (hormis l’objet lui-même).<br>
 			Un échec critique a toujours des conséquences dramatiques, à commencer par la destruction de l’objet (à moins qu’il ne deviennent un objet maudit).
 		</p>
 
 		<h4>Score de pouvoir d’un objet magique</h4>
 		<p>
-			Le score de pouvoir de l’objet correspond au score du sort d’enchantement du mage. (+2 si MR ≥ 5, +5 en cas de réussite critique).<br />
-			Ce score de pouvoir peut être supérieur à la compétence de l’enchanteur s’il fournit plus de PdM que nécessaire (comme pour la <i>Magie collective</i>).<br />
+			Le score de pouvoir de l’objet correspond au score du sort d’enchantement du mage. (+2 si MR ≥ 5, +5 en cas de réussite critique).<br>
+			Ce score de pouvoir peut être supérieur à la compétence de l’enchanteur s’il fournit plus de PdM que nécessaire (comme pour la <i>Magie collective</i>).<br>
 			Il est également possible de réduire le coût énergétique si l’enchanteur diminue son niveau de compétence dans le sort d’enchantement (et donc le score de pouvoir de l’objet, qui doit cependant toujours être au moins égal à 15)&nbsp;: 10 % par -1. La réduction maximale est de 50 %, pour un malus de -5.
 		</p>
 
@@ -930,13 +943,14 @@ use App\Entity\Spell;
 
 		<h4>Recharger un objet magique</h4>
 		<p>
-			Pour pouvoir recharger un objet magique à charges, un mage doit maîtriser le sort que l’objet est capable de lancer (ou être capable de l’imporviser) avec un score ≥ 15 au même niveau de puissance.<br />
+			Pour pouvoir recharger un objet magique à charges, un mage doit maîtriser le sort que l’objet est capable de lancer (ou être capable de l’imporviser) avec un score ≥ 15 au même niveau de puissance.<br>
 			Aucun jet de compétence n’est à faire&nbsp;; il suffit simplement de dépenser les PdM nécessaires (aucune réduction de coût associée au score).
 		</p>
 
-		<div class="exemple">
-			Un mage souhaite recharger une <i>Baguette de boules de feu</i> III. Il doit donc être capable de lancer <i>Boule de feu</i> au niveau III avec un score ≥ 15. Chaque charge lui coûtera 6 PdM (coût normal d’un sort de niveau III).
-		</div>
+		<details class="exemple">
+			<summary>Exemple</summary>
+			<p>Un mage souhaite recharger une <i>Baguette de boules de feu</i> III. Il doit donc être capable de lancer <i>Boule de feu</i> au niveau III avec un score ≥ 15. Chaque charge lui coûtera 6 PdM (coût normal d’un sort de niveau III).</p>
+		</details>
 	</details>
 
 </article>
@@ -1001,7 +1015,7 @@ use App\Entity\Spell;
 		<p><b>Échec&nbsp;:</b> les matériaux sont perdus.</p>
 		<p><b>Échec critique&nbsp;:</b> refaire un jet d'<i>Alchimie</i>, à -1 pour chaque dose d’élixir de la fournée, au-delà de la première. En cas de réussite, le désastre est évité ; s’il échoue, faire un jet sur la table ci-dessous.</p>
 
-		<table class="alternate-e left-2">
+		<table class="left-2">
 			<tr>
 				<th width="15%">3d</th>
 				<th>Effets</th>
@@ -1078,8 +1092,8 @@ use App\Entity\Spell;
 			<h3>Limitations des familiers</h3>
 		</summary>
 		<p><b>Le mage souffre des blessures de son familier (-15 pts)&nbsp;:</b> Si le familier est blessé, le mage subira le même nombre de points de dégâts. Si le familier est sonné ou assommé, le mage devra faire un jet de San ou il subira les mêmes effets que son compagnon. Si le familier meurt, le mage se retrouve immédiatement à -PdV<sub>max</sub>, avec toutes les conséquences que cela suppose.</p>
-		<p><b>Le familier est un démon&nbsp;:</b> cette limitation suppose que le familier n’a pas été invoqué comme tel. Le fait que ce soit un démon est le résultat d’un événement inattendu.<br />
-			Il s'agit de l’esprit d’un démon mineur dans le corps d’un animal. Ce démon n’a aucun pouvoir particulier. Il œuvre à ses propres fins, et non pas à celles du mage. Lorsqu’une tâche lui est imposée, un jet réussi d’<i>Int</i> lui permettra de trouver un moyen de pervertir l’ordre du mage. Le familier ne peut causer directement d’ennuis à son maître. Son but est de semer la zizanie et de cultiver le mal. Le coût dépend de l’<i>Int</i> du démon qui vaut au minimum 8&nbsp;: 5×(Int–6).<br />
+		<p><b>Le familier est un démon&nbsp;:</b> cette limitation suppose que le familier n’a pas été invoqué comme tel. Le fait que ce soit un démon est le résultat d’un événement inattendu.<br>
+			Il s'agit de l’esprit d’un démon mineur dans le corps d’un animal. Ce démon n’a aucun pouvoir particulier. Il œuvre à ses propres fins, et non pas à celles du mage. Lorsqu’une tâche lui est imposée, un jet réussi d’<i>Int</i> lui permettra de trouver un moyen de pervertir l’ordre du mage. Le familier ne peut causer directement d’ennuis à son maître. Son but est de semer la zizanie et de cultiver le mal. Le coût dépend de l’<i>Int</i> du démon qui vaut au minimum 8&nbsp;: 5×(Int–6).<br>
 			Tous les coûts liés à autre chose que l'intelligence s'appliquent normalement. Ainsi, un démon dans le corps d'un corbeau (5 pts pour un familier volant) avec une <i>Int</i> de 8 (-10 pts) permettant une communication mentale (10 pts) revient à 5 pts.</p>
 	</details>
 

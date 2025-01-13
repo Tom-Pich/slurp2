@@ -347,13 +347,9 @@ elseif (in_array($path_segments[1], ["personnage-fiche", "personnage-gestion"]) 
 		(new Error404Controller)->show();
 	}
 	$page_name = $path_segments[1];
-	$page_data = [
-		"title" => $character->name,
-		"description" => "",
-		"body-class" => $page_name,
-		"file" => $page_name,
-		"character" => $character,
-	];
+	$page_data = $pages_data[$page_name];
+	$page_data["title"] = $character->name;
+	$page_data["character"] = $character;
 	$page = new PageController($page_data);
 	$page->show();
 }

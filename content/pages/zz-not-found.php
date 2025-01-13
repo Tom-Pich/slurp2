@@ -1,2 +1,2 @@
-<p>La page demandée n’existe pas.</p>
+<h2 class="ta-center">La page demandée n’existe pas.</h2>
 <p>Si cela se produit alors que vous êtes connecté et que vous tentez d’accéder à votre fiche de perso, déconnectez-vous et reconnectez-vous.</p>

@@ -3,47 +3,30 @@ $playNotif = $playNotif ?? true;
 $displayEmojis = $displayEmojis ?? true;
 ?>
 
-<aside id="chat-container" data-sound="<?= $playNotif ?>">
+<div id="chat-container" data-sound="<?= $playNotif ?>">
 
 	<div id="connected-users">
-		<?php if (!$_SESSION["id"]) { ?>
-			<div class="ta-center italic">Vous n’êtes pas connecté</div>
-		<?php } ?>
+		<?php if (!$_SESSION["id"]) { ?><div class="ta-center italic">Vous n’êtes pas connecté</div><?php } ?>
 	</div>
 
-	<button id="chat-help-dialog-btn" class="ff-far btn-primary px-½ py-¼" data-role="open-dialog" data-dialog-name="chat-help" title="mode d’emploi de la fenêtre de chat">&#xf059;</button>
+	<button id="chat-help-dialog-btn" class="ff-far btn-primary btn-square" data-role="open-dialog" data-dialog-name="chat-help" title="mode d’emploi du chat">
+		&#xf059;
+	</button>
 
 	<div id="chat-dialog-wrapper" class="flow">
-		<?php if (!$_SESSION["id"]) { ?>
-			<p class="ta-center fw-700"> Les résultats des widgets s’affichent ici</p>
-		<?php } ?>
+		<?php if (!$_SESSION["id"]) { ?><p class="ta-center fw-700">Les résultats des widgets s’affichent ici</p><?php } ?>
 	</div>
 
 	<div id="chat-input-wrapper" data-id="<?= $_SESSION["id"] ?>" data-login="<?= $_SESSION["login"] ?>" data-key="<?= $_SESSION["id"] ? WS_KEY : "0" ?>">
 
 		<?php if ($displayEmojis): ?>
-			<div class="flex-s fl-wrap gap-¼ fs-500 jc-center desktop" data-role="emojis-wrapper">
-				<button data-role="emoji-button" class="nude">😊</button>
-				<button data-role="emoji-button" class="nude">😁</button>
-				<button data-role="emoji-button" class="nude">😄</button>
-				<button data-role="emoji-button" class="nude">😅</button>
-				<button data-role="emoji-button" class="nude">😉</button>
-				<button data-role="emoji-button" class="nude">😎</button>
-				<button data-role="emoji-button" class="nude">😏</button>
-				<button data-role="emoji-button" class="nude">😐</button>
-				<button data-role="emoji-button" class="nude">😑</button>
-				<button data-role="emoji-button" class="nude">😕</button>
-				<button data-role="emoji-button" class="nude">😔</button>
-				<button data-role="emoji-button" class="nude">😇</button>
-				<button data-role="emoji-button" class="nude">😘</button>
-				<button data-role="emoji-button" class="nude">😜</button>
-				<button data-role="emoji-button" class="nude">😮</button>
-				<button data-role="emoji-button" class="nude">🙄</button>
-				<button data-role="emoji-button" class="nude">😱</button>
-				<button data-role="emoji-button" class="nude">😈</button>
-				<button data-role="emoji-button" class="nude">🃏</button>
-				<button data-role="emoji-button" class="nude">🖕</button>
-				<button data-role="emoji-button" class="nude">💩</button>
+			<div class="flex-s fl-wrap gap-¼ jc-center desktop" data-role="emojis-wrapper">
+				<?php
+				$emojis = ["😊", "😁", "😄", "😅", "😉", "😎", "😏", "😐", "😑", "😕", "😔", "😇", "😘", "😜", "😮", "🙄", "😱", "😈", "🃏", "🖕", "💩"];
+				foreach ($emojis as $emoji):
+				?>
+				<button data-role="emoji-button" class="nude"><?= $emoji ?></button>
+				<?php endforeach ?>
 			</div>
 		<?php endif ?>
 
@@ -51,7 +34,7 @@ $displayEmojis = $displayEmojis ?? true;
 
 	</div>
 
-</aside>
+</div>
 
 <dialog data-name="chat-help">
 	<button data-role="close-modal" class="ff-fas">&#xf00d;</button>

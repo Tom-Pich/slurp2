@@ -15,17 +15,17 @@ $attributes = [
 ?>
 
 <!-- Concevoir son personnage -->
-<article class="as-start">
+<article>
 	<h2>Concevoir son personnage</h2>
 
 	<!-- Introduction -->
 	<details>
-		<summary>
-			<h3>Introduction</h3>
-		</summary>
-		<p>Un personnage se construit à partir de points de personnage (généralement entre 80 et 120 pts).</p>
-		<p>Ces points permettent de définir les <b>Carac&shy;téristiques</b>, <b>Avantages, Désavantages &amp; Travers</b>, <b>Compétences</b> et enfin les <b>Sorts &amp; pouvoirs</b> traités dans les parties <i>Magie</i>, <i>Psioniques</i> et/ou <i>Univers</i>.</p>
-	</details>
+			<summary>
+				<h3>Introduction</h3>
+			</summary>
+			<p>Un personnage se construit à partir de points de personnage (généralement entre 80 et 120 pts).</p>
+			<p>Ces points permettent de définir les <b>Carac&shy;téristiques</b>, <b>Avantages, Désavantages &amp; Travers</b>, <b>Compétences</b> et enfin les <b>Sorts &amp; pouvoirs</b> traités dans les parties <i>Magie</i>, <i>Psioniques</i> et/ou <i>Univers</i>.</p>
+		</details>
 
 	<!-- Ébauche -->
 	<details>
@@ -38,7 +38,7 @@ $attributes = [
 		<p>Éviter les clichés et respecter l’ambiance de l’univers de jeu.</p>
 
 		<h4>Métier &amp; position social</h4>
-		<ul>
+		<ul class="ta-left">
 			<li>Gagne-pain / métier</li>
 			<li>Race, ethnie, nationalité, origine</li>
 			<li>Statut social</li>
@@ -48,14 +48,14 @@ $attributes = [
 
 
 		<h4>Description</h4>
-		<ul>
+		<ul class="ta-left">
 			<li>Apparence physique</li>
 			<li>Manière de se vêtir</li>
 			<li>Attitude physique</li>
 		</ul>
 
 		<h4>Caractère &amp; comportement</h4>
-		<ul>
+		<ul class="ta-left">
 			<li>Tempérament, personnalité (voir des exemples de <i>Traits de caractères</i> ci-dessous)</li>
 			<li>Moralité</li>
 			<li>Goûts et dégoûts</li>
@@ -65,14 +65,14 @@ $attributes = [
 		</ul>
 
 		<h4>Motivations &amp; objectifs</h4>
-		<ul>
+		<ul class="ta-left">
 			<li>Raison pour laquelle il fait son métier ou part à l’aventure</li>
 			<li>Objectifs à long terme</li>
 			<li>Croyances (religion, idéaux, etc)</li>
 		</ul>
 
 		<h4>Background</h4>
-		<ul>
+		<ul class="ta-left">
 			<li>Famille (origine, composition, niveau social)</li>
 			<li>Enfance (conditions, éducation)</li>
 			<li>Adolescence (conditions, études ou apprentissage)</li>
@@ -97,7 +97,7 @@ $attributes = [
 				<h4>Attitude face à la vie</h4>
 			</summary>
 
-			<ul>
+			<ul class="ta-left">
 				<li>Acharné, Zélé</li>
 				<li>Ambitieux, Battant, Conquérant, Décidé, Volontaire</li>
 				<li>Assidu, Besogneux, Combatif</li>
@@ -108,7 +108,7 @@ $attributes = [
 				<li>Jovial, Optimiste</li>
 			</ul>
 
-			<ul>
+			<ul class="ta-left">
 				<li>Anticonformiste, Contestataire, Révolté, Rebelle</li>
 				<li>Aucun sens de l’humour</li>
 				<li>Bégeule, Bigot, Pudibond, Puritain, Prude</li>
@@ -137,7 +137,7 @@ $attributes = [
 				<li>Pondéré, Pragmatique, Prudent, Réflechi, Sage</li>
 			</ul>
 
-			<ul>
+			<ul class="ta-left">
 				<li>Acariâtre, Aigri, Frustré, Insatisfait</li>
 				<li>Arriviste, Attentiste, Opportuniste</li>
 				<li>Avare, Cupide, Radin, Mesquin</li>
@@ -160,7 +160,7 @@ $attributes = [
 				<h4>Attitude envers les autres</h4>
 			</summary>
 
-			<ul>
+			<ul class="ta-left">
 				<li>Accommodant, Indulgent, Tolérant</li>
 				<li>Affable, Cordial</li>
 				<li>Altruiste, Bienfaiteur, Charitable, Généreux, Gentil</li>
@@ -177,7 +177,7 @@ $attributes = [
 				<li>Protecteur</li>
 			</ul>
 
-			<ul>
+			<ul class="ta-left">
 				<li>Aguicheur, Charmeur, Séducteur</li>
 				<li>Baratineur, Beau-parleur, Causeur</li>
 				<li>Cachottier, Dissimulateur, Secret</li>
@@ -192,7 +192,7 @@ $attributes = [
 				<li>Paternaliste</li>
 			</ul>
 
-			<ul>
+			<ul class="ta-left">
 				<li>Affabulateur, Bluffeur, Menteur</li>
 				<li>Agressif, Belliqueux, Brute, Hargneux, Violent, Sanguinaire</li>
 				<li>Arbitraire, Inique</li>
@@ -225,7 +225,7 @@ $attributes = [
 				<h4>Attitudes liées au «&nbsp;moi&nbsp;»</h4>
 			</summary>
 
-			<ul>
+			<ul class="ta-left">
 				<li>Ascète, Chaste, Sobre</li>
 				<li>Autosatisfait, Cabotin, Crâneur, Frimeur, Vantard</li>
 				<li>Balourd, Béotien, Empoté, Gaffeur, Maladroit</li>
@@ -251,8 +251,9 @@ $attributes = [
 
 </article>
 
+
 <!-- Caractéristiques -->
-<article class="as-start">
+<article>
 	<h2>Caractéristiques</h2>
 
 	<details>
@@ -305,7 +306,7 @@ $attributes = [
 		</div>
 		<p>Capacité à affronter une situation psychologiquement éprouvante, à surmonter un désavantage mental ou à résister à une tentative d’influence.</p>
 
-		<table class="mx-auto alternate-e">
+		<table>
 
 			<caption>Coût des caractéristiques</caption>
 
@@ -341,7 +342,7 @@ $attributes = [
 		</table>
 
 
-		<table class="alternate-e left-2 mt-1">
+		<table class="left-2">
 			<caption>Signification des scores</caption>
 			<tr>
 				<th>Score</th>
@@ -401,7 +402,7 @@ $attributes = [
 		<h4>Dégâts de base</h4>
 		<p>Ils sont basés sur la <i>For</i> et servent à déterminer les dégâts des armes dépendant de la puissance musculaire. Le premier score est l’<i>estoc</i> (<i>e</i>), le deuxième et la <i>taille</i> (<i>t</i>).</p>
 
-		<table class="alternate-e">
+		<table>
 			<tr>
 				<th><i>For</i></th>
 				<th>estoc</th>
@@ -466,25 +467,31 @@ $attributes = [
 
 </article>
 
-<article class="as-start"><!-- Avantages & Désavantages -->
+<!-- Avantages & Désavantages -->
+<article>
 	<h2>Avantages, Désavantages &amp; Travers</h2>
 
 	<details>
 		<summary>
 			<h3>Introduction</h3>
 		</summary>
-		<p>Les <i>Avantages</i> et les <i>Désavantages</i> recouvrent tout ce qui ne relève pas d’une caractéristique ou d’une compétence. Vous trouverez ci-dessous les règles les concernant. La liste complète avec la description de chaque avantage et désavantage est visible sur la page <a href="avdesav-comp-sorts">Listes pour le personnage</a>.</p>
+		<p>Les <i>Avantages</i> et les <i>Désavantages</i> recouvrent tout ce qui ne relève pas d’une caractéristique ou d’une compétence. La liste complète avec la description de chaque avantage et désavantage est visible sur la page <a href="avdesav-comp-sorts">Listes pour le personnage</a>.</p>
 	</details>
 
 	<details>
 		<summary>
 			<h3>Règle du 12</h3>
 		</summary>
-		<p>• <b>Avantage&nbsp;:</b> si un jet sous une caractéristique est nécessaire pour le faire fonctionner, le score de base <i>minimum</i> de cette caractéristique et considéré comme valant 12 (en dehors de modificateurs d’état ou de circonstances).</p>
-		<p>• <b>Désavantage&nbsp;:</b> si un jet est nécessaire pour y échapper, le score <i>maximum</i> de ce jet est de 12.</p>
+		
+		<h4>Avantage</h4>
+		<p>Si un jet sous une caractéristique est nécessaire pour le faire fonctionner, le score de base <i>minimum</i> de cette caractéristique et considéré comme valant 12 (en dehors de modificateurs d’état ou de circonstances).</p>
+
+		<h4>Désavantage</h4>
+		<p>Si un jet est nécessaire pour y échapper, le score <i>maximum</i> de ce jet est de 12.</p>
+		
 		<details class="exemple">
 			<summary>Exemple</summary>
-			L’avantage <i>Intuition</i> nécessite un jet d’<i>Int</i> pour fonctionner. Si l’<i>Int</i> du personnage est inférieure à 12, elle est considérée comme valant 12 pour ce jet. Mais si le personnage est blessé ou fatigué, les modificateurs normaux s’appliquent à cette base de 12.
+			<p>L’avantage <i>Intuition</i> nécessite un jet d’<i>Int</i> pour fonctionner. Si l’<i>Int</i> du personnage est inférieure à 12, elle est considérée comme valant 12 pour ce jet. Mais si le personnage est blessé ou fatigué, les modificateurs normaux s’appliquent à cette base de 12.</p>
 		</details>
 	</details>
 
@@ -561,7 +568,8 @@ $attributes = [
 
 </article>
 
-<article class="as-start"><!-- Compétences -->
+<!-- Compétences -->
+<article>
 	<h2>Compétences</h2>
 
 	<!-- Introduction -->
@@ -587,7 +595,7 @@ $attributes = [
 		<p>La table ci-dessous indique le coût en points de personnage pour obtenir un <i>niveau</i> donné dans une compétence en fonction de sa difficulté. Lorsque <b>deux valeurs</b> sont données, la deuxième ne s’applique qu’aux compétences exclusivement basées sur l’<i>int</i>.</p>
 		<p>Ce niveau s’ajoute à la base pour calculer le score brut de la compétence.</p>
 
-		<table class="alternate-e">
+		<table>
 			<tr>
 				<th>Niveau</th>
 				<th>-2</th>

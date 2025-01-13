@@ -126,13 +126,14 @@
 		<h4>Duel de contrôle</h4>
 		<p>Si les deux jets sont un succès, la situation n’évolue pas, sauf si la MR d’un des protagonistes est supérieure de 3 à celle de l’autre. Si un seul des protagonistes gagne, il peut faire varier d’un rang la portée de la poursuite. Si un des conducteurs rate son jet de Contrôle, il perd le duel et doit immédiatement refaire un jet de Contrôle pour éviter l’accident, avec les mêmes modificateurs que le premier jet.</p>
 
-		<div class="exemple">
-			Une voiture de police (<i>Ma</i> 4, <i>Acc</i> 4) prend en chasse un chauffard conduisant une voiture de sport ancienne (<i>Ma</i> 4, <i>Acc</i> 5) sur une route de montagne.<br />
-			Le MJ décide que, le temps que les policiers démarrent la voiture et sortent de leur cachette, la poursuite commence à une portée « Moyenne 1 ».<br />
-			Le chauffard (<i>Conduite</i> 13) veut semer les policiers et décide de prendre quelques riques en s’imposant un malus de -2. Sur une route de montagne, la Manœuvrabilité et l’Accélération des véhicules sont importantes. La <i>Ma</i> des véhicules étant identique, elle n’avantage personne, mais l’<i>Acc</i> supérieure de la voiture de sport joue en faveur du poursuivi.<br />
-			Le chauffard obtient une MR de 3 et le policier qui conduit obtient une MR de 4. Le chauffard ajoute à sa MR 2 fois la différence d’<i>Acc</i> (2×1) pour une MR effective de 5. Il s’en tire un peu mieux que les policiers, mais pas de manière assez significative pour faire une différence en termes de portée.<br />
-			Après avoir décrit quelques virages serrés qui s’enchaînent et les pneus qui crissent, le MJ estime qu’il est temps de faire un nouveau duel. Le poursuivi décide d’augmenter l’allure et s’impose un malus de -3. Les policiers refusent de prendre un tel risque et perdent automatiquement le duel. Le chauffard doit néanmoins faire son jet de <i>Conduite</i> à -3. Il le rate de 1. Sa voiture dérape dans un virage, ce qui lui fait perdre également le duel (la portée n’évolue donc toujours pas pour cette séquence). Il doit donc immédiatement faire un second jet à -3 pour éviter l’accident.
-		</div>
+		<details class="exemple">
+			<summary>Exemple</summary>
+			<p>Une voiture de police (<i>Ma</i> 4, <i>Acc</i> 4) prend en chasse un chauffard conduisant une voiture de sport ancienne (<i>Ma</i> 4, <i>Acc</i> 5) sur une route de montagne.</p>
+			<p>Le MJ décide que, le temps que les policiers démarrent la voiture et sortent de leur cachette, la poursuite commence à une portée «&nbsp;Moyenne 1&nbsp;».</p>
+			<p>Le chauffard (<i>Conduite</i> 13) veut semer les policiers et décide de prendre quelques riques en s’imposant un malus de -2. Sur une route de montagne, la Manœuvrabilité et l’Accélération des véhicules sont importantes. La <i>Ma</i> des véhicules étant identique, elle n’avantage personne, mais l’<i>Acc</i> supérieure de la voiture de sport joue en faveur du poursuivi.<br /></p>
+			<p>Le chauffard obtient une MR de 3 et le policier qui conduit obtient une MR de 4. Le chauffard ajoute à sa MR 2 fois la différence d’<i>Acc</i> (2×1) pour une MR effective de 5. Il s’en tire un peu mieux que les policiers, mais pas de manière assez significative pour faire une différence en termes de portée.</p>
+			<p>Après avoir décrit quelques virages serrés qui s’enchaînent et les pneus qui crissent, le MJ estime qu’il est temps de faire un nouveau duel. Le poursuivi décide d’augmenter l’allure et s’impose un malus de -3. Les policiers refusent de prendre un tel risque et perdent automatiquement le duel. Le chauffard doit néanmoins faire son jet de <i>Conduite</i> à -3. Il le rate de 1. Sa voiture dérape dans un virage, ce qui lui fait perdre également le duel (la portée n’évolue donc toujours pas pour cette séquence). Il doit donc immédiatement faire un second jet à -3 pour éviter l’accident.</p>
+		</details>
 
 
 	</details>
@@ -170,11 +171,11 @@
 			</tr>
 		</table>
 
-		<div class="exemple">
-			Reprenons l’exemple précédent. Le chauffard vient de rater son second jet de <i>Contrôle</i> de 2. Le véhicule dérape et vient glisser contre la falaise de pierre. Il est amoché mais peut encore fonctionner (cf. plus bas pour la gestion des dégâts).<br />
-			S’il avait raté son jet de 3 ou 4, le véhicule aurait fini par heurter un talus ou un rocher, après avoir été ralenti par son contact avec la falaise. Il aurait été hors d’état de marche et son occupant aurait pu subir quelques dégâts (surtout sans ceinture).<br />
-			Une erreur grave aurait pu entraîner un tonneau et une fin dans le fossé, alors qu’une erreur catastrophique l’aurait envoyé au fond du ravin.
-		</div>
+		<details class="exemple">
+			<p>Reprenons l’exemple précédent. Le chauffard vient de rater son second jet de <i>Contrôle</i> de 2. Le véhicule dérape et vient glisser contre la falaise de pierre. Il est amoché mais peut encore fonctionner (cf. plus bas pour la gestion des dégâts).</p>
+			<p>S’il avait raté son jet de 3 ou 4, le véhicule aurait fini par heurter un talus ou un rocher, après avoir été ralenti par son contact avec la falaise. Il aurait été hors d’état de marche et son occupant aurait pu subir quelques dégâts (surtout sans ceinture).</p>
+			<p>Une erreur grave aurait pu entraîner un tonneau et une fin dans le fossé, alors qu’une erreur catastrophique l’aurait envoyé au fond du ravin.</p>
+		</details>
 
 	</details>
 

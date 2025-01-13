@@ -35,7 +35,7 @@
 			Il peut être soit redéterminé à chaque round, soit conservé pour les rounds suivants si le MJ le désire, de manière à accélérer le combat.
 		</p>
 
-		<p>Certaines situations particulières (une <i>Attaque massive</i> ou une <i>Défense massive</i>, par exemple), puvent affecter l’initiative.</p>
+		<p>Certaines situations particulières (une <i>Attaque massive</i> ou une <i>Défense massive</i>, par exemple), peuvent affecter l’initiative.</p>
 
 		<h4>Modificateurs</h4>
 		<p>
@@ -43,44 +43,45 @@
 			Ce malus ne s’applique que si l’arme doit être bougée. Il ne s’applique pas à, par exemple, une arbalète lourde pointant dans la direction de sa cible.
 		</p>
 
-		<h4>Initiative et sorts</h4>
-		<p>Si un lanceur de sort ou un utilisateur de pouvoir est impliqué dans un combat, il doit également faire un jet de <i>Réflexes</i> avec un modificateur qui dépend du <i>Temps nécessaire</i> au lancer du sort.</p>
 
-		<table class="alternate-e">
-			<tr>
-				<th>Temps nécessaire</th>
-				<th>Modificateur</th>
-			</tr>
-			<tr>
-				<td>0</td>
-				<td>0</td>
-			</tr>
-			<tr>
-				<td>1 s</td>
-				<td>-3</td>
-			</tr>
-			<tr>
-				<td>2 s</td>
-				<td>-6</td>
-			</tr>
-			<tr>
-				<td>3 s</td>
-				<td>tour suivant* +0</td>
-			</tr>
-			<tr>
-				<td>4 s</td>
-				<td>tour suivant* -3</td>
-			</tr>
-			<tr>
-				<td>5 s</td>
-				<td>tour suivant* -6</td>
-			<tr>
-				<td>6 s</td>
-				<td>2 tours après* +0</td>
-			</tr>
-		</table>
-
-		<p>*Le sort prend un tour complet pour être lancé. Le modificateur s’applique au jet de <i>Réflexes</i> du tour suivant.</p>
+		<details>
+			<summary><h4>Initiative et sorts</h4></summary>
+			<p>Si un lanceur de sort ou un utilisateur de pouvoir est impliqué dans un combat, il doit également faire un jet de <i>Réflexes</i> avec un modificateur qui dépend du <i>Temps nécessaire</i> au lancer du sort.</p>
+			<table>
+				<tr>
+					<th>Temps nécessaire</th>
+					<th>Modificateur</th>
+				</tr>
+				<tr>
+					<td>0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td>1 s</td>
+					<td>-3</td>
+				</tr>
+				<tr>
+					<td>2 s</td>
+					<td>-6</td>
+				</tr>
+				<tr>
+					<td>3 s</td>
+					<td>tour suivant* +0</td>
+				</tr>
+				<tr>
+					<td>4 s</td>
+					<td>tour suivant* -3</td>
+				</tr>
+				<tr>
+					<td>5 s</td>
+					<td>tour suivant* -6</td>
+				<tr>
+					<td>6 s</td>
+					<td>2 tours après* +0</td>
+				</tr>
+			</table>
+			<p>*Le sort prend un tour complet pour être lancé. Le modificateur s’applique au jet de <i>Réflexes</i> du tour suivant.</p>
+		</details>
 
 		<h4>Armes de taille très différentes</h4>
 		<p>L’attaquant ayant l’arme la plus courte doit d’abord réussir une défense contre l’arme la plus longue avant de pouvoir s’approcher et attaquer.</p>
@@ -98,10 +99,12 @@
 			<h3>Déroulement d’un tour de combat</h3>
 		</summary>
 		<p>Les différents protagoniste d’un combat au contact portent leur <b>attaque dans l’ordre de l’initiative</b>.</p>
-		<p>Un combattant a le droit à jusqu’à trois défenses par tour, voire quatre s’il renonce à porter une attaque. Voir <i>Défense</i>, plus loin, pour plus de détails</p>
+		<p>Un combattant impliqué dans un combat au contact a le droit à <b>deux actions par tour</b>.</p>
+		<!-- <p>Un combattant a le droit à jusqu’à trois défenses par tour, voire quatre s’il renonce à porter une attaque. Voir <i>Défense</i>, plus loin, pour plus de détails</p> -->
 		<p>Un combattant peut porter <b>deux attaques</b> dans le même tour si son adversaire n’est pas en état de porter lui-même une attaque (s’il est sonné, par exemple).</p>
-		<p>Un combattant peut toujours <b>remplacer son attaque par une défense supplémentaire</b> (recommandé s’il est débordé par ses adversaires).</p>
-		<p>Au cours d’un tour de combat, le déplacement maximum est de 3 m, sauf en cas de <i>Déplacement</i> (voir ci-dessous).</p>
+		<p>Un combattant peut <b>remplacer son attaque par une défense supplémentaire</b> (recommandé s’il est débordé par ses adversaires).</p>
+		<p>Un combattant à également le droit de faire jusqu’à <b>deux défenses d’urgence</b> dans un tour. Ces défenses ne comptent pas comme des actions. Voir la section <i>Défense</i>.</p>
+		<p>Au cours d’un tour de combat, la <b>vitesse</b> maximale de déplacement est de 1&nbsp;m/s, sauf en cas de <i>Déplacement</i> (voir ci-dessous).</p>
 		<p>Le joueur <i>peut</i> choisir de faire une <b>attaque massive</b> <i>ou</i> une <b>défense massive</b> lors d’un tour.</p>
 	</details>
 
@@ -110,7 +113,7 @@
 		<summary>
 			<h3>Déplacement</h3>
 		</summary>
-		<p>Si le personnage choisit de se déplacer de plus de 3&nbsp;m lors d’un tour, il conserve ses deux possibilités d’action, mais ne peut faire ni attaque massive, ni défense massive, et ses attaques et défenses subissent un malus de -3. Son déplacement est limité à 80&nbsp;% de sa <i>Vitesse</i> en mètre.</p>
+		<p>Si le personnage choisit de se déplacer à une vitesse supérieure à 1&nbsp;m/s, il conserve ses deux actions, mais ne peut faire ni attaque massive, ni défense massive, et ses attaques et défenses subissent un malus de -3. Sa vitesse de déplacement est limité à 50&nbsp;% de sa <i>Vitesse</i>.</p>
 	</details>
 </article>
 
@@ -124,7 +127,7 @@
 			<h3>Modificateurs d’attaque</h3>
 		</summary>
 		<p>Un jet d’attaque est soumis aux modificateurs suivants&nbsp;:</p>
-		<ol>
+		<ol class="bold-bullet">
 			<li><b>État du personnage&nbsp;:</b> PdV, PdF, <i>Encombrement</i>, heaume, armures superposées, usage de la main «&nbsp;faible&nbsp;»&hellip;</li>
 			<li><b>Fmin de l’arme&nbsp;:</b> voir <a href="/armes-armures">Armes &amp; armures</a>.</li>
 			<li><b><i>Attaque Massive</i></b> (voir ci-dessous).</li>
@@ -141,7 +144,7 @@
 		<p>Un attaquant peut choisir de porter une attaque <i>massive</i> plutôt qu’une attaque normale. Ce choix peut se faire <i>en cours</i> de tour.</p>
 		<p>Cela a pour effet de rendre son attaque plus efficace, mais son action suivante (qui ne pourra être ni une attaque massive, ni une défense massive) sera pénalisée.</p>
 
-		<table class="alternate-e left-1 fs-300 mt-½">
+		<table class="left-1 fs-300 mt-½">
 			<tr>
 				<th></th>
 				<th>Bénéfices</th>
@@ -193,19 +196,80 @@
 		<summary>
 			<h3>Attaques à mains nues</h3>
 		</summary>
-		<p>Trois types d’attaque différentes à mains nues&nbsp;:</p>
-		<p><b>• Porter un coup</b>, dans le but d’infliger des dégâts&nbsp;: jet de <i>Combat à mains nues</i> ou de <i>Karaté</i>.</p>
-		<p><b>• Bousculer</b>, dans le but de faire tomber l’adver&shy;saire&nbsp;: jet de <i>Dex</i> pour déterminer si la «&nbsp;bous&shy;culade&nbsp;» réussit, puis jet de <i>For</i> pour en estimer les effets (la compétence <i>Judo/Lutte</i> peut se substituer à la <i>Dex</i> et à la <i>For</i>).</p>
-		<p><b>• Saisir, faire une prise</b>, dans le but de faire tomber ou d’immobiliser un adversaire&nbsp;: jet de <i>Dex</i> pour saisir, jet de <i>Dex</i> ou de <i>For</i> pour immobiliser (la compétence <i>Judo/Lutte</i> peut se substituer à la <i>Dex</i> et à la <i>For</i>).</p>
-		<p>Il est possible de choisir une des <i>Attaques spéciales</i> du paragraphe «&nbsp;Combat au contact&nbsp;»</p>
 
-		<h4>Modificateurs d’attaque</h4>
-		<p><b>1. État du personnage&nbsp;:</b> comme <i>Attaque au contact</i>.</p>
-		<p><b>2. <i>Attaque spéciale</i></b></p>
-		<p><b>3. Difficulté&nbsp;:</b> décidée par le MJ. Le plus souvent entre <i>Moyenne</i> et <i>Difficile</i>.</p>
+		<h4>Manœuvres d’attaque</h4>
+		<p>Une attaque à mains nues peut avoir plusieurs objectifs différents&nbsp;: causer des dégâts, saisir son adversaire, le faire tomber&hellip; Lorsque vous porter une attaque à mains nues, vous devez choisir une des manœuvres ci-dessous.</p>
 
-		<h4>Attaque à mains nues d'un adversaire armé</h4>
-		<p>Si l’adversaire réussit sa parade, il inflige demi-dégâts à l’attaquant (prendre en compte la RD). Pour éviter d’être blessé, l’attaquant doit réussir une <i>Parade</i> ou une <i>Esquive</i>.</p>
+		<h5>Porter un coup</h5>
+		<p>Dans le but d’infliger des dégâts. Jet de <i>Combat à mains nues</i> ou de <i>Karaté</i>. Cet type d’attaque est traitée comme une attaque avec une arme.</p>
+
+		<h5>Bousculer</h5>
+		<p>
+			Dans le but de faire tomber l’adversaire par la force. Ce type d’attaque se traite en deux étapes, qui compte comme une seule action.<br>
+			<i>D’abord</i>, une attaque basée sur <i>Combat à mains nues</i> ou <i>Judo/lutte</i>. L’adversaire peut y opposer une défense normale. Si l’attaque réussit, cela signifie que le contact a été correctement effectué.<br>
+			<i>Ensuite</i>, voir <i>Faire tomber</i> plus loin.
+		</p>
+
+		<h5>Saisir</h5>
+		<p>Saisir son adversaire, dans le but de le gêner dans sa défense et ses attaques, de faciliter ses propres attaques, ou pour ensuite lui faire une prise. La saisie se fait avec la compétence <i>Combat à mains nues</i> ou <i>Judo/lutte</i>. Le défenseur peut y oppoer une défense classique.</p>
+
+		<h5>Faire tomber</h5>
+		<p>Faire tomber son adversaire. Cette action nécessite d’avoir d’abord réussit une <i>bousculade</i> ou une <i>saisie</i>. On peut provoquer la chute soit par l’adresse, soit par la force.</p>
+		<table class="mt-½">
+			<tr>
+				<th></th>
+				<th>Adresse</th>
+				<th>Force</th>
+			</tr>
+			<tr>
+				<th>Attaque</th>
+				<td><i>Combat à mains nues</i>, <i>Judo/lutte</i></td>
+				<td><i>For</i></td>
+			</tr>
+			<tr>
+				<th>Défense*</th>
+				<td><i>Esquive</i>, parade avec <i>Combat à mains nues</i> ou avec <i>Judo/lutte</i></td>
+				<td><i>For</i>, parade avec <i>Judo/lutte</i></td>
+			</tr>
+		</table>
+		<p>* Comme dans le cas d’une attaque classique, la MR de l’attaque se transforme en malus au jet de défense, avec une limite de 5.</p>
+		<p>Cette manœuvre compte comme une action, si elle fait suite à une <i>Saisie</i>. Si elle fait suite à une <i>Bousculade</i>, elle en est la continuité et n’est pas considérée comme une action supplémentaire.</p>
+
+		<h5>Faire une prise / immobiliser</h5>
+		<p>Dans le but de mettre son adversaire dans l’incapacité de fuir, d’attaquer ou de se défendre. Cette manœuvre nécessite l’utilisation des deux mains. Elle doit nécessairement faire suite à une <i>Saisie</i> ou avoir lieu après avoir fait tombé l’adversaire (manœuvre <i>Faire tomber</i>).</p>
+		<p>Cette manœuvre peut s’appuyer sur l’adresse ou sur la force.</p>
+		<table class="mt-½">
+			<tr>
+				<th></th>
+				<th>Adresse</th>
+				<th>Force</th>
+			</tr>
+			<tr>
+				<th>Attaque</th>
+				<td><i>Judo/lutte</i></td>
+				<td><i>For</i></td>
+			</tr>
+			<tr>
+				<th>Défense*</th>
+				<td><i>Dex</i>, <i>Judo/lutte</i></td>
+				<td><i>For</i>, <i>Judo/lutte</i></td>
+			</tr>
+		</table>
+		<p>* Comme dans le cas d’une attaque classique, la MR de l’attaque se transforme en malus au jet de défense, avec une limite de 5.</p>
+		Cette manœuvre compte comme une action.
+
+		<h4>Attaque massive</h4>
+		<p>Il est possible de choisir une des options d’<i>Attaque massive</i> décrites plus haut</p>
+
+		<!-- <h4>Modificateurs d’attaque</h4>
+		<ol>
+			<li><b>État du personnage&nbsp;:</b> comme <i>Attaque au contact</i>.</li>
+			<li><b><i>Attaque massive</i></b></li>
+			<li><b>Difficulté&nbsp;:</b> décidée par le MJ. Le plus souvent entre <i>Moyenne</i> et <i>Difficile</i>.</li>
+		</ol> -->
+
+		<h4>Attaque d'un adversaire armé</h4>
+		<p>Si l’adversaire réussit sa parade, il inflige demi-dégâts à l’attaquant (prendre en compte la RD). Pour éviter d’être blessé, l’attaquant doit réussir une <i>Parade</i> ou une <i>Esquive</i>. Ce jet fait partie de l’action d’attaque. Il ne compte pas comme une action, et n’est pas non plus une <i>défense d’urgence</i> (voir ce terme dans la section <i>Défense</i>).</p>
 	</details>
 
 	<!-- Dégâts à mains nues -->
@@ -246,7 +310,7 @@
 		<details class="exemple">
 			<summary>Exemple de changement de portée</summary>
 			<p>Un pistolet a une portée utile de 15 m. Dans des condition idéales de visée, une distance différentes apportera les modificateurs suivants&nbsp;:</p>
-			<table class="alternate-e">
+			<table>
 				<tr>
 					<th>Distance</th>
 					<th>Modif.</th>
@@ -341,19 +405,29 @@
 	<!-- Nombre de défenses -->
 	<details>
 		<summary>
-			<h3>Nombre de défenses</h3>
+			<h3>Nombre de défenses par tour</h3>
 		</summary>
-		<p>Un combattant a droit à <b>une défense par tour</b>. S’il renonce à attaquer, il a droit à une deuxième défense.</p>
+		<p>Un combattant a droit à <b>une défense par tour</b>. S’il renonce à attaquer, il a droit à une <b>deuxième défense</b>.</p>
 		<p>Pour avoir le droit à un jet de défense, le personnage ne doit <b>pas être surpris</b> par l’attaque.</p>
 		<p>Un défenseur ne peut opposer qu’<b>une seule défense par attaque</b> (sauf en cas de <i>Défense massive</i> – voir ci-dessous).</p>
+	</details>
 
-		<h4>Défenses d’urgence</h4>
-		<p>Il est permis d’avoir jusqu’à <i>deux</i> défenses supplémentaires par tour, en plus de la défense «&nbsp;de droit&nbsp;» du tour (ou des deux défenses, si le combattant a renoncé à attaquer lors de ce tour). Elles sont qualifiées de <i>défenses d’urgence</i> et suivent les règles ci-dessous.</p>
+	<!-- Défense d’urgence -->
+	<details>
+		<summary>
+			<h3>Défense d’urgence</h3>
+		</summary>
+
+		<p>Il est permis d’avoir jusqu’à <i>deux</i> défenses supplémentaires par tour, en plus de ses deux actions «&nbsp;de droit&nbsp;». Elles sont qualifiées de <i>défenses d’urgence</i> et suivent les règles ci-dessous. Ces défenses ne sont pas comptées comme des actions.</p>
 		<ul class="ta-justify">
-			<li>Ces défenses subissent un<b> malus supplémentaire</b>&nbsp;: -3 pour la première et -5 pour la seconde.</li>
+			<li>Ces défenses subissent un<b> malus supplémentaire</b>&nbsp;: -2 pour la première et -4 pour la seconde.</li>
 			<li>L’action précédant la défense d’urgence, ainsi que l’action suivante ne peuvent pas être des <b>attaques massives</b>.</li>
 			<li>L’arme ou le bouclier utilisé pour cette défense ne doit <b>pas avoir été utilisé</b> lors de l’action précédente et ne pourront pas être utilisé pour l’action suivante.</li>
 		</ul>
+
+		<h4>Attaque et défense simultanées</h4>
+		<p>Il peut arriver que, après détermination de l’initiative, deux combattants s’attaquent mutuellement au même moment, ou bien qu’un combattant attaque son ennemi au moment où un deuxième opposant l’attaque lui-même. Dans ce cas, puisque la défense se fait au même moment que l’attaque, cette défense <i>devra</i> être une <i>défense d’urgence</i>, même si le combattant n’a, à ce stade, pas encore effectué ses deux actions.</p>
+		<p>Cette défense d’urgence sera comptabilisée comme telle est entrera donc dans la limite des deux défenses d’urgence par round. Le combattant aura par la suite le droit d’effectuer une action de défense normalement s’il le doit.</p>
 
 		<details class="exemple mt-1">
 			<summary>Exemple</summary>
@@ -393,6 +467,7 @@
 			</ul>
 			<p>On remarque que cette stratégie permet à C de remplacer la défense d’urgence n°2 par une défense normale.</p>
 		</details>
+
 	</details>
 
 	<!-- Modificateurs de défenses -->
@@ -401,7 +476,7 @@
 			<h3>Modificateurs de défense</h3>
 		</summary>
 		<p><b>1. État du personnage&nbsp;:</b> comme pour <i>Attaque au contact</i>. -4 s’il est <i>sonné</i>.</p>
-		<p><b>2. <i>Défense spéciale</i></b>.</p>
+		<p><b>2. <i>Défense massive</i>&nbsp;:</b> voir ci-dessous.</p>
 		<p><b>3. MR de l’attaquant&nbsp;:</b> se transforme en malus au jet de défense. Limité à -5.</p>
 		<p><b>4. Conditions de défense&nbsp;:</b> déséquilibre, obscurité, position du défenseur, au jugé du MJ.</p>
 	</details>
@@ -415,7 +490,7 @@
 
 		<p>Cela a pour effet de rendre sa défense plus efficace, mais nécessite certaines exigences et/ou a certaines conséquences pour l’action suivante.</p>
 
-		<table class="alternate-e left-1 fs-300 mt-½">
+		<table class="left-1 fs-300 mt-½">
 			<tr>
 				<th></th>
 				<th>Bénéfices</th>
@@ -604,10 +679,13 @@
 		<p><b>• Résistance aux dégâts (RD)&nbsp;:</b> même principe qu’une armure.</p>
 		<p><b>• Points de Structure (PdS)&nbsp;:</b> ce sont les «&nbsp;PdV&nbsp;» de l’objet.</p>
 		<p><b>• Intégrité&nbsp;:</b> c’est la «&nbsp;Santé&nbsp;» de l’objet. Plus elle est élevée, mieux l’objet continue à fonctionner malgré les dégâts reçus.</p>
-		<div class="exemple">
-			Un robot type R2D2 pourrait avoir 8 PdS et une <i>Intégrité</i> de 10 (il n’est pas particulièrement résistant).<br>
-			Il aurait une RD de 4, sauf sur certains capteurs en verre qui auraient une RD de 1 ou 2.
-		</div>
+		<details class="exemple">
+			<summary>Exemple</summary>
+			<p>
+				Un robot type R2D2 pourrait avoir 8 PdS et une <i>Intégrité</i> de 10 (il n’est pas particulièrement résistant).<br>
+				Il aurait une RD de 4, sauf sur certains capteurs en verre qui auraient une RD de 1 ou 2.
+			</p>
+		</details>
 	</details>
 
 	<details>
@@ -681,7 +759,7 @@
 		<p>Une forte impulsion électromagnétique (EMP) est capable d’affecter les systèmes électroniques, provisoirement ou de manière permanente. En cas d’EMP, tout appareil électronique doit faire un jet d’<i>Intégrité</i> (score par défaut = 10), modifié selon l’intensité de l’EMP.</p>
 		<p>Si le jet d'<i>Intégrité</i> est raté, l'appareil subit les effets indiqués. S'il est réussi, les effets sont réduits d'un cran. Si MR &ge; 5 ou sur une réussite critique, les effets sont réduits de 2 crans. Si Me &ge; 5 ou sur un échec critique, les effets sont aggravés d'un cran.</p>
 
-		<table class="alternate-e left-2">
+		<table class="left-2">
 			<tr>
 				<th width="15%">Intensité de l’EMP</th>
 				<th>Effets</th>

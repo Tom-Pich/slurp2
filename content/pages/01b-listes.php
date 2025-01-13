@@ -18,8 +18,7 @@ $affichage = $_POST["affichage"] ?? "categorie";
 	<h4>Affichage par catégories</h4>
 	<p>L’affichage par catégorie permet l’accès aux règles générales sur certaines catégories d’avantages &amp; désavantages, compétences et sorts.</p>
 
-	<h4>Sorts</h4>
-	<p>Valeurs par défaut en l’absence d’indications contraires&nbsp;:</p>
+	<p><b>Sorts</b> – Valeurs par défaut&nbsp;:</p>
 	<ul>
 		<li><i>Classe</i>&nbsp;: régulier</li>
 		<li><i>Temps nécessaire</i>&nbsp;: rapide</li>
@@ -29,24 +28,22 @@ $affichage = $_POST["affichage"] ?? "categorie";
 	<!-- formulaire de sélection -->
 	<fieldset class="mt-1">
 		<form action="avdesav-comp-sorts" data-role="filter-form">
-			<div class="flex-s">
-				<div class="fl-1"><b>Affichage&nbsp;:</b></div>
-				<div>
-					<label>
-						<input type="radio" name="affichage" value="categorie" <?= $affichage == "categorie" ? "checked" : "" ?>>
-						catégories
-					</label>&nbsp;
-					<label>
-						<input type="radio" name="affichage" value="alpha" <?= $affichage == "alpha" ? "checked" : "" ?>>
-						alphabétique
-					</label>
-				</div>
+			<div class="flex-s jc-space-between">
+				<b>Affichage</b>
+				<label>
+					<input type="radio" name="affichage" value="categorie" <?= $affichage == "categorie" ? "checked" : "" ?>>
+					catégories
+				</label>
+				<label>
+					<input type="radio" name="affichage" value="alpha" <?= $affichage == "alpha" ? "checked" : "" ?>>
+					alphabétique
+				</label>
 			</div>
 			<div class="mt-½">
-				<div><b>Sorts à afficher&nbsp;:</b></div>
+				<div><b>Sorts à afficher</b></div>
 				<div class="flex-s ai-center jc-space-between mt-½" data-role="spell-filter">
-					Niveaux
-					<input type="text" data-role="range-filter" style="width: 5ch;" class="ta-center p-0" placeholder="1-5" value="1-5">
+					Niv.
+					<input type="text" data-role="range-filter" style="width: 5ch;" class="ta-center watched" placeholder="1-5" value="1-5" pattern="\d(-\d)*">
 					<label>
 						<input type="checkbox" checked data-role="origin-selector" value="RdB"> RdB
 					</label>
@@ -58,9 +55,9 @@ $affichage = $_POST["affichage"] ?? "categorie";
 					</label>
 				</div>
 			</div>
-			<div class="mt-½">
-				<div><b>Rechercher</b></div>
-				<input type="text" name="keyword" class="fl-1 border-grey-700 px-1 py-½ full-width">
+			<div class="mt-1 flex-s gap-½ ai-center">
+				<div><b>Recherche</b></div>
+				<input type="text" name="keyword" class="fl-1" placeholder="Entrez des mots-clés">
 			</div>
 		</form>
 	</fieldset>
@@ -84,7 +81,9 @@ $affichage = $_POST["affichage"] ?? "categorie";
 			$avdesav_list = $avdesav_repo->getAvDesavByCategory($category);
 	?>
 			<details class="<?= $category === "Psi" ? "mb-1" : "" ?>">
-				<summary><h3><?= $category ?></h3></summary>
+				<summary>
+					<h3><?= $category ?></h3>
+				</summary>
 				<?php if ($category === "PNJ") { ?>
 					<p class="mt-1">Certains PNJ peuvent vous fournir aide et assis&shy;tance. Le coût de ces PNJ, en tant qu’<i>Avantage</i>, dépend de l’ampleur de l’aide qu’ils peuvent offrir. Cette aide est sincère et sans autre contrepartie qu’une aide équivalente et/ou une loyauté de la part du PJ lorsque nécessaire.<br>
 						Deux valeurs en points sont données&nbsp;: la 1<sup>ère</sup> correspond à une aide occasionnelle, la deuxième à une aide possible en toutes circonstances (sauf cas de force majeure).
@@ -128,7 +127,9 @@ $affichage = $_POST["affichage"] ?? "categorie";
 			$skills_list = $skills_repo->getSkillsByCategory($category) ?>
 
 			<details class="<?= $category === "Voleur - espion" ? "mb-1" : "" ?>">
-				<summary><h3><?= $category ?></h3></summary>
+				<summary>
+					<h3><?= $category ?></h3>
+				</summary>
 				<?php if ($category == "Professionnelle") { ?>
 					<p>Les compétences ci-dessous sont des exemples non limitatifs de compétences professionnelles. En cas de besoin d’une nouvelle compétence, parlez-en à votre MJ webmaster qui ajoutera la compétence nécessaire.</p>
 
@@ -198,7 +199,9 @@ $affichage = $_POST["affichage"] ?? "categorie";
 			$spells = $spells_repo->getSpellsByCollege($college->id);
 	?>
 			<details class="<?= $college->id === 21 ? "mb-1" : "" ?>">
-				<summary><h3><?= $college->name ?></h3></summary>
+				<summary>
+					<h3><?= $college->name ?></h3>
+				</summary>
 				<p><?= $college->description ?></p>
 				<?php foreach ($spells as $spell) {
 					$spell->displayInRules(show_edit_link: $_SESSION["Statut"] === 3, data: ["name" => "", "cost-mult" => 0, "colleges-list" => $all_colleges_names]);

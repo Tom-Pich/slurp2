@@ -32,6 +32,8 @@ fieldset.flow { > :nth-child(2) {margin-top: 0;} }
 	p {margin: .5em 0; text-align: justify; hyphens: auto;}
 }
 
+:is(ol, ul).bold-bullet li::marker { font-weight: 700; }
+
 // Utility classes
 .hidden {display: none;}
 .bg-black { background-color: var(--black); }
@@ -72,6 +74,9 @@ summary:has(h3) {
 }
 
 summary.h4 {font-weight: bold; font-size: var(--fs-400); font-family: var(--ff-accent);}
+
+summary.h4.rule {font-size: var(--fs-450);}
+details:has(>summary.h4.rule) { margin-top: .75em; border-top: 1px solid var(--grey-700); border-bottom: 1px solid var(--grey-700); padding-block: .25em }
 
 details.liste {
 	--flow-space: 0;

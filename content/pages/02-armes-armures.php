@@ -5,7 +5,7 @@ use App\Rules\WeaponsController;
 ?>
 
 <!-- Caractéristiques -->
-<article class="as-start">
+<article>
 	<h2>Caractéristiques</h2>
 
 	<!-- Dégâts -->
@@ -14,12 +14,12 @@ use App\Rules\WeaponsController;
 			<h3>Dégâts</h3>
 		</summary>
 		<p>Les dégâts d’une arme sont caractérisés par un <i>Type</i> et une <i>Étendue</i>.</p>
-		
+
 		<p>
-			<b>Types de dégâts – </b> Pour les armes blanche, il existe trois types de dégâts&nbsp;: broyage (B), perforant (P) et tranchant (T). Sur une créature vivante, à valeurs égales, les dégâts perforants sont plus efficaces que les dégâts tranchants, eux-mêmes plus efficaces que les dégâts de broyage. Ces différences sont gérées sur la <a href="/table-jeu">table de jeu</a>. Voir aussi <i>Effets d’une blessure</i> sur la page <a href="/blessures-dangers">Blessures et dangers</a>.<br>
+			Pour les armes blanche, il existe trois <b>types de dégâts</b>&nbsp;: broyage (B), perforant (P) et tranchant (T). Sur une créature vivante, à valeurs égales, les dégâts perforants sont plus efficaces que les dégâts tranchants, eux-mêmes plus efficaces que les dégâts de broyage. Ces différences sont gérées sur la <a href="/table-jeu">table de jeu</a>. Voir aussi <i>Effets d’une blessure</i> sur la page <a href="/blessures-dangers">Blessures et dangers</a>.<br>
 			Les dégâts causés par les armes à feu sont traités plus loin dans cette section.
 		</p>
-		
+
 		<p><b>L’étendue des dégâts</b> d’une arme blanche dépend de la <i>For</i> de son utilisateur – plus précisemment de ses <i>dégâts de base</i> – et de l’arme elle-même (voir les caractéristiques des armes, plus loin).</p>
 
 		<details class="exemple">
@@ -32,10 +32,12 @@ use App\Rules\WeaponsController;
 		</details>
 
 		<!-- cumul modificateurs -->
-		<details class="mt-1 border p-¼">
-			<summary class="fw-600">Cumul de modificateurs</summary>
+		<details>
+			<summary>
+				<h4>Cumul de modificateurs</h4>
+			</summary>
 			<p>Si, après addition calcul des dégâts d’une arme, il apparaît un terme fixe &ge; +3 (par exemple 2d+4), ce terme fixe se transforme en terme variable.</p>
-			<table class="alternate-e">
+			<table>
 				<tr>
 					<th>Terme fixe</th>
 					<th>Terme variable</th>
@@ -63,9 +65,9 @@ use App\Rules\WeaponsController;
 			</table>
 
 			<p>L’idée est que la valeur du terme fixe soit toujours la plus petite possible.</p>
-			
+
 			<p>De même, s’il apparaît un terme fixe &le; -2, ce terme fixe se transforme en terme variable.</p>
-			<table class="alternate-e">
+			<table>
 				<tr>
 					<th>Terme fixe</th>
 					<th>Terme variable</th>
@@ -98,7 +100,7 @@ use App\Rules\WeaponsController;
 
 			<p>Là encore, l’idée reste la même&nbsp;: le terme fixe doit être le plus petit possible. Toutefois, on ne permettra pas d’arriver à 0d. Par exemple, 2d-6 ne devient pas 0d+1. Dans ces cas limites, on calcule l’espérance mathématique du jet et on consulte la table ci-dessous pour obtenir la valeur corrigée. <i>Rappel&nbsp;: l’espérance sur 1d vaut 3,5</i>.</p>
 
-			<table class="alternate-e">
+			<table>
 				<tr>
 					<th>Espérance</th>
 					<th>Avec 1d</th>
@@ -140,8 +142,8 @@ use App\Rules\WeaponsController;
 
 		<h4>Armes à deux mains</h4>
 		<p>
-			Une arme pouvant être maniée aussi bien à une main qu’à deux mains (par exemple une épée bâtarde, ou une hache) reçoit, lorsqu’elle est maniée à deux mains, un bonus aux dégâts égal au nombre de dés de dégâts que l’utilisateur a en <i>taille</i>  (sur le widget, choisir 2M opt.).<br>
-			Une arme conçue spécifiquement pour être maniée à deux mains – son nom l’indique, reçoit le même bonus, -1  (sur le widget, choisir 2M).
+			Une arme pouvant être maniée aussi bien à une main qu’à deux mains (par exemple une épée bâtarde, ou une hache) reçoit, lorsqu’elle est maniée à deux mains, un bonus aux dégâts égal au nombre de dés de dégâts que l’utilisateur a en <i>taille</i> (sur le widget, choisir 2M opt.).<br>
+			Une arme conçue spécifiquement pour être maniée à deux mains – son nom l’indique, reçoit le même bonus, -1 (sur le widget, choisir 2M).
 		</p>
 
 		<h4>Dégâts minimums</h4>
@@ -321,7 +323,7 @@ use App\Rules\WeaponsController;
 </article>
 
 <!-- Armes antiques & médiévales -->
-<article class="as-start">
+<article>
 	<h2>Armes antiques &amp; médiévales</h2>
 
 	<details>
@@ -395,10 +397,11 @@ use App\Rules\WeaponsController;
 		?>
 	</details>
 
-	<details  class="border py-½ px-1">
-		<summary class="h4">Notes</summary>
-
-		<div class="mt-½ fs-300">
+	<details>
+		<summary>
+			<h4>Notes</h4>
+		</summary>
+		<div class="fs-300">
 			<?php foreach (WeaponsController::weapons_notes as $index => $note) { ?>
 				<p><b><?= $index ?>&nbsp;:</b> <?= $note ?></p>
 			<?php } ?>
@@ -408,7 +411,7 @@ use App\Rules\WeaponsController;
 </article>
 
 <!-- Armes à feu -->
-<article class="as-start">
+<article>
 	<h2>Armes à feu</h2>
 
 	<!-- Armes de poing -->
@@ -548,8 +551,10 @@ use App\Rules\WeaponsController;
 	</details>
 
 	<!-- Notes -->
-	<details class="border py-½ px-1">
-		<summary class="h4">Notes</summary>
+	<details>
+		<summary>
+			<h4>Notes</h4>
+		</summary>
 		<div class="fs-300">
 			<p>Toutes les caractéristiques sont identiques à celles de GURPS 4</p>
 			<p><b>Portée utile&nbsp;:</b> basée sur l’<i>Accuracy</i> (Acc 2 = 15 m).</p>
@@ -563,7 +568,7 @@ use App\Rules\WeaponsController;
 </article>
 
 <!-- Armures & boucliers -->
-<article class="as-start">
+<article>
 	<h2>Armures &amp; boucliers</h2>
 
 	<!-- Armures antiques & médiévales -->
@@ -573,7 +578,7 @@ use App\Rules\WeaponsController;
 		</summary>
 		<p>Les poids des armures incluent des vêtements légers. Ils sont donnés pour une armure «&nbsp;hypo&shy;thétique&nbsp;» complète couvrant tout sauf le visage. De telles armures n’existent généralement pas. Il est donc préférable, pour être plus réaliste, de confectionner une armure composite, c’est-à-dire formée de plusieurs pièces d’armures différentes. Voir paragraphe suivant.</p>
 
-		<table class="left-1 alternate-e">
+		<table class="left-1">
 			<tr>
 				<th></th>
 				<th>RD</th>
@@ -610,7 +615,7 @@ use App\Rules\WeaponsController;
 
 		<h4>Pièces d’armure</h4>
 		<p>Le prix et le poids des différentes pièces d’une armure se calculent à partir de ceux d’une armure complète.</p>
-		<table class="left-1 alternate-e">
+		<table class="left-1">
 			<tr>
 				<th>Localisation</th>
 				<th>% poids</th>
@@ -638,7 +643,7 @@ use App\Rules\WeaponsController;
 			<h3>Boucliers antiques</h3>
 		</summary>
 		<p>Boucliers de bois et mince couche d’acier</p>
-		<table class="left-1 alternate-e">
+		<table class="left-1">
 			<tr>
 				<th>Bouclier</th>
 				<th>DP</th>

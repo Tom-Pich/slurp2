@@ -34,6 +34,9 @@ usort($characters, function ($a, $b) use ($statusOrder) {
 	$posB = array_search($b->status, $statusOrder);
 	return $posA - $posB;
 });
+
+// chat window
+$playNotif = false;
 ?>
 
 <div id="ws-data" hidden data-session-id="<?= $_SESSION["id"] ?>" data-ws-key="<?= WS_KEY ?>"></div>
@@ -57,14 +60,14 @@ usort($characters, function ($a, $b) use ($statusOrder) {
 				<input type="text" name="objet-gestionnaire[<?= $n ?>][Poids]" value="<?= $objet->weight ?>" class="ta-center" placeholder="Pds" title="poids">
 				<input type="text" name="objet-gestionnaire[<?= $n ?>][Lieu]" value="<?= $objet->place ?>" class="ta-center" placeholder="Lieu">
 				<input type="text" name="objet-gestionnaire[<?= $n ?>][Notes]" value="<?= $objet->notes ?>" placeholder="Notes" style="grid-area: notes">
-				<input type="text" name="objet-gestionnaire[<?= $n ?>][Secret]" value="<?= $objet->secret ?>" class="clr-warning" placeholder="Notes du MJ" style="grid-area: notes-mj">
+				<input type="text" name="objet-gestionnaire[<?= $n ?>][Secret]" value="<?= $objet->secret ?>" class="clr-invalid" placeholder="Notes du MJ" style="grid-area: notes-mj">
 				<input hidden name="objet-gestionnaire[<?= $n ?>][id]" value="<?= $objet->id ?>">
 				<input hidden name="objet-gestionnaire[<?= $n ?>][MJ]" value="<?= $objet->id_gm ?>">
 			</div>
 		<?php
 			$n++;
 		} ?>
-		<button type="submit" class="fs-500 ff-fas mx-auto mt-½">&#xf0c7;</button>
+		<button type="submit" class="btn-primary fs-500 ff-fas mx-auto mt-½">&#xf0c7;</button>
 	</form>
 </article>
 
@@ -77,7 +80,7 @@ usort($characters, function ($a, $b) use ($statusOrder) {
 			<summary>
 				<h3><?= $group->id ?? "X" ?>. <?= $group->name ?></h3>
 			</summary>
-			<div class="grid col-auto-fit gap-½ mt-½" style="--col-min-width: 350px">
+			<div class="grid col-auto-fit gap-½ mt-½" style="--col-min-width: 370px">
 				<?php
 				$group_characters = array_filter($characters, fn($x) => $x->id_group === $group->id);
 				foreach ($group_characters as $perso) {
@@ -124,7 +127,7 @@ usort($characters, function ($a, $b) use ($statusOrder) {
 
 						<input hidden name="id" value="<?= $perso->id ?>">
 
-						<div class="flex-s ai-first-baseline gap-¾">
+						<div class="flex-s ai-first-baseline gap-½">
 							<h4 class="mt-0 fl-1">
 								<?= $perso->id ?>. <?= $perso->name ?>
 								<span id="confirm-export-<?= $perso->id ?>"></span>
@@ -256,7 +259,7 @@ usort($characters, function ($a, $b) use ($statusOrder) {
 			</div>
 			<input hidden name="createur" value="<?= $_SESSION["id"] ?>">
 		</div>
-		<button type="submit" class="fs-500 ff-fas mx-auto mt-½" title="Créer un nouveau personnage">&#xe541;</button>
+		<button type="submit" class="btn-primary fs-500 ff-fas mx-auto mt-½" title="Créer un nouveau personnage">&#xe541;</button>
 	</form>
 </article>
 
@@ -295,7 +298,7 @@ usort($characters, function ($a, $b) use ($statusOrder) {
 				</div>
 
 			</div>
-			<button type="submit" class="fs-500 ff-fas mx-auto mt-½">&#xf0c7;</button>
+			<button type="submit" class="btn-primary fs-500 ff-fas mx-auto mt-½">&#xf0c7;</button>
 		</form>
 	</article>
 <?php } ?>

@@ -36,8 +36,7 @@ function updateCharacter(id) {
   fetch("personnage-fiche?perso=" + id)
     .then((response) => response.text())
     .then((response) => {
-      updateDOM("#character-sheet", response);
-      //containerOpenCloseStateManager() // useless: updateDOM keeps track of <details> state
+      updateDOM("#page-content", response);
       fillPdMCount();
     });
 }
@@ -168,11 +167,12 @@ formEquipment.addEventListener("click", (e) => {
   } else if (target.dataset.role === "add-item") {
     newObjectNumber++;
     const containerWrapper = target.closest("[data-role=container-wrapper]");
-    let itemWrapper = ce("details", ["items-list"]);
+	const freeSlot = containerWrapper.querySelector("[data-role=free-slot]")
+    const itemWrapper = ce("details", ["items-list"]);
     itemWrapper.innerHTML = `
 			<summary class="grid gap-½ ai-center">
 				<div class="ff-fas" draggable="true" data-role="item-grip">&#xf58e;</div>
-				<input name="nouvel-objet[${newObjectNumber}][Nom]"	type="text" placeholder = "Nouvel objet" >
+				<input name="nouvel-objet[${newObjectNumber}][Nom]"	type="text" placeholder = "Nouvel objet">
 				<input name="nouvel-objet[${newObjectNumber}][Poids]" type="text" class="ta-center">
 				<input hidden name="nouvel-objet[${newObjectNumber}][Lieu]" value="${containerWrapper.dataset.place}">
 				<input hidden name="nouvel-objet[${newObjectNumber}][MJ]" value="${gmId}">
@@ -181,7 +181,8 @@ formEquipment.addEventListener("click", (e) => {
 				Enregistrer les modifications avant de pouvoir ajouter des notes
 			</div>
 		`;
-    containerWrapper.appendChild(itemWrapper);
+    //containerWrapper.appendChild(itemWrapper);
+    containerWrapper.insertBefore(itemWrapper, freeSlot);
   }
 });
 
@@ -230,7 +231,7 @@ formEquipment.addEventListener("dragenter", (e) => {
     let target = e.target;
     container.insertBefore(draggedItem, target);
     draggedItem.querySelector("[data-role=item-place]").value = container.dataset.place;
-  } else if (e.target.dataset.role === "container-title-wrapper") {
+  } else if (e.target.closest("summary") && e.target.closest("summary").dataset.role === "container-title-wrapper") {
     if (timeoutId) clearTimeout(timeoutId);
     timeoutId = setTimeout(function () {
       let container = e.target.closest("[data-role=container-wrapper]");
@@ -285,7 +286,7 @@ itemNotes.forEach((note) => {
 
 // ––– other stuff ––––––––––––––––––––––––––––––––––
 
-// pdm counter
+// pdm counter save
 const pdmInput = qs("[name=pdm_counter]");
 if (pdmInput) {
   let timeoutId;

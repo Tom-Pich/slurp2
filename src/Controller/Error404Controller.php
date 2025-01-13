@@ -5,15 +5,16 @@ namespace App\Controller;
 class Error404Controller
 {
 
-	public function show($page_type="not found"){
+	public function show(){
 		$page = [
 			"title" => "Oups&hellip; Erreur 404&nbsp;!",
 			"description" => "La ressource demandée n’existe pas",
-			"body-class" => "not-found",
+			"body-class" => "basic-page",
+			"file" => "zz-not-found",
+			"version" => 4,
 		];
+		$page_controller = new PageController($page);
 		http_response_code(404);
-		include "content/components/header.php";
-		include "content/pages/zz-not-found.php";
-		include "content/components/footer.php";
+		$page_controller->show();
 	}
 }

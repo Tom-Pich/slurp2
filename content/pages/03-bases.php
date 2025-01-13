@@ -44,7 +44,7 @@ use App\Repository\SkillRepository;
 		<summary>
 			<h3>Principes de base</h3>
 		</summary>
-		<p>Un jet est réussi si&nbsp;:</p>
+		<p>Un jet sous une compétence ou une caractéristique est réussi si&nbsp;:</p>
 		<p class="ta-center mt-1"><b>Résultat du jet (3d) &le; score ± modificateurs</b></p>
 		<p class="mt-1">3 et 4 sont toujours une réussite, 17 et 18 sont toujours des échecs.</p>
 		<p>Le <b>score brut</b> est le score sans aucun modificateur. Le <b>score net</b> est le score après application des différents modificateurs de circonstances ci-dessous.</p>
@@ -56,7 +56,7 @@ use App\Repository\SkillRepository;
 			<h3>Difficulté</h3>
 		</summary>
 		<p>Difficulté intrinsèque de l’action, sans tenir compte de l’état du personnage.</p>
-		<table class="alternate-e left-1">
+		<table class="left-1">
 			<tr>
 				<th>Difficulté</th>
 				<th>Modificateur</th>
@@ -121,7 +121,7 @@ use App\Repository\SkillRepository;
 		<summary>
 			<h3>Réussite et échec critiques</h3>
 		</summary>
-		<table class="alternate-e">
+		<table>
 			<tr>
 				<th width="10%">Jet</th>
 				<th>Réussite critique</th>
@@ -162,7 +162,7 @@ use App\Repository\SkillRepository;
 		</summary>
 		<p>Lorsque il faut faire un jet sous «&nbsp;rien&nbsp;», consulter la table ci-dessous.</p>
 
-		<table class="alternate-e left-1">
+		<table class="left-1">
 			<tr>
 				<th>Probabilité</th>
 				<th>Score</th>
@@ -274,7 +274,7 @@ use App\Repository\SkillRepository;
 		<summary>
 			<h3>Niveaux d’encombrement</h3>
 		</summary>
-		<table class="alternate-e left-2 mt-1">
+		<table class="left-2 mt-1">
 			<tr>
 				<th>Poids (kg)</th>
 				<th>Encombrement et malus</th>
@@ -331,7 +331,7 @@ use App\Repository\SkillRepository;
 			Cela a un impact sur les caractéristiques secondaires (sauf les PdV et les PdF) et tous les jets de réussite.
 		</p>
 
-		<table class="alternate-e left-2 mt-1">
+		<table class="left-2 mt-1">
 			<tr>
 				<th>État</th>
 				<th>Effets</th>
@@ -391,7 +391,7 @@ use App\Repository\SkillRepository;
 		<p>Un événement traumatisant provoque un choc psychologique. Il n’est pas nécessairement effrayant ni directement menaçant (perte d’un être cher, être témoin d’actes de barbarie, etc.).</p>
 		<p>Il peut entraîner la perte de PdE : faire un jet de <i>Sang-froid</i> pour résister au traumatisme. En cas de réussite, la perte de PdE est divisée par 2. Ce jet de <i>Sang-froid</i> peut être assorti d’un modificateur, mais ce modificateur ne dépendra, en général, pas de l’ampleur du traumatisme, qui est quantifié par la perte de PdE, mais de l’état ou du vécu du personnage.</p>
 
-		<table class="alternate-e left-1">
+		<table class="left-1">
 			<tr>
 				<th>Ampleur du traumatisme</th>
 				<th>Perte PdE</th>
@@ -438,7 +438,7 @@ use App\Repository\SkillRepository;
 		<p>Les conséquences du <i>Test de frayeur</i> dépendent de sa MR et de l’intensité de la peur provoquée.</p>
 
 		<h4>MR et gravité</h4>
-		<table class="alternate-e left-2">
+		<table class="left-2">
 			<tr>
 				<th>MR</th>
 				<th>Conséquences</th>
@@ -472,7 +472,7 @@ use App\Repository\SkillRepository;
 		<h4>Conséquences</h4>
 		<p>Ci-dessous la table résumée des conséquences – utiliser le widget de la <a href="/table-jeu"><i>Table de jeu</i></a> pour avoir les résultats détaillés et chiffrés. Les éléments marqués d’une astérisque sont expliqués après la table.</p>
 
-		<table class="alternate-e left-2">
+		<table class="left-2">
 			<tr>
 				<th width="10">Niv.</th>
 				<th>Conséquences</th>
@@ -596,7 +596,7 @@ use App\Repository\SkillRepository;
 			<h3>État psychologique général</h3>
 		</summary>
 
-		<table class="alternate-e left-2 mt-1">
+		<table class="left-2 mt-1">
 			<tr>
 				<th style="width: 20%">PdE</th>
 				<th>Effets</th>
@@ -613,13 +613,6 @@ use App\Repository\SkillRepository;
 		</table>
 
 		<h4>Perte définitive de PdE et de Sang-Froid</h4>
-		<!-- <p>
-			Cette perte s’applique la première fois que le personnage passe sous le seuil provoquant cette perte. Il ne perdra plus de points en franchissant ce seuil avant d’être remonté deux seuils au-dessus ou à son maximum (premier événement à arriver).
-		</p>
-		<div class="exemple">
-			Soit un personnage avec 10 PdE au maximum. Il descend à 5 PdE, il perd définitivement 1 PdE. Il continue à descendre et arrive à 2 PdE. Il perd alors un autre PdE et un pt de <i>Sang-froid</i>. Puis il remonte à 4 PdE et redescend à 2 PdE. Aucune perte définitive dans ce cas, car le personnage n’est remonté que d’un seuil et pas de deux.<br>
-			Il remonte ensuite de 2 PdE à 6 PdE. Puis redescend à 2 PdE. Il ne subit aucune perte pour le passage par 5 PdE, mais il subira la perte du passage à 2 PdE.
-		</div> -->
 		<p>Lorsqu’un PdE est perdu définitivement, il faut retirer un pt aux PdEm <i>et</i> aux PdE actuels.</p>
 		<p>Cette perte est cumulative. Autrement dit, un personnage passant de 60&nbsp;% à 20&nbsp;% de ses PdEm perdra définitivement 2 PdE et un pt de <i>Sang-froid</i>.</p>
 
@@ -659,7 +652,7 @@ use App\Repository\SkillRepository;
 		<summary>
 			<h3>Résultat du jet de réaction</h3>
 		</summary>
-		<table class="alternate-e left-2">
+		<table class="left-2">
 			<?php foreach (ReactionController::reactions as $index => $reaction) { ?>
 				<tr>
 					<td width="15%"><?= $index >= 11 ? "&ge;" : "&le;" ?>&nbsp;<?= $index ?></td>
@@ -699,7 +692,7 @@ use App\Repository\SkillRepository;
 			<h3>Statuts sociaux</h3>
 		</summary>
 		<p>Exemples d’échelles de statuts sociaux.</p>
-		<table class="alternate-e">
+		<table>
 			<tr>
 				<th></th>
 				<th>Univers médiéval</th>
@@ -777,7 +770,7 @@ use App\Repository\SkillRepository;
 		<summary>
 			<h3>Niveaux technologiques</h3>
 		</summary>
-		<table class="alternate-e left-2">
+		<table class="left-2">
 			<tr>
 				<th colspan="2">Niveaux technologiques et époque correspondante</th>
 			</tr>
@@ -832,7 +825,7 @@ use App\Repository\SkillRepository;
 		<summary>
 			<h3>Probabilité avec 3d</h3>
 		</summary>
-		<table class="alternate-e">
+		<table>
 			<tr>
 				<th width="10%">3d</th>
 				<th>cumulée</th>

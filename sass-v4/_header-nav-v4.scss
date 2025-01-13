@@ -1,0 +1,50 @@
+.main-header { 
+	background: linear-gradient(180deg, #fff0 0%, black 100%), url(/assets/img/bg-header-std.jpg) no-repeat center/cover;
+	color: white; padding-bottom: 0.25em;
+	display: grid; grid-template-columns: 1fr auto; row-gap: 1em; grid-template-areas: 'text login' 'nav nav';
+	@include media ($brp-nav) { grid-template-areas: 'text nav-btn' 'login login' 'nav nav'; }
+	a { text-decoration: none; color: inherit; }
+	a:hover { color: var(--clr-primary-500) }
+
+	.titles-wrapper > a > img { max-width: clamp(32px, 5vw, 64px ); height: auto;}
+	#login-element { grid-area: login; padding-inline: 1em; align-self: center; }
+	#show-nav-on-mobile {
+		justify-self: end; align-self: flex-start; position: relative; z-index: 10;
+		@include media-min ($brp-nav) { display: none; }
+	}
+
+	nav {
+		grid-area: nav;
+
+		ul { list-style: none; padding: 0; text-align: left;}
+		> ul > li { position: relative; }
+
+		ul.sub-menu {
+			overflow: hidden; transition: all .2s; background-color: var(--black); z-index: 2; padding-inline: 1em; left: -1em; width: max-content; 
+			li { transition: all .2s; }
+		}
+
+		h4 { font-size: var(--fs-400); cursor:default; @include media ($brp-nav) { margin-top: 1em; } }
+
+		// plain navigation
+		@include media-min ($brp-nav){
+			> ul { display: flex; gap: 1em; }
+
+			ul.sub-menu { position: absolute; max-width: 25ch; }
+			ul.sub-menu * { overflow: hidden; }
+			> ul > li:hover > ul.sub-menu { padding-block: 1em; }
+
+			ul.sub-menu li { display: grid; grid-template-rows: 0fr; transition: all .2s; }
+			> ul > li:hover > ul.sub-menu li {grid-template-rows: 1fr;}
+		}
+
+		// mobile navigation
+		@include media ($brp-nav) {
+			&:not(.active) {display: none;}
+			display: block; position: absolute; inset: 0; background-color: var(--black); padding: 2em; z-index: 2; overflow-y: scroll;
+			ul.sub-menu { padding-top: .25em; }
+			li { padding: .15em; }
+		}
+	}
+
+}
