@@ -7,16 +7,14 @@ use App\Repository\AbstractRepository;
 
 class PsiPowerRepository extends AbstractRepository
 {
-	public function getPower(int $id)
+	public function getPower(int $id) : ?PsiPower
 	{
 		$query = $this->db->prepare("SELECT * FROM psi_pouvoirs WHERE id = ?");
 		$query->execute([$id]);
 		$item = $query->fetch(\PDO::FETCH_ASSOC);
 		$query->closeCursor();
 
-		if (!$item) {
-			return null;
-		}
+		if (!$item) return null;
 
 		$power = new PsiPower($item);
 		return $power;

@@ -113,13 +113,15 @@ export function scoreTester(score, roll) {
     return { MR: MR, symbol: outcomeSymbol, critical: critical };
 }
 
-/** return the result of the post fetch query (url) with the given data (data) as decoded JSON */
-export async function fetchResult(url, data) {
+/** return the result of the get/post fetch query (url) with the given optionnel FormData (data) as decoded JSON */
+export async function fetchResult(url, data = null) {
+	const params = { method: "get" };
+	if (data) {
+		params.method = "post";
+		params.body = data;
+	}
     return (
-        fetch(url, {
-            method: "post",
-            body: data,
-        })
+        fetch(url, params)
             //.then(response => response.text()) // debug
             //.then(response => console.log(response)) // debug
             .then((response) => response.json())

@@ -15,8 +15,9 @@ class Power implements RulesItem
 	public string $origin; // advantage, spell or specific table
 	public array $specific = []; // data from specific table
 	public mixed $data; // data from spell or avdesav table
-	const priest_mult = 0.6;
-	const priest_mult_low = 0.4;
+	const priest_mult = 0.7; // prêtres AD&D
+	const priest_mult_low = 0.5; // prêtre AD&D avec avantage Prêtrise
+	const demorthen_mult = 0.4; // demorthèn (Ombres d’Esteren)
 
 	public function __construct(array $power = [])
 	{

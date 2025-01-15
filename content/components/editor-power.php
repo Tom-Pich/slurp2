@@ -1,10 +1,11 @@
 <article>
-	<h2>Pouvoirs</h2>
+	<h2>Pouvoir</h2>
 
 	<form method="post" action="/submit/set-power" autocomplete="off">
 		<!--  id, id_RdB, Type, Nom, Catégorie, Domaine, Mult, Origine -->
-		<div class="flex gap-2 px-2">
-			<div class="fl-1">
+		<div class="flex gap-2">
+			<div class="flow fl-1">
+
 				<h4 class="mt-0"><?= $pouvoir->data->name ?? "Nouveau pouvoir" ?></h4>
 				<div class="flex-s gap-½ mt-½">
 					<input type="text" class="ta-center" name="id_RdB" style="width: 5ch" value="<?= $pouvoir->specific["id_RdB"] ?>" placeholder="id RdB" title="id RdB">
@@ -15,6 +16,7 @@
 					</select>
 					<input type="text" class="fl-1" name="Nom" value="<?= $pouvoir->specific["Nom"] ?>" placeholder="Nom spécifique" title="Nom spécifique">
 				</div>
+
 				<h4>Catégorie</h4>
 				<div class="flex-s mt-½">
 					<input type="text" class="fl-1" name="Catégorie" value="<?= $pouvoir->specific["Catégorie"] ?>" placeholder="Catégorie" list="existing-categories">
@@ -24,6 +26,7 @@
 						<?php } ?>
 					</datalist>
 				</div>
+
 				<h4>Domaine</h4>
 				<div class="flex-s mt-½">
 					<input type="text" class="fl-1" name="Domaine" value="<?= $pouvoir->specific["Domaine"] ?>" placeholder="Domaine" list="existing-domains">
@@ -34,7 +37,7 @@
 					</datalist>
 				</div>
 
-				<div class="flex mt-2 gap-1">
+				<div class="flex gap-1">
 					<div class="flex-s ai-first-baseline fl-1 gap-½">
 						<div>Multiplicateur de coût</div>
 						<input type="text" style="width: 8ch" name="Mult" value="<?= $pouvoir->specific["Mult"] ?>" placeholder="Mult" class="ta-center">
@@ -54,7 +57,7 @@
 
 			</div>
 			<div class="fl-1">
-				<fieldset>
+				<fieldset class="flow">
 					<legend>
 						Signification des entrées de pouvoirs
 					</legend>
@@ -71,7 +74,7 @@
 
 		</div>
 		<input hidden name="id" value="<?= $pouvoir->id ?>">
-		<button class="mx-auto mt-2 ff-fas">&#xf0c7;</button>
+		<button class="btn-primary mx-auto mt-2 ff-fas">&#xf0c7;</button>
 	</form>
 
 </article>

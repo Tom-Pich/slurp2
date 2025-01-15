@@ -1,6 +1,6 @@
 <h2>Almisie, la cité qui travaille</h2>
 
-<div class="wiki-right-element flow">
+<div class="wiki-right-element">
 	<figure>
 		<img src="/assets/img_paorn/almisie_01.jpg" />
 		<figcaption>Almisie</figcaption>

@@ -33,17 +33,15 @@ const addQuirkBtn = qs("[data-role=add-quirk]");
 const avdesavWrapper = qs("#avdesav-wrapper");
 addQuirkBtn.addEventListener("click", (e) => {
     console.log(e.target);
-    let newQuirkWrapper = ce("div");
-    let quirkNumber = e.target.dataset.number;
+    const newQuirkWrapper = ce("div");
+    const quirkNumber = e.target.dataset.number;
     newQuirkWrapper.innerHTML = `
 		<input hidden name="Avdesav[${quirkNumber}][id]" value="0">
 		<details>
 			<summary>
-				<input type="text" name="Avdesav[${quirkNumber}][nom]" class="fl-1">
-				<input type="text" title="Coût" name="Avdesav[${quirkNumber}][points]" value="-1" size="2" class="ta-center" disabled>
-				<div>
-					<input type="checkbox" disabled>
-					<input type="checkbox" disabled>
+				<div class="flex-s gap-½">
+					<input type="text" name="Avdesav[${quirkNumber}][nom]" class="fl-1">
+					<input type="text" title="Coût" name="Avdesav[${quirkNumber}][points]" value="-1" size="2" class="ta-center" disabled>
 				</div>
 			</summary>
 			<div class="mt-½ fs-300">Un travers est un trait de caractère mineur ne constituant pas un désavantage. Il est possible de prendre jusqu’à 5 travers.</div>
@@ -52,6 +50,17 @@ addQuirkBtn.addEventListener("click", (e) => {
     avdesavWrapper.appendChild(newQuirkWrapper);
     e.target.dataset.number++;
 });
+
+// cancel input modal btn (new avdesav, new skills...)
+const closeInputModalBtns = qsa("[data-role=close-input-modal]")
+closeInputModalBtns.forEach ( btn => {
+	btn.addEventListener("click", (e) => {
+		const dialog = e.target.closest("dialog");
+		const inputs = dialog.querySelectorAll("input");
+		inputs.forEach ( input => input.checked = false);
+		dialog.close();
+	})
+})
 
 // change save btn color when changes are made
 let allowSaveBtnColorChange = true;
@@ -76,6 +85,8 @@ form.addEventListener("keydown", (e) => {
 // submit form and reload page with morphdom
 form.addEventListener("submit", (e) => {
     e.preventDefault();
+	const dialogs = qsa("dialog");
+	dialogs.forEach(dialog => dialog.close());
     fetch("/submit/update-character", {
         method: "post",
         body: new FormData(form),

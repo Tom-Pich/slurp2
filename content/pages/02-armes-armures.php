@@ -624,13 +624,13 @@ use App\Rules\WeaponsController;
 			<?php foreach (ArmorsController::armor_parts as $part) { ?>
 				<tr>
 					<td><?= $part["nom"] ?><?= $part["notes"] ? ("<sup>" . $part["notes"] . "</sup>") : "" ?></td>
-					<td><?= $part["mult_pds"] ?></td>
-					<td><?= $part["mult_prix"] ?></td>
+					<td><?= $part["mult_pds"]*100 ?></td>
+					<td><?= $part["mult_prix"]*100 ?></td>
 				</tr>
 			<?php } ?>
 		</table>
 
-		<div class="mt-½">
+		<div class="mt-½ fs-300">
 			<?php foreach (ArmorsController::armor_parts_notes as $index => $note) { ?>
 				<p><b><?= $index ?></b> <?= $note ?></p>
 			<?php } ?>

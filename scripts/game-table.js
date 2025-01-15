@@ -104,7 +104,7 @@ roundCounterWidget.addEventListener("submit", (e) => {
     if (opponentsInitiativeOrder.length) roundNumberInput.value = roundNumber + 1;
 });
 
-// reaction test
+// reaction test widget
 reactionWidget.addEventListener("submit", async (e) => {
     const reactionModifier = int(reactionWidget.querySelector("[data-type=reaction-modifier]").value.trim("+"));
     const reactionTest = roll("1d").result + reactionModifier;

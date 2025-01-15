@@ -14,18 +14,16 @@ class PowerRepository extends AbstractRepository
 	 *
 	 * @param  string $origin
 	 * @param  int $id
-	 * @return Power
+	 * @return ?Power
 	 */
-	function getPower(int $id, string $table = "pouvoir"): Power
+	function getPower(int $id, string $table = "pouvoir"): ?Power
 	{
 		if (!in_array($table, ["avantage", "sort"])) {
 			$query = $this->db->prepare("SELECT * FROM pouvoirs WHERE id = ?");
 			$query->execute([$id]);
 			$item = $query->fetch(\PDO::FETCH_ASSOC);
 			$query->closeCursor();
-			if (!$item) {
-				return null;
-			}
+			if (!$item) return null;
 		} else {
 			$item["id"] = $id;
 		}

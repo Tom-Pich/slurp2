@@ -1,9 +1,12 @@
 <h2>Stomilie, ville sainte de Burgonie</h2>
 
-<figure class="wiki-right-element">
-	<img src="/assets/img_paorn/stomilie_01.jpg" alt="">
-	<figcaption>Stomilie et sa cathédrale fortifiée</figcaption>
-</figure>
+<div class="wiki-right-element">
+	<figure>
+		<img src="/assets/img_paorn/stomilie_01.jpg" alt="">
+		<figcaption>Stomilie et sa cathédrale fortifiée</figcaption>
+	</figure>
+</div>
+
 <p>
 	Stomilie est une ville fortifiée d’environ 10.000 habitants, de forme globalement circulaire.<br>
 	Située à 10 km de la mer, elle est construite sur une colline.<br>
@@ -13,13 +16,13 @@
 	Le seigneur des lieux est l’archiprêtre de Stomilie&nbsp;: Monseigneur Giorgio de Scamora, duc et archiprêtre.
 </p>
 
-<h4>PNJ, groupes &amp; organisations</h4>
+<h3>PNJ, groupes &amp; organisations</h3>
 <p>Les gardes de la villes sont dirigés par des paladins.</p>
 <p>Il existe 6 ordres religieux dans la ville de Stomilie</p>
 <p><b>Arcania :</b> pas bienvenue dans la ville. Il n’y a que trois mages sur place (deux niveau 3 et un niveau 4). L’ordre magique est assuré par certains prêtres ou des paladins.</p>
 <p>4 alchimistes</p>
 
-<h4>Lieux intéressants</h4>
+<h3>Lieux intéressants</h3>
 <ul>
 	<li>Une vingtaine d’églises (nombreux clochers), dont une cathédrale fortifiée (où se trouve le tombeau d’Eldred, le prophète de l’Atrimisme).</li>
 	<li><b>Place des saints :</b> une des place important de la ville, non loin de l’entrée sud.</li>

@@ -1,9 +1,9 @@
 <article>
-	<h2>Créatures</h2>
+	<h2>Créature</h2>
 
 	<form method="post" action="/submit/set-creature" autocomplete="off">
-		<div class="flex gap-2 px-1">
-			<div class="fl-1">
+		<div class="flex gap-2">
+			<div class="flow fl-1">
 
 				<input type="text" class="full-width" name="Nom" value="<?= $creature->name ?>" placeholder="Nom">
 
@@ -78,26 +78,26 @@
 				</div>
 
 				<h4>Avantages &amp; désavantage</h4>
-				<textarea class="full-width" name="Avdesav" placeholder="Avantages &amp; Désavantages" style="height: 5em; min-height: 0;"><?= $creature->avdesav ?></textarea>
+				<textarea class="p-1 full-width" name="Avdesav" placeholder="Avantages &amp; Désavantages" style="height: 5em; min-height: 0;"><?= $creature->avdesav ?></textarea>
 
 				<h4>Pouvoirs</h4>
-				<textarea class="full-width" name="Pouvoirs" placeholder="Pouvoirs" style="height: 5em; min-height: 0;"><?= $creature->powers ?></textarea>
+				<textarea class="p-1 full-width" name="Pouvoirs" placeholder="Pouvoirs" style="height: 5em; min-height: 0;"><?= $creature->powers ?></textarea>
 
 				<p class="mt-1">Pour supprimer la créature, effacer son nom.</p>
 			</div>
 
-			<div class="fl-1">
-				<h4 class="mt-0">Description</h4>
-				<textarea name="Description" placeholder="Description" class="full-width" style="height: 18em; min-height: 0;"><?= $creature->description ?></textarea>
+			<div class="flow fl-1">
+				<h4>Description</h4>
+				<textarea name="Description" placeholder="Description" class="p-1 full-width" style="height: 18em; min-height: 0;"><?= $creature->description ?></textarea>
 				
 				<h4>Combat</h4>
-				<textarea name="Combat" placeholder="Combat" class="full-width" style="height: 18em; min-height: 0;"><?= $creature->combat ?></textarea>
+				<textarea name="Combat" placeholder="Combat" class="p-1 full-width" style="height: 18em; min-height: 0;"><?= $creature->combat ?></textarea>
 			</div>
 
 		</div>
 
 		<input hidden name="id" value="<?= $creature->id ?>">
-		<button class="mx-auto mt-2 ff-fas">&#xf0c7;</button>
+		<button class="btn-primary mx-auto mt-2 ff-fas">&#xf0c7;</button>
 	</form>
 
 </article>

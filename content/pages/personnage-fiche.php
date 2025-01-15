@@ -265,7 +265,6 @@ function color_modifier($original_score, $actual_score) {
 	<fieldset>
 		<legend>Magie</legend>
 
-		<!-- <h4 class="mt-1 mb-½">Magie</h4> -->
 		<?php foreach ($character->colleges as $college) { ?>
 
 			<details class="liste">
@@ -300,7 +299,7 @@ function color_modifier($original_score, $actual_score) {
 		<?php } ?>
 
 	</fieldset>
-<?php endif; ?>
+<?php endif ?>
 
 <!-- Pouvoirs -->
 <?php if ($character->special_traits["pouvoirs"] && count($character->powers)): ?>

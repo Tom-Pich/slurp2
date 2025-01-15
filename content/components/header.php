@@ -15,12 +15,7 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 	<meta name="google-site-verification" content="Yap48CUfjcjJnXZufVRoH0B0KB5-_UXQArZJiRkn_Qs">
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=yes">
 	<meta name="description" content="<?= $page["description"] ?>">
-	<?php if ($page["css-version"] ?? 3 === 4): ?>
-		<link rel="stylesheet" href="/styles-v4.min.css?v=<?= VERSION ?>">
-	<?php else: ?>
-		<link rel="stylesheet" href="/styles.min.css?v=<?= VERSION ?>">
-	<?php endif ?>
-	
+	<link rel="stylesheet" href="/styles.min.css?v=<?= VERSION ?>">
 	<link rel="shortcut icon" href="/assets/img/favicon.ico">
 	<title><?= $page["title"] ?></title>
 

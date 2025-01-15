@@ -81,6 +81,7 @@ class College
 
 				$points += $item["points"];
 				$colleges[] = $item;
+				$colleges = Sorter::sort($colleges, "name");
 			}
 		}
 

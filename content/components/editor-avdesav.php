@@ -3,9 +3,9 @@
 
 	<form method="post" action="/submit/set-avdesav" autocomplete="off" data-role="rule-item-editor">
 
-		<div class="flex gap-2 px-1">
+		<div class="flex gap-2">
 
-			<div class="fl-1">
+			<div class="fl-1 flow">
 				<div class="flex-s gap-½">
 					<input type="text" name="Nom" value="<?= $avdesav->name ?>" class="fl-1" placeholder="Nom">
 					<input type="text" name="Coût" value="<?= $avdesav->id ? $avdesav->displayCostInEditor() : "" ?>" style="width: 12ch" class="ta-center" placeholder="Coût" title="Coût" required>
@@ -31,12 +31,12 @@
 				<p><b>Catégories existantes&nbsp;:</b> <?= implode(", ", $liste_categories) ?></p>
 			</div>
 
-			<textarea name="Description" placeholder="Description" class="fl-1"><?= $avdesav->description ?></textarea>
+			<textarea name="Description" placeholder="Description" class="p-1 fl-1"><?= $avdesav->description ?></textarea>
 
 		</div>
 
 		<input hidden name="id" value="<?= $avdesav->id ?>">
-		<button type="submit" class="mx-auto mt-2 ff-fas">&#xf0c7;</button>
+		<button type="submit" class="btn-primary mx-auto mt-2 ff-fas">&#xf0c7;</button>
 
 	</form>
 

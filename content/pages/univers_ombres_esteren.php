@@ -1,5 +1,6 @@
 <?php
 
+use App\Entity\Power;
 use App\Entity\Spell;
 use App\Repository\AvDesavRepository;
 use App\Repository\SkillRepository;
@@ -11,22 +12,22 @@ $avdesav_repo = new AvDesavRepository;
 $skill_repo = new SkillRepository;
 
 $demorthen_power_cost = [];
-$demorthen_power_cost_multiplier = 0.3;
 foreach (Spell::cost_as_power as $cost) {
-	$demorthen_power_cost[] = $cost * $demorthen_power_cost_multiplier;
+	$demorthen_power_cost[] = $cost * Power::demorthen_mult;
 }
 ?>
 
 <!-- Personnages -->
-<article class="as-start">
+<article>
 	<h2>Personnage</h2>
 
+	<!-- Rôles et statuts particuliers -->
 	<details>
 		<summary>
-			<h3>Rôles et status particuliers</h3>
+			<h3>Rôles et statuts particuliers</h3>
 		</summary>
 		<ul>
-			<li><b>demorthèn&nbsp;:</b> représentant de la nature, il peut entrer en contact avec les esprits et leur demander d’accomplir des tâches particulières. Il est le gardien des anciennes traditions péninsulaires et il est souvent considéré avec respect. Les apprentis demorthèn sont appelés <i>ionnthèn</i></li>
+			<li><b>demorthèn&nbsp;:</b> représentant de la nature, il peut entrer en contact avec les esprits (C’maogh) et leur demander d’accomplir des tâches particulières. Il est le gardien des anciennes traditions péninsulaires et il est souvent considéré avec respect. Les apprentis demorthèn sont appelés <i>ionnthèn</i></li>
 			<li><b>dàmàthair&nbsp;:</b> femme ayant la responsabilité, dans une communauté, de l’éducation des enfants et de la protection des plus faibles lors des attaques.</li>
 			<li><b>ansailéir&nbsp;:</b> chef de clan</li>
 			<li><b>varigal&nbsp;:</b> voyageur, messager, porteur de nouvelles et de colis, le varigal est un lien entre les communautés éparses de tri-Kazel. Passant l’essentiel de sa vie sur les chemins, il est généralement bien accueilli quand il arrive dans un village. Proches de la nature, les varigaux sont souvent les alliés des demorthèn.</li>
@@ -38,12 +39,14 @@ foreach (Spell::cost_as_power as $cost) {
 		<summary>
 			<h3>Avantages &amp; Désavantages</h3>
 		</summary>
-		<p><b>• Alphabétisation&nbsp;:</b> <i>Semi-alphabétisation</i> par défaut. <i>Illettrisme</i>&nbsp;: -5 pts&nbsp;; <i>Alphabétisation</i>&nbsp;: 5 pts.</p>
-		<p><b>• Richesse&nbsp;:</b> la richesse moyenne de départ est de 250 daols de braise.</p>
-		<p><b>• Statut – varigal (5 pts)&nbsp;:</b> les varigaux sont généralement bien accueillis où qu’ils aillent.</p>
+		<ul>
+			<li><b>Alphabétisation&nbsp;:</b> <i>Semi-alphabétisation</i> par défaut. <i>Illettrisme</i>&nbsp;: -5 pts&nbsp;; <i>Alphabétisation</i>&nbsp;: 5 pts.</li>
+			<li><b>Richesse&nbsp;:</b> la richesse moyenne de départ est de 250 daols de braise.</li>
+			<li><b>Statut – varigal (5 pts)&nbsp;:</b> les varigaux sont généralement bien accueillis où qu’ils aillent.</li>
+		</ul>
 
 		<h4>Avantages &amp; désavantages spécifiques</h4>
-		<div class="mt-½">
+		<div>
 			<?php
 			$don_sigil_ran = $avdesav_repo->getAvDesav(187);
 			$don_sigil_ran->displayInRules(show_edit_link: $_SESSION["Statut"] === 3);
@@ -66,13 +69,11 @@ foreach (Spell::cost_as_power as $cost) {
 			<li><b>Don pour la Sigil Rann&nbsp;:</b> si le demorthèn dispose de pouvoirs, il doit également avoir cet avantage au niveau 1 minimum.</li>
 		</ul>
 
-
-
 		<h4>Compétences</h4>
 		<p>Les demorthèn ont deux compétences spécifiques&nbsp;: <i>Savoirs demorthèn</i> et <i>Sigil Rann</i> (voir ci-dessous).</p>
 		<p>En plus de ces compétences spécifiques, les compétences suivantes sont recommandées&nbsp;: <i>Connaissance de la Nature</i>, <i>Premiers secours</i>, <i>Médecine</i>, <i>Herboristerie</i>&hellip;</p>
 
-		<div class="mt-1">
+		<div>
 			<?php
 			$demorthen_skills = [];
 			$demorthen_skills[] = $skill_repo->getSkill(206); // Savoirs demorthèn
@@ -90,7 +91,6 @@ foreach (Spell::cost_as_power as $cost) {
 			<h3>Membre du temple</h3>
 		</summary>
 
-
 		<p>Spécificité des personnages appartenant à un ordre du temple.</p>
 
 		<h4>Avantages &amp; désavantages</h4>
@@ -106,12 +106,10 @@ foreach (Spell::cost_as_power as $cost) {
 		<p>Théologie</p>
 	</details>
 
-
-
 </article>
 
 <!-- Équipement -->
-<article class="as-start">
+<article>
 	<h2>Équipement</h2>
 
 	<!-- Système monétaire -->
@@ -216,6 +214,7 @@ foreach (Spell::cost_as_power as $cost) {
 
 	</details>
 
+	<!-- Prix en vrac -->
 	<details>
 		<summary>
 			<h3>Prix en vrac</h3>
@@ -244,9 +243,10 @@ foreach (Spell::cost_as_power as $cost) {
 </article>
 
 <!-- Demorthén -->
-<article class="as-start">
+<article>
 	<h2>Les démorthèn</h2>
 
+	<!-- Généralités -->
 	<details>
 		<summary>
 			<h3>Généralités</h3>
@@ -272,7 +272,7 @@ foreach (Spell::cost_as_power as $cost) {
 
 		<h4>Coût des pouvoirs</h4>
 		<p>
-			Les pouvoirs de demorthèn s’acquiert pour un coût de 30&nbsp;% du coût normal (<?= join(" / ", $demorthen_power_cost) ?>).<br>
+			Les pouvoirs de demorthèn s’acquiert pour un coût de <?= Power::demorthen_mult*100 ?>&nbsp;% du coût normal (soit <?= join(" / ", $demorthen_power_cost) ?> pts).<br>
 			Ceci est dû au fait que pour pouvoir être utilisé, le demorthèn doit être (1) en possession de la pierre oghamique associée au pouvoir et (2) entrer en contact avec un esprit de la Nature, ce qui est un processus assez long et incertain (voir ci-dessous).
 		</p>
 	</details>
@@ -299,7 +299,7 @@ foreach (Spell::cost_as_power as $cost) {
 		<p>Si le demorthèn perd conscience alors qu’il est lié avec un esprit, le lien se défait instantanément.</p>
 
 		<h4>Contact multiple</h4>
-		<p>En aucun cas un demorthèn ne peut maintenir de contact avec plusieurs esprits en même temps.²</p>
+		<p>En aucun cas un demorthèn ne peut maintenir de contact avec plusieurs esprits en même temps.</p>
 	</details>
 
 	<!-- Récupération PdM -->
@@ -346,7 +346,7 @@ foreach (Spell::cost_as_power as $cost) {
 </article>
 
 <!-- Temple -->
-<article class="as-start">
+<article>
 	<h2>Le Temple</h2>
 
 	<!-- Préceptes du Temple -->
@@ -402,7 +402,7 @@ foreach (Spell::cost_as_power as $cost) {
 </article>
 
 <!-- Magience -->
-<article class="as-start">
+<article>
 	<h2>La Magience</h2>
 
 	<details>

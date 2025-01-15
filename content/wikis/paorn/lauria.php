@@ -1,8 +1,10 @@
 <h2>L’Île de la Lauria</h2>
-<figure class="wiki-right-element">
-	<img src="/assets/img_paorn/lauria.webp?v=2">
-	<figcaption>L’île de la Lauria</figcaption>
-</figure>
+<div class="wiki-right-element">
+	<figure>
+		<img src="/assets/img_paorn/lauria.webp?v=2">
+		<figcaption>L’île de la Lauria</figcaption>
+	</figure>
+</div>
 
 <p>Séparée de la côte d’Artaille par une large passe aux courants capricieux, la Lauria est un territoire farouchement indépendant. Ses habitants ont développé au fil des siècles une culture originale, tournée vers l'artisanat, l'élevage et la méditation.</p>
 
@@ -64,10 +66,12 @@
 </p>
 
 <h3>Parna (ville)</h3>
-<figure class="wiki-right-element">
-	<img src="/assets/img_paorn/parna_01.jpg">
-	<figcaption><i>Parna</i></figcaption>
-</figure>
+<div class="wiki-right-element">
+	<figure>
+		<img src="/assets/img_paorn/parna_01.jpg">
+		<figcaption><i>Parna</i></figcaption>
+	</figure>
+</div>
 <p>La capitale de la Lauria est une magnifique cité à flanc de montagne composée de milliers de petites maisons blanches, surplombée par la formidable <i>Tour d'Opale</i> où siègent le <i>Septar</i> et le <i>Grand Conseil des Aînés</i>.</p>
 <p>À signaler également un fantastique musée archéologique&nbsp;: le <i>Demetrion</i>.</p>
 <p>Alchimiste Mortur et sa petite fille Dulnara&nbsp;: rencontré sur le bateau de Laelith.</p>

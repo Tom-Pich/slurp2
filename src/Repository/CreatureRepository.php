@@ -13,9 +13,9 @@ class CreatureRepository extends AbstractRepository
 		$query = $this->db->prepare("SELECT * FROM creatures WHERE id = ?");
 		$query->execute([$id]);
 		$item = $query->fetch(\PDO::FETCH_ASSOC);
-		if(!$item){
-			return NULL;
-		}
+
+		if(!$item)return NULL;
+		
 		$creature = new Creature($item);
 		return $creature;
 	}

@@ -19,11 +19,9 @@ class AvDesavRepository extends AbstractRepository
 		$query->execute([$id]);
 		$item = $query->fetch(\PDO::FETCH_ASSOC);
 		$query->closeCursor();
-
-		if (!$item) {
-			return null;
-		}
-
+		
+		if (!$item) return null;
+		
 		$avdesav = new AvDesav($item);
 		return $avdesav;
 	}

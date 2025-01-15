@@ -6,7 +6,7 @@ $creature_repo = new CreatureRepository;
 ?>
 
 <!-- Caractéristiques des animaux  -->
-<article class="as-start">
+<article>
 	<h2>Caractéristiques des animaux</h2>
 
 	<details>
@@ -65,7 +65,7 @@ $creature_repo = new CreatureRepository;
 </article>
 
 <!-- Combat -->
-<article class="as-start">
+<article>
 	<h2>Combat</h2>
 
 	<details>
@@ -94,7 +94,7 @@ $creature_repo = new CreatureRepository;
 </article>
 
 <!-- Quelques annimaux -->
-<article class="as-start">
+<article>
 	<h2>
 		<?php if ($_SESSION["Statut"] == 3) { ?>
 			<a href="gestion-listes?req=creature&id=0" class="edit-link ff-far">&#xf044;&nbsp;</a>
@@ -121,7 +121,7 @@ $creature_repo = new CreatureRepository;
 </article>
 
 <!-- Considérations diverses -->
-<article class="as-start">
+<article>
 	<h2>Considérations diverses</h2>
 
 	<details>
@@ -160,5 +160,3 @@ $creature_repo = new CreatureRepository;
 		<p class="mt-1 ta-right">Source&nbsp;: <a href="https://www.hudada.fr/blog/combien-de-temps-peut-courir-un-cheval/36/">hudada.com</a></p>
 	</details>
 </article>
-
-<script type="module" src="/scripts/creatures.js"></script>

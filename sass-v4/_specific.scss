@@ -1,16 +1,4 @@
-figcaption {text-align: center; font-style: italic;}
-
-// Utility classes
-.border-bottom-grey-700 {border-bottom: 1px solid var(--grey-700);}
-.widget{background-color: var(--clr-accent-background)}
-//:is(div, p, details):nth-child(odd).alternate-o {background-color: var(--grey-900);}
-.float-left { float: left; margin: 0.25rem 1rem 0.25rem 0 ;  max-width: 50%; }
-
-
-// Details & summary (nothing in _base.scss) ––––––––––––––––––––––––––––––––––––––––––––––––––––––
-summary.h4 {font-weight: bold; font-size: var(--fs-400); font-family: var(--ff-accent);}
-summary.h4.rule {font-size: var(--fs-450);}
-details:has(>summary.h4.rule) { margin-top: .75em; border-top: 1px solid var(--grey-700); border-bottom: 1px solid var(--grey-700); padding-block: .25em }
+summary.h4 {font-weight: bold; font-size: var(--fs-400); font-family: var(--ff-accent);} // scénario et AD&D
 
 // Forms, button ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 button, input[type=submit], .btn {border-radius: .25em}

@@ -448,19 +448,10 @@ class Character
 		if (isset($post["Avdesav"])) {
 			foreach ($post["Avdesav"] as $avdesav) {
 				$avdesav["id"] = (int) $avdesav["id"];
-				isset($avdesav["nom"]) ? $avdesav["nom"] = strip_tags($avdesav["nom"]) : "";
+				isset($avdesav["nom"]) ? $avdesav["nom"] = TextParser::cleanPunctuation(strip_tags($avdesav["nom"])) : "";
 				isset($avdesav["points"]) ? $avdesav["points"] = $avdesav["points"] = (float) $avdesav["points"] : "";
 				if (!isset($avdesav["points"]) && $avdesav["id"] === 0) {
 					$avdesav["points"] = -1;
-				}
-
-				if (isset($avdesav["options"]["aff_coût"])) {
-					$avdesav["options"][] = "aff_coût";
-					unset($avdesav["options"]["aff_coût"]);
-				}
-				if (isset($avdesav["options"]["caché"])) {
-					$avdesav["options"][] = "caché";
-					unset($avdesav["options"]["caché"]);
 				}
 
 				$deleted_avdesav = isset($avdesav["nom"]) && $avdesav["nom"] === "";

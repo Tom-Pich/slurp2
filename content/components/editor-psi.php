@@ -3,8 +3,8 @@
 
 	<form method="post" action="/submit/set-psi" autocomplete="off">
 
-		<div class="flex gap-2 mx-1">
-			<div class="fl-1">
+		<div class="flex gap-2">
+			<div class="flow fl-1">
 				<div class="flex-s gap-½">
 					<input type="text" name="Nom" value="<?= $psi->name ?>" class="fl-1" placeholder="Nom du sort">
 					<input type="text" name="Niv" value="<?= $psi->data->readableNiv ?>" style="width: 8ch" class="ta-center" placeholder="I-V" required>
@@ -22,12 +22,12 @@
 					<div style="width: 15ch">Discipline</div>
 					<input type="text" class="fl-1" name="Discipline" value="<?= join(", ", $psi->data->colleges) ?>" required>
 				</div>
-				<div class="mt-½ fs-300">
+				<p class="fs-300">
 					À séparer par une virgule.
 					<?php foreach ($liste_disciplines as $id => $discipline) {
 						echo $id . ".&nbsp;" . $discipline . ($id !== array_key_last($liste_disciplines) ? ", " : "");
 					} ?>
-				</div>
+				</p>
 
 				<p>Pour supprimer le pouvoir, effacer son nom.</p>
 
@@ -58,11 +58,11 @@
 
 				</div>
 			</div>
-			<textarea name="Description" placeholder="Description du sort" class="fl-1" required><?= $psi->data->description ?></textarea>
+			<textarea name="Description" placeholder="Description du sort" class="p-1 fl-1" required><?= $psi->data->description ?></textarea>
 		</div>
 
 		<input hidden name="id" value="<?= $psi->id ?>">
-		<button class="mx-auto mt-2 ff-fas">&#xf0c7;</button>
+		<button class="btn-primary mx-auto mt-2 ff-fas">&#xf0c7;</button>
 
 	</form>
 

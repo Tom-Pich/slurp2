@@ -21,9 +21,7 @@ class SkillRepository extends AbstractRepository
 		$item = $query->fetch(\PDO::FETCH_ASSOC);
 		$query->closeCursor();
 
-		if (!$item) {
-			return null;
-		}
+		if (!$item) return null;
 
 		$skill = new Skill($item);
 		return $skill;

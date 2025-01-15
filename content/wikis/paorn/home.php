@@ -1,6 +1,6 @@
 <h2>L’encyclopédie de Paorn</h2>
 
-<div class="wiki-right-element flow">
+<div class="wiki-right-element">
 	<figure>
 		<img src="/assets/img_paorn/paorn-complet.webp" alt="Carte du monde de Paorn" class="fit-contain">
 		<figcaption>Paorn, carte complète</figcaption>
@@ -12,7 +12,7 @@
 	Vous trouverez dans cette section du site (en perpétuelle évolution) des articles sur différents aspects de ce monde.
 </p>
 
-<p class="mt-2">Burgonnie, Salthar, Tsovranie et Althusia sont les quatre principaux empires qui constituent Paorn. Situés dans la partie tempérée du continent central, ils se partagent l'essentiel des richesses et vivent en plus ou moins bonne intelligence.</p>
+<p>Burgonnie, Salthar, Tsovranie et Althusia sont les quatre principaux empires qui constituent Paorn. Situés dans la partie tempérée du continent central, ils se partagent l'essentiel des richesses et vivent en plus ou moins bonne intelligence.</p>
 <!--  Leurs cultures sont différentes, voire opposées&nbsp;; leurs souverains sont capables de s'unir pour combattre un péril commun, quitte à oublier leurs bonnes résolutions une fois le danger passé. -->
 <!-- 
 <h3>La Burgonnie</h3>

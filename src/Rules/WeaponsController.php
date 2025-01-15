@@ -197,8 +197,8 @@ class WeaponsController
 	public static function displaySpecialWeapon(array $weapons, bool $display_headers = true)
 	{
 		if ($display_headers) { ?>
-			<div class="flex-s fw-600 fs-300 gap-½ mt-½">
-				<div style="width: 10ch"></div>
+			<div class="flex-s fw-700 fs-300 gap-½ mt-½">
+				<div style="width: 12ch"></div>
 				<div class="fl-1">Dégâts, Prt</div>
 				<div class="ta-center" style="width: 3.5ch">Fm</div>
 				<div class="ta-center" style="width: 3.5ch">Pds</div>
@@ -207,9 +207,9 @@ class WeaponsController
 		<?php }
 		foreach ($weapons as $weapon) {
 		?>
-			<details class="fs-300 alternate-o">
+			<details class="fs-300 mt-¼ bg-grey-900-if-odd px-¼">
 				<summary class="flex-s gap-½">
-					<div style="width: 10ch"><?= $weapon["nom"] ?><?= !empty($weapon["notes"]) ? ("<sup>" . $weapon["notes"] . "</sup>") : "" ?></div>
+					<div style="width: 12ch"><?= $weapon["nom"] ?><?= !empty($weapon["notes"]) ? ("<sup>" . $weapon["notes"] . "</sup>") : "" ?></div>
 					<div class="fl-1"><?= "voir détails" . ($weapon["deg"] ? ", " .$weapon["deg"] : "") ?></div>
 					<div class="ta-center" style="width: 3.5ch"><?= $weapon["Fm"] ?></div>
 					<div class="ta-center" style="width: 3.5ch"><?= $weapon["pds"] ?></div>
@@ -219,11 +219,11 @@ class WeaponsController
 		<?php }
 	}
 
-	public static function displaySpecialWeapon_v4(array $weapons)
+	/* public static function displaySpecialWeapon_v4(array $weapons)
 	{
 		foreach ($weapons as $w):
 		?>
-			<!-- <details class="fs-300 alternate-o">
+			<!-- <details class="fs-300">
 				<summary><?= $w["nom"] ?></summary>
 				<div style="padding-bottom: .5em">
 					<p><?= $w["description"] ?></p>
@@ -234,14 +234,14 @@ class WeaponsController
 					<div class="fl-1"><?= $w["nom"] ?></div>
 					<div>Fmin&nbsp;: <?= $w["Fm"] ?> – Pds&nbsp;: <?= $w["pds"] ?>&nbsp;kg</div>
 				</div>
-				<div>
+				<p>
 					<?= $w["description"] ?>
 					<?= $w["deg"] ? "<b>Portée&nbsp;:</b> " . $w["deg"] : "" ?>
-				</div>
+				</p>
 			</div>
 		<?php
 		endforeach;
-	}
+	} */
 
 	public static function burstHits(int $rcl, int $bullets, int $mr)
 	{

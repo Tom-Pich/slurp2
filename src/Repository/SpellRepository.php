@@ -20,10 +20,8 @@ class SpellRepository extends AbstractRepository
 		$item = $query->fetch(\PDO::FETCH_ASSOC);
 		$query->closeCursor();
 
-		if (!$item) {
-			return null;
-		}
-
+		if (!$item) return null;
+		
 		$spell = new Spell($item);
 		return $spell;
 	}

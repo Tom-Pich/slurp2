@@ -8,6 +8,7 @@ module.exports = {
 		"game-table" : "/scripts/game-table.js",
 		"characters-manager" : "/scripts/characters-manager.js",
 		"chat-window" : "/scripts/chat-window.js",
+		"widget-armor" : "/scripts/widget-armor.js"
 	},
 	mode: "production",
 	output: {

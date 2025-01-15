@@ -1,27 +1,11 @@
-/**
- * alias for document.querySelector
- * @param {string} selector 
- * @returns HTML node
- */
 export function qs(selector) {
 	return document.querySelector(selector);
 }
 
-/**
- * alias for document.querySelectorAll
- * @param {string} selector 
- * @returns Nodelist
- */
 export function qsa(selector) {
 	return document.querySelectorAll(selector);
 }
 
-/**
- * create an HTML element with classes in array
- * @param {string} tag 
- * @param {array} classes 
- * @returns HTML element
- */
 export function ce(tag, classes = []) {
 	let element = document.createElement(tag);
 	if (classes) {
@@ -32,11 +16,6 @@ export function ce(tag, classes = []) {
 	return element;
 }
 
-/**
- * check if str as digits, specialchars, no space, uppercase and lowercase characters \
- * and if length >= 8
- * @param {string} password the password to check
- */
 export function checkPasswordStrength(password) {
 	const digit = /\d+/.test(password);
 	const length = password.length >= 8;
@@ -48,11 +27,6 @@ export function checkPasswordStrength(password) {
 	return isStrong;
 }
 
-/**
- * calulate the result of a simple calculus string
- * @param {string} str 
- * @returns result of calculation
- */
 export function calculate(str) {
 	if (str === null) return "";
 	str = str.replace(/[+-]+$/g, ''); // trim + and - at the end

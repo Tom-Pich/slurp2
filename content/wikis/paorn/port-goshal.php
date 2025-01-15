@@ -14,10 +14,12 @@
 <?php if ($admin) { ?>
 
 	<h4>Erdno Brici</h4>
-	<figure class="wiki-right-element">
-		<img src="/assets/img_paorn/pnj_erdno_brici.jpg">
-		<figcaption>Erdno Brici</figcaption>
-	</figure>
+	<div class="wiki-right-element">
+		<figure>
+			<img src="/assets/img_paorn/pnj_erdno_brici.jpg">
+			<figcaption>Erdno Brici</figcaption>
+		</figure>
+	</div>
 	<p>
 		Marchand influent et semi-mafieux, membre de l’Alliance des négociants de métaux.<br>
 		Possède deux entrepôts sur le port, place des Almisiens.<br>

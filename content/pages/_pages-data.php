@@ -15,8 +15,6 @@ $pages_data = [
 		"description" => "Les règles concernant la création de personnage",
 		"file" => "01a-personnage",
 		"version" => 4,
-		//"aside-left" => "aside-intro-personnage",
-		//"aside-right" => "aside-right-test",
 	],
 	"avdesav-comp-sorts" => [
 		"title" => "Listes pour le personnage",
@@ -58,6 +56,7 @@ $pages_data = [
 		"title" => "Animaux", 
 		"description" => "Les règles sur les animaux – leurs caractéristiques, leur gestion en combat&hellip;", 
 		"file" => "07-animaux",
+		"version" => 4,
 	],
 
 	// En version bêta
@@ -82,7 +81,6 @@ $pages_data = [
 		"title" => "AD&D",
 		"description" => "Ce qu’il faut pour jouer dans l’esprit <i>Donjons &amp; Dragons</i>, sans le système abject d20.",
 		"file" => "univers_add",
-		//"body-class" => "adapted-dungeons-dragons",
 	],
 	"in-nomine" => [
 		"title" => "In Nomine", 
@@ -98,6 +96,7 @@ $pages_data = [
 		"title" => "Les ombres d’Esteren",
 		"description" => "Une adaptation libre des <i>Ombres d’Esteren</i>", 
 		"file" => "univers_ombres_esteren",
+		"version" => 4,
 	],
 
 	// Aides de jeu
@@ -121,7 +120,8 @@ $pages_data = [
 		"title" => "Test", 
 		"description" => "", 
 		"file" => "test",
-		"body-class" => "basic-page",
+		"body-class" => "test",
+		"version" => 4,
 	],
 
 	// Personnage (fiche et gestionnaire)
@@ -136,8 +136,9 @@ $pages_data = [
 	"personnage-gestion" => [
 		"title" => "Gestionnaire de personnages", 
 		"description" => "", 
-		"file" => "personnage_gestion",
+		"file" => "personnage-gestion",
 		"body-class" => "personnage-gestion",
+		"version" => 4,
 	],
 
 	// Administration
@@ -154,8 +155,9 @@ $pages_data = [
 		"title" => "Gestionnaire des RdB",
 		"description" => "", 
 		"file" => "gestion-listes",
-		"body-class" => "gestionnaire-listes",
+		"body-class" => "basic-page",
 		"access-restriction" => 3,
+		"version" => 4,
 	],
 	"mon-compte" => [
 		"title" => "Mon compte",
@@ -173,6 +175,16 @@ $pages_data = [
 		"body-class" => "table-jeu",
 		"version" => 4,
 		"aside-right" => "chat-window"
+	],
+
+	// Wiki
+	"wiki" => [
+		"title" => NULL, // géré dans _data.php dans le dossier wikis/{wiki}
+		"description" => NULL, // comme ci-dessus
+		"file" => "wiki-template",
+		"body-class" => "wiki",
+		"version" => 4,
+		"aside-left" => "aside-wiki-index", 
 	],
 
 	// Licence

@@ -1,6 +1,6 @@
 <h2>Artaille</h2>
 
-<div class="wiki-right-element flow">
+<div class="wiki-right-element">
 
 	<figure>
 		<a href="/assets/img_paorn/artaille.webp" target="_blank">

@@ -14,7 +14,7 @@ $creatures_repo = new CreatureRepository;
 ?>
 
 <!-- Personnages -->
-<article class="as-start">
+<article>
 	<h2>Personnage</h2>
 
 	<details>
@@ -125,7 +125,7 @@ $creatures_repo = new CreatureRepository;
 </article>
 
 <!-- Équipement -->
-<article class="as-start">
+<article>
 	<h2>Équipement</h2>
 
 	<!-- Système monétaire -->
@@ -322,9 +322,10 @@ $creatures_repo = new CreatureRepository;
 </article>
 
 <!-- Magie -->
-<article class="as-start">
+<article>
 	<h2>Magie</h2>
 
+	<!-- Magie et armure -->
 	<details>
 		<summary><h3>Magie et armure</h3></summary>
 		<p>
@@ -355,6 +356,7 @@ $creatures_repo = new CreatureRepository;
 		</details>
 	</details>
 
+	<!-- Sorts -->
 	<details>
 		<summary><h3>Sorts</h3></summary>
 
@@ -376,6 +378,7 @@ $creatures_repo = new CreatureRepository;
 		?>
 	</details>
 
+	<!-- Potions -->
 	<details>
 		<summary><h3>Potions</h3></summary>
 
@@ -611,6 +614,7 @@ $creatures_repo = new CreatureRepository;
 
 	</details>
 
+	<!-- Objets magiques -->
 	<details>
 		<summary><h3>Objets magiques</h3></summary>
 
@@ -706,6 +710,7 @@ $creatures_repo = new CreatureRepository;
 
 		</details>
 
+		<!-- Armes & armures -->
 		<details>
 			<summary class="h4">Armes &amp; armures</summary>
 
@@ -785,6 +790,7 @@ $creatures_repo = new CreatureRepository;
 
 	</details>
 
+	<!-- Familiers -->
 	<details>
 		<summary><h3>Familiers</h3></summary>
 		<p>En plus des familiers cités dans les RdB, il est possible pour un mage d’avoir d’autres familiers plus exotiques.</p>
@@ -811,7 +817,7 @@ $creatures_repo = new CreatureRepository;
 </article>
 
 <!-- Créatures -->
-<article class="as-start">
+<article>
 	<h2>
 		<?php if ($_SESSION["Statut"] == 3) { ?>
 			<a href="gestion-listes?req=creature&id=0" class="ff-far edit-link">&#xf044;&nbsp;</a>
@@ -892,4 +898,3 @@ $creatures_repo = new CreatureRepository;
 </article>
 
 <script type="module" src="/scripts/magical-items.js?v=<?= VERSION ?>"></script>
-<script type="module" src="/scripts/creatures.js?v=<?= VERSION ?>"></script>

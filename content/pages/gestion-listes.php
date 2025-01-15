@@ -24,26 +24,24 @@ $discipline_repo = new DisciplineRepository;
 $psi_repo = new PsiPowerRepository;
 $creature_repo = new CreatureRepository;
 
+$id = (int) ($_GET["id"] ?? 0);
 
 // Avantages & Désavantages
 if ($_GET["req"] === "avdesav") {
-	$id = (int) ($_GET["id"] ?? 0);
 	$avdesav = $id ? $avdesav_repo->getAvDesav($id) : new AvDesav();
 	$liste_categories = $avdesav_repo->getDistinctCategories();
 	include is_null($avdesav) ? "content/components/editor-error.php" : "content/components/editor-avdesav.php";
 }
 
 // Compétences
-if ($_GET["req"] === "competence") {
-	$id = (int) ($_GET["id"] ?? 0);
+elseif ($_GET["req"] === "competence") {
 	$comp = $id ? $skill_repo->getSkill($id) : new Skill();
 	$liste_categories = $skill_repo->getDistinctCategories();
 	include is_null($comp) ? "content/components/editor-error.php" : "content/components/editor-skill.php";
 }
 
 // Sorts
-if ($_GET["req"] === "sort") {
-	$id = (int) ($_GET["id"] ?? 0);
+elseif ($_GET["req"] === "sort") {
 	$sort = $id ? $spell_repo->getSpell($id) : new Spell();
 	$liste_colleges = $college_repo->getCollegesName();
 	$liste_origines = $spell_repo->getDistinctOrigins();
@@ -52,8 +50,7 @@ if ($_GET["req"] === "sort") {
 }
 
 // Pouvoirs
-if ($_GET["req"] === "pouvoir") {
-	$id = (int) ($_GET["id"] ?? 0);
+elseif ($_GET["req"] === "pouvoir") {
 	$pouvoir = $id ? $power_repo->getPower($id) : new Power(["id_RdB" => "", "Type" => null, "Nom" => "", "Catégorie" => null, "Domaine" => null, "Mult" => null, "Origine" => ""]);
 	$liste_categories = $power_repo->getDistinctCategories();
 	$liste_domaines = $power_repo->getDistinctDomains();
@@ -62,8 +59,7 @@ if ($_GET["req"] === "pouvoir") {
 }
 
 // Psi
-if ($_GET["req"] === "psi") {
-	$id = (int) $_GET["id"] ?? 0;
+elseif ($_GET["req"] === "psi") {
 	$psi = $id ? $psi_repo->getPower($id) : new PsiPower();
 	$liste_disciplines = $discipline_repo->getDisciplinesName();
 	$liste_origines = $psi_repo->getDistinctOrigins();
@@ -72,10 +68,13 @@ if ($_GET["req"] === "psi") {
 }
 
 // Créatures
-if ($_GET["req"] === "creature") {
-	$id = (int) $_GET["id"] ?? 0;
+elseif ($_GET["req"] === "creature") {
 	$creature = $id ? $creature_repo->getCreature($id) : new Creature();
 	$liste_categories = $creature_repo->getDistinctCategories();
 	$liste_origines = $creature_repo->getDistinctOrigins();
 	include is_null($creature) ? "content/components/editor-error.php" : "content/components/editor-creature.php";
+}
+
+else {
+	include "content/components/editor-error.php";
 }

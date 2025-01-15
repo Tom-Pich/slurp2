@@ -36,7 +36,7 @@ if (!isset($_SESSION["Statut"]) or !DB_ACTIVE) {
 	$_SESSION["token"] = Firewall::generateToken(16);
 	$_SESSION["time"] = time();
 } else {
-	$_SESSION["time"] >= (time() - 3600*3) || !$_SESSION["id"] ? $_SESSION["time"] = time() : LogController::logout();
+	$_SESSION["time"] >= (time() - 3600 * 3) || !$_SESSION["id"] ? $_SESSION["time"] = time() : LogController::logout();
 }
 
 // ––– $pages_data ––––––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -358,26 +358,22 @@ elseif (in_array($path_segments[1], ["personnage-fiche", "personnage-gestion"]) 
 else if ($path_segments[1] === "wiki" && !empty($path_segments[2]) && count($path_segments) <= 3) {
 	$wiki = $path_segments[2];
 	$articles_data_file = "content/wikis/" . $wiki . "/_data.php";
-	if (file_exists($articles_data_file)) {
-		// including $title, $description and $articles
-		include $articles_data_file;
-	} else {
+	if (file_exists($articles_data_file)) include $articles_data_file; // provides $articles
+	else {
 		$page = new Error404Controller;
 		$page->show();
-		die();
 	}
-	$is_root_page = empty($path_segments[3]);
-	$article = $is_root_page ? null : $articles[$path_segments[3]] ?? null;
-	$page_data = ["body-class" => "wiki", "file" => "wiki-template", "wiki" => $wiki, "articles" => $articles];
-	if ($is_root_page) {
-		$page_data["title"] = $title;
-		$page_data["description"] = $description;
-		$page_data["current-article"] = "home";
-		$page = new PageController($page_data);
-	} elseif (!empty($article)) {
-		$page_data["title"] = "Wiki " . ucfirst($wiki) . " – " . $article["title"];
-		$page_data["description"] = "";
-		$page_data["current-article"] = $path_segments[3];
+
+	$article_name = empty($path_segments[3]) ? "home" : $path_segments[3];
+	if (!empty($articles[$article_name])) {
+		$article = $articles[$article_name];
+		$page_data = $pages_data["wiki"];
+		$page_data["title"] = ($article_name !== "home" ? "Wiki " . ucfirst($wiki) . " – " : "") . $article["title"];
+		$page_data["description"] = $article["description"] ?? null;
+		$page_data["wiki"] = $wiki;
+		$page_data["articles"] = $articles;
+		$page_data["current-article-name"] = empty($path_segments[3]) ? "home" : $path_segments[3];
+		$page_data["current-article"] = $article;
 		$page = new PageController($page_data);
 	} else {
 		$page = new Error404Controller;
