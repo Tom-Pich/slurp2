@@ -7,7 +7,7 @@ import { roll, getLocalisation, fetchDamageExpression, scoreTester, fetchResult,
 const inputEntry = qs("#msg-input");
 
 const allWidgets = qsa("fieldset[data-name]");
-const widgetForms = qsa("#page-content form");
+const widgetForms = qsa("main form");
 
 let opponents = qsa("[data-role=opponent-wrapper]");
 let scoreWidgets = qsa("[data-name=score-tester] form");
@@ -463,6 +463,11 @@ vehicleCollisionWidget.addEventListener("submit", (e) => {
 });
 
 // NPC widget
+const npcRegion = npcWidget.querySelector("[name=region]");
+if (localStorage.getItem("npc-region") !== null) npcRegion.value = localStorage.getItem("npc-region")
+npcWidget.addEventListener("change", () => {
+	localStorage.setItem("npc-region", npcRegion.value)
+})
 npcWidget.addEventListener("submit", async (e) => {
     const data = new FormData(npcWidget);
 
@@ -499,11 +504,8 @@ npcWidget.addEventListener("submit", async (e) => {
 		${specialTraits}
 	`;
     flushMsg("chat-roll");
-	localStorage.setItem("npc-region", npcWidget.querySelector("[name=region]").value)
 });
-if (localStorage.getItem("npc-region") !== null){
-	npcWidget.querySelector("[name=region]").value = localStorage.getItem("npc-region")
-}
+
 
 // ––– Widgets config ––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 //localStorage.removeItem("display-widgets") // reset localStorage (for dev purpose)

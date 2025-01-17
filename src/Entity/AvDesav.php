@@ -104,12 +104,14 @@ class AvDesav implements RulesItem
 		<details class="liste">
 			<summary title="id <?= $this->id ?>">
 				<div>
-					<?php if ($show_edit_link) { ?>
-						<a href="<?= $edit_link ?>" class="edit-link ff-far">&#xf044;</a>
-					<?php } ?>
-					<?= $data["name"] ? $data["name"] : $this->name ?>
+					<div>
+						<?php if ($show_edit_link) { ?>
+							<a href="<?= $edit_link ?>" class="edit-link ff-far">&#xf044;</a>
+						<?php } ?>
+						<?= $data["name"] ? $data["name"] : $this->name ?>
+					</div>
+					<div><?= $this->displayCost($data["cost-mult"]) ?></div>
 				</div>
-				<div><?= $this->displayCost($data["cost-mult"]) ?></div>
 			</summary>
 			<div class="ta-justify"><?= $this->description ?></div>
 		</details>

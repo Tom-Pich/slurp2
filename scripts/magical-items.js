@@ -12,7 +12,6 @@ function powerStoneSellPrice(pdm) {
 }
 
 function potionPrice(materialPrice, preparationDuration = 1, difficultyModifier = 0, isIllegal = false) {
-	// console.log(materialPrice)
 	difficultyModifier = - Math.abs(difficultyModifier)
 	const durationPrice = preparationDuration * 30;
 	const mult_malus = 0.0294 * difficultyModifier ** 2 - 0.0675 * difficultyModifier + 1

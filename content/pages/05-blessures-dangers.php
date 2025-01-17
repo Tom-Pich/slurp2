@@ -4,7 +4,7 @@ use App\Rules\WoundController;
 ?>
 
 <!-- Blessures -->
-<article class="as-start">
+<article>
 	<h2>Blessures</h2>
 
 	<details>
@@ -133,7 +133,7 @@ use App\Rules\WoundController;
 </article>
 
 <!-- Rétablissement -->
-<article class="as-start">
+<article>
 	<h2>Rétablissement</h2>
 
 	<!-- Premiers secours -->
@@ -356,7 +356,7 @@ use App\Rules\WoundController;
 </article>
 
 <!-- Danger divers -->
-<article class="as-start">
+<article>
 	<h2>Dangers divers</h2>
 
 	<details>

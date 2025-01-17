@@ -1,28 +1,29 @@
 body.basic-page{
-	#page-content { @include wrapper; @include flow; }
+	main { @include wrapper; @include flow; }
 }
 
 body.standard-page {
-	#page-content { display: flex; gap: 1em; flex-wrap: wrap; justify-content: center; gap: 1em; }
+	main { display: flex; gap: 1em; flex-wrap: wrap; justify-content: center; gap: 1em; }
 	:is(section, article) { border: 1px solid var(--grey-700); border-radius: 1em; box-shadow: var(--box-shadow); width: var(--col-width);  margin-top: .75em; }
-	:is(section, article) h2 { background-color: var(--black); color: var(--white); font-size: var(--fs-450); margin: -1.25rem 0 1em; padding: .25em; }
+	:is(section, article) h2 { color: var(--white); font-size: var(--fs-450); margin: -1.25rem 0 1em; padding: .25em; }
+	:is(section, article) h2:not(.bg-primary-500, .bg-secondary-500, .bg-tertiary-500) { background-color: var(--black);  }
 	:is(section, article) h3 { font-size: var(--fs-450) }
 	
-	summary:has(h3) { background-color: var(--grey-900); padding: .5em;--marker-offset: .5em; padding-right: 1.75em}
+	summary:has(h3) { background-color: var(--grey-900); padding: .5em; --marker-offset-r: .5em; --marker-padding: 1.75em}
 	details:has(> summary > h4) { border-block: .5px solid var(--grey-700); padding-block: .25em; }
 }
 
 body.home {
-	#page-content { @include flow; }
+	main { @include flow; }
 	aside.left { @include media { display: none; } }
 }
 
 body.table-jeu {
 	header{background-image: linear-gradient(180deg, #fff0 0%, black 100%), url("/assets/img/bg-header-table.jpg");}
 
-	main { background: url("/assets/img/bg-table.jpg") center/cover; }
+	#page-wrapper { background: url("/assets/img/bg-table.jpg") center/cover; }
 
-	#page-content {
+	main {
 		position: relative; columns: var(--col-width) auto; column-gap: 1em;
 		> :not(:nth-child(1), :nth-child(2)) { margin-top: .5em; }
 		@include media ($brp-s) {columns: 1;}
@@ -46,8 +47,8 @@ body.personnage-fiche {
 		> div > h2 {display: none;}
 	}
 
-	#page-content { columns: var(--col-width) auto; column-gap: .5em; flex: 1;/*  @include media($brp-s) { columns: unset; } */ }
-	aside.right { @include media-min {padding-left: 0;} }
+	main { columns: var(--col-width) auto; column-gap: .5em; flex: 1; }
+	aside.right { @include media-min {padding-left: 0; padding-top: 1.85em;} }
 
 	.portraits-wrapper {
 		display: grid; gap: .5em;
@@ -117,7 +118,10 @@ body.personnage-fiche {
 
 	[data-type=throwable-wrapper] {cursor:alias; &:hover { background-color: var(--clr-primary-900); }}
 
-	#chat-container { border: 1px solid var(--grey-700); }
+	#chat-container {
+		border: 1px solid var(--grey-700); position: sticky; top: 1em;
+		#chat-dialog-wrapper { height: 55vh;}
+	}
 
 	@media print {
 		header, meter, footer, .no-print, [data-role=container-controls] { display: none; }
@@ -127,7 +131,7 @@ body.personnage-fiche {
 }
 
 body.personnage-gestion {
-	#page-content { padding-inline: 0; max-width: 1200px; margin-inline: auto}
+	main { padding-inline: 0; max-width: 1200px; margin-inline: auto}
 	input[type=text]:not(.border-grey-700){ border: unset; border-bottom: .5px solid var(--grey-900); padding-bottom: 0.15em; }
 	textarea {border: 1px solid var(--grey-700); padding: 0.5em; width: 100%;}
 	.radio-wrapper { display: flex; gap: .25em; justify-content: center; width: 10ch; }
@@ -135,7 +139,7 @@ body.personnage-gestion {
 }
 
 body.gestionnaire-mj {
-	#page-content { display: block; }
+	main { display: block; }
 	:is(article, section) {width: unset;}
 	:is(article, section):not(:first-of-type) { margin-top: 2em; }
 	.card { border: 1px solid var(--grey-900); border-radius: 1em; padding: var(--dynamic-space-½-1);}
@@ -165,29 +169,30 @@ body.wiki {
 		a.child-article { margin-left: 1em; }
 	}
 
-	#page-content {
-		@include flow; 
+	main {
+		@include flow;
 		@include media-min ($brp-w) { position: relative; width: calc(100vw - var(--col-width) * 2 - 6em); max-width: 800px; }
-			
-		.wiki-right-element {
-			@include flow;
-			@include media-min ($brp-w) { width: var(--col-width); position: absolute; left: calc(100% + 2em); margin-top: 0; }
-		}
-
-		h2 { font-size: var(--fs-700); }
-		h3 { font-size: var(--fs-600);  border-bottom: 1px solid var(--black); padding-bottom: .15em }
-		h4 { font-size: var(--fs-500); }
-		h5 { font-size: var(--fs-450); }
-		img { max-height: 50vh; margin-inline: auto; }
-		figcaption {text-align: center; font-style: italic;}
-		.float-left { float: left; margin-right: 1rem;  max-width: 50%; --flow-space: .5em;}
-
-		details.sub-article {
-			padding: .5em; border-radius: .5em; border: 1px solid var(--grey-900); background-color: var(--grey-900);
-			summary { font-weight: 700; }
-			&[open] { background-color: transparent; }
-		}
-
-		
 	}
+
+	.wiki-right-element {
+		@include flow;
+		@include media-min ($brp-w) { width: var(--col-width); position: absolute; left: calc(100% + 2em); margin-top: 0; }
+	}
+
+	h2 { font-size: var(--fs-700); }
+	h3 { font-size: var(--fs-600);  border-bottom: 1px solid var(--black); padding-bottom: .15em }
+	h4 { font-size: var(--fs-500); }
+	h5 { font-size: var(--fs-450); }
+	img { max-height: 50vh; margin-inline: auto; }
+	figcaption {text-align: center; font-style: italic;}
+	.float-left { float: left; margin-right: 1rem;  max-width: 50%; --flow-space: .5em;}
+
+	details.sub-article {
+		padding: .5em; border-radius: .5em; border: 1px solid var(--grey-900); background-color: var(--grey-900);
+		summary { font-weight: 700; }
+		&[open] { background-color: transparent; }
+	}		
+}
+
+body.writing-scenario {
 }

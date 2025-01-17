@@ -98,7 +98,7 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 					</ul>
 				</li>
 				<li>
-					<h4>Univers de jeu</h4>
+					<h4>Univers</h4>
 					<ul class="sub-menu">
 						<li><a href="/adapted-dungeons-dragons"><?= $pages_data['adapted-dungeons-dragons']["title"] ?></a></li>
 						<li><a href="/wiki/paorn">Wiki Paorn</a></li>

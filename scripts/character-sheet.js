@@ -36,7 +36,7 @@ function updateCharacter(id) {
   fetch("personnage-fiche?perso=" + id)
     .then((response) => response.text())
     .then((response) => {
-      updateDOM("#page-content", response);
+      updateDOM("main", response);
       fillPdMCount();
     });
 }

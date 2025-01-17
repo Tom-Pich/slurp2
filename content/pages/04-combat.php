@@ -551,7 +551,7 @@
 			<h3>Parer ou bloquer un coup puissant</h3>
 		</summary>
 		<p>Si l’arme pare une arme 3 fois plus lourde, elle a 33% de chance de se briser</p>
-		<p class="clr-warning">À developper</p>
+		<p class="clr-invalid">À developper</p>
 	</details>
 
 </article>

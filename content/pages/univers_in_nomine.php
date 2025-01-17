@@ -10,11 +10,14 @@ $repo_powers = new PowerRepository("ins");
 ?>
 
 <!-- Personnage -->
-<article class="as-start">
+<article>
 	<h2>Personnage</h2>
 
+	<!-- Pts de personnage -->
 	<details>
-		<summary><h3>Points de personnage</h3></summary>
+		<summary>
+			<h3>Points de personnage</h3>
+		</summary>
 		<p><b>Personnage débutant&nbsp;:</b> 230 pts (anges) ou 220 pts (démons)</p>
 		<ul>
 			<li><b>Caractéristiques&nbsp;:</b> 100 à 130 pts</li>
@@ -24,14 +27,20 @@ $repo_powers = new PowerRepository("ins");
 		</ul>
 	</details>
 
+	<!-- Incarnation et supérieur -->
 	<details>
-		<summary><h3>Incarnation &amp; supérieur</h3></summary>
+		<summary>
+			<h3>Incarnation &amp; supérieur</h3>
+		</summary>
 		<p>Les anges et démons s’incarnent dans un corps humain <b>créé</b> pour l’occasion (contrairement à la version officielle du jeu).</p>
 		<p>Chaque ange ou démon est affilié à un <i>Archange</i> ou à un <i>Prince-Démon</i>. Ce choix va guider la création du personnage et sa philosophie une fois incarné.</p>
 	</details>
 
+	<!-- Avantages & désavantages -->
 	<details>
-		<summary><h3>Avantages &amp; Désavantages</h3></summary>
+		<summary>
+			<h3>Avantages &amp; Désavantages</h3>
+		</summary>
 		<p><b>• Alphabétisation&nbsp;:</b> les anges et démons savent lire et écrire toutes les langues de l’Humanité.</p>
 		<p><b>• Richesse&nbsp;:</b> les anges et le démons s’incarnent nus&nbsp;! Le problème du financement se règle ensuite par leur QG ou par leur propres moyens.</p>
 		<p><b>• PdM supplémentaires&nbsp;:</b> un ange ou un démon a le droit d’acheter 1 PdM supplémentaire pour chaque niveau de pouvoir dont il dispose (y compris les pouvoirs de type <i>Avantage surnaturel</i>, qui sont considérés comme de niveau I). Un pouvoir de niveau IV permet donc d’acheter jusqu'à 4 PdM supplémentaire.</p>
@@ -77,7 +86,7 @@ $repo_powers = new PowerRepository("ins");
 		<p>Ces désavantages sont des défauts d'incarnation.</p>
 		<?php
 		$avdesav_list = $repo_avdesav->getAvDesavByCategory("In Nomine");
-		$avdesav_list = array_filter($avdesav_list, fn ($avdesav) => !in_array($avdesav->id, [165, 166]));
+		$avdesav_list = array_filter($avdesav_list, fn($avdesav) => !in_array($avdesav->id, [165, 166]));
 		foreach ($avdesav_list as $avdesav) {
 			$avdesav->displayInRules();
 		}
@@ -85,8 +94,11 @@ $repo_powers = new PowerRepository("ins");
 
 	</details>
 
+	<!-- Compétences -->
 	<details>
-		<summary><h3>Compétences</h3></summary>
+		<summary>
+			<h3>Compétences</h3>
+		</summary>
 		<p>Certains anges et démons se sont déjà incarnés sur Terre dans le passé. Ils ont eu l’occasion d'apprendre des compétences variées qu'ils maîtrisent encore au cours de leurs incarnations ultérieures. Les compétences «&nbsp;récentes&nbsp;» telles que l’informatique sont rarement maîtrisées par les personnages au moment de leur incarnation, mais ils sont tout à fait capables de les développer. Ainsi, la liberté de choix de compétences pour les personnages est très grande.</p>
 		<p>
 			<b>• Projection magique&nbsp;:</b> toucher sa cible avec un pouvoir d’<i>Attaque à distance</i>. Il s'agit de la compétence <i>Lancer de sort</i> renommée pour l’occasion.<br>
@@ -94,8 +106,11 @@ $repo_powers = new PowerRepository("ins");
 		</p>
 	</details>
 
+	<!-- Serviteurs & familiers -->
 	<details>
-		<summary><h3>Serviteurs &amp; Familiers</h3></summary>
+		<summary>
+			<h3>Serviteurs &amp; Familiers</h3>
+		</summary>
 		Les anges et les démons peuvent avoir des serviteurs sous leurs ordres. Ce sont des <i>Serviteurs de Dieu</i> pour les anges et des <i>Familiers</i> pour les démons.
 		<h4>Serviteurs de Dieu</h4>
 		<p>Ce sont des humains au courant du <i>Grand Jeu</i> et totalement dévoués aux forces du Bien.</p>
@@ -114,223 +129,103 @@ $repo_powers = new PowerRepository("ins");
 </article>
 
 <!-- Archanges & Princes-Démons -->
-<article class="as-start">
+<article>
 	<h2>Archanges &amp; Princes-démons</h2>
 
+	<!-- Généralités -->
 	<details>
-		<summary><h3>Généralités</h3></summary>
+		<summary>
+			<h3>Généralités</h3>
+		</summary>
 		<p>Les Archanges et les Princes-Démons peuvent s’incarner à volonté sur Terre. Ce sont eux qui dirigent les forces du Bien et du Mal.</p>
 	</details>
 
+	<!-- Archanges -->
 	<details>
-		<summary><h3>Archanges</h3></summary>
+		<summary>
+			<h3>Archanges</h3>
+		</summary>
 
-		<details class="liste">
-			<summary class="clr-grey-500"><div><b>Alain</b>, Archange des Cultures</div></summary>
-		</details>
-
-		<details class="liste">
-			<summary class="clr-grey-500"><div><b>Ange</b>, Archange des Convertis</div></summary>
-		</details>
-
-		<details class="liste">
-			<summary>
-				<div><b>Blandine</b>, Archange des Rêves</div>
-			</summary>
-			<p>cet Archange apparaît sur terre sous forme d'une femme dotée d'une beauté qui n'est égalée que par la Miséricorde de Dieu. Elle arrive ainsi à s'introduire dans les plus hauts milieux politiques. Elle délivre un message divin en entrant la nuit dans les chambres afin d'introduire une fausse mémoire dans le cerveau de la personnalité de son choix. Blandine est envoyée auprès des Démons les plus puissants afin d'obtenir malgré eux des informations et de remplacer certaines idées et souvenirs. Blandine n'évolue que rarement parmi les Anges de bas rang et les méprise d’ailleurs un peu.</p>
-		</details>
-
-		<details class="liste">
-			<summary class="clr-grey-500"><div><b>Christophe</b>, Archange des Enfants</div></summary>
-		</details>
-
-		<details class="liste">
-			<summary class="clr-grey-500"><div><b>Daniel</b>, Archange de la Pierre</div></summary>
-		</details>
-
-		<details class="liste">
-			<summary class="clr-grey-500"><div><b>Didier</b>, Archange de la Communication</div></summary>
-		</details>
-
-		<details class="liste">
-			<summary class="clr-grey-500"><div><b>Dominique</b>, Archange de la Justice</div></summary>
-		</details>
-
-		<details class="liste">
-			<summary>
-				<div><b>Francis</b>, Archange de la Diplomatie</div>
-			</summary>
-			<p>Francis est, tout comme Didier, hypocrite et menteur, mais c’est toujours pour la bonne cause. Son but est de régler politiquement tous les conflits. Dieu accorde toute sa confiance à Francis. Il est aux humains ce que Didier est aux Anges : un conciliateur, un diplomate et un beau parleur. Il est aussi l’antithèse de Malphas, et on le trouve souvent en opposition à ce Prince-Démon lors de missions dans les milieux de la politique internationale.</p>
-		</details>
-
-		<details class="liste">
-			<summary>
-				<div><b>Guy</b>, Archange des Guérisseurs</div>
-			</summary>
-			<p>Guy apparaît le plus souvent sous la forme d'un homme en blanc. Il est très serviable et toujours prêt à aider son prochain surtout si celui-ci est blessé. Malgré tout, il n'aime pas se faire marcher sur les pieds et est un peu le rebelle du conseil défensif. Toujours sur le qui-vive, il n'hésite jamais à dénoncer à Dieu les erreurs des membres des forces du Bien qu'il aime le moins (Laurent, Michel et tous les autres membres du conseil offensif). Dieu place des Anges de Guy partout où les êtres humains souffrent (pays en guerre, lieux de tremblements de terre etc...). Ils font toujours leur travail mais ressentent assez mal la violence causée par certains Anges ou organisations divines (skins, milices chrétiennes etc&hellip;).</p>
-		</details>
-
-		<details class="liste">
-			<summary>
-				<div><b>Janus</b>, Archange des Vents</div>
-			</summary>
-			<p>
-				Janus est plutôt critiqué dans le milieu divian, mais d’après Dieu il faut les choses très bien : il vole aux FOrces du mal énormément d’argent, puis le redistribue aux divers organismes humanitaires sous couvert d’une personnalité.<br>
-				Sur Terre, il opère à partir d’hôtels de luxe et fait des raids dans les places les mieux gardées de la planète.<br>
-				Janus évite du mieux qu’il le peut les combats, car il ne supporte pas d’avoir à tuer. Il est, paraît-il, un grand ami de Jean, l’Archange de la Foudre.
-			</p>
-		</details>
-		
-		<details class="liste">
-			<summary class="clr-grey-500"><div><b>Jean</b>, Archange de la Foudre</div></summary>
-		</details>
-
-		<details class="liste">
-			<summary>
-				<div><b>Jean-Luc</b>, Archange des Protecteurs</div>
-			</summary>
-			<p>Jean-Luc est très sympathique de prime abord et est d’un altruisme qui frôle souvent le masochisme. Il est presque suicidaire et, lorsqu’il protège quelqu’un, ne pense jamais aux conséquences. Dieu accord une grande importance à Jean-Luc et à ses serviteurs. Il sait qu’il peut compter sur eux en toutes occasions. Jean-Luc n’est jamais responsable d’une mission en particulier mais ses serviteurs sont présents dans presque tous les pays du monde et dans la plupart des groupes d’Anges investigateurs.</p>
-		</details>
-		
-		
-		<details class="liste">
-			<summary class="clr-grey-500"><div><b>Jordi</b>, Archange des Animaux</div></summary>
-		</details>
-		
-		<details class="liste">
-			<summary class="clr-grey-500"><div><b>Joseph</b>, Archange de l’Inquisition</div></summary>
-		</details>
-
-		<details class="liste">
-			<summary>
-				<div><b>Laurent</b>, Archange de l’Épée</div>
-			</summary>
-			<p>Laurent est le chef suprême des armées divines sur Terre, et il fait ça très bien. Il coordonne les missions et déplacements des Anges possédants des Soldats et rend compte à Dieu des résultats. Il dirige ses troupes avec une grande habilité. Laurent est bonhomme et un peu naïf quant aux malheurs du monde.</p>
-		</details>
-		
-		<details class="liste">
-			<summary class="clr-grey-500"><div><b>Marc</b>, Archange des Échanges</div></summary>
-		</details>
-		
-		<details class="liste">
-			<summary class="clr-grey-500"><div><b>Mathias</b>, Archange de la Confusion</div></summary>
-		</details>
-		
-		<details class="liste">
-			<summary class="clr-grey-500"><div><b>Michel</b>, Archange de la Guerre</div></summary>
-		</details>
-		
-		<details class="liste">
-			<summary class="clr-grey-500"><div>Novalis</b>, Archanges des Fleurs</div></summary>
-		</details>
-		
-		<details class="liste">
-			<summary class="clr-grey-500"><div><b>Walther</b>, Archange des exorcistes</div></summary>
-		</details>
-
-		<details class="liste">
-			<summary>
-				<div><b>Yves</b>, Archange des Sources</div>
-			</summary>
-			<p>Yves est aux côtés de Dieu depuis la création de la Terre. Il n'intervient qu'extrêmement rarement sur terre, et passe le plus clair de son temps à méditer. La légende dit que c'est lui qui a eu l'idée du Mal&hellip; C'est l'Archange le plus respecté de tout le Ciel, et de loin.<br>
-				la Source est celle de la Connaissance&hellip; Yves est le gardien des Connaissances de la Terre entière. Il régit l'apport de la connaissance tant philosophique que religieuse. Yves sait tout, et s'il ne le sait pas, il l'invente et sert donc de référence à tous, sauf à Dieu.</p>
-		</details>
+		<p>Voir le <i>Scriptarium Veritas</i> pour plus de détails sur l’histoire et la personalité de chaque Archange.</p>
+		<ul>
+			<li>Alain, Archange des Cultures</li>
+			<li>Ange, Archange des Convertis</li>
+			<li>Blandine, Archange des Rêves</li>
+			<li>Christophe, Archange des Enfants</li>
+			<li>Daniel, Archange de la Pierre</li>
+			<li>Didier, Archange de la Communication</li>
+			<li>Dominique, Archange de la Justice</li>
+			<li>Francis, Archange de la Diplomatie</li>
+			<li>Guy, Archange des Guérisseurs</li>
+			<li>Janus, Archange des Vents</li>
+			<li>Jean, Archange de la Foudre</li>
+			<li>Jean-Luc, Archange des Protecteurs</li>
+			<li>Jordi, Archange des Animaux</li>
+			<li>Joseph, Archange de l’Inquisition</li>
+			<li>Laurent, Archange de l’Épée</li>
+			<li>Marc, Archange des Échanges</li>
+			<li>Mathias, Archange de la Confusion</li>
+			<li>Michel, Archange de la Guerre</li>
+			<li>Novalis, Archanges des Fleurs</li>
+			<li>Walther, Archange des exorcistes</li>
+			<li>Yves, Archange des Sources</li>
+		</ul>
 
 	</details>
 
+	<!-- Princes-démons -->
 	<details>
-		<summary><h3>Princes-démons</h3></summary>
+		<summary>
+			<h3>Princes-démons</h3>
+		</summary>
 
-		<p>
-			•&nbsp;<b>Abalam</b>, Prince de le Folie<br>
-			•&nbsp;<b>Andrealphus</b>, Prince du Sexe<br>
-		</p>
+		<p>Voir le <i>Scriptarium Veritas</i> pour plus de détails sur l’histoire et la personalité de chaque Prince-démon.</p>
+		<ul>
+			<li>Abalam, Prince de le Folie</li>
+			<li>Andrealphus, Prince du Sexe</li>
+			<li>Andromalius, Prince du Jugement</li>
+			<li>Asmodée, Prince du Jeu</li>
+			<li>Baal, Prince de la Guerre</li>
+			<li>Baalberith, Prince des Messagers</li>
+			<li>Beleth, Prince des Cauchemars</li>
+			<li>Bélial, Prince du Feu</li>
+			<li>Bifrons, Prince des Morts</li>
+			<li>Caym, Prince des Animaux</li>
+			<li>Crocell, Prince du Froid</li>
+			<li>Furfur, Prince du Hardcore</li>
+			<li>Gaziel, Prince de la Terre</li>
+			<li>Haagenti, Prince de la Gourmandise</li>
+			<li>Kobal, Prince de l’Humour Noir</li>
+			<li>Kronos, Prince de l’Éternité</li>
+			<li>Malphas, Prince de la Discorde</li>
+			<li>Malthus, Prince des Maladies</li>
+			<li>Mammon, Prince de la Cupidité</li>
+			<li>Morax, Prince des Dons artistiques</li>
+			<li>Nisroch, Prince des Drogues</li>
+			<li>Nybbas, Prince des Médias</li>
+			<li>Ouikka, Prince des Airs</li>
+			<li>Samigina, Prince des Vampires</li>
+			<li>Scox, Prince des Âmes</li>
+			<li>Shaytan, Prince de la Laideur</li>
+			<li>Uphir, Prince de la Pollution</li>
+			<li>Valefor, Prince des Voleurs</li>
+			<li>Vapula, Prince de la Technologie</li>
+			<li>Véphar, Prince des Océans</li>
+		</ul>
 
-		<details class="liste">
-			<summary>
-				<div><b>Andromalius</b>, Prince du Jugement</div>
-			</summary>
-			<p>Andromalius est un Prince très puissant. Il est redouté ou haï des autres Démons car il est responsable auprès de Satan des renégats et des traîtres dans ses troupes. Une genre de «&nbsp;Police des Démons&nbsp;»&nbsp;! Ses serviteurs ont toujours des couvertures et ne se démasquent qu’au moment de la réalisation d'une «&nbsp;arrestation&nbsp;». Pour Andromalius, et pour ses serviteurs, un Démon est considéré comme renégat (et donc susceptible d'être tué) s'il agit contre son Prince, s'il possède une limitation l’empêchant d’agir conformément à l’intérêt de Satan et de son supérieur, où bien encore si ses actions démontrent une faiblesse grave dans sa façon de faire le Mal.<br>
-				Satan utilise Andromalius pour contrôler les Démons qui causeraient des troubles dans ses rangs ou dans ceux de ses Princes. À noter qu'un Prince peut faire appel à des serviteurs d'Andromalius mais préfère souvent régler ses problèmes internes tout seul.
-			</p>
-		</details>
-
-		<p>•&nbsp;<b>Asmodée</b>, Prince du Jeu</p>
-
-		<details class="liste">
-			<summary>
-				<div><b>Baal</b>, Prince de la Guerre</div>
-			</summary>
-			<p>Baal est un guerrier. Beaucoup moins classe que Bélial et beaucoup plus réfléchi que Crocell, Baal n'est pas seulement une brute sans cervelle. Il a fait du combat une nécessité et même une façon de vivre. Les Démons de Baal sont envoyés sur terre pour détruire et massacrer ce qu'on laisse à leur portée, c'est donc à Baal de les contrôler de sa poigne de fer. Il dirige tous les régiments de combat importants des Enfers et est à la fois un grand stratège et un puissant combattant.</p>
-		</details>
-
-		<p>
-			•&nbsp;<b>Baalberith</b>, Prince des Messagers<br>
-			•&nbsp;<b>Beleth</b>, Prince des Cauchemars<br>
-			•&nbsp;<b>Bélial</b>, Prince du Feu<br>
-			•&nbsp;<b>Bifrons</b>, Prince des Morts<br>
-			•&nbsp;<b>Caym</b>, Prince des Animaux<br>
-			•&nbsp;<b>Crocell</b>, Prince du Froid<br>
-			•&nbsp;<b>Furfur</b>, Prince du Hardcore<br>
-			•&nbsp;<b>Gaziel</b>, Prince de la Terre<br>
-			•&nbsp;<b>Haagenti</b>, Prince de la Gourmandise
-		</p>
-		<details class="liste">
-			<summary>
-				<div><b>Kobal</b>, Prince de l’Humour Noir</div>
-			</summary>
-			<p>
-				Kobal est le frère d’Haagenti et ils forment tous les deux un duo de choc de l’humour infernal. Ils passent leur temps à jouer des mauvais tours aux Démons, aux familiers et aux autres Princes-Démons. Il ne descend sur Terre que pour aider ses serviteurs ou pour monter des canulars internationaux.<br>
-				Kobal est le bouffon de Satan. Il est là pour le faire rire et il ne s’en sort pas trop mal.
-			</p>
-		</details>
-
-		<p>•&nbsp;<b>Kronos</b>, Prince de l’Éternité </p>
-
-		<details class="liste">
-			<summary>
-				<div><b>Malphas</b>, Prince de la Discorde</div>
-			</summary>
-			<p>
-				Maplhas est bien considéré par Satan et n’est méprisé par aucun Prince-Démon. Le contraire n’est pas vrai, en effet, Malphas méprise tous ceux qui usent de la violence pour arriver à leurs fins et de nombreux Princes-Démons sont dans ce cas.<br>
-				Satan utilise Maplhas pour toutes les missions diplomatiques de grande importance. Que ce soit pour déclencher une guerre, signer un traité commercial ou faire changer quelqu’un d’avis, Maplhas est toujours là.
-			</p>
-		</details>
-
-		<p>•&nbsp;<b>Malthus</b>, Prince des Maladies</p>
-
-		<details class="liste">
-			<summary>
-				<div><b>Mammon</b>, Prince de la Cupidité</div>
-			</summary>
-			<p>
-				Mammon est le trésorier des Enfers. Il s’occupe de faire fructifier l’argent de Satan et ne s’entend bien qu’avec les Princes-Démons productifs (Nisroch en particlier). Tout le reste le laisse froid et ceux qui vnt jusqu’à détruire (Furfur, Crocell) lui sont particulièrement antipathiques. Il intervient très souvent sur Terre mais demande toujours à être payé pour ses services (même, et sourtout, par ses serviteurs).
-			</p>
-		</details>
-
-		<p>
-			•&nbsp;<b>Morax</b>, Prince des Dons artistiques<br>
-			•&nbsp;<b>Nisroch</b>, Prince des Drogues<br>
-			•&nbsp;<b>Nybbas</b>, Prince des Médias<br>
-			•&nbsp;<b>Ouikka</b>, Prince des Airs<br>
-			•&nbsp;<b>Samigina</b>, Prince des Vampires<br>
-			•&nbsp;<b>Scox</b>, Prince des Âmes<br>
-			•&nbsp;<b>Shaytan</b>, Prince de la Laideur<br>
-			•&nbsp;<b>Uphir</b>, Prince de la Pollution<br>
-			•&nbsp;<b>Valefor</b>, Prince des Voleurs<br>
-			•&nbsp;<b>Vapula</b>, Prince de la Technologie<br>
-			•&nbsp;<b>Véphar</b>, Prince des Océans
-		</p>
 	</details>
 
 </article>
 
 <!-- Pouvoirs -->
-<article class="as-start">
+<article>
 	<h2>Pouvoirs</h2>
 
+	<!-- Généralités -->
 	<details>
-		<summary><h3>Règles générales sur les pouvoirs</h3></summary>
+		<summary>
+			<h3>Règles générales sur les pouvoirs</h3>
+		</summary>
 
 		<p>Un personnage débutant choisit 3 ou 4 pouvoirs au maximum.</p>
 
@@ -340,7 +235,7 @@ $repo_powers = new PowerRepository("ins");
 		<p><b>• Les pouvoirs de type <i>Sort</i>&nbsp;:</b> ils fonctionnent comme des sorts. Un jet de réussite est donc nécessaire pour les déclencher et ils impliquent une dépense de PdM.</p>
 
 		<h4>Pouvoirs spéciaux</h4>
-		<p>Les <i>Pouvoirs spéciaux</i> ne peuvent être acquis si et seulement si ils ont un lien <i>direct</i> avec la sphère d'intérêt du supérieur du personnage. C'est l'équivalent des pouvoirs spécifiques accordés aux serviteurs de tel ou tel Archange ou Prince-Démon dans la version originale du jeu.</p>
+		<p>Les <i>Pouvoirs spéciaux</i> peuvent être acquis seulement s’ils sont en lien <i>direct</i> avec la sphère d’influence du supérieur du personnage. C'est l'équivalent des pouvoirs spécifiques dans la version originale du jeu.</p>
 
 		<h4>Fonctionnement des pouvoirs de type <i>Sort</i></h4>
 		<p>Ces pouvoirs fonctionnent comme décrit dans les RdB, à l'exception des points détaillés ci-dessous.</p>
@@ -363,6 +258,7 @@ $repo_powers = new PowerRepository("ins");
 	$categories = $repo_powers->getDistinctCategories("ins");
 	?>
 
+	<!-- Pouvoirs d’anges -->
 	<details>
 		<summary>
 			<h3>
@@ -373,7 +269,7 @@ $repo_powers = new PowerRepository("ins");
 		<?php
 		foreach ($categories as $categorie) {
 			$pouvoirs = $repo_powers->getPowersByCategories("ins", $categorie);
-			$pouvoirs_anges = array_filter($pouvoirs, fn ($x) => $x->specific["Domaine"] !== "Démon");
+			$pouvoirs_anges = array_filter($pouvoirs, fn($x) => $x->specific["Domaine"] !== "Démon");
 			$pouvoirs_anges = Sorter::sortPowersByName($pouvoirs_anges);
 		?>
 			<h4><?= $categorie ?></h4>
@@ -385,6 +281,7 @@ $repo_powers = new PowerRepository("ins");
 		<?php } ?>
 	</details>
 
+	<!-- Pouvoirs de démons -->
 	<details>
 		<summary>
 			<h3>
@@ -395,7 +292,7 @@ $repo_powers = new PowerRepository("ins");
 		<?php
 		foreach ($categories as $categorie) {
 			$pouvoirs = $repo_powers->getPowersByCategories("ins", $categorie);
-			$pouvoirs_demons = array_filter($pouvoirs, fn ($x) => $x->specific["Domaine"] !== "Ange");
+			$pouvoirs_demons = array_filter($pouvoirs, fn($x) => $x->specific["Domaine"] !== "Ange");
 			$pouvoirs_demons = Sorter::sortPowersByName($pouvoirs_demons);
 		?>
 			<h4><?= $categorie ?></h4>
@@ -410,41 +307,51 @@ $repo_powers = new PowerRepository("ins");
 </article>
 
 <!-- Vie des anges & démons -->
-<article class="as-start">
+<article>
 	<h2>Vie des anges &amp; démons</h2>
 
 	<details>
-		<summary><h3>Incarnation</h3></summary>
+		<summary>
+			<h3>Incarnation</h3>
+		</summary>
 		<p>Les anges et démons s’incarnent dans un corps «&nbsp;créé&nbsp;» pour l’occasion. Il peut arriver, de manière exceptionnelle, qu’ils s’incarnent dans le corps d’un être humain qui vient de mourir, toujours dans un but bien précis.</p>
 		<p>Un ange ou un démon nouvellement incarné n’a donc aucune identité officielle. Il s’incarne nu dans un endroit approprié (à la manière de <i>Terminator</i>). Le corps présente des traits lui permettant de passer pour un natif de la région où il s’est incarné.</p>
 		<p>Ces corps ne vieillissent pas, ce qui peut obliger un ange ou un démon incarné depuis un certain temps à changer d’identité pour éviter d’éveiller les soupçons.</p>
 	</details>
 
 	<details>
-		<summary><h3>Souvenirs</h3></summary>
+		<summary>
+			<h3>Souvenirs</h3>
+		</summary>
 		<p>Au moment de leur incarnation, anges et démons ne se souviennent de rien. Ni de leurs éventuelles précédentes incarnations (le <i>Grand Jeu</i> a commencé après la mort du Christ), ni de leur vie au Paradis ou en Enfer. Ces souvenirs peuvent revenir par bribe au cours du temps, dans des circonstances exceptionnelles (sur un 111 ou un 666 lors d’un jet de dés, ou après une expérience traumatisante ou un stress intense).</p>
 	</details>
 
 	<details>
-		<summary><h3>Grades</h3></summary>
-		<p>- Le <i>Grade 1</i> est obtenu dès que l’ange ou le démon réussit correctement une mission.</p>
-		<p>- Le <i>Grade 2</i> est obtenu dès que l’ange ou le démon possède 2 pouvoirs de niveau IV et 10 PdM supplémentaires.</p>
-		<p>- Le <i>Grade 3</i> est obtenu lors d’une action particulièrement éclatante ou d’une mission particulièrement réussie.</p>
+		<summary>
+			<h3>Grades</h3>
+		</summary>
+		<p>Le <i>Grade 1</i> est obtenu dès que l’ange ou le démon réussit correctement une mission.</p>
+		<p>Le <i>Grade 2</i> est obtenu dès que l’ange ou le démon possède 2 pouvoirs de niveau IV et 10 PdM supplémentaires.</p>
+		<p>Le <i>Grade 3</i> est obtenu lors d’une action particulièrement éclatante ou d’une mission particulièrement réussie.</p>
 	</details>
 
 	<details>
-		<summary><h3>Mort</h3></summary>
+		<summary>
+			<h3>Mort</h3>
+		</summary>
 		<p>Lorsqu’un ange ou un démon meurt, son corps disparaît dans un petit «&nbsp;pops&nbsp;» sonore (sauf s’il s’est incarné dans un corps humain déjà existant). Ceci est également vrai pour toutes ses parties, y compris son sang, ainsi que tout ce qu’il portait. Le personnage retourne au Paradis ou en Enfer, jusqu'à une nouvelle incarnation.</p>
 	</details>
 
 </article>
 
 <!-- Pour le MJ -->
-<article class="as-start">
+<article>
 	<h2>Pour le MJ</h2>
 
 	<details>
-		<summary><h3>Missions &amp; points de personnage</h3></summary>
+		<summary>
+			<h3>Missions &amp; points de personnage</h3>
+		</summary>
 		<p>À <i>In Nomine</i>, les points de personnage sont divisés en deux groupes&nbsp;:</p>
 		<ul>
 			<li>Les points classiques, servant à quantifier l’expérience acquise&nbsp;;</li>
@@ -455,7 +362,9 @@ $repo_powers = new PowerRepository("ins");
 	</details>
 
 	<details>
-		<summary><h3>Organisation des forces du Bien</h3></summary>
+		<summary>
+			<h3>Organisation des forces du Bien</h3>
+		</summary>
 		<p>Les anges nouvellement incarnés sont contactés par un ange déjà incarné appartenant à un QG des forces du Bien. Il existe plusieurs QG dans le monde, mais pas dans tous les pays. Un QG rassemble quelques anges haut-gradés plus quelques humains dans la confidence du <i>Grand Jeu</i>. Ces QG sont des bureaux secrets disposant d’une technologie de pointe et de moyens financiers très importants.</p>
 		<p>Les missions des démons ont un des objectifs généraux suivants&nbsp;:</p>
 		<ul>
@@ -474,7 +383,9 @@ $repo_powers = new PowerRepository("ins");
 	</details>
 
 	<details>
-		<summary><h3>Organisation des forces du Mal</h3></summary>
+		<summary>
+			<h3>Organisation des forces du Mal</h3>
+		</summary>
 		<p>Les forces du Mal sont organisées à la manière de cellules terroristes&nbsp;: un démon de grade 3 gère un ou plusieurs groupes de démons. Il leur attribue des missions et s’occupe des différents aspects administratifs de ses subordonnés.<br>
 			Un démon nouvellement incarné est accueilli par un «&nbsp;parrain&nbsp;» qui se charge de lui donner des vêtements et le minimum vital pour s’insérer dans la société sans se faire remarquer.</p>
 		<p>Les missions des démons ont un des objectifs généraux suivants&nbsp;:</p>
@@ -495,13 +406,15 @@ $repo_powers = new PowerRepository("ins");
 	</details>
 
 	<details>
-		<summary><h3>Monde des rêves</h3></summary>
+		<summary>
+			<h3>Monde des rêves</h3>
+		</summary>
 		<p>Une personne en train de rêver de manière naturelle est généralement seule dans son rêve. L’utilisation d’un pouvoir de rêve (<i>Rêve</i> ou <i>Cauchemar</i>) permet de pénétrer dans le rêve de la cible.</p>
 		<p>Lorsqu’un personnage tente de rejoindre un rêve, le <i>Maître du rêve</i> peut tenter de s’y opposer. Faire un duel de compétence en pouvoir de rêve (ou <i>Volonté</i>, selon le plus avantageux).</p>
 
 		<h4>Efficacité dans le monde des rêves</h4>
-		La manière d’entrer dans le rêve influera sur la puissance et la liberté d’action du personnage. Ceci est simulé par l’Efficacité dans le Monde des Rêves (EMR).
-		<table>
+		<p>La manière d’entrer dans le rêve influera sur la puissance et la liberté d’action du personnage. Ceci est simulé par l’Efficacité dans le Monde des Rêves (EMR).</p>
+		<table class="left-1">
 			<tr>
 				<th>Rêveur</th>
 				<th>EMR</th>
@@ -552,7 +465,9 @@ $repo_powers = new PowerRepository("ins");
 	</details>
 
 	<details>
-		<summary><h3>Advanced Clochers &amp; Cathédrales</h3></summary>
+		<summary>
+			<h3>Advanced Clochers &amp; Cathédrales</h3>
+		</summary>
 		<p>Les églises bénéficient de grades comme les anges. Le grade d’une église dépend de sa taille, de son ancienneté, de sa fréquentation et éventuellement d’événements exceptionnels qui se seraient passés en son sein.</p>
 
 		<h4>Pouvoirs</h4>

@@ -1,4 +1,4 @@
-/* Mon framework CSS v2025.01.12 */
+/* Mon framework CSS v2025.01.16 */
 
 $brp-l: 1200px;
 $brp-m: 768px;
@@ -104,10 +104,11 @@ blockquote { border-left: 1px solid var(--grey-700); padding-left: 1em; }
 details {
 	--marker-closed: "+";
 	--marker-open: "×";
-	--marker-offset: 0;
-	> summary { list-style-type: none; cursor: pointer; position: relative; padding-right: 1.25em;}
+	--marker-offset-r: 0;
+	--marker-padding: 1.25em;
+	> summary { list-style-type: none; cursor: pointer; position: relative; padding-right: var(--marker-padding) !important;}
 	> summary::-webkit-details-marker { display: none; } // Safari
-	> summary > :first-child::after, > summary:not(:has(:first-child))::after { content: var(--marker-closed); position: absolute; right: var(--marker-offset); }
+	> summary { > :first-child::after, &:not(:has(:first-child))::after { content: var(--marker-closed); position: absolute; right: var(--marker-offset-r); top: var(--marker-offset-t)}}
 	&[open] > summary { > :first-child::after, &:not(:has(:first-child))::after {content: var(--marker-open);}}
 }
 

@@ -6,7 +6,7 @@ $repo_skills = new SkillRepository;
 ?>
 
 <!-- Personnages -->
-<article class="as-start">
+<article>
 	<h2>Personnages</h2>
 
 	<details>
@@ -33,14 +33,14 @@ $repo_skills = new SkillRepository;
 		</summary>
 		<?php
 		$skill_cthulhu = $repo_skills->getSkill(197);
-		$skill_cthulhu->displayInRules();
+		$skill_cthulhu->displayInRules(show_edit_link: $_SESSION["Statut"] === 3);
 		?>
 	</details>
 
 </article>
 
 <!-- Magie -->
-<article class="as-start">
+<article>
 	<h2>Magie</h2>
 
 	<details>
@@ -63,7 +63,7 @@ $repo_skills = new SkillRepository;
 </article>
 
 <!-- Grimoires -->
-<article class="as-start">
+<article>
 	<h2>Grimoires</h2>
 
 	<details>

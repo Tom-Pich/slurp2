@@ -65,7 +65,7 @@ closeInputModalBtns.forEach ( btn => {
 // change save btn color when changes are made
 let allowSaveBtnColorChange = true;
 form.addEventListener("change", ()=> {
-	if(allowSaveBtnColorChange) saveBtn.classList.add("clr-warning");
+	if(allowSaveBtnColorChange) saveBtn.classList.add("clr-invalid");
 	allowSaveBtnColorChange = true;
 })
 

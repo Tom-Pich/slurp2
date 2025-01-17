@@ -109,7 +109,7 @@ characterStateForms.forEach((form) => {
 
     // highlight save btn on change
     form.addEventListener("change", () => {
-        if (allowSaveBtnColorChange) saveBtn.classList.add("clr-warning");
+        if (allowSaveBtnColorChange) saveBtn.classList.add("clr-invalid");
         allowSaveBtnColorChange = true;
     });
 

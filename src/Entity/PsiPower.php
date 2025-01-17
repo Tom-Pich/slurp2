@@ -13,6 +13,7 @@ class PsiPower implements RulesItem
 	public Spell $data;
 	public const niv_modifier = [0, -1, -2, -3, -4];
 	public const pdf_cost = [1, 2, 3, 4, 8];
+	public const pdf_cost_modifier = [0, 0, -1, -2, -3];
 
 	public function __construct($item = [])
 	{
@@ -71,10 +72,10 @@ class PsiPower implements RulesItem
 			}
 
 			// power cost in PdF
-			$f_power["cost-modifier"] = [0, 0, 1, 2, 3][$f_power["discipline-niv"] - 1];
+			$f_power["cost-modifier"] = self::pdf_cost_modifier[$f_power["discipline-niv"] - 1];
 			for ($i = 1; $i <= 5; $i++) {
 				$f_power["costs"][$i] = $power_entity->data->niv_min <= $i && $power_entity->data->niv_max >= $i && $discipline_niv >= $i  ?
-					max(self::pdf_cost[$i - 1] - $f_power["cost-modifier"], 0) : null;
+					max(self::pdf_cost[$i - 1] + $f_power["cost-modifier"], 0) : null;
 			}
 			$f_power["readable-cost"] = implode("/", $f_power["costs"]);
 			$f_power["readable-cost"] = trim($f_power["readable-cost"], "/");

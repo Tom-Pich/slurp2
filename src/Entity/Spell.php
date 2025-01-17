@@ -159,13 +159,15 @@ class Spell implements RulesItem
 		<details class="liste" data-niv-min="<?= $this->niv_min ?>" data-niv-max="<?= $this->niv_max ?>" data-origin="<?= $this->origin ?>">
 			<summary title="id <?= $this->id ?>">
 				<div>
-					<?php if ($show_edit_link) { ?>
-						<a href="<?= $edit_link ?>" class="edit-link ff-far">&#xf044;</a>
-					<?php } ?>
-					<?= $data["name"] ? $data["name"] : $this->name ?> (<?= $this->readableNiv ?>) <?= !empty($this->class) ? " – <i>$this->class</i>" : "" ?>
-				</div>
-				<div>
-					<?= $data["cost-mult"] ? $this->displayCost($data["cost-mult"]) : "" ?>
+					<div>
+						<?php if ($show_edit_link) { ?>
+							<a href="<?= $edit_link ?>" class="edit-link ff-far">&#xf044;</a>
+						<?php } ?>
+						<?= $data["name"] ? $data["name"] : $this->name ?> (<?= $this->readableNiv ?>) <?= !empty($this->class) ? " – <i>$this->class</i>" : "" ?>
+					</div>
+					<div>
+						<?= $data["cost-mult"] ? $this->displayCost($data["cost-mult"]) : "" ?>
+					</div>
 				</div>
 			</summary>
 

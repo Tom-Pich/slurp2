@@ -99,12 +99,14 @@ class Skill implements RulesItem
 		<details class="liste">
 			<summary>
 				<div>
-					<?php if ($show_edit_link) { ?>
-						<a href="<?= $edit_link ?>" class="edit-link ff-far">&#xf044;</a>
-					<?php } ?>
-					<?= $this->name ?>
+					<div>
+						<?php if ($show_edit_link) { ?>
+							<a href="<?= $edit_link ?>" class="edit-link ff-far">&#xf044;</a>
+						<?php } ?>
+						<?= $this->name ?>
+					</div>
+					<div><?= $this->displayType() ?></div>
 				</div>
-				<div><?= $this->displayType() ?></div>
 			</summary>
 			<?= $this->description ?>
 		</details>

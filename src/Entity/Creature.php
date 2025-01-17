@@ -80,8 +80,10 @@ class Creature implements RulesItem
 		<details class="liste">
 			<summary>
 				<div>
-					<?php if ($show_edit_link) { ?><a href="<?= $edit_link ?>" class="ff-fas edit-link">&#xf044;</a><?php } ?>
-					<?= $this->name ?>
+					<div>
+						<?php if ($show_edit_link) { ?><a href="<?= $edit_link ?>" class="ff-fas edit-link">&#xf044;</a><?php } ?>
+						<?= $this->name ?>
+					</div>
 				</div>
 			</summary>
 

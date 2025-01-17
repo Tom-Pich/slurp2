@@ -6,7 +6,7 @@
 		border-bottom: .5px solid var(--grey-700); margin-bottom: 5px; min-height: 1.9em; padding-right: 2em;
 		@include media { min-height: 0; }
 	}
-	#chat-dialog-wrapper{overflow-x: hidden; height: 40vh; padding-right: .75em; @include media { height: 24vh; }}
+	#chat-dialog-wrapper{overflow-x: hidden; height: 45vh; padding-right: .75em; @include media { height: 24vh; }}
 	#chat-help-dialog-btn { position: absolute; top: .5em; right: .5em;}
 	#chat-input-wrapper {/* display: grid; width: 100%; */ background: #fff; border-top: 1px solid var(--grey-700); padding-top: 0.5em; margin-top: 1em;}
 	#msg-input {min-height: 5em; border: 1px solid var(--grey-900); margin-top: .5em; resize: none; /* @include media { height: 4em; } */}

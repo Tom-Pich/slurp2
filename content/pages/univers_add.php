@@ -13,12 +13,19 @@ $spells_repo = new SpellRepository;
 $creatures_repo = new CreatureRepository;
 ?>
 
+<div class="img-block">
+	<img src="/assets/img/page-add-1.webp" alt="Menhir Esteren">
+</div>
+
 <!-- Personnages -->
 <article>
 	<h2>Personnage</h2>
 
+	<!-- Pts de personnage -->
 	<details>
-		<summary><h3>Points de personnage</h3></summary>
+		<summary>
+			<h3>Points de personnage</h3>
+		</summary>
 		<p><b>Personnage débutant&nbsp;:</b> 120 pts</p>
 		<ul>
 			<li><b>Caractéristiques&nbsp;:</b> 60 à 90 pts</li>
@@ -28,8 +35,11 @@ $creatures_repo = new CreatureRepository;
 		</ul>
 	</details>
 
+	<!-- Avantages & désavantages -->
 	<details>
-		<summary><h3>Avantages &amp; Désavantages</h3></summary>
+		<summary>
+			<h3>Avantages &amp; Désavantages</h3>
+		</summary>
 		<p><b>• Alphabétisation&nbsp;:</b> semi-alphabétisation par défaut. <i>Illettrisme</i>&nbsp;: -5 pts&nbsp;; <i>Alphabétisation</i>&nbsp;: 5 pts.</p>
 		<p><b>• Magerie&nbsp;:</b> peut être innée jusqu’au niveau 3. Un personnage peut gagner, au cours de sa vie, jusqu’à 2 niveaux. La version «&nbsp;AD&amp;D&nbsp;» de cet avantage coûte 5 pts de moins que le coût standard à cause des pénalités imposées par les armures.</p>
 		<p><b>• Richesse de base&nbsp;:</b> 1000 pc pour un aventurier sans attache. Un personnage «&nbsp;installé&nbsp;» (profession et domicile) dispose de 20&nbsp;% de cette somme en argent et des possessions en adéquation avec son niveau de richesse.</p>
@@ -43,8 +53,11 @@ $creatures_repo = new CreatureRepository;
 		?>
 	</details>
 
+	<!-- Races non humaines -->
 	<details>
-		<summary><h3>Races non humaines</h3></summary>
+		<summary>
+			<h3>Races non humaines</h3>
+		</summary>
 		<p>Éléments à prendre en compte pour créer un personnage non humain&nbsp;:</p>
 		<p>• Caractéristiques<br>
 			• Taille&nbsp;: <i>Taille peu pratique</i>, PdV, <i>Vitesse réduite</i>.<br>
@@ -53,8 +66,11 @@ $creatures_repo = new CreatureRepository;
 			• Pouvoirs innés</p>
 	</details>
 
+	<!-- Mages & lanceurs de sorts -->
 	<details>
-		<summary><h3>Mages &amp; lanceurs de sorts</h3></summary>
+		<summary>
+			<h3>Mages &amp; lanceurs de sorts</h3>
+		</summary>
 
 		<h4>Avantages &amp; compétences nécessaires</h4>
 		<p>Lancer des sorts nécessite <i>Magerie</i>. Les sorts s’apprennent dans les livres (<i>Alphabétisation</i>) ou avec un professeur. Implique une certaine connaissance des arcanes (<i>Sciences occultes</i>). Les sorts <i>Projectiles</i> nécessitent la compétence <i>Lancer de sorts</i>.</p>
@@ -65,8 +81,11 @@ $creatures_repo = new CreatureRepository;
 			• Les mages n’ont pas accès au collège <i>Sacré</i>.</p>
 	</details>
 
+	<!-- Prêtres et serviteurs de divinité -->
 	<details>
-		<summary><h3>Prêtres &amp; serviteurs de divinité</h3></summary>
+		<summary>
+			<h3>Prêtres &amp; serviteurs de divinité</h3>
+		</summary>
 
 		<h4>Avantages, désavantages &amp; compétences nécessaires</h4>
 		<p>Si le personnage fait partie d’un clergé «&nbsp;reconnu&nbsp;», il faut l’avantage <i>Statut religieux</i>.</p>
@@ -108,8 +127,11 @@ $creatures_repo = new CreatureRepository;
 		<p>Un personnage prêtre ayant également <i>Magerie</i> paiera ses pouvoirs comme s’il avait l’avantage <i>Prêtrise</i> au même niveau que <i>Magerie</i>.</p>
 	</details>
 
+	<!-- Kits de personnage -->
 	<details>
-		<summary><h3>Kits de personnage</h3></summary>
+		<summary>
+			<h3>Kits de personnage</h3>
+		</summary>
 		<h4>Druide</h4>
 		<p>• <b>Dévotion (-10 pts)&nbsp;:</b> protéger la Nature (venir en aide aux animaux blessés, empêcher la destruction de la Nature, ne pas prélever plus de vies que le strict nécessaire), mener une vie frugale, assister aux réunions de druides deux fois par an (solstice d’été et solstice d’hiver).</p>
 		<p>• <b>Vœux (-15 pts)&nbsp;:</b> Pacifisme (légitime défense)</p>
@@ -130,7 +152,9 @@ $creatures_repo = new CreatureRepository;
 
 	<!-- Système monétaire -->
 	<details>
-		<summary><h3>Système monétaire</h3></summary>
+		<summary>
+			<h3>Système monétaire</h3>
+		</summary>
 
 		<h4>Système monétaire</h4>
 		<p>1 po = 20 pa = 80 pc</p>
@@ -156,7 +180,9 @@ $creatures_repo = new CreatureRepository;
 
 	<!-- Armes -->
 	<details>
-		<summary><h3>Armes</h3></summary>
+		<summary>
+			<h3>Armes</h3>
+		</summary>
 
 		<?php
 		$weapons = array_filter(WeaponsController::weapons, fn($weapon) => isset($weapon["prix"][0]));
@@ -191,13 +217,15 @@ $creatures_repo = new CreatureRepository;
 		$with_magic_modifiers = true;
 		$armors = array_filter(ArmorsController::armors, fn($armor) => isset($armor["prix"][$price_index]))
 		?>
-		<summary><h3>Armures &amp; boucliers</h3></summary>
+		<summary>
+			<h3>Armures &amp; boucliers</h3>
+		</summary>
 
 		<h4>Armures</h4>
 
 		<p>Armures «&nbsp;hypothétiques&nbsp;» complètes, données pour infos (voir la page <a href="/armes-armures">Armes &amp; armures</a> pour plus de détails). Vous <i>devez</i> construire votre armure composite.</p>
 
-		<table class="left-1 alternate-e">
+		<table class="left-1">
 			<tr>
 				<th></th>
 				<th>RD</th>
@@ -214,12 +242,11 @@ $creatures_repo = new CreatureRepository;
 			<?php } ?>
 		</table>
 
-		<details class="mt-½">
-		<summary class="fw-700">Notes</summary>
+		<div class="fs-300">
 			<?php foreach (ArmorsController::armors_notes as $index => $note) { ?>
 				<p><b><?= $index ?>&nbsp;:</b> <?= $note ?></p>
 			<?php } ?>
-		</details>
+		</div>
 
 		<?php include "content/components/widget-armor-composer.php"; ?>
 
@@ -245,7 +272,9 @@ $creatures_repo = new CreatureRepository;
 
 	<!-- Vêtements -->
 	<details>
-		<summary><h3>Vêtements</h3></summary>
+		<summary>
+			<h3>Vêtements</h3>
+		</summary>
 		<?php
 		$items = array_filter(EquipmentListController::equipment_list, fn($item) => in_array($item[3], ["vêtements"]));
 		EquipmentListController::displayEquipmentList($items, 0);
@@ -256,7 +285,9 @@ $creatures_repo = new CreatureRepository;
 
 	<!-- Équipement de voyage -->
 	<details>
-		<summary><h3>Équipement de voyage</h3></summary>
+		<summary>
+			<h3>Équipement de voyage</h3>
+		</summary>
 		<?php
 		$items = array_filter(EquipmentListController::equipment_list, fn($item) => in_array($item[3], ["voyage"]));
 		EquipmentListController::displayEquipmentList($items, 0);
@@ -265,7 +296,9 @@ $creatures_repo = new CreatureRepository;
 
 	<!-- Équipement spécial -->
 	<details>
-		<summary><h3>Équipement spécial</h3></summary>
+		<summary>
+			<h3>Équipement spécial</h3>
+		</summary>
 		<?php
 		$items = array_filter(EquipmentListController::equipment_list, fn($item) => in_array($item[3], ["spécial"]));
 		EquipmentListController::displayEquipmentList($items, 0);
@@ -274,7 +307,9 @@ $creatures_repo = new CreatureRepository;
 
 	<!-- Nourriture & logement -->
 	<details>
-		<summary><h3>Nourriture &amp; logement</h3></summary>
+		<summary>
+			<h3>Nourriture &amp; logement</h3>
+		</summary>
 		<?php
 		$items = array_filter(EquipmentListController::equipment_list, fn($item) => in_array($item[3], ["auberge", "nourriture"]));
 		EquipmentListController::displayEquipmentList($items, 0);
@@ -283,7 +318,9 @@ $creatures_repo = new CreatureRepository;
 
 	<!-- Animaux -->
 	<details>
-		<summary><h3>Animaux et harnachement</h3></summary>
+		<summary>
+			<h3>Animaux et harnachement</h3>
+		</summary>
 
 		<?php
 		$items = array_filter(EquipmentListController::equipment_list, fn($item) => in_array($item[3], ["animaux"]));
@@ -293,7 +330,9 @@ $creatures_repo = new CreatureRepository;
 
 	<!-- Objets spéciaux & services magiques -->
 	<details>
-		<summary><h3>Objets spéciaux &amp; services magiques</h3></summary>
+		<summary>
+			<h3>Objets spéciaux &amp; services magiques</h3>
+		</summary>
 
 		<h4>Objets spéciaux</h4>
 		<p><b>Dague à poison&nbsp;:</b> dague à lame creuse. Réserve de poison dans le manche (1 à 3 doses) qui sont toutes expulsées par la pointe de la lame en cas de choc (même si l’armure n’est pas traversée). Dégâts&nbsp;: P.e (pas de dégâts tranchants). Solide comme arme «&nbsp;bon marché&nbsp;». (500 pc&nbsp;; 0,25 kg)</p>
@@ -321,13 +360,19 @@ $creatures_repo = new CreatureRepository;
 
 </article>
 
+<div class="img-block">
+	<img src="/assets/img/page-add-2.webp" alt="Menhir Esteren">
+</div>
+
 <!-- Magie -->
 <article>
 	<h2>Magie</h2>
 
 	<!-- Magie et armure -->
 	<details>
-		<summary><h3>Magie et armure</h3></summary>
+		<summary>
+			<h3>Magie et armure</h3>
+		</summary>
 		<p>
 			<b>Le port d’une armure</b> entraîne des pénalités pour lancer un sort (mais pas un pouvoir).<br>
 			Ces pénalités modifient le <i>score brut</i> du sort (comme celles dues à un fluide faible). Tout se passe comme si, localement, l’armure portée diminuait le fluide entourant le lanceur de sort.<br>
@@ -358,7 +403,9 @@ $creatures_repo = new CreatureRepository;
 
 	<!-- Sorts -->
 	<details>
-		<summary><h3>Sorts</h3></summary>
+		<summary>
+			<h3>Sorts</h3>
+		</summary>
 
 		<h4>Sorts de Soins</h4>
 		<p>Tous ces sorts nécessitent de toucher le sujet.</p>
@@ -380,13 +427,18 @@ $creatures_repo = new CreatureRepository;
 
 	<!-- Potions -->
 	<details>
-		<summary><h3>Potions</h3></summary>
+		<summary>
+			<h3>Potions</h3>
+		</summary>
 
-		<details class="mt-½">
-			<summary class="h4">Fabrication et prix de vente des potions</summary>
+		<!-- Fabrication et prix -->
+		<details>
+			<summary>
+				<h4>Fabrication et prix</h4>
+			</summary>
 			<p>Les potions sont classées en 5 catégories de puissance, comme les sorts (faible, moyenne, forte, très forte, exceptionnelle). La complexité et le coût de leur fabrication dépendent de cette puissance.</p>
 
-			<table class="alternate-e">
+			<table>
 				<tr>
 					<th></th>
 					<th>Matériaux (pc)</th>
@@ -425,9 +477,9 @@ $creatures_repo = new CreatureRepository;
 				</tr>
 			</table>
 
-			<p>Il existe des recettes «&nbsp;alternatives&nbsp;» ayant des caractéristiques différentes de celles suggérées ici, par exemple, une recette moins coûteuse en matériaux, mais plus longue et plus difficile.</p>
+			<p>Il peut exister des recettes «&nbsp;alternatives&nbsp;» ayant des caractéristiques différentes de celles suggérées ici, par exemple, une recette moins coûteuse en matériaux, mais plus longue et plus difficile.</p>
 
-			<fieldset class="widget mt-1" data-role="widget-potion">
+			<fieldset class="widget" data-role="widget-potion">
 				<legend>Prix de vente d’une potion</legend>
 				<div class="grid gap-½" style="grid-template-columns: 1fr 12ch">
 					Prix des matériaux (pc)
@@ -445,130 +497,228 @@ $creatures_repo = new CreatureRepository;
 
 		</details>
 
+		<!-- Liste -->
 		<details>
-			<summary class="h4">Liste des potions</summary>
+			<summary>
+				<h4>Liste des potions</h4>
+			</summary>
 			<p>Chaque dose de potion est vendue dans une petite fiole en céramique ou en verre. Conditionnée de la sorte, une potion pèse 0,15 kg.</p>
-
 			<details class="liste">
-				<summary>Amnésie <div>1100 pc</div>
+				<summary>
+					<div>
+						<div>Amnésie</div>
+						<div>1100 pc</div>
+					</div>
 				</summary>
-				Efface tous les souvenirs des dernières 1d×4 heures (illégale). Le sujet tombe dans une torpeur pendant 2d minutes durant lesquelles il n’est pas conscient de ce qui se passe autour de lui. Résistance par <i>Vol</i>.<br>
-				Matériaux&nbsp;: 400 pc&nbsp;; 4×4 h&nbsp;; compétence -2.
+				<p>
+					Efface tous les souvenirs des dernières 1d×4 heures (illégale). Le sujet tombe dans une torpeur pendant 2d minutes durant lesquelles il n’est pas conscient de ce qui se passe autour de lui. Résistance par <i>Vol</i>.<br>
+					Matériaux&nbsp;: 400 pc&nbsp;; 4×4 h&nbsp;; compétence -2.
+				</p>
 			</details>
 
 			<details class="liste">
-				<summary>Antidote <div>1000 pc</div>
+				<summary>
+					<div>
+						<div>Antidote</div>
+						<div>1000 pc</div>
+					</div>
 				</summary>
-				Annule les effets de tout autre produit alchimique – sauf ceux ayant trait à la guérison et aux soins. Une potion d’<i>Amnésie</i> ne peut être annulée que pendant les 24 h qui suivent sa consommation.<br>
-				Procure une immunité aux produits alchimiques pendant 1d minutes, y compris ceux qui seraient bénéfiques au sujet.<br>
-				Matériaux&nbsp;: 500 pc&nbsp;; 4×4 h&nbsp;; compétence -3.
+				<p>
+					Annule les effets de tout autre produit alchimique – sauf ceux ayant trait à la guérison et aux soins. Une potion d’<i>Amnésie</i> ne peut être annulée que pendant les 24 h qui suivent sa consommation.<br>
+					Procure une immunité aux produits alchimiques pendant 1d minutes, y compris ceux qui seraient bénéfiques au sujet.<br>
+					Matériaux&nbsp;: 500 pc&nbsp;; 4×4 h&nbsp;; compétence -3.
+				</p>
 			</details>
 
 			<details class="liste">
-				<summary>Dextérité <div>950 pc</div>
+				<summary>
+					<div>
+						<div>Dextérité</div>
+						<div>950 pc</div>
+					</div>
 				</summary>
-				+1d en <i>Dex</i> pendant 1 heure. Matériaux 350 pc&nbsp;; 5×4h&nbsp;; compétence -3.
+				<p>+1d en <i>Dex</i> pendant 1 heure. Matériaux 350 pc&nbsp;; 5×4h&nbsp;; compétence -3.</p>
 			</details>
 
 			<details class="liste">
-				<summary>Effacement <div>220 pc</div>
+				<summary>
+					<div>
+						<div>Effacement</div>
+						<div>220 pc</div>
+					</div>
 				</summary>
-				Les liens de l’utilisateur avec les objets lui ayant appartenu ou avec l’initiateur d’un sort de recherche ou de communication sont effacés. Matériaux 110 pc&nbsp;; 2×4h&nbsp;; compétence -1.
+				<p>Les liens de l’utilisateur avec les objets lui ayant appartenu ou avec l’initiateur d’un sort de recherche ou de communication sont effacés. Matériaux 110 pc&nbsp;; 2×4h&nbsp;; compétence -1.</p>
 			</details>
 
 			<details class="liste">
-				<summary>Force <div>500 pc</div>
+				<summary>
+					<div>
+						<div>Force</div>
+						<div>500 pc</div>
+					</div>
 				</summary>
 				+1d en <i>For</i> pendant 1h, influence tous les facteurs dépendant de la <i>For</i>, sauf les PdV. Matériaux 250 pc&nbsp;; 3×4h&nbsp;; compétence -2.
 			</details>
 
 			<details class="liste">
-				<summary>Haine <div>160 pc</div>
+				<summary>
+					<div>
+						<div>Haine</div>
+						<div>160 pc</div>
+					</div>
 				</summary>
-				Le sujet se met à haïr tout ce (et tous ceux) qu’il aimen en temps normal, pendant une heure. Matériaux 70 pc&nbsp;; 2×4h&nbsp;; compétence -1.
+				<p>Le sujet se met à haïr tout ce (et tous ceux) qu’il aimen en temps normal, pendant une heure. Matériaux 70 pc&nbsp;; 2×4h&nbsp;; compétence -1.</p>
 			</details>
 
 			<details class="liste">
-				<summary>Hydromarche <div>300 pc</div>
+				<summary>
+					<div>
+						<div>Hydromarche</div>
+						<div>300 pc</div>
+					</div>
 				</summary>
 				Permet au sujet de marcher sur l’eau pendant 1d minutes. Matériaux 150 pc&nbsp;; 3×4h&nbsp;; compétence -1.
 			</details>
 
 			<details class="liste">
-				<summary>Invisibilité <div>3200 pc</div>
+				<summary>
+					<div>
+						<div>Invisibilité</div>
+						<div>3200 pc</div>
+					</div>
 				</summary>
-				Dure 1d minutes. Matériaux 1000 pc&nbsp;; 8×4h&nbsp;; compétence -3.
+				<p>Dure 1d minutes. Matériaux 1000 pc&nbsp;; 8×4h&nbsp;; compétence -3.</p>
 			</details>
 
 			<details class="liste">
-				<summary>Métamorphose <div>500 - 950 pc</div>
+				<summary>
+					<div>
+						<div>Métamorphose</div>
+						<div>500 - 950 pc</div>
+					</div>
 				</summary>
-				Le sujet se change en animal, comme par le sort homonyme pendant 1d×2 heures. L’alchimiste choisit le type d’animal en lequel le sujet sera transformé (une «&nbsp;recette&nbsp;» par animal). S’il s’agit d’un animal volant, très petit ou très gros (dans les mêmes limites que le sort <i>Métamorphose</i>), la potion est plus complexe à préparer. Matériaux 250-400 pc&nbsp;; (4-5)×4h&nbsp;; compétence -2 à -3.
+				<p>Le sujet se change en animal, comme par le sort homonyme pendant 1d×2 heures. L’alchimiste choisit le type d’animal en lequel le sujet sera transformé (une «&nbsp;recette&nbsp;» par animal). S’il s’agit d’un animal volant, très petit ou très gros (dans les mêmes limites que le sort <i>Métamorphose</i>), la potion est plus complexe à préparer. Matériaux 250-400 pc&nbsp;; (4-5)×4h&nbsp;; compétence -2 à -3.</p>
 			</details>
 
 			<details class="liste">
-				<summary>Respiration aquatique <div>350 pc</div>
+				<summary>
+					<div>
+						<div>Respiration aquatique</div>
+						<div>350 pc</div>
+					</div>
 				</summary>
-				Le sujet peut respirer dans l’eau et dans l’air pendant 1d heures. Matériaux 150 pc&nbsp;; 3×4h&nbsp;; compétence -2.
+				<p>Le sujet peut respirer dans l’eau et dans l’air pendant 1d heures. Matériaux 150 pc&nbsp;; 3×4h&nbsp;; compétence -2.</p>
 			</details>
+
 			<details class="liste">
-				<summary>Vol <div>1700 pc</div>
+				<summary>
+					<div>
+						<div>Vol</div>
+						<div>1700 pc</div>
+					</div>
 				</summary>
-				Permet au buveur de voler comme sous l’effet du sort <i>Vol</i> pendant 1d×10 minutes. Matériaux 750 pc&nbsp;; 8×4h&nbsp;; compétence -3.
+				<p>Permet au buveur de voler comme sous l’effet du sort <i>Vol</i> pendant 1d×10 minutes. Matériaux 750 pc&nbsp;; 8×4h&nbsp;; compétence -3.</p>
 			</details>
 
 			<details class="liste mt-1">
-				<summary>Élixir de santé <div>2000 pc</div>
+				<summary>
+					<div>
+						<div>Élixir de santé</div>
+						<div>2000 pc</div>
+					</div>
 				</summary>
-				Forme supérieure de la potion de <i>Guérison des maladies</i>. Cette potion guérit la cécité, la surdité, toutes les maladies, la débilité mentale non congénitale, la folie, les infections, l’empoisonnement et le pourrissement. Elle ne fait pas récupérer de PdV. Matériaux 750 pc&nbsp;; 8×4h&nbsp;; compétence -4.
+				<p>Forme supérieure de la potion de <i>Guérison des maladies</i>. Cette potion guérit la cécité, la surdité, toutes les maladies, la débilité mentale non congénitale, la folie, les infections, l’empoisonnement et le pourrissement. Elle ne fait pas récupérer de PdV. Matériaux 750 pc&nbsp;; 8×4h&nbsp;; compétence -4.</p>
 			</details>
+
 			<details class="liste">
-				<summary>Guérison des maladies <div>950 pc</div>
+				<summary>
+					<div>
+						<div>Guérison des maladies</div>
+						<div>950 pc</div>
+					</div>
 				</summary>
-				Soigne toutes les maladies. Matériaux 400 pc&nbsp;; 5×4h&nbsp;; compétence -3.
+				<p>Soigne toutes les maladies. Matériaux 400 pc&nbsp;; 5×4h&nbsp;; compétence -3.</p>
 			</details>
+
 			<details class="liste">
-				<summary>Huile de dépétrification <div>800 pc</div>
+				<summary>
+					<div>
+						<div>Huile de dépétrification</div>
+						<div>800 pc</div>
+					</div>
 				</summary>
-				Appliquée sur une victime d’une <i>Pétrification</i>, cette huile lui rendra son état d’origine. Elle ne pourra rien contre une pétrification de niveau V. Matériaux 300 pc&nbsp;; 5×4h&nbsp;; compétence -3.
+				<p>Appliquée sur une victime d’une <i>Pétrification</i>, cette huile lui rendra son état d’origine. Elle ne pourra rien contre une pétrification de niveau V. Matériaux 300 pc&nbsp;; 5×4h&nbsp;; compétence -3.</p>
 			</details>
+
 			<details class="liste">
-				<summary>Neutralisation des poisons <div>350 pc</div>
+				<summary>
+					<div>
+						<div>Neutralisation des poisons</div>
+						<div>350 pc</div>
+					</div>
 				</summary>
-				Neutralise tous les poisons. Matériaux 150 pc&nbsp;; 3×4h&nbsp;; compétence -2.
+				<p>Neutralise tous les poisons. Matériaux 150 pc&nbsp;; 3×4h&nbsp;; compétence -2.</p>
 			</details>
+
 			<details class="liste">
-				<summary>Perséphone <div>29000 pc</div>
+				<summary>
+					<div>
+						<div>Perséphone</div>
+						<div>29000 pc</div>
+					</div>
 				</summary>
-				Rappelle à la vie un sujet n’ayant pas encaissé plus de [4×PdVm] pts de dégâts et mort depuis moins de 15 minutes. La tête doit être attachée au torse et celui-ci doit être en un seul morceau. La potion ne régénèrera aucun membre perdu. Elle fera récupérer 6d PdV à celui qui l’absorbe (la verser dans la bouche du mort suffit, il faut réussir un jet de San pour pouvoir ressusciter). Le sujet perd définitivement un point de San. Matériaux 7500 pc&nbsp;; 180×4h&nbsp;; compétence -5.
+				<p>Rappelle à la vie un sujet n’ayant pas encaissé plus de [4×PdVm] pts de dégâts et mort depuis moins de 15 minutes. La tête doit être attachée au torse et celui-ci doit être en un seul morceau. La potion ne régénèrera aucun membre perdu. Elle fera récupérer 6d PdV à celui qui l’absorbe (la verser dans la bouche du mort suffit, il faut réussir un jet de San pour pouvoir ressusciter). Le sujet perd définitivement un point de San. Matériaux 7500 pc&nbsp;; 180×4h&nbsp;; compétence -5.</p>
 			</details>
+
 			<details class="liste">
-				<summary>Régénérescence <div>5400 pc</div>
+				<summary>
+					<div>
+						<div>Régénérescence</div>
+						<div>5400 pc</div>
+					</div>
 				</summary>
-				Fait repousser un membre ou un œil manquant ou détruit en 1d semaines. Matériaux 1500 pc&nbsp;; 30×4h&nbsp;; compétence-5.
+				<p>Fait repousser un membre ou un œil manquant ou détruit en 1d semaines. Matériaux 1500 pc&nbsp;; 30×4h&nbsp;; compétence-5.</p>
 			</details>
+
 			<details class="liste">
-				<summary>Restitution <div>2400 pc</div>
+				<summary>
+					<div>
+						<div>Restitution</div>
+						<div>2400 pc</div>
+					</div>
 				</summary>
-				Soignera un membre ou un œil détruit (mais encore présent). Matériaux 750 pc&nbsp;; 15×4h&nbsp;; compétence -4.
+				<p>Soignera un membre ou un œil détruit (mais encore présent). Matériaux 750 pc&nbsp;; 15×4h&nbsp;; compétence -4.</p>
 			</details>
+
 			<details class="liste">
-				<summary>Soin <div>90 pc</div>
+				<summary>
+					<div>
+						<div>Soin</div>
+						<div>90 pc</div>
+					</div>
 				</summary>
-				Soigne 1d PdV ou, si ceux-ci sont déjà à leur niveau maximum, fait récupérer 2d PdF (quelle que soit l’origine de la perte des PdF). Matériaux 50 pc&nbsp;; 4h.
+				<p>Soigne 1d PdV ou, si ceux-ci sont déjà à leur niveau maximum, fait récupérer 2d PdF (quelle que soit l’origine de la perte des PdF). Matériaux 50 pc&nbsp;; 4h.</p>
 			</details>
+
 			<details class="liste">
-				<summary>Supersoin <div>210 pc</div>
+				<summary>
+					<div>
+						<div>Supersoin</div>
+						<div>210 pc</div>
+					</div>
 				</summary>
-				Soigne 3d PdV ou, si ceux-ci sont déjà à leur maximum, soigne 6d PdF. Matériaux 100 pc&nbsp;; 2×4h&nbsp;; compétence-1.
+				<p>Soigne 3d PdV ou, si ceux-ci sont déjà à leur maximum, soigne 6d PdF. Matériaux 100 pc&nbsp;; 2×4h&nbsp;; compétence-1.</p>
 			</details>
 		</details>
 
+		<!-- Boire plusieurs potions -->
 		<details>
-			<summary class="h4">Boire plusieurs potions</summary>
+			<summary>
+				<h4>Boire plusieurs potions</h4>
+			</summary>
 			<p>Deux potions ne sont pas toujours compatibles. L’incompatibilité ne peut généralement être vérifiée que par l’expérience, sauf dans les cas de potions identiques (pas d’effets secondaires) et de potions à effets contraires (s’annulent). Dans les autres cas, si une créature boit une potion alors qu’une autre potion différente est déjà active, il peut y avoir des effets secondaires (voir table ci-dessous).</p>
 
-			<table class="alternate-e left-2">
+			<table class="left-2">
 				<tr>
 					<th>3d</th>
 					<th>Effets</th>
@@ -616,10 +766,15 @@ $creatures_repo = new CreatureRepository;
 
 	<!-- Objets magiques -->
 	<details>
-		<summary><h3>Objets magiques</h3></summary>
+		<summary>
+			<h3>Objets magiques</h3>
+		</summary>
 
-		<details class="mt-½">
-			<summary class="h4">Fabrication d’objets magiques</summary>
+		<!-- Fabrication -->
+		<details>
+			<summary>
+				<h4>Fabrication d’objets magiques</h4>
+			</summary>
 
 			<table class="alternate-e">
 				<tr>
@@ -663,33 +818,41 @@ $creatures_repo = new CreatureRepository;
 			<p>* en dehors de l’objet lui-même.</p>
 		</details>
 
+		<!-- Objets basiques -->
 		<details>
-			<summary class="h4">Objets basiques pour mage</summary>
+			<summary>
+				<h4>Objets basiques pour mage</h4>
+			</summary>
 
 			<details class="liste">
 				<summary>Baguette de sorcier</summary>
-				<p>Tout ce qu’un <i>Bâton de sorcier</i> touche est considéré comme ayant été touché par le mage lui-même. Un mage peut donc fixer une pierre de puissance sur son bâton et en tirer parti normalement. Pointer un bâton réduit la distance entre le lanceur et la cible d’un mètre.<br>
-					Seul un personnage disposant de l’avantage <i>Magerie</i> peut tirer profit d’un tel objet.</p>
+				<p>
+					Tout ce qu’un <i>Bâton de sorcier</i> touche est considéré comme ayant été touché par le mage lui-même. Un mage peut donc fixer une pierre de puissance sur son bâton et en tirer parti normalement. Pointer un bâton réduit la distance entre le lanceur et la cible d’un mètre.<br>
+					Seul un personnage disposant de l’avantage <i>Magerie</i> peut tirer profit d’un tel objet.
+				</p>
 				<p><b>Prix&nbsp;:</b> 120 pc</p>
 			</details>
 
 			<details class="liste">
 				<summary>Parchemin</summary>
-
-				<p>Un <i>Parchemin</i> lu à haute voix par quelqu’un qui comprend et sait lire le langage employé et qui possède l’avantage <i>Magerie</i>, permettra au sort écrit d’être jeté. La magie du parchemin se dissipe alors et celui-ci tombe en poussière.<br>
+				<p>
+					Un <i>Parchemin</i> lu à haute voix par quelqu’un qui comprend et sait lire le langage employé et qui possède l’avantage <i>Magerie</i>, permettra au sort écrit d’être jeté. La magie du parchemin se dissipe alors et celui-ci tombe en poussière.<br>
 					Le temps nécessaire pour jeter le sort est multiplié par 2. Aucun coût énergétique pour le lecteur. Faire un jet sous le score de pouvoir du parchemin pour déterminer la réussite du sort. Le lecteur peut prolonger le sort, si le parchemin le permet.<br>
-					Un parchemin peut être lu en silence, afin de savoir ce qu’il contient, sans que le sort ne soit jeté. Des dégâts occasionnés à un manuscrit ne l’affecteront pas, tant qu’il demeure lisible.</p>
+					Un parchemin peut être lu en silence, afin de savoir ce qu’il contient, sans que le sort ne soit jeté. Des dégâts occasionnés à un manuscrit ne l’affecteront pas, tant qu’il demeure lisible.
+				</p>
 				<p><b>Prix&nbsp;:</b> 15 / 60 / 150 / 450 / 1500+ pc selon le niveau du sort.</p>
 			</details>
 
 			<details class="liste">
 				<summary>Pierre de puissance</summary>
-				<p>Pierre précieuse servant de réservoir de PdM. Pour pouvoir l’utiliser, le mage doit la toucher physiquement. Un mage ne peut tirer parti de plusieurs pierres pour un même sort. Il peut par contre utiliser à la fois ses propres PdM et des PdM tirés d’une pierre de puissance.<br>
+				<p>
+					Pierre précieuse servant de réservoir de PdM. Pour pouvoir l’utiliser, le mage doit la toucher physiquement. Un mage ne peut tirer parti de plusieurs pierres pour un même sort. Il peut par contre utiliser à la fois ses propres PdM et des PdM tirés d’une pierre de puissance.<br>
 					En fluide normal, une pierre de puissance récupère 1 PdM toutes les 12 heures. Si des pierres sont à 2 m ou moins l’une de l’autre, seule la plus grosse se recharge, sauf si celle-ci est pleine.<br>
-					Une pierre de puissance ne peut fournir de PdM pour l’utilisation de pouvoirs innés, de sorts de prêtres, ou des pouvoirs psi.</p>
+					Une pierre de puissance ne peut fournir de PdM pour l’utilisation de pouvoirs innés, de sorts de prêtres, ou des pouvoirs psi.
+				</p>
 				<p>La capacité maximale d'une pierre dépend de sa valeur (poids et type de pierre).</p>
 
-				<fieldset class="widget mt-1" data-role="widget-pierre-puissance">
+				<fieldset class="widget" data-role="widget-pierre-puissance">
 					<legend>Prix des pierres de puissance</legend>
 					<table>
 						<tr>
@@ -712,12 +875,16 @@ $creatures_repo = new CreatureRepository;
 
 		<!-- Armes & armures -->
 		<details>
-			<summary class="h4">Armes &amp; armures</summary>
+			<summary>
+				<h4>Armes &amp; armures</h4>
+			</summary>
 
 			<details class="liste">
 				<summary>Armes magiques</summary>
-				Une arme magique procure un bonus de +1 à +4 aux jets de compétence et aux dégâts. Pour les projectiles, le bonus ne s’applique qu’aux dégâts. Pour les armes de tir, le bonus ne s’applique qu’à la compétence.<br>
-				<b>Indice de puissance&nbsp;:</b> II pour +1&nbsp;; III pour +2.
+				<p>
+					Une arme magique procure un bonus de +1 à +4 aux jets de compétence et aux dégâts. Pour les projectiles, le bonus ne s’applique qu’aux dégâts. Pour les armes de tir, le bonus ne s’applique qu’à la compétence.<br>
+					<b>Indice de puissance&nbsp;:</b> II pour +1&nbsp;; III pour +2.
+				</p>
 				<p><b>Exemples de prix</b></p>
 				<ul>
 					<li><b>Épée longue BQ+1&nbsp;:</b> 4200 pc</li>
@@ -729,10 +896,12 @@ $creatures_repo = new CreatureRepository;
 
 			<details class="liste">
 				<summary>Armures magiques</summary>
-				+1 à +5 à la RD. De simples vêtements peuvent également être enchantés (mais attention à leur durée de vie !). En plus du bonus de RD, le poids d’une armure magique est réduit de 33% pour un bonus de +1 ou +2 et 50% pour un bonus &ge; +3.<br>
-				Il est possible d’enchanter seulement certaines parties d’une armure. Appliquer le pourcentage du prix des pièces au coût énergétique, au temps nécessaire et au coût des matériaux.<br>
-				Les bonus magiques de RD ne se cumulent pas. Si plusieurs bonus de RD s’appliquent à une même localisation, seul le meilleur prévaudra.<br>
-				<b>Indice de puissance&nbsp;:</b> I pour +1&nbsp;; II pour +2.
+				<p>
+					+1 à +5 à la RD. De simples vêtements peuvent également être enchantés (mais attention à leur durée de vie !). En plus du bonus de RD, le poids d’une armure magique est réduit de 33% pour un bonus de +1 ou +2 et 50% pour un bonus &ge; +3.<br>
+					Il est possible d’enchanter seulement certaines parties d’une armure. Appliquer le pourcentage du prix des pièces au coût énergétique, au temps nécessaire et au coût des matériaux.<br>
+					Les bonus magiques de RD ne se cumulent pas. Si plusieurs bonus de RD s’appliquent à une même localisation, seul le meilleur prévaudra.<br>
+					<b>Indice de puissance&nbsp;:</b> I pour +1&nbsp;; II pour +2.
+				</p>
 
 				<p><b>Exemples de prix</b></p>
 				<ul>
@@ -742,57 +911,66 @@ $creatures_repo = new CreatureRepository;
 
 			<details class="liste">
 				<summary>Boucliers magiques</summary>
-				+1 à +4 à la compétence <i>Bouclier</i>. Son poids est réduit comme celui d’une armure.
+				<p>+1 à +4 à la compétence <i>Bouclier</i>. Son poids est réduit comme celui d’une armure.</p>
 			</details>
 
 			<details class="liste">
 				<summary>Cotte de maille elfique</summary>
-				À porter par-dessus des vêtements légers, sans coutil. RD4, poids inférieur de 20 % à une cotte de maille normale (sans coutil). Très souple et totalement silencieuse. Ce n’est pas un objet magique à proprement parler, mais elle peut être enchantée.
+				<p>À porter par-dessus des vêtements légers, sans coutil. RD4, poids inférieur de 20 % à une cotte de maille normale (sans coutil). Très souple et totalement silencieuse. Ce n’est pas un objet magique à proprement parler, mais elle peut être enchantée.</p>
 			</details>
 
 		</details>
 
+		<!-- Objets divers -->
 		<details>
-			<summary class="h4">Objets divers</summary>
+			<summary>
+				<h4>Objets divers</h4>
+			</summary>
+
 			<details class="liste">
 				<summary>Anneau de protection</summary>
-				Procure un bonus de +1 à +5 à tous les jets de résistance du porteur.
+				<p>Procure un bonus de +1 à +5 à tous les jets de résistance du porteur.</p>
 			</details>
 
 			<details class="liste">
 				<summary>Cape elfique</summary>
-				Procure un bonus de +5 en <i>Furtivité</i>.
+				<p>Procure un bonus de +5 en <i>Furtivité</i>.</p>
 			</details>
 
 			<details class="liste">
 				<summary>Gantelets de force</summary>
-				Augmente la For de leur porteur (de +1 à +5).
+				<p>Augmente la For de leur porteur (de +1 à +5).</p>
 			</details>
 
 			<details class="liste">
 				<summary>Sac sans fond</summary>
-				Son volume intérieur est vingt fois plus grand que son volume extérieur. Son poids vaut 1/20<sup>e</sup> de que ce qu’il contient. S’il est percé ou déchiré (de l’extérieur comme de l’intérieur), il perd ses propriétés et son contenu disparaît. La dimension des objets ne peut pas excéder vingt fois la dimension du sac.
+				<p>Son volume intérieur est vingt fois plus grand que son volume extérieur. Son poids vaut 1/20<sup>e</sup> de que ce qu’il contient. S’il est percé ou déchiré (de l’extérieur comme de l’intérieur), il perd ses propriétés et son contenu disparaît. La dimension des objets ne peut pas excéder vingt fois la dimension du sac.</p>
 			</details>
 
 			<details class="liste">
 				<summary>Baguette de Boules de feu</summary>
-				Une baguette de boules de feu est un objet à charge. Elle est définie par le niveau de puissance des boules de feu qu’elle peut envoyer et par le nombre maximum de charges qu’elle peut contenir (généralement 12). Il est possible d’envoyer des boules de feu d’un niveau inférieur (il suffit que son utilisateur le souhaite), mais cela utilisera dans tous les cas une charge entière.
+				<p>Une baguette de boules de feu est un objet à charge. Elle est définie par le niveau de puissance des boules de feu qu’elle peut envoyer et par le nombre maximum de charges qu’elle peut contenir (généralement 12). Il est possible d’envoyer des boules de feu d’un niveau inférieur (il suffit que son utilisateur le souhaite), mais cela utilisera dans tous les cas une charge entière.</p>
 			</details>
 
 
 		</details>
 
+		<!-- Eau bénite -->
 		<details>
-			<summary class="h4">Eau bénite</summary>
-			<p>Les prêtres peuvent fabriquer de l’eau bénite, grâce au sort <i>Bénédiction</i>, s’ils ont ce pouvoir à un score de 15 ou plus. Efficace contre les morts-vivants.<br>
-				Au niveau III, le pouvoir permet de créer 5 doses à la fois, au niveau IV, 15 doses et au niveau V, 100 doses. Vendue à 10 pc la dose.</p>
+			<summary><h4>Eau bénite</h4></summary>
+			<p>
+				Les prêtres peuvent fabriquer de l’eau bénite, grâce au sort <i>Bénédiction</i>, s’ils ont ce pouvoir à un score de 15 ou plus. Efficace contre les morts-vivants.<br>
+				Au niveau III, le pouvoir permet de créer 5 doses à la fois, au niveau IV, 15 doses et au niveau V, 100 doses. Vendue à 10 pc la dose.
+			</p>
 		</details>
 
 	</details>
 
 	<!-- Familiers -->
 	<details>
-		<summary><h3>Familiers</h3></summary>
+		<summary>
+			<h3>Familiers</h3>
+		</summary>
 		<p>En plus des familiers cités dans les RdB, il est possible pour un mage d’avoir d’autres familiers plus exotiques.</p>
 
 		<p>Pour disposer d’un démon en tant que familier, le mage doit d’abord l’invoquer (avec le sort <i>Invocation de démon</i>), puis l’asservir (avec le sort <i>Asservissement de démon</i>).</p>
@@ -805,11 +983,11 @@ $creatures_repo = new CreatureRepository;
 			• <b><i>Résistance à la magie</i> +2</b>&nbsp;;<br>
 			• Lorsque l’imp se trouve dans un rayon de 30 m, son maître a <b>+1 à tous ses jets</b> pour utiliser ou détecter la magie (-1 si l’imp se trouve à plus d’un km). Ce modificateur affecte le rituel magique et la réduction en PdM. Lorsque l’imp meurt ou est définitivement chassé, le mage voit ses scores dans tous ses collèges définitivement réduits de 1.</p>
 
-		<h4>Imonoth (30 pts)</h4>
+		<!-- <h4>Imonoth (30 pts)</h4>
 		<p>Les imonoths sont de petites créatures servant d’espions aux mages de Laelith. Eux seuls connaissent le secret de leur invocation et leur origine exacte reste un mystère. Cette créature ailée de la taille d’un pigeon possède deux bras et deux jambes entre lesquels se trouve une voile de peau servant d’ailes, un peu à la manière des lézards volants. Leur peau parfaitement lisse, bleu sombre sauf sur le ventre, où elle est de couleur beige. Leur petite tête ronde est dépourvue de nez. Ils ont deux grands yeux rouge sombre sans pupille et une petite bouche avec de dents fines et pointue.</p>
 		<p>Ils sont dotés de nombreux pouvoirs de détection&nbsp;: <i>Vision aquiline</i>, <i>Vision obscure</i> (II) et <i>Vision du mage</i>. Ces pouvoirs sont actifs en permanence et ne coûtent aucun PdM à la créature.</p>
 		<p>Ils confèrent à leur maître le pouvoir <i>Perception interne animale</i>. Ils ont une intelligence de 7 et comprennent le langage humain, bien qu’ils ne puissent pas eux-mêmes communiquer par la parole ou la télépathie.</p>
-		<p><b>Coût&nbsp;:</b> 5 pts (familier volant) + 5 pts (<i>Int</i> 7) + 5 pts (<i>Perception interne animale</i>) + 15 pts (pouvoirs de <i>Vision</i> utilisables uniquement à travers la <i>Perception interne</i>).</p>
+		<p><b>Coût&nbsp;:</b> 5 pts (familier volant) + 5 pts (<i>Int</i> 7) + 5 pts (<i>Perception interne animale</i>) + 15 pts (pouvoirs de <i>Vision</i> utilisables uniquement à travers la <i>Perception interne</i>).</p> -->
 
 
 	</details>
@@ -826,7 +1004,9 @@ $creatures_repo = new CreatureRepository;
 	</h2>
 
 	<details>
-		<summary><h3>Règles générales d’adaptation</h3></summary>
+		<summary>
+			<h3>Règles générales d’adaptation</h3>
+		</summary>
 
 		<h4>Caractéristiques</h4>
 
@@ -847,7 +1027,7 @@ $creatures_repo = new CreatureRepository;
 
 		<p>La <b>Volonté</b> est égale à l’<i>Int</i> pour une créature intelligente (Int &ge; 7, valeur minimale de la <i>Vol</i>&nbsp;: 10) ou à <i>Int</i>×2 pour un animal ou un monstre ayant une intelligence animale (Int &le; 6).</p>
 
-		<p>La <b><i>Vitesse</i></b> est la valeur AD&amp;D divisée par 2 (sauf pour le vol, même valeur).</p>
+		<p>La <b>Vitesse</b> est la valeur AD&amp;D divisée par 2 (sauf pour le vol, même valeur).</p>
 
 		<h4>Dégâts</h4>
 		<?php include "content/components/widget-creature-dmg.php" ?>
@@ -865,14 +1045,14 @@ $creatures_repo = new CreatureRepository;
 
 		<h4>Catégories de créatures</h4>
 		<p><b>• Extraplanaire&nbsp;:</b> ces créatures ne peuvent être tuées ailleurs que sur leur plan d’origine. Ailleurs, elles se dématérialisent à 0 PdV et retournent à leur plan d’origine.</p>
-		<p class="mt-1">
+		<p>
 			<b>• Non biologique&nbsp;:</b> créatures dénuées de métabolisme &ndash; morts-vivants, créatures immatérielles, créatures animées par magie, etc. Elles «&nbsp;meurent&nbsp;» à 0 PdV. Insensibles à la douleur, jamais sonnées ni assommées. Pas d’organes vitaux. Pour les morts-vivants matériels, le seul multiplicateur de dégâts qui s’applique concerne le crâne et vaut ×2, en tenant compte de la résistance de la boîte cranienne.<br>
 			Pour les créatures immatérielles, la localisation n’a aucune importance&nbsp;: considérez toutes les attaques comme portées au torse.<br>
 			Immunisées au poison ainsi qu’aux sorts d’<i>Emprise mentale</i> et de <i>Contrôle physique</i>.
 		</p>
 		<p><i>Squelettique</i>&nbsp;: -3 au toucher et dégâts réduits au minimum avec des armes perforantes. Dégâts tranchants divisés par 2.</p>
-		<p class="mt-1"><b>•&nbsp;Créature végétale&nbsp;:</b> mêmes avantages que les créatures «&nbsp;non biologiques&nbsp;», mais elles ne meurent pas à 0 PdV.</p>
-		<p class="mt-1"><b>•&nbsp;Créature d’essence magique&nbsp;:</b> utilisent leurs pouvoirs innés avec un score minimum de 16 et le temps nécessaire à leur déclenchement est divisé par deux. Le rythme de récupération des PdM est doublé et sans condition de repos. Tous les démons sont d'essence magique.</p>
+		<p><b>•&nbsp;Créature végétale&nbsp;:</b> mêmes avantages que les créatures «&nbsp;non biologiques&nbsp;», mais elles ne meurent pas à 0 PdV.</p>
+		<p><b>•&nbsp;Créature d’essence magique&nbsp;:</b> utilisent leurs pouvoirs innés avec un score minimum de 16 et le temps nécessaire à leur déclenchement est divisé par deux. Le rythme de récupération des PdM est doublé et sans condition de repos. Tous les démons sont d'essence magique.</p>
 
 		<h4>Pouvoirs</h4>
 		<p><b>Demi-coût&nbsp;:</b> lorsqu'une créature possède un pouvoir dont le coût énergétique est réduit de moitié, le coût de maintien est également réduit de moitié, sauf mention contraire.</p>
@@ -883,8 +1063,10 @@ $creatures_repo = new CreatureRepository;
 	$categories = $creatures_repo->getDistinctCategories("ADD");
 	foreach ($categories as $categorie) { ?>
 		<details>
-			<summary><h3><?= $categorie ?></h3></summary>
-			<div class="mt-½">
+			<summary>
+				<h3><?= $categorie ?></h3>
+			</summary>
+			<div>
 				<?php
 				$creatures = $creatures_repo->getCreaturesByCategory($categorie, "ADD");
 				foreach ($creatures as $creature) {

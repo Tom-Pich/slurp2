@@ -22,7 +22,7 @@ function color_modifier($original_score, $actual_score) {
 <!-- Description, caractéristiques, état, portraits -->
 <div class="no-break">
 	<!-- Nom + accès éditeur -->
-	<div class="flex-s gap-1 jc-space-between ai-center px-¼">
+	<div class="flex-s gap-1 jc-space-between ai-center" style="padding-top: .25em;">
 		<h3 id="character-name" data-id="<?= $character->id ?>" data-gm="<?= $character->id_gm ?>">
 			<?= $character->name ?>
 		</h3>
@@ -221,8 +221,10 @@ function color_modifier($original_score, $actual_score) {
 
 						<details class="liste">
 							<summary>
-								<div><?= $avdesav["nom"] ?></div>
-								<div><?= $avdesav["points"] ?></div>
+								<div>
+									<div><?= $avdesav["nom"] ?></div>
+									<div><?= $avdesav["points"] ?></div>
+								</div>
 							</summary>
 							<div class="mt-½ fs-300 ta-justify"><?= $avdesav["description"] ?? "" ?></div>
 						</details>
@@ -249,8 +251,10 @@ function color_modifier($original_score, $actual_score) {
 	<?php foreach ($character->skills as $comp) {	?>
 		<details class="liste">
 			<summary data-type="throwable-wrapper">
-				<div data-type="throwable-label"><?= $comp["label"] ?></div>
-				<div data-type="throwable-score" <?= color_modifier($comp["raw-base"], $comp["base"]) ?>><?= $comp["score"] ?></div>
+				<div>
+					<div data-type="throwable-label"><?= $comp["label"] ?></div>
+					<div data-type="throwable-score" <?= color_modifier($comp["raw-base"], $comp["base"]) ?>><?= $comp["score"] ?></div>
+				</div>
 			</summary>
 			<div class="fs-300 ta-justify">
 				<?= $comp["description"] ?>
@@ -269,8 +273,10 @@ function color_modifier($original_score, $actual_score) {
 
 			<details class="liste">
 				<summary>
-					<div><?= $college["name"] ?></div>
-					<div <?= color_modifier(0, $character->modifiers["Int"] + $character->modifiers["Magie"]) ?>><?= $college["score"] ?></div>
+					<div>
+						<div><?= $college["name"] ?></div>
+						<div <?= color_modifier(0, $character->modifiers["Int"] + $character->modifiers["Magie"]) ?>><?= $college["score"] ?></div>
+					</div>
 				</summary>
 
 				<?php foreach ($character->spells as $sort) {
@@ -278,13 +284,15 @@ function color_modifier($original_score, $actual_score) {
 
 						<details class="sous-liste">
 							<summary data-type="throwable-wrapper">
-								<div data-type="throwable-label">
-									<?= $sort["label"] ?>
-									<?php if (!in_array($sort["data"]->class, ["Enchantement"])) { ?>
-										[<?= $sort["readable_costs"] ?>]
-									<?php } ?>
+								<div class="flex-s gap-½">
+									<div class="fl-1" data-type="throwable-label">
+										<?= $sort["label"] ?>
+										<?php if (!in_array($sort["data"]->class, ["Enchantement"])) { ?>
+											[<?= $sort["readable_costs"] ?>]
+										<?php } ?>
+									</div>
+									<div data-type="throwable-score"><?= $sort["readable_scores"] ?></div>
 								</div>
-								<div data-type="throwable-score"><?= $sort["readable_scores"] ?></div>
 							</summary>
 
 							<div class="fs-300 ta-justify">
@@ -311,8 +319,10 @@ function color_modifier($original_score, $actual_score) {
 		?>
 			<details class="liste">
 				<summary data-type="throwable-wrapper">
-					<div data-type="throwable-label"><?= $pouvoir["label"] ?></div>
-					<div data-type="throwable-score" <?= color_modifier(0, $character->modifiers["Int"]) ?>><?= $pouvoir["score"] ?></div>
+					<div>
+						<div data-type="throwable-label"><?= $pouvoir["label"] ?></div>
+						<div data-type="throwable-score" <?= color_modifier(0, $character->modifiers["Int"]) ?>><?= $pouvoir["score"] ?></div>
+					</div>
 				</summary>
 				<div class="fs-300 ta-justify">
 					<?php if ($type === "sort") {
@@ -335,18 +345,22 @@ function color_modifier($original_score, $actual_score) {
 		<?php foreach ($character->disciplines as $discipline) { ?>
 			<details class="liste">
 				<summary>
-					<div><?= $discipline["nom"] ?></div>
-					<div>Niv. <?= $discipline["niv"] ?></div>
+					<div>
+						<div><?= $discipline["nom"] ?></div>
+						<div>Niv. <?= $discipline["niv"] ?></div>
+					</div>
 				</summary>
 				<?php if (isset($discipline["notes"])) { ?>
-					<div class="mt-½"><i><?= $discipline["notes"] ?></i></div>
+					<div><i><?= $discipline["notes"] ?></i></div>
 				<?php } ?>
 				<?php foreach ($character->psi as $pouvoir) {
 					if (in_array($discipline["id"], $pouvoir["data"]->data->colleges) && $pouvoir["readable-score"]) { ?>
 						<details class="sous-liste">
 							<summary data-type="throwable-wrapper">
-								<div data-type="throwable-label"><?= $pouvoir["data"]->name ?> (<?= $pouvoir["data"]->data->readableNiv ?>) [<?= $pouvoir["readable-cost"] ?>]</div>
-								<div data-type="throwable-score" <?= color_modifier(0, $character->modifiers["Int"]) ?>><?= $pouvoir["readable-score"] ?></div>
+								<div class="flex-s gap-½">
+									<div class="fl-1" data-type="throwable-label"><?= $pouvoir["data"]->name ?> (<?= $pouvoir["data"]->data->readableNiv ?>) [<?= $pouvoir["readable-cost"] ?>]</div>
+									<div data-type="throwable-score" <?= color_modifier(0, $character->modifiers["Int"]) ?>><?= $pouvoir["readable-score"] ?></div>
+								</div>
 							</summary>
 							<div class="fs-300 ta-justify">
 								<?php $pouvoir["data"]->data->displayFullDescription(); ?>
@@ -489,10 +503,10 @@ $displayEmojis = false;
 <!-- Modal pour les possessions -->
 <dialog data-name="possession-notice" class="flow">
 	<button data-role="close-modal" class="ff-fas">&#xf00d;</button>
-	<p class="mt-0"><b>Ajouter un objet&nbsp;:</b> cliquer sur <span class="ff-fas clr-primary">&#xf055;</span> dans l’emplacement désiré.</p>
+	<p class="mt-0"><b>Ajouter un objet&nbsp;:</b> cliquer sur <span class="ff-fas clr-primary-500">&#xf055;</span> dans l’emplacement désiré.</p>
 	<p><b>Supprimer un objet&nbsp;:</b> effacer son nom. Attention&nbsp;: si vous effacez un objet-contenant, vous perdrez tout son contenu avec&nbsp;!</p>
 	<p><b>Transformer un objet en contenant&nbsp;:</b> Insérer * devant son nom.</p>
-	<p><b>Transformer un contenant en objet simple&nbsp;:</b> cocher la case <span class="ff-fas clr-warning">&#xf057;</span> dans la liste associée au contenant (pas possible si le contenant n’est pas vide).</p>
+	<p><b>Transformer un contenant en objet simple&nbsp;:</b> cocher la case <span class="ff-fas clr-invalid">&#xf057;</span> dans la liste associée au contenant (pas possible si le contenant n’est pas vide).</p>
 	<p><b>Changer l’ordre des contenants&nbsp;:</b> utiliser les boutons <span class="ff-fas">&#xf0aa;</span> et <span class="ff-fas">&#xf0ab;</span>. Attention&nbsp;: un contenant vide peut perturber le positionnement des autres contenants. Dans ce cas, transformez-le en objet simple.</p>
 	<p><b>Déplacer un objet</b> (vers un autre endroit, ou à l’intérieur d’une liste, ou vers un autre personnage)&nbsp;: faire un <i>glisser-déposer</i> en vous servant de la poignée <span class="ff-fas">&#xf58e;</span> . Si la liste de destination est repliée, maintenant votre objet une demi-seconde sur son nom pour qu’elle s’ouvre automatiquement.</p>
 	<p><b>Partager</b> le contenu d’un contenant&nbsp;: cliquer sur la case <span class="ff-fas clr-secondary-dark">&#xe533;</span>. Les autres membres du groupe pourront voir ce contenu (mais pas le modifier).</p>

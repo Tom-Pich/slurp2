@@ -1,6 +1,7 @@
 <?php
 
 use App\Entity\Discipline;
+use App\Entity\PsiPower;
 use App\Lib\TextParser;
 use App\Repository\AvDesavRepository;
 use App\Repository\DisciplineRepository;
@@ -20,17 +21,23 @@ $niv_max = max(array_keys($_POST["niv"]));
 ?>
 
 <!-- Généralités -->
-<article class="as-start">
+<article>
 	<h2>Généralités</h2>
 
+	<!-- Principes -->
 	<details>
-		<summary><h3>Principes directeurs</h3></summary>
-		<p>Les pouvoirs psis supposent que certains esprits peuvent interagir avec la matière, champs électromagnétiques, les «&nbsp;énergies subtiles des corps&nbsp;» (qi, shakra, etc&hellip;), les autres esprits (incarnés ou pas) et les «&nbsp;plans d’existence&nbsp;».</p>
+		<summary>
+			<h3>Principes directeurs</h3>
+		</summary>
+		<p>Les pouvoirs psis supposent que certains esprits peuvent interagir avec la matière, les champs électromagnétiques, les «&nbsp;énergies subtiles des corps&nbsp;» (qi, shakra, etc&hellip;), les autres esprits (incarnés ou pas) et les «&nbsp;plans d’existence&nbsp;».</p>
 		<p>La puissance et la maîtrise d’un pouvoir psi sont presque totalement dissociées. Il est possible de disposer d’une grande puissance mal maîtrisée ou, inversement, d’une faible puissance très bien maîtrisée.</p>
 	</details>
 
+	<!-- Disciplines -->
 	<details>
-		<summary><h3>Disciplines</h3></summary>
+		<summary>
+			<h3>Disciplines</h3>
+		</summary>
 		<p>Les pouvoirs psi sont rattachés à des <i>Disciplines</i> recouvrant un champ d’action particulier. Chaque discipline est un <i>Avantage</i> comptant cinq niveaux, qui représentent la puissance brute de l’initiateur dans cette discipline. Ces avantages, quel que soit leur niveau, ne procurent aucun bonus aux jets de compétences portant sur les pouvoirs psi.</p>
 		<p>Pour pouvoir utiliser des pouvoirs psi d’une discipline donnée, il faut avoir l’avantage disciplinaire correspondant, à un niveau au moins égal au niveau de puissance du pouvoir utilisé.</p>
 
@@ -61,9 +68,12 @@ $niv_max = max(array_keys($_POST["niv"]));
 		</details>
 	</details>
 
+	<!-- Pouvoirs -->
 	<details>
-		<summary><h3>Pouvoirs</h3></summary>
-		<p>Chaque pouvoir est une compétence I(-6). Les pouvoirs ont généralement des effets possibles plus vastes que les sorts.</p>
+		<summary>
+			<h3>Pouvoirs</h3>
+		</summary>
+		<p>Chaque pouvoir est une compétence de type I(-6). Les pouvoirs ont généralement des effets possibles plus vastes que les sorts.</p>
 		<p>Un pouvoir possède les mêmes caractéristiques qu’un sort&nbsp;: niveaux de puissance, classe, durée et temps nécessaire à l’activation.</p>
 
 		<h4>Effets des pouvoirs</h4>
@@ -82,8 +92,11 @@ $niv_max = max(array_keys($_POST["niv"]));
 		</p>
 	</details>
 
+	<!-- Psi & Magie -->
 	<details>
-		<summary><h3>Psi &amp; magie</h3></summary>
+		<summary>
+			<h3>Psi &amp; magie</h3>
+		</summary>
 		<p><i>Imperméabilité à la magie</i> ou <i>Résistance à la magie</i> n’ont aucun effet sur les pouvoirs psis. En revanche, il existe des avantages spécifiques&nbsp;:</p>
 		<?php foreach ($avdesav_list as $avdesav) {
 			$avdesav->displayInRules(show_edit_link: $_SESSION["Statut"] === 3);
@@ -94,16 +107,20 @@ $niv_max = max(array_keys($_POST["niv"]));
 </article>
 
 <!-- Utiliser un pouvoir -->
-<article class="as-start">
+<article>
 	<h2>Utiliser un pouvoir</h2>
 
 	<details>
-		<summary><h3>Modificateurs</h3></summary>
-		<p>Le niveau de compétence d’un pouvoir souffre d’un malus selon le niveau de puissance employé : 0/-1/-2/-3/-4 et, parfois également, selon la difficulté de l’action à accomplir (cf. description du pouvoir).</p>
+		<summary>
+			<h3>Modificateurs</h3>
+		</summary>
+		<p>Le niveau de compétence d’un pouvoir souffre d’un malus selon le niveau de puissance employé&nbsp;: <?= join("/", PsiPower::niv_modifier) ?> et, parfois également, selon la difficulté de l’action à accomplir (cf. description du pouvoir).</p>
 	</details>
 
 	<details>
-		<summary><h3>Temps, durée et portée</h3></summary>
+		<summary>
+			<h3>Temps, durée et portée</h3>
+		</summary>
 
 		<h4>Temps nécessaire et rituels</h4>
 		<p>Le déclenchement d’un pouvoir psi ne demande rien de plus qu’une concentration (aucun geste, aucune parole n’est nécessaire). Le <i>Temps nécessaire</i> peut être <i>Court</i> ou <i>Long</i>, la valeur exacte dépendant du niveau de puissance utilisée, comme pour les sorts.</p>
@@ -117,25 +134,38 @@ $niv_max = max(array_keys($_POST["niv"]));
 	</details>
 
 	<details>
-		<summary><h3>Coût énergétique</h3></summary>
-		<p>L’utilisation de pouvoirs psioniques peut fatiguer l’initiateur. Le coût énergétique d’un pouvoir se paie en PdF et dépend du niveau de puissance du pouvoir utilisé : 1/2/3/4/8 PdF.</p>
-		<p>Ce coût ne décroît pas avec le score de compétence, mais il décroît avec le niveau de l’avantage disciplinaire dont dispose l’initiateur : -1 PdF pour une discipline au niveau III, -2 au niveau IV et -3 au niveau V.</p>
+		<summary>
+			<h3>Coût énergétique</h3>
+		</summary>
+		<p>L’utilisation de pouvoirs psioniques peut fatiguer l’initiateur. Le coût énergétique d’un pouvoir se paie en PdF et dépend du niveau de puissance du pouvoir utilisé : <?= join("/", PsiPower::pdf_cost) ?> PdF.</p>
+		<p>
+			Ce coût ne décroît pas avec le score de compétence, mais il décroît avec le niveau de l’avantage disciplinaire dont dispose l’initiateur&nbsp;:
+			<?= PsiPower::pdf_cost_modifier[2] ?> PdF pour une discipline au niveau III,
+			<?= PsiPower::pdf_cost_modifier[3] ?> au niveau IV et
+			<?= PsiPower::pdf_cost_modifier[4] ?> au niveau V.
+		</p>
 		<p>Les PdF dépensés par l’utilisation de pouvoirs psi sont récupérés au rythme de 1 PdF par 15 minutes de repos.</p>
 	</details>
 
 	<details>
-		<summary><h3>Effort supplémentaire</h3></summary>
-		<p>Il est possible d’augmenter la durée de base, la portée d’un pouvoir ou de transformer un pouvoir régulier en pouvoir de zone.<br />
-			Ceci fonctionne exactement comme indiqué dans le chapitre <a href="/magie"><i>Magie</i></a>, au paragraphe <i>Créer ou modifier un sort</i> &gt; <i>Modifier un sort existant</i>.<br />
-			Cet «&nbsp;effort supplémentaire&nbsp;» entraîne toujours une dépense de PdF minimale de 1 PdF et impose un malus au score de compétence du pouvoir de -3.</p>
+		<summary>
+			<h3>Effort supplémentaire</h3>
+		</summary>
+		<p>
+			Il est possible d’augmenter la durée de base, la portée d’un pouvoir ou de transformer un pouvoir régulier en pouvoir de zone.<br>
+			Ceci fonctionne exactement comme indiqué dans le chapitre <a href="/magie"><i>Magie</i></a>, au paragraphe <i>Créer ou modifier un sort</i> &gt; <i>Modifier un sort existant</i>.<br>
+			Cet «&nbsp;effort supplémentaire&nbsp;» entraîne toujours une dépense de PdF minimale de 1 PdF et impose un malus au score de compétence du pouvoir de -3.
+		</p>
 	</details>
 
 	<details>
-		<summary><h3>Réussite et échec</h3></summary>
+		<summary>
+			<h3>Réussite et échec</h3>
+		</summary>
 		<p><b>Réussite critique&nbsp;:</b> le pouvoir marche parfaitement et n’a aucun coût énergétique.</p>
-		<p><b>Échec :</b> l’énergie psychique est libérée mais le pouvoir n’est pas contrôlé. Ses effets sont plus ou moins loin de ceux escomptés et toujours proportionnels à la puissance auquel le pouvoir est utilisé. Le personnage paie le coût énergétique du pouvoir comme s’il avait réussi son jet.</p>
+		<p><b>Échec&nbsp;:</b> l’énergie psychique est libérée mais le pouvoir n’est pas contrôlé. Ses effets sont plus ou moins loin de ceux escomptés et toujours proportionnels à la puissance auquel le pouvoir est utilisé. Le personnage paie le coût énergétique du pouvoir comme s’il avait réussi son jet.</p>
 
-		<table class="alternate-e left-2">
+		<table class="left-2">
 			<tr>
 				<th>ME</th>
 				<th>Effets</th>
@@ -182,30 +212,32 @@ $niv_max = max(array_keys($_POST["niv"]));
 	</details>
 
 	<details>
-		<summary><h3>Résistance aux pouvoirs psi</h3></summary>
+		<summary>
+			<h3>Résistance aux pouvoirs psi</h3>
+		</summary>
 		<p>Résister aux pouvoirs psi se fait de la même manière que résister à des sorts.</p>
 	</details>
 
 </article>
 
 <!-- Liste des pouvoirs -->
-<article class="as-start" data-role="spells-wrapper">
+<article data-role="spells-wrapper">
 	<h2>
-		<?php if ($_SESSION["Statut"] === 3) { ?><a href="gestion-listes?req=psi&id=0" class="nude ff-far">&#xf044;</a><?php } ?>
+		<?php if ($_SESSION["Statut"] === 3) { ?><a href="gestion-listes?req=psi&id=0" class="edit-link ff-far">&#xf044;</a><?php } ?>
 		Liste des pouvoirs
 	</h2>
 
 	<fieldset class="full-width">
-		<form method="post" action="/psioniques">
+		<form action="/psioniques" data-role="filter-form">
 
 			<div class="flex-s gap-½">
 				<div class="fl-1"><b>Affichage&nbsp;:</b></div>
-				<label for="alpha">
-					<input type="radio" name="affichage" value="alpha"  <?= $affichage == "alpha" ? "checked" : "" ?> onchange="this.form.submit()" />
+				<label>
+					<input type="radio" name="affichage" value="alpha" <?= $affichage == "alpha" ? "checked" : "" ?>>
 					alphabétique
 				</label>&nbsp;
-				<label for="discipline">
-					<input type="radio" name="affichage" value="categorie" <?= $affichage == "categorie" ? "checked" : "" ?> onchange="this.form.submit()" />
+				<label>
+					<input type="radio" name="affichage" value="categorie" <?= $affichage == "categorie" ? "checked" : "" ?>>
 					disciplines
 				</label>
 			</div>
@@ -225,20 +257,22 @@ $niv_max = max(array_keys($_POST["niv"]));
 	if ($affichage === "alpha") {
 		$pouvoirs = $powers_repo->getAllPowers();
 		if ($niv_max < 5 || $niv_min > 1) {
-			$pouvoirs = array_filter($pouvoirs, fn ($pouvoir) => $pouvoir->data->niv_min <= $niv_max && $pouvoir->data->niv_max >= $niv_min);
+			$pouvoirs = array_filter($pouvoirs, fn($pouvoir) => $pouvoir->data->niv_min <= $niv_max && $pouvoir->data->niv_max >= $niv_min);
 		}
 		foreach ($pouvoirs as $pouvoir) {
 			$pouvoir->displayInRules(show_edit_link: $_SESSION["Statut"] === 3);
 		}
 	} else {
 		foreach ($liste_disciplines as $discipline) { ?>
-			<details data-role="college-wrapper">
-				<summary><h3><?= $discipline->name ?></h3></summary>
+			<details>
+				<summary>
+					<h3><?= $discipline->name ?></h3>
+				</summary>
 				<p> <?= $discipline->description ?></p>
 				<?php
 				$pouvoirs = $powers_repo->getPowersByDiscipline($discipline->id);
 				if ($niv_max < 5 || $niv_min > 1) {
-					$pouvoirs = array_filter($pouvoirs, fn ($pouvoir) => $pouvoir->data->niv_min <= $niv_max && $pouvoir->data->niv_max >= $niv_min);
+					$pouvoirs = array_filter($pouvoirs, fn($pouvoir) => $pouvoir->data->niv_min <= $niv_max && $pouvoir->data->niv_max >= $niv_min);
 				}
 				foreach ($pouvoirs as $pouvoir) {
 					$pouvoir->displayInRules(show_edit_link: $_SESSION["Statut"] === 3);
@@ -252,4 +286,4 @@ $niv_max = max(array_keys($_POST["niv"]));
 
 </article>
 
-<script type="module" src="/scripts/spells-powers-filter.js?v=2" defer></script>
+<script type="module" src="/scripts/items-filter.js?v=<?= VERSION ?>" defer></script>

@@ -26,21 +26,21 @@ class PageController
 		if ($page["version"] === 4) {
 			include "content/components-v4/header.php";
 
-			echo "<main>";
+			echo "<div id='page-wrapper'>";
 
 			echo "<aside class='left'>";
 			if ($page["aside-left"]) include "content/components/" . $page["aside-left"] . ".php";
 			echo "</aside>";
 
-			echo "<div id='page-content'>";
+			echo "<main>";
 			include "content/pages/" . $page["file"] . ".php";
-			echo "</div>";
+			echo "</main>";
 
 			echo "<aside class='right'>";
 			if ($page["aside-right"]) include "content/components/" . $page["aside-right"] . ".php";
 			echo "</aside>";
 
-			echo "</main>";
+			echo "</div>";
 
 			include "content/components-v4/footer.php";
 		} else {

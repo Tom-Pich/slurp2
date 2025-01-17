@@ -17,6 +17,10 @@ foreach (Spell::cost_as_power as $cost) {
 }
 ?>
 
+<div class="img-block">
+	<img src="/assets/img/page-esteren-1.webp" alt="Menhir Esteren">
+</div>
+
 <!-- Personnages -->
 <article>
 	<h2>Personnage</h2>

@@ -7,8 +7,8 @@ $pages_data = [
 		"file" => "00-home",
 		"body-class" => "home",
 		"version" => 4,
-		"aside-left" => "aside-image-1",
-		"aside-right" => "aside-home",
+		"aside-left" => "aside-home-left",
+		"aside-right" => "aside-home-right",
 	],
 	"personnages" => [
 		"title" => "Personnages",
@@ -64,16 +64,19 @@ $pages_data = [
 		"title" => "Psioniques", 
 		"description" => "Les pouvoirs psioniques", 
 		"file" => "08-psioniques",
+		"version" => 4,
 	],
 	"vehicules" => [
 		"title" => "Véhicules", 
 		"description" => "Tout sur les véhicules&nbsp;: caractéristiques, règles de poursuites, combat, dégâts&hellip;", 
 		"file" => "09-vehicules",
+		"version" => 4,
 	],
 	"high-tech" => [
 		"title" => "High-tech", 
 		"description" => "Armes technologiques, informatique, robots, cyberprothèses&hellip;", 
 		"file" => "10-high-tech",
+		"version" => 4,
 	],
 	
 	// Univers
@@ -81,16 +84,19 @@ $pages_data = [
 		"title" => "AD&D",
 		"description" => "Ce qu’il faut pour jouer dans l’esprit <i>Donjons &amp; Dragons</i>, sans le système abject d20.",
 		"file" => "univers_add",
+		"version" => 4,
 	],
 	"in-nomine" => [
 		"title" => "In Nomine", 
 		"description" => "Une adaptation relativement libre de l’incontournable «&nbsp;Magna Veritas&nbsp;»", 
 		"file" => "univers_in_nomine",
+		"version" => 4,
 	],
 	"cthulhu" => [
 		"title" => "Cthulhu",
 		"description" => "Quelques éléments pour jouer un <i>Cthulhu</i>", 
 		"file" => "univers_cthulhu",
+		"version" => 4,
 	],
 	"ombres-esteren" => [
 		"title" => "Les ombres d’Esteren",
@@ -105,16 +111,19 @@ $pages_data = [
 		"description" => "Une évolution de l’article précédemment publié dans PTGPTB faisant la synthèse de nombreux articles sur la création de scénario", 
 		"file" => "s_scenario",
 		"body-class" => "standard-page writing-scenario",
+		"version" => 4,
 	],
 	"aide-de-jeu-medfan" => [
 		"title" => "Le Moyen Âge", 
 		"description" => "Quelques éléments sur le Moyen-Âge", 
 		"file" => "s_adj_med",
+		"version" => 4,
 	],
 	"bibliotheque-liens" => [
 		"title" => "Bibliothèque de liens", 
 		"description" => "Quelques liens utiles", 
 		"file" => "s_liens",
+		"version" => 4,
 	],
 	"test" => [
 		"title" => "Test", 
@@ -195,9 +204,5 @@ $pages_data = [
 		"file" => "licence",
 		"version" => 4,
 	]
-	
-	
-	
-	
 	
 ];

@@ -1,5 +1,5 @@
 <!-- Armes -->
-<article class="as-start">
+<article>
 	<h2>Armes</h2>
 
 	<details>
@@ -15,6 +15,11 @@
 		</p>
 		<p>Ces projectiles créent également une explosion externe (dégâts indiqués après le +).</p>
 		<table class="weapons">
+			<tr>
+				<th>Lance-roquette</th>
+				<th>Dég, portée, Cps, VdT, Rcl</th>
+				<th>Pds, Fmin</th>
+			</tr>
 			<tr>
 				<td>Léger</td>
 				<td>4d×2(10)+5d×2 ; 7/700 ; 1 ; 1 ; 0</td>
@@ -77,7 +82,7 @@
 </article>
 
 <!-- Piratage informatique -->
-<article class="as-start">
+<article>
 	<h2>Piratage informatique</h2>
 
 	<details>
@@ -97,7 +102,7 @@
 			<h3>Paramètres matériels</h3>
 		</summary>
 		<p>La tentative de piratage dépend des paramètres suivants&nbsp;:</p>
-		<ul class="mt-1">
+		<ul>
 			<li><b>Puissance</b> des ordinateurs impliqués, aussi bien l’ordinateur de l’attaquant que l’ordinateur cible (pour certaines formes d’attaques)</li>
 			<li><b>Type d’accès</b> à l’ordinateur cible. Il y a 4 types d’accès possibles.
 				<ul>
@@ -118,7 +123,7 @@
 		</summary>
 		<p>Le niveau de sécurisation d’un ordinateur dépend des compétences de son administrateur, de la qualité des programmes installés dessus (absence de faille&hellip;) et du que les dispositifs de sécurisation installés (antivirus, mur de feu, etc&hellip;) soient bien à jour.</p>
 		<p>On distingue 5 niveaux de sécurisation&nbsp;:</p>
-		<table class="alternate-e left-2">
+		<table class="left-2">
 			<tr>
 				<th>Niveau</th>
 				<th>Description</th>
@@ -179,7 +184,7 @@
 		<h4>Procédure d’attaque en aveugle</h4>
 		<p>Si le pirate ne connaît pas de faille particulière à l’avance, il va devoir en chercher une. Ceci nécessite un jet de <i>Piraterie Informatique</i> avec les modificateurs suivants&nbsp;:</p>
 
-		<table class="alternate-e left-1">
+		<table class="left-1">
 			<tr>
 				<th colspan="2">Type d’accès</th>
 			</tr>
@@ -256,7 +261,7 @@
 		<h4>Attaque réussie</h4>
 		<p>Si l’attaque réussit, le pirate a accès à l’ordinateur au moins partiellement. L’ampleur du type d’accès dépend de la MR de son jet de <i>Piraterie informatique</i>.</p>
 
-		<table class="alternate-e left-2">
+		<table class="left-2">
 			<tr>
 				<th>MR</th>
 				<th>Type d’accès</th>
@@ -310,13 +315,13 @@
 </article>
 
 <!-- Robots -->
-<article class="as-start">
+<article>
 	<h2>Robots</h2>
 
 </article>
 
 <!-- Prothèse cybernétiques -->
-<article class="as-start">
+<article>
 	<h2>Prothèses cybernétiques</h2>
 
 </article>

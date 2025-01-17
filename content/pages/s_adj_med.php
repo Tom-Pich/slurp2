@@ -10,7 +10,7 @@
 		<p>Environ 90&nbsp;% de la population vit dans des villages et hameaux.</p>
 
 		<p>Distance moyenne entre chaque agglomération selon le niveau de population de la région. Un niveau de population épars correspond à une zone peu passante du haut Moyen-Âge, tandis qu’un niveau de population dense correspond à une région prospère à la fin du moyen-âge.</p>
-		<table class="alternate-e">
+		<table>
 			<tr>
 				<th>Densité</th>
 				<th>Village</th>
@@ -231,16 +231,9 @@
 		</p>
 	</details>
 
-	<details class="flow">
+	<details>
 		<summary><h3>Officiels</h3></summary>
-		<!-- Agent de l’ordre (garde, milicien, etc.)<br>
-		Bailli (représentant du pouvoir royal dans une localité)<br>
-		Collecteur d'impôts ou de taxes<br>
-		Hérault / Annonceur public<br>
-		Messager<br>
-		Sergent de justice (huissier)<br>
-		Notaire<br>
-		Officier (chargé d’une mission publique particulière par le roi ou le seigneur) -->
+
 		<p>
 			<b>Agent de l’ordre (garde, milicien, etc.)&nbsp;:</b> Chargé de maintenir l'ordre et la sécurité<br>
 			<b>Almoinier&nbsp;:</b> Responsable de la distribution des aumônes et de l'assistance aux pauvres<br>

@@ -1,5 +1,5 @@
 <!-- Caractéristiques -->
-<article class="as-start">
+<article>
 	<h2>Caractéristiques</h2>
 
 	<details>
@@ -14,12 +14,12 @@
 			<h3>Accélération (Acc)</h3>
 		</summary>
 		<p>
-			<b>Nulle (0) :</b> Accélération très faible, sans effet en termes de jeu. C’est le cas des gros véhicules (camion, bus, gros navires) ou de ceux disposant d’un moyen de propulsion peu efficace (vélo, voilier, dirigeable).<br />
-			<b>Faible (1) :</b> Camion vide, camionnette chargée, voiture poussive.<br />
-			<b>Médiocre (2) :</b> Petite voiture moderne, camionnette.<br />
-			<b>Moyenne (3) :</b> Voiture moyenne moderne, 50 cm<sup>3</sup>.<br />
-			<b>Bonne (4) :</b> Voiture assez puissante, moto légère.<br />
-			<b>Très bonne (5) :</b> Voiture de sport moderne, moto moyenne.<br />
+			<b>Nulle (0) :</b> Accélération très faible, sans effet en termes de jeu. C’est le cas des gros véhicules (camion, bus, gros navires) ou de ceux disposant d’un moyen de propulsion peu efficace (vélo, voilier, dirigeable).<br>
+			<b>Faible (1) :</b> Camion vide, camionnette chargée, voiture poussive.<br>
+			<b>Médiocre (2) :</b> Petite voiture moderne, camionnette.<br>
+			<b>Moyenne (3) :</b> Voiture moyenne moderne, 50 cm<sup>3</sup>.<br>
+			<b>Bonne (4) :</b> Voiture assez puissante, moto légère.<br>
+			<b>Très bonne (5) :</b> Voiture de sport moderne, moto moyenne.<br>
 			<b>Excellente (6) :</b> Voiture exceptionnelle, moto sportive.
 		</p>
 		<p>Si le véhicule est chargé, son <i>Acc</i> est diminuée de 1, sans toutefois pouvoir être inférieure à 0.</p>
@@ -38,12 +38,12 @@
 		</summary>
 		<p>Plus la <i>Maniabilité</i> d’un véhicule est grande, plus des écarts de mouvements brusques et des virages serrés sont possibles.</p>
 		<p>
-			<b>Nulle (0) :</b> Ne peut faire aucun écart. Lent et lourd à manœuvrer. Semi-remorque ou camion chargé. Tout véhicule d’une échelle de taille supérieure à 3 a automatiquement une maniabilité de zéro.<br />
-			<b>Mauvaise (1) :</b> Camionnette chargée. Voiture en mauvaise état, camion moyen vide.<br />
-			<b>Médiocre (2) :</b> Voiture moderne bas de gamme, camionnette vide. Très grosse moto.<br />
-			<b>Moyenne (3) :</b> Voiture moderne moyenne, petit van, petite moto urbaine.<br />
-			<b>Bonne (4) :</b> Voiture moderne de bonne qualité. Moto routière ou trail.<br />
-			<b>Très bonne (5) :</b> Voiture haut de gamme. Moto sportive.<br />
+			<b>Nulle (0) :</b> Ne peut faire aucun écart. Lent et lourd à manœuvrer. Semi-remorque ou camion chargé. Tout véhicule d’une échelle de taille supérieure à 3 a automatiquement une maniabilité de zéro.<br>
+			<b>Mauvaise (1) :</b> Camionnette chargée. Voiture en mauvaise état, camion moyen vide.<br>
+			<b>Médiocre (2) :</b> Voiture moderne bas de gamme, camionnette vide. Très grosse moto.<br>
+			<b>Moyenne (3) :</b> Voiture moderne moyenne, petit van, petite moto urbaine.<br>
+			<b>Bonne (4) :</b> Voiture moderne de bonne qualité. Moto routière ou trail.<br>
+			<b>Très bonne (5) :</b> Voiture haut de gamme. Moto sportive.<br>
 			<b>Excellente (6) :</b> Voiture exceptionnelle.
 		</p>
 		<p>Si le véhicule est chargé, sa <i>Ma</i> est diminuée de 1, sans toutefois pouvoir être inférieure à 0.</p>
@@ -63,7 +63,7 @@
 		<p>Les points de Structure sont les PdV du véhicule. Pour un véhicule en métal de longueur <i>L</i> ayant les proportions d’une voiture : PdS = 13×<i>L</i><sup>0,96</sup>.</p>
 		<p>Un véhicule ayant une forme plus compacte aura 10% de PdS en plus, un véhicule cubique ou sphérique en aura 20% en plus. À l’inverse, un véhicule fin ou très fin aura 10 à 20 % de PdS en moins.</p>
 		<h4>Quelques ordres de grandeur indicatifs</h4>
-		<p>48 à 52 PdS pour une voiture classique&nbsp;; 55 à 65 pour un pick-up, un SUV ou une voiture de luxe.<br />
+		<p>48 à 52 PdS pour une voiture classique&nbsp;; 55 à 65 pour un pick-up, un SUV ou une voiture de luxe.<br>
 			100 PdS pour un bus, un camion ou un tracteur de semi-remorque,
 			26 à 33 PdS pour une moto</p>
 	</details>
@@ -85,7 +85,7 @@
 </article>
 
 <!-- Actions -->
-<article class="as-start">
+<article>
 	<h2>Actions</h2>
 
 	<details>
@@ -110,10 +110,10 @@
 		<h4>Portée</h4>
 		<p>Au début de la poursuite, le MJ définit la portée séparant les deux véhicules. Pour la fluidité du jeu, on ne distinguera que 5 types de portée.</p>
 		<p>
-			<b>Courte 1 :</b> Les véhicules sont très proches sans être au contact.<br />
-			<b>Courte 2 :</b> Des échanges de tir sont possibles quasiment à tout moment entre les véhicules. La distance réelle peut varier selon le décor.<br />
-			<b>Moyenne 1 :</b> Les deux véhicules se voient par intermittence.<br />
-			<b>Moyenne 2 :</b> Un échange de tir est rarement possible.<br />
+			<b>Courte 1 :</b> Les véhicules sont très proches sans être au contact.<br>
+			<b>Courte 2 :</b> Des échanges de tir sont possibles quasiment à tout moment entre les véhicules. La distance réelle peut varier selon le décor.<br>
+			<b>Moyenne 1 :</b> Les deux véhicules se voient par intermittence.<br>
+			<b>Moyenne 2 :</b> Un échange de tir est rarement possible.<br>
 			<b>Longue :</b> Les véhicules ne peuvent pas se tirer dessus, mais la poursuite est possible.
 		</p>
 
@@ -130,7 +130,7 @@
 			<summary>Exemple</summary>
 			<p>Une voiture de police (<i>Ma</i> 4, <i>Acc</i> 4) prend en chasse un chauffard conduisant une voiture de sport ancienne (<i>Ma</i> 4, <i>Acc</i> 5) sur une route de montagne.</p>
 			<p>Le MJ décide que, le temps que les policiers démarrent la voiture et sortent de leur cachette, la poursuite commence à une portée «&nbsp;Moyenne 1&nbsp;».</p>
-			<p>Le chauffard (<i>Conduite</i> 13) veut semer les policiers et décide de prendre quelques riques en s’imposant un malus de -2. Sur une route de montagne, la Manœuvrabilité et l’Accélération des véhicules sont importantes. La <i>Ma</i> des véhicules étant identique, elle n’avantage personne, mais l’<i>Acc</i> supérieure de la voiture de sport joue en faveur du poursuivi.<br /></p>
+			<p>Le chauffard (<i>Conduite</i> 13) veut semer les policiers et décide de prendre quelques riques en s’imposant un malus de -2. Sur une route de montagne, la Manœuvrabilité et l’Accélération des véhicules sont importantes. La <i>Ma</i> des véhicules étant identique, elle n’avantage personne, mais l’<i>Acc</i> supérieure de la voiture de sport joue en faveur du poursuivi.<br></p>
 			<p>Le chauffard obtient une MR de 3 et le policier qui conduit obtient une MR de 4. Le chauffard ajoute à sa MR 2 fois la différence d’<i>Acc</i> (2×1) pour une MR effective de 5. Il s’en tire un peu mieux que les policiers, mais pas de manière assez significative pour faire une différence en termes de portée.</p>
 			<p>Après avoir décrit quelques virages serrés qui s’enchaînent et les pneus qui crissent, le MJ estime qu’il est temps de faire un nouveau duel. Le poursuivi décide d’augmenter l’allure et s’impose un malus de -3. Les policiers refusent de prendre un tel risque et perdent automatiquement le duel. Le chauffard doit néanmoins faire son jet de <i>Conduite</i> à -3. Il le rate de 1. Sa voiture dérape dans un virage, ce qui lui fait perdre également le duel (la portée n’évolue donc toujours pas pour cette séquence). Il doit donc immédiatement faire un second jet à -3 pour éviter l’accident.</p>
 		</details>
@@ -144,7 +144,7 @@
 		</summary>
 		<p>En cas d’échec, les conséquences varient selon la ME du jet de contrôle, du type de véhicule et de la nature du terrain dans lequel ce véhicule se déplace. Pour une voiture, cela peut aller d’un simple dérapage à une sortie de route suivie de tonneaux. Le tableau suivant permet d’estimer les conséquences d’un jet de <i>Contrôle</i> raté.</p>
 
-		<table class="alternate-e left-2">
+		<table class="left-2">
 			<tr>
 				<th>ME</th>
 				<th>Interprétation</th>
@@ -172,6 +172,7 @@
 		</table>
 
 		<details class="exemple">
+			<summary>Exemple</summary>
 			<p>Reprenons l’exemple précédent. Le chauffard vient de rater son second jet de <i>Contrôle</i> de 2. Le véhicule dérape et vient glisser contre la falaise de pierre. Il est amoché mais peut encore fonctionner (cf. plus bas pour la gestion des dégâts).</p>
 			<p>S’il avait raté son jet de 3 ou 4, le véhicule aurait fini par heurter un talus ou un rocher, après avoir été ralenti par son contact avec la falaise. Il aurait été hors d’état de marche et son occupant aurait pu subir quelques dégâts (surtout sans ceinture).</p>
 			<p>Une erreur grave aurait pu entraîner un tonneau et une fin dans le fossé, alors qu’une erreur catastrophique l’aurait envoyé au fond du ravin.</p>
@@ -227,7 +228,7 @@
 </article>
 
 <!-- Effets des dégâts -->
-<article class="as-start">
+<article>
 	<h2>Effets des dégâts</h2>
 
 	<p>Les effets des dégâts sur un véhicule suivent les règles décrites au chapitre <i>Combat</i>.</p>
@@ -237,7 +238,7 @@
 			<h3>Perte de contrôle du véhicule</h3>
 		</summary>
 		<p>Lorsqu’un véhicule subit des dégâts, il faut faire un jet de <i>Contrôle</i> dont la difficulté dépend des dégâts reçus par le véhicule.</p>
-		<table class="alternate-e left-1">
+		<table class="left-1">
 			<tr>
 				<th>Dégâts reçus</th>
 				<th>Difficulté</th>
@@ -274,7 +275,7 @@
 		<p>Selon le contexte (taille du véhicule, localisation des occupants, etc.), les occupants sont automatiquement affectés <i>ou bien</i> ils ne sont affectés que si cela est indiqué dans les effets secondaires.</p>
 		<p>Les blessures peuvent être multiples&nbsp;: pour chaque dé de dégâts, déterminer une localisation (on peut se limiter à 4 localisations pour accélérer le calcul). Les dégâts sont en général des dégâts de broyage, mais du tranchant voire du perforant n’est pas exclu (jet de probabilité – <i>Peu probable</i> à <i>Très peu probable</i> selon les circonstances).</p>
 
-		<table class="alternate-e left-1">
+		<table class="left-1">
 			<tr>
 				<th>Dégâts au véhicule ou localisation</th>
 				<th>Dégâts occupants</th>
@@ -374,7 +375,7 @@
 </article>
 
 <!-- Règles spécifiques -->
-<article class="as-start">
+<article>
 	<h2>Règles spécifiques</h2>
 	<details>
 		<summary>
@@ -382,27 +383,27 @@
 		</summary>
 		<p>Une voiture non-blindée a une RD 5 pour la carrosserie (+1 à +2 pour une voiture ancienne ou de luxe) et 3 pour les vitres.</p>
 
-		<table class="alternate-e left-1">
+		<table class="left-1">
 			<tr>
 				<th>Localisation &amp; Effets secondaires</th>
 			</tr>
 			<tr>
 				<td>
-					<b>Moteur</b><br />
-					<b>Niv. 1 :</b> fonctionne normalement 2d minutes puis panne<br />
+					<b>Moteur</b><br>
+					<b>Niv. 1 :</b> fonctionne normalement 2d minutes puis panne<br>
 					<b>Niv. 2 :</b> fonctionne 1d minutes (-2 Acc, -50% Vit.) puis HS
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<b>Roue</b><br />
+					<b>Roue</b><br>
 					Le pneu est crevé (niv.1) ou éclate (niv. 2+). <i>Ma</i> -2 pour une seule roue crevée sur une voiture. Le véhicule est incontrôlable avec 2 pneus crevés.
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<b>Réservoir</b><br />
-					<b>Niv. 1 :</b> réservoir percé. La fuite ne posera pas de problème immédiat sauf en cas de flammes.<br />
+					<b>Réservoir</b><br>
+					<b>Niv. 1 :</b> réservoir percé. La fuite ne posera pas de problème immédiat sauf en cas de flammes.<br>
 					<b>Niv. 2 :</b> Le carburant peut prendre feu – <b>1-5</b> pour de l’essence et <b>1-3</b> pour du gasoil.
 				</td>
 			</tr>
@@ -415,7 +416,7 @@
 		</summary>
 		<p>Une moto à une RD générale de 3.</p>
 		<p>Pour les effets secondaires, voir <i>voiture à moteur thermique</i>.</p>
-		<p>Une chute sans collision est considérée comme une collision <i>légère</i> ou <i>moyenne</i> selon les circonstances. <br />
+		<p>Une chute sans collision est considérée comme une collision <i>légère</i> ou <i>moyenne</i> selon les circonstances. <br>
 			Le pilote reçoit des dégâts qui dépendent de la gravité de la chute&nbsp;: soit d’un niveau inférieur, soit du même niveau (probabilité 50–50) </p>
 
 	</details>

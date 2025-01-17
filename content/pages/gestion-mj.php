@@ -317,7 +317,7 @@ $playNotif = false;
 		<b>Dég.</b> <span data-content="Dégâts"></span>&nbsp;;
 		<b>Réf.</b> <span data-content="Réflexes"></span>&nbsp;;
 		<b>S.-F.</b> <span data-content="Sang-Froid"></span>&nbsp;;
-		<b>Vit.</b> <span data-content="Vitesse"></span>&nbsp;;
+		<b>Vit.</b> <span data-content="Vitesse"></span>
 	</p>
 
 	<p data-content="Avantage"></p>
