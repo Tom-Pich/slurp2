@@ -15,7 +15,6 @@ use App\Repository\CreatureRepository;
 use App\Repository\PsiPowerRepository;
 use App\Repository\DisciplineRepository;
 
-$avdesav_repo = new AvDesavRepository;
 $skill_repo = new SkillRepository;
 $spell_repo = new SpellRepository;
 $college_repo = new CollegeRepository;
@@ -25,19 +24,41 @@ $psi_repo = new PsiPowerRepository;
 $creature_repo = new CreatureRepository;
 
 $id = (int) ($_GET["id"] ?? 0);
+$file = NULL;
+$title = [
+	"avdesav" => "Avantage ou Désavantage",
+	"competence" => "Compétence",
+	"sort" => "Sort",
+	"pouvoir" => "Pouvoir",
+	"psi" => "Pouvoir psionique",
+	"creature" => "Créature",
+]
+?>
+<?php if ($_GET["req"] !== "pouvoir"): ?>
+	<script src="https://cdn.tiny.cloud/1/yz5330dqgj93ymq1h7crpikarybmhr23o91ctzmkemy8ew3t/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+<?php endif ?>
 
+<div class="flex gap-1 ai-center">
+	<h2 class="fl-1"><?= $title[$_GET["req"]] ?? "Erreur" ?></h2>
+	<?php if (isset($_SERVER["HTTP_REFERER"])): ?>
+		<a href="<?= $_SERVER["HTTP_REFERER"] ?>" class="btn mt-½"><span class="ff-fas">&#xf0a8</span> Retour</a>
+	<?php endif ?>
+</div>
+
+<?php
 // Avantages & Désavantages
 if ($_GET["req"] === "avdesav") {
+	$avdesav_repo = new AvDesavRepository;
 	$avdesav = $id ? $avdesav_repo->getAvDesav($id) : new AvDesav();
 	$liste_categories = $avdesav_repo->getDistinctCategories();
-	include is_null($avdesav) ? "content/components/editor-error.php" : "content/components/editor-avdesav.php";
+	if ($avdesav) $file = "editor-avdesav.php";
 }
 
 // Compétences
 elseif ($_GET["req"] === "competence") {
 	$comp = $id ? $skill_repo->getSkill($id) : new Skill();
 	$liste_categories = $skill_repo->getDistinctCategories();
-	include is_null($comp) ? "content/components/editor-error.php" : "content/components/editor-skill.php";
+	if ($comp) $file = "editor-skill.php";
 }
 
 // Sorts
@@ -46,7 +67,7 @@ elseif ($_GET["req"] === "sort") {
 	$liste_colleges = $college_repo->getCollegesName();
 	$liste_origines = $spell_repo->getDistinctOrigins();
 	$liste_classes = $spell_repo->getDistinctClasses();
-	include is_null($sort) ? "content/components/editor-error.php" : "content/components/editor-spell.php";
+	if ($sort) $file = "editor-spell.php";
 }
 
 // Pouvoirs
@@ -55,7 +76,7 @@ elseif ($_GET["req"] === "pouvoir") {
 	$liste_categories = $power_repo->getDistinctCategories();
 	$liste_domaines = $power_repo->getDistinctDomains();
 	$liste_origines = $power_repo->getDistinctOrigins();
-	include is_null($pouvoir) ? "content/components/editor-error.php" : "content/components/editor-power.php";
+	if ($pouvoir) $file = "editor-power.php";
 }
 
 // Psi
@@ -64,7 +85,7 @@ elseif ($_GET["req"] === "psi") {
 	$liste_disciplines = $discipline_repo->getDisciplinesName();
 	$liste_origines = $psi_repo->getDistinctOrigins();
 	$liste_classes = $spell_repo->getDistinctClasses();
-	include is_null($psi) ? "content/components/editor-error.php" : "content/components/editor-psi.php";
+	if ($psi) $file = "editor-psi.php";
 }
 
 // Créatures
@@ -72,9 +93,49 @@ elseif ($_GET["req"] === "creature") {
 	$creature = $id ? $creature_repo->getCreature($id) : new Creature();
 	$liste_categories = $creature_repo->getDistinctCategories();
 	$liste_origines = $creature_repo->getDistinctOrigins();
-	include is_null($creature) ? "content/components/editor-error.php" : "content/components/editor-creature.php";
+	if ($creature) $file = "editor-creature.php";
 }
 
-else {
-	include "content/components/editor-error.php";
-}
+if (!$file) echo "<div class='mt-5 fs-500 ta-center'>La ressource demandée n’existe pas&nbsp;!</div>";
+else include "content/components/" . $file;
+?>
+
+<?php if ($_GET["req"] !== "pouvoir"): ?>
+	<script>
+		tinymce.init({
+			selector: 'textarea[tinyMCE]',
+			menubar: false,
+			plugins: ['lists', 'code'],
+			toolbar: 'bold italic bullist numlist code removeformat',
+			entity_encoding: "raw",
+			extended_valid_elements: "b,i",
+			formats: {
+				bold: {
+					inline: "b"
+				},
+				italic: {
+					inline: "i"
+				}
+			},
+			content_css: "/styles-v4.min.css",
+			content_style: "#tinymce { outline: none } ",
+			body_class: "flow p-1",
+			branding: false
+		});
+	</script>
+<?php endif ?>
+
+<script type="module">
+	const form = document.querySelector("main form");
+	form.addEventListener("submit", (e) => {
+		e.preventDefault();
+		const editors = tinymce.get();
+		editors.forEach(editor => editor.targetElm.value = editor.getContent())
+		const data = new FormData(form);
+		//console.log(data)
+		fetch(form.action, {
+			method: "post",
+			body: data
+		})
+	})
+</script>

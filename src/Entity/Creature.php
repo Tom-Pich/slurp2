@@ -87,7 +87,7 @@ class Creature implements RulesItem
 				</div>
 			</summary>
 
-			<div class="mt-½"><?= $this->description ?></div>
+			<div class="mt-½ fs-300 flow"><?= $this->description ?></div>
 
 			<div class="mt-½">
 				<b>For&nbsp;:</b> <?= $this->readableStrength ?>&emsp;<b>Int&nbsp;:</b> <?= $this->int ?><br>
@@ -101,13 +101,18 @@ class Creature implements RulesItem
 			</div>
 
 			<?php if ($this->avdesav) { ?>
-				<p><b>Avantages &amp; Désavantages&nbsp;:</b> <?= $this->avdesav ?></p>
+				<p class="fs-300"><b>Avantages &amp; Désavantages&nbsp;:</b> <?= str_replace(" ;", " ;" , $this->avdesav) ?></p>
 			<?php } ?>
 			<?php if ($this->powers) { ?>
-				<p><b>Pouvoirs&nbsp;:</b> <?= $this->powers ?></p>
+				<p class="fs-300"><b>Pouvoirs&nbsp;:</b> <?= str_replace(" ;", " ;" , $this->powers) ?></p>
 			<?php } ?>
 
-			<p><b>Combat&nbsp;:</b> <?= $this->combat ?></p>
+			<div class="mt-½ fs-300">
+				<p><b>Combat</b></p>
+				<div class="flow">
+					<?= $this->combat ?>
+				</div>
+			</div>
 
 		</details>
 <?php }

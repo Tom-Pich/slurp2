@@ -8,13 +8,12 @@ ini_set("xdebug.var_display_max_data", -1);
 // WoundController::getWoundEffects("std", 10, 10, 10, 10, 0, 3, 0, "tr", "", "visage", [10,10,10,10,10,10,10]);
 
 
-$test = new Character(31);
+$test = new Character(33);
 //$test->processCharacter();
 
 ?>
 <pre>
 <?php
-var_dump($test)
+print_r($test);
 ?>
 </pre>
-<!-- <script type="module" src="/scripts/unit-tests.js"></script> -->

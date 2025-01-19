@@ -30,7 +30,7 @@ foreach (Spell::cost_as_power as $cost) {
 		<summary>
 			<h3>Rôles et statuts particuliers</h3>
 		</summary>
-		<ul>
+		<ul class="flow">
 			<li><b>demorthèn&nbsp;:</b> représentant de la nature, il peut entrer en contact avec les esprits (C’maogh) et leur demander d’accomplir des tâches particulières. Il est le gardien des anciennes traditions péninsulaires et il est souvent considéré avec respect. Les apprentis demorthèn sont appelés <i>ionnthèn</i></li>
 			<li><b>dàmàthair&nbsp;:</b> femme ayant la responsabilité, dans une communauté, de l’éducation des enfants et de la protection des plus faibles lors des attaques.</li>
 			<li><b>ansailéir&nbsp;:</b> chef de clan</li>
@@ -107,7 +107,10 @@ foreach (Spell::cost_as_power as $cost) {
 		</ul>
 
 		<h4>Compétences</h4>
-		<p>Théologie</p>
+		<?php
+			$theologie = $skill_repo->getSkill(193);
+			$theologie->displayInRules(show_edit_link: $_SESSION["Statut"] === 3);
+			?>
 	</details>
 
 </article>
@@ -343,10 +346,8 @@ foreach (Spell::cost_as_power as $cost) {
 
 	</details>
 
-	<h4>À creuser</h4>
-	<ul>
-		<li>Pts de Rindath supplémentaires</li>
-	</ul>
+	<p class="clr-invalid"><b>À creuser&nbsp;:</b> points de Rindath supplémentaires</p>
+
 </article>
 
 <!-- Temple -->

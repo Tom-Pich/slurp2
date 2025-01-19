@@ -80,7 +80,7 @@ $playNotif = false;
 			<summary>
 				<h3><?= $group->id ?? "X" ?>. <?= $group->name ?></h3>
 			</summary>
-			<div class="grid col-auto-fit gap-½ mt-½" style="--col-min-width: 370px">
+			<div class="grid col-auto-fill gap-½ mt-½" style="--col-min-width: 370px">
 				<?php
 				$group_characters = array_filter($characters, fn($x) => $x->id_group === $group->id);
 				foreach ($group_characters as $perso) {
@@ -331,5 +331,12 @@ $playNotif = false;
 	<p class="mt-1 mb-0 fw-700">Encombrement <span data-content="Encombrement"></span></p>
 	<p class="mt-0" data-content="Équipement"></p>
 </template>
+
+<!-- Dialog for details displayed on click (PJ avdesav) -->
+<dialog data-name="details">
+	<button data-role="close-modal" class="ff-fas">&#xf00d;</button>
+	<h4 class="mt-½"></h4>
+	<div class="mt-½ flow"></div>
+</dialog>
 
 <script type="module" src="/scripts/characters-manager<?= PRODUCTION ? ".min" : "" ?>.js?v=<?= VERSION ?>" defer></script>

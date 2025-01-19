@@ -71,7 +71,7 @@ export function explicitSign(int){
 	return `${int}`
 }
 
-export function getInnerText(html){
+/* export function getInnerText(html){
 	const doc = new DOMParser().parseFromString(html, 'text/html');
 	return doc.body.textContent || "";
-}
+} */

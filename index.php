@@ -203,6 +203,16 @@ if ($path_segments[1] === "api") {
 			if (!in_array($id, $allowed_character_ids)) (new Error404Controller)->show();
 			$controller->getCharacter($id);
 			break;
+		case "/api/get-avdesav":
+			Firewall::check(isset($_GET["id"]));
+			$id = (int) $_GET["id"];
+			$controller->getAvdesav($id);
+			break;
+		case "/api/get-spell":
+			Firewall::check(isset($_GET["id"]));
+			$id = (int) $_GET["id"];
+			$controller->getSpell($id);
+			break;
 		default:
 			Firewall::redirect_to_404();
 	}
@@ -294,43 +304,36 @@ elseif ($path_segments[1] === "submit") {
 			Firewall::filter(3);
 			Firewall::check(!empty($_POST));
 			AvDesav::processSubmitAvdesav($_POST);
-			header("Location: /avdesav-comp-sorts");
 			break;
 
 		case "/submit/set-skill":
 			Firewall::filter(3);
 			Firewall::check(!empty($_POST));
 			Skill::processSubmitSkill($_POST);
-			header("Location: /avdesav-comp-sorts");
 			break;
 
 		case "/submit/set-spell":
 			Firewall::filter(3);
 			Firewall::check(!empty($_POST));
 			Spell::processSubmitSpell($_POST);
-			header("Location: /avdesav-comp-sorts");
 			break;
 
 		case "/submit/set-power":
 			Firewall::filter(3);
 			Firewall::check(!empty($_POST));
 			Power::processSubmitPower($_POST);
-			header("Location: /in-nomine");
 			break;
 
 		case "/submit/set-psi":
 			Firewall::filter(3);
 			Firewall::check(!empty($_POST));
 			PsiPower::processSubmitPower($_POST);
-			header("Location: /psioniques");
 			break;
 
 		case "/submit/set-creature":
 			Firewall::filter(3);
 			Firewall::check(!empty($_POST));
 			Creature::processSubmitCreature($_POST);
-			if ($_POST["Origine"] === "ADD") header("Location: /adapted-dungeons-dragons");
-			else header("Location: /animaux");
 			break;
 
 		default:

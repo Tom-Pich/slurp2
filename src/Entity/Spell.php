@@ -171,7 +171,7 @@ class Spell implements RulesItem
 				</div>
 			</summary>
 
-			<div class="mt-½">
+			<div class="mt-½ fs-300">
 				<?php if (!empty($data["colleges-list"])) {
 					$spell_colleges_names = [];
 					foreach ($this->colleges as $id_college) {
@@ -182,7 +182,7 @@ class Spell implements RulesItem
 				<?php } ?>
 			</div>
 
-			<?php $this->displayFullDescription() ?>
+			<div class="mt-½ fs-300"><?php $this->displayFullDescription() ?></div>
 
 		</details>
 	<?php }
@@ -196,7 +196,7 @@ class Spell implements RulesItem
 	 */
 	public function displayFullDescription($custom_time = "")
 	{ ?>
-		<div class="mt-½">
+		<div class="flow">
 			<?= $this->class ? "<b>" . $this->class . " – </b>" : "" ?>
 			<?= Define::implementDefinitions($this->description, Define::magic_dictionnary) ?>
 		</div>

@@ -73,11 +73,8 @@ class PowerRepository extends AbstractRepository
 		} else {
 			$query = $this->db->query("SELECT DISTINCT Catégorie FROM pouvoirs ORDER BY Catégorie");
 		}
-		$categories = [];
-		while ($item = $query->fetch(\PDO::FETCH_ASSOC)) {
-			$categories[] = $item["Catégorie"];
-		}
-		return $categories;
+		$categories = $query->fetchAll(\PDO::FETCH_COLUMN);
+		return array_values(array_filter($categories)); // strip empty values and re-index
 	}
 
 	public function getDistinctDomains(string $origin = null): array
@@ -88,11 +85,8 @@ class PowerRepository extends AbstractRepository
 		} else {
 			$query = $this->db->query("SELECT DISTINCT Domaine FROM pouvoirs ORDER BY Domaine");
 		}
-		$domains = [];
-		while ($item = $query->fetch(\PDO::FETCH_ASSOC)) {
-			$domains[] = $item["Domaine"];
-		}
-		return $domains;
+		$domains = $query->fetchAll(\PDO::FETCH_COLUMN);
+		return array_values(array_filter($domains)); // strip empty values and re-index
 	}
 
 	public function getDistinctOrigins(): array

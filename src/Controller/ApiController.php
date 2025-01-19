@@ -15,6 +15,9 @@ use App\Rules\ObjectController;
 use App\Rules\ReactionController;
 use App\Rules\MentalHealthController;
 use App\Generator\NPCGenerator;
+use App\Repository\AvDesavRepository;
+use App\Repository\PowerRepository;
+use App\Repository\SpellRepository;
 
 class ApiController
 {
@@ -46,14 +49,14 @@ class ApiController
 		$stringified_damages = join("/", $damages);
 		$stringified_damages = $stringified_damages === "" ? "Code dégâts non valide" : $stringified_damages;
 
-		if ($display_also_1M){
+		if ($display_also_1M) {
 			$damages_1M = [];
 			foreach ($dice_codes as $code) {
 				$damage = Equipment::evaluateDamages($for, $code, "1M");
 				$damages_1M[] = $damage;
 			}
 			$stringified_1M_damages = join("/", $damages_1M);
-			if (!empty($stringified_1M_damages)){
+			if (!empty($stringified_1M_damages)) {
 				$stringified_damages = $stringified_1M_damages . " (1M) – " . $stringified_damages . " (2M)";
 			}
 		}
@@ -170,7 +173,7 @@ class ApiController
 		$this->sendResponse();
 	}
 
-	public function getFrightcheckResult (int $frightLevel, int $sfScore, int $sanScore, int $frightcheckMR, int $frighcheckCriticalStatus, string $frighcheckSymbol, array $rolls)
+	public function getFrightcheckResult(int $frightLevel, int $sfScore, int $sanScore, int $frightcheckMR, int $frighcheckCriticalStatus, string $frighcheckSymbol, array $rolls)
 	{
 		$this->response["data"] = MentalHealthController::getFrighcheckEffects($frightLevel, $sfScore, $sanScore, $frightcheckMR, $frighcheckCriticalStatus, $frighcheckSymbol, $rolls);
 		$this->sendResponse();
@@ -182,6 +185,29 @@ class ApiController
 		$character->processCharacter();
 		$character_array = get_object_vars($character);
 		$this->response["data"] = $character_array;
+		$this->sendResponse();
+	}
+
+	public function getAvdesav(int $id)
+	{
+		$avdesav_repo = new AvDesavRepository;
+		$avdesav = $avdesav_repo->getAvDesav($id);
+		$avdesav_array = get_object_vars($avdesav);
+		$this->response["data"] = $avdesav_array;
+		$this->response["data"]["displayCost"] = $avdesav->displayCost();
+		$this->sendResponse();
+	}
+
+	public function getSpell(int $id)
+	{
+		$spell_repo = new SpellRepository;
+		$spell = $spell_repo->getSpell($id);
+		$spell_array = get_object_vars($spell);
+		$this->response["data"] = $spell_array;
+		ob_start();
+		$spell->displayFullDescription();
+		$fullDescription = ob_get_clean();
+		$this->response["data"]["fullDescription"] = $fullDescription;
 		$this->sendResponse();
 	}
 

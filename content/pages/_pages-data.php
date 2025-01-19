@@ -15,6 +15,7 @@ $pages_data = [
 		"description" => "Les règles concernant la création de personnage",
 		"file" => "01a-personnage",
 		"version" => 4,
+		"aside-left" => "aside-01-left",
 	],
 	"avdesav-comp-sorts" => [
 		"title" => "Listes pour le personnage",
@@ -123,6 +124,13 @@ $pages_data = [
 		"title" => "Bibliothèque de liens", 
 		"description" => "Quelques liens utiles", 
 		"file" => "s_liens",
+		"version" => 4,
+	],
+	"traits-de-caractere" => [
+		"title" => "Traits de caractère", 
+		"description" => "Une liste de traits de caractère pour aider à la création de PJ et de PNJ", 
+		"file" => "s_caracteres",
+		//"body_class" => "basic-page",
 		"version" => 4,
 	],
 	"test" => [

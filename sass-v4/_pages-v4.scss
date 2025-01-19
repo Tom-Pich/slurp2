@@ -3,7 +3,11 @@ body.basic-page{
 }
 
 body.standard-page {
-	main { display: flex; gap: 1em; flex-wrap: wrap; justify-content: center; gap: 1em; }
+	main { display: flex; gap: 1em; flex-wrap: wrap;  gap: 1em; }
+	aside.left:empty + main { justify-content: center; }
+
+	//aside { border: 1px solid var(--grey-700); border-radius: 1em; }
+
 	:is(section, article) { border: 1px solid var(--grey-700); border-radius: 1em; box-shadow: var(--box-shadow); width: var(--col-width);  margin-top: .75em; }
 	:is(section, article) h2 { color: var(--white); font-size: var(--fs-450); margin: -1.25rem 0 1em; padding: .25em; }
 	:is(section, article) h2:not(.bg-primary-500, .bg-secondary-500, .bg-tertiary-500) { background-color: var(--black);  }
@@ -36,6 +40,8 @@ body.table-jeu {
 			input:not([type=checkbox]), select { width: 6ch; }
 		}
 	}
+
+	aside.right { margin-top: .75em; }
 }
 
 body.personnage-fiche {
@@ -157,6 +163,8 @@ body.gestionnaire-mj {
 		position: sticky; top: 1em;
 		#chat-dialog-wrapper { height: 55vh; }
 	}
+
+	[data-details] { cursor: help; }
 }
 
 body.wiki {

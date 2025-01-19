@@ -1,6 +1,7 @@
-import { qs, qsa, calculate, getInnerText } from "./utilities.js";
+import { qs, qsa, calculate, int } from "./utilities.js";
 import { wsURL, Message } from "./ws-utilities.js";
 import { updateDOM } from "./update-dom.js";
+import { fetchResult } from "./game-table-utilities.js";
 
 const sessionId = qs("#ws-data").dataset.sessionId;
 const wsKey = qs("#ws-data").dataset.wsKey;
@@ -56,11 +57,9 @@ groupWrappers.forEach((group) => {
     if (localStorage.getItem(`group-${group.dataset.group}`) === "true") {
         group.setAttribute("open", true);
     }
-    group.addEventListener("click", (e) => {
-        if (e.target.tagName === "SUMMARY") {
-            const opening = !e.target.closest("details").hasAttribute("open");
-            localStorage.setItem(`group-${group.dataset.group}`, opening);
-        }
+    group.addEventListener("toggle", (e) => {
+        const opening = e.target.hasAttribute("open");
+        localStorage.setItem(`group-${group.dataset.group}`, opening);
     });
 });
 
@@ -121,21 +120,26 @@ characterStateForms.forEach((form) => {
         }
     });
 
-    //let timeoutId;
-
-    // submit form on keyup with delay : 🖐️ provoque 2 pings – un pour le keyup, un autre pour le change
-    /* form.addEventListener("keyup", (e) => {
-        if (timeoutId) clearTimeout(timeoutId);
-        timeoutId = setTimeout(function () {
-            submitCharacterForm(form);
-        }, 3000);
-    }); */
-
-    // submit form on change
-    /* form.addEventListener("change", (e) => {
-        if (timeoutId) clearTimeout(timeoutId);
-        submitCharacterForm(form);
-    }); */
+    // click listener on element with details callable in dialog
+    form.addEventListener("click", async (e) => {
+        const target = e.target;
+        if (target.hasAttribute("data-details")) {
+            const id = int(target.dataset.id);
+            const detailsDialog = qs("[data-name=details]");
+            if (target.dataset.type === "avdesav" || target.dataset.type === "power" && target.dataset.origin === "avantage") {
+                const avdesav = await fetchResult("/api/get-avdesav?id=" + id);
+                detailsDialog.querySelector("h4").innerText = `${avdesav.name} (${avdesav.displayCost})`;
+                detailsDialog.querySelector("div").innerHTML = avdesav.description;
+            }
+			if (target.dataset.type === "power" && target.dataset.origin === "sort") {
+                const spell = await fetchResult("/api/get-spell?id=" + id);
+                detailsDialog.querySelector("h4").innerText = `${spell.name} (${spell.readableNiv})`;
+                detailsDialog.querySelector("div").innerHTML = spell.fullDescription;
+            }
+            detailsDialog.showModal();
+            document.activeElement.blur();
+        }
+    });
 });
 
 // submit items form and update
@@ -206,9 +210,9 @@ function fillCharacterSummary(id, data) {
         const filteredElements = data.avdesav.filter((elem) => elem.catégorie === category && !ignoredAvdesav.includes(elem.id));
         const displayedElements = [];
         filteredElements.forEach((elem) => {
-			let displayedElement;
-			if (elem.description) displayedElement = `<span title="${getInnerText(elem.description)}">${elem.nom} (${elem.points})</span>`
-			else displayedElement = `${elem.nom} (${elem.points})`
+            let displayedElement;
+            if (elem.description) displayedElement = `<span data-details data-type="avdesav" data-id="${elem.id}">${elem.nom} (${elem.points})</span>`;
+            else displayedElement = `${elem.nom} (${elem.points})`;
             displayedElements.push(displayedElement);
         });
         fillValueInTemplate(clone, category, displayedElements.join(", "));
@@ -218,7 +222,12 @@ function fillCharacterSummary(id, data) {
     const displayedColleges = colleges.length ? `<b>Collèges&nbsp;:</b> ${colleges.join(", ")}` : "";
     fillValueInTemplate(clone, "Collèges", displayedColleges);
 
-    const powers = data.powers.map((power) => power.nom);
+    /* data.powers.forEach( power => {
+		//console.log(power.data.specific.Type || power.data.origin)
+		//console.log(power.data.data.id, power.data.specific.Type || power.data.origin)
+	}) */
+
+    const powers = data.powers.map((power) => `<span data-details data-type="power" data-id="${power.data.data.id}" data-origin="${power.data.specific.Type || power.data.origin}" >${power.label}</span>`);
     const displayedPowers = powers.length ? `<b>Pouvoirs&nbsp;:</b> ${powers.join(", ")}` : "";
     fillValueInTemplate(clone, "Pouvoirs", displayedPowers);
 

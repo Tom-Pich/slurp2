@@ -8,7 +8,7 @@
 
 <h4>JdR assisté par ordinateur</h4>
 <p>Certaines règles complexes (la gestion des blessures, par exemple) sont gérées directement par le site (sur la <b><a href="table-jeu">Table de jeu</a></b>). Ce principe de <b>JdR assisté par ordinateur</b> permet d’avoir une grande fluidité du jeu sans compromis sur les détails et le réalisme.</p>
-<p>Il y a également un système de <b>création et de gestion des personnages</b>, ainsi qu’un <b>chat intégrant des fonctionnalités de jeu</b>, mais il faut disposer d’un compte. Cette partie du site n’est pas ouverte au public (ça nécessiterait de redimensionner le site), mais vous n’en avez pas besoin pour jouer. Si vous êtes curieux, n’hésitez pas à me contacter. &#128522;</p>
+<p>Il y a également un système de <b>de gestion des personnages</b>, ainsi qu’un <b>chat intégrant des fonctionnalités de jeu</b>, mais il faut disposer d’un compte. Cette partie du site n’est pas en libre accès (ça nécessiterait de redimensionner le site), mais vous n’en avez pas besoin pour jouer. Si vous êtes curieux, n’hésitez pas à me contacter. &#128522;</p>
 
 <div class="flex gap-1-2">
 	<section class="p-0">

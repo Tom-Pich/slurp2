@@ -108,7 +108,9 @@ class Skill implements RulesItem
 					<div><?= $this->displayType() ?></div>
 				</div>
 			</summary>
-			<?= $this->description ?>
+			<div class="fs-300 flow">
+				<?= $this->description ?>
+			</div>
 		</details>
 <?php
 	}

@@ -14,244 +14,6 @@ $attributes = [
 ];
 ?>
 
-<!-- Concevoir son personnage -->
-<article>
-	<h2>Concevoir son personnage</h2>
-
-	<!-- Introduction -->
-	<details>
-			<summary>
-				<h3>Introduction</h3>
-			</summary>
-			<p>Un personnage se construit à partir de points de personnage (généralement entre 80 et 120 pts).</p>
-			<p>Ces points permettent de définir les <b>Carac&shy;téristiques</b>, <b>Avantages, Désavantages &amp; Travers</b>, <b>Compétences</b> et enfin les <b>Sorts &amp; pouvoirs</b> traités dans les parties <i>Magie</i>, <i>Psioniques</i> et/ou <i>Univers</i>.</p>
-		</details>
-
-	<!-- Ébauche -->
-	<details>
-		<summary>
-			<h3>Ébauche</h3>
-		</summary>
-		<p>Avant de se lancer dans l’aspect technique de la création d’un personnage, il faut commencer par l’ébaucher.</p>
-
-		<h4>Nom</h4>
-		<p>Éviter les clichés et respecter l’ambiance de l’univers de jeu.</p>
-
-		<h4>Métier &amp; position social</h4>
-		<ul class="ta-left">
-			<li>Gagne-pain / métier</li>
-			<li>Race, ethnie, nationalité, origine</li>
-			<li>Statut social</li>
-			<li>Niveau d’étude</li>
-			<li>Richesse</li>
-		</ul>
-
-
-		<h4>Description</h4>
-		<ul class="ta-left">
-			<li>Apparence physique</li>
-			<li>Manière de se vêtir</li>
-			<li>Attitude physique</li>
-		</ul>
-
-		<h4>Caractère &amp; comportement</h4>
-		<ul class="ta-left">
-			<li>Tempérament, personnalité (voir des exemples de <i>Traits de caractères</i> ci-dessous)</li>
-			<li>Moralité</li>
-			<li>Goûts et dégoûts</li>
-			<li>Comportement, attitude</li>
-			<li>Problèmes psychologiques</li>
-			<li>Tic et citation</li>
-		</ul>
-
-		<h4>Motivations &amp; objectifs</h4>
-		<ul class="ta-left">
-			<li>Raison pour laquelle il fait son métier ou part à l’aventure</li>
-			<li>Objectifs à long terme</li>
-			<li>Croyances (religion, idéaux, etc)</li>
-		</ul>
-
-		<h4>Background</h4>
-		<ul class="ta-left">
-			<li>Famille (origine, composition, niveau social)</li>
-			<li>Enfance (conditions, éducation)</li>
-			<li>Adolescence (conditions, études ou apprentissage)</li>
-			<li>Vie amoureuse, vie de famille</li>
-			<li>Vie professionnelle</li>
-			<li>Déboires, aventures, hauts et bas</li>
-			<li>Relations (famille, amis, ennemis...)</li>
-			<li>Domicile (localisation, type, vit-il seul...)</li>
-		</ul>
-	</details>
-
-	<!-- Traits de caractères -->
-	<details>
-		<summary>
-			<h3>Traits de caractères</h3>
-		</summary>
-
-		<p>Une liste de traits de caractères qui peut aider à ébaucher la personnalité de son personnage.</p>
-
-		<details>
-			<summary>
-				<h4>Attitude face à la vie</h4>
-			</summary>
-
-			<ul class="ta-left">
-				<li>Acharné, Zélé</li>
-				<li>Ambitieux, Battant, Conquérant, Décidé, Volontaire</li>
-				<li>Assidu, Besogneux, Combatif</li>
-				<li>Audacieux, Aventureux, Courageux</li>
-				<li>Créatif, Débrouillard</li>
-				<li>Curieux, Enthousiaste, Ouvert</li>
-				<li>Énergique</li>
-				<li>Jovial, Optimiste</li>
-			</ul>
-
-			<ul class="ta-left">
-				<li>Anticonformiste, Contestataire, Révolté, Rebelle</li>
-				<li>Aucun sens de l’humour</li>
-				<li>Bégeule, Bigot, Pudibond, Puritain, Prude</li>
-				<li>Blagueur, Clown, Comique, Farceur</li>
-				<li>Calme, Flegmatique, Imperturbable</li>
-				<li>Candide, Innocent, Naïf</li>
-				<li>Cérébral, Raisonneur</li>
-				<li>Conservateur</li>
-				<li>Crispé, Stressé, Veut garder le contrôle</li>
-				<li>Déluré, Fantaisiste, Extravagant, Dévergondé</li>
-				<li>Dépensier, Flambeur</li>
-				<li>Désinvolte, Nonchalant</li>
-				<li>Discret, Humble, Modeste</li>
-				<li>Émotif, Sentimental, Romantique</li>
-				<li>Enragé, Hystérique</li>
-				<li>Entêté, Obstiné, Têtu</li>
-				<li>Exalté, Excité, Passionné</li>
-				<li>Excessif, Extrémiste, Fanatique</li>
-				<li>Frivole, Imprévoyant, Imprudent, Insouciant</li>
-				<li>Iconoclaste, Impie</li>
-				<li>Idéaliste, Rêveur</li>
-				<li>Impatient, Impétueux, Impulsif</li>
-				<li>Manichéen</li>
-				<li>Minutieux, Perfectionniste, Pointilleux, Tâtillon</li>
-				<li>Pieux, Dévôt, Religieux</li>
-				<li>Pondéré, Pragmatique, Prudent, Réflechi, Sage</li>
-			</ul>
-
-			<ul class="ta-left">
-				<li>Acariâtre, Aigri, Frustré, Insatisfait</li>
-				<li>Arriviste, Attentiste, Opportuniste</li>
-				<li>Avare, Cupide, Radin, Mesquin</li>
-				<li>Blasé, Désabusé, Fataliste</li>
-				<li>Bon à rien, Fainéant, Fumiste, Paresseux, Velléitaire</li>
-				<li>Boudeur, Grognon, Râleur</li>
-				<li>Caractériel, Colérique</li>
-				<li>Casanier, Faible, Docile, Gâteux</li>
-				<li>Catastrophiste, Défaitiste, Pessimiste</li>
-				<li>Caustique, Cynique, Critique</li>
-				<li>Craintif, Dégonflé, Lâche</li>
-				<li>Dépressif, Désespéré, Mélancolique</li>
-				<li>Enfant terrible, enfant gâté</li>
-			</ul>
-
-		</details>
-
-		<details>
-			<summary>
-				<h4>Attitude envers les autres</h4>
-			</summary>
-
-			<ul class="ta-left">
-				<li>Accommodant, Indulgent, Tolérant</li>
-				<li>Affable, Cordial</li>
-				<li>Altruiste, Bienfaiteur, Charitable, Généreux, Gentil</li>
-				<li>Brave, Patient, Placide</li>
-				<li>Civilisé, Courtois, Diplomate</li>
-				<li>Clément, Indulgent, Miséricordieux</li>
-				<li>Confiant</li>
-				<li>Démocrate, Juste</li>
-				<li>Désintéressé, Philanthrope</li>
-				<li>Dévoué, Loyal</li>
-				<li>Complice, Extraverti, Mondain, Sociable</li>
-				<li>Honnête, Sincère</li>
-				<li>Pacifique</li>
-				<li>Protecteur</li>
-			</ul>
-
-			<ul class="ta-left">
-				<li>Aguicheur, Charmeur, Séducteur</li>
-				<li>Baratineur, Beau-parleur, Causeur</li>
-				<li>Cachottier, Dissimulateur, Secret</li>
-				<li>Concupiscent, Coureur, Débauché, Nymphomane</li>
-				<li>Demandeur, Assisté, Quémandeur</li>
-				<li>Docte, Donneur de leçons, Moralisateur</li>
-				<li>Exubérant</li>
-				<li>Indiscret</li>
-				<li>Introverti, Renfermé, Réservé, Taciturne</li>
-				<li>Laxiste</li>
-				<li>Meneur</li>
-				<li>Paternaliste</li>
-			</ul>
-
-			<ul class="ta-left">
-				<li>Affabulateur, Bluffeur, Menteur</li>
-				<li>Agressif, Belliqueux, Brute, Hargneux, Violent, Sanguinaire</li>
-				<li>Arbitraire, Inique</li>
-				<li>Arnaqueur, Canaille, Malhonnête</li>
-				<li>Arrogant, Dédaigneux</li>
-				<li>Asocial</li>
-				<li>Autoritaire, Despote, Tyrannique</li>
-				<li>Barbare, Vandale</li>
-				<li>Chahuteur, Effronté, Provocateur</li>
-				<li>Chicaneur, Malicieux, Chipie, Emmerdeur, Gêneur</li>
-				<li>Comédien, Hypocrite, Manipulateur</li>
-				<li>Complaisant, Démagogue, Obséquieux, Flatteur</li>
-				<li>Cruel, Démoniaque, Fourbe, Méchant, Pervers, Sadique,</li>
-				<li>Délateur, Calomniateur, Médisant</li>
-				<li>Dur, Insensible</li>
-				<li>Envieux</li>
-				<li>Ingrat</li>
-				<li>Injuste, Intolérant</li>
-				<li>Jaloux, Possessif</li>
-				<li>Machiste, Misogyne, Misanthrope, Raciste, Homophobe</li>
-				<li>Méfiant</li>
-				<li>Grossier, Mufle, Rustre</li>
-				<li>Rancunier</li>
-			</ul>
-
-		</details>
-
-		<details>
-			<summary>
-				<h4>Attitudes liées au «&nbsp;moi&nbsp;»</h4>
-			</summary>
-
-			<ul class="ta-left">
-				<li>Ascète, Chaste, Sobre</li>
-				<li>Autosatisfait, Cabotin, Crâneur, Frimeur, Vantard</li>
-				<li>Balourd, Béotien, Empoté, Gaffeur, Maladroit</li>
-				<li>Bon vivant, Épicurien, Gourmand, Sensuel</li>
-				<li>Capricieux</li>
-				<li>Chatouilleux, Ombrageux, Susceptible</li>
-				<li>Collectionneur, Fétichiste</li>
-				<li>Complexé, Névrosé, Timide</li>
-				<li>Coquet, Délicat, Pédant</li>
-				<li>Cyclothymique, Inconstant, Indécis, Instable, Lunatique</li>
-				<li>Égocentrique, Égoïste, Individualiste</li>
-				<li>Hypocondriaque</li>
-				<li>Immature</li>
-				<li>Masochiste</li>
-				<li>Obsédé, Maniaque</li>
-				<li>Orgueilleux, Présomptueux, Fier</li>
-				<li>Original</li>
-			</ul>
-
-		</details>
-
-	</details>
-
-</article>
-
-
 <!-- Caractéristiques -->
 <article>
 	<h2>Caractéristiques</h2>
@@ -260,8 +22,10 @@ $attributes = [
 		<summary>
 			<h3>Introduction</h3>
 		</summary>
-		<p>Les 6 <b>caractéristiques principales</b> constituent la charpente du personnage. Elles ont un impact sur de nombreux aspects de celui-ci, dont notamment le coût à payer pour obtenir un score donné dans une compétence.<br>
-			Un score de 10 (médiocre) est gratuit et constitue le score par défaut.</p>
+		<p>
+			Les 6 <b>caractéristiques principales</b> (<i>Force</i>, <i>Dextérité</i>, <i>Intelligence</i>, <i>Santé</i>, <i>Perception</i> et <i>Volonté</i>) constituent la charpente du personnage. Elles ont un impact sur de nombreux aspects de celui-ci.<br>
+			Un score de 10 (médiocre) est gratuit et constitue le score par défaut.
+		</p>
 		<p>Les <b>caractéristiques secondaires</b> sont calculées à partir des caractéristiques principales et peuvent être modifiées par un <i>Avantage</i> ou un <i>Désavantage</i> adéquat, dans une certaine mesure.</p>
 	</details>
 
@@ -475,20 +239,23 @@ $attributes = [
 		<summary>
 			<h3>Introduction</h3>
 		</summary>
-		<p>Les <i>Avantages</i> et les <i>Désavantages</i> recouvrent tout ce qui ne relève pas d’une caractéristique ou d’une compétence. La liste complète avec la description de chaque avantage et désavantage est visible sur la page <a href="avdesav-comp-sorts">Listes pour le personnage</a>.</p>
+
+		<p>Les <i>Avantages</i> et les <i>Désavantages</i> recouvrent tout ce qui ne relève pas d’une caractéristique ou d’une compétence.</p>
+		<p>La liste complète avec la description de chaque avantage et désavantage est visible sur la page <a href="avdesav-comp-sorts">Listes pour le personnage</a>.</p>
+
 	</details>
 
 	<details>
 		<summary>
 			<h3>Règle du 12</h3>
 		</summary>
-		
+
 		<h4>Avantage</h4>
 		<p>Si un jet sous une caractéristique est nécessaire pour le faire fonctionner, le score de base <i>minimum</i> de cette caractéristique et considéré comme valant 12 (en dehors de modificateurs d’état ou de circonstances).</p>
 
 		<h4>Désavantage</h4>
 		<p>Si un jet est nécessaire pour y échapper, le score <i>maximum</i> de ce jet est de 12.</p>
-		
+
 		<details class="exemple">
 			<summary>Exemple</summary>
 			<p>L’avantage <i>Intuition</i> nécessite un jet d’<i>Int</i> pour fonctionner. Si l’<i>Int</i> du personnage est inférieure à 12, elle est considérée comme valant 12 pour ce jet. Mais si le personnage est blessé ou fatigué, les modificateurs normaux s’appliquent à cette base de 12.</p>
@@ -578,6 +345,7 @@ $attributes = [
 			<h3>Introduction</h3>
 		</summary>
 		<p>Les <i>Compétences</i> sont des connaissances ou des savoir-faire qui peuvent être appris et développés. La plupart d’entre elles possèdent un score <i>par défaut</i>, qui ne coûte rien et qui se calcule d’après les caractéristiques.</p>
+		<p>La liste complète avec la description de chaque compétence est visible sur la page <a href="avdesav-comp-sorts">Listes pour le personnage</a>.</p>
 	</details>
 
 	<!-- Scores -->
@@ -656,6 +424,7 @@ $attributes = [
 
 	</details>
 
+	<!-- Spécialisations -->
 	<details>
 		<summary>
 			<h3>Spécialisations</h3>
@@ -664,6 +433,7 @@ $attributes = [
 		<p><b>Spécialisation optionnelle&nbsp;:</b> 1 pt par +1. Max 5 pts. Pas plus de pts dans la spécialité que dans la compétence de base.</p>
 	</details>
 
+	<!-- Compétence de background -->
 	<details>
 		<summary>
 			<h3>Compétence de background</h3>
@@ -672,6 +442,7 @@ $attributes = [
 			Coût divisé par deux (y compris pour une spécialité optionnelle).</p>
 	</details>
 
+	<!-- Compétences proches -->
 	<details>
 		<summary>
 			<h3>Compétences proches</h3>

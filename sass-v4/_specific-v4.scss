@@ -22,12 +22,12 @@
 body:has(nav.active){ max-height: 100dvh; overflow: hidden; }
 
 // page default structure
-aside, header, footer, main {padding: 1em;}
-aside, section, article { @include flow; }
+header, footer {padding: 1em;}
 section, article { padding: .5em; }
+aside, section, article { @include flow; }
 
 #page-wrapper {
-	display: grid; min-height: calc(100vh - 212px);
+	display: grid; min-height: calc(100vh - 212px); padding: 1em; gap: 1em;
 	grid-template-columns: var(--col-width) 1fr var(--col-width);
 	@include media ($brp-l) { grid-template-columns: var(--col-width) 1fr; }
 	@include media { grid-template-columns: 1fr; }
@@ -79,7 +79,7 @@ dfn {text-decoration: underline var(--clr-700); cursor: help;}
 }
 
 // forms & buttons
-input, select, textarea { padding: .25em; }
+input, select, textarea { padding: .25em; border: 1px solid var(--grey-700) }
 .btn-square { width: 1.75em; aspect-ratio: 1; display: grid; place-content: center; line-height: 0; padding: 0; }
 .nude { padding: 0; border: none; }
 .nude:hover {transform: scale(1.05)}
@@ -143,3 +143,6 @@ fieldset {
 		legend { font-size: var(--fs-400) }
 	}
 }
+
+// Tiny MCE
+//#tinymce { outline: none; }
