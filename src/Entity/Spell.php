@@ -2,64 +2,25 @@
 
 namespace App\Entity;
 
-use App\Interface\RulesItem;
-use App\Lib\Define;
+use App\Entity\AbstractSpell;
 use App\Lib\Sorter;
 use App\Lib\TextParser;
 use App\Repository\SpellRepository;
 use App\Repository\CollegeRepository;
 
-class Spell implements RulesItem
+class Spell extends AbstractSpell
 {
-	public int $id;
-	public string $name;
-	public int $niv_min;
-	public int $niv_max;
-	public string $readableNiv;
 	public array $colleges;
 	public array $collegesName;
-	public ?string $class;
-	public ?string $duration;
-	public ?string $time;
-	public ?string $zone;
-	public ?string $resistance;
-	public string $description;
-	public string $origin;
-	const cast_time = [[1, 15], [2, 30], [3, 60], [4, 600], [6, 3600]];
 	const improvisation = [12, 14, 17, 20, 25];
 	const niv_modifier = [0, -2, -5, -8, -13];
 	const pdm_cost = [2, 4, 6, 8, 15];
 	const cost_as_power = [5, 10, 15, 25, 40];
 
-	// id Nom Niv Collège Classe Durée Temps Zone Résistance Description Origine
-
 	public function __construct(array $spell = [])
 	{
-		$this->id = $spell["id"] ?? 0;
-		$this->name = $spell["Nom"] ?? "";
-		$niv_array = json_decode($spell["Niv"] ?? "[]");
-		$this->niv_min = $niv_array[0] ?? 0;
-		$this->niv_max = $niv_array[1] ?? $this->niv_min;
-		$this->readableNiv = $this->niv_min ? TextParser::parseNumbers2Latin($this->niv_min, $this->niv_max) : "";
+		parent::__construct($spell);
 		$this->colleges = json_decode($spell["Collège"] ?? "[]");
-		$this->class = $spell["Classe"] ?? NULL;
-		$this->duration = $spell["Durée"] ?? NULL;
-		$this->time = $spell["Temps"] ?? NULL;
-		$this->zone = $spell["Zone"] ?? NULL;
-		$this->resistance = $spell["Résistance"] ?? NULL;
-		$this->description = $spell["Description"] ?? "";
-		$this->origin = $spell["Origine"] ?? "";
-	}
-
-	/**
-	 * getComplementaryData – initializes collegesName and readableTime \
-	 * Time consuming for big list, better to be used only when needed
-	 *
-	 * @return void
-	 */
-	public function getComplementaryData()
-	{
-		$this->collegesName = $this->collegesName();
 	}
 
 	/**
@@ -101,12 +62,8 @@ class Spell implements RulesItem
 		return $time;
 	}
 
-	/**
-	 * collegesName – return array of colleges name of the spell
-	 *
-	 * @return array
-	 */
-	private function collegesName(): array
+	// return array of colleges name of the spell
+	public function collegeNames(): array
 	{
 		$college_repo = new CollegeRepository;
 		$all_colleges_name = $college_repo->getCollegesName();
@@ -117,12 +74,7 @@ class Spell implements RulesItem
 		return $colleges_name;
 	}
 
-	/**
-	 * displayCost – return a string with cost of the spell as power
-	 *
-	 * @param  float $mult optional
-	 * @return string
-	 */
+	// return a string with character points cost of the spell as power
 	public function displayCost(float $mult = 1): string
 	{
 		$cost_array = [];
@@ -143,86 +95,7 @@ class Spell implements RulesItem
 		return $cost_string;
 	}
 
-	/**
-	 * displayInRules – generate full HTML for displaying in rules
-	 *
-	 * @param  int $session_status if 3, display link for editing
-	 * @param array $colleges_name [id => name] – faster way to get college name than using $this->collegesName for long list
-	 * @param float $costMultiplier for spells as powers. If 0 : cost will not be displayed.
-	 * @param string $name overriding spell default name
-	 * @param string $edit_link link formation to access edit page
-	 * @return void
-	 */
-	public function displayInRules(bool $show_edit_link = false, string $edit_link = null, array $data = ["name" => "", "cost-mult" => 0, "colleges-list" => []])
-	{
-		$edit_link = $edit_link ?? "gestion-listes?req=sort&id=" . $this->id ?>
-		<details class="liste" data-niv-min="<?= $this->niv_min ?>" data-niv-max="<?= $this->niv_max ?>" data-origin="<?= $this->origin ?>">
-			<summary title="id <?= $this->id ?>">
-				<div>
-					<div>
-						<?php if ($show_edit_link) { ?>
-							<a href="<?= $edit_link ?>" class="edit-link ff-far">&#xf044;</a>
-						<?php } ?>
-						<?= $data["name"] ? $data["name"] : $this->name ?> (<?= $this->readableNiv ?>) <?= !empty($this->class) ? " – <i>$this->class</i>" : "" ?>
-					</div>
-					<div>
-						<?= $data["cost-mult"] ? $this->displayCost($data["cost-mult"]) : "" ?>
-					</div>
-				</div>
-			</summary>
-
-			<div class="mt-½ fs-300">
-				<?php if (!empty($data["colleges-list"])) {
-					$spell_colleges_names = [];
-					foreach ($this->colleges as $id_college) {
-						$spell_colleges_names[] = $data["colleges-list"][$id_college];
-					}
-					$spell_colleges_names = join(", ", $spell_colleges_names); ?>
-					<i>Collège(s)&nbsp;: </i><?= $spell_colleges_names ?>
-				<?php } ?>
-			</div>
-
-			<div class="mt-½ fs-300"><?php $this->displayFullDescription() ?></div>
-
-		</details>
-	<?php }
-
-	/**
-	 * displayFullDescription – generate HTML for full description of spell \
-	 * (class, description, duration...)
-	 *
-	 * @param  string $custom_time optional. Replace spell default time.
-	 * @return void
-	 */
-	public function displayFullDescription($custom_time = "")
-	{ ?>
-		<div class="flow">
-			<?= $this->class ? "<b>" . $this->class . " – </b>" : "" ?>
-			<?= Define::implementDefinitions($this->description, Define::magic_dictionnary) ?>
-		</div>
-		<div class="mt-½">
-			<?php if ($this->duration) { ?> <i>Durée</i>&nbsp;: <?= $this->duration ?><br>
-			<?php }
-			if (empty($custom_time) && $this->time) { ?>
-				<i>Temps nécessaire</i>&nbsp;: <?= $this->time ?><br>
-			<?php } elseif (!empty($custom_time)) { ?>
-				<i>Temps&nbsp;:</i> <?= $custom_time ?><br>
-			<?php }
-			if ($this->class==="Zone") { ?> <i>Zone de base</i>&nbsp;: <?= $this->zone ? $this->zone : "3&nbsp;m" ?><br>
-			<?php }
-			if ($this->resistance) { ?><i>Résistance</i>&nbsp;: <?= $this->resistance ?>
-			<?php } ?>
-		</div>
-<?php }
-
-	/**
-	 * processSpells
-	 *
-	 * @param  array $spells raw known spells from database (may includes colleges)
-	 * @param  array $colleges processed colleges known by character
-	 * @param  array $special_traits contains magery level
-	 * @return array list of all spells (known or improvised) available to the character, with all processed data
-	 */
+	// process spells in character
 	public static function processSpells(array $spells, array $colleges, array $special_traits): array
 	{
 		$points = 0;
@@ -346,6 +219,7 @@ class Spell implements RulesItem
 		return [$all_spells_filtered, $points];
 	}
 
+	// process spell edit
 	public static function processSubmitSpell($post)
 	{
 		// id, Nom, Niv, Collège, Classe, Durée, Temps, Zone, Résistance, Description, Origine

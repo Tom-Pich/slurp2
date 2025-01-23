@@ -74,9 +74,9 @@ class Creature implements RulesItem
 		$this->readablePdV = join("-", $this->pdv);
 	}
 
-	public function displayInRules(bool $show_edit_link = false, ?string $edit_link = null, array $data = [])
+	public function displayInRules(bool $show_edit_link = false, string $edit_req = "creature", array $data = [], bool $lazy = false)
 	{
-		$edit_link = $edit_link ?? "gestion-listes?req=creature&id=" . $this->id ?>
+		$edit_link = "gestion-listes?req=$edit_req&id={$this->id}"; ?>
 		<details class="liste">
 			<summary>
 				<div>

@@ -1,4 +1,4 @@
-/* Mon framework CSS v2025.01.19 */
+/* Mon framework CSS v2025.01.22 */
 
 $brp-l: 1200px;
 $brp-m: 768px;
@@ -182,7 +182,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-app
 .full-width {width: 100%;}
 .width-fit-content {width: fit-content;}
 .relative {position: relative;}
-.hidden {display: none;}
+.hidden {display: none !important;}
 .overflow-hidden {overflow: hidden;}
 
 .aspect-video {aspect-ratio: 16/9; width: 100%;}

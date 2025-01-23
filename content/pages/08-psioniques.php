@@ -2,7 +2,6 @@
 
 use App\Entity\Discipline;
 use App\Entity\PsiPower;
-use App\Lib\TextParser;
 use App\Repository\AvDesavRepository;
 use App\Repository\DisciplineRepository;
 use App\Repository\PsiPowerRepository;
@@ -13,11 +12,11 @@ $disciplines_repo = new DisciplineRepository;
 $powers_repo = new PsiPowerRepository;
 
 $affichage = $_POST["affichage"] ?? "categorie";
-$_POST["niv"] = $_POST["niv"] ?? [1 => "on", 2 => "on", 3 => "on", 4 => "on", 5 => "on",];
+//$_POST["niv"] = $_POST["niv"] ?? [1 => "on", 2 => "on", 3 => "on", 4 => "on", 5 => "on",];
 
 // $_POST processing
-$niv_min = min(array_keys($_POST["niv"]));
-$niv_max = max(array_keys($_POST["niv"]));
+//$niv_min = min(array_keys($_POST["niv"]));
+//$niv_max = max(array_keys($_POST["niv"]));
 ?>
 
 <!-- Généralités -->
@@ -251,16 +250,13 @@ $niv_max = max(array_keys($_POST["niv"]));
 
 
 	<?php
-
 	$liste_disciplines = $disciplines_repo->getAllDisciplines();
+	$all_disciplines_names = $disciplines_repo->getDisciplinesName();
 
 	if ($affichage === "alpha") {
 		$pouvoirs = $powers_repo->getAllPowers();
-		if ($niv_max < 5 || $niv_min > 1) {
-			$pouvoirs = array_filter($pouvoirs, fn($pouvoir) => $pouvoir->data->niv_min <= $niv_max && $pouvoir->data->niv_max >= $niv_min);
-		}
 		foreach ($pouvoirs as $pouvoir) {
-			$pouvoir->displayInRules(show_edit_link: $_SESSION["Statut"] === 3);
+			$pouvoir->displayInRules(show_edit_link: $_SESSION["Statut"] === 3, edit_req: "psi", data: ["disciplines-list" => $pouvoir->disciplineNames()],);
 		}
 	} else {
 		foreach ($liste_disciplines as $discipline) { ?>
@@ -268,14 +264,11 @@ $niv_max = max(array_keys($_POST["niv"]));
 				<summary>
 					<h3><?= $discipline->name ?></h3>
 				</summary>
-				<p> <?= $discipline->description ?></p>
+				<p><?= $discipline->description ?></p>
 				<?php
 				$pouvoirs = $powers_repo->getPowersByDiscipline($discipline->id);
-				if ($niv_max < 5 || $niv_min > 1) {
-					$pouvoirs = array_filter($pouvoirs, fn($pouvoir) => $pouvoir->data->niv_min <= $niv_max && $pouvoir->data->niv_max >= $niv_min);
-				}
 				foreach ($pouvoirs as $pouvoir) {
-					$pouvoir->displayInRules(show_edit_link: $_SESSION["Statut"] === 3);
+					$pouvoir->displayInRules(show_edit_link: $_SESSION["Statut"] === 3, edit_req: "psi");
 				}
 				?>
 			</details>
@@ -286,4 +279,4 @@ $niv_max = max(array_keys($_POST["niv"]));
 
 </article>
 
-<script type="module" src="/scripts/items-filter.js?v=<?= VERSION ?>" defer></script>
+<script type="module" src="/scripts/items-filter<?= PRODUCTION ? ".min" : "" ?>.js?v=<?= VERSION ?>" defer></script>

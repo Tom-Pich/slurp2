@@ -1,5 +1,6 @@
 import { qs, qsa } from "./utilities.js";
 import { updateDOM } from "./update-dom.js";
+import { fetchResult } from "./game-table-utilities";
 
 const filterForm = qs("[data-role=filter-form]");
 const displayInputs = qsa("[name=affichage]");
@@ -9,6 +10,9 @@ const keywordInput = qs("[name=keyword]");
 
 // prevent form submit
 filterForm.addEventListener("submit", (e) => e.preventDefault());
+
+// set lazy load event listeners on load
+setLazyloadingListeners();
 
 // update page when display type changes (categories or alphabetical)
 displayInputs.forEach((input) => {
@@ -23,6 +27,9 @@ displayInputs.forEach((input) => {
             .then((response) => {
                 updateDOM("main", response);
                 filterSpells();
+                filterSkills();
+                filterAvdesavs();
+                setLazyloadingListeners();
             });
     });
 });
@@ -60,31 +67,32 @@ function filterSpells() {
             if (checkbox.checked) origins.push(checkbox.value);
         });
     } else {
-		origins.push("RdB")
-	}
+        origins.push("RdB");
+    }
 
     const rangeFilterArray = rangeFilter.value.split("-");
     const min = parseInt(rangeFilterArray[0]);
     const max = parseInt(rangeFilterArray[1] || min);
     if (min > max) [min, max] = [max, min];
 
-    const keyword = keywordInput ? keywordInput.value : "";
+	const keyword = keywordInput ? keywordInput.value : ""; // no early return because of level filter
 
-    spells.forEach((spell) => {
-        const spellName = spell.querySelector("summary div:first-of-type").textContent;
-        const spellNameMatchesKeyword = keywordMatch(spellName, keyword) || keyword.length <= 2;
-        if (spell.dataset.nivMin > max || spell.dataset.nivMax < min || !origins.includes(spell.dataset.origin) || !spellNameMatchesKeyword) {
-            spell.classList.add("hidden");
-        } else {
-            spell.classList.remove("hidden");
-        }
-    });
+	spells.forEach((spell) => {
+		const spellName = spell.querySelector("summary div:first-of-type").textContent;
+		const spellNameMatchesKeyword = keywordMatch(spellName, keyword) || keyword.length <= 2;
+		if (spell.dataset.nivMin > max || spell.dataset.nivMax < min || !origins.includes(spell.dataset.origin) || !spellNameMatchesKeyword) {
+			spell.classList.add("hidden");
+		} else {
+			spell.classList.remove("hidden");
+		}
+	});
 
     hideEmptyCategories();
 }
 
 // Filter skills by keyword
 function filterSkills() {
+    if (!keywordInput) return;
     const skills = qsa("[data-role=skills-wrapper] .liste");
     const keyword = keywordInput.value;
 
@@ -101,6 +109,7 @@ function filterSkills() {
 
 // Filter Avdesavs by keyword
 function filterAvdesavs() {
+    if (!keywordInput) return;
     const avdesavs = qsa("[data-role=avdesavs-wrapper] .liste");
     const keyword = keywordInput.value;
 
@@ -135,4 +144,25 @@ function keywordMatch(expression, keyword) {
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
     return normalizedExpression.includes(normalizedKeyword);
+}
+
+// lazy load event listener
+function setLazyloadingListeners() {
+    const lazyItems = qsa("[data-details]");
+
+    lazyItems.forEach((item) => {
+        const itemDetail = item.closest("details.liste");
+        itemDetail.addEventListener("click", async (e) => {
+            const descriptionWrapper = e.target.closest("details.liste").querySelector("[data-details]");
+            const id = parseInt(descriptionWrapper.dataset.id);
+            if (descriptionWrapper.dataset.type === "spell") {
+                const spell = await fetchResult("/api/get-spell?id=" + id);
+                descriptionWrapper.innerHTML = spell.fullDescription;
+            }
+            if (descriptionWrapper.dataset.type === "avdesav") {
+                const avdesav = await fetchResult("/api/get-avdesav?id=" + id);
+                descriptionWrapper.innerHTML = avdesav.description;
+            }
+        });
+    });
 }

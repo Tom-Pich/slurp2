@@ -1,22 +1,16 @@
 <img width="150" src="/assets/img/grimoire.png" class="mx-auto" />
 
-<fieldset class="flow">
-	<legend>Sommaire</legend>
+<fieldset class="px-1">
+	<legend>Règles essentielles</legend>
 
-	<p class="fw-700">Le personnage</p>
-	<ul class="mt-0">
-		<li><a href="/personnages">Créer son personnage</a></li>
-		<li><a href="/avdesav-comp-sorts">Avantages, compétences, sorts</a></li>
-		<li><a href="/armes-armures"><?= $pages_data['armes-armures']["title"] ?></a></li>
-	</ul>
+	<a href="/personnages" class="btn btn-secondary full-width py-0 px-½ fs-300">Créer son personnage</a>
+	<a href="/avdesav-comp-sorts" class="btn btn-secondary full-width py-0 px-½ fs-300 mt-¼">Avantages, compétences, sorts</a>
+	<a href="/armes-armures" class="btn btn-secondary full-width py-0 px-½ fs-300 mt-¼"><?= $pages_data['armes-armures']["title"] ?></a>
+	
+	<a href="/bases-systeme" class="btn btn-secondary full-width py-0 px-½ fs-300 mt-1"><?= $pages_data['bases-systeme']["title"] ?></a>
+	<a href="/combat" class="btn btn-secondary full-width py-0 px-½ fs-300 mt-¼"><?= $pages_data['combat']["title"] ?></a>
+	<a href="/blessures-dangers" class="btn btn-secondary full-width py-0 px-½ fs-300 mt-¼"><?= $pages_data['blessures-dangers']["title"] ?></a>
 
-	<p class="fw-700">Règles principales</p>
-	<ul class="mt-0">
-		<li><a href="/bases-systeme"><?= $pages_data['bases-systeme']["title"] ?></a></li>
-		<li><a href="/combat"><?= $pages_data['combat']["title"] ?></a></li>
-		<li><a href="/blessures-dangers"><?= $pages_data['blessures-dangers']["title"] ?></a></li>
-		<li><a href="/magie"><?= $pages_data['magie']["title"] ?></a></li>
-	</ul>
 </fieldset>
 
 <fieldset class="flow">

@@ -9,5 +9,6 @@
   },
   "keywords": [],
   "author": "TomPich SitUp",
-  "license": "ISC"
+  "license": "ISC",
+  "sideEffects": false
 }

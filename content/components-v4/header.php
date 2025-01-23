@@ -16,7 +16,7 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=yes">
 	<meta name="description" content="<?= $page["description"] ?>">
 	<link rel="stylesheet" href="/styles-v4.min.css?v=<?= VERSION ?>">
-	
+
 	<link rel="shortcut icon" href="/assets/img/favicon.ico">
 	<title><?= $page["title"] ?></title>
 

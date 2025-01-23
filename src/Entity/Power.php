@@ -12,8 +12,8 @@ use App\Repository\PowerRepository;
 class Power implements RulesItem
 {
 	public int $id;
-	public string $origin; // advantage, spell or specific table
-	public array $specific = []; // data from specific table
+	public string $origin; // advantage, spell or power table
+	public array $specific = []; // data from power table
 	public mixed $data; // data from spell or avdesav table
 	const priest_mult = 0.7; // prêtres AD&D
 	const priest_mult_low = 0.5; // prêtre AD&D avec avantage Prêtrise
@@ -41,20 +41,19 @@ class Power implements RulesItem
 		}
 	}
 
-	public function displayInRules(bool $show_edit_link = false, string $edit_link = null, array $data = [])
+	public function displayInRules(bool $show_edit_link = false, string $edit_req = "", array $data = [], $lazy = false): void
 	{
 		$cost_mult = $this->specific["Mult"] ?? 1;
 
 		if ($this->origin === "sort") {
-			$this->data->displayInRules(show_edit_link: $show_edit_link, data: ["name" => "", "cost-mult" => 1, "colleges-list" => []]);
-			//
+			$this->data->displayInRules(show_edit_link: $show_edit_link, edit_req: "sort");
 		} elseif ($this->origin === "avantage") {
 			$name = $this->data->name . "*";
-			$this->data->displayInRules(show_edit_link: $show_edit_link, data: ["name" => "", "cost-mult" => 1]);
+			$this->data->displayInRules(show_edit_link: $show_edit_link);
 		} else {
 			$name = $this->specific["Nom"] ? $this->specific["Nom"] : $this->data->name;
 			$name .= $this->specific["Type"] === "avantage" ? "*" : "";
-			$this->data->displayInRules(show_edit_link: $show_edit_link, edit_link: "gestion-listes?req=pouvoir&id=" . $this->id, data: ["name" => $name, "cost-mult" => $cost_mult]);
+			$this->data->displayInRules(show_edit_link: $show_edit_link, edit_req: "pouvoir", data: ["name" => $name, "cost-mult" => $cost_mult, "power-id" => $this->id]);
 		}
 	}
 

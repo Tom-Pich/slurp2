@@ -126,10 +126,10 @@ $pages_data = [
 		"file" => "s_liens",
 		"version" => 4,
 	],
-	"traits-de-caractere" => [
-		"title" => "Traits de caractère", 
+	"concevoir-personnage" => [
+		"title" => "Concevoir son personnage", 
 		"description" => "Une liste de traits de caractère pour aider à la création de PJ et de PNJ", 
-		"file" => "s_caracteres",
+		"file" => "s_concevoir_perso",
 		//"body_class" => "basic-page",
 		"version" => 4,
 	],

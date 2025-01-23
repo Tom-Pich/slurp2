@@ -12,6 +12,7 @@ $attributes = [
 	"Per" => new Attribute("Per"),
 	"Vol" => new Attribute("Vol"),
 ];
+$repo = new SkillRepository;
 ?>
 
 <!-- Caractéristiques -->
@@ -353,15 +354,37 @@ $attributes = [
 		<summary>
 			<h3>Scores</h3>
 		</summary>
+
+		<p>Chaque compétence est associée à un <i>type</i>, par exemple D-4, DI-2, I(-8)&hellip;</p>
+		<p>Ce type permet de connaître la <b>base</b> de la compétence (D, DI, I&hellip;) et sa <b>difficulté</b> (-2, -4, -6 ou -8).</p>
+
+		<p>La <i>base</i> de la compétence est la moyenne des caractéristiques sur lesquelles elle est basée (ou la valeur de la caractéristique si elle n’est basée que sur une seule caractéristique). Ces caractéristiques sont représentées par leur première lettre&nbsp;: D pour <i>Dex</i>, I pour <i>Int</i>, etc.</p>
+
+		<details class="exemple">
+			<summary>Exemple</summary>
+			<p>La compétence <i>Bricolage</i> est de type DI-2. Sa base est donc la moyenne de la <i>Dex</i> et de l’<i>Int</i>. Si le personnage a 12 en <i>Dex</i> et 11 en <i>Int</i>, sa base vaudra donc (12+11)÷2 = 11,5, arrondi à 11.</p>
+			<p>Sa difficulté est de -2.</p>
+		</details>
+
 		<p>Le score d’une compétence dépend&nbsp;:</p>
 		<ul>
-			<li>de la ou des <b>caractéristique(s)</b> sur laquelle ou lesquelles elle est basée,</li>
-			<li>du nombre de <b>points</b> de personnage investis dedans,</li>
-			<li>de sa <b>difficulté&nbsp;:</b> <i>facile</i> (-2), <i>moyenne</i> (-4), <i>ardue</i> (-6) ou <i>très ardue</i> (-8)</li>
+			<li>de sa base</li>
+			<li>de sa difficulté&nbsp;: <i>facile</i> (-2), <i>moyenne</i> (-4), <i>ardue</i> (-6) ou <i>très ardue</i> (-8)</li>
+			<li>du nombre de points de personnage investis dedans</li>
 		</ul>
-		<p> La <i>base</i> de la compétence est la moyenne des caractéristiques sur lesquelles elle est basée (ou la valeur de la caractéristique si elle n’est basée que sur une seule caractéristique).</p>
-		<p>La table ci-dessous indique le coût en points de personnage pour obtenir un <i>niveau</i> donné dans une compétence en fonction de sa difficulté. Lorsque <b>deux valeurs</b> sont données, la deuxième ne s’applique qu’aux compétences exclusivement basées sur l’<i>int</i>.</p>
-		<p>Ce niveau s’ajoute à la base pour calculer le score brut de la compétence.</p>
+
+		<h4>Score par défaut</h4>
+		<p>En l’absence de points investis dans la compétence, son score correspond à la base + la difficulté (qui est un nombre négatif&nbsp;!). Si la difficulté de la compétence est notée entre parenthèses, aucun score par défaut n’est autorisée.</p>
+
+		<details class="exemple">
+			<summary>Exemple</summary>
+			<p>La compétence <i>Bricolage</i> est de type DI-2. Si le personnage a 12 en <i>Dex</i> et 11 en <i>Int</i>, sa base vaudra donc (12+11)÷2 = 11,5, arrondi à 11. Sa difficulté est de -2.</p>
+			<p>Son score par défaut vaut donc 11-2 = 9.</p>
+		</details>
+		
+		<h4>Score et points de personnage</h4>
+		<p>La table ci-dessous indique le coût en points de personnage pour obtenir un <i>niveau</i> donné dans une compétence en fonction de sa difficulté. Ce niveau s’ajoute à la base pour calculer le score de la compétence.</p>
+		<p>Lorsque <b>deux valeurs</b> sont données, la deuxième ne s’applique qu’aux compétences exclusivement basées sur l’<i>Int</i>.</p>
 
 		<table>
 			<tr>
@@ -372,7 +395,6 @@ $attributes = [
 				<th>-8</th>
 			</tr>
 			<?php for ($niv = -4; $niv <= 10; $niv++): ?>
-
 				<tr>
 					<td><?= $niv > 0 ? "+" . $niv : $niv ?></td>
 					<td><?= Skill::displaySkillCost($niv, -2) ?></td>
@@ -380,11 +402,8 @@ $attributes = [
 					<td><?= Skill::displaySkillCost($niv, -6) ?></td>
 					<td><?= Skill::displaySkillCost($niv, -8) ?></td>
 				</tr>
-
 			<?php endfor; ?>
 		</table>
-
-		<p><b>Score par défaut&nbsp;:</b> score en l’absence de points investis dans la compétence. La plupart des compétences ont un score par défaut&nbsp;; celles qui n’en ont pas ont une difficulté notée entre parenthèse.</p>
 
 		<details class="exemple">
 			<summary>Exemple de calculs de score</summary>
@@ -456,9 +475,8 @@ $attributes = [
 		<p>Ces calculs sont gérés de manière complètement automatisée par la fiche de personnage.</p>
 
 		<h4>Groupes de compétences proches</h4>
-		<?php
-		$skills_groups = Skill::skills_groups;
-		$repo = new SkillRepository;
+		
+		<?php	
 		$readable_group_names = [
 			"melee" => "Armes de contact",
 			"hand-to-hand" => "Corps-à-corps",
@@ -469,7 +487,7 @@ $attributes = [
 			"survival" => "Survie",
 		];
 
-		foreach ($skills_groups as $group => $id_list) {
+		foreach (Skill::skills_groups as $group => $id_list) {
 			$skills_name_list = [];
 			foreach ($id_list as $id) {
 				$skill = $repo->getSkill($id);

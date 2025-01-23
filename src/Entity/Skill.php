@@ -88,13 +88,13 @@ class Skill implements RulesItem
 	 * displayInRules – generate full HTML for displaying in rules
 	 *
 	 * @param  bool $show_edit_link  show/hide link for editing
-	 * @param  string $edit_link to access edit page
-	 * @param  array $data optionnal data not used for skills
+	 * @param  array $data not used for skills
+	 * @param  bool $lazy lazy loading of description
 	 * @return void
 	 */
-	public function displayInRules(bool $show_edit_link = false, string $edit_link = null, array $data = [])
+	public function displayInRules(bool $show_edit_link = false, string $edit_req="competence", array $data = [], $lazy = false): void
 	{
-		$edit_link = $edit_link ?? "gestion-listes?req=competence&id=" . $this->id; ?>
+		$edit_link = "gestion-listes?req=$edit_req&id={$this->id}"; ?>
 
 		<details class="liste">
 			<summary>

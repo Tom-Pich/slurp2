@@ -10,7 +10,8 @@ $attributes_names = ["For", "Dex", "Int", "San", "Per", "Vol"];
 $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 // modifies text color if score has changed due to character state
-function color_modifier($original_score, $actual_score) {
+function color_modifier($original_score, $actual_score)
+{
 	if ($actual_score < $original_score) return "style='color: var(--clr-invalid)'";
 	elseif ($actual_score > $original_score) return "style='color: var(--clr-secondary-500)'";
 	return "";
@@ -354,16 +355,16 @@ function color_modifier($original_score, $actual_score) {
 					<div><i><?= $discipline["notes"] ?></i></div>
 				<?php } ?>
 				<?php foreach ($character->psi as $pouvoir) {
-					if (in_array($discipline["id"], $pouvoir["data"]->data->colleges) && $pouvoir["readable-score"]) { ?>
+					if (in_array($discipline["id"], $pouvoir["data"]->disciplines) && $pouvoir["readable-score"]) { ?>
 						<details class="sous-liste">
 							<summary data-type="throwable-wrapper">
 								<div class="flex-s gap-½">
-									<div class="fl-1" data-type="throwable-label"><?= $pouvoir["data"]->name ?> (<?= $pouvoir["data"]->data->readableNiv ?>) [<?= $pouvoir["readable-cost"] ?>]</div>
+									<div class="fl-1" data-type="throwable-label"><?= $pouvoir["data"]->name ?> (<?= $pouvoir["data"]->readableNiv ?>) [<?= $pouvoir["readable-cost"] ?>]</div>
 									<div data-type="throwable-score" <?= color_modifier(0, $character->modifiers["Int"]) ?>><?= $pouvoir["readable-score"] ?></div>
 								</div>
 							</summary>
 							<div class="fs-300 ta-justify">
-								<?php $pouvoir["data"]->data->displayFullDescription(); ?>
+								<?php $pouvoir["data"]->displayFullDescription(); ?>
 							</div>
 						</details>
 				<?php }
@@ -373,108 +374,112 @@ function color_modifier($original_score, $actual_score) {
 	</fieldset>
 <?php endif ?>
 
-<!-- Possessions -->
-<fieldset>
-	<legend class="flex-s gap-½ ai-center">
-		Possessions
-		<button class="ff-far fs-200 btn-primary btn-square" data-role="open-dialog" data-dialog-name="possession-notice" title="mode d’emploi de la liste de possession">&#xf059;</button>
-	</legend>
+<div class="no-break">
+	<!-- Possessions -->
+	<fieldset>
+		<legend class="flex-s gap-½ ai-center">
+			Possessions
+			<button class="ff-far fs-200 btn-primary btn-square" data-role="open-dialog" data-dialog-name="possession-notice" title="mode d’emploi de la liste de possession">&#xf059;</button>
+		</legend>
 
-	<form id="form-equipment" class="flow">
-		<?php
-		//$n_obj = 0;
-		foreach ($character->equipment as $sublist) {
-			$sublist["lieu"] = in_array($sublist["lieu"], ["pi", "pe"]) ? ($sublist["lieu"] . "_" . $character->id) : $sublist["lieu"];
-		?>
-			<!-- Container wrapper -->
-			<details class="container-wrapper" data-role="container-wrapper" data-place="<?= $sublist["lieu"] ?>" title="<?= $sublist["lieu"] ?>" tabindex="-1" id="container-wrapper-<?= $sublist["lieu"] ?>">
-				<!-- Container title -->
-				<summary data-role="container-title-wrapper">
-					<h5 class="flex-s gap-½">
-						<div class="fl-1"><?= $sublist["nom"] ?></div>
-						<div><?= $sublist["sur-soi"] ? (round($sublist["poids"] ?? 0, 1) . "&nbsp;kg") : "" ?></div>
-					</h5>
-				</summary>
-				<!-- Container controls -->
-				<div class="flex-s ai-center gap-1 mt-½" data-role="container-controls">
-					<button class="ff-fas nude clr-primary-500" title="ajouter un objet" data-role="add-item" type="button">
-						&#xf055;
-					</button>
-					<div class="flex-s gap-½ fl-1">
-						<button class="ff-fas nude" title="monter le bloc" data-role="container-up" type="button">&#xf0aa;</button>
-						<button class="ff-fas nude" title="descendre le bloc" data-role="container-down" type="button">&#xf0ab;</button>
-					</div>
-					<?php if ($sublist["id"]) { ?>
-						<label class="ff-fas clr-invalid cursor-pointer" title="transformer en objet simple (si vide seulement !)">
-							&#xf057;
-							<input type="checkbox" name="sub-list[<?= $sublist["id"] ?>][Contenant-off]" <?= $sublist["non-vide"] ? "disabled" : "" ?> hidden>
-						</label>
-						<label class="ff-fas clr-secondary-500 cursor-pointer group-share-input px-¼" title="rendre visible pour le groupe">
-							&#xe533;
-							<input type="checkbox" hidden name="sub-list[<?= $sublist["id"] ?>][Groupe]" <?= !empty($sublist["groupe"]) ? "checked" : "" ?> value="<?= $character->id_group ?>" data-ping-all>
-						</label>
-					<?php } ?>
-				</div>
-				<!-- Items list -->
-				<?php foreach ($sublist["liste"] as $item) {
-					/* $n_obj++ */ ?>
-					<details class="items-list" id="item-<?= $item->id ?>" data-role="item-wrapper">
-						<summary class="grid gap-½ ai-center">
-							<div class="ff-fas" draggable="true" data-role="item-grip">&#xf58e;</div>
-							<input name="objet[<?= $item->id ?>][Nom]" type="text" value="<?= $item->name ?>" placeholder="Nouvel objet" <?= $item->isContainer ? "class=\"fw-600\"" : "" ?>>
-							<input name="objet[<?= $item->id ?>][Poids]" title="poids" type="text" value="<?= $item->weight ?>" class="ta-center watched <?= $item->isContainer ? "clr-grey-700" : "" ?>" required>
-						</summary>
-						<div class="grid fs-300">
-							<input name="objet[<?= $item->id ?>][Notes]" type="text" value="<?= $item->notes ?>" placeholder="Notes" data-role="item-notes">
-							<?php if ($_SESSION["Statut"] >= 2 && ($character->id_gm === $_SESSION["id"] || !$character->id_gm)) { ?>
-								<input name="objet[<?= $item->id ?>][Secret]" type="text" value="<?= $item->secret ?>" placeholder="Notes du MJ" class="clr-invalid" data-role="item-notes">
-							<?php } ?>
-							<input hidden name="objet[<?= $item->id ?>][Lieu]" value="<?= $item->place ?>" data-role="item-place">
-							<input hidden name="objet[<?= $item->id ?>][Contenant]" value="<?= $item->isContainer ?>">
-							<input hidden name="objet[<?= $item->id ?>][MJ]" value="<?= $character->id_gm ?>">
+		<form id="form-equipment" class="flow">
+			<?php
+			//$n_obj = 0;
+			foreach ($character->equipment as $sublist) {
+				$sublist["lieu"] = in_array($sublist["lieu"], ["pi", "pe"]) ? ($sublist["lieu"] . "_" . $character->id) : $sublist["lieu"];
+			?>
+				<!-- Container wrapper -->
+				<details class="container-wrapper" data-role="container-wrapper" data-place="<?= $sublist["lieu"] ?>" title="<?= $sublist["lieu"] ?>" tabindex="-1" id="container-wrapper-<?= $sublist["lieu"] ?>">
+					<!-- Container title -->
+					<summary data-role="container-title-wrapper">
+						<h5 class="flex-s gap-½">
+							<div class="fl-1"><?= $sublist["nom"] ?></div>
+							<div><?= $sublist["sur-soi"] ? (round($sublist["poids"] ?? 0, 1) . "&nbsp;kg") : "" ?></div>
+						</h5>
+					</summary>
+					<!-- Container controls -->
+					<div class="flex-s ai-center gap-1 mt-½" data-role="container-controls">
+						<button class="ff-fas nude clr-primary-500" title="ajouter un objet" data-role="add-item" type="button">
+							&#xf055;
+						</button>
+						<div class="flex-s gap-½ fl-1">
+							<button class="ff-fas nude" title="monter le bloc" data-role="container-up" type="button">&#xf0aa;</button>
+							<button class="ff-fas nude" title="descendre le bloc" data-role="container-down" type="button">&#xf0ab;</button>
 						</div>
-					</details>
-				<?php } ?>
-				<div data-role=free-slot style="height: 0.75em;"></div>
-			</details>
-		<?php } ?>
-		<div id="item-transfer" class="mt-0"><!-- temporary wrapper for item transfer, used in character.js --></div>
-		<input type="hidden" name="id_perso" value="<?= $character->id ?>">
-	</form>
+						<?php if ($sublist["id"]) { ?>
+							<label class="ff-fas clr-invalid cursor-pointer" title="transformer en objet simple (si vide seulement !)">
+								&#xf057;
+								<input type="checkbox" name="sub-list[<?= $sublist["id"] ?>][Contenant-off]" <?= $sublist["non-vide"] ? "disabled" : "" ?> hidden>
+							</label>
+							<label class="ff-fas clr-secondary-500 cursor-pointer group-share-input px-¼" title="rendre visible pour le groupe">
+								&#xe533;
+								<input type="checkbox" hidden name="sub-list[<?= $sublist["id"] ?>][Groupe]" <?= !empty($sublist["groupe"]) ? "checked" : "" ?> value="<?= $character->id_group ?>" data-ping-all>
+							</label>
+						<?php } ?>
+					</div>
+					<!-- Items list -->
+					<?php foreach ($sublist["liste"] as $item) {
+						/* $n_obj++ */ ?>
+						<details class="items-list" id="item-<?= $item->id ?>" data-role="item-wrapper">
+							<summary class="grid gap-½ ai-center">
+								<div class="ff-fas" draggable="true" data-role="item-grip">&#xf58e;</div>
+								<input name="objet[<?= $item->id ?>][Nom]" type="text" value="<?= $item->name ?>" placeholder="Nouvel objet" <?= $item->isContainer ? "class=\"fw-600\"" : "" ?>>
+								<input name="objet[<?= $item->id ?>][Poids]" title="poids" type="text" value="<?= $item->weight ?>" class="ta-center watched <?= $item->isContainer ? "clr-grey-700" : "" ?>" required>
+							</summary>
+							<div class="grid fs-300">
+								<input name="objet[<?= $item->id ?>][Notes]" type="text" value="<?= $item->notes ?>" placeholder="Notes" data-role="item-notes">
+								<?php if ($_SESSION["Statut"] >= 2 && ($character->id_gm === $_SESSION["id"] || !$character->id_gm)) { ?>
+									<input name="objet[<?= $item->id ?>][Secret]" type="text" value="<?= $item->secret ?>" placeholder="Notes du MJ" class="clr-invalid" data-role="item-notes">
+								<?php } ?>
+								<input hidden name="objet[<?= $item->id ?>][Lieu]" value="<?= $item->place ?>" data-role="item-place">
+								<input hidden name="objet[<?= $item->id ?>][Contenant]" value="<?= $item->isContainer ?>">
+								<input hidden name="objet[<?= $item->id ?>][MJ]" value="<?= $character->id_gm ?>">
+							</div>
+						</details>
+					<?php } ?>
+					<div data-role=free-slot style="height: 0.75em;"></div>
+				</details>
+			<?php } ?>
+			<div id="item-transfer" class="mt-0"><!-- temporary wrapper for item transfer, used in character.js --></div>
+			<input type="hidden" name="id_perso" value="<?= $character->id ?>">
+		</form>
 
 
-	<!-- Équipement de groupe -->
-	<?php
-	if (!empty($character->id_group)):
-		$equipement_repo = new EquipmentRepository;
-		$possessions_communes = $equipement_repo->getCommonGroupEquipment($character->id_group);
-		if ($possessions_communes) { ?>
-			<details class="mt-1 fs-300 no-print">
-				<summary class="clr-grey-500"><h5>Possessions de groupe</h5></summary>
-				<?php foreach ($possessions_communes as $key => $liste_contenant) {
-					$liste_contenant_string = implode("&nbsp;; ", array_map(function ($item) {
-						$counter = TextParser::parseObjectCounter($item["Nom"]);
-						return $counter ? $counter["label"] : $item["Nom"];
-					}, $liste_contenant));
-				?>
-					<p><b><?= $key ?>&nbsp;:</b> <?= $liste_contenant_string ?></p>
-				<?php } ?>
-			</details>
-		<?php } ?>
-	<?php endif; ?>
-</fieldset>
+		<!-- Équipement de groupe -->
+		<?php
+		if (!empty($character->id_group)):
+			$equipement_repo = new EquipmentRepository;
+			$possessions_communes = $equipement_repo->getCommonGroupEquipment($character->id_group);
+			if ($possessions_communes) { ?>
+				<details class="mt-1 fs-300 no-print">
+					<summary class="clr-grey-500">
+						<h5>Possessions de groupe</h5>
+					</summary>
+					<?php foreach ($possessions_communes as $key => $liste_contenant) {
+						$liste_contenant_string = implode("&nbsp;; ", array_map(function ($item) {
+							$counter = TextParser::parseObjectCounter($item["Nom"]);
+							return $counter ? $counter["label"] : $item["Nom"];
+						}, $liste_contenant));
+					?>
+						<p><b><?= $key ?>&nbsp;:</b> <?= $liste_contenant_string ?></p>
+					<?php } ?>
+				</details>
+			<?php } ?>
+		<?php endif; ?>
+	</fieldset>
 
-<!--Notes -->
-<?php if (!empty($character->notes)) { ?>
-	<details class="mt-1 no-print">
-		<summary>
-			<h3>Notes</h3>
-		</summary>
-		<div class="mt-½ flow">
-			<?= TextParser::pseudoMDParser($character->notes) ?>
-		</div>
-	</details>
-<?php } ?>
+	<!--Notes -->
+	<?php if (!empty($character->notes)) { ?>
+		<details class="mt-1 no-print">
+			<summary>
+				<h3>Notes</h3>
+			</summary>
+			<div class="mt-½ flow">
+				<?= TextParser::pseudoMDParser($character->notes) ?>
+			</div>
+		</details>
+	<?php } ?>
+</div>
 
 <?php
 // chat window parameters

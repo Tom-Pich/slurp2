@@ -3,34 +3,38 @@
 namespace App\Entity;
 
 use App\Lib\TextParser;
-use App\Interface\RulesItem;
+use App\Repository\DisciplineRepository;
 use App\Repository\PsiPowerRepository;
 
-class PsiPower implements RulesItem
+class PsiPower extends AbstractSpell
 {
-	public int $id;
-	public string $name;
-	public Spell $data;
-	public const niv_modifier = [0, -1, -2, -3, -4];
-	public const pdf_cost = [1, 2, 3, 4, 8];
-	public const pdf_cost_modifier = [0, 0, -1, -2, -3];
+	public array $disciplines;
+	public array $disciplinesName;
+	const niv_modifier = [0, -1, -2, -3, -4];
+	const pdf_cost = [1, 2, 3, 4, 8];
+	const pdf_cost_modifier = [0, 0, -1, -2, -3];
 
 	public function __construct($item = [])
 	{
-		$this->id = $item["id"] ?? 0;
-		$this->name = $item["Nom"] ?? "";
-		$item["Collège"] = $item["Discipline"] ?? "[]";
-		$this->data = new Spell($item);
+		parent::__construct($item);
+		$this->disciplines = json_decode($item["Discipline"] ?? "[]");
 	}
 
-	public function displayInRules(bool $show_edit_link = false, string $edit_link = null, array $data = [])
+	// return array of discipline names of the power
+	public function disciplineNames(): array
 	{
-		return $this->data->displayInRules(show_edit_link: $show_edit_link, edit_link: "gestion-listes?req=psi&id=" . $this->id);
+		$discipline_repo = new DisciplineRepository;
+		$all_disciplines_name = $discipline_repo->getDisciplinesName();
+		$disciplines_name = [];
+		foreach ($this->disciplines as $id) {
+			$disciplines_name[] = $all_disciplines_name[$id];
+		}
+		return $disciplines_name;
 	}
 
 	public static function processPowers(array $raw_psi, array $disciplines, array $attributes)
 	{
-		$raw_powers = array_filter($raw_psi, fn ($x) => $x["catégorie"] === "pouvoir");
+		$raw_powers = array_filter($raw_psi, fn($x) => $x["catégorie"] === "pouvoir");
 		$repo = new PsiPowerRepository;
 		$disciplines_id_niv = [];
 		$powers_data = [];
@@ -44,7 +48,7 @@ class PsiPower implements RulesItem
 
 		foreach ($powers_data as $power_entity) {
 			$f_power = [];
-			$known_power_data = array_filter($raw_powers, fn ($x) => $x["id"] === $power_entity->id);
+			$known_power_data = array_filter($raw_powers, fn($x) => $x["id"] === $power_entity->id);
 			$known_power_data = array_values($known_power_data)[0] ?? [];
 			$f_power["id"] = $power_entity->id;
 			$f_power["niv"] = $known_power_data["niv"] ?? Skill::cost2niv(0, -6, "I");
@@ -53,7 +57,7 @@ class PsiPower implements RulesItem
 
 			// best discipline niv of power
 			$discipline_niv = 0;
-			foreach ($power_entity->data->colleges as $discipline_id) {
+			foreach ($power_entity->disciplines as $discipline_id) {
 				$discipline_niv = $disciplines_id_niv[$discipline_id] > $discipline_niv ? $disciplines_id_niv[$discipline_id] : $discipline_niv;
 			}
 			$f_power["discipline-niv"] = $discipline_niv;
@@ -64,7 +68,7 @@ class PsiPower implements RulesItem
 				$f_power["readable-score"] = null;
 			} else {
 				for ($i = 1; $i <= 5; $i++) {
-					$f_power["scores"][$i] = $power_entity->data->niv_min <= $i && $power_entity->data->niv_max >= $i && $discipline_niv >= $i  ?
+					$f_power["scores"][$i] = $power_entity->niv_min <= $i && $power_entity->niv_max >= $i && $discipline_niv >= $i  ?
 						$f_power["base-score"] + self::niv_modifier[$i - 1] : null;
 				}
 				$f_power["readable-score"] = implode("/", $f_power["scores"]);
@@ -74,7 +78,7 @@ class PsiPower implements RulesItem
 			// power cost in PdF
 			$f_power["cost-modifier"] = self::pdf_cost_modifier[$f_power["discipline-niv"] - 1];
 			for ($i = 1; $i <= 5; $i++) {
-				$f_power["costs"][$i] = $power_entity->data->niv_min <= $i && $power_entity->data->niv_max >= $i && $discipline_niv >= $i  ?
+				$f_power["costs"][$i] = $power_entity->niv_min <= $i && $power_entity->niv_max >= $i && $discipline_niv >= $i  ?
 					max(self::pdf_cost[$i - 1] + $f_power["cost-modifier"], 0) : null;
 			}
 			$f_power["readable-cost"] = implode("/", $f_power["costs"]);
@@ -125,8 +129,6 @@ class PsiPower implements RulesItem
 
 		$psi["Description"] = $post["Description"] ? $post["Description"] : NULL;
 		$psi["Origine"] = $post["Origine"] ? $post["Origine"] : NULL;
-
-		var_dump($psi);
 
 		$repo = new PsiPowerRepository;
 

@@ -4,9 +4,13 @@ namespace App\Interface;
 
 interface RulesItem
 {
-	public function displayInRules(bool $show_edit_link = false, string $edit_link = null, array $data = []);
+	/**
+	 * displayInRules – generate full HTML for displaying in rules
+	 *
+	 * @param  bool $show_edit_link  show/hide link for editing
+	 * @param  array $data overriding default values (depends on rule item type)
+	 * @param  bool $lazy lazy loading of description
+	 * @return void or displayInRules of parent item
+	 */
+	public function displayInRules(bool $show_edit_link, string $edit_req, array $data, bool $lazy);
 }
-
-// float $cost_mult = 0, string $name = "", string $edit_link = "", array $colleges_names = []
-// float $cost_mult = 1, string $name = "", string $edit_link = "gestion-listes?req=avdesav", array $unused = []
-// $data = [ name => "", cost-mult => ..., colleges-list => ...]

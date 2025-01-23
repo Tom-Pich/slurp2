@@ -105,8 +105,9 @@ $creatures_repo = new CreatureRepository;
 
 		<p>Ces pouvoirs sont perdus si le personnage ne sert plus sa divinité – d’où le fait qu’ils ne sont payés que <?= Power::priest_mult * 100 ?>&nbsp;% du prix normal. S’il commet une offense envers elle, celle-ci peut suspendre les pouvoirs jusqu’à accomplissement une pénitence appropriée.</p>
 
-		<p><b>Améliorations &amp; limitations</b><br>
-			Ces pouvoirs peuvent bénéficier d’améliorations ou de limitations. Les multiplicateurs indiqués s’appliquent aux multiplicateurs des pouvoirs de prêtres.<br>
+		<p>
+			<b>Améliorations &amp; limitations</b><br>
+			Ces pouvoirs peuvent bénéficier d’améliorations ou de limitations. Les multiplicateurs indiqués s’appliquent aux multiplicateurs des pouvoirs de prêtres. Arrondir le multiplicateur final au 10<sup>e</sup> le plus proche.<br>
 			<b>• Demi-coût énergétique (×1,5)&nbsp;:</b> réduction de moitié du coût énergétique au lancé comme pour le maintien.
 		</p>
 		<p><b>Récupération de PdM</b><br>

@@ -73,22 +73,22 @@ $affichage = $_POST["affichage"] ?? "categorie";
 	<?php if ($affichage == "alpha") {
 		$avdesav_list = $avdesav_repo->getAllAvDesav();
 		foreach ($avdesav_list as $avdesav) {
-			$avdesav->displayInRules(show_edit_link: $_SESSION["Statut"] === 3);
+			$avdesav->displayInRules(show_edit_link: $_SESSION["Statut"] === 3, lazy: true);
 		}
 	} else {
 		$avdesav_categories = $avdesav_repo->getDistinctCategories();
 		foreach ($avdesav_categories as $category) {
 			$avdesav_list = $avdesav_repo->getAvDesavByCategory($category);
 	?>
-			<details class="<?= $category === "Psi" ? "mb-1" : "" ?>">
+			<details <?= $category === "Avantages surnaturels" ? "class='mt-1'" : "" ?>>
 				<summary>
 					<h3><?= $category ?></h3>
 				</summary>
-				<?php if ($category === "PNJ") { ?>
-					<p class="mt-1">Certains PNJ peuvent vous fournir aide et assis&shy;tance. Le coût de ces PNJ, en tant qu’<i>Avantage</i>, dépend de l’ampleur de l’aide qu’ils peuvent offrir. Cette aide est sincère et sans autre contrepartie qu’une aide équivalente et/ou une loyauté de la part du PJ lorsque nécessaire.<br>
+				<?php if ($category === "PNJ"): ?>
+					<p>Certains PNJ peuvent vous fournir aide et assis&shy;tance. Le coût de ces PNJ, en tant qu’<i>Avantage</i>, dépend de l’ampleur de l’aide qu’ils peuvent offrir. Cette aide est sincère et sans autre contrepartie qu’une aide équivalente et/ou une loyauté de la part du PJ lorsque nécessaire.<br>
 						Deux valeurs en points sont données&nbsp;: la 1<sup>ère</sup> correspond à une aide occasionnelle, la deuxième à une aide possible en toutes circonstances (sauf cas de force majeure).
 					</p>
-					<ul class="flow mt-1">
+					<ul>
 						<li><b>Aide minime (1 ou 2 pts)&nbsp;:</b> fournir un toit, un coup de main sans risque, prêter une petite somme d’argent.</li>
 						<li><b>Aide non négligeable (10 ou 15 pts) :</b> prêter main forte au PJ, prendre des risques raisonnés. Permet en gros de doubler les capacités du PJ.<br></li>
 						<li><b>Aide importante (15 ou 30 pts) :</b> fournir une aide substantielle au PJ, sans laquelle ce dernier pourrait avoir des problèmes sérieux ou échouer dans un objectif important, tirer le PJ d’un problème sérieux.<br></li>
@@ -97,13 +97,11 @@ $affichage = $_POST["affichage"] ?? "categorie";
 
 					<p>D’autres PNJ peuvent être des <i>Désavantages</i>&nbsp;: les <i>Ennemis</i> et les <i>Subordonnés</i>.</p>
 
-				<?php } elseif ($category === "Caractéristiques secondaires") { ?>
+				<?php elseif ($category === "Caractéristiques secondaires"): ?>
 					<p>Modifier les caractéristiques secondaires compte comme un <i>Avantage</i> ou un <i>Désavantage</i>. Ces modifications doivent rester exceptionnelles et justifiées, sauf pour les PdM supplémentaires.</p>
-				<?php }
+				<?php endif ?>
 
-				foreach ($avdesav_list as $avdesav) {
-					$avdesav->displayInRules(show_edit_link: $_SESSION["Statut"] === 3);
-				} ?>
+				<?php foreach ($avdesav_list as $avdesav) $avdesav->displayInRules(show_edit_link: $_SESSION["Statut"] === 3, lazy: true); ?>
 			</details>
 	<?php }
 	} ?>
@@ -116,7 +114,7 @@ $affichage = $_POST["affichage"] ?? "categorie";
 		Compétences
 	</h2>
 
-	<?php if ($affichage == "alpha") {
+	<?php if ($affichage === "alpha") {
 		$skills_list = $skills_repo->getAllSkills();
 		foreach ($skills_list as $skill) {
 			$skill->displayInRules(show_edit_link: $_SESSION["Statut"] === 3);
@@ -126,19 +124,21 @@ $affichage = $_POST["affichage"] ?? "categorie";
 		foreach ($skills_categories as $category) {
 			$skills_list = $skills_repo->getSkillsByCategory($category) ?>
 
-			<details class="<?= $category === "Voleur - espion" ? "mb-1" : "" ?>">
+			<details class="<?= $category === "Spécifiques" ? "mt-1" : "" ?>">
 				<summary>
 					<h3><?= $category ?></h3>
 				</summary>
-				<?php if ($category == "Professionnelle") { ?>
+				<?php if ($category === "Professionnelle"): ?>
 					<p>Les compétences ci-dessous sont des exemples non limitatifs de compétences professionnelles. En cas de besoin d’une nouvelle compétence, parlez-en à votre MJ webmaster qui ajoutera la compétence nécessaire.</p>
 
-				<?php } elseif ($category == "Sciences &amp; connaissances") { ?>
-					<p>Il existe de très nombreuses compétences de type <i>Sciences &amp; connaissance</i>. Une compétence de ce type faisant appel à un nombre relativement restreint de savoirs, sans concept complexe est de type [I-2]. Une compétence dont le champ est très vaste et/ou faisant appel à des concepts complexes est de type [I-6]. La liste ci-dessous n’est pas limitative. En cas de besoin, parlez-en à votre MJ web-master qui ajoutera la compétence nécessaire.</p>
+				<?php elseif ($category === "Sciences &amp; connaissances"): ?>
+					<p>Il existe de très nombreuses compétences de type <i>Sciences &amp; connaissance</i>. Une compétence de ce type faisant appel à un nombre relativement restreint de savoirs, sans concept complexe est de type [I-2]. Une compétence dont le champ est très vaste et/ou faisant appel à des concepts complexes est de type [I-6]. La liste ci-dessous n’est pas limitative. En cas de besoin, parlez-en à votre MJ webmaster qui ajoutera la compétence nécessaire.</p>
 
-				<?php } elseif ($category == "Langue") { ?>
-					<p>La plupart des langues sont de difficulté moyenne [I(-4)] mais un sabir/créole sera facile [I(-2)] et une langue à la structure grammaticale très complexe sera ardue [I(-6)]. La difficulté dépend également de la proximité entre la langue maternelle du personnage et la langue apprise.<br>
-						Niveau par défaut de la langue maternelle&nbsp;: <i>Int</i> + 5 ± <i>Statut social</i>.</p>
+				<?php elseif ($category === "Langue"): ?>
+					<p>
+						La plupart des langues sont de type I(-4) mais un sabir/créole sera I(-2) et une langue à la structure grammaticale très complexe sera ardue I(-6). La difficulté dépend également de la proximité entre la langue maternelle du personnage et la langue apprise.<br>
+						Niveau par défaut de la langue maternelle&nbsp;: <i>Int</i> + 5 ± <i>Statut social</i>.
+					</p>
 
 					<h4>Signification du score de compétence</h4>
 					<p>
@@ -163,16 +163,18 @@ $affichage = $_POST["affichage"] ?? "categorie";
 						<b>≥ +6 :</b> Aucun accent.
 					</p>
 
-				<?php } elseif ($category == "Sociale") { ?>
+				<?php elseif ($category === "Sociale"): ?>
 					<p>Les modificateurs aux JR peuvent s’appliquer aux jets de compétences sociales. Il faut reporter sur la fiche de personnage ceux qui s’appliquent en permanence (<i>Charisme</i>, <i>Apparence</i>) et garder les autres en tête. Le MJ décidera si tel ou tel autre modificateur aux JR (<i>Trait de caractère</i>, <i>Attitude odieuse</i>, <i>Réputation</i>, <i>Statut</i>) peut s’appliquer dans une situation donnée.</p>
 
-				<?php } elseif ($category == "Plein air") { ?>
-					<p>Les sports ne sont pas tous explicités. Une compétence sportive est basée sur F ou FD et sa difficulté est généralement de -2 ou -4. En cas de besoin, parlez-en à votre MJ web-master qui ajoutera la compétence nécessaire.</p>
-				<?php }
+				<?php elseif ($category === "Plein air"): ?>
+					<p>Les sports ne sont pas tous explicités. Une compétence sportive est basée sur F ou FD et sa difficulté est généralement de -2 ou -4. En cas de besoin, parlez-en à votre MJ webmaster qui ajoutera la compétence nécessaire.</p>
 
-				foreach ($skills_list as $skill) {
-					$skill->displayInRules(show_edit_link: $_SESSION["Statut"] === 3);
-				} ?>
+				<?php elseif ($category === "Spécifiques"): ?>
+					<p>Ces compétences sont spécifiques à un univers de jeu donné. Avant de les choisir, assurez-vous qu’elles soient pertinentes pour votre personnage.</p>
+
+				<?php endif; ?>
+
+				<?php foreach ($skills_list as $skill) $skill->displayInRules(show_edit_link: $_SESSION["Statut"] === 3); ?>
 			</details>
 	<?php }
 	} ?>
@@ -185,26 +187,33 @@ $affichage = $_POST["affichage"] ?? "categorie";
 		<?php if ($_SESSION["Statut"] == 3) { ?><a href="gestion-listes?req=sort&id=0" class="edit-link ff-far">&#xf044;&nbsp;</a><?php } ?>
 		Sorts
 	</h2>
-	<?php
-	$all_colleges_names = $colleges_repo->getCollegesName();
-	?>
 	<?php if ($affichage == 'alpha') {
 		$spells = $spells_repo->getAllSpells();
 		foreach ($spells as $spell) {
-			$spell->displayInRules(show_edit_link: $_SESSION["Statut"] === 3, data: ["name" => "", "cost-mult" => 0, "colleges-list" => $all_colleges_names]);
+			$spell->displayInRules(
+				show_edit_link: $_SESSION["Statut"] === 3,
+				edit_req: "sort",
+				data: ["colleges-list" => $spell->collegeNames()],
+				lazy: true
+			);
 		}
 	} else {
 		$colleges = $colleges_repo->getAllColleges();
 		foreach ($colleges as $college) {
 			$spells = $spells_repo->getSpellsByCollege($college->id);
 	?>
-			<details class="<?= $college->id === 21 ? "mb-1" : "" ?>">
+			<details <?= $college->id === 22 ? "class='mt-1'" : "" ?>>
 				<summary>
 					<h3><?= $college->name ?></h3>
 				</summary>
 				<p><?= $college->description ?></p>
 				<?php foreach ($spells as $spell) {
-					$spell->displayInRules(show_edit_link: $_SESSION["Statut"] === 3, data: ["name" => "", "cost-mult" => 0, "colleges-list" => $all_colleges_names]);
+					$spell->displayInRules(
+						show_edit_link: $_SESSION["Statut"] === 3,
+						edit_req: "sort",
+						data: ["colleges-list" => $spell->collegeNames()],
+						lazy: true
+					);
 				} ?>
 			</details>
 
@@ -213,4 +222,4 @@ $affichage = $_POST["affichage"] ?? "categorie";
 
 </article>
 
-<script type="module" src="/scripts/items-filter.js?v=<?= VERSION ?>" defer></script>
+<script type="module" src="/scripts/items-filter<?= PRODUCTION ? ".min" : "" ?>.js?v=<?= VERSION ?>" defer></script>

@@ -52,6 +52,7 @@ dfn {text-decoration: underline var(--clr-700); cursor: help;}
 .gap-¼ { gap: .25em; }
 .mt-¼ { margin-top: .25em; }
 .px-¼ { padding-inline: .25em }
+.py-0 { padding-block: 0 !important; }
 .fs-200 { font-size: var(--fs-200) }
 
 .edit-link { color: inherit; text-decoration: none; }
@@ -80,6 +81,7 @@ dfn {text-decoration: underline var(--clr-700); cursor: help;}
 
 // forms & buttons
 input, select, textarea { padding: .25em; border: 1px solid var(--grey-700) }
+.btn-secondary { --btn-clr: var(--clr-secondary-500); --text-clr: var(--white); }
 .btn-square { width: 1.75em; aspect-ratio: 1; display: grid; place-content: center; line-height: 0; padding: 0; }
 .nude { padding: 0; border: none; }
 .nude:hover {transform: scale(1.05)}

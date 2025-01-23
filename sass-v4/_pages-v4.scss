@@ -54,7 +54,7 @@ body.personnage-fiche {
 	}
 
 	main { columns: var(--col-width) auto; column-gap: .5em; flex: 1; }
-	aside.right { @include media-min {padding-left: 0; padding-top: 1.85em;} }
+	aside.right { @include media-min {padding-left: 0; padding-top: .85em;} }
 
 	.portraits-wrapper {
 		display: grid; gap: .5em;

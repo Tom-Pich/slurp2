@@ -93,13 +93,14 @@ class AvDesav implements RulesItem
 	 * displayInRules – generate full HTML for displaying in rules
 	 *
 	 * @param  bool $show_edit_link  show/hide link for editing
-	 * @param  string $edit_link to access edit page
 	 * @param  array $data overriding default name, cost multiplier
+	 * @param  bool $lazy lazy loading of description
 	 * @return void
 	 */
-	public function displayInRules(bool $show_edit_link = false, string $edit_link = null, array $data = ["name" => "", "cost-mult" => 1])
+	public function displayInRules(bool $show_edit_link = false, string $edit_req = "avdesav", array $data = ["name" => "", "cost-mult" => 1], bool $lazy = false): void
 	{
-		$edit_link = $edit_link ?? "gestion-listes?req=avdesav&id=" . $this->id; ?>
+		$edit_link = sprintf("gestion-listes?req=%s&id=%d", $edit_req, isset($data["power-id"] ) ? $data["power-id"]: $this->id );
+		?>
 
 		<details class="liste">
 			<summary title="id <?= $this->id ?>">
@@ -113,7 +114,9 @@ class AvDesav implements RulesItem
 					<div><?= $this->displayCost($data["cost-mult"]) ?></div>
 				</div>
 			</summary>
-			<div class="fs-300 flow"><?= $this->description ?></div>
+			<div class="fs-300 flow" <?= $lazy ? "data-details data-type='avdesav' data-id='{$this->id}'" : "" ?>>
+				<?php  if(!$lazy) $this->description ?>
+			</div>
 		</details>
 <?php
 	}
