@@ -297,7 +297,7 @@ function color_modifier($original_score, $actual_score)
 							</summary>
 
 							<div class="fs-300 ta-justify">
-								<?= $sort["data"]->displayFullDescription($sort["readable_time"]) ?>
+								<?= $sort["data"]->getFullDescription($sort["readable_time"]) ?>
 							</div>
 						</details>
 
@@ -325,14 +325,11 @@ function color_modifier($original_score, $actual_score)
 						<div data-type="throwable-score" <?= color_modifier(0, $character->modifiers["Int"]) ?>><?= $pouvoir["score"] ?></div>
 					</div>
 				</summary>
-				<div class="fs-300 ta-justify">
-					<?php if ($type === "sort") {
-						$pouvoir["data"]->data->displayFullDescription();
-					} else { ?>
-						<div class="mt-½">
-							<?= $pouvoir["data"]->data->description ?>
-						</div>
-					<?php } ?>
+				<div class="fs-300">
+					<?php
+					if ($type === "sort") echo $pouvoir["data"]->data->getFullDescription();
+					else echo $pouvoir["data"]->data->description;
+					?>
 				</div>
 			</details>
 		<?php } ?>
@@ -363,8 +360,8 @@ function color_modifier($original_score, $actual_score)
 									<div data-type="throwable-score" <?= color_modifier(0, $character->modifiers["Int"]) ?>><?= $pouvoir["readable-score"] ?></div>
 								</div>
 							</summary>
-							<div class="fs-300 ta-justify">
-								<?php $pouvoir["data"]->displayFullDescription(); ?>
+							<div class="fs-300">
+								<?= $pouvoir["data"]->getFullDescription(); ?>
 							</div>
 						</details>
 				<?php }

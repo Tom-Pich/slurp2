@@ -69,19 +69,8 @@ class Character
 			$this->portrait = "assets/character-portraits/" . (empty($bd_data["Portrait"]) ? "_default.png" : $bd_data["Portrait"]);
 			$this->state = json_decode($bd_data["État"], true);
 			$this->pdxm = json_decode($bd_data["Calculs"], true);
-
-			/* if ($this->id_group === 100) {
-				$this->id_gm = 0;
-			} elseif ($this->id_group > 100) {
-				$this->id_gm = $this->id_group - 100;
-			} else {
-				$this->id_gm = (new GroupRepository)->getGroup($this->id_group)->id_gm ?? 0;
-			} */
-			if (empty($this->id_group)) {
-				$this->id_gm = 0;
-			} else {
-				$this->id_gm = (new GroupRepository)->getGroup($this->id_group)->id_gm ?? 0;
-			}
+			if (empty($this->id_group)) $this->id_gm = 0;
+			else $this->id_gm = (new GroupRepository)->getGroup($this->id_group)->id_gm ?? 0;
 		}
 	}
 
@@ -243,6 +232,7 @@ class Character
 			$this->modifiers["Vitesse-mult"] *= $this->state["Encombrement"]["vit-multiplier"];
 			$this->modifiers["Vitesse-mult"] = $this->modifiers["Vitesse-mult"];
 			$this->modifiers["Encombrement"] = $this->state["Encombrement"]["dex-modifier"];
+			$this->modifiers["Magie"] += $this->state["Encombrement"]["dex-modifier"];
 
 			// reflexes and sf modifers based on primary attributes (vitesse is independant)
 			$this->modifiers["Réflexes"] += (int) floor($this->modifiers["Dex"] / 2 + $this->modifiers["Per"] / 2);

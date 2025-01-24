@@ -8,7 +8,9 @@ use App\Rules\WoundController;
 	<h2>Blessures</h2>
 
 	<details>
-		<summary><h3>Définitions</h3></summary>
+		<summary>
+			<h3>Définitions</h3>
+		</summary>
 		<p><b>Dégâts bruts&nbsp;:</b> dégâts de l’attaque avant prise en compte de la RD.<br>
 			<b>Dégâts effectifs&nbsp;:</b> dégâts nets après application du multiplicateur de type de dégâts et d’une éventuelle limite. Ce sont eux qui sont à soustraire des PdV du personnage.<br>
 			<b>PdVm&nbsp;:</b> PdV maximum du personnage (lorsqu’il n’est pas blessé).
@@ -16,7 +18,9 @@ use App\Rules\WoundController;
 	</details>
 
 	<details>
-		<summary><h3>Effets d’une blessure</h3></summary>
+		<summary>
+			<h3>Effets d’une blessure</h3>
+		</summary>
 
 		<p>
 			Les effets des blessures sont très complexes à établir. Ils dépendent de nombreux facteurs (étendue des dégâts infligés, type de dégâts, localisation, état du personnage, RD, <i>San</i>, <i>Dex</i> et présence ou absence de <i>Résistance à la douleur</i>) et peuvent être partiellement aléatoires.<br>
@@ -40,15 +44,18 @@ use App\Rules\WoundController;
 
 	</details>
 
+	<!-- État général -->
 	<details>
-		<summary><h3>État général</h3></summary>
+		<summary>
+			<h3>État général</h3>
+		</summary>
 
 		<h4>Seuils de PdV généraux</h4>
-		<p>Lorsque les PdV d’une créature sont inférieurs à certains seuils, elle subit les conséquences indiquées. Des PdV négatifs ne signifient pas nécessairement une mort immédiate. Consulter la table ci-dessous ou utiliser le widget <i>Seuils de blessures</i> sur la <a href="table-jeu">Table de jeu</a>.<br>
-			Les seuils sont donnés en pourcentage des PdV maximum.<br>
-			Un malus s’appliquant à la <i>For</i> n’affecte pas ses PdVm et ses PdFm.</p>
+		<p>Lorsque les PdV d’une créature sont inférieurs à certains seuils, elle subit des pénalités à ses caractéristiques principales ainsi qu’à sa vitesse. Consulter la table ci-dessous ou utiliser le widget <i>Seuils de blessures</i> sur la <a href="table-jeu">Table de jeu</a>.</p>
+		<p>Des PdV négatifs ne signifient pas nécessairement une mort immédiate.</p>
+		<p>Les seuils sont donnés en pourcentage des PdV maximum.</p>
 
-		<table class="left-2">
+		<table class="left-2 fs-300">
 			<tr>
 				<th style="width: 20%">PdV</th>
 				<th>Effets</th>
@@ -65,7 +72,6 @@ use App\Rules\WoundController;
 		</table>
 
 		<p>Si le personnage dispose de l’avantage <i>Résistance à la douleur</i>, ajouter 25&nbsp;% à son ratio PdV/PdVm, sauf si ses PdV sont &le; -100&nbsp;% PdVm.</p>
-		<p>Les PdV et PdF ne sont pas affectés par le multiplicateur de <i>For</i> associé au niveau de blessure.</p>
 
 		<h4>Blessures &amp; fatigue</h4>
 		<p>Si le personnage est fatigué <i>et</i> blessé, les malus se cumulent. Si le personnage tombe en-dessous de la moitié de sa <i>For</i> normale, il ne peut pas tenir debout. Si sa vitesse tombe à 0, il peut à peine se déplacer en titubant.</p>
@@ -73,7 +79,9 @@ use App\Rules\WoundController;
 	</details>
 
 	<details>
-		<summary><h3>Effets des blessures aux membres</h3></summary>
+		<summary>
+			<h3>Effets des blessures aux membres</h3>
+		</summary>
 		<p>
 			Chaque membre (bras, mains, jambes, pieds) a ses propres PdV qui sont calculés à partir des PdVm, ainsi que ses propres seuils de blessures. Les dégâts infligés à un membre ne sont pas décomptés du total des PdV du personnage.<br>
 			Utiliser le widget <i>Seuils de blessures</i> sur la <a href="table-jeu">Table de jeu</a> pour déterminer l’état d’un membre en fonction des dégâts qu’il a reçu.
@@ -101,7 +109,7 @@ use App\Rules\WoundController;
 			</tr>
 			<?php foreach (array_reverse(WoundController::members_levels) as $level => $state) { ?>
 				<tr>
-					<td>&le; <?= ((float) $level)*100 ?>&nbsp;%</td>
+					<td>&le; <?= ((float) $level) * 100 ?>&nbsp;%</td>
 					<td><?= $state["description"] ?></td>
 				</tr>
 			<?php } ?>
@@ -112,7 +120,9 @@ use App\Rules\WoundController;
 
 	<!-- Hémorragie -->
 	<details>
-		<summary><h3>Hémorragie</h3></summary>
+		<summary>
+			<h3>Hémorragie</h3>
+		</summary>
 		<p class="clr-invalid italic ta-center">Règle à revoir et à passer en gestion automatique.</p>
 		<p><i>Attention</i>&nbsp;: cette règle est optionnelle car elle augmente <i>drastiquement</i> la mortalité en l’absence de soins magiques.</p>
 		<p>Une blessure peut provoquer une hémorragie. Jet de <i>San</i> à -1 pour chaque tranche complète de 25&nbsp;% des PdVm perdus, une fois par minute&nbsp;:</p>
@@ -138,13 +148,17 @@ use App\Rules\WoundController;
 
 	<!-- Premiers secours -->
 	<details>
-		<summary><h3>Premiers secours</h3></summary>
+		<summary>
+			<h3>Premiers secours</h3>
+		</summary>
 		<p>Les soins durent une minute et permettent d’arrêter une hémorragie externe et de récupérer 1 PdV si la blessure est ouverte. Des premiers soins peuvent s’appliquer indépendamment aux PdV généraux (tronc et tête) et aux membres.</p>
 	</details>
 
 	<!-- Rétablissement naturel -->
 	<details>
-		<summary><h3>Rétablissement naturel</h3></summary>
+		<summary>
+			<h3>Rétablissement naturel</h3>
+		</summary>
 		<p>
 			Chaque jour, un blessé a droit à un jet de <i>San</i> appelé <i>jet de guérison</i>.<br>
 			Ce jet est modifié par l’état du personnage et par les conditions de guérison.
@@ -255,7 +269,9 @@ use App\Rules\WoundController;
 
 	<!-- Rétablissement après inconscience -->
 	<details>
-		<summary><h3>Rétablissement après inconscience</h3></summary>
+		<summary>
+			<h3>Rétablissement après inconscience</h3>
+		</summary>
 
 		<p>La durée de l’inconscience dépend de la fraction des PdV restant et d’un ou plusieurs jet de <i>San</i>. Consultez la table ci-dessous.</p>
 
@@ -309,7 +325,9 @@ use App\Rules\WoundController;
 
 	<!-- Rétablissement de blessures invalidantes -->
 	<details>
-		<summary><h3>Rétablissement de blessures invalidantes</h3></summary>
+		<summary>
+			<h3>Rétablissement de blessures invalidantes</h3>
+		</summary>
 		<p>Après une blessure <i>invalidante</i>, la victime doit faire un jet de <i>San</i> pour déterminer comment se rétablira l’invalidité (si elle se rétablit&hellip;).</p>
 		<table class="left-2">
 			<colgroup>
@@ -341,7 +359,9 @@ use App\Rules\WoundController;
 
 	<!-- Soins magiques & blessures aux membres -->
 	<details>
-		<summary><h3>Soins magiques &amp; blessures aux membres</h3></summary>
+		<summary>
+			<h3>Soins magiques &amp; blessures aux membres</h3>
+		</summary>
 		<p>
 			Lorsque le membre revient à 100&nbsp;% de ses PdVm propres, il est considéré comme guéri (même s’il reste handicapé ou détruit).<br>
 			Si le membre a été sectionné, récupérer la moitié de ses PdVm propres suffit à cicatriser le moignon.
@@ -360,12 +380,16 @@ use App\Rules\WoundController;
 	<h2>Dangers divers</h2>
 
 	<details>
-		<summary><h3>Affaiblissement et PdF</h3></summary>
+		<summary>
+			<h3>Affaiblissement et PdF</h3>
+		</summary>
 		<p>L’affaiblissement du personnage sans blessure physique est simulé par des pertes de PdF. Ces PdF ne peuvent être récupérés que par la fin de l’exposition au danger.</p>
 	</details>
 
 	<details>
-		<summary><h3>Chute</h3></summary>
+		<summary>
+			<h3>Chute</h3>
+		</summary>
 		<p>Les dégâts dus à une chute, pour un humain, sont les suivants&nbsp;:<br>
 			• 1 ou 2 mètres&nbsp;: 1d-3 par mètre,<br>
 			• 3 ou 4 mètres&nbsp;: 1d-2 par mètre,<br>
@@ -410,7 +434,9 @@ use App\Rules\WoundController;
 	</details>
 
 	<details>
-		<summary><h3>Drogues</h3></summary>
+		<summary>
+			<h3>Drogues</h3>
+		</summary>
 		<p>Chaque drogue est décrite en terme de jeu par les caractéristiques ci-dessous. Si la drogue est imaginaire, il faut préciser son ou ses modes d’administration, son origine, etc.</p>
 		<p><b>Effets&nbsp;:</b> modulés par un jet de <i>San</i>, par la quantité prise, la qualité, etc. Une personne dépendante aura des bonus à ce jet, ce qui diminuera les effets qu’elle pourra ressentir et la poussera à consommer plus que la dose standard.</p>
 		<p><b>Addictivité</b></p>
@@ -427,13 +453,17 @@ use App\Rules\WoundController;
 	</details>
 
 	<details>
-		<summary><h3>Poisons</h3></summary>
+		<summary>
+			<h3>Poisons</h3>
+		</summary>
 		<p>La description doit indiquer, selon le mode d’action (ingestion, injection, cutané, inhalation), le temps nécessaire à l’action du poison, sa virulence (le malus au jet de résistance) ainsi que ses effets, en cas de réussite ou d’échec du jet de résistance.</p>
 		<p><b>Doses multiples&nbsp;:</b> par dose supplémentaire, la virulence est augmentée de 2 et les effets augmentés de 50 %.</p>
 	</details>
 
 	<details>
-		<summary><h3>Suffocation</h3></summary>
+		<summary>
+			<h3>Suffocation</h3>
+		</summary>
 		<p>Une fois à bout de souffle (voir <i>Retenir sa respiration</i>), le personnage perd de 1PdF par tour.<br>
 			Lorsque les PdF atteignent 0, il s’évanouit. La mort survient au bout de 3 minutes.<br>
 			Si la victime est en fait en train de se noyer (c’est-à-dire que l’eau a pénétré à l’intérieur de ses poumons) le sauveteur devra réussir un jet de <i>Premiers secours</i> pour la sauver. Sinon, le seul fait de respirer de l’air frais ramènera la victime à elle, et elle pourra ainsi récupérer 1 PdF immédiatement mais devra reprendre le reste de ses forces normalement.<br>
@@ -441,14 +471,18 @@ use App\Rules\WoundController;
 	</details>
 
 	<details>
-		<summary><h3>Climat extrême</h3></summary>
+		<summary>
+			<h3>Climat extrême</h3>
+		</summary>
 		<p>En cas de forte chaleur ou de froid glacial, faire des jets de <i>San</i> (ou de <i>Survie</i> appropriée) régulièrement. Ces jets des <i>San</i> et leur fréquence sont modifiés par les conditions de cette exposition.</p>
 		<p>Un échec fait perdre 1 PdF, un échec critique fait perdre 3 PdF. Une MR &ge; 5 permet de récupérer 1 PdF perdu par la chaleur ou le froid.</p>
 		<p>Une fois arrivé à 3 PdF, le personnage perd des PdV en plus des PdF.</p>
 	</details>
 
 	<details>
-		<summary><h3>Flammes</h3></summary>
+		<summary>
+			<h3>Flammes</h3>
+		</summary>
 		<p>Chaque seconde passée dans les flammes infligent 1d-1 points de dégâts.</p>
 		<p>Les armures de NT7 ou moins protègent entièrement contre des flammes ordinaires pendant RD tours. Les armures de NT8 ou plus peuvent être étanches. En ce cas, une armure de RD4 ou plus vous protègera une minute.</p>
 		<p>Un bouclier pourra s’interposer entre un jet de flamme, ou une source de chaleur, et son porteur. La DP du bouclier comptera comme une RD.</p>
@@ -460,7 +494,9 @@ use App\Rules\WoundController;
 	</details>
 
 	<details>
-		<summary><h3>Inanition et déshydratation</h3></summary>
+		<summary>
+			<h3>Inanition et déshydratation</h3>
+		</summary>
 		<p><b>Nourriture&nbsp;:</b> 1 PdF par repas raté (on compte deux repas par jour). Lorsque les PdF atteignent 3 pour cause de sous-alimentation, perte de PdV à la même vitesse.</p>
 		<p><b>Eau&nbsp;:</b> 1 PdF et 1 PdV par jour si 2/3 des besoins sont couverts. 2 PdF et 2 PdV par jour pour 1/3 des besoins. Sans eau&nbsp;: 3 PdF et 3 PdV par jour. Si les PdV ou les PdF atteignent 0 par manque d’eau, délire et mort au bout d’une journée.</p>
 		<p>Des jets de <i>San</i> réussis peuvent diminuer (légèrement) ces conséquences.</p>

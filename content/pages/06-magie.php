@@ -34,8 +34,10 @@ use App\Entity\Spell;
 		<summary>
 			<h3>L’avantage <i>Magerie</i></h3>
 		</summary>
-		<p>Nécessaire pour pouvoir apprendre et lancer des sorts. Il comporte 5 niveaux.<br>
-			Aucun sort de niveau de puissance supérieur au niveau de <i>Magerie</i> de l’initiateur ne peut être lancé.</p>
+		<p>
+			Nécessaire pour pouvoir apprendre et lancer des sorts. Il comporte 5 niveaux.<br>
+			Aucun sort de niveau de puissance supérieur au niveau de <i>Magerie</i> de l’initiateur ne peut être lancé.
+		</p>
 
 		<table class="fs-300">
 			<tr>
@@ -94,7 +96,8 @@ use App\Entity\Spell;
 			</tr>
 		</table>
 
-		<p><b>Coût&nbsp;:</b> Coût du niveau en points de personnage.<br>
+		<p>
+			<b>Coût&nbsp;:</b> Coût du niveau en points de personnage.<br>
 			<b>Int&nbsp;:</b> Intelligence minimale requise pour acquérir ce niveau.<br>
 			<b>Modificateur&nbsp;:</b> bonus aux scores des collèges.<br>
 			<b>Détection&nbsp;:</b> score pour savoir si un objet touché est magique ou percevoir une perturbation du fluide. Un seul jet peut être fait pour chaque objet ou chaque perturbation.<br>
@@ -109,6 +112,14 @@ use App\Entity\Spell;
 			<h3>Apprendre un Collège de magie</h3>
 		</summary>
 		<p>Un collège de magie est un ensemble de connaissances sur l’utilisation de la magie appliquée à un domaine particulier. Chaque collège est une <b>compétence I(-8)</b>. Voir la <a href="avdesav-comp-sorts">liste des sorts par collège</a> pour avoir la liste des collèges existants.</p>
+
+		<details class="exemple">
+			<summary>Exemple</summary>
+			<p>Aldwin a une <i>Int</i> de 13 et <i>Magerie 2</i>. Il souhaite apprendre le collège d’<i>Emprise mentale</i>.</p>
+			<p>Il investit 8 pts de personnage dedans. En tant que compétence de type I(-8), cela l’amène à un niveau de 0.</p>
+			<p>La base de cette compétence vaut 13 (son score d’<i>Int</i>), -1 à cause de son niveau de <i>Magerie</i>.</p>
+			<p>Son score dans ce collège sera donc de 12 + 0 = 12.</p>
+		</details>
 	</details>
 
 	<!-- Apprendre un sort -->
@@ -116,18 +127,29 @@ use App\Entity\Spell;
 		<summary>
 			<h3>Apprendre un sort</h3>
 		</summary>
-		<p>Un sort est une <i>spécialisation optionnelle</i> d’un collège. Le score d’un sort est également assorti d’un modificateur qui dépend de son niveau de puissance (voir <i>Lancer un sort</i> plus loin)</p>
-		<p class="mt-1 ta-center"><b>score brut (sort) = score (collège) + pts investis – modificateur de puissance</b></p>
+		<p>Un sort est une <i>spécialisation optionnelle</i> d’un collège. Le score d’un sort est également assorti d’un modificateur qui dépend de son niveau de puissance (voir <i>Lancer un sort</i> à la section suivante)</p>
+		<p class="mt-1 ta-center fw-700">score brut (sort) = score (collège) + pts investis – modificateur de puissance</p>
 		<p>Un sort ayant plusieurs niveaux de puissance possèdera donc des scores différents selon le niveau auquel il est utilisé.</p>
 		<p>Il est <b>impossible de lancer un sort sans avoir un score brut &ge; 12</b> dans ce sort, que ce soit en l’improvisant ou en l’ayant appris.</p>
 
 		<h4>Improviser un sort</h4>
 		<p>Il est possible d’improviser n’importe quel sort de niveau III ou moins (sauf les sorts de <i>Blocage</i> et d’<i>Enchantement</i>) y compris des sorts qui ne seraient pas décrits dans ces règles.</p>
-		<p>Le score est calculé comme un sort dans lequel aucun pt de personnage n’a été investi. Pour ce calcul, le niveau de compétence effectif dans le collège possède une limite qui dépend du niveau de <i>Magerie</i>.</p>
+		<p>Le score est calculé comme un sort dans lequel aucun pt de personnage n’a été investi. Pour ce calcul, le niveau de compétence effectif dans le collège possède une limite qui dépend du niveau de <i>Magerie</i> (voir l’avantage <i>Magerie</i> plus haut).</p>
 		<p><b>Réussite et échec&nbsp;:</b> lors du lancer d’un sort improvisé, 16 est toujours un échec, 17 et 18 sont toujours des échecs critiques.</p>
 
 		<h4>Sorts appartenant à plusieurs collèges</h4>
 		<p>Certains sorts appartiennent à plusieurs collèges à la fois. La connaissance d’un seul de ces collèges est suffisante pour pouvoir apprendre le sort.</p>
+
+		<details class="exemple">
+			<summary>Exemple</summary>
+			<p>Reprenons l’exemple du paragraphe précédent.</p>
+			<p>Avec un score de 12 en <i>Emprise mentale</i>, Aldwin peut improviser des sorts de niveau I. À cause de son niveau de <i>Magerie</i>, ce score serait limité à 14, mais comme il est en dessous, il n’est pas affecté par cette limite. Il peut donc improviser n’importe quel sort de niveau I avec un score de 12.</p>
+			<p>Comme le modificateur de puissance des sorts de niveau II vaut -2 (voir <i>Lancer un sort – Caractéristiques générales de sorts</i>, section suivante), il a un score d’improvisation au niveau II qui est de 10. Ce score étant inférieur à 12, Aldwin ne peut pas improviser de sorts de niveau II.</p>
+			<p>Il souhaite apprendre le sort <i>Idiotie</i>, de niveaux I-III. S’il ne l’apprend pas, il ne peut que l’improviser au niveau I. En investissant 3 pts de personnage dans ce sort, ses scores se calculent ainsi&nbsp;:</p>
+			<p class="fw-700">Score du collège (12) + modificateur de puissance (0 au niveau I et -2 au niveau II) + pts de personnage investis (3).</p>
+			<p>Ses scores pour ce sort sont donc 15 (au niveau I) et 12 (au niveau II).</p>
+			<p>Son score «&nbsp;théorique&nbsp;» au niveau III serait de 9. Mais comme son niveau de <i>Magerie</i> est insuffisant, il ne peut de toute façon pas le lancer.</p>
+		</details>
 	</details>
 
 	<!-- Niveau de puissance -->
@@ -233,25 +255,25 @@ use App\Entity\Spell;
 		<summary>
 			<h3>Modificateurs</h3>
 		</summary>
-		<p><b>État de l’initiateur&nbsp;:</b> la fatigue, les blessures et l’encombrement imposent les mêmes malus pour le lancer d’un sort que pour des actions physiques.</p>
-		<p><b>Distance de la cible&nbsp;:</b> voir la description de la classe ou du sort.</p>
-		<p><b>Jeter des sorts en en prolongeant d’autres&nbsp;:</b> si le sort actif nécessite une concentration, un autre sort peut être jeté à -3. Les sorts nécessitant une concentration le mentionnent dans leur description. Sinon (y compris dans le cas d’un sort projectile gardé « &nbsp;en main&nbsp;»), il peut être jeté à -1. Les sorts permanents ne sont pas considérés comme des sorts en cours. Ces pénalités sont cumulatives.</p>
+		<p><b>Encombrement de l’initiateur&nbsp;:</b> le niveau d’encombrement affecte le score des collèges de la même manière qu’il affecte la <i>Dex</i>.</p>
+		<p><b>Niveau de fluide&nbsp;:</b> les modificateurs dus au niveau de fluide influe sur le score <i>brut</i> des sorts. Voir la section <i>Fluide</i>, plus bas.</p>
+		<p><b>Distance de la cible&nbsp;:</b> voir la description de la classe ou du sort. Ce modificateur n’affecte pas le score brut. Il n’a donc pas d’influence sur tous les facteurs qui dépendent de ce score (<i>Temps nécessaire</i>, <i>Coût énergétique</i>&hellip;)</p>
+		<p><b>Jeter des sorts en en prolongeant d’autres&nbsp;:</b> si le sort actif nécessite une concentration, un autre sort peut être jeté à -3. Les sorts nécessitant une concentration le mentionnent dans leur description. Sinon (y compris dans le cas d’un sort projectile gardé «&nbsp;en main&nbsp;»), il peut être jeté à -1. Les sorts permanents ne sont pas considérés comme des sorts en cours. Ces pénalités sont cumulatives. Elles n’affectent pas le score brut du sort.</p>
+		
 	</details>
 
 	<details>
 		<summary>
 			<h3>Caractéristiques générales des sorts</h3>
 		</summary>
+		<p>Sauf indication contraire dans la description du sort, les sorts ont les caractéristiques générales suivantes.</p>
 		<table>
 			<tr>
-				<th rowspan="2">Niv.</th>
-				<th rowspan="2">Modif. de<br> puissance</th>
-				<th rowspan="2">Coût en PdM</th>
-				<th colspan="2">Tps nécessaire*</th>
-			</tr>
-			<tr>
-				<th>rapide</th>
-				<th>long</th>
+				<th>Niv</th>
+				<th>Modif</th>
+				<th>PdM</th>
+				<th>Rapide</th>
+				<th>Long</th>
 			</tr>
 			<tr>
 				<td>I</td>
@@ -289,7 +311,13 @@ use App\Entity\Spell;
 				<td><?= Spell::cast_time[4][1] / 3600 ?>&nbsp;h</td>
 			</tr>
 		</table>
-		<p>* Sauf indication contraire dans la description du sort.</p>
+		<p>
+			<b>Niv&nbsp;:</b> niveau de puissance<br>
+			<b>Modif&nbsp;:</b> modificateur de puissance<br>
+			<b>PdM&nbsp;:</b> coût énergétique du sort, en <i>Points de Magie</i>.<br>
+			<b>Rapide&nbsp;:</b> temps nécessaire au lancer du sort, en l’absence d’indication autre.<br>
+			<b>Long&nbsp;:</b> temps nécessaire au lancer du sort si le temps mentionné est «&nbsp;<i>long</i>&nbsp;».
+		</p>
 	</details>
 
 	<details>
@@ -782,6 +810,7 @@ use App\Entity\Spell;
 			<h3>Jet de réussite</h3>
 		</summary>
 		<p>Le score de base est l’<i>Int</i> (la règle du 12 s’applique, c’est-à-dire que quelque soit l’<i>Int</i> du personnage, son score minimum vaut 12).</p>
+		<p>Le score des pouvoirs n’est pas soumis au malus d’<i>Encombrement</i>.</p>
 		<h4>Amélioration du score</h4>
 		<p>Le score de compétence d’un pouvoir peut être amélioré à raison de 2 pts de personnage pour chaque +1 souhaité.</p>
 		<h4>Réussite et échec critiques</h4>

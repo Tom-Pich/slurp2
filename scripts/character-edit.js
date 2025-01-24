@@ -94,7 +94,6 @@ form.addEventListener("submit", (e) => {
         .then((response) => response.text())
         .then((response) => updateDOM("main", response))
         .then(() => {
-            // ping character
             const ping = new Message(sessionId, wsKey, "character-ping", parseInt(characterId));
             ws.send(ping.stringify());
         });

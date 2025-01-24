@@ -46,7 +46,7 @@ use App\Repository\SkillRepository;
 		</summary>
 		<p>Un jet sous une compétence ou une caractéristique est réussi si&nbsp;:</p>
 		<p class="ta-center mt-1"><b>Résultat du jet (3d) &le; score ± modificateurs</b></p>
-		<p class="mt-1">3 et 4 sont toujours une réussite, 17 et 18 sont toujours des échecs.</p>
+		<p class="mt-1">3 et 4 sont toujours des réussites, 17 et 18 sont toujours des échecs.</p>
 		<p>Le <b>score brut</b> est le score sans aucun modificateur. Le <b>score net</b> est le score après application des différents modificateurs de circonstances ci-dessous.</p>
 	</details>
 
@@ -96,19 +96,42 @@ use App\Repository\SkillRepository;
 		</table>
 	</detailS>
 
+	<!-- État du personnage -->
+	<details>
+		<summary>
+			<h3>État du personnage</h3>
+		</summary>
+		<p>L’état du personnage dépend des facteurs suivants&nbsp;:</p>
+		<ol class="bold-bullet">
+			<li>Encombrement</li>
+			<li>Fatigue</li>
+			<li>Stress</li>
+			<li>Santé mentale</li>
+			<li>Blessures</li>
+		</ol>
+		<p>
+			Ces facteurs influent directement sur les caractéristiques du personnage, et donc sur toutes les compétences qui en dépendent, les avantages et désavantages nécessitant un jet de réussite, ainsi que les sorts et pouvoirs.
+		</p>
+		<p>
+			Les caractéristiques secondaires <i>Dégâts de base</i>, <i>Sang-Froid</i> et <i>Réflexes</i> sont également susceptibles d’être modifiées suite à une variation des caractéristiques principales dont elles dépendent.<br>
+			A contrario, ni la <i>Vitesse</i> ni les PdV, PdF, PdM et PdE ne peuvent être modifiés suite à une variation des caractéristiques principales dont ils dépendent.
+		</p>
+		<p>Voir les sections correspondantes dans ce chapitre et dans le chapitre <a href="/blessures-dangers">Blessures &amp; Dangers</a>.</p>
+	</details>
+
 	<!-- Autres modificateurs -->
 	<details>
 		<summary>
 			<h3>Autres modificateurs</h3>
 		</summary>
 		<ul class="mt-½">
-			<li><b>État du personnage&nbsp;:</b> PdV, PdF, encom&shy;brement, etc. Voir les sections correspondantes.</li>
 			<li><b>Matériel utilisé</b> pour entreprendre l’action.</li>
 			<li><b>Environnement&nbsp;:</b> obscurité, sol instable, etc.</li>
-			<li><b>Main dextre / main «&nbsp;faible&nbsp;» :</b> effectuer une action avec sa main «&nbsp;faible&nbsp;» qui nécessiterait l’usage de la main dextre se fait généralement à -3.</li>
+			<li><b>Main dextre / main «&nbsp;faible&nbsp;»&nbsp;:</b> effectuer une action avec sa main «&nbsp;faible&nbsp;» qui nécessiterait l’usage de la main dextre se fait généralement à -3.</li>
 		</ul>
 	</detailS>
 
+	<!-- Marge de réussite -->
 	<details>
 		<summary>
 			<h3>Marge de réussite</h3>
@@ -117,6 +140,7 @@ use App\Repository\SkillRepository;
 		<p>Le MJ interprète librement la marge de réussite (MR), ou la marge d’échec (ME).</p>
 	</details>
 
+	<!-- Réussite et échec critiques -->
 	<details>
 		<summary>
 			<h3>Réussite et échec critiques</h3>
@@ -149,6 +173,7 @@ use App\Repository\SkillRepository;
 		</table>
 	</details>
 
+	<!-- Duel -->
 	<details>
 		<summary>
 			<h3>Duel</h3>
@@ -156,6 +181,7 @@ use App\Repository\SkillRepository;
 		<p>Comparer la MR des deux opposants. La victoire d’un des protagonistes est d’autant plus nette que la différence des MR (&Delta;MR) est grande. L'égalité bénéficie au défenseur</p>
 	</details>
 
+	<!-- Jet de probabilité -->
 	<details>
 		<summary>
 			<h3>Jets de probabilité</h3>
@@ -201,7 +227,8 @@ use App\Repository\SkillRepository;
 
 </article>
 
-<article><!-- Exploits physiques -->
+<!-- Exploits physiques -->
+<article>
 	<h2>Exploits physiques</h2>
 
 	<details>
@@ -209,7 +236,7 @@ use App\Repository\SkillRepository;
 			<h3>Déplacement</h3>
 		</summary>
 		<p>La caractéristique secondaire <i>Vitesse</i> indique la <b>vitesse de marche</b> (en km/h) du personnage lorsque celui-ci adopte une marche rapide pour un temps long (en voyage ou en randonnée, par exemple).</p>
-		<p>Lorsque le personnage veut faire un <b>sprint</b>, la <i>Vitesse</i> correspond à sa vitesse en m/s dans des conditions optimales.<br />
+		<p>Lorsque le personnage veut faire un <b>sprint</b>, la <i>Vitesse</i> correspond à sa vitesse en m/s dans des conditions optimales.<br>
 			Ajouter 1/8<sup>e</sup> de la compétence <i>Course</i> (arrondi au quart de point).</p>
 		<p>La <i>Fatigue</i>, l’<i>Encombrement</i> et le niveau de blessures influent sur la <i>Vitesse</i>. L’<i>Encombrement</i> compte double en cas de sprint.</p>
 	</details>
@@ -260,14 +287,15 @@ use App\Repository\SkillRepository;
 
 </article>
 
-<article><!-- Encombrement -->
+<!-- Encombrement -->
+<article>
 	<h2>Encombrement</h2>
 
 	<details>
 		<summary>
 			<h3>Principes de base</h3>
 		</summary>
-		<p>L’<i>Encombrement</i> dépend du poids porté par le personnage et de sa <i>For</i>. Il réduit la <i>Vitesse</i> et affecte également toutes les compétences nécessitant une certaine liberté de mouvement.</p>
+		<p>L’<i>Encombrement</i> dépend du poids porté par le personnage et de sa <i>For</i>. Il réduit sa <i>Vitesse</i> et sa <i>Dex</i>.</p>
 	</details>
 
 	<details>
@@ -299,9 +327,11 @@ use App\Repository\SkillRepository;
 	</details>
 </article>
 
-<article><!-- Fatigue -->
+<!-- Fatigue -->
+<article>
 	<h2>Fatigue</h2>
 
+	<!-- Perte de PdF -->
 	<details>
 		<summary>
 			<h3>Perte de points de Fatigue</h3>
@@ -321,15 +351,13 @@ use App\Repository\SkillRepository;
 
 	</details>
 
+	<!-- État de fatigue -->
 	<details>
 		<summary>
 			<h3>État de fatigue et malus</h3>
 		</summary>
 
-		<p>
-			La fatigue affecte toutes les caractéristiques du personnage.<br />
-			Cela a un impact sur les caractéristiques secondaires (sauf les PdV et les PdF) et tous les jets de réussite.
-		</p>
+		<p>La fatigue est susceptible d’affecter <i>toutes</i> les caractéristiques du personnage, ainsi que sa <i>Vitesse</i>.</p>
 
 		<table class="left-2 mt-1">
 			<tr>
@@ -350,6 +378,7 @@ use App\Repository\SkillRepository;
 
 	</details>
 
+	<!-- Récupération -->
 	<details>
 		<summary>
 			<h3>Récupération</h3>
@@ -371,7 +400,7 @@ use App\Repository\SkillRepository;
 		<summary>
 			<h3>Points d’Équilibre Psychique</h3>
 		</summary>
-		<p>L’équilibre psychique d’un personnage (sa santé mentale) est quantifié par les <i>Points d’Équilibre Psychique</i> (PdE).</p>
+		<p>L’équilibre psychique d’un personnage (sa santé mentale) est quantifié par ses <i>Points d’Équilibre Psychique</i> (PdE).</p>
 	</details>
 
 	<!-- Jet de Sang-Froid et PdE -->
@@ -389,7 +418,7 @@ use App\Repository\SkillRepository;
 			<h3>Traumatisme</h3>
 		</summary>
 		<p>Un événement traumatisant provoque un choc psychologique. Il n’est pas nécessairement effrayant ni directement menaçant (perte d’un être cher, être témoin d’actes de barbarie, etc.).</p>
-		<p>Il peut entraîner la perte de PdE : faire un jet de <i>Sang-froid</i> pour résister au traumatisme. En cas de réussite, la perte de PdE est divisée par 2. Ce jet de <i>Sang-froid</i> peut être assorti d’un modificateur, mais ce modificateur ne dépendra, en général, pas de l’ampleur du traumatisme, qui est quantifié par la perte de PdE, mais de l’état ou du vécu du personnage.</p>
+		<p>Il peut entraîner la perte de PdE&nbsp;: faire un jet de <i>Sang-froid</i> pour résister au traumatisme. En cas de réussite, la perte de PdE est divisée par 2. Ce jet de <i>Sang-froid</i> peut être assorti d’un modificateur, mais ce modificateur ne dépendra, en général, pas de l’ampleur du traumatisme, qui est quantifié par la perte de PdE, mais de l’état ou du vécu du personnage.</p>
 
 		<table class="left-1">
 			<tr>
@@ -434,7 +463,7 @@ use App\Repository\SkillRepository;
 		</summary>
 		<p>Lorsqu’un événement terrifie le personnage, un jet de <i>Sang-froid</i> (appelé dans ce cas <i>Test de Frayeur</i>) doit être fait pour savoir comment le personnage réagit.</p>
 		<p>L’intensité de la peur potentiellement provoquée est quantifiée de I (un peu effrayant) à V (terreur surnaturelle absolue).</p>
-		<p>Un modificateur peut s’appliquer à ce jet, mais il ne dépend par de l’intensité de la peur. Il peut dépendre de l’état du personnage et des conditions extérieures à l’événement terrifiant, et devrait être dans la fourchette [-3&nbsp;; +3].</p>
+		<p>Un modificateur peut s’appliquer à ce jet, mais il ne dépend par de l’intensité de la peur. Il peut dépendre de l’état du personnage et des conditions extérieures à l’événement terrifiant, et devrait être dans compris entre -3 et +3.</p>
 		<p>Les conséquences du <i>Test de frayeur</i> dépendent de sa MR et de l’intensité de la peur provoquée.</p>
 
 		<h4>MR et gravité</h4>
@@ -568,9 +597,11 @@ use App\Repository\SkillRepository;
 		</summary>
 		<p>Une situation de stress se présente lorsque le personnage craint pour sa vie (à tort ou à raison).</p>
 		<p>Dans une telle situation, faire un jet de <i>Sang-froid</i> pour déterminer comment le personnage réagit au stress, assorti d’un éventuel malus.</p>
-		<p>Si ce jet est raté, le personnage gagne un niveau de stress.<br />
-			Si ME &ge; 3, le personnage gagne deux niveaux de stress.<br />
-			Si ME &ge; 5, le personnage gagne trois niveaux de stress. Les conséquences du stress sont décrites ci-dessous.</p>
+		<p>
+			Si ce jet est raté, le personnage gagne un niveau de stress.<br>
+			Si ME &ge; 3, le personnage gagne deux niveaux de stress.<br>
+			Si ME &ge; 5, le personnage gagne trois niveaux de stress. Les conséquences du stress sont décrites ci-dessous.
+		</p>
 
 		<h4>Niveaux de stress</h4>
 		<p>
@@ -579,21 +610,18 @@ use App\Repository\SkillRepository;
 			<?php } ?>
 		</p>
 
-		<p>Les PdV et PdF ne sont pas affectés par le niveau de stress.</p>
-
 		<h4>Stress et fatigue</h4>
-		Les malus de fatigue sont ignorés si le personnage est en état de stress (quel que soit le niveau de stress).
-		</p>
+		<p>Les malus de fatigue sont ignorés si le personnage est en état de stress (quel que soit le niveau de stress).</p>
 
 		<h4>Récupérer du stress</h4>
 		<p>• Après disparition de la cause du stress&nbsp;: si la cause du stress a disparu, le personnage récupère d’un niveau de stress toutes les 10 minutes, jusqu’à revenir à son état normal.</p>
 		<p>• En situation de stress&nbsp;: si le personnage fait des efforts pour contrôler son stress, il peut refaire un jet de <i>Sang-Froid</i> avec les mêmes malus, à intervalles réguliers, pour perdre un niveau de stress.</p>
 	</details>
 
-	<!-- État psychologique général -->
+	<!-- Santé mentale -->
 	<details>
 		<summary>
-			<h3>État psychologique général</h3>
+			<h3>Santé mentale</h3>
 		</summary>
 
 		<table class="left-2 mt-1">
@@ -604,7 +632,7 @@ use App\Repository\SkillRepository;
 			<?php foreach (array_reverse(MentalHealthController::levels) as $index => $level) { ?>
 				<tr>
 					<td><?= $index !== 0 ? ("&le; " . ((float) $index) * 100 . "&nbsp;%") : "0" ?></td>
-					<td>
+					<td class="ta-justify">
 						<?= ucfirst($level["description"]) ?><br>
 						<?= ucfirst($level["attributes-effects"]) ?>
 					</td>
@@ -683,7 +711,7 @@ use App\Repository\SkillRepository;
 		<summary>
 			<h3>Vieillissement</h3>
 		</summary>
-		<p>À partir de 50 ans, faire un jet de <i>San</i> + NT médical–3 tous les ans. À partir de 70 ans, jetez les dés tous les 6 mois et à 90 ans, tous les 3 mois.<br />
+		<p>À partir de 50 ans, faire un jet de <i>San</i> + NT médical–3 tous les ans. À partir de 70 ans, jetez les dés tous les 6 mois et à 90 ans, tous les 3 mois.<br>
 			Un échec entraîne la perte d’un pt de San et des conséquences (maladies ou autres) dépendant de la ME et du MJ.</p>
 	</details>
 

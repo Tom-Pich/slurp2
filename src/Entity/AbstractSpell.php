@@ -43,65 +43,99 @@ abstract class AbstractSpell implements RulesItem
 
 	// generate full HTML for displaying in rules
 	// $data contains optionnal display parameters
-	// name: override item nam
-	// cost-mult: multiplier for default character point cost
-	// colleges-list: array with college names
-	// disciplines-list: array with discipline names
+	//   name: override item name, cost-mult: multiplier for default character point cost
+	//   colleges-list or disciplines-list: array with college/discipline names
 	public function displayInRules(bool $show_edit_link, string $edit_req, array $data = [], bool $lazy = false): void
 	{
-		$edit_link = sprintf("gestion-listes?req=%s&id=%d", $edit_req, isset($data["power-id"]) ? $data["power-id"] : $this->id); ?>
+		$edit_link_url = sprintf("gestion-listes?req=%s&id=%d", $edit_req, isset($data["power-id"]) ? $data["power-id"] : $this->id);
+		$edit_link = $show_edit_link ? "<a href='$edit_link_url' class='edit-link ff-far'>&#xf044;</a>" : "";
+		$label = (!empty($data["name"]) ? $data["name"] : $this->name) . " ({$this->readableNiv})";
+		$cost_as_power = !empty($data["cost-mult"]) ? $this->displayCost($data["cost-mult"]) : "";
+		$colleges_disciplines_list = "";
+		if (!empty($data["colleges-list"])){
+			$category_name = "Collège" . (count($data["colleges-list"]) > 1 ? "s" : "");
+			$colleges_disciplines_list = "<i>{$category_name} :</i> " . join(", ", $data["colleges-list"]);
+		}
+		elseif (!empty($data["disciplines-list"])){
+			$category_name = "Discipline" . (count($data["colleges-list"]) > 1 ? "s" : "");
+			$colleges_disciplines_list = "<i>{$category_name} :</i> " . join(", ", $data["disciplines-list"]);
+		}
+		$description_wrapper_attributes = $lazy ? "data-details data-type='spell' data-id={$this->id}" : "";
+		$description = $lazy ? "" : $this->getFullDescription();
 
-		<details class="liste" data-niv-min="<?= $this->niv_min ?>" data-niv-max="<?= $this->niv_max ?>" data-origin="<?= $this->origin ?>">
-			<summary title="id <?= $this->id ?>">
-				<div>
+		echo <<<HTML
+			<details class="liste" data-niv-min="{$this->niv_min}" data-niv-max="{$this->niv_max}" data-origin="{$this->origin}">
+				<summary title="id {$this->id}">
 					<div>
-						<?php if ($show_edit_link) { ?>
-							<a href="<?= $edit_link ?>" class="edit-link ff-far">&#xf044;</a>
-						<?php } ?>
-						<?= !empty($data["name"]) ? $data["name"] : $this->name ?> (<?= $this->readableNiv ?>)
+						<div>$edit_link $label</div>
+						<div>$cost_as_power</div>
 					</div>
-					<div>
-						<?= !empty($data["cost-mult"]) ? $this->displayCost($data["cost-mult"]) : "" ?>
-					</div>
+				</summary>
+				<div class="mt-½ fs-300">
+					$colleges_disciplines_list
 				</div>
-			</summary>
+				<div class="mt-½ fs-300" $description_wrapper_attributes>
+					$description
+				</div>
+			</details>
+		HTML;
+	}
 
-			<div class="mt-½ fs-300">
-				<?php if (!empty($data["colleges-list"])): ?>
-					<i>Collège<?= count($data["colleges-list"]) > 1 ? "s" : "" ?>&nbsp;: </i><?= join(", ", $data["colleges-list"]) ?>
-				<?php elseif (!empty($data["disciplines-list"])): ?>
-					<i>Discipline<?= count($data["disciplines-list"]) > 1 ? "s" : "" ?>&nbsp;: </i><?= join(", ", $data["disciplines-list"]) ?>
-				<?php endif ?>
+	public function getFullDescription($custom_time = "")
+	{
+		$class = $this->class ? "<p class='fw-700'>{$this->class}</p>" : "";
+		$description = Define::implementDefinitions($this->description, Define::magic_dictionnary);
+		$duration = $this->duration ? "<i>Durée</i> : {$this->duration}<br>" : "";
+		$time = "";
+		if (empty($custom_time) && $this->time) $time = "<i>Temps nécessaire :</i> {$this->time}<br>";
+		elseif (!empty($custom_time)) $time = "<i>Temps :</i> $custom_time<br>";
+		$zone = $this->class === "Zone" ? "<i>Zone de base</i> : " . ($this->zone ? $this->zone : "3 m") . "<br>" : "";
+		$resistance = $this->resistance ? "<i>Résistance</i> : {$this->resistance}" : "";
+
+		return <<<HTML
+			<div class="flow">
+			$class
+			$description
 			</div>
-
-			<div class="mt-½ fs-300" <?= $lazy ? "data-details data-type='spell' data-id=" . $this->id : "" ?>>
-				<?php if (!$lazy) $this->displayFullDescription() ?>
+			<div class="mt-½">
+				$duration
+				$time
+				$zone
+				$resistance
 			</div>
+			HTML;
+	}
 
-		</details>
-	<?php }
+	 // in child class
+	public function displayCost() {}
 
-	// generate HTML for full description of spell
-	public function displayFullDescription($custom_time = "")
-	{ ?>
-		<div class="flow">
-			<?= $this->class ? "<p class='fw-700'>" . $this->class . "</p>" : "" ?>
-			<?= Define::implementDefinitions($this->description, Define::magic_dictionnary) ?>
-		</div>
-		<div class="mt-½">
-			<?php if ($this->duration) { ?> <i>Durée</i>&nbsp;: <?= $this->duration ?><br>
-			<?php }
-			if (empty($custom_time) && $this->time) { ?>
-				<i>Temps nécessaire</i>&nbsp;: <?= $this->time ?><br>
-			<?php } elseif (!empty($custom_time)) { ?>
-				<i>Temps&nbsp;:</i> <?= $custom_time ?><br>
-			<?php }
-			if ($this->class === "Zone") { ?> <i>Zone de base</i>&nbsp;: <?= $this->zone ? $this->zone : "3&nbsp;m" ?><br>
-			<?php }
-			if ($this->resistance) { ?><i>Résistance</i>&nbsp;: <?= $this->resistance ?>
-			<?php } ?>
-		</div>
-<?php }
+	// return a string with necessary time to cast spell
+	// $divider: array of divider to apply foreach power level
+	public function readableTime($dividers = [1, 1, 1, 1, 1]): string
+	{
+		$time = [];
 
-	public function displayCost() {} // in child class
+		if (empty($this->time)) {
+			for ($i = 1; $i <= 5; $i++) {
+				$time[] =  $i < $this->niv_min || $i > $this->niv_max ? null : self::cast_time[$i - 1][0] / $dividers[$i - 1];
+			}
+		} elseif ($this->time === "long") {
+			for ($i = 1; $i <= 5; $i++) {
+				$time[] =  $i < $this->niv_min || $i > $this->niv_max ? null : self::cast_time[$i - 1][1] / $dividers[$i - 1];
+			}
+		}
+
+		$time = array_filter($time, fn ($x) => !is_null($x));
+		
+		foreach ($time as $index => $value) {
+			if ($value < 1) $time[$index] = "inst.";
+			elseif (fmod($value, 60) == 0) $time[$index] = ($value / 60) . " min";
+			else $time[$index] = $value . " s";
+		}
+
+		if (!empty($time)) $time = join(" / ", $time);
+		else $time = $this->time;
+
+		return $time;
+	}
 }

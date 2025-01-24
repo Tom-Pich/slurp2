@@ -138,8 +138,10 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 				ou de
 				<label>
 					<input type="checkbox" name="MPP[psi]" <?= $character->special_traits["psi"] ? 'checked' : '' ?>>
-					<i>pouvoirs psioniques</i> (voyez ça avec votre MJ).
+					<i>pouvoirs psioniques</i>
 				</label>
+				(voyez ça avec votre MJ).<br>
+				Après activation de ces valeurs, sauvegarder votre personnage et rafraîchissez la page.
 			</p>
 		</fieldset>
 
@@ -372,7 +374,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 													<input hidden name="Sorts[<?= $n_post ?>][former-modif]" value="<?= $sort["modif"] ?>" />
 												</div>
 											</summary>
-											<div class="fs-300"><?= $sort["data"]->displayFullDescription($sort["readable_time"]) ?></div>
+											<div class="fs-300"><?= $sort["data"]->getFullDescription($sort["readable_time"]) ?></div>
 										</details>
 
 								<?php
@@ -466,7 +468,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 							</div>
 							<div class="fs-300 ta-justify" style="padding-bottom: 1em;">
 								<?php if ($type === "sort") {
-									$pouvoir["data"]->data->displayFullDescription();
+									$pouvoir["data"]->data->getFullDescription();
 								} else { ?>
 									<div><?= $pouvoir["data"]->data->description ?></div>
 								<?php } ?>
@@ -566,7 +568,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 				</dialog>
 
-				<!-- Bouton ajouter collèges -->
+				<!-- Bouton ajouter pouvoirs -->
 				<button data-role="open-dialog" data-dialog-name="add-power" type="button" class="btn-primary mt-2 mx-auto">
 					<span class="ff-fas">&#xf055;</span> pouvoirs
 				</button>

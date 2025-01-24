@@ -204,10 +204,7 @@ class ApiController
 		$spell = $spell_repo->getSpell($id);
 		$spell_array = get_object_vars($spell);
 		$this->response["data"] = $spell_array;
-		ob_start();
-		$spell->displayFullDescription();
-		$fullDescription = ob_get_clean();
-		$this->response["data"]["fullDescription"] = $fullDescription;
+		$this->response["data"]["fullDescription"] = $spell->getFullDescription();
 		$this->sendResponse();
 	}
 

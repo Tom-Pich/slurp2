@@ -1,9 +1,10 @@
 <?php
 
-use App\Repository\AvDesavRepository;
-use App\Repository\CollegeRepository;
+use App\Entity\Spell;
 use App\Repository\SkillRepository;
 use App\Repository\SpellRepository;
+use App\Repository\AvDesavRepository;
+use App\Repository\CollegeRepository;
 
 $avdesav_repo = new AvDesavRepository;
 $skills_repo = new SkillRepository;
@@ -13,54 +14,97 @@ $spells_repo = new SpellRepository;
 $affichage = $_POST["affichage"] ?? "categorie";
 ?>
 
-<article class="as-start" data-morhpdom="ignore"><!-- Introduction -->
+<!-- Intro + filtres -->
+<article class="as-start" data-morhpdom="ignore">
 
 	<h4>Affichage par catégories</h4>
 	<p>L’affichage par catégorie permet l’accès aux règles générales sur certaines catégories d’avantages &amp; désavantages, compétences et sorts.</p>
 
-	<p><b>Sorts</b> – Valeurs par défaut&nbsp;:</p>
+	<hr>
+
+	<h4>Caractéristiques des sorts</h4>
+	<p>Valeurs par défaut&nbsp;:</p>
 	<ul>
 		<li><i>Classe</i>&nbsp;: régulier</li>
 		<li><i>Temps nécessaire</i>&nbsp;: rapide</li>
-		<li><i>Zone de base</i>&nbsp;: 3 m</li>
 	</ul>
 
+	<table>
+		<tr>
+			<th>Niv.</th>
+			<th>PdM</th>
+			<th>Rapide</th>
+			<th>Long</th>
+		</tr>
+		<tr>
+			<td>I</td>
+			<td>2</td>
+			<td><?= Spell::cast_time[0][0] ?>&nbsp;s</td>
+			<td><?= Spell::cast_time[0][1] ?>&nbsp;s</td>
+		</tr>
+		<tr>
+			<td>II</td>
+			<td>4</td>
+			<td><?= Spell::cast_time[1][0] ?>&nbsp;s</td>
+			<td><?= Spell::cast_time[1][1] ?>&nbsp;s</td>
+		</tr>
+		<tr>
+			<td>III</td>
+			<td>6</td>
+			<td><?= Spell::cast_time[2][0] ?>&nbsp;s</td>
+			<td><?= Spell::cast_time[2][1] / 60 ?>&nbsp;min</td>
+		</tr>
+		<tr>
+			<td>IV</td>
+			<td>8</td>
+			<td><?= Spell::cast_time[3][0] ?>&nbsp;s</td>
+			<td><?= Spell::cast_time[3][1] / 60 ?>&nbsp;min</td>
+		</tr>
+		<tr>
+			<td>V</td>
+			<td>15+</td>
+			<td><?= Spell::cast_time[4][0] ?>&nbsp;s</td>
+			<td><?= Spell::cast_time[4][1] / 3600 ?>&nbsp;h</td>
+		</tr>
+	</table>
+	<p class="italic">Voir le chapitre <a href="/magie">Magie</a> pour plus de détails.</p>
+
+	<hr>
+
 	<!-- formulaire de sélection -->
-	<fieldset class="mt-1">
-		<form action="avdesav-comp-sorts" data-role="filter-form">
-			<div class="flex-s jc-space-between">
-				<b>Affichage</b>
+	<form action="avdesav-comp-sorts" data-role="filter-form">
+		<div class="flex-s jc-space-between">
+			<b>Affichage</b>
+			<label>
+				<input type="radio" name="affichage" value="categorie" <?= $affichage == "categorie" ? "checked" : "" ?>>
+				catégories
+			</label>
+			<label>
+				<input type="radio" name="affichage" value="alpha" <?= $affichage == "alpha" ? "checked" : "" ?>>
+				alphabétique
+			</label>
+		</div>
+		<div class="mt-½">
+			<div><b>Sorts à afficher</b></div>
+			<div class="flex-s ai-center jc-space-between mt-½" data-role="spell-filter">
+				Niv.
+				<input type="text" data-role="range-filter" style="width: 5ch;" class="ta-center watched" placeholder="1-5" value="1-5" pattern="\d(-\d)*">
 				<label>
-					<input type="radio" name="affichage" value="categorie" <?= $affichage == "categorie" ? "checked" : "" ?>>
-					catégories
+					<input type="checkbox" checked data-role="origin-selector" value="RdB"> RdB
 				</label>
 				<label>
-					<input type="radio" name="affichage" value="alpha" <?= $affichage == "alpha" ? "checked" : "" ?>>
-					alphabétique
+					<input type="checkbox" checked data-role="origin-selector" value="nouveau"> Nouveaux
+				</label>
+				<label>
+					<input type="checkbox" checked data-role="origin-selector" value="ADD"> AD&amp;D
 				</label>
 			</div>
-			<div class="mt-½">
-				<div><b>Sorts à afficher</b></div>
-				<div class="flex-s ai-center jc-space-between mt-½" data-role="spell-filter">
-					Niv.
-					<input type="text" data-role="range-filter" style="width: 5ch;" class="ta-center watched" placeholder="1-5" value="1-5" pattern="\d(-\d)*">
-					<label>
-						<input type="checkbox" checked data-role="origin-selector" value="RdB"> RdB
-					</label>
-					<label>
-						<input type="checkbox" checked data-role="origin-selector" value="nouveau"> Nouveaux
-					</label>
-					<label>
-						<input type="checkbox" checked data-role="origin-selector" value="ADD"> AD&amp;D
-					</label>
-				</div>
-			</div>
-			<div class="mt-1 flex-s gap-½ ai-center">
-				<div><b>Recherche</b></div>
-				<input type="text" name="keyword" class="fl-1" placeholder="Entrez des mots-clés">
-			</div>
-		</form>
-	</fieldset>
+		</div>
+		<div class="mt-1 flex-s gap-½ ai-center">
+			<div><b>Recherche</b></div>
+			<input type="text" name="keyword" class="fl-1" placeholder="Entrez des mots-clés">
+		</div>
+	</form>
 </article>
 
 <!-- Avantages & Désavantages -->

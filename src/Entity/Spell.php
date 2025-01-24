@@ -23,45 +23,6 @@ class Spell extends AbstractSpell
 		$this->colleges = json_decode($spell["Collège"] ?? "[]");
 	}
 
-	/**
-	 * displayTime – return a string with necessary time to cast spell
-	 * @param $divider array of divider to apply foreach power level
-	 *
-	 * @return string
-	 */
-	public function readableTime($dividers = [1, 1, 1, 1, 1]): string
-	{
-		$time = [];
-
-		if (empty($this->time)) {
-			for ($i = 1; $i <= 5; $i++) {
-				$time[] =  $i < $this->niv_min || $i > $this->niv_max ? null : self::cast_time[$i - 1][0] / $dividers[$i - 1];
-			}
-		} elseif ($this->time === "long") {
-			for ($i = 1; $i <= 5; $i++) {
-				$time[] =  $i < $this->niv_min || $i > $this->niv_max ? null : self::cast_time[$i - 1][1] / $dividers[$i - 1];
-			}
-		}
-
-		$time = array_filter($time, fn ($x) => !is_null($x));
-		foreach ($time as $index => $value) {
-			if ($value < 1) {
-				$time[$index] = "inst.";
-			} elseif (fmod($value, 60) == 0) {
-				$time[$index] = ($value / 60) . "min";
-			} else {
-				$time[$index] = $value . "s";
-			}
-		}
-		if (!empty($time)) {
-			$time = join(" / ", $time);
-		} else {
-			$time = $this->time;
-		}
-
-		return $time;
-	}
-
 	// return array of colleges name of the spell
 	public function collegeNames(): array
 	{

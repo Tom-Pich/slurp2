@@ -421,7 +421,7 @@ $creatures_repo = new CreatureRepository;
 		<?php
 		$spells = $spells_repo->getSpellsByOrigin("ADD");
 		foreach ($spells as $spell) {
-			$spell->displayInRules(show_edit_link: $_SESSION["Statut"] === 3);
+			$spell->displayInRules(show_edit_link: $_SESSION["Statut"] === 3, edit_req: "sort");
 		}
 		?>
 	</details>
