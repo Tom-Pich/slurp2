@@ -1,4 +1,4 @@
-import { qs } from "./utilities";
+import { qs } from "./lib/dom-utils";
 
 const widget = qs("#widget-armor-composer");
 const inputs = widget.querySelectorAll("input, select");

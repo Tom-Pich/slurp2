@@ -1,4 +1,4 @@
-import { qs } from "./utilities.js"
+import { qs } from "./lib/dom-utils.js";
 
 const personnages = {
 

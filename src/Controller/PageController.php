@@ -23,30 +23,24 @@ class PageController
 	{
 		$page = $this->page;
 		//echo "<pre>";  var_dump($page); die();
-		if ($page["version"] === 4) {
-			include "content/components-v4/header.php";
+		include "content/components/header.php";
 
-			echo "<div id='page-wrapper'>";
+		echo "<div id='page-wrapper'>";
 
-			echo "<aside class='left'>";
-			if ($page["aside-left"]) include "content/components/" . $page["aside-left"] . ".php";
-			echo "</aside>";
+		echo "<aside class='left'>";
+		if ($page["aside-left"]) include "content/components/" . $page["aside-left"] . ".php";
+		echo "</aside>";
 
-			echo "<main>";
-			include "content/pages/" . $page["file"] . ".php";
-			echo "</main>";
+		echo "<main>";
+		include "content/pages/" . $page["file"] . ".php";
+		echo "</main>";
 
-			echo "<aside class='right'>";
-			if ($page["aside-right"]) include "content/components/" . $page["aside-right"] . ".php";
-			echo "</aside>";
+		echo "<aside class='right'>";
+		if ($page["aside-right"]) include "content/components/" . $page["aside-right"] . ".php";
+		echo "</aside>";
 
-			echo "</div>";
+		echo "</div>";
 
-			include "content/components-v4/footer.php";
-		} else {
-			include "content/components/header.php";
-			include "content/pages/" . $page["file"] . ".php";
-			include "content/components/footer.php";
-		}
+		include "content/components/footer.php";
 	}
 }

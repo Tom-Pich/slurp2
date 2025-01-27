@@ -30,8 +30,8 @@ class Skill implements RulesItem
 
 	const special_skills = [
 		// these skills have special default value
-		26 => ["min-level" => -3], // esquive – D-8, min Dex-3
-		200 => ["min-level" => 5], // langue maternelle I(-4), min Int +5
+		26 => ["min-level" => -3], // Esquive
+		200 => ["min-level" => 5], // Langue maternelle
 	];
 
 	const mvt_skills = [
@@ -92,27 +92,24 @@ class Skill implements RulesItem
 	 * @param  bool $lazy lazy loading of description
 	 * @return void
 	 */
-	public function displayInRules(bool $show_edit_link = false, string $edit_req="competence", array $data = [], $lazy = false): void
+	public function displayInRules(bool $show_edit_link = false, string $edit_req = "competence", array $data = [], $lazy = false): void
 	{
-		$edit_link = "gestion-listes?req=$edit_req&id={$this->id}"; ?>
-
-		<details class="liste">
-			<summary>
-				<div>
+		$edit_link_url = "gestion-listes?req=$edit_req&id={$this->id}";
+		$edit_link = $show_edit_link ? "<a href='$edit_link_url' class='edit-link ff-far'>&#xf044;</a>" : "";
+		$type = $this->displayType();
+		echo <<<HTML
+			<details class="liste">
+				<summary>
 					<div>
-						<?php if ($show_edit_link) { ?>
-							<a href="<?= $edit_link ?>" class="edit-link ff-far">&#xf044;</a>
-						<?php } ?>
-						<?= $this->name ?>
+						<div>$edit_link $this->name</div>
+						<div>$type</div>
 					</div>
-					<div><?= $this->displayType() ?></div>
+				</summary>
+				<div class="fs-300 flow">
+					$this->description
 				</div>
-			</summary>
-			<div class="fs-300 flow">
-				<?= $this->description ?>
-			</div>
-		</details>
-<?php
+			</details>
+		HTML;
 	}
 
 	/**
@@ -124,68 +121,13 @@ class Skill implements RulesItem
 	 */
 	public static function niv2cost(int $niv, int $difficulty, string $base): float|int
 	{
-		$test = 6;
-
-		if ($test === 1) {
-			$niv_p4 = 3 + $difficulty / 2; // $difficulty = -2, -4, -6 or -8
-			$niv_p10 = 5;
-			$x = $niv - 1 - $difficulty / 2;
-			if ($niv <= $difficulty) $points = 0;
-			elseif ($niv <= $niv_p4) $points = 2 ** $x;
-			elseif ($niv <= $niv_p10) $points = 4 + ($niv - $niv_p4) * 4;
-			else $points = 12 + ($niv - $niv_p10) * 10 - $difficulty * 2;
-			return (float) $points;
-		}
-
-		if ($test === 2) {
-			$niv_½ = $difficulty / 2;
-			$niv_p5 = 5 + $difficulty / 2;
-			$niv_p10 = 5;
-			if ($niv === $niv_½) return 0.5;
-			if ($niv === $niv_½ + 1) return 1;
-			if ($niv === $niv_½ + 2) return 2;
-			if ($niv === $niv_½ + 3) return 4;
-			if ($niv === $niv_½ + 4) return 7;
-			if ($niv <= $niv_p10) return 5 + ($niv - ($niv_p5 - 1)) * 5;
-			return (2 - $difficulty / 2) * 5 + ($niv - $niv_p10) * 10;
-		}
-
-		if ($test === 3) {
-			$niv_½ = $difficulty / 2; // -1, -2, -3, -4
-			$niv_p4 = 3 + $difficulty / 2; // 2, 1, 0, -1
-			if ($niv <= $niv_p4) return 2 ** ($niv - $niv_½ - 1);
-			return 4 + ($niv - $niv_p4) * 4;
-		}
-
-		if ($test === 4) {
-			if ($niv <= 0) return $niv - $difficulty;
-			return ($niv + 3) * $niv / 2  - $difficulty;
-		}
-
-		if ($test === 5) {
-			$niv_½ = $difficulty / 2;
-			$niv_p5 = 5 + $difficulty / 2;
-			if ($niv <= $difficulty) return 0;
-			if ($niv <= $niv_½ + 4) return 2 ** ($niv - $niv_½ - 1);
-			return 15 + ($niv - $niv_p5) * 5;
-		}
-
-		if ($test === 6) {
-			$niv_½ = $difficulty / 2;
-			$niv_c = 4 + $difficulty / 2; // high level threshold
-			$x = $niv - $niv_½;
-			if ($niv <= $difficulty) return 0;
-			if ($niv <= $niv_c) return 2 ** ($x - 1); // ½ - 1 - 2 - 4 - 8
-			if ($base === "I") return 4 * $x - 8; // intellectual skills - high level
-			return ($x ** 2 + $x - 4) / 2; // other skills - high level
-		}
-
-		$x = $niv - 1 - $difficulty / 2;
-		if ($niv <= $difficulty) $points = 0;
-		elseif ($niv <= 0) $points = 2 ** $x;
-		else $points = (int)round(.5 * ($x + 1) ** 2);
-
-		return (float) $points;
+		$niv_½ = $difficulty / 2;
+		$niv_c = 4 + $difficulty / 2; // high level threshold
+		$x = $niv - $niv_½;
+		if ($niv <= $difficulty) return 0;
+		if ($niv <= $niv_c) return 2 ** ($x - 1); // ½ - 1 - 2 - 4 - 8
+		if ($base === "I") return 4 * $x - 8; // intellectual skills - high level
+		return ($x ** 2 + $x - 4) / 2; // other skills - high level
 	}
 
 	/**
@@ -197,27 +139,10 @@ class Skill implements RulesItem
 	 */
 	public static function cost2niv(float $points, int $difficulty, string $base): int|float
 	{
-		$test = 6;
-
-		if ($test === 5) {
-			if ($points < .5) return $difficulty; // pts = 0
-			if ($points < 1) return $difficulty / 2; // pts = ½  
-			if ($points < 2) return $difficulty / 2 + 1; // pts = 1  
-			if ($points < 5) return $difficulty / 2 + 2; // pts = 2
-			$points = floor($points / 5) * 5; // round to lowest multiple of 5;
-			return 2 + $points / 5 + $difficulty / 2;
-		}
-
-		if ($test = 6) {
-			if ($points < .5) return $difficulty; // pts = 0
-			if ($points <= 8) return floor(log($points, 2) + 1 + $difficulty / 2); // ½ - 1 - 2 - 4 - 8
-			if ($base === "I") return floor(($points+8)/4) + $difficulty / 2; // intellectual skills - high level
-			return floor((-1 + (17 + 8 * $points) ** 0.5) / 2) + $difficulty / 2; // other skills - high level
-		}
-
-		if ($points < 0.5) return $difficulty;
-		elseif ($points < -$difficulty) return floor(log($points, 2) + 1 + $difficulty / 2);
-		else return floor((2 * floor($points)) ** .5 + $difficulty / 2);
+		if ($points < .5) return $difficulty; // pts = 0
+		if ($points <= 8) return floor(log($points, 2) + 1 + $difficulty / 2); // ½ - 1 - 2 - 4 - 8
+		if ($base === "I") return floor(($points + 8) / 4) + $difficulty / 2; // intellectual skills - high level
+		return floor((-1 + (17 + 8 * $points) ** 0.5) / 2) + $difficulty / 2; // other skills - high level
 	}
 
 	/**
@@ -232,10 +157,11 @@ class Skill implements RulesItem
 	public static function processSkills(array $skills, array $raw_attr, array $attr, array $modifiers, array $special_traits): array
 	{
 		$points = 0;
-		$pool = [];
+		$pool = []; // collecting group points
 		$attr_match = ["F" => "For", "D" => "Dex", "I" => "Int", "S" => "San", "P" => "Per", "V" => "Vol",];
 		$proc_skills = [];
 		$skill_repo = new SkillRepository;
+		//echo "<pre>"; var_dump($skills); die();
 
 		// first process loop – group bonus can only be processed after a complete first loop
 		foreach ($skills as $skill) {
@@ -337,6 +263,8 @@ class Skill implements RulesItem
 			$points += $skill["points"];
 		}
 
+		//var_dump($pool);
+
 		// second loop – adding group points and processing retroaction on character
 		foreach ($proc_skills as $index => $skill) {
 
@@ -344,7 +272,9 @@ class Skill implements RulesItem
 			if (isset($skill["groups"])) {
 
 				// update skill group points
-				foreach ($skill["groups"] as $group => $group_points) $proc_skills[$index]["groups"][$group] = $pool[$group];
+				// $pool like  ["acrobatics-dodging" => 0, "hand-to-hand" => 2,  "melee" => 10]
+				// $skill["groups"] like ["hand-to-hand" => 0,  "melee" => 0] – all values are 0
+				foreach ($skill["groups"] as $group => $group_points) $skill["groups"][$group] = $pool[$group];
 
 				// get free points due to default non standard skill level
 				$free_points = 0;
@@ -355,19 +285,22 @@ class Skill implements RulesItem
 
 				// calculate total virtual points (base points + group points)
 				$virtual_points = $skill["points"] + $free_points;
-				$skill["groups"] = $proc_skills[$index]["groups"];
-				foreach ($skill["groups"] as $group => $group_points) $virtual_points += 0.25*($group_points - $skill["points"]);
-				$proc_skills[$index]["total_points"] = $virtual_points;
+				foreach ($skill["groups"] as $group => $group_points) $virtual_points += 0.25 * ($group_points - $skill["points"]);
+				$skill["total_points"] = $virtual_points;
 				$virtual_points *= (!empty($skill["background"]) ? 2 : 1);
 				$virtual_niv = self::cost2niv($virtual_points, $skill["difficulty"], $skill["entity-base"]);
 
 				// get the group modif from the difference between this virtual niv and the actual raw niv
-				$proc_skills[$index]["group_modif"] = $virtual_niv - $skill["niv"];
-				if (is_numeric($proc_skills[$index]["score"])) $proc_skills[$index]["score"] += $proc_skills[$index]["group_modif"];
+				$skill["group_modif"] = $virtual_niv - $skill["niv"];
+
+				// update skill score
+				if (is_numeric($skill["score"])) $skill["score"] += $skill["group_modif"];
 			}
 
 			// special skills retroaction on character modifiers
 			if ($skill["id"] === 58) $modifiers["Vitesse"] += ((int) $skill["score"] ?? 0) / 8; // Courses
+
+			$proc_skills[$index] = $skill;
 		}
 
 		$proc_skills = Sorter::sort($proc_skills, "label");

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --watch --style=compressed ./sass/main.scss:./styles.min.css ./sass-v4/main-v4.scss:./styles-v4.min.css",
+    "sass": "sass --watch --style=compressed ./sass/main.scss:./styles.min.css",
     "webpack": "webpack --config webpack.config.js"
   },
   "keywords": [],

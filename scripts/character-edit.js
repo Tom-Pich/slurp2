@@ -1,19 +1,20 @@
-import { qs, qsa, ce } from "./utilities";
+import { qs, qsa, ce } from "./lib/dom-utils.js";
 import { updateDOM } from "./update-dom.js";
 import { wsURL, Message } from "./ws-utilities.js";
+import { activateDialogs } from "./main-utilities.js";
 
 const form = qs("#noyau");
 const sessionId = form.dataset.sessionId;
 const wsKey = form.dataset.wsKey;
-const characterId = qs("[name=id]").value
-const saveBtn = qs("[type=submit]")
+const characterId = qs("[name=id]").value;
+const saveBtn = qs("[type=submit]");
 
 // Web Socket character ping sender
 const ws = new WebSocket(wsURL);
 ws.onopen = () => {}; // nothing to do (yet)
 ws.onmessage = (rawMessage) => {
-	const message = JSON.parse(rawMessage.data);
-	console.log(message);
+    const message = JSON.parse(rawMessage.data);
+    console.log(message);
 };
 
 // Portrait select confirmation
@@ -51,42 +52,45 @@ addQuirkBtn.addEventListener("click", (e) => {
     e.target.dataset.number++;
 });
 
-// cancel input modal btn (new avdesav, new skills...)
-const closeInputModalBtns = qsa("[data-role=close-input-modal]")
-closeInputModalBtns.forEach ( btn => {
-	btn.addEventListener("click", (e) => {
-		const dialog = e.target.closest("dialog");
-		const inputs = dialog.querySelectorAll("input");
-		inputs.forEach ( input => input.checked = false);
-		dialog.close();
-	})
-})
+// Cancel input modal btn (new avdesav, new skills...), has to be a function because of updateDOM
+function activateCloseInputModals() {
+    const closeInputModalBtns = qsa("[data-role=close-input-modal]");
+    closeInputModalBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            const dialog = e.target.closest("dialog");
+            const inputs = dialog.querySelectorAll("input");
+            inputs.forEach((input) => (input.checked = false));
+            dialog.close();
+        });
+    });
+}
+activateCloseInputModals();
 
 // change save btn color when changes are made
 let allowSaveBtnColorChange = true;
-form.addEventListener("change", ()=> {
-	if(allowSaveBtnColorChange) saveBtn.classList.add("clr-invalid");
-	allowSaveBtnColorChange = true;
-})
+form.addEventListener("change", () => {
+    if (allowSaveBtnColorChange) saveBtn.classList.add("clr-invalid");
+    allowSaveBtnColorChange = true;
+});
 
 // save on ctrl+s
 form.addEventListener("keydown", (e) => {
-	if (e.ctrlKey && e.key === 's') {
-		e.preventDefault();
-		const event = new Event('submit', {
-			bubbles: true,
-			cancelable: true
-		});
-		form.dispatchEvent(event);
-		allowSaveBtnColorChange = false;
-	}
-})
+    if (e.ctrlKey && e.key === "s") {
+        e.preventDefault();
+        const event = new Event("submit", {
+            bubbles: true,
+            cancelable: true,
+        });
+        form.dispatchEvent(event);
+        allowSaveBtnColorChange = false;
+    }
+});
 
 // submit form and reload page with morphdom
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-	const dialogs = qsa("dialog");
-	dialogs.forEach(dialog => dialog.close());
+    const dialogs = qsa("dialog");
+    dialogs.forEach((dialog) => dialog.close());
     fetch("/submit/update-character", {
         method: "post",
         body: new FormData(form),
@@ -94,6 +98,8 @@ form.addEventListener("submit", (e) => {
         .then((response) => response.text())
         .then((response) => updateDOM("main", response))
         .then(() => {
+            activateDialogs();
+			activateCloseInputModals();
             const ping = new Message(sessionId, wsKey, "character-ping", parseInt(characterId));
             ws.send(ping.stringify());
         });

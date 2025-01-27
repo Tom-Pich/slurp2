@@ -14,7 +14,7 @@ Ce site a été volontairement développé avec le moins de bibliothèques possi
 - Back-end : PHP 8 et MySQL 8. PHP est chargé de tout le processing calculatoire assez lourd.
 - Front-end : vanilla JS (dont le rôle est restreint aux échanges client-serveur, à la mise à jour du HTML, aux lancer de dés et au client _chat_ – il ne gère aucun traitement des règles).
 
-Étant donné qu’il s’agit du premier site que j’ai réalisé, le code est passé par plusieurs refactorisations et son architecture a été profondément modifiée à mesure que je gagnais en compétences. C’est pourquoi il reste quelques incohérences dans le nommage (parfois anglais, parfois français) ainsi que dans les commentaires (anglais ou français). Il faudrait en fait reprendre la structure de la base de données pour n’y utiliser que l’anglais.
+Étant donné qu’il s’agit du premier site que j’ai réalisé, le code est passé par plusieurs refactorisations et son architecture a été profondément modifiée à mesure que je gagnais en compétences. C’est pourquoi il reste quelques incohérences dans le nommage (parfois anglais, parfois français) ainsi que dans les commentaires (anglais ou français).
 
 ### Base de données
 La base de données n’est pas fournie dans le code source.

@@ -1,4 +1,5 @@
-import { qs, qsa, coarseRound } from "./utilities.js"
+import { qs, qsa } from "./lib/dom-utils.js";
+import { coarseRound } from "./utilities.js"
 "use strict"
 
 function powerStoneRawPrice(pdm) {

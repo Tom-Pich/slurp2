@@ -1,4 +1,5 @@
-import { qs, qsa, ce, calculate, int, explicitSign } from "./utilities.js";
+import { qs, qsa, ce } from "./lib/dom-utils.js";
+import { calculate, int, explicitSign } from "./utilities.js";
 
 // roll a dice expression and return expression an result
 export function roll(code) {
@@ -87,7 +88,7 @@ export async function fetchDamageExpression(strength, code, hands) {
     }
 }
 
-/** given a score and a 3d roll result, returns the MR and the symbol of outcome status */
+// given a score and a 3d roll result, returns the MR and the symbol of outcome status
 export function scoreTester(score, roll) {
     const MR = score - roll;
 
@@ -113,7 +114,7 @@ export function scoreTester(score, roll) {
     return { MR: MR, symbol: outcomeSymbol, critical: critical };
 }
 
-/** return the result of the get/post fetch query (url) with the given optionnel FormData (data) as decoded JSON */
+// return the result of the get/post fetch query (url) with the given optionnel FormData (data) as decoded JSON
 export async function fetchResult(url, data = null) {
 	const params = { method: "get" };
 	if (data) {
@@ -129,6 +130,24 @@ export async function fetchResult(url, data = null) {
     );
 }
 
+// get highest index of a localStorage entry pattern
+export function getHighestIndexOf(keyName) {
+	let highestIndex = -1;
+
+	for (let i = 0; i < localStorage.length; i++) {
+		const key = localStorage.key(i);
+
+		// Check if the key matches the pattern "item-x"
+		if (key.startsWith(keyName)) {
+			const index = parseInt(key.split('-')[1], 10);
+			// Update the highest index if the current one is greater
+			if (!isNaN(index) && index > highestIndex) highestIndex = index;
+		}
+	}
+
+	return highestIndex;
+}
+
 // ––– opponent utilities ––––––
 export class Opponent {
 
@@ -138,7 +157,8 @@ export class Opponent {
 		const newOpponent = new Opponent(lastOpponent.cloneNode(true));
 		newOpponent.setNumber(lastOpponentNumber+1);
 		newOpponent.mount(lastOpponent);
-		newOpponent.reset();
+		if (localStorage.getItem(`opponent-${newOpponent.number}`)) newOpponent.importFromLocalStorage()
+		else newOpponent.reset();
 	}
 
 	static unmountLastOpponent(opponents) {
@@ -173,6 +193,7 @@ export class Opponent {
         this.opponentProps.forEach((data) => (this[data].value = ""));
         this.category.value = "std";
         localStorage.removeItem(`opponent-${this.number}`);
+		this.updateNameInOpponentSelectors();
     }
 
     addToOpponentSelectors() {
@@ -221,7 +242,6 @@ export class Opponent {
 		this.wrapper.classList.add("mt-½");
 		previousSibling.parentNode.insertBefore(this.wrapper, previousSibling.nextSibling);
 		this.setReactivity();
-		// referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 	}
 
 	unmount(){
@@ -273,13 +293,17 @@ export function setScoreWidget(widget, inputEntry, flushMsg) {
 }
 
 export function mountNewScoreWidget(scoreWidgets, inputEntry, flushMsg) {
-    const lastScore = scoreWidgets[scoreWidgets.length - 1];
-    const lastScoreNumber = int(lastScore.querySelector("[data-skill-number]").dataset.skillNumber);
-    const newScore = lastScore.cloneNode(true);
-    newScore.querySelector("[data-skill-number]").dataset.skillNumber = lastScoreNumber + 1;
-    lastScore.parentElement.appendChild(newScore);
-    newScore.addEventListener("submit", (e) => e.preventDefault());
-    setScoreWidget(newScore, inputEntry, flushMsg);
+    const lastScoreWidget = scoreWidgets[scoreWidgets.length - 1];
+    const lastScoreWidgetNumber = int(lastScoreWidget.querySelector("[data-skill-number]").dataset.skillNumber);
+    const newScoreWidget = lastScoreWidget.cloneNode(true);
+	newScoreWidget.nameInput = newScoreWidget.querySelector("[data-skill-number]")
+	newScoreWidget.scoreInput = newScoreWidget.querySelector("[data-type=score]")
+    newScoreWidget.nameInput.dataset.skillNumber = lastScoreWidgetNumber + 1;
+    newScoreWidget.nameInput.value = "";
+	newScoreWidget.scoreInput.value = "";
+    lastScoreWidget.parentElement.appendChild(newScoreWidget);
+    newScoreWidget.addEventListener("submit", (e) => e.preventDefault());
+    setScoreWidget(newScoreWidget, inputEntry, flushMsg);
 }
 
 export function unmountScoreWidget(scoreWidgets) {

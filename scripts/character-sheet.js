@@ -1,4 +1,5 @@
-import { qs, qsa, ce, calculate, int, trimModifier, explicitSign } from "./utilities.js";
+import { qs, qsa, ce } from "./lib/dom-utils.js";
+import { calculate, int, trimModifier, explicitSign } from "./utilities.js";
 import { wsURL, Message } from "./ws-utilities.js";
 import { updateDOM } from "./update-dom.js";
 import { roll, scoreTester } from "./game-table-utilities.js";

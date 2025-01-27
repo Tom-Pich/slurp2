@@ -1,5 +1,7 @@
 @import "./base";
-@import "./header-footer";
-@import "./general";
-@import "./page-specific";
-@import "./tchat-window";
+$brp-nav: 560px; // change default value of 768px
+@import "./header-nav";
+@import "./fontawesome";
+@import "./specific";
+@import "./pages";
+@import "./chat-window";

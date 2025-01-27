@@ -1,4 +1,5 @@
-import { qs, qsa, calculate, int } from "./utilities.js";
+import { qs, qsa } from "./lib/dom-utils.js";
+import { calculate, int } from "./utilities.js";
 import { wsURL, Message } from "./ws-utilities.js";
 import { updateDOM } from "./update-dom.js";
 import { fetchResult } from "./game-table-utilities.js";
@@ -80,8 +81,6 @@ function submitCharacterForm(form) {
             .then((response) => response.text())
             .then((response) => {
                 updateDOM(`#${form_id}`, response);
-
-                // ping character
                 const ping = new Message(sessionId, wsKey, "character-ping", parseInt(form_data.get("id")));
                 ws.send(ping.stringify());
             });
@@ -191,6 +190,7 @@ function fillCharacterSummary(id, data) {
     const cardSummaryWrapper = card.querySelector("[data-role=character-summary]");
     const template = qs("#character-details");
     const clone = template.content.cloneNode(true);
+	console.log(data);
 
     // Description
     fillValueInTemplate(clone, "Description", data.description);
@@ -198,6 +198,11 @@ function fillCharacterSummary(id, data) {
     // Caractéristiques
     ["For", "Dex", "Int", "San", "Per", "Vol", "Réflexes", "Sang-Froid", "Vitesse"].forEach((attr) => {
         fillValueInTemplate(clone, attr, data.attributes[attr]);
+    });
+    
+	// PdXm
+    ["PdVm", "PdFm", "PdMm", "PdEm"].forEach((PdX) => {
+        fillValueInTemplate(clone, PdX, data.pdxm[PdX]);
     });
 
     // Dégâts

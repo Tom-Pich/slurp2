@@ -195,13 +195,11 @@ if ($path_segments[1] === "api") {
 			break;
 
 		case "/api/get-character":
-			Firewall::filter(2);
 			Firewall::check(isset($_POST["id"]));
 			$id = (int) $_POST["id"];
-			$character_repo = new CharacterRepository;
-			$allowed_character_ids = $_SESSION["Statut"] === 3 ? $character_repo->getAllCharacters() : $character_repo->getCharactersFromGM($_SESSION["id"]);
-			if (!in_array($id, $allowed_character_ids)) (new Error404Controller)->show();
-			$controller->getCharacter($id);
+			$character = new Character($id);
+			Firewall::check(isset($character->id) && $character->checkClearance());
+			$controller->getCharacter($character);
 			break;
 		case "/api/get-avdesav":
 			Firewall::check(isset($_GET["id"]));

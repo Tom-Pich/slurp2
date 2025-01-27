@@ -99,26 +99,25 @@ class AvDesav implements RulesItem
 	 */
 	public function displayInRules(bool $show_edit_link = false, string $edit_req = "avdesav", array $data = ["name" => "", "cost-mult" => 1], bool $lazy = false): void
 	{
-		$edit_link = sprintf("gestion-listes?req=%s&id=%d", $edit_req, isset($data["power-id"] ) ? $data["power-id"]: $this->id );
-		?>
-
-		<details class="liste">
-			<summary title="id <?= $this->id ?>">
-				<div>
+		$edit_link_url = sprintf("gestion-listes?req=%s&id=%d", $edit_req, isset($data["power-id"] ) ? $data["power-id"]: $this->id );
+		$edit_link = $show_edit_link ? "<a href='$edit_link_url' class='edit-link ff-far'>&#xf044;</a>" : "";
+		$name = $data["name"] ? $data["name"] : $this->name;
+		$cost = $this->displayCost($data["cost-mult"]);
+		$description_wrapper_attributes = $lazy ? "data-details data-type='avdesav' data-id='{$this->id}'" : "";
+		$description = $lazy ? "" : $this->description;
+		echo <<<HTML
+			<details class="liste">
+				<summary title="id {$this->id}">
 					<div>
-						<?php if ($show_edit_link) { ?>
-							<a href="<?= $edit_link ?>" class="edit-link ff-far">&#xf044;</a>
-						<?php } ?>
-						<?= $data["name"] ? $data["name"] : $this->name ?>
+						<div>$edit_link $name</div>
+						<div>$cost</div>
 					</div>
-					<div><?= $this->displayCost($data["cost-mult"]) ?></div>
+				</summary>
+				<div class="fs-300 flow" $description_wrapper_attributes>
+					$description
 				</div>
-			</summary>
-			<div class="fs-300 flow" <?= $lazy ? "data-details data-type='avdesav' data-id='{$this->id}'" : "" ?>>
-				<?php  if(!$lazy) $this->description ?>
-			</div>
-		</details>
-<?php
+			</details>
+		HTML;
 	}
 
 	public static function processAvdesav(array $raw_avdesavs, array $attr_cost_multipliers, array $special_traits, array $attributes, array $points_count): array

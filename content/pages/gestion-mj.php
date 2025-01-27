@@ -317,7 +317,11 @@ $playNotif = false;
 		<b>Dég.</b> <span data-content="Dégâts"></span>&nbsp;;
 		<b>Réf.</b> <span data-content="Réflexes"></span>&nbsp;;
 		<b>S.-F.</b> <span data-content="Sang-Froid"></span>&nbsp;;
-		<b>Vit.</b> <span data-content="Vitesse"></span>
+		<b>Vit.</b> <span data-content="Vitesse"></span><br>
+		<b>PdV</b> <span data-content="PdVm"></span>&nbsp;;
+		<b>PdF</b> <span data-content="PdFm"></span>&nbsp;;
+		<b>PdM</b> <span data-content="PdMm"></span>&nbsp;;
+		<b>PdE</b> <span data-content="PdEm"></span>
 	</p>
 
 	<p data-content="Avantage"></p>

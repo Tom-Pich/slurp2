@@ -16,6 +16,7 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=yes">
 	<meta name="description" content="<?= $page["description"] ?>">
 	<link rel="stylesheet" href="/styles.min.css?v=<?= VERSION ?>">
+
 	<link rel="shortcut icon" href="/assets/img/favicon.ico">
 	<title><?= $page["title"] ?></title>
 
@@ -38,15 +39,15 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 		<div class="titles-wrapper flex-s gap-1">
 			<a href="/" title="Accueil"><img src="/assets/img/favicon.ico" width="64" height="64"></a>
 			<div>
-				<h2 class="fs-900">SLURP</h2>
-				<h1 class="fs-700"><?= $page["title"] ?></h1>
+				<h2 class="fs-700">SLURP</h2>
+				<h1><?= $page["title"] ?></h1>
 			</div>
 		</div>
 
 		<!-- login et bouton connexion/déconnexion -->
-		<div id="login-element" <?= DB_ACTIVE ? "" : "hidden" ?>>
+		<div id="login-element" <?= DB_ACTIVE ? "" : "hidden" ?> data-id="<?= $_SESSION["id"] ?>" data-status="<?= $_SESSION["Statut"] ?>">
 
-			<div class="flex-s gap-½ ai-center jc-center fs-500"> <!-- href="/mon-compte" -->
+			<div class="flex-s gap-½ ai-center jc-center fs-500">
 				<?php if ($_SESSION["Statut"]) { ?>
 					<b><a href="/mon-compte" title="Mon compte"><?= $_SESSION['login']; ?></a></b>
 				<?php } else { ?>
@@ -59,7 +60,7 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 
 			<dialog id="connexion-dialog" style="max-width: 300px;">
 				<button class="ff-fas" data-role="close-modal">&#xf00d;</button>
-				<form method="post" action="/submit/log-in" class="grid gap-1 mt-2">
+				<form method="post" action="/submit/log-in" class="grid gap-1">
 					<input type="text" name="login" placeholder="Nom d’utilisateur" required>
 					<input type="password" name="password" placeholder="Mot de passe" required>
 					<input hidden name="token" value="<?= $_SESSION["token"] ?>">
@@ -97,7 +98,7 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 					</ul>
 				</li>
 				<li>
-					<h4>Univers de jeu</h4>
+					<h4>Univers</h4>
 					<ul class="sub-menu">
 						<li><a href="/adapted-dungeons-dragons"><?= $pages_data['adapted-dungeons-dragons']["title"] ?></a></li>
 						<li><a href="/wiki/paorn">Wiki Paorn</a></li>
@@ -144,5 +145,3 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 		</nav>
 
 	</header>
-
-	<main>

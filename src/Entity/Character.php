@@ -75,7 +75,7 @@ class Character
 	}
 
 	/**
-	 * checkClearance – return True if on of theses conditions
+	 * checkClearance – return true if:
 	 * (1) user is admin 
 	 * (2) request made by character owner
 	 * (3) request made by group owner

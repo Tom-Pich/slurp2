@@ -1,9 +1,11 @@
-import { qs, qsa, ce, int } from "./utilities.js";
+import { qs, qsa, ce } from "./lib/dom-utils.js";
+import { int } from "./utilities.js";
 import { flushMsg } from "./ws-utilities.js";
-import { roll, getLocalisation, fetchDamageExpression, scoreTester, fetchResult, Opponent, setScoreWidget, mountNewScoreWidget, unmountScoreWidget } from "./game-table-utilities.js";
+import { roll, getLocalisation, fetchDamageExpression, scoreTester, fetchResult, Opponent, setScoreWidget, mountNewScoreWidget, unmountScoreWidget, getHighestIndexOf } from "./game-table-utilities.js";
 
 // widgets order : opponents, scores, simple-dice, round-counter, damage-localisation, critical, burst, fright-check, general-state, wound-effect, explosion, object-damage, vehicle-collision, generate-npc, reaction-test
 
+const userId = int(qs("#login-element").dataset.id);
 const inputEntry = qs("#msg-input");
 
 const allWidgets = qsa("fieldset[data-name]");
@@ -38,26 +40,31 @@ const objectDamagesLocalisationSelector = qs("[data-type=object-damages-localisa
 
 // prevent default submit on each form
 widgetForms.forEach((form) => {
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-    });
+    form.addEventListener("submit", (e) => e.preventDefault());
 });
 
-// set opponent list widgets
+// initiate opponent list widgets
 opponents.forEach((opponent) => {
     opponent = new Opponent(opponent);
     opponent.setReactivity();
 });
 
-// add or remove opponent
+// opponent btns listener
 const opponentNumberBtns = qsa("[data-role=set-opponent-number]");
 opponentNumberBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-        if (int(btn.value) === 1) Opponent.mountNewOpponent(opponents);
-        else if (opponents.length > 1) Opponent.unmountLastOpponent(opponents);
-        opponents = qsa("[data-role=opponent-wrapper]"); // refresh opponents
+		if (parseInt(btn.value) === 1) Opponent.mountNewOpponent(opponents);
+		else if (opponents.length > 1) Opponent.unmountLastOpponent(opponents);
+		opponents = qsa("[data-role=opponent-wrapper]"); // refresh opponents
     });
 });
+
+// update opponent list length to fit all stored opponents
+const opponentNumber = getHighestIndexOf("opponent");
+if (opponentNumber > 1 ){
+	const plusOneBtn = qs("[data-role=set-opponent-number][value='1']")
+	for ( let i = 0; i < parseInt(opponentNumber) -1; i++) plusOneBtn.click();
+}
 
 // score tester widgets
 scoreWidgets.forEach((widget) => setScoreWidget(widget, inputEntry, flushMsg));
@@ -72,6 +79,13 @@ scoreNumberBtns.forEach((btn) => {
     });
 });
 
+// update score list length to fit all stored score
+const scoreWidgetNumber = getHighestIndexOf("skill");
+if (scoreWidgetNumber > 3 ){
+	const plusOneBtn = qs("[data-role=set-score-number][value='1']")
+	for ( let i = 0; i < scoreWidgetNumber -3; i++) plusOneBtn.click();
+}
+
 // simple dice thrower
 simpleDiceWidget.addEventListener("submit", (e) => {
     const expression = simpleDiceWidget.querySelector("[name=dice-expression]").value;
@@ -83,25 +97,26 @@ simpleDiceWidget.addEventListener("submit", (e) => {
 // round counter widget
 roundCounterWidget.addEventListener("submit", (e) => {
     e.preventDefault();
+	const opponents = qsa("[data-role=opponent-wrapper]"); // refresh opponents
     const roundNumberInput = roundCounterWidget.querySelector("[data-type=round-number]");
-    const roundNumber = int(roundNumberInput.value);
-    const rawInitiativeOrder = roundCounterWidget.querySelector("[data-type=initiative-order]").value;
-    const totalOpponentsNumber = opponents.length;
+    const roundNumber = Math.max(int(roundNumberInput.value), 1);
+    const roundMsgInput = roundCounterWidget.querySelector("[data-type=initiative-order]");
 
-    // transform rawInitiativeOrder into filtered array of number (default [])
-    let numbersInitiativeOrder = rawInitiativeOrder.match(/\d+/g); // keep only digits
+    // transform roundMsgInput into filtered array of number (default [])
+    let numbersInitiativeOrder = roundMsgInput.value.match(/\d+/g); // keep only digits
     numbersInitiativeOrder = numbersInitiativeOrder || [];
     numbersInitiativeOrder = numbersInitiativeOrder.map(Number);
 
     // filter impossible opponent number and fetch matching names in the opponent widget (with default value)
-    numbersInitiativeOrder = numbersInitiativeOrder.filter((num) => num <= totalOpponentsNumber && num >= 1 && Number.isInteger(num));
+    numbersInitiativeOrder = numbersInitiativeOrder.filter((num) => num <= opponents.length && num >= 1 && Number.isInteger(num));
     const opponentsInitiativeOrder = numbersInitiativeOrder.map((num) => opponents[num - 1].querySelector("[name=name]").value || `Protagoniste ${num}`);
 
     // add message to input entry and flush message as standard chat message
-    if (!opponentsInitiativeOrder.length) inputEntry.value += "Entrées incohérentes";
+	inputEntry.value += `*Round ${roundNumber}* – `;
+    if (!opponentsInitiativeOrder.length) inputEntry.value += roundMsgInput.value;
     else inputEntry.value += `*Round ${roundNumber}* – ${opponentsInitiativeOrder.join(", ")}`;
     flushMsg("chat-message");
-    if (opponentsInitiativeOrder.length) roundNumberInput.value = roundNumber + 1;
+    roundNumberInput.value = roundNumber + 1;
 });
 
 // reaction test widget
@@ -117,16 +132,16 @@ reactionWidget.addEventListener("submit", async (e) => {
 
 // weapon damage and localisation widget
 wdwStrength.addEventListener("keyup", async (e) => {
-	const expression = await fetchDamageExpression(wdwStrength.value, wdwCode.value, wdwHands.value);
-	if (expression !== undefined) wdwExpression.value = expression
+    const expression = await fetchDamageExpression(wdwStrength.value, wdwCode.value, wdwHands.value);
+    if (expression !== undefined) wdwExpression.value = expression;
 });
 wdwCode.addEventListener("keyup", async (e) => {
     const expression = await fetchDamageExpression(wdwStrength.value, wdwCode.value, wdwHands.value);
-	if (expression !== undefined) wdwExpression.value = expression
+    if (expression !== undefined) wdwExpression.value = expression;
 });
 wdwHands.addEventListener("change", async (e) => {
     const expression = await fetchDamageExpression(wdwStrength.value, wdwCode.value, wdwHands.value);
-	if (expression !== undefined) wdwExpression.value = expression
+    if (expression !== undefined) wdwExpression.value = expression;
 });
 weaponDamageWidget.addEventListener("submit", async (e) => {
     const damages = roll(wdwExpression.value);
@@ -203,12 +218,12 @@ generalStateWidget.addEventListener("submit", async (e) => {
     data.append("members", opponent.members.value);
 
     const response = await fetchResult("/api/general-state", data);
-	console.log(response.test)
 
-    let formattedMsg = `État général de <b>${opponent.name.value || "Protagoniste " + opponent.number }</b><br>${response.general}`;
+    let formattedMsg = `État général de <b>${opponent.name.value || "Protagoniste " + opponent.number}</b><br>${response.general}`;
     if (response.members !== undefined) {
-        for (const [member, state] of Object.entries(response.members)) formattedMsg += `<br>${member}&nbsp;: ${state}`;
+		for (const [member, state] of Object.entries(response.members)) formattedMsg += `<br>${member}&nbsp;: ${state}`;
     }
+	if (response["members-error"]) formattedMsg += `<br>Membres&nbsp;: données incohérentes`;
     inputEntry.value += formattedMsg;
     flushMsg("chat-roll");
 });
@@ -239,46 +254,46 @@ woundEffectsWidget.addEventListener("submit", async (e) => {
     data.append("localisation", localisation);
     data.append("rolls", rolls);
 
-	const result = await fetchResult("/api/wound-effects", data)
+    const result = await fetchResult("/api/wound-effects", data);
 
-	if (result.erreur) {
+    if (result.erreur) {
         inputEntry.value += "Data opposants manquantes";
         flushMsg("chat-roll");
         return;
     }
 
-	let formattedMsg = `<b>${opponent.name.value || "Protagoniste " + opponent.number } – ${result["dégâts bruts"]} ( ${result["type dégâts"]} ${result["localisation"]})</b>`;
-	let isNotDead = true;
-	formattedMsg += `<br>Dégâts effectifs&nbsp;: ${result["dégâts effectifs"]}`;
-	if (result["recul"]) formattedMsg += `<br>Recul de ${result["recul"]}&nbsp;m.`;
-	if (result["mort"]) {
-		formattedMsg += `<br>${result["mort"]}`;
-		isNotDead = false;
-	}
-	if (isNotDead) {
-		if (result["autres effets"]) {
-			formattedMsg += `<br>${result["autres effets"]}`;
-		}
-		if (result["sonné"] && !result["perte de conscience"]) {
-			formattedMsg += `<br>${result["sonné"]}`;
-		}
-		if (result["perte de conscience"]) {
-			formattedMsg += `<br>Le personnage perd conscience.`;
-		}
-		if (result["chute"] && !result["perte de conscience"]) {
-			formattedMsg += `<br>Le personnage chûte.`;
-		}
-		if (result["dégâts membre"]) {
-			formattedMsg += `<br>${result["dégâts membre"]}`;
-			if (result["état membre"] !== "") {
-				formattedMsg += ` (${result["état membre"]})`;
-			}
-		}
-	}
+    let formattedMsg = `<b>${opponent.name.value || "Protagoniste " + opponent.number} – ${result["dégâts bruts"]} ( ${result["type dégâts"]} ${result["localisation"]})</b>`;
+    let isNotDead = true;
+    formattedMsg += `<br>Dégâts effectifs&nbsp;: ${result["dégâts effectifs"]}`;
+    if (result["recul"]) formattedMsg += `<br>Recul de ${result["recul"]}&nbsp;m.`;
+    if (result["mort"]) {
+        formattedMsg += `<br>${result["mort"]}`;
+        isNotDead = false;
+    }
+    if (isNotDead) {
+        if (result["autres effets"]) {
+            formattedMsg += `<br>${result["autres effets"]}`;
+        }
+        if (result["sonné"] && !result["perte de conscience"]) {
+            formattedMsg += `<br>${result["sonné"]}`;
+        }
+        if (result["perte de conscience"]) {
+            formattedMsg += `<br>Le personnage perd conscience.`;
+        }
+        if (result["chute"] && !result["perte de conscience"]) {
+            formattedMsg += `<br>Le personnage chûte.`;
+        }
+        if (result["dégâts membre"]) {
+            formattedMsg += `<br>${result["dégâts membre"]}`;
+            if (result["état membre"] !== "") {
+                formattedMsg += ` (${result["état membre"]})`;
+            }
+        }
+    }
 
-	inputEntry.value += formattedMsg;
-	flushMsg("chat-roll");
-	opponent.pdv.value = result["pdv"]
+    inputEntry.value += formattedMsg;
+    flushMsg("chat-roll");
+    opponent.pdv.value = result["pdv"];
 });
 
 // unfreeze bullet type
@@ -464,14 +479,16 @@ vehicleCollisionWidget.addEventListener("submit", (e) => {
 
 // NPC widget
 const npcRegion = npcWidget.querySelector("[name=region]");
-if (localStorage.getItem("npc-region") !== null) npcRegion.value = localStorage.getItem("npc-region")
+if (localStorage.getItem("npc-region") !== null) npcRegion.value = localStorage.getItem("npc-region");
 npcWidget.addEventListener("change", () => {
-	localStorage.setItem("npc-region", npcRegion.value)
-})
+    localStorage.setItem("npc-region", npcRegion.value);
+});
 npcWidget.addEventListener("submit", async (e) => {
     const data = new FormData(npcWidget);
 
     let result = await fetchResult("/api/npc-generator", data);
+	inputEntry.value = `/${userId} `; // always secret
+
     if (result.error) {
         inputEntry.value += "Paramètres PNJ invalides";
         flushMsg("chat-roll");
@@ -505,7 +522,6 @@ npcWidget.addEventListener("submit", async (e) => {
 	`;
     flushMsg("chat-roll");
 });
-
 
 // ––– Widgets config ––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 //localStorage.removeItem("display-widgets") // reset localStorage (for dev purpose)

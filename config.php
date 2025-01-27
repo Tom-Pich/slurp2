@@ -4,7 +4,7 @@ define("IS_ONLINE", $_SERVER['HTTP_HOST'] === 'jdr.pichegru.net');
 define("DB_ACTIVE", true);
 define("TABLE_PREFIX", "");
 define("GENERIC_PASSWORD", $_ENV["GENERIC_PASSWORD"]);
-define("VERSION", "3.20.14"); // 3.20 : refonte CSS
+define("VERSION", "3.20.17"); // 3.20 : refonte CSS
 define("DATE_VERSION", "janvier 2025");
 define("PRODUCTION", true); // run webpack before switching to true
 

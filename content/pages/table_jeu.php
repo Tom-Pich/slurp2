@@ -2,8 +2,8 @@
 
 use \App\Rules\ObjectController;
 
-$nbre_protagonistes = $_SESSION["Statut"] >= 2 ? 6 : 1;
-$nbre_competences = $_SESSION["Statut"] >= 2 ? 8 : 3;
+$nbre_protagonistes = 1;
+$nbre_competences = 3;
 ?>
 
 <button id="widgets-help-dialog-btn" class="ff-fas btn-primary btn-square" data-role="open-dialog" data-dialog-name="widgets-help" title="configuration des widgets">&#xf085;</button>
@@ -13,6 +13,7 @@ $nbre_competences = $_SESSION["Statut"] >= 2 ? 8 : 3;
 	<legend class="flex-s gap-1 ai-center">
 		Protagonistes
 		<div class="flex-s gap-½">
+			<button class="nude ff-fas" data-role="open-dialog" data-dialog-name="opponents-dialog" title="mode d’emploi">&#xf059;</button>
 			<button class="nude ff-fas" data-role="set-opponent-number" value="1">&#xf055;</button>
 			<button class="nude ff-fas" data-role="set-opponent-number" value="-1">&#xf056;</button>
 		</div>
@@ -45,6 +46,13 @@ $nbre_competences = $_SESSION["Statut"] >= 2 ? 8 : 3;
 	<?php } ?>
 
 </fieldset>
+<dialog data-name="opponents-dialog">
+	<button data-role="close-modal" class="ff-fas">&#xf00d;</button>
+	<h4>Widget Protagonistes</h4>
+	<div class="mt-1 flow">
+		<p>mode d’emploi à venir&nbsp;!</p>
+	</div>
+</dialog>
 
 <!-- test caractéristique / compétence -->
 <fieldset data-name="score-tester">
@@ -99,7 +107,7 @@ $nbre_competences = $_SESSION["Statut"] >= 2 ? 8 : 3;
 	<form class="flex-s gap-½">
 		<div class="flex-s gap-½ fl-1">
 			<input type="text" data-type="round-number" class="ta-center" placeholder="round" title="N° du round" value="1">
-			<input type="text" data-type="initiative-order" class="fl-1" placeholder="Ordre initiative" title="Entrez le n° des opposants dans l’ordre d’initiative">
+			<input type="text" data-type="initiative-order" class="fl-1" placeholder="Ordre initiative" title="Entrez le n° des opposants dans l’ordre d’initiative ou bien un texte simple">
 		</div>
 		<button class="nude">🎲</button>
 	</form>
@@ -110,7 +118,7 @@ $nbre_competences = $_SESSION["Statut"] >= 2 ? 8 : 3;
 	<legend>Dégâts et localisation</legend>
 	<form class="flex-s gap-½ ai-center" id="weapon-damage-widget">
 		<input type="text" style="width: 5ch" data-type="strength" class="ta-center" placeholder="For" title="For de l’attaquant">
-		<input type="text" style="width: 5ch" data-type="weapon-code" class="ta-center" placeholder="Code" title="Code dégâts de l’arme">
+		<input type="text" data-type="weapon-code" class="ta-center" placeholder="Code" title="Code dégâts de l’arme">
 		<select id="as-mains" class="fl-1" data-type="hands" title="Préciser le maniement de l’arme">
 			<option value="1M">1 main</option>
 			<option value="2M-opt">2 mains opt.</option>

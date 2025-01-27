@@ -1,4 +1,4 @@
-import { qs, qsa, ce } from "./utilities.js";
+import { qs, qsa, ce } from "./lib/dom-utils.js";
 import { wsURL, Message, flushMsg } from "./ws-utilities.js";
 
 // ––– Websocket Chat Client ––––––––––––––––––––––––

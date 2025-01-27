@@ -29,7 +29,8 @@ body.table-jeu {
 
 	main {
 		position: relative; columns: var(--col-width) auto; column-gap: 1em;
-		> :not(:nth-child(1), :nth-child(2)) { margin-top: .5em; }
+		//> :not(:nth-child(1), :nth-child(2)) { margin-top: .5em; }
+		fieldset { margin-bottom: .5em; }
 		@include media ($brp-s) {columns: 1;}
 
 		#widgets-help-dialog-btn { position: absolute; top: .5em; right: .5em;}

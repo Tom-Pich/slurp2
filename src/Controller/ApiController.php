@@ -116,12 +116,14 @@ class ApiController
 	{
 		$this->response["data"]["general"] = WoundController::getGeneralEffects($pdv, $pdvm, $pain_resistance)["description"];
 
-		$members = TextParser::parsePseudoArray2Array($members);
-		foreach ($members as $member => $damage) {
+		$members_parsed = TextParser::parsePseudoArray2Array($members);
+		if ($members !== "") $this->response["data"]["members-error"] = true;
+		foreach ($members_parsed as $member => $damage) {
 			$member_full_name = WoundController::member_abbreviation[$member]["full-name"] ?? false;
 			$member_name = WoundController::member_abbreviation[$member]["member"] ?? false;
-			if ($member_full_name) {
+			if ($member_full_name && is_numeric($damage)) {
 				$this->response["data"]["members"][ucfirst($member_full_name)] = WoundController::getMemberEffects($damage, $pdvm, $member_name, $pain_resistance)["description"];
+				$this->response["data"]["members-error"] = false;
 			}
 		}
 
@@ -179,9 +181,8 @@ class ApiController
 		$this->sendResponse();
 	}
 
-	public function getCharacter(int $id)
+	public function getCharacter(Character $character)
 	{
-		$character = new Character($id);
 		$character->processCharacter();
 		$character_array = get_object_vars($character);
 		$this->response["data"] = $character_array;

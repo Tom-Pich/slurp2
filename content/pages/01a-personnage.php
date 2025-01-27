@@ -381,7 +381,7 @@ $repo = new SkillRepository;
 			<p>La compétence <i>Bricolage</i> est de type DI-2. Si le personnage a 12 en <i>Dex</i> et 11 en <i>Int</i>, sa base vaudra donc (12+11)÷2 = 11,5, arrondi à 11. Sa difficulté est de -2.</p>
 			<p>Son score par défaut vaut donc 11-2 = 9.</p>
 		</details>
-		
+
 		<h4>Score et points de personnage</h4>
 		<p>La table ci-dessous indique le coût en points de personnage pour obtenir un <i>niveau</i> donné dans une compétence en fonction de sa difficulté. Ce niveau s’ajoute à la base pour calculer le score de la compétence.</p>
 		<p>Lorsque <b>deux valeurs</b> sont données, la deuxième ne s’applique qu’aux compétences exclusivement basées sur l’<i>Int</i>.</p>
@@ -441,6 +441,19 @@ $repo = new SkillRepository;
 			</table>
 		</details>
 
+		<h4>Compétences irrégulières</h4>
+		<p>Certaines compétences on un niveau minimum. Ça signifique que leur niveau par défaut n’est pas celui donné par leur type, mais celui indiqué dans leur description.</p>
+		<p>Ce niveau par défaut est gratuit, et le coût de progression correspond à celui associé à leur type. Par exemple, la compétence <i>Esquive</i> et de type D(-8). Son niveau minimum est -3. Ce niveau coûte normalement 1 pt de personnage, qui est offert. Pour faire passer cette compétence au niveau 0, qui coûte normalement 8 pts, il faudra payer la différence, c’est-à-dire 7 pts.</p>
+
+		<?php
+		$special_skills_name_list = [];
+		foreach (Skill::special_skills as $id => $value) {
+			$skill = $repo->getSkill($id);
+			$special_skills_name_list[] = "<i>{$skill->name}</i> (niv. min {$value["min-level"]})";
+		}
+		?>
+		<p><b>Liste des compétences irrégulières&nbsp;:</b> <?= join(", ", $special_skills_name_list) ?></p>
+
 	</details>
 
 	<!-- Spécialisations -->
@@ -472,11 +485,11 @@ $repo = new SkillRepository;
 
 		<p>Une compétence peut appartenir à deux groupes différents. Dans ce cas, elle reçoit des points de bonus de chacun des groupes.</p>
 
-		<p>Ces calculs sont gérés de manière complètement automatisée par la fiche de personnage.</p>
+		<p>Ces calculs sont gérés automatiquement par la fiche de personnage.</p>
 
 		<h4>Groupes de compétences proches</h4>
-		
-		<?php	
+
+		<?php
 		$readable_group_names = [
 			"melee" => "Armes de contact",
 			"hand-to-hand" => "Corps-à-corps",

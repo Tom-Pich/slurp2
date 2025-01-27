@@ -1,4 +1,4 @@
-export function qs(selector) {
+/* export function qs(selector) {
     return document.querySelector(selector);
 }
 
@@ -9,13 +9,8 @@ export function qsa(selector) {
 export function ce(tag, classes = []) {
     const element = document.createElement(tag);
 	classes.forEach((CSSclass) => element.classList.add(CSSclass));
-    /* if (classes.length > 0) {
-        classes.forEach((CSSclass) => {
-            element.classList.add(CSSclass);
-        });
-    } */
     return element;
-}
+} */
 
 export function checkPasswordStrength(password) {
     const digit = /\d+/.test(password);

@@ -180,6 +180,7 @@ $pages_data = [
 		"title" => "Mon compte",
 		"description" => "",
 		"body-class" => "basic-page",
+		"access-restriction" => 1,
 		"file" => "gestion-compte",
 		"version" => 4,
 	],

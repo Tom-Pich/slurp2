@@ -1,31 +1,16 @@
-<?php
+<h2 class="mt-1">Bonjour <?= $_SESSION["login"] ?> 👋</h2>
 
-use App\Repository\UserRepository;
+<p>Vous pouvez changer votre mot de passe. Celui-ci doit contenir au moins 8 caractères, dont au moins 1 chiffre, 1 caractère spécial, une majuscule, une minuscule et aucun espace.</p>
 
-$user_repo = new UserRepository;
-$user = $user_repo->getUser($_SESSION["id"]);
-?>
+<form id="pwd-change-form" class="grid gap-½ mx-auto mt-2" style="max-width: 35ch">
+	<input type="password" id="pwd0" name="pwd0" placeholder="Mot de passe actuel" required>
+	<input type="password" id="pwd1" name="pwd1" class="watched" placeholder="Nouveau mot de passe" required>
+	<input type="password" id="pwd2" name="pwd2" class="watched" placeholder="Répétez le nouveau mot de passe" required>
+	<input hidden name="token" value="<?= $_SESSION["token"] ?>">
+	<button class="mx-auto mt-½ btn-primary">Valider</button>
+</form>
 
-<?php if (empty($user)) : ?>
-
-	<p>Désolé, il n’est pas possible de se créer soi-même un compte sur ce site. Contactez-moi si vous avez des questions.</p>
-	<p>Si vous avez oublié votre mot de passe, envoyez-moi un message pour le réinitialiser.</p>
-
-<?php else : ?>
-
-	<p>Vous pouvez changer votre mot de passe. Celui-ci doit contenir au moins 8 caractères, dont au moins 1 chiffre, 1 caractère spécial, une majuscule, une minuscule et aucun espace.</p>
-
-	<form id="pwd-change-form" class="grid gap-½ mx-auto mt-4" style="max-width: 35ch">
-		<input type="password" id="pwd0" name="pwd0" placeholder="Mot de passe actuel" required>
-		<input type="password" id="pwd1" name="pwd1" class="watched" placeholder="Nouveau mot de passe" required>
-		<input type="password" id="pwd2" name="pwd2" class="watched" placeholder="Répétez le nouveau mot de passe" required>
-		<input hidden name="token" value="<?= $_SESSION["token"] ?>">
-		<button class="mx-auto mt-½ btn-primary">Valider</button>
-	</form>
-
-	<p id="change-pwd-response" class="ta-center mt-2 italic"></p>
-
-<?php endif ?>
+<p id="change-pwd-response" class="ta-center mt-2 italic"></p>
 
 <script type="module">
 	import {

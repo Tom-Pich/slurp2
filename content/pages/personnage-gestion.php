@@ -140,8 +140,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 					<input type="checkbox" name="MPP[psi]" <?= $character->special_traits["psi"] ? 'checked' : '' ?>>
 					<i>pouvoirs psioniques</i>
 				</label>
-				(voyez ça avec votre MJ).<br>
-				Après activation de ces valeurs, sauvegarder votre personnage et rafraîchissez la page.
+				(voyez ça avec votre MJ).
 			</p>
 		</fieldset>
 

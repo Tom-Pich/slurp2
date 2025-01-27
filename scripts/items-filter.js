@@ -1,4 +1,4 @@
-import { qs, qsa } from "./utilities.js";
+import { qs, qsa } from "./lib/dom-utils.js";
 import { updateDOM } from "./update-dom.js";
 import { fetchResult } from "./game-table-utilities";
 
