@@ -1,0 +1,14 @@
+.hidden-when-compact { display: none !important; }
+/* details.inline-when-compact {
+	display: inline; margin-right: 1em;
+	* { display: inline; hyphens: auto; }
+} */
+
+body.personnage-fiche.compact {
+	fieldset { margin-top: .5em; }
+	fieldset legend { font-size: var(--fs-450) }
+	.portraits-wrapper {
+		&:is(.group-none, .group-small, .group-medium, .group-big) { grid-template-columns: repeat(4, 1fr); }
+		.character-portrait { grid-column: unset; grid-row: unset; }
+	}
+}

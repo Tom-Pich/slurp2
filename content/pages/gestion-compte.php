@@ -1,75 +1,58 @@
 <h2 class="mt-1">Bonjour <?= $_SESSION["login"] ?> 👋</h2>
 
-<p>Vous pouvez changer votre mot de passe. Celui-ci doit contenir au moins 8 caractères, dont au moins 1 chiffre, 1 caractère spécial, une majuscule, une minuscule et aucun espace.</p>
+<fieldset class="px-1">
+	<legend>Mot de passe</legend>
+	<div class="grid col-2 gap-2">
+		<p>Vous pouvez changer votre mot de passe. Celui-ci doit contenir au moins 8 caractères, dont au moins 1 chiffre, 1 caractère spécial, une majuscule, une minuscule et aucun espace.</p>
+		<form id="pwd-change-form" class="grid gap-½">
+			<input type="password" id="pwd0" name="pwd0" class="full-width" placeholder="Mot de passe actuel" required>
+			<input type="password" id="pwd1" name="pwd1" class="full-width watched" placeholder="Nouveau mot de passe" required>
+			<input type="password" id="pwd2" name="pwd2" class="full-width watched" placeholder="Répétez le nouveau mot de passe" required>
+			<input hidden name="token" value="<?= $_SESSION["token"] ?>">
+			<button class="mx-auto mt-½ btn-primary">Valider</button>
+		</form>
+	</div>
+</fieldset>
 
-<form id="pwd-change-form" class="grid gap-½ mx-auto mt-2" style="max-width: 35ch">
-	<input type="password" id="pwd0" name="pwd0" placeholder="Mot de passe actuel" required>
-	<input type="password" id="pwd1" name="pwd1" class="watched" placeholder="Nouveau mot de passe" required>
-	<input type="password" id="pwd2" name="pwd2" class="watched" placeholder="Répétez le nouveau mot de passe" required>
-	<input hidden name="token" value="<?= $_SESSION["token"] ?>">
-	<button class="mx-auto mt-½ btn-primary">Valider</button>
-</form>
 
-<p id="change-pwd-response" class="ta-center mt-2 italic"></p>
+<fieldset class="px-1">
+	<legend>Options</legend>
 
-<script type="module">
-	import {
-		qs,
-		checkPasswordStrength
-	} from "/scripts/utilities.js";
+	<form data-role="user-options">
+		<div class="grid ai-center option-grid">
+			<div class="fw-700 bg-grey-900 p-½">Thème</div>
+			<div class="flex-s gap-1">
+				<label>
+					<input type="radio" name="mode" value="light" <?= $page["mode"] === "light" ? "checked" : "" ?>>
+					Lumineux
+				</label>
+				<label>
+					<input type="radio" name="mode" value="auto" <?= !in_array($page["mode"], ["light", "dark"]) ? "checked" : "" ?>>
+					Automatique
+				</label>
+				<label>
+					<input type="radio" name="mode" value="dark" <?= $page["mode"] === "dark" ? "checked" : "" ?>>
+					Sombre
+				</label>
+			</div>
+		</div>
+		<?php if ($_SESSION["Statut"] === 3): ?>
+			<div class="grid ai-center option-grid">
+				<div class="fw-700 bg-grey-900 p-½">Fiche de perso</div>
+				<div class="flex-s gap-1">
+					<label>
+						<input type="radio" name="style" value="normal" <?= $page["style"] ? "" : "checked" ?>>
+						Normale
+					</label>
+					<label>
+						<input type="radio" name="style" value="compact" <?= $page["style"] === "compact" ? "checked" : "" ?>>
+						Compacte
+					</label>
+				</div>
+			</div>
+		<?php endif ?>
+	</form>
 
-	const form = qs("#pwd-change-form");
-	const pwd0 = qs("#pwd0");
-	const pwd1 = qs("#pwd1");
-	const pwd2 = qs("#pwd2");
-	const responseWrapper = qs("#change-pwd-response");
+</fieldset>
 
-	let pwdIsStrong = false;
-	let pwdMatch = false;
-
-	// check if password 1 is strong
-	pwd1.addEventListener("keyup", () => {
-		console.log(pwdIsStrong)
-		if (checkPasswordStrength(pwd1.value)) {
-			pwdIsStrong = true;
-			pwd1.setCustomValidity("");
-		} else {
-			pwdIsStrong = false;
-			pwd1.setCustomValidity("Mot de passe faible");
-		}
-	})
-
-	// check if password 2 matches password 1
-	pwd2.addEventListener("keyup", () => {
-		if (pwd1.value === pwd2.value) {
-			pwd2.setCustomValidity("");
-			pwdMatch = true;
-		} else {
-			pwd2.setCustomValidity("Les mots de passe ne correspondent pas");
-			pwdMatch = false;
-		}
-	})
-
-	// submit or reject submission
-	form.addEventListener("submit", (e) => {
-		e.preventDefault();
-		console.log(pwdIsStrong && pwdMatch)
-		if (pwdIsStrong && pwdMatch) {
-			fetch("/submit/change-password", {
-					method: 'post',
-					body: new FormData(form)
-				})
-				.then(response => response.text())
-				.then(response => {
-					responseWrapper.innerText = response;
-				})
-			pwd0.value = "";
-			pwd1.value = "";
-			pwd2.value = "";
-		} else if (!pwdMatch) {
-			responseWrapper.innerText = "Les mots de passe donnés sont différents !"
-		} else {
-			responseWrapper.innerText = "Votre nouveau mot de passe n’est pas assez fort."
-		}
-	})
-</script>
+<script src="/scripts/account-settings<?= PRODUCTION ? ".min" : "" ?>.js?v=<?= VERSION ?>" type="module"></script>

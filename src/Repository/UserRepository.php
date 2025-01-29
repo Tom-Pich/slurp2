@@ -7,35 +7,23 @@ use App\Entity\User;
 
 class UserRepository extends AbstractRepository
 {
-	/**
-	 * getUser
-	 *
-	 * @param  int $id
-	 * @return ?User
-	 */
+
 	public function getUser(int $id): ?User
 	{
-		$query = $this->db->prepare("SELECT * FROM " . TABLE_PREFIX . "utilisateurs WHERE id = ?");
+		$query = $this->db->prepare("SELECT * FROM utilisateurs WHERE id = ?");
 		$query->execute([$id]);
 		$item = $query->fetch(\PDO::FETCH_ASSOC);
 		$query->closeCursor();
 
-		if (!$item) {
-			return null;
-		}
+		if (!$item) return null;
 
 		$user = new User($item);
 		return $user;
 	}
 
-	/**
-	 * getAllUsers
-	 *
-	 * @return array Array of User Objects
-	 */
 	public function getAllUsers(): array
 	{
-		$query = $this->db->query("SELECT * FROM " . TABLE_PREFIX . "utilisateurs");
+		$query = $this->db->query("SELECT * FROM utilisateurs");
 		$items = $query->fetchAll(\PDO::FETCH_ASSOC);
 		$query->closeCursor();
 		$users = [];
@@ -45,15 +33,9 @@ class UserRepository extends AbstractRepository
 		return $users;
 	}
 
-	/**
-	 * getUserByLogin
-	 *
-	 * @param  string $login
-	 * @return ?User
-	 */
 	public function getUserByLogin(string $login): ?User
 	{
-		$query = $this->db->prepare("SELECT * FROM " . TABLE_PREFIX . "utilisateurs WHERE login = ?");
+		$query = $this->db->prepare("SELECT * FROM utilisateurs WHERE login = ?");
 		$query->execute([$login]);
 		$item = $query->fetch(\PDO::FETCH_ASSOC);
 		$query->closeCursor();
@@ -81,21 +63,28 @@ class UserRepository extends AbstractRepository
 	public function updateUser(User $user): void
 	{
 		//  id, login, mdp, Statut
-		$query = $this->db->prepare("UPDATE " . TABLE_PREFIX . "utilisateurs SET login = ?, mdp = ?, Statut = ? WHERE id = ? ");
+		$query = $this->db->prepare("UPDATE utilisateurs SET login = ?, mdp = ?, Statut = ? WHERE id = ? ");
 		$query->execute([$user->login, $user->password, $user->status, $user->id]);
 		$query->closeCursor();
 	}
 
-	public function createUser(User $user): void
+	public function setUserOption(int $id, string $option, string|int|float $value):void
 	{
-		$query = $this->db->prepare ("INSERT INTO " . TABLE_PREFIX . "utilisateurs (login, mdp, Statut) VALUES (?, ?, ?)") ;
-		$query->execute([$user->login, $user->password, $user->status]);
+		$query = $this->db->prepare("UPDATE utilisateurs SET options = JSON_SET(COALESCE(options, '{}'), ?, ?) WHERE id = ? ");
+		$query->execute(["$.".$option, $value, $id]);
 		$query->closeCursor();
 	}
 
-	public function deleteUser(int $id): void{
-		$query = $this->db->prepare ("DELETE FROM " . TABLE_PREFIX . "utilisateurs WHERE id = ?") ;
+	/* public function createUser(User $user): void
+	{
+		$query = $this->db->prepare ("INSERT INTO utilisateurs (login, mdp, Statut) VALUES (?, ?, ?)") ;
+		$query->execute([$user->login, $user->password, $user->status]);
+		$query->closeCursor();
+	} */
+
+	/* public function deleteUser(int $id): void{
+		$query = $this->db->prepare ("DELETE FROM utilisateurs WHERE id = ?") ;
 		$query->execute([$id]);
 		$query->closeCursor();
-	}
+	} */
 }

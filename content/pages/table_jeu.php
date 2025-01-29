@@ -6,8 +6,6 @@ $nbre_protagonistes = 1;
 $nbre_competences = 3;
 ?>
 
-<button id="widgets-help-dialog-btn" class="ff-fas btn-primary btn-square" data-role="open-dialog" data-dialog-name="widgets-help" title="configuration des widgets">&#xf085;</button>
-
 <!-- Protagonistes -->
 <fieldset data-name="opponents" hidden>
 	<legend class="flex-s gap-1 ai-center">
@@ -32,13 +30,13 @@ $nbre_competences = 3;
 						<option value="ins">ins</option>
 						<option value="ci">ci</option>
 					</select>
-					<input type="text" name="dex" class="ta-center" placeholder="Dex" title="Dextérité" value="<?= $i === 0 ? 11 : "" ?>">
-					<input type="text" name="san" class="ta-center" placeholder="San" title="Santé" value="<?= $i === 0 ? 12 : "" ?>">
+					<input type="text" name="dex" class="ta-center" placeholder="Dex" title="Dextérité">
+					<input type="text" name="san" class="ta-center" placeholder="San" title="Santé">
 					<input type="text" name="pain-resistance" class="ta-center" placeholder="Doul." title="Résistance à la douleur (-1, 0, 1)">
 				</div>
 				<div class="flex-s gap-¼ mt-¼">
-					<input type="text" name="pdvm" class="ta-center" placeholder="PdVm" title="PdV maxi" value="<?= $i === 0 ? 12 : "" ?>">
-					<input type="text" name="pdv" class="ta-center" placeholder="PdV" title="PdV actuels" value="<?= $i === 0 ? 12 : "" ?>">
+					<input type="text" name="pdvm" class="ta-center" placeholder="PdVm" title="PdV maxi">
+					<input type="text" name="pdv" class="ta-center" placeholder="PdV" title="PdV actuels">
 					<input type="text" class="fl-1" name="members" placeholder="Blessures membres" title="Par exemple BD 2, PG 1">
 				</div>
 			</div>
@@ -59,6 +57,7 @@ $nbre_competences = 3;
 	<legend class="flex-s gap-1 ai-center">
 		Jets de réussite
 		<div class="flex-s gap-½">
+			<button class="nude ff-fas" data-role="sort-scores">&#xf15d;</button>
 			<button class="nude ff-fas" data-role="set-score-number" value="1">&#xf055;</button>
 			<button class="nude ff-fas" data-role="set-score-number" value="-1">&#xf056;</button>
 		</div>
@@ -117,8 +116,8 @@ $nbre_competences = 3;
 <fieldset data-name="widget-damage-location">
 	<legend>Dégâts et localisation</legend>
 	<form class="flex-s gap-½ ai-center" id="weapon-damage-widget">
-		<input type="text" style="width: 5ch" data-type="strength" class="ta-center" placeholder="For" title="For de l’attaquant">
-		<input type="text" data-type="weapon-code" class="ta-center" placeholder="Code" title="Code dégâts de l’arme">
+		<input type="text" data-type="strength" class="ta-center" placeholder="For" title="For de l’attaquant">
+		<input type="text" data-type="weapon-code" class="ta-center" placeholder="t/e" title="Code dégâts de l’arme">
 		<select id="as-mains" class="fl-1" data-type="hands" title="Préciser le maniement de l’arme">
 			<option value="1M">1 main</option>
 			<option value="2M-opt">2 mains opt.</option>

@@ -24,7 +24,7 @@ export function activateMobileNav() {
 
 export function activateDialogs() {
     const dialogOpenerBtns = qsa("[data-role=open-dialog]");
-	const dialogCloseBtns = qsa("[data-role=close-modal]");
+    const dialogCloseBtns = qsa("[data-role=close-modal]");
 
     dialogOpenerBtns.forEach((btn) => {
         btn.addEventListener("click", (e) => {
@@ -39,4 +39,11 @@ export function activateDialogs() {
             dialog.close();
         });
     });
+}
+
+export function applyColorScheme() {
+    const colorSchemeDark = window.matchMedia("(prefers-color-scheme: dark)");
+    const html = document.documentElement;
+    if (html.dataset.preset === "auto" && colorSchemeDark.matches) html.dataset.mode = "dark";
+    else if (html.dataset.preset === "auto" && !colorSchemeDark.matches) html.dataset.mode = "light";
 }

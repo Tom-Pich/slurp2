@@ -1,20 +1,28 @@
 #chat-container {
-	border: 1px solid var(--grey-700); background: white; padding: 1em; border-radius: .75em; position: relative; height: fit-content; break-inside: avoid;
+	border: 1px solid var(--grey-700); background: var(--white); padding: 1em; border-radius: .75em; position: relative; height: fit-content; break-inside: avoid;
 	@include media($brp-s) {width: 100%;}
 
+	--user-color-1: hsl(200, 50%, 90%);
+	--user-color-2: hsl(220, 50%, 90%);
+	--user-color-3: hsl(190, 50%, 90%);
+	--user-color-4: hsl(55, 50%, 90%);
+	--user-color-5: hsl(47, 50%, 90%);
+	--user-color-6: hsl(270, 50%, 90%);
+	--user-color-7: hsl(240, 50%, 90%);
+
 	#connected-users{
-		border-bottom: .5px solid var(--grey-700); margin-bottom: 5px; min-height: 1.9em; padding-right: 2em;
+		border-bottom: .5px solid var(--grey-700); margin-bottom: .25em; min-height: 1.9em; padding-right: 2em; font-size: var(--fs-300);
 		@include media { min-height: 0; }
 	}
 	#chat-dialog-wrapper{overflow-x: hidden; height: 45vh; padding-right: .75em; @include media { height: 24vh; }}
 	#chat-help-dialog-btn { position: absolute; top: .5em; right: .5em;}
-	#chat-input-wrapper {/* display: grid; width: 100%; */ background: #fff; border-top: 1px solid var(--grey-700); padding-top: 0.5em; margin-top: 1em;}
-	#msg-input {min-height: 5em; border: 1px solid var(--grey-900); margin-top: .5em; resize: none; /* @include media { height: 4em; } */}
+	#chat-input-wrapper { background:  var(--white); border-top: 1px solid var(--grey-700); padding-top: 0.5em; margin-top: 1em;}
+	#msg-input { min-height: 5em; border: 1px solid var(--grey-900); margin-top: .5em; resize: none; }
 
 	.chat-message-wrapper {
 		.chat-message-header { font-weight: 600; font-size: var(--fs-300);}
 		.chat-message-content {
-			background-color: var(--user-color, white); max-width: 90%; width: fit-content; position: relative;
+			background-color: var(--user-color,  var(--white)); max-width: 90%; width: fit-content; position: relative;
 			border-radius: .5em; padding: .25em .5em; margin: .25em 0; box-shadow: 1px 1px 3px #0003;
 			&::before { display: block; position: absolute; right: 0; transform: translateX(100%) ; top: .25em; }
 		}
@@ -26,13 +34,13 @@
 		}
 		
 		// bg color depends on user id modulo 7 (see game-table.js)
-		&.bg-color-user-1 { --user-color: hsl(200, 50%, 90%); }
-		&.bg-color-user-2 { --user-color: hsl(220, 50%, 90%); }
-		&.bg-color-user-3 { --user-color: hsl(190, 50%, 90%); }
-		&.bg-color-user-4 { --user-color: hsl(55, 50%, 90%); }
-		&.bg-color-user-5 { --user-color: hsl(47, 50%, 90%); }
-		&.bg-color-user-6 { --user-color: hsl(270, 50%, 90%); }
-		&.bg-color-user-7 { --user-color: hsl(240, 50%, 90%); }
+		&.bg-color-user-1 { --user-color: var(--user-color-1); }
+		&.bg-color-user-2 { --user-color: var(--user-color-2); }
+		&.bg-color-user-3 { --user-color: var(--user-color-3); }
+		&.bg-color-user-4 { --user-color: var(--user-color-4); }
+		&.bg-color-user-5 { --user-color: var(--user-color-5); }
+		&.bg-color-user-6 { --user-color: var(--user-color-6); }
+		&.bg-color-user-7 { --user-color: var(--user-color-7); }
 
 		.chat-roll::before { content:"🎲" ; }
 		&.is-private .chat-message-content::before { content:"🤫" ; }

@@ -15,7 +15,7 @@ $affichage = $_POST["affichage"] ?? "categorie";
 ?>
 
 <!-- Intro + filtres -->
-<article class="as-start" data-morhpdom="ignore">
+<article class="as-start" data-morphdom="ignore">
 
 	<h4>Affichage par catégories</h4>
 	<p>L’affichage par catégorie permet l’accès aux règles générales sur certaines catégories d’avantages &amp; désavantages, compétences et sorts.</p>

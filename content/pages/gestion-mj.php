@@ -99,31 +99,33 @@ $playNotif = false;
 					$pdem = $perso->pdxm["PdEm"] ?? "";
 					$r_pde = !$pdem ? 0 : ($pde ? $pde / $pdem * 100 : 0);
 
+					$style_pattern = "background: linear-gradient(90deg, %s %d%%, var(--white) %d%%);";
+
 					// style des indicateurs d’état des PdV, PdF, PdM et PdE
-					if ($r_pdv > 75) $style_pdv = "background : linear-gradient(90deg, DarkSeaGreen $r_pdv%, white $r_pdv%);";
-					elseif ($r_pdv > 50) $style_pdv = "background : linear-gradient(90deg, BlanchedAlmond $r_pdv%, white $r_pdv%);";
-					elseif ($r_pdv > 25) $style_pdv = "background : linear-gradient(90deg, LightSalmon $r_pdv%, white $r_pdv%);";
-					elseif ($r_pdv > 0) $style_pdv = "background : linear-gradient(90deg, LightCoral $r_pdv%, white $r_pdv%);";
-					elseif ($r_pdv == 0 and $pdv === "") $style_pdv = "background : none;";
-					else $style_pdv = "background : LightCoral;";
+					if ($r_pdv > 75) $style_pdv = sprintf($style_pattern, "var(--clr-valid)", $r_pdv, $r_pdv);
+					elseif ($r_pdv > 50) $style_pdv = sprintf($style_pattern, "var(--clr-fair)", $r_pdv, $r_pdv);
+					elseif ($r_pdv > 25) $style_pdv = sprintf($style_pattern, "var(--clr-warning)", $r_pdv, $r_pdv);
+					elseif ($r_pdv > 0) $style_pdv = sprintf($style_pattern, "var(--clr-invalid)", $r_pdv, $r_pdv);
+					elseif ($r_pdv == 0 and $pdv === "") $style_pdv = "background: none;";
+					else $style_pdv = "background: var(--clr-invalid);";
 
-					if ($r_pdf > 50) $style_pdf = "background : linear-gradient(90deg, DarkSeaGreen $r_pdf%, white $r_pdf%);";
-					elseif ($r_pdf > 25) $style_pdf = "background : linear-gradient(90deg, BlanchedAlmond $r_pdf%, white $r_pdf%);";
-					elseif ($r_pdf > 10) $style_pdf = "background : linear-gradient(90deg, LightSalmon $r_pdf%, white $r_pdf%);";
-					elseif ($r_pdf > 0) $style_pdf = "background : linear-gradient(90deg, LightCoral $r_pdf%, white $r_pdf%);";
-					elseif ($r_pdf == 0 and $pdf == "") $style_pdf = "background : none;";
-					else $style_pdf = "background : LightCoral;";
+					if ($r_pdf > 50) $style_pdf = sprintf($style_pattern, "var(--clr-valid)", $r_pdf, $r_pdf);
+					elseif ($r_pdf > 25) $style_pdf = sprintf($style_pattern, "var(--clr-warning)", $r_pdf, $r_pdf);
+					elseif ($r_pdf > 10) $style_pdf = sprintf($style_pattern, "var(--clr-warning)", $r_pdf, $r_pdf);
+					elseif ($r_pdf > 0) $style_pdf = sprintf($style_pattern, "var(--clr-invalid)", $r_pdf, $r_pdf);
+					elseif ($r_pdf == 0 and $pdf == "") $style_pdf = "background: none;";
+					else $style_pdf = "background: var(--clr-invalid);";
 
-					$style_pdm = "background : linear-gradient(90deg, LightBlue $r_pdm%, white $r_pdm%);";
+					$style_pdm = sprintf($style_pattern, "var(--grey-700)", $r_pdm, $r_pdm);
 
-					if ($r_pde > 50) $style_pde = "background : linear-gradient(90deg, DarkSeaGreen $r_pde%, white $r_pde%);";
-					elseif ($r_pde > 25) $style_pde = "background : linear-gradient(90deg, LightSalmon $r_pde%, white $r_pde%);";
-					elseif ($r_pde > 0) $style_pde = "background : linear-gradient(90deg, LightCoral $r_pde%, white $r_pde%);";
-					elseif ($r_pde == 0 and $pde == "") $style_pde = "background : none;";
-					else $style_pde = "background : LightCoral;";
+					if ($r_pde > 50) $style_pde = sprintf($style_pattern, "var(--clr-valid)", $r_pde, $r_pde);
+					elseif ($r_pde > 25) $style_pde = sprintf($style_pattern, "var(--clr-warning)", $r_pde, $r_pde);
+					elseif ($r_pde > 0) $style_pde = sprintf($style_pattern, "var(--clr-invalid)", $r_pde, $r_pde);
+					elseif ($r_pde == 0 and $pde == "") $style_pde = "background: none;";
+					else $style_pde = "background : var(--clr-invalid);";
 				?>
 
-					<form class="card" data-role="character-state-form" id="state-form-character-<?= $perso->id ?>">
+					<form class="card card-character" data-role="character-state-form" id="state-form-character-<?= $perso->id ?>">
 
 						<input hidden name="id" value="<?= $perso->id ?>">
 

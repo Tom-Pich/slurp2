@@ -93,7 +93,7 @@ details {
 
 	&.exemple {
 		border: .5px solid var(--clr-primary-500); padding: .25em .5em; position: relative;
-		&::before { content: "\f0eb"; font-family: "fas"; position: absolute; top: -.5em; left: -.25em; transform: rotate(-10deg); background-color: white; color: var(--clr-primary-500) }
+		&::before { content: "\f0eb"; font-family: "fas"; position: absolute; top: -.5em; left: -.25em; transform: rotate(-10deg); background-color: var(--white); color: var(--clr-primary-500) }
 		summary { color: var(--clr-primary-500); font-weight: 700; }
 	}
 
@@ -146,5 +146,15 @@ fieldset {
 	}
 }
 
-// Tiny MCE
-//#tinymce { outline: none; }
+.alert {
+	position: fixed; padding: .5em 1em; top: 0; left: 50vw; transform: translateX(-50%) translateY(-100%); min-width: 250px; background-color: var(--clr, var(--white)); border-radius: 2em; text-align: center; opacity: 0; transition: all .2s;
+
+	&.active { opacity: 1; top: 1em; transform: translateX(-50%)}
+	&.alert-1.active { top: 1em;}
+	&.alert-2.active { top: 4em;}
+	&.alert-3.active { top: 7em;}
+	&.valid { --clr: var(--clr-valid); color: var(--white) }
+	&.invalid { --clr: var(--clr-invalid); color: var(--white) }
+}
+
+dialog { background-color: var(--white); color: var(--grey-200) }

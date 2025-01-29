@@ -20,7 +20,7 @@ export function updateDOM(selector, source) {
                 onBeforeElUpdated: function (fromEl, toEl) {
                     // keep <details> state (open/close) if id are the same
                     if (fromEl.tagName === "DETAILS" && fromEl.id === toEl.id) toEl.open = fromEl.open;
-                    if (fromEl.dataset.morhpdom === "ignore") return false;
+                    if (fromEl.dataset.morphdom === "ignore") return false;
                 }
             });
 

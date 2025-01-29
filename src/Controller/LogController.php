@@ -31,9 +31,9 @@ class LogController
 			$_SESSION["login"] = $user->login;
 			$_SESSION["Statut"] = $user->status;
 			$_SESSION["attempt"] = 0;
-			//$_SESSION["user_ip"] = $_SERVER["REMOTE_ADDR"];
 			$_SESSION["token"] = Firewall::generateToken(16);
 			$_SESSION["time"] = time();
+			$_SESSION["user-options"] = $user->options;
 		} else {
 			$_SESSION["attempt"] += 1;
 			$_SESSION["info"] = "Login ou mot de passe non valide&nbsp;!";

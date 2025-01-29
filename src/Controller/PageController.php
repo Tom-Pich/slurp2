@@ -17,6 +17,10 @@ class PageController
 		$this->page["version"] = $page_data["version"] ?? 3;
 		$this->page["aside-left"] = $this->page["aside-left"] ?? false;
 		$this->page["aside-right"] = $this->page["aside-right"] ?? false;
+
+		// user options
+		$this->page["mode"] = $_SESSION["user-options"]["mode"] ?? "auto";
+		$this->page["style"] = $_SESSION["user-options"]["style"] ?? NULL;
 	}
 
 	public function show()

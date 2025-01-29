@@ -53,17 +53,17 @@ opponents.forEach((opponent) => {
 const opponentNumberBtns = qsa("[data-role=set-opponent-number]");
 opponentNumberBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-		if (parseInt(btn.value) === 1) Opponent.mountNewOpponent(opponents);
-		else if (opponents.length > 1) Opponent.unmountLastOpponent(opponents);
-		opponents = qsa("[data-role=opponent-wrapper]"); // refresh opponents
+        if (parseInt(btn.value) === 1) Opponent.mountNewOpponent(opponents);
+        else if (opponents.length > 1) Opponent.unmountLastOpponent(opponents);
+        opponents = qsa("[data-role=opponent-wrapper]"); // refresh opponents
     });
 });
 
 // update opponent list length to fit all stored opponents
 const opponentNumber = getHighestIndexOf("opponent");
-if (opponentNumber > 1 ){
-	const plusOneBtn = qs("[data-role=set-opponent-number][value='1']")
-	for ( let i = 0; i < parseInt(opponentNumber) -1; i++) plusOneBtn.click();
+if (opponentNumber > 1) {
+    const plusOneBtn = qs("[data-role=set-opponent-number][value='1']");
+    for (let i = 0; i < parseInt(opponentNumber) - 1; i++) plusOneBtn.click();
 }
 
 // score tester widgets
@@ -81,10 +81,37 @@ scoreNumberBtns.forEach((btn) => {
 
 // update score list length to fit all stored score
 const scoreWidgetNumber = getHighestIndexOf("skill");
-if (scoreWidgetNumber > 3 ){
-	const plusOneBtn = qs("[data-role=set-score-number][value='1']")
-	for ( let i = 0; i < scoreWidgetNumber -3; i++) plusOneBtn.click();
+if (scoreWidgetNumber > 3) {
+    const plusOneBtn = qs("[data-role=set-score-number][value='1']");
+    for (let i = 0; i < scoreWidgetNumber - 3; i++) plusOneBtn.click();
 }
+
+// sort scores alphabetically
+const scoreSortBtn = qs("[data-role=sort-scores]");
+scoreSortBtn.addEventListener("click", () => {
+    const widgetsData = [];
+    scoreWidgets.forEach((widget) => {
+        const skillName = widget.querySelector("[data-type=skill-name]");
+		//const skillNumber = skillName.dataset.skillNumber;
+        const skillScore = widget.querySelector("[data-type=score]");
+        const skillModif = widget.querySelector("[data-type=modif]");
+        const data = [skillName.value, skillScore.value, skillModif.value];
+        
+		if (data[0] !== "") widgetsData.push(data);
+        widgetsData.sort((a, b) => a[0].localeCompare(b[0], "fr"));
+		
+		skillName.value = "";
+		skillScore.value = "";
+		skillModif.value = "";
+		widget.dispatchEvent(new Event("keyup")); // update localStorage
+    });
+    widgetsData.forEach((widgetData, index) => {
+		scoreWidgets[index].querySelector("[data-type=skill-name]").value = widgetData[0];
+		scoreWidgets[index].querySelector("[data-type=score]").value = widgetData[1];
+		scoreWidgets[index].querySelector("[data-type=modif]").value = widgetData[2];
+		scoreWidgets[index].dispatchEvent(new Event("keyup"))
+	});
+});
 
 // simple dice thrower
 simpleDiceWidget.addEventListener("submit", (e) => {
@@ -97,7 +124,7 @@ simpleDiceWidget.addEventListener("submit", (e) => {
 // round counter widget
 roundCounterWidget.addEventListener("submit", (e) => {
     e.preventDefault();
-	const opponents = qsa("[data-role=opponent-wrapper]"); // refresh opponents
+    const opponents = qsa("[data-role=opponent-wrapper]"); // refresh opponents
     const roundNumberInput = roundCounterWidget.querySelector("[data-type=round-number]");
     const roundNumber = Math.max(int(roundNumberInput.value), 1);
     const roundMsgInput = roundCounterWidget.querySelector("[data-type=initiative-order]");
@@ -112,9 +139,9 @@ roundCounterWidget.addEventListener("submit", (e) => {
     const opponentsInitiativeOrder = numbersInitiativeOrder.map((num) => opponents[num - 1].querySelector("[name=name]").value || `Protagoniste ${num}`);
 
     // add message to input entry and flush message as standard chat message
-	inputEntry.value += `*Round ${roundNumber}* – `;
+    inputEntry.value += `*Round ${roundNumber}* – `;
     if (!opponentsInitiativeOrder.length) inputEntry.value += roundMsgInput.value;
-    else inputEntry.value += `*Round ${roundNumber}* – ${opponentsInitiativeOrder.join(", ")}`;
+    else inputEntry.value += `${opponentsInitiativeOrder.join(", ")}`;
     flushMsg("chat-message");
     roundNumberInput.value = roundNumber + 1;
 });
@@ -221,9 +248,9 @@ generalStateWidget.addEventListener("submit", async (e) => {
 
     let formattedMsg = `État général de <b>${opponent.name.value || "Protagoniste " + opponent.number}</b><br>${response.general}`;
     if (response.members !== undefined) {
-		for (const [member, state] of Object.entries(response.members)) formattedMsg += `<br>${member}&nbsp;: ${state}`;
+        for (const [member, state] of Object.entries(response.members)) formattedMsg += `<br>${member}&nbsp;: ${state}`;
     }
-	if (response["members-error"]) formattedMsg += `<br>Membres&nbsp;: données incohérentes`;
+    if (response["members-error"]) formattedMsg += `<br>Membres&nbsp;: données incohérentes`;
     inputEntry.value += formattedMsg;
     flushMsg("chat-roll");
 });
@@ -487,7 +514,7 @@ npcWidget.addEventListener("submit", async (e) => {
     const data = new FormData(npcWidget);
 
     let result = await fetchResult("/api/npc-generator", data);
-	inputEntry.value = `/${userId} `; // always secret
+    inputEntry.value = `/${userId} `; // always secret
 
     if (result.error) {
         inputEntry.value += "Paramètres PNJ invalides";

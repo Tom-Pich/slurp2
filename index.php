@@ -19,7 +19,6 @@ use App\Controller\PageController;
 use App\Repository\UserRepository;
 use App\Controller\Error404Controller;
 use App\Controller\CharacterExportController;
-use App\Repository\CharacterRepository;
 
 (new DotEnv(__DIR__ . '/.env'))->load();
 require_once "config.php";
@@ -35,6 +34,7 @@ if (!isset($_SESSION["Statut"]) or !DB_ACTIVE) {
 	$_SESSION["attempt"] = 0;
 	$_SESSION["token"] = Firewall::generateToken(16);
 	$_SESSION["time"] = time();
+	$_SESSION["user-options"] = [];
 } else {
 	$_SESSION["time"] >= (time() - 3600 * 3) || !$_SESSION["id"] ? $_SESSION["time"] = time() : LogController::logout();
 }
@@ -332,6 +332,17 @@ elseif ($path_segments[1] === "submit") {
 			Firewall::filter(3);
 			Firewall::check(!empty($_POST));
 			Creature::processSubmitCreature($_POST);
+			break;
+
+		case "/submit/set-user-option":
+			Firewall::filter(1);
+			Firewall::check( !empty($_POST["option"]), !empty($_POST["value"]) );
+			$id = $_SESSION["id"];
+			$option = htmlspecialchars($_POST["option"]);
+			$value = htmlspecialchars($_POST["value"]);
+			$user_repo = new UserRepository;
+			$user_repo->setUserOption($id, $option, $value );
+			$_SESSION["user-options"][$option] = $value;
 			break;
 
 		default:

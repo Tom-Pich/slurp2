@@ -10,6 +10,7 @@ module.exports = {
         "chat-window": "/scripts/chat-window.js",
         "widget-armor": "/scripts/widget-armor.js",
         "items-filter": "/scripts/items-filter.js",
+        "account-settings": "/scripts/account-settings.js",
     },
     mode: "production",
     //mode: "development",

@@ -143,7 +143,7 @@ $pages_data = [
 
 	// Personnage (fiche et gestionnaire)
 	"personnage-fiche" => [
-		"title" => "", // nom du perso 
+		"title" => "", // nom du perso
 		"description" => "", 
 		"file" => "personnage-fiche",
 		"body-class" => "personnage-fiche",
@@ -179,7 +179,7 @@ $pages_data = [
 	"mon-compte" => [
 		"title" => "Mon compte",
 		"description" => "",
-		"body-class" => "basic-page",
+		"body-class" => "basic-page account-page",
 		"access-restriction" => 1,
 		"file" => "gestion-compte",
 		"version" => 4,
@@ -192,7 +192,10 @@ $pages_data = [
 		"file" => "table_jeu",
 		"body-class" => "table-jeu",
 		"version" => 4,
-		"aside-right" => "chat-window"
+		"aside-right" => "chat-window",
+		"parameters-btn" => "widgets-help",
+		//"<button class='ff-fas btn-primary btn-square' data-role='open-dialog' data-dialog-name='widgets-help'>&#xf085;</button>",
+		//"page-parameters" => "<button class='ff-fas btn-primary btn-square' data-role='open-dialog' data-dialog-name='widgets-help'>&#xf085;</button>",
 	],
 
 	// Wiki

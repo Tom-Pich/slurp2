@@ -1,28 +1,3 @@
-/* export function qs(selector) {
-    return document.querySelector(selector);
-}
-
-export function qsa(selector) {
-    return document.querySelectorAll(selector);
-}
-
-export function ce(tag, classes = []) {
-    const element = document.createElement(tag);
-	classes.forEach((CSSclass) => element.classList.add(CSSclass));
-    return element;
-} */
-
-export function checkPasswordStrength(password) {
-    const digit = /\d+/.test(password);
-    const length = password.length >= 8;
-    const specialchars = /\W+/.test(password);
-    const space = /\s+/.test(password);
-    const uppercase = /[A-Z]/.test(password);
-    const lowercase = /[a-z]/.test(password);
-    const isStrong = digit && length && specialchars && !space && uppercase && lowercase;
-    return isStrong;
-}
-
 export function calculate(str) {
     if (str === null) return "";
     str = str.replace(/[+-]+$/g, ""); // trim + and - at the end

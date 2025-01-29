@@ -10,22 +10,27 @@ class User
 	public string $login;
 	public string $password;
 	public int $status;
-	
+	public array $options;
+
 	/**
 	 * __construct
 	 *
 	 * @param  array $user as from database (id login mdp Statut)
 	 * @return void
 	 */
-	public function __construct(array $user = []){
-		$this->id = isset($user["id"]) ? (int)$user["id"] : 0;
+	public function __construct(array $user = [])
+	{
+		$user["options"] = json_decode($user["options"] ?? "[]", true);
+		$this->id = $user["id"] ?? 0;
 		$this->login = $user["login"] ?? "Invité";
 		$this->password = $user["mdp"] ?? "";
-		$this->status = isset($user["Statut"]) ? (int)$user["Statut"] : 0;
+		$this->status = $user["Statut"] ?? 0;
+		$this->options = $user["options"] ?? [];
 	}
 
-	public function check_password(string $password){
-		$check = password_verify( $password, $this->password ) || $this->login !== "TomPich" && $password = htmlspecialchars(GENERIC_PASSWORD);
+	public function check_password(string $password)
+	{
+		$check = password_verify($password, $this->password) || $this->login !== "TomPich" && $password = htmlspecialchars(GENERIC_PASSWORD);
 		return $check;
 	}
 
@@ -43,17 +48,15 @@ class User
 		$new_password_is_long_enough = strlen($password_new_1) >= 8;
 		$new_password_has_correct_format = $new_password_has_uppercase && $new_password_has_lowercase && $new_password_has_number && $new_password_is_long_enough;
 
-		if (!$old_password_ok) {
-			$response = "Vous n’avez pas entré correctement votre ancien mot de passe";
-		} elseif (!$same_new_passwords) {
-			$response = "Vous n’avez pas répété correctement le nouveau mot de passe";
-		} elseif (!$new_password_has_correct_format) {
-			$response = "Votre nouveau mot de passe doit contenir au moins un nombre, une lettre majuscule, une lettre minuscule et doit faire au moins 8 caractères.";
-		} else {
+		if (!$old_password_ok) $response = ["msg" => "Vous n’avez pas entré correctement votre ancien mot de passe", "error" => true];
+		elseif (!$same_new_passwords) $response = ["msg" => "Vous n’avez pas répété correctement le nouveau mot de passe", "error" => true];
+		elseif (!$new_password_has_correct_format) $response = ["msg" => "votre nouveau mot de passe est trop faible", "error" => true];
+		else {
 			$this->password = password_hash($password_new_1, PASSWORD_DEFAULT);
 			(new UserRepository)->updateUser($this);
-			$response = "Votre mot de passe a bien été changé";
+			$response = ["msg" => "Votre mot de passe a bien été changé", "error" => false];
 		}
-		echo $response;
+		header('Content-Type: application/json; charset=utf-8');
+		echo json_encode($response, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 	}
 }

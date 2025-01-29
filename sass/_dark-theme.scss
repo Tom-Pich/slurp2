@@ -1,0 +1,49 @@
+//[data-theme=dark] {}
+
+:root[data-mode=dark]  { 
+
+	--black: white;
+	--grey-200: hsl(0 0% 80%);
+	--grey-300: hsl(0 0% 70%);
+	--grey-500: hsl(0 0% 50%);
+	--grey-700: hsl(0 0% 30%);
+	--grey-900: hsl(0 0% 20%);
+	--white: black;
+
+	--clr-primary-500: hsl(208, 60%, 60%);
+	--clr-primary-900: hsl(208, 40%, 30%);
+
+	--clr-invalid: rgb(237, 63, 63);
+
+	.main-header nav ul.sub-menu { background-color: black; }
+	.btn-primary, .btn-secondary { --text-clr: white; }
+
+	#chat-container {
+		--user-color-1: hsl(200, 50%, 35%);
+		--user-color-2: hsl(220, 50%, 35%);
+		--user-color-3: hsl(190, 50%, 35%);
+		--user-color-4: hsl(55, 50%, 35%);
+		--user-color-5: hsl(47, 50%, 35%);
+		--user-color-6: hsl(270, 50%, 35%);
+		--user-color-7: hsl(240, 50%, 35%);
+	}
+
+	body.gestionnaire-mj {
+		.card-character {
+			--clr-valid: hsl(120, 24%, 30%);
+			--clr-fair: hsl(60, 85%, 30%);
+			--clr-warning: hsl(39, 90%, 30%);
+			--clr-invalid: hsl(0, 90%, 30%);
+		}
+	}
+
+	body.personnage-fiche { 
+		details.sous-liste[open] { background-color: hsl(35, 20%, 30%); }
+	}
+
+	body.table-jeu {
+		#page-wrapper { background: linear-gradient(180deg, #000 0%, #0005 70%, #000f 100%), url("/assets/img/bg-table.jpg") center/cover; }
+		fieldset { background-color: #0005; }
+	} 
+
+}

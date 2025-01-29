@@ -1,5 +1,5 @@
 body.basic-page{
-	main { @include wrapper; @include flow; }
+	main { width: min(100%, var(--content-max-width)); margin-inline: auto; @include flow; }
 }
 
 body.standard-page {
@@ -29,16 +29,15 @@ body.table-jeu {
 
 	main {
 		position: relative; columns: var(--col-width) auto; column-gap: 1em;
-		//> :not(:nth-child(1), :nth-child(2)) { margin-top: .5em; }
 		fieldset { margin-bottom: .5em; }
 		@include media ($brp-s) {columns: 1;}
 
 		#widgets-help-dialog-btn { position: absolute; top: .5em; right: .5em;}
 
 		fieldset {
-			background: #fff5;
+			background-color: #fff5;
 			legend {color: white; font-family: var(--font-accent); font-weight: bold; font-size: var(--fs-450)}
-			input:not([type=checkbox]), select { width: 6ch; }
+			input:not([type=checkbox]), select { width: 5ch; }
 		}
 	}
 
@@ -59,27 +58,16 @@ body.personnage-fiche {
 
 	.portraits-wrapper {
 		display: grid; gap: .5em;
-		.character-portrait { aspect-ratio: 1; }
-		.group-portraits { display: grid; gap: .5em; align-self: flex-start;}
-		img { width: 100%; height: 100%; object-fit: cover; }
 
-		&.group-none {
-			.group-portraits { display: none; }
-		}
-		&.group-small {
-			grid-template-columns: 1fr .38fr;
-			.group-portraits { grid-template-columns: 1fr }
-			.group-member-name { font-size: .85em; }
-		}
-		&.group-medium {
-			grid-template-columns: 1fr .75fr;
-			.group-portraits { grid-template-columns: 1fr 1fr }
-			.group-member-name { font-size: .85em; }
-		}
-		&.group-big {
-			grid-template-columns: 1fr 1.3fr;
-			.group-portraits { grid-template-columns: 1fr 1fr 1fr }
-			.group-member-name { font-size: .65em; }
+		&.group-none { grid-template-columns: 1fr; }
+		&.group-small { grid-template-columns: repeat(3, 1fr); }
+		&.group-medium { grid-template-columns: repeat(4, 1fr); }
+		&.group-big { grid-template-columns: repeat(5, 1fr); }
+
+		.character-portrait { grid-column: span 2; grid-row: span 2; }
+		.group-portrait {
+			aspect-ratio: 1; position: relative;
+			.group-member-name { position: absolute; bottom: .25em; left: 50%; transform: translateX(-50%) ; color: white; text-shadow: 1px 1px 1px black; }
 		}
 	}
 
@@ -143,6 +131,7 @@ body.personnage-gestion {
 	textarea {border: 1px solid var(--grey-700); padding: 0.5em; width: 100%;}
 	.radio-wrapper { display: flex; gap: .25em; justify-content: center; width: 10ch; }
 	dialog {width: clamp(340px,80vw,550px);}
+	dialog.add-character-element > details:not(:first-child) { margin-top: 1em; }
 }
 
 body.gestionnaire-mj {
@@ -158,6 +147,13 @@ body.gestionnaire-mj {
 		@include media ($brp-s) {
 			grid-template-columns: 4ch 1fr 4ch 5ch 7ch;
 			grid-template-areas: "id name container weight location" "id notes notes-mj notes-mj notes-mj"; }
+	}
+
+	.card-character {
+		--clr-valid: hsl(120, 50%, 75%);
+		--clr-fair: hsl(60, 85%, 70%);
+		--clr-warning: hsl(39, 90%, 80%);
+		--clr-invalid: hsl(0, 90%, 70%);
 	}
 	
 	#chat-container {
@@ -203,5 +199,7 @@ body.wiki {
 	}		
 }
 
-body.writing-scenario {
+body.account-page {
+	.option-grid { grid-template-columns: 250px 1fr; column-gap: 2em; @include media { grid-template-columns: 1fr; } }
+	.option-grid:not(:first-child) { border-top: .5px solid var(--grey-700); }
 }

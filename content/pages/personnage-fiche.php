@@ -36,7 +36,7 @@ function color_modifier($original_score, $actual_score)
 	</div>
 
 	<!-- Description -->
-	<details class="no-print mt-½">
+	<details class="no-print mt-½ hidden-when-compact">
 		<summary>
 			<h3>Description</h3>
 		</summary>
@@ -47,7 +47,7 @@ function color_modifier($original_score, $actual_score)
 
 	<!-- Background -->
 	<?php if (!empty($character->background)): ?>
-		<details class="no-print mt-½">
+		<details class="no-print mt-½ hidden-when-compact">
 			<summary>
 				<h3>Background</h3>
 			</summary>
@@ -186,20 +186,21 @@ function color_modifier($original_score, $actual_score)
 	else $group_size = "big";
 	?>
 
-	<div class="portraits-wrapper group-<?= $group_size ?> mt-1 no-print">
+	<div class="portraits-wrapper group-<?= $group_size ?> mt-1 no-print" data-role="members-wrapper">
 
-		<div class="character-portrait"><img src="<?= $character->portrait ?>"></div>
+		<div class="character-portrait aspect-square"><img class="fit-cover" src="<?= $character->portrait ?>"></div>
 
-		<div class="group-portraits" data-role="members-wrapper">
-			<?php if ($character->id_group !== NULL) {
-				foreach ($character->group_members as $group_member) { ?>
-					<div data-place="pi_<?= $group_member->id ?>" data-role="item-transfer" data-name="<?= $group_member->name ?>">
-						<div class="aspect-square"><img src="<?= $group_member->portrait ?>" title="<?= $group_member->description ?>"></div>
-						<div class="ta-center group-member-name"><?= strtok($group_member->name, " ") ?></div>
-					</div>
-			<?php }
-			} ?>
-		</div>
+		<?php if ($character->id_group !== NULL) {
+			foreach ($character->group_members as $group_member) { ?>
+				<div class="group-portrait"
+					data-place="pi_<?= $group_member->id ?>"
+					data-role="item-transfer"
+					data-name="<?= $group_member->name ?>">
+					<img class="fit-cover" src="<?= $group_member->portrait ?>" title="<?= $group_member->description ?>">
+					<div class="group-member-name fs-300"><?= strtok($group_member->name, " ") ?></div>
+				</div>
+		<?php }
+		} ?>
 
 	</div>
 </div>
@@ -485,7 +486,7 @@ $displayEmojis = false;
 ?>
 
 <!-- Modal pour les jets -->
-<dialog data-type="character-sheet-roll" class="ta-center">
+<dialog data-type="character-sheet-roll" class="ta-center" data-morphdom="ignore">
 	<button data-role="close-modal" class="ff-fas">&#xf00d;</button>
 	<div class="flex-s gap-1 jc-center ai-center">
 		<div data-content="label"></div>
@@ -503,7 +504,7 @@ $displayEmojis = false;
 </dialog>
 
 <!-- Modal pour les possessions -->
-<dialog data-name="possession-notice" class="flow">
+<dialog data-name="possession-notice" class="flow" data-morphdom="ignore">
 	<button data-role="close-modal" class="ff-fas">&#xf00d;</button>
 	<p class="mt-0"><b>Ajouter un objet&nbsp;:</b> cliquer sur <span class="ff-fas clr-primary-500">&#xf055;</span> dans l’emplacement désiré.</p>
 	<p><b>Supprimer un objet&nbsp;:</b> effacer son nom. Attention&nbsp;: si vous effacez un objet-contenant, vous perdrez tout son contenu avec&nbsp;!</p>

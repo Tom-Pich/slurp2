@@ -8,7 +8,7 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-preset="<?= $page["mode"] ?>" data-mode="<?= $page["mode"] ?>">
 
 <head>
 	<meta charset="utf-8">
@@ -32,7 +32,7 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 	<script type="module" src="/scripts/main<?= PRODUCTION ? ".min" : "" ?>.js?v=<?= VERSION ?>" defer></script>
 </head>
 
-<body class="<?= $page["body-class"] ?>">
+<body class="<?= $page["body-class"] ?> <?= $page["style"] ?>">
 
 	<header class="main-header">
 
@@ -57,6 +57,12 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 					<?= $_SESSION["Statut"] ? "&#xf08b;" : "&#xf023;" ?>
 				</button>
 			</div>
+
+			<?php if (!empty($page["parameters-btn"])): ?>
+				<button class='ff-fas btn-primary btn-square mt-½ mx-auto' data-role='open-dialog' data-dialog-name='<?= $page["parameters-btn"] ?>'>
+					&#xf085;
+				</button>
+			<?php endif; ?>
 
 			<dialog id="connexion-dialog" style="max-width: 300px;">
 				<button class="ff-fas" data-role="close-modal">&#xf00d;</button>

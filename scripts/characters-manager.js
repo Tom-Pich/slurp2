@@ -72,7 +72,6 @@ function submitCharacterForm(form) {
     });
     let form_id = form.getAttribute("id"); // don’t use form.id because of one input which name is id
     const form_data = new FormData(form);
-    //console.log(form_data)
     fetch("/submit/update-character-state", {
         method: "post",
         body: form_data,
@@ -180,7 +179,6 @@ function getCharacterDetails(id) {
         .then((response) => response.json())
         .then((response) => response.data)
         .then((data) => {
-            // console.log(data);
             fillCharacterSummary(id, data);
         });
 }
@@ -190,7 +188,6 @@ function fillCharacterSummary(id, data) {
     const cardSummaryWrapper = card.querySelector("[data-role=character-summary]");
     const template = qs("#character-details");
     const clone = template.content.cloneNode(true);
-	console.log(data);
 
     // Description
     fillValueInTemplate(clone, "Description", data.description);
@@ -226,11 +223,6 @@ function fillCharacterSummary(id, data) {
     const colleges = data.colleges.map((college) => `${college.name}–${college.score}`);
     const displayedColleges = colleges.length ? `<b>Collèges&nbsp;:</b> ${colleges.join(", ")}` : "";
     fillValueInTemplate(clone, "Collèges", displayedColleges);
-
-    /* data.powers.forEach( power => {
-		//console.log(power.data.specific.Type || power.data.origin)
-		//console.log(power.data.data.id, power.data.specific.Type || power.data.origin)
-	}) */
 
     const powers = data.powers.map((power) => `<span data-details data-type="power" data-id="${power.data.data.id}" data-origin="${power.data.specific.Type || power.data.origin}" >${power.label}</span>`);
     const displayedPowers = powers.length ? `<b>Pouvoirs&nbsp;:</b> ${powers.join(", ")}` : "";

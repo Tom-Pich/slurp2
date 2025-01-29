@@ -7,6 +7,7 @@
 	a:hover { color: var(--clr-primary-500) }
 
 	.titles-wrapper > a > img { max-width: clamp(32px, 5vw, 64px ); height: auto;}
+	h1 > button { display: inline-block; font-size: var(--fs-600); } // new !?
 	#login-element { grid-area: login; padding-inline: 1em; align-self: center; }
 	#show-nav-on-mobile {
 		justify-self: end; align-self: flex-start; position: relative; z-index: 10;

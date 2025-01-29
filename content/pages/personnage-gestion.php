@@ -188,7 +188,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 			</div>
 
 			<!-- Nouveaux Avdésav -->
-			<dialog data-name="add-avdesav" class="flow">
+			<dialog data-name="add-avdesav" class="add-character-element">
 
 				<?php foreach ($avdesav_repo->getDistinctCategories() as $categorie) { ?>
 					<details>
@@ -215,7 +215,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 					</details>
 				<?php } ?>
 
-				<div class="flex-s jc-center gap-1">
+				<div class="flex-s jc-center gap-1 mt-2">
 					<button type="submit" class="btn-primary">Valider</button>
 					<button type="button" class="btn-primary" data-role="close-input-modal">Annuler</button>
 				</div>
@@ -281,7 +281,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 			</div>
 
 			<!-- Nouvelles compétences -->
-			<dialog data-name="add-skill" class="flow">
+			<dialog data-name="add-skill" class="add-character-element">
 				<?php
 				$liste_categories_competences_rdb = $skills_repo->getDistinctCategories();
 				foreach ($liste_categories_competences_rdb as $categorie) { ?>
@@ -310,7 +310,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 						} ?>
 					</details>
 				<?php } ?>
-				<div class="flex-s jc-center gap-1">
+				<div class="flex-s jc-center gap-1 mt-2">
 					<button type="submit" class="btn-primary">Valider</button>
 					<button type="button" class="btn-primary" data-role="close-input-modal">Annuler</button>
 				</div>
@@ -388,7 +388,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 				</div>
 
 				<!-- Nouveaux collèges -->
-				<dialog data-name="add-college">
+				<dialog data-name="add-college" class="add-character-element">
 					<?php
 					$all_colleges = $colleges_repo->getAllColleges();
 					$known_colleges_id = array_map(fn($x) => $x["id"], $character->colleges);
@@ -404,7 +404,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 						<?php endif ?>
 					<?php } ?>
 
-					<div class="flex-s jc-center gap-1">
+					<div class="flex-s jc-center gap-1 mt-2">
 						<button type="submit" class="btn-primary">Valider</button>
 						<button type="button" class="btn-primary" data-role="close-input-modal">Annuler</button>
 					</div>
@@ -481,7 +481,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 				</div>
 
 				<!-- Nouveaux pouvoirs -->
-				<dialog data-name="add-power" class="flow">
+				<dialog data-name="add-power" class="add-character-element">
 
 					<?php if (!in_array($character->special_traits["type-perso"], ["ins"])) { ?>
 
@@ -560,7 +560,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 						</details>
 					<?php } ?>
 
-					<div class="flex-s jc-center gap-1">
+					<div class="flex-s jc-center gap-1 mt-2">
 						<button type="submit" class="btn-primary">Valider</button>
 						<button type="button" class="btn-primary" data-role="close-input-modal">Annuler</button>
 					</div>
@@ -639,7 +639,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 				<!-- Nouvelles disciplines psi -->
 				<?php $disciplines = $disciplines_repo->getAllDisciplines(); ?>
-				<dialog data-name="add-discipline" class="flow">
+				<dialog data-name="add-discipline" class="add-character-element">
 					<?php
 					foreach ($disciplines as $discipline) {
 						if (!in_array($discipline->id, $disciplines_connues_id)) {
@@ -651,13 +651,13 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 					<?php }
 					} ?>
 
-					<div class="flex-s jc-center gap-1">
+					<div class="flex-s jc-center gap-1 mt-2">
 						<button type="submit" class="btn-primary">Valider</button>
 						<button type="button" class="btn-primary" data-role="close-input-modal">Annuler</button>
 					</div>
 				</dialog>
 
-				<!-- Bouton ajouter collèges -->
+				<!-- Bouton ajouter discipline -->
 				<button data-role="open-dialog" data-dialog-name="add-discipline" type="button" class="btn-primary mt-2 mx-auto">
 					<span class="ff-fas">&#xf055;</span> disciplines
 				</button>

@@ -117,7 +117,7 @@ else include "content/components/" . $file;
 					inline: "i"
 				}
 			},
-			content_css: "/styles-v4.min.css",
+			content_css: "/styles.min.css",
 			content_style: "#tinymce { outline: none } ",
 			body_class: "flow p-1",
 			branding: false
@@ -126,6 +126,7 @@ else include "content/components/" . $file;
 <?php endif ?>
 
 <script type="module">
+	import { showAlert } from "/scripts/lib/alert"
 	const form = document.querySelector("main form");
 	form.addEventListener("submit", (e) => {
 		e.preventDefault();
@@ -136,6 +137,6 @@ else include "content/components/" . $file;
 		fetch(form.action, {
 			method: "post",
 			body: data
-		})
+		}).then ( () => showAlert("Modifications enregistrées", "valid"))
 	})
 </script>

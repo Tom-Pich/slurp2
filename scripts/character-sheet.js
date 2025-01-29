@@ -3,6 +3,7 @@ import { calculate, int, trimModifier, explicitSign } from "./utilities.js";
 import { wsURL, Message } from "./ws-utilities.js";
 import { updateDOM } from "./update-dom.js";
 import { roll, scoreTester } from "./game-table-utilities.js";
+import { showAlert } from "./lib/alert.js";
 
 const sessionId = qs("#ws-data").dataset.sessionId;
 const wsKey = qs("#ws-data").dataset.wsKey;
@@ -37,8 +38,10 @@ function updateCharacter(id) {
   fetch("personnage-fiche?perso=" + id)
     .then((response) => response.text())
     .then((response) => {
-      updateDOM("main", response);
-      fillPdMCount();
+      updateDOM("main", response)
+	  .then( () => showAlert("Personnage mis à jour&nbsp;!", "valid") )
+	  .then( () => fillPdMCount() );
+      //fillPdMCount();
     });
 }
 
@@ -247,6 +250,7 @@ membersWrapper.addEventListener("dragover", (e) => {
 
 membersWrapper.addEventListener("drop", (e) => {
   const target = e.target.closest("[data-role=item-transfer]");
+
   if (target) {
     const container = qs("#item-transfer");
     draggedItem.querySelector("[data-role=item-place]").value = target.dataset.place;
