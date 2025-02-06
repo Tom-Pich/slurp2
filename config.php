@@ -3,8 +3,8 @@
 define("IS_ONLINE", $_SERVER['HTTP_HOST'] === 'jdr.pichegru.net');
 define("DB_ACTIVE", true);
 define("GENERIC_PASSWORD", $_ENV["GENERIC_PASSWORD"]);
-define("VERSION", "3.21.3"); // 3.21 : alertes animées + options utilisateurs
-define("DATE_VERSION", "janvier 2025");
+define("VERSION", "3.22.1"); // 3.22 : image créatures
+define("DATE_VERSION", "février 2025");
 define("PRODUCTION", true); // run webpack before switching to true
 
 if (IS_ONLINE) {

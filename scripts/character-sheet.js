@@ -31,6 +31,12 @@ ws.onmessage = (rawMessage) => {
 containerOpenCloseStateManager();
 fillPdMCount();
 
+// reload character on style change
+const channel = new BroadcastChannel("display-options");
+channel.onmessage = (event) => {
+	if (event.data.option === "style") updateCharacter(characterId);
+};
+
 // ––– functions ––––––––––––––––––––––––––––––––––––––
 
 // ––– fetch the character sheet from server and update DOM with morphdom

@@ -31,6 +31,19 @@
 				<div style="width: 10ch">Taille</div>
 				<input type="text" name="Taille" class="fl-1" value="<?= $creature->size ?>" placeholder="Taille">
 			</div>
+			<?php if ($creature->image): ?>
+				<div>
+					<img src="<?= $creature::creature_folder . $creature->image ?>" class="aspect-square mx-auto" style="max-width: 150px">
+				</div>
+			<?php endif ?>
+			<div class="flex-s gap-1 mt-1 ai-first-baseline">
+				<div style="width: 10ch">Image</div>
+				<?php if ($creature->id): ?>
+					<input type="file" class="fl-1" name="Image">
+				<?php else: ?>
+					<div class="fl-1">Enregistrez la créature avant de pouvoir insérer une image</div>
+				<?php endif ?>
+			</div>
 
 			<div class="flex-s gap-1 mt-2 ai-center jc-space-between">
 				<?php $mult_pds_for = $creature->w_mult_strength !== 1.0 ? $creature->w_mult_strength : "" ?>
@@ -94,5 +107,6 @@
 	</div>
 
 	<input hidden name="id" value="<?= $creature->id ?>">
+	<input hidden name="Image" value="<?= $creature->image ?>">
 	<button class="btn-primary mx-auto mt-2 ff-fas">&#xf0c7;</button>
 </form>

@@ -267,3 +267,4 @@ $affichage = $_POST["affichage"] ?? "categorie";
 </article>
 
 <script type="module" src="/scripts/items-filter<?= PRODUCTION ? ".min" : "" ?>.js?v=<?= VERSION ?>" defer></script>
+<script type="module" src="/scripts/item-lazyload<?= PRODUCTION ? ".min" : "" ?>.js?v=<?= VERSION ?>" defer></script>

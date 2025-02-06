@@ -35,7 +35,8 @@ class PageController
 		if ($page["aside-left"]) include "content/components/" . $page["aside-left"] . ".php";
 		echo "</aside>";
 
-		echo "<main>";
+		if (isset($page["current-article"]["min-height"])) echo "<main style='min-height:{$page["current-article"]["min-height"]}'>";
+		else echo "<main>";
 		include "content/pages/" . $page["file"] . ".php";
 		echo "</main>";
 

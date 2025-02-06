@@ -324,6 +324,7 @@ $nbre_competences = 3;
 			</select>
 			<select class="fl-1" name="region" title="Région d’origine">
 				<option value="artaille">Artaille</option>
+				<option value="lauria">Lauria</option>
 				<option value="french">Français</option>
 				<option value="taol-kaer">Taol Kaer</option>
 			</select>
@@ -335,7 +336,6 @@ $nbre_competences = 3;
 		</div>
 		<button class="nude">🎲</button>
 	</form>
-
 </fieldset>
 
 <!-- Jet de réaction -->
@@ -344,6 +344,22 @@ $nbre_competences = 3;
 	<form class="flex-s">
 		<div class="fl-1 ta-center">
 			<input type="text" size="5" data-type="reaction-modifier" class="ta-center" placeholder="±x" title="Modificateur de réaction">
+		</div>
+		<button class="nude">🎲</button>
+	</form>
+</fieldset>
+
+
+<!-- Générateur de trucs divers -->
+<fieldset data-name="wild-generator" hidden>
+	<legend>Générer un truc</legend>
+	<form class="flex-s gap-½">
+		<div class="fl-1 flex-s gap-½">
+			<select class="fl-1" name="category">
+				<option value="0">--- choisissez une catégorie</option>
+				<option value="herbs">Plantes &amp; herbes</option>
+				<option value="books">Titre de livre</option>
+			</select>
 		</div>
 		<button class="nude">🎲</button>
 	</form>

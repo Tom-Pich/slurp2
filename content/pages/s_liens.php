@@ -1,5 +1,5 @@
 <!-- Ressources documentaires -->
-<article class="flow as-start">
+<article>
 
 	<h2>Ressources documentaires</h2>
 
@@ -15,7 +15,7 @@
 </article>
 
 <!-- Générateurs -->
-<article class="flow as-start"> 
+<article>
 
 	<h2>Générateurs aléatoires</h2>
 
@@ -29,7 +29,7 @@
 	<h3>Donjon.bin.sh</h3>
 	<ul>
 		<li><a href="https://donjon.bin.sh/">Accueil</a></li>
-		<li><a href="https://donjon.bin.sh/fantasy/name/" target="_blank">Fantasy Name Generator</a> (intéressant pour noms)</li>
+		<li><a href="https://donjon.bin.sh/fantasy/name/" target="_blank">Fantasy Name Generator</a></li>
 	</ul>
 
 	<h3>Fantasy Name Generators</h3>
@@ -50,20 +50,16 @@
 </article>
 
 <!-- Outils -->
-<article class="flow as-start">
+<article>
 	<h2>Outils numériques</h2>
 
-	<h3>Plateforme VTT</h3>
-	<p><a href="https://www.owlbear.rodeo">owlbear.rodeo</a>&nbsp;: plateforme VTT simple et efficace</p>
-
-	<h3>Cartographie</h3>
+	<h3>Outils VTT</h3>
 	<ul>
-		<li><a href="https://dungeondraft.net/">Dungeondraft</a>, pour les battlemaps.</li>
-		<li><a href="https://www.wonderdraft.net/">Wonderdraft</a>, pour les cartes à plus grande échelle.</li>
-		<li><a href="https://crossheadstudios.com">Crosshead Studio</a>, assets pour <i>Dungeondraft</i>.</li>
-		<li><a href="https://www.forgotten-adventures.net/">Forgotten Adventures</a>, assets de cartographie, notamment pour <i>Dungeondraft</i>.</li>
-		<li><a href="https://cartographyassets.com/">CartographyAssets</a>, assets de cartographie, notamment pour <i>Dungeondraft</i>.</li>
+		<li><a href="https://www.owlbear.rodeo">owlbear.rodeo</a>&nbsp;: plateforme VTT simple et efficace</li>
+		<li><a href="https://www.dnd-compendium.com/play-online/character-tokens">dnd-compendium.com</a>&nbsp;: générateur de tokens</li>
+		<li><a href="https://thefatefulforce.com/battle-resources/token-creator/">thefatefulforce.com</a>&nbsp;: générateur de tokens</li>
 	</ul>
+
 
 	<h3>IA génératrices d’images</h3>
 	<ul>
@@ -75,13 +71,33 @@
 	<ul>
 		<li><a href="https://rollforfantasy.com/" target="_blank">rollforfantasy.com</a>&nbsp;: même auteur que <i>Fantasy Name Generators</i>, mais orienté outils. Voir son <a href="https://rollforfantasy.com/tools/coat-of-arms-creator.php">Générateur de blasons</a>.</li>
 		<li><a href="https://drawshield.net/index.html">drawshield.net</a>&nbsp;: dessiner/générer des blasons</li>
-		<li><a href="https://www.dnd-compendium.com/play-online/character-tokens">dnd-compendium.com</a>&nbsp;: générer des tokens de personnages</li>
+	</ul>
+
+</article>
+
+<article>
+	<h2>Cartographie</h2>
+
+	<h3>Programmes</h3>
+	<ul>
+		<li><a href="https://dungeondraft.net/">Dungeondraft</a></li>
+		<li><a href="https://www.wonderdraft.net/">Wonderdraft</a></li>
 		<li><a href="https://watabou.itch.io/">watabou.itch.io</a>&nbsp;: générateur de cartes de villes médiévales, villages et vues en 3D.</li>
 	</ul>
 
-	<h3>Bruitages</h3>
+	<h3>Assets</h3>
 	<ul>
-		<li><a href="https://environment.ambient-mixer.com/">ambiant-mixer.com</a>&nbsp;: mixer des bruitages au choix pour générer une ambiance.</li>
-		<li><a href="https://freesound.org/">Freesound</a>&nbsp;: fichiers son de bruitage unique.</li>
+		<li><a href="https://crossheadstudios.com">Crosshead Studio</a></li>
+		<li><a href="https://www.forgotten-adventures.net/">Forgotten Adventures</a></li>
+		<li><a href="https://cartographyassets.com/">CartographyAssets</a></li>
+		<li><a href="https://2minutetabletop.com/product-category/wonderdraft-assets/">2minutetabletop.com</a></li>
+	</ul>
+</article>
+
+<article>
+	<h2>Bruitage et musique</h2>
+	<ul>
+		<li><a href="https://environment.ambient-mixer.com/">ambiant-mixer.com</a>&nbsp;: mixer des bruitages au choix pour générer une ambiance</li>
+		<li><a href="https://freesound.org/">freesound.org</a>&nbsp;: fichiers son de bruitage</li>
 	</ul>
 </article>

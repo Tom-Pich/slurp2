@@ -26,6 +26,7 @@ const explosionWidget = qs(["[data-name=explosion-widget] form"]);
 const objectDamageWidget = qs("#object-damages-widget");
 const vehicleCollisionWidget = qs("#vehicle-collision-widget");
 const npcWidget = qs("[data-name=npc-generator] form");
+const wildGeneratorWidget = qs("[data-name=wild-generator] form");
 
 const wdwStrength = weaponDamageWidget.querySelector("[data-type=strength]");
 const wdwCode = weaponDamageWidget.querySelector("[data-type=weapon-code]");
@@ -546,6 +547,19 @@ npcWidget.addEventListener("submit", async (e) => {
 		${intelligence}
 		${result.social}
 		${specialTraits}
+	`;
+    flushMsg("chat-roll");
+});
+
+// Wild generator widget
+wildGeneratorWidget.addEventListener("submit", async (e) => {
+    const data = new FormData(wildGeneratorWidget);
+
+    let result = await fetchResult("/api/wild-generator", data);
+    inputEntry.value = `/${userId} `; // always secret
+
+    inputEntry.value += `
+		${result}
 	`;
     flushMsg("chat-roll");
 });

@@ -180,6 +180,12 @@ if ($path_segments[1] === "api") {
 			foreach ($_POST as $parameter => $value) $post[$parameter] = htmlspecialchars($_POST[$parameter]);
 			$controller->getNPC($post);
 			break;
+		
+		case "/api/wild-generator":
+			$post = [];
+			foreach ($_POST as $parameter => $value) $post[$parameter] = htmlspecialchars($_POST[$parameter]);
+			$controller->getWildGeneratorResult($post);
+			break;
 
 		case "/api/fright-check":
 			Firewall::check(isset($_POST["fright-level"]));
@@ -210,6 +216,11 @@ if ($path_segments[1] === "api") {
 			Firewall::check(isset($_GET["id"]));
 			$id = (int) $_GET["id"];
 			$controller->getSpell($id);
+			break;
+		case "/api/get-creature":
+			Firewall::check(isset($_GET["id"]));
+			$id = (int) $_GET["id"];
+			$controller->getCreature($id);
 			break;
 		default:
 			Firewall::redirect_to_404();
@@ -331,7 +342,7 @@ elseif ($path_segments[1] === "submit") {
 		case "/submit/set-creature":
 			Firewall::filter(3);
 			Firewall::check(!empty($_POST));
-			Creature::processSubmitCreature($_POST);
+			Creature::processSubmitCreature($_POST, $_FILES);
 			break;
 
 		case "/submit/set-user-option":

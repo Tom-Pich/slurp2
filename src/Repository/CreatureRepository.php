@@ -6,7 +6,8 @@ use App\Entity\Creature;
 
 class CreatureRepository extends AbstractRepository
 {
-	// id, Nom, Origine, Catégorie, Pds1, Pds2, Options, Taille, Int, RD, Vitesse, Description, Avdesav, Pouvoirs, Combat
+
+	public const db_columns = ["Nom", "Origine", "Catégorie", "Pds1", "Pds2", "Options", "Taille", "Int", "RD", "Vitesse", "Description", "Avdesav", "Pouvoirs", "Combat", "Image" ];
 
 	public function getCreature(int $id): ?Creature
 	{
@@ -62,17 +63,18 @@ class CreatureRepository extends AbstractRepository
 		return $creatures;
 	}
 
-	
 	public function updateCreature(array $data): void{
-		// id, Nom, Origine, Catégorie, Pds1, Pds2, Options, Taille, Int, RD, Vitesse, Description, Avdesav, Pouvoirs, Combat
 		
 		// correcting accented indexes
 		$data["Categorie"] = $data["Catégorie"];
 		unset($data["Catégorie"]);
-		$data["Intelligence"] = $data["Int"];
-		unset($data["Int"]);
+
+		// don’t work with accented characters in index (Catégorie)
+		//$set_instructions = [];
+		//foreach (self::db_columns as $column) $set_instructions[] = "$column = :$column";
+		//$set_instructions = join(", ", $set_instructions);
 		
-		$query = $this->db->prepare("UPDATE creatures SET Nom = :Nom, Origine = :Origine, Catégorie = :Categorie, Pds1 = :Pds1, Pds2 = :Pds2, Options = :Options, Taille = :Taille, `Int` = :Intelligence, RD = :RD, Vitesse = :Vitesse, Description = :Description, Avdesav = :Avdesav, Pouvoirs = :Pouvoirs, Combat = :Combat WHERE id = :id");
+		$query = $this->db->prepare("UPDATE creatures SET Nom = :Nom, Origine = :Origine, Catégorie = :Categorie, Pds1 = :Pds1, Pds2 = :Pds2, Options = :Options, Taille = :Taille, `Int` = :Int, RD = :RD, Vitesse = :Vitesse, Description = :Description, Avdesav = :Avdesav, Pouvoirs = :Pouvoirs, Combat = :Combat, Image = :Image WHERE id = :id");
 		$query->execute($data);
 		$query->closeCursor();
 	}
@@ -85,7 +87,7 @@ class CreatureRepository extends AbstractRepository
 		unset($data["Int"]);
 		unset($data["id"]);
 		
-		$query = $this->db->prepare("INSERT INTO creatures (Nom, Origine, Catégorie, Pds1, Pds2, Options, Taille, `Int`, RD, Vitesse, Description, Avdesav, Pouvoirs, Combat) VALUES (:Nom, :Origine, :Categorie, :Pds1, :Pds2, :Options, :Taille, :Intelligence, :RD, :Vitesse, :Description, :Avdesav, :Pouvoirs, :Combat)");
+		$query = $this->db->prepare("INSERT INTO creatures (Nom, Origine, Catégorie, Pds1, Pds2, Options, Taille, `Int`, RD, Vitesse, Description, Avdesav, Pouvoirs, Combat, Image) VALUES (:Nom, :Origine, :Categorie, :Pds1, :Pds2, :Options, :Taille, :Intelligence, :RD, :Vitesse, :Description, :Avdesav, :Pouvoirs, :Combat, :Image)");
 		$query->execute($data);
 		$query->closeCursor();
 	}
@@ -95,4 +97,9 @@ class CreatureRepository extends AbstractRepository
 		$query->execute([$id]);
 		$query->closeCursor();
 	}
+
+/* 	static function getAutoIncrementValue(): int
+	{
+		$query = $this->db->query("")
+	} */
 }

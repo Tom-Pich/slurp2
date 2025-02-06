@@ -13,12 +13,14 @@ applyColorScheme();
 const channel = new BroadcastChannel("display-options");
 const html = document.documentElement;
 channel.onmessage = (event) => {
-    console.log(event.data);
     if (event.data.option === "mode" && html.dataset.preset !== event.data.value) {
         html.dataset.preset = event.data.value;
         html.dataset.mode = event.data.value;
         applyColorScheme();
     } else if (event.data.option === "style") {
+       /*  fetch(window.location.href)
+            .then((response) => response.text())
+            .then(updateDOM("body", response)); */
         if (event.data.value !== "compact") document.body.classList.remove("compact");
         else document.body.classList.add("compact");
     }

@@ -10,6 +10,8 @@ use App\Repository\CreatureRepository;
 
 class Creature implements RulesItem
 {
+	const creature_folder = "/assets/img_creatures/";
+
 	public int $id;
 	public string $name;
 	public string $origin;
@@ -25,6 +27,7 @@ class Creature implements RulesItem
 	public string $avdesav;
 	public string $powers;
 	public string $combat;
+	public ?string $image;
 
 	// processed values
 	public string $readableWeight;
@@ -53,10 +56,11 @@ class Creature implements RulesItem
 		$this->avdesav =  $data["Avdesav"] ?? "";
 		$this->powers =  $data["Pouvoirs"] ?? "";
 		$this->combat =  $data["Combat"] ?? "";
+		$this->image = $data["Image"] ?? "";
 
-		$weight_min = $this->weight_min >= 1000 ? (round($this->weight_min/1000, 1) . "&nbsp;t") : ($this->weight_min . "&nbsp;kg");
+		$weight_min = $this->weight_min >= 1000 ? (round($this->weight_min / 1000, 1) . "&nbsp;t") : ($this->weight_min . "&nbsp;kg");
 		$this->readableWeight = $weight_min;
-		$weight_max = $this->weight_max >= 1000 ? (round($this->weight_max/1000, 1) . "&nbsp;t") : ($this->weight_max . "&nbsp;kg");
+		$weight_max = $this->weight_max >= 1000 ? (round($this->weight_max / 1000, 1) . "&nbsp;t") : ($this->weight_max . "&nbsp;kg");
 		$this->readableWeight .= $this->weight_max !== $this->weight_min ?  ("-" . $weight_max) : "";
 
 		$this->w_mult_strength = isset($this->options["Mult_pds_for"]) ? (float) $this->options["Mult_pds_for"] : 1;
@@ -66,63 +70,59 @@ class Creature implements RulesItem
 		$this->strength = $this->id ? [self::getStrengthFromWeight($this->weight_min * $this->w_mult_strength), self::getStrengthFromWeight($this->weight_max * $this->w_mult_strength)] : [];
 		$this->readableStrength = $this->id ? ($this->strength[0] !== $this->strength[1] ? join("-", $this->strength) : $this->strength[0]) : "";
 		$this->readableStrength = isset($this->options["Sans_for"]) ? "–" : $this->readableStrength;
-		
+
 		$this->pdv = $this->id ? [
-			floor(self::getPdVFromWeight($this->weight_min * $this->w_mult_pdv * 0.9)*$this->category_mult_pdv),
-			floor(self::getPdVFromWeight($this->weight_max * $this->w_mult_pdv * 1.1)*$this->category_mult_pdv)
-			] : [];
+			floor(self::getPdVFromWeight($this->weight_min * $this->w_mult_pdv * 0.9) * $this->category_mult_pdv),
+			floor(self::getPdVFromWeight($this->weight_max * $this->w_mult_pdv * 1.1) * $this->category_mult_pdv)
+		] : [];
 		$this->readablePdV = join("-", $this->pdv);
 	}
 
 	public function displayInRules(bool $show_edit_link = false, string $edit_req = "creature", array $data = [], bool $lazy = false)
 	{
-		$edit_link = "gestion-listes?req=$edit_req&id={$this->id}"; ?>
-		<details class="liste">
-			<summary>
-				<div>
+		$edit_link_url = "gestion-listes?req=$edit_req&id={$this->id}";
+		$edit_link = $show_edit_link ? "<a href='$edit_link_url' class='ff-fas edit-link'>&#xf044;</a>" : "";
+		$description_wrapper_attributes = $lazy ? "data-details data-type='creature' data-id={$this->id}" : "";
+		$description = $lazy ? "" : $this->getFullDescription();
+
+		echo <<<HTML
+			<details class="liste">
+				<summary>
 					<div>
-						<?php if ($show_edit_link) { ?><a href="<?= $edit_link ?>" class="ff-fas edit-link">&#xf044;</a><?php } ?>
-						<?= $this->name ?>
+						<div>$edit_link $this->name</div>
 					</div>
-				</div>
-			</summary>
+				</summary>
 
-			<div class="mt-½ fs-300 flow"><?= $this->description ?></div>
+				<div class="flow mt-½" $description_wrapper_attributes>$description</div>
 
-			<div class="mt-½">
-				<b>For&nbsp;:</b> <?= $this->readableStrength ?>&emsp;<b>Int&nbsp;:</b> <?= $this->int ?><br>
-				<b>PdV&nbsp;:</b> <?= $this->readablePdV ?>&emsp;<b>RD&nbsp;:</b> <?= $this->rd ?>&emsp;<b>Vit&nbsp;:</b> <?= $this->speed ?><br>
-				<?php if (!isset($this->options["Sans_pds"])) { ?>
-					<b>Poids&nbsp;:</b> <?= $this->readableWeight ?>&emsp;
-				<?php } ?>
-				<?php if ($this->size) { ?>
-					<b>Taille&nbsp;:</b> <?= $this->size ?>
-				<?php } ?>
-			</div>
+			</details>
+		HTML;
+	}
 
-			<?php if ($this->avdesav) { ?>
-				<p class="fs-300"><b>Avantages &amp; Désavantages&nbsp;:</b> <?= str_replace(" ;", " ;" , $this->avdesav) ?></p>
-			<?php } ?>
-			<?php if ($this->powers) { ?>
-				<p class="fs-300"><b>Pouvoirs&nbsp;:</b> <?= str_replace(" ;", " ;" , $this->powers) ?></p>
-			<?php } ?>
+	public function getFullDescription()
+	{
+		$image_url = $this->image ? self::creature_folder . $this->image: "";
+		$image = $this->image ? "<img src='$image_url' class='mt-½ aspect-square'>" : "";
+		$weight = !isset($this->options["Sans_pds"]) ? "<b>Poids :</b> $this->readableWeight&emsp;" : "";
+		$size = $this->size ? "<b>Taille :</b> $this->size" : "";
+		$avdesav = $this->avdesav ? "<p><b>Avantages &amp; Désavantages :</b> " . str_replace(" ;", " ;", $this->avdesav) . " </p>" : "";
+		$powers = $this->powers ? "<p><b>Pouvoirs :</b> " . str_replace(" ;", " ;", $this->powers) . "</p>" : "";
 
-			<div class="mt-½ fs-300">
-				<p><b>Combat</b></p>
-				<div class="flow">
-					<?= $this->combat ?>
-				</div>
-			</div>
+		return <<<HTML
+			$this->description
+			$image
+			<p>
+				<b>For&nbsp;:</b> $this->readableStrength&emsp;<b>Int&nbsp;:</b> $this->int<br>
+				<b>PdV&nbsp;:</b> $this->readablePdV&emsp;<b>RD&nbsp;:</b> $this->rd&emsp;<b>Vit&nbsp;:</b> $this->speed<br>
+				$weight
+				$size
+			</p>
+			$avdesav
+			$powers
+			$this->combat
+		HTML;
+	}
 
-		</details>
-<?php }
-
-	/**
-	 * getTramplingDamages
-	 *
-	 * @param  float $weight (kg)
-	 * @return string dice expression of trampling damages
-	 */
 	public static function getTramplingDamages(float $weight): string
 	{
 		$ip = 5 * log($weight + 300) - 28;
@@ -162,10 +162,9 @@ class Creature implements RulesItem
 		return $pdv;
 	}
 
-	public static function processSubmitCreature(array $post): void
+	public static function processSubmitCreature(array $post, $file): void
 	{
 		// id, Nom, Origine, Catégorie, Pds1, Pds2, Options, Taille, Int, RD, Vitesse, Description, Avdesav, Pouvoirs, Combat
-		//var_dump($post);
 		$creature = [];
 
 		$creature["id"] = (int) $post["id"];
@@ -189,8 +188,22 @@ class Creature implements RulesItem
 		$creature["Avdesav"] = $post["Avdesav"] ? $post["Avdesav"] : NULL;
 		$creature["Pouvoirs"] = $post["Pouvoirs"] ? $post["Pouvoirs"] : NULL;
 		$creature["Combat"] = $post["Combat"];
-		
-		//var_dump($creature);
+		$creature["Image"] = $post["Image"];
+
+		if (isset($file['Image']) && $file['Image']['error'] === 0) {
+			if ($file['Image']['size'] <= 520000) {
+				$file_info = pathinfo($file['Image']['name']);
+				$file_extension = strtolower($file_info['extension']);
+				$allowed_extensions = ['jpg', 'jpeg', 'gif', 'png', 'webp'];
+				if (in_array($file_extension, $allowed_extensions)) {
+					$file_name = str_pad($creature["id"], 4, '0', STR_PAD_LEFT) . "." . $file_extension;
+					$folder = $_SERVER['DOCUMENT_ROOT'] . '/assets/img_creatures/';
+					move_uploaded_file($file['Image']['tmp_name'], $folder . basename($file_name));
+					$creature["Image"] = basename($file_name);
+				}
+			}
+		}
+
 
 		$repo = new CreatureRepository;
 
@@ -201,8 +214,5 @@ class Creature implements RulesItem
 		} elseif ($creature["Nom"] && !$creature["id"]) {
 			$repo->createCreature($creature);
 		}
-		 
 	}
-
-	
 }

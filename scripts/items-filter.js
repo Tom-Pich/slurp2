@@ -1,6 +1,6 @@
 import { qs, qsa } from "./lib/dom-utils.js";
 import { updateDOM } from "./update-dom.js";
-import { fetchResult } from "./game-table-utilities";
+//import { fetchResult } from "./game-table-utilities";
 
 const filterForm = qs("[data-role=filter-form]");
 const displayInputs = qsa("[name=affichage]");
@@ -12,7 +12,7 @@ const keywordInput = qs("[name=keyword]");
 filterForm.addEventListener("submit", (e) => e.preventDefault());
 
 // set lazy load event listeners on load
-setLazyloadingListeners();
+//setLazyloadingListeners();
 
 // update page when display type changes (categories or alphabetical)
 displayInputs.forEach((input) => {
@@ -29,7 +29,7 @@ displayInputs.forEach((input) => {
                 filterSpells();
                 filterSkills();
                 filterAvdesavs();
-                setLazyloadingListeners();
+                //setLazyloadingListeners();
             });
     });
 });
@@ -146,8 +146,8 @@ function keywordMatch(expression, keyword) {
     return normalizedExpression.includes(normalizedKeyword);
 }
 
-// lazy load event listener
-function setLazyloadingListeners() {
+// lazy load event listener → deported to item-lazy-load.js
+/* function setLazyloadingListeners() {
     const lazyItems = qsa("[data-details]");
 
     lazyItems.forEach((item) => {
@@ -163,6 +163,10 @@ function setLazyloadingListeners() {
                 const avdesav = await fetchResult("/api/get-avdesav?id=" + id);
                 descriptionWrapper.innerHTML = avdesav.description;
             }
+            if (descriptionWrapper.dataset.type === "creature") {
+                const creature = await fetchResult("/api/get-creature?id=" + id);
+                descriptionWrapper.innerHTML = creature.description;
+            }
         });
     });
-}
+} */

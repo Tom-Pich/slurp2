@@ -21,7 +21,7 @@
 		> ul > li { position: relative; }
 
 		ul.sub-menu {
-			overflow: hidden; transition: all .2s; background-color: var(--black); z-index: 2; padding-inline: 1em; left: -1em; width: max-content; 
+			overflow: hidden; transition: all .2s; background-color: black; z-index: 2; padding-inline: 1em; left: -1em; width: max-content; 
 			li { transition: all .2s; }
 		}
 
@@ -42,7 +42,7 @@
 		// mobile navigation
 		@include media ($brp-nav) {
 			&:not(.active) {display: none;}
-			display: block; position: absolute; inset: 0; background-color: var(--black); padding: 2em; z-index: 2; overflow-y: scroll;
+			display: block; position: absolute; inset: 0; background-color: black; padding: 2em; z-index: 2; overflow-y: scroll;
 			ul.sub-menu { padding-top: .25em; }
 			li { padding: .15em; }
 		}

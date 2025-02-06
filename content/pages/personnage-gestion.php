@@ -65,7 +65,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 			<img src="<?= $character->portrait ?>" class="fit-cover aspect-square mx-auto" style="max-width: 80%;">
 			<label title="Sélectionner une image" class="btn btn-primary mx-auto mt-½">
 				Télécharger image (max. 500 ko)
-				<input type="file" name="image" data-role=add-portrait hidden>
+				<input type="file" name="image" data-role="add-portrait" hidden>
 			</label>
 			<p class="mt-½ ta-center fs-300">Utiliser un format proche du carré.</p>
 			<p id="file" class="ta-center clr-grey-500"></p>

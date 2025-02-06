@@ -2,22 +2,24 @@
 
 namespace App\Controller;
 
+use App\Lib\TextParser;
 use App\Entity\Creature;
 use App\Entity\Attribute;
 use App\Entity\Character;
 use App\Entity\Equipment;
-use App\Lib\TextParser;
-use App\Rules\CriticalController;
-use App\Rules\WeaponsController;
 use App\Rules\WoundController;
-use App\Rules\ExplosionController;
-use App\Rules\ObjectController;
-use App\Rules\ReactionController;
-use App\Rules\MentalHealthController;
 use App\Generator\NPCGenerator;
-use App\Repository\AvDesavRepository;
+use App\Rules\ObjectController;
+use App\Generator\WildGenerator;
+use App\Rules\WeaponsController;
+use App\Rules\CriticalController;
+use App\Rules\ReactionController;
+use App\Rules\ExplosionController;
 use App\Repository\PowerRepository;
 use App\Repository\SpellRepository;
+use App\Repository\AvDesavRepository;
+use App\Repository\CreatureRepository;
+use App\Rules\MentalHealthController;
 
 class ApiController
 {
@@ -175,6 +177,12 @@ class ApiController
 		$this->sendResponse();
 	}
 
+	public function getWildGeneratorResult(array $parameters)
+	{
+		$this->response["data"] = WildGenerator::generateResult($parameters);
+		$this->sendResponse();
+	}
+
 	public function getFrightcheckResult(int $frightLevel, int $sfScore, int $sanScore, int $frightcheckMR, int $frighcheckCriticalStatus, string $frighcheckSymbol, array $rolls)
 	{
 		$this->response["data"] = MentalHealthController::getFrighcheckEffects($frightLevel, $sfScore, $sanScore, $frightcheckMR, $frighcheckCriticalStatus, $frighcheckSymbol, $rolls);
@@ -206,6 +214,16 @@ class ApiController
 		$spell_array = get_object_vars($spell);
 		$this->response["data"] = $spell_array;
 		$this->response["data"]["fullDescription"] = $spell->getFullDescription();
+		$this->sendResponse();
+	}
+
+	public function getCreature(int $id)
+	{
+		$creature_repo = new CreatureRepository;
+		$creature = $creature_repo->getCreature($id);
+		$creature_array = get_object_vars($creature);
+		$this->response["data"] = $creature_array;
+		$this->response["data"]["fullDescription"] = $creature->getFullDescription();
 		$this->sendResponse();
 	}
 

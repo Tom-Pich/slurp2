@@ -34,7 +34,7 @@ function lk_classes(string $title, string $current_title, bool $has_parent) {
 	$section_articles = array_filter($articles, fn($x) => isset($x["section"]) && $x["section"] === $section || isset($x["parent"]) && $articles[$x["parent"]]["section"] === $section);
 	foreach ($section_articles as $name => $article) { ?>
 		<a href="/wiki/<?= $wiki ?>/<?= $name ?>" <?= lk_classes($name, $page["current-article-name"], isset($article["parent"])) ?>>
-			<?= $article["title"] ?>
+			<?= $article["title"] ?> <?= $article["status"]?? "" ?>
 		</a>
 	<?php }
 	?>

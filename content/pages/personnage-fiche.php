@@ -8,6 +8,7 @@ $character->processCharacter(with_state_modifiers: true);
 $character_uses_pdm = $character->special_traits["magerie"] || $character->special_traits["pouvoirs"];
 $attributes_names = ["For", "Dex", "Int", "San", "Per", "Vol"];
 $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
+$compact = $page["style"] === "compact";
 
 // modifies text color if score has changed due to character state
 function color_modifier($original_score, $actual_score)
@@ -36,17 +37,19 @@ function color_modifier($original_score, $actual_score)
 	</div>
 
 	<!-- Description -->
-	<details class="no-print mt-½ hidden-when-compact">
-		<summary>
-			<h3>Description</h3>
-		</summary>
-		<div class="mt-½ ta-justify">
-			<?= nl2br($character->description) ?>
-		</div>
-	</details>
+	<?php if (!$compact): ?>
+		<details class="no-print mt-½">
+			<summary>
+				<h3>Description</h3>
+			</summary>
+			<div class="mt-½ ta-justify">
+				<?= nl2br($character->description) ?>
+			</div>
+		</details>
+	<?php endif ?>
 
 	<!-- Background -->
-	<?php if (!empty($character->background)): ?>
+	<?php if (!empty($character->background) && !$compact): ?>
 		<details class="no-print mt-½ hidden-when-compact">
 			<summary>
 				<h3>Background</h3>
@@ -209,27 +212,34 @@ function color_modifier($original_score, $actual_score)
 <fieldset class="flow">
 	<legend>Avantages &amp; Désavantages</legend>
 	<?php
-	foreach (["Zéro", "Avantage", "Désavantage", "Réputation", "Travers"] as $categorie) {
+	foreach (["Zéro", "Avantage", "Désavantage", "Réputation", "Travers"] as $categorie):
+
 		$sublist = [];
 		$avdesav_not_displayed = [158, 159, 160, 161, 162, 163]; // PdX modifiers + SF & Ref modifiers
 		foreach ($character->avdesav as $avdesav) {
-			if ($avdesav["catégorie"] === $categorie && !in_array($avdesav["id"], $avdesav_not_displayed)) $sublist[] = $avdesav;
-		}
-	?>
-		<?php if (count($sublist)): ?>
+			if ($avdesav["catégorie"] === $categorie && !in_array($avdesav["id"], $avdesav_not_displayed)) {
+				if ($compact) $sublist[] = $avdesav["nom"] . " (" . $avdesav["points"] . ")";
+				else $sublist[] = $avdesav;
+			};
+		} ?>
+
+		<?php if (count($sublist) && !$compact): ?>
 			<div>
 				<?php foreach ($sublist as $avdesav) {
 					if ($avdesav["catégorie"] !== "Travers") : ?>
 
-						<details class="liste">
-							<summary>
-								<div>
-									<div><?= $avdesav["nom"] ?></div>
-									<div><?= $avdesav["points"] ?></div>
-								</div>
-							</summary>
-							<div class="mt-½ fs-300 ta-justify"><?= $avdesav["description"] ?? "" ?></div>
-						</details>
+						<?php if ($compact): ?><p><?= join(", ", $sublist) ?></p>
+						<?php else: ?>
+							<details class="liste">
+								<summary>
+									<div>
+										<div><?= $avdesav["nom"] ?></div>
+										<div><?= $avdesav["points"] ?></div>
+									</div>
+								</summary>
+								<div class="mt-½ fs-300 ta-justify"><?= $avdesav["description"] ?? "" ?></div>
+							</details>
+						<?php endif ?>
 
 					<?php else : ?>
 
@@ -242,27 +252,43 @@ function color_modifier($original_score, $actual_score)
 
 				<?php } ?>
 			</div>
+		<?php elseif (count($sublist) && $compact): ?>
+			<p><?= join(", ", $sublist) ?></p>
 		<?php endif; ?>
-	<?php } ?>
+
+	<?php endforeach ?>
 </fieldset>
 
 <!-- Compétences -->
 <fieldset>
 	<legend>Compétences</legend>
 
-	<?php foreach ($character->skills as $comp) {	?>
-		<details class="liste">
-			<summary data-type="throwable-wrapper">
-				<div>
-					<div data-type="throwable-label"><?= $comp["label"] ?></div>
-					<div data-type="throwable-score" <?= color_modifier($comp["raw-base"], $comp["base"]) ?>><?= $comp["score"] ?></div>
+	<?php if ($compact):
+		$skill_display_array = [];
+	?>
+			<?php foreach ($character->skills as $comp):
+				$skill_display_array [] = "<span data-type='throwable-wrapper'><span data-type='throwable-label'>" . $comp["label"]. "</span><span data-type='throwable-score'" . color_modifier($comp["raw-base"], $comp["base"]). "> ". $comp["score"]. "</span></span>";
+				?>
+			<?php endforeach ?>
+			<p><?= join(", ", $skill_display_array) ?></p>
+	<?php else: ?>
+		<?php foreach ($character->skills as $comp): ?>
+
+			<details class="liste">
+				<summary data-type="throwable-wrapper">
+					<div>
+						<div data-type="throwable-label"><?= $comp["label"] ?></div>
+						<div data-type="throwable-score" <?= color_modifier($comp["raw-base"], $comp["base"]) ?>><?= $comp["score"] ?></div>
+					</div>
+				</summary>
+				<div class="fs-300 ta-justify">
+					<?= $comp["description"] ?>
 				</div>
-			</summary>
-			<div class="fs-300 ta-justify">
-				<?= $comp["description"] ?>
-			</div>
-		</details>
-	<?php } ?>
+			</details>
+
+
+		<?php endforeach ?>
+	<?php endif ?>
 
 </fieldset>
 

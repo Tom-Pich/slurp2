@@ -1,4 +1,4 @@
-<h2>Auberge de la <i>Vieille Tour</i></h2>
+<h2>Auberge de la Vieille Tour</h2>
 
 <div class="wiki-right-element flow">
 	<figure>
@@ -9,17 +9,19 @@
 		<img src="/assets/img_paorn/imegie-auberge-vieille-tour-02.jpg">
 		<figcaption>Salle commune</figcaption>
 	</figure>
+	<figure>
+		<img src="/assets/img_paorn/imegie-auberge-vieille-tour-03.webp">
+		<figcaption>Salle commune – Plan</figcaption>
+	</figure>
 </div>
 
 <p>Située dans le quartie des Consuls, c’est un établissement de standing qui se distingue par son élégance rustique et son raffinement. De la salle commune, de taille assez modeste mais accueillante, se dégage une ambiance feutrée. Des musiciens talentueux jouent une musique distinguée, créant une atmosphère apaisante et sophistiquée.</p>
 
 <p>Des alcôves, pouvant accueillir quatre personnes, sont isolées du reste de la salle par de lourdes tentures de velours, permettant des conversations discrètes. Chaque alcôve est équipée d'une table centrale entourée de chaises confortables, offrant un cadre idéal pour des discussions privées.</p>
 
-<p>La lumière tamisée, diffusée par des chandeliers et des lanternes murales, ajoute à l'atmosphère intime et élégante de l'auberge. Les murs sont ornés de tapisseries représentant des scènes de chasse et des paysages bucoliques, renforçant le caractère prestigieux de l'établissement. Les clients, souvent des marchands aisés et des nobles, apprécient le service impeccable et l'ambiance distinguée de la <i>Vieille Tour</i>, faisant de cette auberge un lieu prisé pour les rendez-vous d'affaires et les rencontres discrètes.</p>
+<p>La lumière tamisée, diffusée par des chandeliers et des lanternes murales, ajoute à l'atmosphère intime et élégante de l'auberge. Les murs sont ornés de tapisseries représentant des scènes de chasse et des paysages bucoliques. Les clients, souvent des marchands aisés et des nobles, apprécient le service impeccable et l’ambiance distinguée de la <i>Vieille Tour</i>, faisant de cette auberge un lieu prisé pour les rendez-vous d'affaires et les rencontres discrètes.</p>
 
-<?php if ($admin) { ?>
-	<p>L’auberge dispose d’une tour, liée au bâtiment principal par un passage fermé, ainsi que de petites maisons de l’autre côté de la rue. Ces dans ces bâtiments que l’on trouve les quatre chambres de l’auberge.</p>
-<?php } ?>
+<p>L’auberge dispose d’une tour, liée au bâtiment principal par un passage fermé, ainsi que de petites maisons de l’autre côté de la rue. Ces dans ces bâtiments que l’on trouve les quatre chambres de l’auberge.</p>
 
 <?php if ($admin) { ?>
 	<h3>Personnel de l’auberge</h3>
@@ -48,16 +50,3 @@
 <p>Attenant à l’auberge se trouve une cour intérieure, partagée avec d’autres habitations. On trouve également, parmi ces bâtiments mitoyens, l’échoppe d’un vendeur de matériel d’écriture (papier, parchemin, encre, plume&hellip;)</p>
 
 <p>Tout proche se trouve également le tribunal consulaire, chargé de gérer les infractions aux réglements de la ville et les différends commerciaux. De jour, il y a toujours deux gardes postés à l’entrée.</p>
-
-<div class="article-content-wrapper">
-
-	<article>
-
-
-	</article>
-
-	<aside>
-
-	</aside>
-
-</div>

@@ -15,8 +15,8 @@
 
 	--clr-invalid: rgb(237, 63, 63);
 
-	.main-header nav ul.sub-menu { background-color: black; }
 	.btn-primary, .btn-secondary { --text-clr: white; }
+	fieldset.widget { background-color: hsl(32, 34%, 15%) }
 
 	#chat-container {
 		--user-color-1: hsl(200, 50%, 35%);

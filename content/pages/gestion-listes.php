@@ -41,7 +41,7 @@ $title = [
 <div class="flex gap-1 ai-center">
 	<h2 class="fl-1"><?= $title[$_GET["req"]] ?? "Erreur" ?></h2>
 	<?php if (isset($_SERVER["HTTP_REFERER"])): ?>
-		<a href="<?= $_SERVER["HTTP_REFERER"] ?>" class="btn mt-½"><span class="ff-fas">&#xf0a8</span> Retour</a>
+		<a href="<?= $_SERVER["HTTP_REFERER"] ?>" data-role="referer-link" class="btn mt-½"><span class="ff-fas">&#xf0a8</span> Retour</a>
 	<?php endif ?>
 </div>
 
@@ -118,7 +118,7 @@ else include "content/components/" . $file;
 				}
 			},
 			content_css: "/styles.min.css",
-			content_style: "#tinymce { outline: none } ",
+			content_style: "#tinymce { outline: none } #tinymce.p-1::before { left: 1em}",
 			body_class: "flow p-1",
 			branding: false
 		});
@@ -126,17 +126,26 @@ else include "content/components/" . $file;
 <?php endif ?>
 
 <script type="module">
-	import { showAlert } from "/scripts/lib/alert"
+	/* import {
+		showAlert
+	} from "/scripts/lib/alert" */
 	const form = document.querySelector("main form");
 	form.addEventListener("submit", (e) => {
 		e.preventDefault();
 		const editors = tinymce.get();
 		editors.forEach(editor => editor.targetElm.value = editor.getContent())
 		const data = new FormData(form);
-		//console.log(data)
 		fetch(form.action, {
-			method: "post",
-			body: data
-		}).then ( () => showAlert("Modifications enregistrées", "valid"))
+				method: "post",
+				body: data
+			})
+			//.then(response => response.text())
+			//.then(response => console.log(response))
+			//.then(() => showAlert("Modifications enregistrées", "valid"))
+			.then(() => {
+				const refererLink = document.querySelector("[data-role=referer-link]")
+				if (refererLink) window.location.href = refererLink.href;
+				else window.location.href = "/avdesav-comp-sorts";
+			})
 	})
 </script>

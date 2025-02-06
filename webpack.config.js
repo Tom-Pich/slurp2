@@ -11,6 +11,7 @@ module.exports = {
         "widget-armor": "/scripts/widget-armor.js",
         "items-filter": "/scripts/items-filter.js",
         "account-settings": "/scripts/account-settings.js",
+        "item-lazyload": "/scripts/item-lazyload.js",
     },
     mode: "production",
     //mode: "development",

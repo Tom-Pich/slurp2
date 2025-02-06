@@ -36,21 +36,19 @@
 				</label>
 			</div>
 		</div>
-		<?php if ($_SESSION["Statut"] === 3): ?>
-			<div class="grid ai-center option-grid">
-				<div class="fw-700 bg-grey-900 p-½">Fiche de perso</div>
-				<div class="flex-s gap-1">
-					<label>
-						<input type="radio" name="style" value="normal" <?= $page["style"] ? "" : "checked" ?>>
-						Normale
-					</label>
-					<label>
-						<input type="radio" name="style" value="compact" <?= $page["style"] === "compact" ? "checked" : "" ?>>
-						Compacte
-					</label>
-				</div>
+		<div class="grid ai-center option-grid">
+			<div class="fw-700 bg-grey-900 p-½">Fiche de perso</div>
+			<div class="flex-s gap-1">
+				<label>
+					<input type="radio" name="style" value="normal" <?= $page["style"] !== "compact" ? "" : "checked" ?>>
+					Normale
+				</label>
+				<label>
+					<input type="radio" name="style" value="compact" <?= $page["style"] === "compact" ? "checked" : "" ?>>
+					Compacte
+				</label>
 			</div>
-		<?php endif ?>
+		</div>
 	</form>
 
 </fieldset>

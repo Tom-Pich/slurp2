@@ -1004,6 +1004,7 @@ $creatures_repo = new CreatureRepository;
 		Bestiaire
 	</h2>
 
+	<!-- Règles générales d’adaptation -->
 	<details>
 		<summary>
 			<h3>Règles générales d’adaptation</h3>
@@ -1070,9 +1071,7 @@ $creatures_repo = new CreatureRepository;
 			<div>
 				<?php
 				$creatures = $creatures_repo->getCreaturesByCategory($categorie, "ADD");
-				foreach ($creatures as $creature) {
-					$creature->displayInRules($_SESSION["Statut"] === 3);
-				}
+				foreach ($creatures as $creature) $creature->displayInRules($_SESSION["Statut"] === 3, lazy: true);
 				?>
 			</div>
 		</details>
@@ -1081,3 +1080,4 @@ $creatures_repo = new CreatureRepository;
 </article>
 
 <script type="module" src="/scripts/magical-items.js?v=<?= VERSION ?>"></script>
+<script type="module" src="/scripts/item-lazyload<?= PRODUCTION ? ".min" : "" ?>.js?v=<?= VERSION ?>" defer></script>

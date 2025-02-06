@@ -125,6 +125,7 @@ $pages_data = [
 		"description" => "Quelques liens utiles", 
 		"file" => "s_liens",
 		"version" => 4,
+		//"body-class" => "basic-page",
 	],
 	"concevoir-personnage" => [
 		"title" => "Concevoir son personnage", 
@@ -194,8 +195,6 @@ $pages_data = [
 		"version" => 4,
 		"aside-right" => "chat-window",
 		"parameters-btn" => "widgets-help",
-		//"<button class='ff-fas btn-primary btn-square' data-role='open-dialog' data-dialog-name='widgets-help'>&#xf085;</button>",
-		//"page-parameters" => "<button class='ff-fas btn-primary btn-square' data-role='open-dialog' data-dialog-name='widgets-help'>&#xf085;</button>",
 	],
 
 	// Wiki
