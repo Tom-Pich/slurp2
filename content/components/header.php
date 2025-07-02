@@ -5,6 +5,10 @@ use App\Repository\CharacterRepository;
 global $pages_data;
 $character_repo = new CharacterRepository;
 $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_name: true);
+
+$body_class = $page["body-class"];
+$body_class .=  $page["style"] !== "normal" ? (" " . $page["style"]) : "";
+$body_class .=  $page["theme"] !== "standard" ? (" " . $page["theme"]) : "";
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +36,7 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 	<script type="module" src="/scripts/main<?= PRODUCTION ? ".min" : "" ?>.js?v=<?= VERSION ?>" defer></script>
 </head>
 
-<body class="<?= $page["body-class"] ?> <?= $page["style"] ?>">
+<body class="<?= $body_class ?>">
 
 	<header class="main-header">
 

@@ -12,15 +12,16 @@ $articles = [
 	"artaille" => ["title" => "Artaille", "section" => "Pays &amp; Régions"],
 	"lauria" => ["title" => "Lauria", "section" => "Pays &amp; Régions"],
 
-	"almisie" => ["title" => "Almisie", "section" => "Villes de Burgonnie"],
-	"imegie" => ["title" => "Imégie", "section" => "Villes de Burgonnie"],
+	"almisie" => ["title" => "Almisie", "section" => "Lieux de Burgonnie"],
+	"imegie" => ["title" => "Imégie", "section" => "Lieux de Burgonnie"],
 	"auberge-vieille-tour" => ["title" => "Auberge de la Vieille Tour", "parent" => "imegie", "min-height" => "900px"],
-	"port-goshal" => ["title" => "Port Goshal", "section" => "Villes de Burgonnie"],
-	"stomilie" => ["title" => "Stomilie", "section" => "Villes de Burgonnie"],
+	"port-goshal" => ["title" => "Port Goshal", "section" => "Lieux de Burgonnie"],
+	"stomilie" => ["title" => "Stomilie", "section" => "Lieux de Burgonnie"],
 
-	"mikalas" => [ "title" => "Mikalas", "section" => "Villes de Lauria" ],
-	"parna" => [ "title" => "Parna", "section" => "Villes de Lauria", "status" => "🛠️" ],
-	"peponia" => [ "title" => "Péponia", "section" => "Villes de Lauria" ],
+	"mikalas" => [ "title" => "Mikalas", "section" => "Lieux de Lauria" ],
+	"parna" => [ "title" => "Parna", "section" => "Lieux de Lauria", "status" => "🛠️" ],
+	"peponia" => [ "title" => "Péponia", "section" => "Lieux de Lauria" ],
+	"pasganon" => ["title" => "Les Pasganon", "section" => "Lieux de Lauria", "status" => "🛠️"],
 
 	"arcania" => ["title" => "Arcania", "section" => "Organisations"],
 

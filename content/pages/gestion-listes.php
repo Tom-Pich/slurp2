@@ -133,8 +133,10 @@ else include "content/components/" . $file;
 	form.addEventListener("submit", (e) => {
 		e.preventDefault();
 		const editors = tinymce.get();
+		console.log(editors)
 		editors.forEach(editor => editor.targetElm.value = editor.getContent())
 		const data = new FormData(form);
+		console.log(data)
 		fetch(form.action, {
 				method: "post",
 				body: data

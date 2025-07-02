@@ -158,9 +158,7 @@ abstract class DiceManager
 	 */
 	public static function getModifier(float $value, float $ref, bool $excess_is_bad = true): int
 	{
-		if ($ref == 0) {
-			return 0;
-		}
+		if ($ref == 0) return 0;
 		return (int) round(($value / $ref - 1) * 10) * ($excess_is_bad ? -1 : 1);
 	}
 

@@ -47,6 +47,7 @@ h4 { font-size: var(--fs-450); --flow-space: 1em; }
 h5 { font-size: var(--fs-400); --flow-space: 1em; }
 p, ol, ul { text-align: justify; hyphens: auto; }
 dfn {text-decoration: underline var(--clr-700); cursor: help;}
+dialog { background-color: var(--white); color: var(--grey-200); width: clamp(300px, 70vw, 600px); }
 
 // utilities
 .gap-¼ { gap: .25em; }
@@ -84,7 +85,7 @@ input, select, textarea { padding: .25em; border: 1px solid var(--grey-700) }
 .btn-secondary { --btn-clr: var(--clr-secondary-500); --text-clr: var(--white); }
 .btn-square { width: 1.75em; aspect-ratio: 1; display: grid; place-content: center; line-height: 0; padding: 0; }
 .nude { padding: 0; border: none; }
-.nude:hover {transform: scale(1.05)}
+.nude:hover {transform: scale(1.05); border: none;}
 button:active, .btn:active {transform: scale(.95)}
 label:has(input:disabled) { opacity: 0.5; }
 
@@ -155,5 +156,3 @@ fieldset {
 	&.valid { --clr: var(--clr-valid); color: var(--white) }
 	&.invalid { --clr: var(--clr-invalid); color: var(--white) }
 }
-
-dialog { background-color: var(--white); color: var(--grey-200) }

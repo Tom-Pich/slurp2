@@ -94,8 +94,8 @@ if ($path_segments[1] === "api") {
 			break;
 
 		case "/api/critical-tables":
-			Firewall::check(!empty($_POST["table"]) && !empty($_POST["roll-3d"]) && !empty($_POST["roll-1d"]));
-			$table = $_POST["table"];
+			Firewall::check(!empty($_POST["category"]) && !empty($_POST["roll-3d"]) && !empty($_POST["roll-1d"]));
+			$table = $_POST["category"];
 			$roll_3d = (int) $_POST["roll-3d"];
 			$roll_1d = (int) $_POST["roll-1d"];
 			$controller->getCriticalResult($table, $roll_3d, $roll_1d);
@@ -114,37 +114,47 @@ if ($path_segments[1] === "api") {
 			$pdvm = (int) $_POST["pdvm"] > 0 ? (int) $_POST["pdvm"] : 10;
 			$pdv = $_POST["pdv"] !== "" ? (int) $_POST["pdv"] : $pdvm;
 			$pain_resistance = (int) $_POST["pain-resistance"];
-			$members = strtoupper(trim($_POST["members"]));
+			$members = strtoupper(htmlspecialchars(trim($_POST["members"])));
 			$controller->getGeneralState($pdvm, $pdv, $pain_resistance, $members);
 			break;
 
 		case "/api/wound-effects":
-			Firewall::check(isset($_POST["category"]) && isset($_POST["dex"]) && isset($_POST["san"]) && isset($_POST["pdvm"]) && isset($_POST["pdv"]) && isset($_POST["pain-resistance"]) && isset($_POST["raw-dmg"]) && isset($_POST["rd"]) && isset($_POST["dmg-type"]) && isset($_POST["bullet-type"]) && isset($_POST["localisation"]) && isset($_POST["rolls"]));
+			Firewall::check(isset($_POST["category"]) && isset($_POST["dex"]) && isset($_POST["san"]) && isset($_POST["pdvm"]) && isset($_POST["pdv"]) && isset($_POST["pain-resistance"]) && isset($_POST["raw-dmg"]) && isset($_POST["rd"]) && isset($_POST["dmg-type"]) && isset($_POST["localisation"]) && isset($_POST["rolls"]));
 			$category = htmlspecialchars($_POST["category"]);
 			$dex = (int) $_POST["dex"];
 			$san = (int) $_POST["san"];
 			$pdvm = (int) $_POST["pdvm"];
-			$pdv = $_POST["pdv"] !== "" ? (int) $_POST["pdv"] : $pdvm = (int) $_POST["pdvm"];
+			$pdv = $_POST["pdv"] !== "" ? (int) $_POST["pdv"] : $pdvm;
 			$pain_resistance = (int) $_POST["pain-resistance"];
 			$raw_dmg = (int) $_POST["raw-dmg"];
 			$rd = (int) $_POST["rd"];
 			$dmg_type = htmlspecialchars($_POST["dmg-type"]);
-			$bullet_type = htmlspecialchars($_POST["bullet-type"]);
+			$bullet_type = !isset($_POST["bullet-type"]) ? "std" : htmlspecialchars($_POST["bullet-type"]);
 			$localisation = htmlspecialchars($_POST["localisation"]);
 			$rolls = explode(",", $_POST["rolls"]);
 			$rolls = array_map(fn($x) => (int) $x, $rolls);
 			$controller->getWoundEffects($category, $dex, $san, $pdvm, $pdv, $pain_resistance, $raw_dmg, $rd, $dmg_type, $bullet_type, $localisation, $rolls);
 			break;
 
+		case "/api/bleeding-effects":
+			Firewall::check(isset($_POST["san-test"]) && isset($_POST["pdvm"]) && isset($_POST["severity"]) );
+			$san_test = json_decode($_POST["san-test"], true);
+			$san_test_mr = (int) $san_test["MR"];
+			$san_test_critical = (int) $san_test["critical"];
+			$pdvm = (int) $_POST["pdvm"];
+			$severity = (int) $_POST["severity"];
+			$controller->getBleedingEffects($san_test_mr, $san_test_critical, $pdvm, $severity);
+			break;
+
 		case "/api/explosion-damages":
-			Firewall::check(isset($_POST["damages"]) && isset($_POST["distance"]) && isset($_POST["fragmentation-surface"]) && isset($_POST["is-fragmentation-device"]));
+			Firewall::check(isset($_POST["damages"]) && isset($_POST["distance"]) && isset($_POST["fragmentation-surface"]));
 			$damages = (float) $_POST["damages"];
 			$distance = 1;
 			if (is_numeric($_POST["distance"]) || in_array($_POST["distance"], ["i", "r", "c"])) {
 				$distance = $_POST["distance"];
 			}
 			$fragSurface = (float) $_POST["fragmentation-surface"];
-			$isFragmentationDevice = $_POST["is-fragmentation-device"] === "true";
+			$isFragmentationDevice = isset($_POST["is-fragmentation-device"]);
 			$controller->getExplosionDamages($damages, $distance, $fragSurface, $isFragmentationDevice);
 			break;
 
@@ -155,14 +165,14 @@ if ($path_segments[1] === "api") {
 			break;
 
 		case "/api/object-damages-effects":
-			Firewall::check(isset($_POST["pdsm"]) && isset($_POST["pds"]) && isset($_POST["integrite"]) && isset($_POST["rd"]) && isset($_POST["dmgValue"]) && isset($_POST["dmgType"]) && isset($_POST["objectType"]) && isset($_POST["localisation"]) && isset($_POST["rolls"]));
+			Firewall::check(isset($_POST["pdsm"]) && isset($_POST["pds"]) && isset($_POST["integrite"]) && isset($_POST["rd"]) && isset($_POST["dmg-value"]) && isset($_POST["dmg-type"]) && isset($_POST["object-type"]) && isset($_POST["localisation"]) && isset($_POST["rolls"]));
 			$pdsm = (int) $_POST["pdsm"];
 			$pds = is_numeric($_POST["pds"]) ? (int) $_POST["pds"] : $pdsm;
 			$integrite = (int) $_POST["integrite"];
 			$rd = (int) $_POST["rd"];
-			$rawDamages = (int) $_POST["dmgValue"];
-			$dmgType = htmlspecialchars($_POST["dmgType"]);
-			$objectType = htmlspecialchars(strtolower($_POST["objectType"]));
+			$rawDamages = (int) $_POST["dmg-value"];
+			$dmgType = htmlspecialchars($_POST["dmg-type"]);
+			$objectType = htmlspecialchars(strtolower($_POST["object-type"]));
 			$localisation = htmlspecialchars(strtolower($_POST["localisation"]));
 			$rolls = explode(",", $_POST["rolls"]);
 			$rolls = array_map(fn($x) => (int) $x, $rolls);
@@ -180,7 +190,7 @@ if ($path_segments[1] === "api") {
 			foreach ($_POST as $parameter => $value) $post[$parameter] = htmlspecialchars($_POST[$parameter]);
 			$controller->getNPC($post);
 			break;
-		
+
 		case "/api/wild-generator":
 			$post = [];
 			foreach ($_POST as $parameter => $value) $post[$parameter] = htmlspecialchars($_POST[$parameter]);
@@ -347,12 +357,12 @@ elseif ($path_segments[1] === "submit") {
 
 		case "/submit/set-user-option":
 			Firewall::filter(1);
-			Firewall::check( !empty($_POST["option"]), !empty($_POST["value"]) );
+			Firewall::check(!empty($_POST["option"]), !empty($_POST["value"]));
 			$id = $_SESSION["id"];
 			$option = htmlspecialchars($_POST["option"]);
 			$value = htmlspecialchars($_POST["value"]);
 			$user_repo = new UserRepository;
-			$user_repo->setUserOption($id, $option, $value );
+			$user_repo->setUserOption($id, $option, $value);
 			$_SESSION["user-options"][$option] = $value;
 			break;
 

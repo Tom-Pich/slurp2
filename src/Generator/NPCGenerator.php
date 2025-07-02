@@ -585,7 +585,7 @@ class NPCGenerator
 	// weight array name must be w-gender-region-profile
 	// one or two parameters can be ommitted (e.g. w-region-profile or w-region) but always in the same order
 	// if no weight array matches the parameters, it will select w-default
-	// see see wightArraySelector for priorities
+	// see see weightArraySelector for priorities
 
 	const hairLength = [
 		"value" => ["très longs", "longs", "mi-longs", "courts", "très courts", "rasés"],

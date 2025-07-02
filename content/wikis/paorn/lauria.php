@@ -47,31 +47,29 @@
 <!-- <h3>Histoire</h3>
 <p>De nombreuses ruines présentes dans toute l’île témoignent de l’existence d’une civilisation antique capable de chefs d’œuvre architecturaux.</p> -->
 
-<h3>Économie</h4>
-	<p>Le sous-sol de leur pays étant très pauvre en métaux et en minéraux précieux, les Lauriens sont éleveurs, artisans où agriculteurs.</p>
-	<p>L’île entretient des relations commerciales avec la Burgonnie et l’Althusia, afin notamment de se procurer le fer et l’acier dont elle a besoin.</p>
-	<?php if ($admin): ?>
-		<p class="admin">Un proverbe dit&nbsp;: «&nbsp;En Lauria, si l’on n’est ni artisan, ni berger, on ne peut être que prêtre&nbsp;!&nbsp;» Bien que légèrement exagérée, cette affirmation n’est pas tout à fait fausse.</p>
-	<?php endif ?>
-	<p>Sans le commerce avec l’étranger, l’île n’aurait jamais prospéré. Or, sans l’artisanat, aucun commerce n’aurait été possible. C’est pourquoi les Lauriens ont développé un talent exceptionnel pour le travail des peaux, le tissage et l’ébénisterie. Les meubles de Draki et les toiles de Mikalas comptent parmi les articles de luxe les plus prisés par les nobles de Paorn.</p>
-	<p>Garder les immenses troupeaux de chèvres et de moutons qui paissent sur les flancs des montagnes n’est pas considéré comme une tâche «&nbsp;inférieure&nbsp;». En effet, certains intellectuels et penseurs surmenés n’hésitent pas à quitter leurs occupations habituelles pour se faire pâtres et passer plusieurs années à jouer de la flûte (l’instrument national laurien), tout en méditant sur la vanité du monde. Une fois l’esprit en paix, ils retournent à leurs vies familiales et professionnelles sans que personne y trouve à redire.</p>
-	<?php if ($admin): ?>
-		<p class="admin">En Lauria, le terme «&nbsp;prêtre&nbsp;» désigne non seulement les hommes qui ont voué leur existence à un dieu (ou à des dieux), mais aussi ceux qui s’intéressent aux «&nbsp;sciences de l’esprit&nbsp;», que l’on considère ici comme étant d’essence divine. Cette catégorie englobe donc les religieux, les philosophes, les mathématiciens et les astrologues qui vivent en petites communautés autonomes dans les montagnes.</p>
-	<?php endif ?>
+<h3>Économie</h3>
+<p>Le sous-sol de leur pays étant très pauvre en métaux et en minéraux précieux, les Lauriens sont éleveurs, artisans où agriculteurs.</p>
+<p>L’île entretient des relations commerciales avec la Burgonnie et l’Althusia, afin notamment de se procurer le fer et l’acier dont elle a besoin.</p>
+<?php if ($admin): ?>
+	<p class="admin">Un proverbe dit&nbsp;: «&nbsp;En Lauria, si l’on n’est ni artisan, ni berger, on ne peut être que prêtre&nbsp;!&nbsp;» Bien que légèrement exagérée, cette affirmation n’est pas tout à fait fausse.</p>
+<?php endif ?>
+<p>Sans le commerce avec l’étranger, l’île n’aurait jamais prospéré. Or, sans l’artisanat, aucun commerce n’aurait été possible. C’est pourquoi les Lauriens ont développé un talent exceptionnel pour le travail des peaux, le tissage et l’ébénisterie. Les meubles de Draki et les toiles de Mikalas comptent parmi les articles de luxe les plus prisés par les nobles de Paorn.</p>
+<p>Garder les immenses troupeaux de chèvres et de moutons qui paissent sur les flancs des montagnes n’est pas considéré comme une tâche «&nbsp;inférieure&nbsp;». En effet, certains intellectuels et penseurs surmenés n’hésitent pas à quitter leurs occupations habituelles pour se faire pâtres et passer plusieurs années à jouer de la flûte (l’instrument national laurien), tout en méditant sur la vanité du monde. Une fois l’esprit en paix, ils retournent à leurs vies familiales et professionnelles sans que personne y trouve à redire.</p>
+<?php if ($admin): ?>
+	<p class="admin">En Lauria, le terme «&nbsp;prêtre&nbsp;» désigne non seulement les hommes qui ont voué leur existence à un dieu (ou à des dieux), mais aussi ceux qui s’intéressent aux «&nbsp;sciences de l’esprit&nbsp;», que l’on considère ici comme étant d’essence divine. Cette catégorie englobe donc les religieux, les philosophes, les mathématiciens et les astrologues qui vivent en petites communautés autonomes dans les montagnes.</p>
+<?php endif ?>
 
-	<h3>Lieux intéressant</h3>
-	<h4>Draki</h4>
-	<p>Cette petite ville côtière produit une liqueur de figue très alcoolisée, la jarga, que les connaisseurs considèrent comme le «&nbsp;breuvage des dieux&nbsp;». Distillée selon des méthodes secrètes qui lui confèrent une saveur inimitable, la jarga est vendue à prix d’or. Et c’est pour cela, dit la légende, que Draki est une des rares cités lauriennes à être fortifiée. On prétend que ce nectar est une véritable drogue et qu’il suffit d’y goûter une fois pour ne plus pouvoir s’en passer.</p>
+<h3>Lieux intéressant</h3>
+<h4>Draki</h4>
+<p>Cette petite ville côtière produit une liqueur de figue très alcoolisée, la jarga, que les connaisseurs considèrent comme le «&nbsp;breuvage des dieux&nbsp;». Distillée selon des méthodes secrètes qui lui confèrent une saveur inimitable, la jarga est vendue à prix d’or. Et c’est pour cela, dit la légende, que Draki est une des rares cités lauriennes à être fortifiée. On prétend que ce nectar est une véritable drogue et qu’il suffit d’y goûter une fois pour ne plus pouvoir s’en passer.</p>
 
-	<h4>L’observatoire du mont Tarmis</h4>
-	<p>Haut lieu de l’astrologie et de l’astronomie, cet observatoire est installé au sommet d’un volcan éteint du sud de l’île. On dit que l’air y est tellement pur que l’on y voit deux fois plus d’étoiles que n’importe où ailleurs. Le monastère édifié sur les flancs du mont Tarmis a en outre la réputation de posséder l’une des plus riches bibliothèques de tout Paorn.</p>
+<h4>L’observatoire du mont Tarmis</h4>
+<p>Haut lieu de l’astrologie et de l’astronomie, cet observatoire est installé au sommet d’un volcan éteint du sud de l’île. On dit que l’air y est tellement pur que l’on y voit deux fois plus d’étoiles que n’importe où ailleurs. Le monastère édifié sur les flancs du mont Tarmis a en outre la réputation de posséder l’une des plus riches bibliothèques de tout Paorn.</p>
 
-	<h4>Les ruines</h4>
-	<p>Les montagnes lauriennes sont parsemées de ruines très anciennes de toutes sortes&nbsp;: palais, tombeaux, temples dédiés à des dieux inconnus, etc. Ses ruines sont désignées sous le terme générique de <i>Pasganon</i>. Il court dans Paorn un grand nombre de légendes parlant des richesses fabuleuses qu’abriteraient ces anciens édifices et il n’est pas rare de voir des groupes d’aventuriers venir dans cette région.</p>
-	<p>Les Lauriens considèrent toutefois que les ruines sont sacrée et ils en interdisent formellement l’accès. Les geôles de Parna regorgent de «&nbsp;contrevenants&nbsp;». Leurs rapines, une fois confisquées, ont largement contribué à la splendeur du Démétrion (voir <a href="/wiki/paorn/parna">Parna</a>).</p>
-	<p>Ces ruines se trouvent, pour la plupart, dans la partie inhabitée de l’île. Ces régions inhabitées peuvent être dangereuses (présence de créatures monstrueuses).</p>
+<h4>Les Pasganon</h4>
+<p>Les deux-tiers de la Lauria sont recouverts de montagnes inhabitées appelées <i>Pasganon</i>. Dans ces montagnes se trouvent de très anciennes ruines. Voir l’<a href="/wiki/paorn/pasganon">article dédié</a>.</p>
 
-	<h3>Particularités</h3>
-	<h4>Les pirates de la Passe</h4>
-	<p>La passe de Lauria est infestée de pirates qui n’hésitent pas à attaquer les flottes marchandes qui sillonnent ces eaux agitées de puissants tourbillons. Malgré tous ses efforts, la Burgonnie n’a jamais réussi à venir à bout de ces fiers gaillards qui font régner la terreur dans cette région.</p>
-	<p>Un certain mystère entoure ces pirates, car ils n’attaquent jamais les villages côtiers burgons et lauriens. Cette attitude étrange, de la part d’individus sans foi ni loi, s’expliquerait, selon certains commentateurs, par le fait que leurs équipages seraient composés de pêcheurs d’Artaille et de Lauria qui mèneraient une double existence dès que le poisson se fait trop rare. Si cela est vrai, personne n’a jusqu’à présent pu en apporter la preuve.</p>
+<h3>Particularités</h3>
+<h4>Les pirates de la Passe</h4>
+<p>La passe de Lauria est infestée de pirates qui n’hésitent pas à attaquer les flottes marchandes qui sillonnent ces eaux agitées de puissants tourbillons. Malgré tous ses efforts, la Burgonnie n’a jamais réussi à venir à bout de ces fiers gaillards qui font régner la terreur dans cette région.</p>
+<p>Un certain mystère entoure ces pirates, car ils n’attaquent jamais les villages côtiers burgons et lauriens. Cette attitude étrange, de la part d’individus sans foi ni loi, s’expliquerait, selon certains commentateurs, par le fait que leurs équipages seraient composés de pêcheurs d’Artaille et de Lauria qui mèneraient une double existence dès que le poisson se fait trop rare. Si cela est vrai, personne n’a jusqu’à présent pu en apporter la preuve.</p>

@@ -55,7 +55,7 @@
 
 			</div>
 		</div>
-		<textarea name="Description" placeholder="Description du sort" class="p-1" required tinyMCE><?= $sort->description ?></textarea>
+		<textarea name="Description" placeholder="Description du sort" class="p-1" tinyMCE><?= $sort->description ?></textarea>
 	</div>
 
 	<input hidden name="id" value="<?= $sort->id ?>">

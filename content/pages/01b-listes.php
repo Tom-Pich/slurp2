@@ -124,7 +124,7 @@ $affichage = $_POST["affichage"] ?? "categorie";
 		foreach ($avdesav_categories as $category) {
 			$avdesav_list = $avdesav_repo->getAvDesavByCategory($category);
 	?>
-			<details <?= $category === "Avantages surnaturels" ? "class='mt-1'" : "" ?>>
+			<details <?= $category === "Avantages surnaturels" ? "class='mt-1'" : "" ?> id="<?= $category ?>">
 				<summary>
 					<h3><?= $category ?></h3>
 				</summary>
@@ -168,7 +168,7 @@ $affichage = $_POST["affichage"] ?? "categorie";
 		foreach ($skills_categories as $category) {
 			$skills_list = $skills_repo->getSkillsByCategory($category) ?>
 
-			<details class="<?= $category === "Spécifiques" ? "mt-1" : "" ?>">
+			<details class="<?= $category === "Spécifiques" ? "mt-1" : "" ?>" id="<?= $category ?>">
 				<summary>
 					<h3><?= $category ?></h3>
 				</summary>
@@ -246,7 +246,7 @@ $affichage = $_POST["affichage"] ?? "categorie";
 		foreach ($colleges as $college) {
 			$spells = $spells_repo->getSpellsByCollege($college->id);
 	?>
-			<details <?= $college->id === 22 ? "class='mt-1'" : "" ?>>
+			<details <?= $college->id === 22 ? "class='mt-1'" : "" ?> id="<?= $college->name ?>">
 				<summary>
 					<h3><?= $college->name ?></h3>
 				</summary>

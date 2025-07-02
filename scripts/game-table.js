@@ -1,331 +1,192 @@
 import { qs, qsa, ce } from "./lib/dom-utils.js";
+import { Widget, Opponents, Scores, roll, scoreTester, fetchDamageExpression, getLocalisation, fetchResult } from "./game-table-utilities.js";
 import { int } from "./utilities.js";
-import { flushMsg } from "./ws-utilities.js";
-import { roll, getLocalisation, fetchDamageExpression, scoreTester, fetchResult, Opponent, setScoreWidget, mountNewScoreWidget, unmountScoreWidget, getHighestIndexOf } from "./game-table-utilities.js";
 
-// widgets order : opponents, scores, simple-dice, round-counter, damage-localisation, critical, burst, fright-check, general-state, wound-effect, explosion, object-damage, vehicle-collision, generate-npc, reaction-test
+// reset older version of localStorage
+const version = "2.0";
+const storedVersion = localStorage.getItem("version");
 
-const userId = int(qs("#login-element").dataset.id);
-const inputEntry = qs("#msg-input");
-
-const allWidgets = qsa("fieldset[data-name]");
-const widgetForms = qsa("main form");
-
-let opponents = qsa("[data-role=opponent-wrapper]");
-let scoreWidgets = qsa("[data-name=score-tester] form");
-const simpleDiceWidget = qs("[data-name=simple-roll] form");
-const roundCounterWidget = qs("[data-name=round-counter] form");
-const reactionWidget = qs("[data-name=widget-reaction] form");
-const weaponDamageWidget = qs("[data-name=widget-damage-location] form");
-const woundEffectsWidget = qs("[data-name=wound-effect] form");
-const criticalWidget = qs("[data-name=widget-criticals] form");
-const burstWidget = qs("[data-name=widget-burst] form");
-const generalStateWidget = qs("#general-state-widget");
-const frightcheckWidget = qs(["[data-name=fright-check] form"]);
-const explosionWidget = qs(["[data-name=explosion-widget] form"]);
-const objectDamageWidget = qs("#object-damages-widget");
-const vehicleCollisionWidget = qs("#vehicle-collision-widget");
-const npcWidget = qs("[data-name=npc-generator] form");
-const wildGeneratorWidget = qs("[data-name=wild-generator] form");
-
-const wdwStrength = weaponDamageWidget.querySelector("[data-type=strength]");
-const wdwCode = weaponDamageWidget.querySelector("[data-type=weapon-code]");
-const wdwHands = weaponDamageWidget.querySelector("[data-type=hands]");
-const wdwExpression = weaponDamageWidget.querySelector("[data-type=dice-code]");
-
-const dmgTypeSelector = woundEffectsWidget.querySelector("[data-type=dmg-type]");
-const bulletTypeSelector = woundEffectsWidget.querySelector("[data-type=bullet-type]");
-
-const objectDamagesObjectTypeSelector = qs("[data-type=object-damages-object-type]");
-const objectDamagesLocalisationSelector = qs("[data-type=object-damages-localisation-options]");
-
-// prevent default submit on each form
-widgetForms.forEach((form) => {
-    form.addEventListener("submit", (e) => e.preventDefault());
-});
-
-// initiate opponent list widgets
-opponents.forEach((opponent) => {
-    opponent = new Opponent(opponent);
-    opponent.setReactivity();
-});
-
-// opponent btns listener
-const opponentNumberBtns = qsa("[data-role=set-opponent-number]");
-opponentNumberBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-        if (parseInt(btn.value) === 1) Opponent.mountNewOpponent(opponents);
-        else if (opponents.length > 1) Opponent.unmountLastOpponent(opponents);
-        opponents = qsa("[data-role=opponent-wrapper]"); // refresh opponents
-    });
-});
-
-// update opponent list length to fit all stored opponents
-const opponentNumber = getHighestIndexOf("opponent");
-if (opponentNumber > 1) {
-    const plusOneBtn = qs("[data-role=set-opponent-number][value='1']");
-    for (let i = 0; i < parseInt(opponentNumber) - 1; i++) plusOneBtn.click();
+if (!storedVersion || storedVersion !== version) {
+    localStorage.clear();
+	console.info("localStorage has been reset")
+    localStorage.setItem("version", version);
 }
 
-// score tester widgets
-scoreWidgets.forEach((widget) => setScoreWidget(widget, inputEntry, flushMsg));
+const userID = parseInt(qs("#login-element").dataset.id);
 
-// add/remove score tester
-const scoreNumberBtns = qsa("[data-role=set-score-number]");
-scoreNumberBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-        if (int(btn.value) === 1) mountNewScoreWidget(scoreWidgets, inputEntry, flushMsg);
-        else if (scoreWidgets.length > 1) unmountScoreWidget(scoreWidgets);
-        scoreWidgets = qsa("[data-name=score-tester] form"); // refresh scoreWidgets
-    });
-});
+// special widgets
+const opponentsData = JSON.parse(localStorage.getItem("opponents")) ?? [];
+const opponents = new Opponents(opponentsData);
 
-// update score list length to fit all stored score
-const scoreWidgetNumber = getHighestIndexOf("skill");
-if (scoreWidgetNumber > 3) {
-    const plusOneBtn = qs("[data-role=set-score-number][value='1']");
-    for (let i = 0; i < scoreWidgetNumber - 3; i++) plusOneBtn.click();
-}
+const scoresData = JSON.parse(localStorage.getItem("skills")) ?? [];
+const scores = new Scores(scoresData);
 
-// sort scores alphabetically
-const scoreSortBtn = qs("[data-role=sort-scores]");
-scoreSortBtn.addEventListener("click", () => {
-    const widgetsData = [];
-    scoreWidgets.forEach((widget) => {
-        const skillName = widget.querySelector("[data-type=skill-name]");
-		//const skillNumber = skillName.dataset.skillNumber;
-        const skillScore = widget.querySelector("[data-type=score]");
-        const skillModif = widget.querySelector("[data-type=modif]");
-        const data = [skillName.value, skillScore.value, skillModif.value];
-        
-		if (data[0] !== "") widgetsData.push(data);
-        widgetsData.sort((a, b) => a[0].localeCompare(b[0], "fr"));
-		
-		skillName.value = "";
-		skillScore.value = "";
-		skillModif.value = "";
-		widget.dispatchEvent(new Event("keyup")); // update localStorage
-    });
-    widgetsData.forEach((widgetData, index) => {
-		scoreWidgets[index].querySelector("[data-type=skill-name]").value = widgetData[0];
-		scoreWidgets[index].querySelector("[data-type=score]").value = widgetData[1];
-		scoreWidgets[index].querySelector("[data-type=modif]").value = widgetData[2];
-		scoreWidgets[index].dispatchEvent(new Event("keyup"))
-	});
-});
-
-// simple dice thrower
-simpleDiceWidget.addEventListener("submit", (e) => {
-    const expression = simpleDiceWidget.querySelector("[name=dice-expression]").value;
+// standard widgets
+const simpleDiceWidget = new Widget("simple-roll", function () {
+    const expression = this.form.expression.value;
     const rollDice = roll(expression);
-    inputEntry.value += `${rollDice.expression} → ${rollDice.result}`;
-    flushMsg("chat-roll");
+    return `${rollDice.expression} → ${rollDice.result}`;
 });
 
-// round counter widget
-roundCounterWidget.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const opponents = qsa("[data-role=opponent-wrapper]"); // refresh opponents
-    const roundNumberInput = roundCounterWidget.querySelector("[data-type=round-number]");
-    const roundNumber = Math.max(int(roundNumberInput.value), 1);
-    const roundMsgInput = roundCounterWidget.querySelector("[data-type=initiative-order]");
+const roundCounterWidget = new Widget("round-counter", function () {
+    const roundNumberInput = this.form.round;
+    const roundMsgInput = this.form.comment;
 
-    // transform roundMsgInput into filtered array of number (default [])
-    let numbersInitiativeOrder = roundMsgInput.value.match(/\d+/g); // keep only digits
-    numbersInitiativeOrder = numbersInitiativeOrder || [];
-    numbersInitiativeOrder = numbersInitiativeOrder.map(Number);
-
-    // filter impossible opponent number and fetch matching names in the opponent widget (with default value)
-    numbersInitiativeOrder = numbersInitiativeOrder.filter((num) => num <= opponents.length && num >= 1 && Number.isInteger(num));
-    const opponentsInitiativeOrder = numbersInitiativeOrder.map((num) => opponents[num - 1].querySelector("[name=name]").value || `Protagoniste ${num}`);
-
-    // add message to input entry and flush message as standard chat message
-    inputEntry.value += `*Round ${roundNumber}* – `;
-    if (!opponentsInitiativeOrder.length) inputEntry.value += roundMsgInput.value;
-    else inputEntry.value += `${opponentsInitiativeOrder.join(", ")}`;
-    flushMsg("chat-message");
+    const roundNumber = int(roundNumberInput.value);
     roundNumberInput.value = roundNumber + 1;
+
+    const parsedInput = roundMsgInput.value.replace(/\d+/g, (match) => {
+        const index = parseInt(match) - 1;
+        if (opponents.list[index] && opponents.list[index].name) return opponents.list[index].name;
+        return match;
+    });
+
+    // filter tags in parsedInput
+    const temp = ce("div");
+    temp.innerHTML = parsedInput;
+    const safeParsedInput = temp.textContent || temp.innerText;
+
+    return `*Round ${roundNumber}*${safeParsedInput !== "" ? " – " + safeParsedInput : ""}`;
 });
 
-// reaction test widget
-reactionWidget.addEventListener("submit", async (e) => {
-    const reactionModifier = int(reactionWidget.querySelector("[data-type=reaction-modifier]").value.trim("+"));
-    const reactionTest = roll("1d").result + reactionModifier;
-    let data = new FormData();
-    data.append("reaction-test", reactionTest);
-    let result = await fetchResult("/api/reaction-test", data);
-    inputEntry.value += `Jet de réaction (${reactionTest}) → ${result}`;
-    flushMsg("chat-roll");
-});
+const weaponDamageWidget = new Widget("widget-damage-location", async function () {
+    const strength = this.form.strength;
+    const dmgCode = this.form.code;
+    const hands = this.form.hands;
+    const dmgExpression = this.form.expression;
 
-// weapon damage and localisation widget
-wdwStrength.addEventListener("keyup", async (e) => {
-    const expression = await fetchDamageExpression(wdwStrength.value, wdwCode.value, wdwHands.value);
-    if (expression !== undefined) wdwExpression.value = expression;
-});
-wdwCode.addEventListener("keyup", async (e) => {
-    const expression = await fetchDamageExpression(wdwStrength.value, wdwCode.value, wdwHands.value);
-    if (expression !== undefined) wdwExpression.value = expression;
-});
-wdwHands.addEventListener("change", async (e) => {
-    const expression = await fetchDamageExpression(wdwStrength.value, wdwCode.value, wdwHands.value);
-    if (expression !== undefined) wdwExpression.value = expression;
-});
-weaponDamageWidget.addEventListener("submit", async (e) => {
-    const damages = roll(wdwExpression.value);
+    const expression = await fetchDamageExpression(strength.value, dmgCode.value, hands.value);
+    if (expression) dmgExpression.value = expression;
+
+    const damages = roll(dmgExpression.value);
     const localisation = await getLocalisation();
 
     // updating wounds effect widget
-    woundEffectsWidget.querySelector("[data-type=raw-dmg]").value = damages.result;
-    woundEffectsWidget.querySelector("[data-type=localisation]").value = localisation[1];
+    qs("[data-name=wound-effect] [name=raw-dmg]").value = damages.result;
+    qs("[data-name=wound-effect] [name=localisation]").value = localisation[1];
 
-    // flushing result
-    inputEntry.value += `Dégâts (${damages.expression})&nbsp;: ${damages.result} – ${localisation[0]}`;
-    flushMsg("chat-roll");
+    return `Dégâts (${damages.expression})&nbsp;: ${damages.result} – ${localisation[0]}`;
 });
 
-// critical widget
-criticalWidget.addEventListener("submit", async (e) => {
-    const table = criticalWidget.querySelector("[data-type=critical-categories]").value;
-    let data = new FormData();
-    data.append("table", table);
+const criticalWidget = new Widget("widget-criticals", async function () {
+    const data = new FormData(this.form);
     data.append("roll-3d", roll("3d").result);
     data.append("roll-1d", roll("1d").result);
     const critical = await fetchResult("/api/critical-tables", data);
-    inputEntry.value += `${critical}`;
-    flushMsg("chat-roll");
+    return critical;
 });
 
-// burst widget
-burstWidget.addEventListener("submit", async (e) => {
-    const rcl = burstWidget.querySelector("[data-type=rcl]").value;
-    const bullets = burstWidget.querySelector("[data-type=fired-bullets]").value;
-    const mr = burstWidget.querySelector("[data-type=mr]").value;
-    const damagesDices = burstWidget.querySelector("[data-type=damage-dices]").value;
+const burstWidget = new Widget("widget-burst", async function () {
+    const data = new FormData(this.form);
+    const hitNumbers = await fetchResult("/api/burst-hits", data);
 
-    // get hit numbers
-    let data = new FormData();
-    data.append("rcl", rcl);
-    data.append("bullets", bullets);
-    data.append("mr", mr);
-    const hitNumbers = await fetch("/api/burst-hits", {
-        method: "post",
-        body: data,
-    })
-        .then((result) => result.json())
-        .then((result) => result.data);
-
-    // get localisation and damages for each hit
-    let hits = [];
+    const hits = [];
+    const damagesExpression = this.form.expression.value;
     for (let i = 0; i < hitNumbers; i++) {
-        const damages = roll(damagesDices).result;
-        const localisation = await getLocalisation();
-        hits.push(`${damages} – ${localisation}`);
+        const damages = roll(damagesExpression).result;
+        const localisation = this.form.localisation.checked ? await getLocalisation() : "";
+		const localisationString = localisation ? `– ${localisation[0]}` : ""
+        hits.push(`${damages} pts ${localisationString}`);
     }
 
     // formatting answer
-    let formattedMsg = `<b>Rafale&nbsp;:</b> Rcl ${rcl} – Balles ${bullets} – MR ${mr}`;
+    let formattedMsg = `<b>Rafale&nbsp;:</b> Rcl ${this.form.rcl.value} – Balles ${this.form.bullets.value} – MR ${this.form.mr.value}`;
     hits.forEach((value, index) => {
         formattedMsg += `<br><b>${index + 1}.</b> ${value}`;
     });
 
-    inputEntry.value += formattedMsg;
-    flushMsg("chat-roll");
+    return formattedMsg;
 });
 
-// general state widget (add category !)
-generalStateWidget.addEventListener("submit", async (e) => {
-    const opponentNumber = generalStateWidget.querySelector("[name=opponent-selector]").value;
-    const opponent = new Opponent(opponents[opponentNumber - 1]);
+const frightcheckWidget = new Widget("fright-check", async function () {
+    const sfScore = int(this.form.querySelector(["[name=sf-score]"]).value);
+    const sfModif = int(this.form.querySelector(["[name=sf-modif]"]).value);
+
+    const data = new FormData(this.form);
+    const frighcheck = scoreTester(sfScore + sfModif, roll("3d").result);
+    const rolls = [];
+    for (let i = 0; i <= 6; i++) rolls.push(roll("3d").result);
+
+    data.append("frightcheck-MR", frighcheck.MR);
+    data.append("frightcheck-symbol", frighcheck.symbol);
+    data.append("frightcheck-critical", frighcheck.critical);
+    data.append("rolls", rolls.join(","));
+
+    const result = await fetchResult("/api/fright-check", data);
+    return result;
+});
+
+const generalStateWidget = new Widget("general-health-state", async function () {
+    const opponentIndex = this.form.querySelector("[name=opponent-selector]").value;
+    const opponent = opponents.list[opponentIndex];
+
+    if (!opponent || !opponent.pdvm) return null;
 
     const data = new FormData();
-    data.append("san", opponent.san.value);
-    data.append("pdvm", opponent.pdvm.value);
-    data.append("pdv", opponent.pdv.value);
-    data.append("pain-resistance", opponent["pain-resistance"].value);
-    data.append("members", opponent.members.value);
+    data.append("san", opponent.san ?? null);
+    data.append("pdvm", opponent.pdvm ?? null);
+    data.append("pdv", opponent.pdv ?? opponent.pdvm);
+    data.append("pain-resistance", opponent["painResistance"] ?? 0);
+    data.append("members", opponent.members ?? null);
 
     const response = await fetchResult("/api/general-state", data);
 
-    let formattedMsg = `État général de <b>${opponent.name.value || "Protagoniste " + opponent.number}</b><br>${response.general}`;
-    if (response.members !== undefined) {
-        for (const [member, state] of Object.entries(response.members)) formattedMsg += `<br>${member}&nbsp;: ${state}`;
+    let formattedMsg = `État général de <b>${opponent.name}</b><br>${response.general}`;
+    if (response.members !== undefined && !response["members-error"]) {
+        for (const [member, state] of Object.entries(response.members)) formattedMsg += `<br>${member}&nbsp;: ${state.description}`;
     }
     if (response["members-error"]) formattedMsg += `<br>Membres&nbsp;: données incohérentes`;
-    inputEntry.value += formattedMsg;
-    flushMsg("chat-roll");
+
+    return formattedMsg;
 });
 
-// wound effects widget
-woundEffectsWidget.addEventListener("submit", async (e) => {
-    const opponentNumber = woundEffectsWidget.querySelector("[name=opponent-selector]").value;
-    const opponent = new Opponent(opponents[opponentNumber - 1]);
-    const rawDmg = roll(woundEffectsWidget.querySelector("[data-type=raw-dmg]").value).result;
-    const rd = woundEffectsWidget.querySelector("[data-type=rd]").value;
-    const dmgType = woundEffectsWidget.querySelector("[data-type=dmg-type]").value;
-    const bulletType = woundEffectsWidget.querySelector("[data-type=bullet-type]").value;
-    const localisation = woundEffectsWidget.querySelector("[data-type=localisation]").value;
+const woundEffectsWidget = new Widget("wound-effect", async function () {
+    const opponentIndex = this.form["opponent-selector"].value;
+    const opponent = opponents.list[opponentIndex];
+    const rawDmg = roll(this.form["raw-dmg"].value).result;
     const rolls = [];
     for (let i = 0; i < 7; i++) rolls.push(roll("3d").result);
 
-    const data = new FormData();
-    data.append("category", opponent.category.value);
-    data.append("dex", opponent.dex.value);
-    data.append("san", opponent.san.value);
-    data.append("pdvm", opponent.pdvm.value);
-    data.append("pdv", opponent.pdv.value);
-    data.append("pain-resistance", opponent["pain-resistance"].value);
-    data.append("raw-dmg", rawDmg || 0);
-    data.append("rd", rd || 0);
-    data.append("dmg-type", dmgType);
-    data.append("bullet-type", bulletType);
-    data.append("localisation", localisation);
+    const data = new FormData(this.form);
+    data.append("category", opponent.category ?? "std");
+    data.append("dex", opponent.dex);
+    data.append("san", opponent.san);
+    data.append("pdvm", opponent.pdvm);
+    data.append("pdv", opponent.pdv ?? opponent.pdvm);
+    data.append("pain-resistance", opponent.painResistance);
+    data.set("raw-dmg", rawDmg);
     data.append("rolls", rolls);
 
     const result = await fetchResult("/api/wound-effects", data);
 
-    if (result.erreur) {
-        inputEntry.value += "Data opposants manquantes";
-        flushMsg("chat-roll");
-        return;
-    }
+    if (result.erreur) return "Data opposants manquantes";
 
-    let formattedMsg = `<b>${opponent.name.value || "Protagoniste " + opponent.number} – ${result["dégâts bruts"]} ( ${result["type dégâts"]} ${result["localisation"]})</b>`;
-    let isNotDead = true;
+    let formattedMsg = `<b>${opponent.name} – ${result["dégâts bruts"]} ( ${result["type dégâts"]} ${result["localisation"]})</b>`;
     formattedMsg += `<br>Dégâts effectifs&nbsp;: ${result["dégâts effectifs"]}`;
     if (result["recul"]) formattedMsg += `<br>Recul de ${result["recul"]}&nbsp;m.`;
-    if (result["mort"]) {
-        formattedMsg += `<br>${result["mort"]}`;
-        isNotDead = false;
-    }
-    if (isNotDead) {
-        if (result["autres effets"]) {
-            formattedMsg += `<br>${result["autres effets"]}`;
-        }
-        if (result["sonné"] && !result["perte de conscience"]) {
-            formattedMsg += `<br>${result["sonné"]}`;
-        }
-        if (result["perte de conscience"]) {
-            formattedMsg += `<br>Le personnage perd conscience.`;
-        }
-        if (result["chute"] && !result["perte de conscience"]) {
-            formattedMsg += `<br>Le personnage chûte.`;
-        }
-        if (result["dégâts membre"]) {
-            formattedMsg += `<br>${result["dégâts membre"]}`;
-            if (result["état membre"] !== "") {
-                formattedMsg += ` (${result["état membre"]})`;
-            }
-        }
+    if (result["mort"]) formattedMsg += `<br>${result["mort"]}`;
+    const immediateDeath = result["mort"] && result["mort"].includes("😵");
+    if (!immediateDeath) {
+        if (result["autres effets"]) formattedMsg += `<br>${result["autres effets"]}`;
+        if (result["sonné"] && !result["perte de conscience"]) formattedMsg += `<br>${result["sonné"]}`;
+        if (result["perte de conscience"]) formattedMsg += `<br>Le personnage perd conscience.`;
+        if (result["chute"] && !result["perte de conscience"]) formattedMsg += `<br>Le personnage chûte.`;
+        if (result["dégâts membre"]) formattedMsg += `<br>${result["dégâts membre"]}`;
+        if (result["état membre"] !== "") formattedMsg += ` (${result["état membre"]})`;
     }
 
-    inputEntry.value += formattedMsg;
-    flushMsg("chat-roll");
-    opponent.pdv.value = result["pdv"];
+    // update opponent pdv
+    const pdvInput = qs(`[data-role="opponent-wrapper"][data-index="${opponentIndex}"]`).querySelector("[name=pdv]");
+    pdvInput.value = result["pdv"];
+    pdvInput.dispatchEvent(new Event("change", { bubbles: true }));
+
+    return formattedMsg;
 });
 
-// unfreeze bullet type
+// unfreeze bullet type in woundEffectsWidget
+const dmgTypeSelector = woundEffectsWidget.form["dmg-type"];
 dmgTypeSelector.addEventListener("change", (e) => {
+    const bulletTypeSelector = woundEffectsWidget.form["bullet-type"];
     if (["b0", "b1", "b2", "b3"].includes(dmgTypeSelector.value)) {
         bulletTypeSelector.disabled = false;
     } else {
@@ -334,45 +195,37 @@ dmgTypeSelector.addEventListener("change", (e) => {
     }
 });
 
-// fright check Widget
-frightcheckWidget.addEventListener("submit", async (e) => {
-    const frightLevel = frightcheckWidget.querySelector(["[data-type=fright-level]"]).value;
-    const sfScore = int(frightcheckWidget.querySelector(["[data-type=sf-score]"]).value);
-    const sfModif = int(frightcheckWidget.querySelector(["[data-type=sf-modif]"]).value);
-    const sanScore = int(frightcheckWidget.querySelector(["[data-type=san-score]"]).value);
-    const netScore = sfScore + sfModif;
+const bleedingWidget = new Widget("bleeding-widget", async function () {
+    const opponentIndex = this.form["opponent-selector"].value;
+    const opponent = opponents.list[opponentIndex];
+    if (!opponent.san || !opponent.pdvm) return "Données manquantes";
 
-    if (sfScore <= 0 || (sanScore <= 0 && frightLevel >= 5)) {
-        e.preventDefault();
-        return;
-    }
+    const sanModif = int(this.form.modif.value);
+    const severity = int(this.form.severity.value);
+    const sanTest = scoreTester(opponent.san + sanModif, roll("3d").result);
 
     const data = new FormData();
-    const frighcheck = scoreTester(netScore, roll("3d").result);
-    const rolls = [];
-    for (let i = 0; i <= 6; i++) {
-        rolls.push(roll("3d").result);
-    }
+    data.append("san-test", JSON.stringify(sanTest));
+    data.append("pdvm", opponent.pdvm);
+    data.append("severity", severity);
 
-    data.append("fright-level", frightLevel);
-    data.append("sf-score", sfScore);
-    data.append("san-score", sanScore);
-    data.append("frightcheck-MR", frighcheck.MR);
-    data.append("frightcheck-symbol", frighcheck.symbol);
-    data.append("frightcheck-critical", frighcheck.critical);
-    data.append("rolls", rolls.join(","));
+    const result = await fetchResult("/api/bleeding-effects", data);
+    if (result.error) return "Données entrées incohérentes et/ou manquantes";
 
-    let result = await fetchResult("/api/fright-check", data);
-    inputEntry.value = result;
-    flushMsg("chat-roll", frighcheck.symbol);
+    let formattedMsg = `Hémorragie : PdV perdu(s) ${result["pdv-loss"]}`;
+    if (result.comment) formattedMsg += `<br>${result.comment}`;
+
+    // update opponent pdv
+    const pdvInput = qs(`[data-role="opponent-wrapper"][data-index="${opponentIndex}"]`).querySelector("[name=pdv]");
+    if (pdvInput.value === "") pdvInput.value = opponent.pdvm;
+    pdvInput.value -= result["pdv-loss"];
+    pdvInput.dispatchEvent(new Event("change", { bubbles: true }));
+
+    return formattedMsg;
 });
 
-// explosion widget
-explosionWidget.addEventListener("submit", (e) => {
-    const dmgExpression = qs("[data-type=explosion-dmg]").value;
-    const distance = qs("[data-type=explosion-distance]").value;
-    const fragSurface = qs("[data-type=explosion-frag-surface]").value;
-    const isFragmentationDevice = qs("[data-type=explosion-frag-device]").checked;
+const explosionWidget = new Widget("explosion-widget", async function () {
+    const dmgExpression = this.form["explosion-dmg"].value;
 
     // evaluate damages – compression around a mathematical expectation of 5 per dice
     const roll1 = roll(dmgExpression).result;
@@ -380,105 +233,64 @@ explosionWidget.addEventListener("submit", (e) => {
     const roll3 = roll(dmgExpression).result;
     const dmgValue = ((roll1 + roll2 + roll3) / 3) * 1.43;
 
-    const data = new FormData();
+    const data = new FormData(this.form);
     data.append("damages", dmgValue);
-    data.append("distance", distance);
-    data.append("fragmentation-surface", fragSurface);
-    data.append("is-fragmentation-device", isFragmentationDevice);
+    console.log(data);
 
-    fetch("/api/explosion-damages", {
-        method: "post",
-        body: data,
-    })
-        .then((response) => response.json())
-        .then((response) => {
-            const results = response.data;
-            const formattedMsg = `<b>Explosion&nbsp;:</b> dégâts ${results.damages} – fragment(s) ${results.fragments} – hauteur de chute ${results.height}&nbsp;m`;
-            inputEntry.value += formattedMsg;
-            flushMsg("chat-roll");
-        });
+    const results = await fetchResult("/api/explosion-damages", data);
+    const formattedMsg = `<b>Explosion :</b> dégâts ${results.damages} – fragment(s) ${results.fragments} – hauteur de chute ${results.height} m`;
+    return formattedMsg;
 });
 
-// object damages widget – modify localisation options according to object type
-objectDamagesObjectTypeSelector.addEventListener("change", (e) => {
-    const data = new FormData();
-    data.append("object-type", objectDamagesObjectTypeSelector.value);
-    fetch("/api/object-localisation-options", {
-        method: "post",
-        body: data,
-    })
-        .then((response) => response.json())
-        .then((response) => {
-            objectDamagesLocalisationSelector.innerHTML = "";
-            response.data.forEach((localisation) => {
-                localisation = localisation.charAt(0).toUpperCase() + localisation.slice(1);
-                const option = ce("option");
-                option.innerText = localisation;
-                objectDamagesLocalisationSelector.appendChild(option);
-            });
-        });
-});
+const objectDamageWidget = new Widget("object-damages", async function () {
+    const dmgValue = roll(this.form["dmg-code"].value).result;
 
-// object damages widget – submit
-objectDamageWidget.addEventListener("submit", (e) => {
-    const pdsm = qs("[data-type=object-damages-pdsm]").value;
-    const pds = qs("[data-type=object-damages-pds]").value;
-    const integrite = qs("[data-type=object-damages-integrite]").value;
-    const rd = qs("[data-type=object-damages-rd]").value;
-    const dmgCode = qs("[data-type=object-damages-damages-code]").value;
-    const dmgValue = roll(dmgCode).result;
-
-    if (isNaN(parseInt(pdsm)) || isNaN(parseInt(integrite)) || isNaN(parseInt(dmgValue))) {
-        return;
-    }
-
-    const data = new FormData();
-    data.append("pdsm", pdsm);
-    data.append("pds", pds);
-    data.append("integrite", integrite);
-    data.append("rd", rd);
-    data.append("dmgValue", dmgValue);
-    data.append("dmgType", qs("[data-type=object-damages-damages-type]").value);
-    data.append("objectType", objectDamagesObjectTypeSelector.value);
-    data.append("localisation", objectDamagesLocalisationSelector.value);
+    const data = new FormData(this.form);
+    data.append("dmg-value", dmgValue);
     data.append("rolls", [roll("3d").result, roll("3d").result, roll("3d").result, roll("3d").result]);
+    console.log(data);
 
-    fetch("/api/object-damages-effects", {
-        method: "post",
-        body: data,
-    })
-        .then((response) => response.json())
-        .then((response) => {
-            const results = response.data;
-            console.log(results);
-            qs("[data-type=object-damages-pds]").value = results.pds;
-            let formattedMsg = `
+    const results = await fetchResult("/api/object-damages-effects", data);
+    console.log(results);
+    this.form.pds.value = results.pds;
+
+    let formattedMsg = `
 				<b>Dégâts ${results.objectType}</b><br>
 				PdSm&nbsp;: ${results.pdsm} – RD&nbsp;: ${results.rd}<br>
 				Dégâts&nbsp;: ${results.netDamages} (${results.damagesLevel})<br>
 				PdS restant&nbsp;: ${results.pds} (${results.stateLevel})
 			`;
-            if (results.sideEffects.length) {
-                formattedMsg += "<br>";
-                for (let effect of results.sideEffects) {
-                    formattedMsg += `•&nbsp;${effect[0]} niv. ${effect[1]}<br>`;
-                }
-            }
-            inputEntry.value += formattedMsg;
-            flushMsg("chat-roll");
-        });
+    if (results.sideEffects.length) {
+        formattedMsg += "<br>";
+        for (let effect of results.sideEffects) {
+            formattedMsg += `•&nbsp;${effect[0]} niv. ${effect[1]}<br>`;
+        }
+    }
+    return formattedMsg;
 });
 
-// vehicle collision widget
-vehicleCollisionWidget.addEventListener("submit", (e) => {
-    const pdsm = parseInt(qs("[data-type=vehicle-collision-pdsm]").value);
-    const severity = qs("[data-type=vehicle-collision-severity]");
+// modify localisation options according to object type
+objectDamageWidget.form["object-type"].addEventListener("change", async (e) => {
+    const data = new FormData();
+    data.append("object-type", e.target.value);
+    console.log(data);
+    const options = await fetchResult("/api/object-localisation-options", data);
+    objectDamageWidget.form["localisation"].innerHTML = "";
+    options.forEach((localisation) => {
+        localisation = localisation.charAt(0).toUpperCase() + localisation.slice(1);
+        const option = ce("option");
+        option.innerText = localisation;
+        objectDamageWidget.form["localisation"].appendChild(option);
+    });
+});
+
+const collisionWidget = new Widget("vehicle-collision", async function () {
+    const pdsm = parseInt(this.form.pdsm.value);
+    const severity = this.form.severity;
     const severityIndex = parseInt(severity.value);
     const severityLevel = severity.options[severity.selectedIndex].innerText;
 
-    if (!pdsm) {
-        return;
-    }
+    if (!pdsm) return;
     let damages;
     switch (severityIndex) {
         case 1:
@@ -501,33 +313,17 @@ vehicleCollisionWidget.addEventListener("submit", (e) => {
     }
 
     const formattedMsg = `<b>Collision</b> ${severityLevel}&nbsp;: dégâts ${damages}`;
-    inputEntry.value += formattedMsg;
-    flushMsg("chat-roll");
+    return formattedMsg;
 });
 
-// NPC widget
-const npcRegion = npcWidget.querySelector("[name=region]");
-if (localStorage.getItem("npc-region") !== null) npcRegion.value = localStorage.getItem("npc-region");
-npcWidget.addEventListener("change", () => {
-    localStorage.setItem("npc-region", npcRegion.value);
-});
-npcWidget.addEventListener("submit", async (e) => {
-    const data = new FormData(npcWidget);
+const npcWidget = new Widget("npc-generator", async function () {
+    const data = new FormData(this.form);
 
-    let result = await fetchResult("/api/npc-generator", data);
-    inputEntry.value = `/${userId} `; // always secret
+    const result = await fetchResult("/api/npc-generator", data);
 
-    if (result.error) {
-        inputEntry.value += "Paramètres PNJ invalides";
-        flushMsg("chat-roll");
-        return;
-    }
+    if (result.error) return `/${userID} Paramètres PNJ invalides`;
 
-    if (result["name-only"]) {
-        inputEntry.value += result.name;
-        flushMsg("chat-roll");
-        return;
-    }
+    if (result["name-only"]) return `/${userID} ${result.name}`;
 
     const facialHair = result.facialHair ? `${result.facialHair},` : "";
     const corpulence = result.corpulence !== "moyenne" ? `${result.corpulence}, ` : "";
@@ -536,7 +332,7 @@ npcWidget.addEventListener("submit", async (e) => {
     const intelligence = result.intelligence !== "moyenne" ? `${result.intelligence}, ` : "";
     const specialTraits = result.specialTraits ? `<br>Choisir une particularité parmi&nbsp;: <i>${result.specialTraits}</i>` : "";
 
-    inputEntry.value += `
+    const formattedMsg = `/${userID}
 		<b>${result.name}</b><br>
 		${result.hair},
 		${facialHair}
@@ -548,20 +344,28 @@ npcWidget.addEventListener("submit", async (e) => {
 		${result.social}
 		${specialTraits}
 	`;
-    flushMsg("chat-roll");
+    return formattedMsg;
 });
 
-// Wild generator widget
-wildGeneratorWidget.addEventListener("submit", async (e) => {
-    const data = new FormData(wildGeneratorWidget);
+// set and save NPC region
+if (localStorage.getItem("npc-region") !== null) npcWidget.form.region.value = localStorage.getItem("npc-region");
+npcWidget.form.region.addEventListener("change", () => {
+    localStorage.setItem("npc-region", npcWidget.form.region.value);
+});
 
-    let result = await fetchResult("/api/wild-generator", data);
-    inputEntry.value = `/${userId} `; // always secret
+const reactionWidget = new Widget("widget-reaction", async function () {
+    const reactionModifier = int(this.form.modifier.value.trim("+"));
+    const reactionTest = roll("1d").result + reactionModifier;
+    const data = new FormData();
+    data.append("reaction-test", reactionTest);
+    const result = await fetchResult("/api/reaction-test", data);
+    return `/${userID} Jet de réaction (${reactionTest}) → ${result}`;
+});
 
-    inputEntry.value += `
-		${result}
-	`;
-    flushMsg("chat-roll");
+const wildGeneratorWidget = new Widget("wild-generator", async function () {
+    const data = new FormData(this.form);
+    const result = await fetchResult("/api/wild-generator", data);
+    return `/${userID} ${result}`;
 });
 
 // ––– Widgets config ––––––––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -569,13 +373,13 @@ wildGeneratorWidget.addEventListener("submit", async (e) => {
 
 const checkboxesWrapper = qs("[data-role=widget-choices]");
 const checkboxTemplate = qs("[data-role=widget-choices] template");
-const defaultDisplayedWidgets = { "simple-roll": true, "score-tester": true, "widget-damage-location": true, "widget-criticals": true };
+const defaultDisplayedWidgets = {/*  "simple-roll": true, "scores-tester": true,  */"widget-damage-location": true, "widget-criticals": true };
 const displayedWidgets = JSON.parse(localStorage.getItem("display-widgets")) || defaultDisplayedWidgets;
 
 // build widgets choice dialog
+const allWidgets = qsa("fieldset[data-name]");
 allWidgets.forEach((widget) => {
     const widgetEntry = checkboxTemplate.content.cloneNode(true); // get template clone
-
     const checkbox = widgetEntry.querySelector("input"); // handling checkbox functionnalities
     checkbox.dataset.name = widget.dataset.name;
     if (displayedWidgets[widget.dataset.name]) checkbox.checked = true;
@@ -589,7 +393,7 @@ allWidgets.forEach((widget) => {
     checkboxesWrapper.appendChild(widgetEntry);
 });
 
-/** update displayed widgets and checkboxes according to stored state */
+// update displayed widgets and checkboxes according to stored state
 function udpateDisplayedWidget() {
     allWidgets.forEach((widget) => (widget.hidden = !displayedWidgets[widget.dataset.name]));
 }

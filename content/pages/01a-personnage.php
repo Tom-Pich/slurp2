@@ -442,7 +442,7 @@ $repo = new SkillRepository;
 		</details>
 
 		<h4>Compétences irrégulières</h4>
-		<p>Certaines compétences on un niveau minimum. Ça signifique que leur niveau par défaut n’est pas celui donné par leur type, mais celui indiqué dans leur description.</p>
+		<p>Certaines compétences ont un niveau minimum. Ça signifie que leur niveau par défaut n’est pas celui donné par leur type, mais celui indiqué dans leur description.</p>
 		<p>Ce niveau par défaut est gratuit, et le coût de progression correspond à celui associé à leur type. Par exemple, la compétence <i>Esquive</i> et de type D(-8). Son niveau minimum est -3. Ce niveau coûte normalement 1 pt de personnage, qui est offert. Pour faire passer cette compétence au niveau 0, qui coûte normalement 8 pts, il faudra payer la différence, c’est-à-dire 7 pts.</p>
 
 		<?php

@@ -64,7 +64,7 @@ class Skill implements RulesItem
 	 * parse_difficulty
 	 *
 	 * @param  string $expression like -6, (-2) etc
-	 * @return array first element: difficulty as integer, second element: has default (boolean)
+	 * @return array first element: difficulty as negative integer, second element: has default (boolean)
 	 */
 	private function parse_difficulty(string $expression)
 	{
@@ -152,6 +152,7 @@ class Skill implements RulesItem
 	 * @param array $raw_attr indexed array with unmodified attributes
 	 * @param array $attr indexed array with For, Dex, Int, San, Per Vol
 	 * @param array $modifiers index array with all character modifiers entries 
+	 * @param array $special_traits may contain mémoire infaillible
 	 * @return array  [processed skills, skills total points, updated character modifiers]
 	 */
 	public static function processSkills(array $skills, array $raw_attr, array $attr, array $modifiers, array $special_traits): array

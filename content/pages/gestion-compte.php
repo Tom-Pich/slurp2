@@ -40,12 +40,25 @@
 			<div class="fw-700 bg-grey-900 p-½">Fiche de perso</div>
 			<div class="flex-s gap-1">
 				<label>
-					<input type="radio" name="style" value="normal" <?= $page["style"] !== "compact" ? "" : "checked" ?>>
+					<input type="radio" name="style" value="normal" <?= $page["style"] !== "normal" ? "" : "checked" ?>>
 					Normale
 				</label>
 				<label>
 					<input type="radio" name="style" value="compact" <?= $page["style"] === "compact" ? "checked" : "" ?>>
 					Compacte
+				</label>
+			</div>
+		</div>
+		<div class="grid ai-center option-grid">
+			<div class="fw-700 bg-grey-900 p-½">Thème</div>
+			<div class="flex-s gap-1">
+				<label>
+					<input type="radio" name="theme" value="standard" <?= $page["theme"] === "standard" ? "" : "checked" ?>>
+					Standard
+				</label>
+				<label>
+					<input type="radio" name="theme" value="medieval" <?= $page["theme"] === "medieval" ? "checked" : "" ?>>
+					Médiéval
 				</label>
 			</div>
 		</div>

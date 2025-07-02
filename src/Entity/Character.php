@@ -184,10 +184,13 @@ class Character
 			$this->state["Santé-mentale"] = MentalHealthController::getEffects($this->state["PdE"], $this->attributes["PdE"]);
 
 			if (!empty($this->state["Membres"])) {
-				$this->state["Membres"] = TextParser::parsePseudoArray2Array($this->state["Membres"]);
+				$members_state = WoundController::getMembersState($this->attributes["PdV"], $this->state["Membres"], $this->special_traits["resistance-douleur"]);
 				$explicit_damages = [];
-				foreach ($this->state["Membres"] as $member => $damage) {
-					$explicit_damages[] = "<b>" . ucfirst(WoundController::member_abbreviation[$member]["full-name"]) . " ($damage)</b>&nbsp;: " . WoundController::getMemberEffects($damage, $this->attributes["PdV"], WoundController::member_abbreviation[$member]["member"], $this->special_traits["resistance-douleur"])["description"];
+				if ($members_state["error"]) {$explicit_damages[] = "Données de blessures aux membres incohérentes";}
+				else {
+					foreach($members_state["members"] as $member => $state){
+						$explicit_damages[] = "<b>" . ucfirst($member) . " ({$state["damage"]}) :</b> {$state["description"]}";
+					}
 				}
 				$this->state["Membres"] = $explicit_damages;
 			}

@@ -29,7 +29,7 @@ class College
 	 * @param  array $spells
 	 * @return array
 	 */
-	public static function convertToNewFormat(array $spells): array
+	/* public static function convertToNewFormat(array $spells): array
 	{
 		$new_format_list = [];
 		// new format : id, niv, modif
@@ -46,7 +46,7 @@ class College
 		}
 		$new_format_list = Sorter::sort($new_format_list, "id");
 		return $new_format_list;
-	}
+	} */
 
 	
 	/**

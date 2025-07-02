@@ -1,7 +1,7 @@
 <h2>Port Goshal</h2>
 
 <figure class="float-left"><img src="/assets/img_paorn/blason-port-goshal.png" width="70px" /></figure>
-<p class="mt-0">Ville fortifiée sale (poussière permanente, odeur d’égoût). Maisons hautes (3 étages) aux peintures fanées et aux murs sales. Toits de tuiles peu inclinés. Le fleuve mitoyen s’appelle la Guelda.</p>
+<p class="mt-0">Ville fortifiée sale (poussière permanente, odeur d’égoût), situé dans l’extrême sud du Verbleau. Maisons hautes (3 étages) aux peintures fanées et aux murs sales. Toits de tuiles peu inclinés. Le fleuve mitoyen s’appelle la Guelda.</p>
 <p>Les locaux sont plutôt sympathiques mais peuvent être parfois un peu directs.</p>
 <p>Alentours de la ville&nbsp;: grande étendue de pâturage (moutons et vaches) avec nombreux petits villages paysans, culture maraîchère, blés, oliviers, arbres fruitiers.</p>
 <p>Pêches (poissons et crustacés)</p>

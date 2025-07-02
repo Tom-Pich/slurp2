@@ -393,7 +393,7 @@ use App\Rules\WeaponsController;
 		</summary>
 		<?php
 		$weapons = array_filter(WeaponsController::weapons, fn($weapon) => $weapon["cat"] === "spéciale");
-		WeaponsController::displaySpecialWeapon($weapons);
+		WeaponsController::displaySpecialWeapons($weapons);
 		?>
 	</details>
 

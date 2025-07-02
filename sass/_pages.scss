@@ -65,15 +65,17 @@ body.personnage-fiche {
 		&.group-big { grid-template-columns: repeat(5, 1fr); }
 
 		.character-portrait { grid-column: span 2; grid-row: span 2; }
+		&.group-none .character-portrait { max-width: 50%; margin-inline: auto }
+
 		.group-portrait {
 			aspect-ratio: 1; position: relative;
 			.group-member-name { position: absolute; bottom: .25em; left: 50%; transform: translateX(-50%) ; color: white; text-shadow: 1px 1px 1px black; }
 		}
 	}
 
-	fieldset { break-inside: avoid-column; margin-top: 1em; max-height: 600px; overflow-y: auto; }
+	fieldset { break-inside: avoid-column; margin-top: 1em; max-height: 600px; overflow-y: auto; background-color: var(--white); padding-inline: .75em; }
 
-	details:has(summary > h3) { border: 1px solid var(--grey-700); border-radius: .5em; padding: .5em; }
+	details:has(summary > h3) { border: 1px solid var(--grey-700); border-radius: .5em; padding: .5em; background-color: var(--white); }
 
 	.clr-grey-500 meter {opacity: .1;}
 	.pdx-meter { width: 100%; }
@@ -117,6 +119,8 @@ body.personnage-fiche {
 		border: 1px solid var(--grey-700); position: sticky; top: 1em;
 		#chat-dialog-wrapper { height: 55vh;}
 	}
+
+	footer { display: none; }
 
 	@media print {
 		header, meter, footer, .no-print, [data-role=container-controls] { display: none; }

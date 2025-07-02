@@ -599,7 +599,9 @@
 		<p>Le thème du scénario est le concept ou l’idée autour duquel ou de laquelle tourne le scénario. On peut distinguer deux types de thèmes, non exclusifs.</p>
 
 		<details><!-- Thème structurel -->
-			<summary><h4>Le thème structurel</h4></summary>
+			<summary>
+				<h4>Le thème structurel</h4>
+			</summary>
 			<p>Il s’agit du type très général de scénario. Le choix du thème structurel va en partie limiter le type d’intrigues possibles.</p>
 			<ul>
 				<li><b>La quête&nbsp;:</b> accomplir un objectif précis – retrouver une personne, un objet, déjouer un complot ou accomplir une mission.</li>
@@ -610,7 +612,9 @@
 		</details>
 
 		<details><!-- Thème conceptuel -->
-			<summary><h4>Le thème conceptuel</h4></summary>
+			<summary>
+				<h4>Le thème conceptuel</h4>
+			</summary>
 			<p>Le thème conceptuel est un court énoncé ou une question «&nbsp;philosophique&nbsp;» qui va orienter le scénario. Par exemple «&nbsp;L’Enfer est pavé de bonnes intentions&nbsp;» ou «&nbsp;Sommes-nous maîtres de notre destin ?&nbsp;».</p>
 			<p>Sans être essentiel, le thème conceptuel permet de donner une certaine homogénéité conceptuelle à l’histoire. Il doit être suffisamment riche pour en faire un générateur de nombreuses idées et aider à l’improvisation si besoin est. Et pourquoi ne pas inclure cette thématique dans la création même des PJ (dans leur historique ou leur caractère) avec l’accord des joueurs ?</p>
 
@@ -668,7 +672,9 @@
 
 		<!-- Notes -->
 		<details>
-			<summary class="clr-primary-500"><h4>Notes</h4></summary>
+			<summary class="clr-primary-500">
+				<h4>Notes</h4>
+			</summary>
 
 			<p>Une section temporaire qui évolue constamment. Vous pouvez la traiter à part, sur un brouillon ou un fichier temporaire. C’est le lieu où incubent vos idées et vos questions sur le scénario. Elle reflète le bouillonnement de vos idées. Certaines vont intégrer le scénario, d’autres vont y rester avant de mûrir et d’évoluer, d’autres encore seront abandonnées.</p>
 			<p><b>Pendant votre préparation préparation</b>, notez-y vos idées, les questions auxquelles vous devez répondre et les éléments à intégrer dans le scénario.</p>
@@ -678,7 +684,9 @@
 
 		<!-- Scénario -->
 		<details>
-			<summary class="clr-secondary-500"><h4>Scénario</h4></summary>
+			<summary class="clr-secondary-500">
+				<h4>Scénario</h4>
+			</summary>
 
 			<p>C’est dans cette section que vous écrirez votre scénario. Elle comprend plusieurs parties.</p>
 
@@ -708,7 +716,9 @@
 
 		<!-- Annexes -->
 		<details>
-			<summary class="clr-tertiary-500"><h4>Annexes</h4></summary>
+			<summary class="clr-tertiary-500">
+				<h4>Annexes</h4>
+			</summary>
 			<p>
 				On mettra dans cette partie toutes les informations «&nbsp;statiques&nbsp;», c’est-à-dire celles qui ne relèvent pas d’actions. PNJ, lieux, légendes, histoires, objets&hellip;<br>
 				Si ce que vous avez à noter peut éventuellement être utilisé dans un autre scénario, ou dans une suite, c’est probablement que ça a sa place dans cette section.
@@ -779,7 +789,9 @@
 		<p>L’antagoniste a généralement une grande importance dans un scénario. Cet antagoniste doit être détaillé et être générateur d’idées.</p>
 
 		<details><!-- Sa nature -->
-			<summary><h4>Sa nature</h4></summary>
+			<summary>
+				<h4>Sa nature</h4>
+			</summary>
 			<ul>
 				<li>S’agit-il d’un personnage unique ou d’un groupe&nbsp;?</li>
 				<li>Y a-t-il plusieurs antagonistes indépendants&nbsp;? (s’allier avec l’un pour mieux combattre l’autre permet de créer des rebondissements et donne plus de profondeur à l’histoire).</li>
@@ -788,7 +800,9 @@
 		</details>
 
 		<details><!-- Ses objectifs -->
-			<summary><h4>Ses objectifs</h4></summary>
+			<summary>
+				<h4>Ses objectifs</h4>
+			</summary>
 			<p>Définissez son but ultime et une série d’objectifs intermédiaires qui vont lui permettre d’atteindre son but. La difficulté de ses objectifs doit progresser graduellement. On peut distinguer quatre types d’objectifs, qui ne s’excluent pas mutuellement&nbsp;:</p>
 			<ul>
 				<li><b>Le pouvoir&nbsp;:</b> l’antagoniste recherche le pouvoir ou la maîtrise absolue dans un domaine (pouvoir physique, magique, divin, politique, social).</li>
@@ -799,7 +813,9 @@
 		</details>
 
 		<details><!-- Ses motivations -->
-			<summary><h4>Sa motivation</h4></summary>
+			<summary>
+				<h4>Sa motivation</h4>
+			</summary>
 
 			<p>Pourquoi l’antagoniste poursuit-il ses buts ? Un «&nbsp;méchant&nbsp;» ne se considère généralement pas comme méchant mais comme légitime pour atteindre ses objectifs.</p>
 			<p>Il y a deux types de motivations&nbsp;: les «&nbsp;bonnes&nbsp;» et les «&nbsp;mauvaises&nbsp;».</p>
@@ -814,12 +830,16 @@
 		</details>
 
 		<details><!-- Sa personnalité -->
-			<summary><h4>Sa personnalité</h4></summary>
+			<summary>
+				<h4>Sa personnalité</h4>
+			</summary>
 			<p>Déterminez son caractère, ses croyances et ses traits de personnalité.</p>
 		</details>
 
 		<details><!-- Ses méthodes -->
-			<summary><h4>Ses méthodes</h4></summary>
+			<summary>
+				<h4>Ses méthodes</h4>
+			</summary>
 			<p>Les méthodes utilisées par l’antagoniste pour atteindre son objectif dépendent de sa personnalité, de sa manière de penser, de ses buts et des moyens dont il dispose. Les définir permet de déterminer s’il a des limites morales ou pas et comment il gèrera les perturbations causées par les PJ.</p>
 			<p>Quatre méthodes qui peuvent se combiner&nbsp;:</p>
 
@@ -838,7 +858,9 @@
 		</details>
 
 		<details><!-- Ses serviteurs -->
-			<summary><h4>Ses serviteurs</h4></summary>
+			<summary>
+				<h4>Ses serviteurs</h4>
+			</summary>
 			<p>
 				Il existe deux types de serviteurs de l’Antagoniste&nbsp;: les lieutenants, compétents, individualisés et éventuellement complémentaires de l’antagoniste par leurs spécialisations, et les sous-fifres, nombreux, anonymes et peu compétents.<br>
 				Les serviteurs de l’antagoniste doivent refléter sa personnalité et ses buts. Ils agissent également comme une «&nbsp;couche d’isolant&nbsp;» entre les PJ et le grand méchant.</p>
@@ -953,7 +975,9 @@
 		<p>Pour la crédibilité du scénario, l’accroche ne doit pas paraître artificielle. Elle ne doit être ni trop grosse (sinon, les joueurs auront l’impression de ne pas avoir de choix), ni trop subtile (sous peine de voir les joueurs passer à côté). Elle doit intervenir assez rapidement après le début de la partie. Il en existe plusieurs types, qui peuvent d’ailleurs être utilisées conjointement.</p>
 
 		<details><!-- Démarrages subtils -->
-			<summary><h4>Démarrages subtils</h4></summary>
+			<summary>
+				<h4>Démarrages subtils</h4>
+			</summary>
 
 			<h5>Les personnages recherchent du travail</h5>
 			<p>Ils peuvent consulter les annonces officielles (du crieur public au site internet) pour un travail légal ou être attentifs à ce qui se murmure dans les milieux appropriés pour un boulot plus «&nbsp;délicat&nbsp;».</p>
@@ -978,7 +1002,9 @@
 		</details>
 
 		<details><!-- Démarrages en mode sans échec -->
-			<summary><h4>Démarrages en mode sans échec</h4></summary>
+			<summary>
+				<h4>Démarrages en mode sans échec</h4>
+			</summary>
 			<p>Les deux possibilités suivantes permettent de s’assurer que les joueurs ne passent pas à côté de l’aventure (du moins au début). Mais elles brident la liberté des joueurs et ne doivent pas être utilisées trop souvent.</p>
 			<h5>Dans ta face</h5>
 			<p>L’aventure peut leur tomber dessus sans crier gare (les personnages sont attaqués ou accusés injustement, par exemple).</p>
@@ -987,7 +1013,9 @@
 		</details>
 
 		<details><!-- Accroches multiples -->
-			<summary><h4>Accroches multiples</h4></summary>
+			<summary>
+				<h4>Accroches multiples</h4>
+			</summary>
 			<p>Pour une plus grande efficacité, vous pouvez prévoir de multiples accroches.</p>
 			<p>Elles peuvent mener vers des scénarios différents, les joueurs ayant alors une grande liberté de choix, au prix d’un gros travail pour le MJ qui devra alors avoir plusieurs scénarios prêts en permanence.</p>
 			<p>Elles peuvent également mener au même scénario (après tout, il y a peu de chance que les joueurs s’en aperçoivent). Cela permet de vous assurer qu’ils mordront tôt ou tard à l’hameçon. Si vos joueurs ne sont pas du genre finaud, concevez une accroche qui les obligera à démarrer le scénario, tant pis pour la subtilité. Toujours avec ce même genre de joueurs, pensez également qu’ils pourraient réagir à l’accroche de manière tout à fait inattendue – trucider le PNJ qui tente de leur vendre un carte au trésor, au lieu de l’acheter, par exemple.</p>
@@ -1009,7 +1037,9 @@
 
 		<!-- Le plan -->
 		<details>
-			<summary><h4>Le plan</h4></summary>
+			<summary>
+				<h4>Le plan</h4>
+			</summary>
 
 			<p>L’écriture de ce plan n’est pas nécessairement strictement chronologique. Si la structure de votre scénario est ouverte ou semi-ouverte, le plan peut être découpé par thème. Voir notamment le <i>Modèle insulaire</i>, dans la partie <i>Linéaire ou ouvert&nbsp;? Structure semi-ouverte</i>.</p>
 
@@ -1024,20 +1054,46 @@
 
 		<!-- Objectifs d’une scène -->
 		<details>
-			<summary><h4>Objectif(s) d’une scène</h4></summary>
+			<summary>
+				<h4>Objectif(s) d’une scène</h4>
+			</summary>
 			<p>Chaque scène doit avoir une (ou plusieurs) raisons d’être. En voici les principales&nbsp;:</p>
 			<ul class="flow ta-justify">
+
 				<li><b>Augmenter la tension</b>, que cette tension soit psychologique (découverte de détails dévoilant peu à peu l’horrible vérité, ou plonger les personnages dans des circonstances étranges ou inquiétantes), physique (combat, pièges, le tout à un rythme soutenu) ou relationnelle (conflits entre personnage ou même conflit intérieur d’un personnage).</li>
+
 				<li><b>Fournir des obstacles.</b> Prévoir des obstacles permet d’éviter la sensation de «&nbsp;se promener&nbsp;» dans le scénario. L’obstacle peut être physique (une porte gardée, des archives non ouvertes au public, un indice difficile à repérer) ou relationnel (un PNJ qui s’oppose aux objectifs des PJ). Cela peut aussi être des difficultés à découvrir des informations. Ces obstacles servent d’autant mieux le scénario s’ils sont totalement imprévus par les joueurs.</li>
+
 				<li><b>Atteindre un objectif.</b> Ces scènes constituent un mini-paroxysme (trouver le suspect principal, vaincre le bras droit du méchant). Elles peuvent permettre aux joueurs d’imaginer une partie du paroxysme, pour qu’ils en soient plus conscients lorsqu’il viendra. Elles orientent ou confirment les joueurs dans la bonne orientation et permettent de donner de la cohésion aux aventures longues.</li>
+
 				<li><b>Dégager une ambiance.</b> Ces scènes permettent d’immerger les joueurs dans un monde indépendant et vivant, où personne n’est juste un «&nbsp;accessoire&nbsp;». Elles sont souvent descriptives, soit par un récit direct du MJ, soit par l’intermédiaire d’un PNJ haut en couleur. Elles aident les joueurs à penser comme leur personnage et favorisent le roleplay. Elles peuvent également préparer les joueurs aux événements qui surviendront à l’apogée de l’histoire.</li>
+
 				<li><b>Découvrir un indice / éclaircir un mystère.</b> Ce genre de scène fournit une pièce du puzzle de l’intrigue – sans nécessairement que les joueurs en aient conscience immédiatement. Elle permet de faire un pas vers la compréhension de l’intrigue.</li>
+
+				<li><b>S’organiser.</b> Ces scènes sont centrées autour de l’organisation d’un voyage, d’un événement&hellip; L’organisation peut être matérielle et/ou humaine. C’est un moment d’échange entre joueurs qui peut donner au MJ un aperçu du point de vue des joueurs.</li>
 			</ul>
+		</details>
+
+		<!-- Clarté d’une scène -->
+		<details>
+			<summary>
+				<h4>Clarté d’une scène</h4>
+			</summary>
+			<p>Pour être jouée avec fluidité et efficacité, lorsque vous concevez votre scène, vous devez&nbsp;:</p>
+			<ul>
+				<li>Visualiser le décor</li>
+				<li>Avoir une idée claire de l’atmosphère</li>
+				<li>Avoir une idée claire des actions possibles des PJ</li>
+				<li>Avoir des objectifs pour la séquence et des chemins clairs pour y arriver</li>
+			</ul>
+			<p>S’il vous manque un de ces éléments, la scène aura des chances d’être confuse et de manquer de reliefs.</p>
 		</details>
 
 		<!-- Éléments d’une scène (format IARR) -->
 		<details>
-			<summary><h4>Le format IARR</h4></summary>
+			<summary>
+				<h4>Le format IARR</h4>
+			</summary>
 			<p>Lorsque vous concevez votre scène, en plus de son ou ses objectif(s), pensez aux quatre éléments suivants&nbsp;:</p>
 			<ul>
 				<li><b>Introduction&nbsp;:</b> comment les PJ arrivent à cette scène, et ce qu’ils en perçoivent au départ.</li>
@@ -1050,7 +1106,9 @@
 
 		<!-- Aller crescendo -->
 		<details>
-			<summary><h4>Aller crescendo</h4></summary>
+			<summary>
+				<h4>Aller crescendo</h4>
+			</summary>
 			<p>Soyez conscient du niveau de tension au long du scénario. On peut distinguer deux types de tensions &nbsp;:</p>
 			<ul>
 				<li>La <b>tension à court terme</b>, dont l’intensité doit fluctuer au long du scénario, sous peine d’habituer les joueurs à la tension et de perdre en efficacité. Les pics de tension à court terme doivent cependant être de plus en plus intenses.</li>
@@ -1067,7 +1125,9 @@
 
 		<!-- Règle des trois indices -->
 		<details>
-			<summary><h4>La règle des 3 indices</h4></summary>
+			<summary>
+				<h4>La règle des 3 indices</h4>
+			</summary>
 			<p>Pour être sûr de permettre aux PJ d’avancer dans le scénario, l’idéal est de placer <b>trois indices pointant vers des étapes ultérieures</b>.</p>
 			<p>Pour plus de subtilité, ces indices peuvent ne pas être donnés en même temps. Par contre, plusieurs indices pointant vers des étapes ultérieures différentes peuvent être donnés en même temps.</p>
 			<p>
@@ -1084,7 +1144,9 @@
 
 		<!-- Scénario d’enquête policière -->
 		<details>
-			<summary><h4>Scénario d’enquête policière</h4></summary>
+			<summary>
+				<h4>Scénario d’enquête policière</h4>
+			</summary>
 			<p>L’écriture de scénario de type enquête policière est un exercice particulier. Il y a un certain nombre de points qu’il faut avoir attentivement considérer lors de l’écriture d’un tel scénario.</p>
 			<h5>Mobile du crime</h5>
 			<p>Voir <i>Contexte &amp; causes</i>. Cela peut être un crime crapuleux, passionnel, en vue de gagner du pouvoir (éliminer un concurrent) ou des richesse (un héritage&hellip;), il peut être dû à un complot politique, à du fanatisme (pas seulement religieux), à un désir de vengeance (réparer un affront), à la jalousie, à la folie d’un tueur en série ou à une folie passagère (sous l’effet d’une substance). Il peut également ne pas y avoir de mobile, si le crime est la conséquence d’un «&nbsp;dérapage&nbsp;» (l’auteur ne prévoyait pas d’aller jusqu’au meurtre), d’un accident qui ressemble à un meurtre et dont l’auteur a pris la fuite ou d’une erreur sur la personne&hellip;</p>
@@ -1108,7 +1170,9 @@
 
 		<!-- Conseils divers -->
 		<details>
-			<summary><h4>Conseils divers</h4></summary>
+			<summary>
+				<h4>Conseils divers</h4>
+			</summary>
 			<p>Pour chaque scène, posez vous les questions suivantes&nbsp;:</p>
 			<ul>
 				<li>Qu’apporte-t-elle au scénario&nbsp;?</li>
@@ -1124,7 +1188,9 @@
 
 		<!-- Intrigues secondaires et fausses pistes -->
 		<details>
-			<summary><h4>Intrigues secondaires et fausses pistes</h4></summary>
+			<summary>
+				<h4>Intrigues secondaires et fausses pistes</h4>
+			</summary>
 			<p>Les <b>intrigues secondaires</b> (avec ou sans impact sur la trame principale) servent à briser la linéarité du scénario, à enrichir le décor et à donner un sentiment d’accomplissement, particulièrement dans un scénario long, du fait qu’elles sont plus rapides à résoudre. Elles doivent tout de même permettre de revenir rapidement à l’intrigue principale, pour ne pas en perdre le fil. Dans tous les cas, les intrigues secondaires doivent être résolues avant le paroxysme de l’intrigue principale.</p>
 			<p>Les <b>fausses pistes</b> permettent également de donner de la profondeur au décor et permettent aux joueurs de ressentir une certaine liberté. Elles devraient quand même permettre de gagner quelque chose, ne serait-ce qu’une information qui pourra être utile dans un scénario ultérieur.</p>
 			<p>Enfin, ces fausses pistes et intrigues secondaires permettent de détourner l’attention des joueurs des problèmes auxquels vous ne souhaitez pas qu’ils s’intéressent dans l’immédiat et ouvre davantage le scénario.</p>
@@ -1132,7 +1198,9 @@
 
 		<!-- Structure ternaire -->
 		<details>
-			<summary><h4>Structure ternaire</h4></summary>
+			<summary>
+				<h4>Structure ternaire</h4>
+			</summary>
 			<p>Très utilisée dans les romans et les films &nbsp;: <b>tout ce qui est important se décompose en trois parties</b>. Découper votre scénario en trois actes de 3 scènes chacun.</p>
 			<p>Vous voulez attirer l’attention des PJ sur un PNJ important ? Faite-le apparaître trois fois. Vous voulez souligner l’importance d’un lieu ? Placez-y trois scènes. Vous voulez donner des indices sur un rebondissement à venir, sans que les joueurs le trouvent tiré du chapeau ? Placer deux indices avant la troisième étape qui est le retournement de situation en lui-même.</p>
 			<p>Placez ces apparitions, scènes ou indices à intervalles réguliers dans votre scénario. Si vous avez prévu un retournement de situation lors du paroxysme à la fin de votre troisième acte, glissez un indice à la fin du premier acte, et un autre au cours du deuxième acte.</p>
@@ -1253,25 +1321,24 @@
 		<summary>
 			<h3>Et en campagne&nbsp;?</h3>
 		</summary>
-		<p>Reprenez l’organisation suggérée pour un scénario unique, mais cette fois, chaque scène est un scénario complet.</p>
+		<p>Reprenez l’organisation suggérée pour un scénario unique, mais cette fois, chaque acte est un scénario complet.</p>
 		<p>Vous allez donc avoir la structure suivante sur votre document&nbsp;:</p>
-		<div class="border p-½">
-			<h4 class="mt-0">Titre de la campagne</h4>
-			<p>
-				Notes de campagne<br>
-				Contexte et causes de la campagne<br>
-				Synopsis de la campagne
-			</p>
+
+		<div class="border p-½ flow">
+			<h4>Titre de la campagne</h4>
+			<p>Contexte et causes de la campagne
+			<p>Synopsis de la campagne
 			<p class="fw-700" style="margin-bottom: 0">Scénario 1</p>
 			<ul>
-				<li>Notes</li>
 				<li>Contexte &amp; causes</li>
 				<li>Synopsis</li>
-				<li>Scènes</li>
+				<li>Actes et scènes</li>
 				<li>Annexes du scénario</li>
 			</ul>
 			<p class="fw-700">Scénario 2</p>
-			<p class="fw-700">(&hellip;)</p>
+			<ul>
+				<li>(&hellip;)</li>
+			</ul>
 			<p>Annexes de la campagne</p>
 		</div>
 	</details>

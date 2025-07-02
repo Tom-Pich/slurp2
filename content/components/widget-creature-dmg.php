@@ -20,7 +20,7 @@
 		</ul>
 	</div>
 </fieldset>
-<div class="mt-½">
+<div class="mt-½ fs-300">
 	* Herbivores&nbsp;: dégâts de <i>Broyage</i> basés sur le <i>tiers</i> de la <i>For</i> de la créature.<br>
 	** Ne prendre en compte qu’un quart du poids réel si la créature n’a pas de sabot.
 </div>

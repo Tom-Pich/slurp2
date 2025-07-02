@@ -16,6 +16,7 @@ RewriteRule . /index.php
 RewriteRule ^content/(.*)$ /not-found
 RewriteRule ^src/(.*)$ /not-found
 RewriteRule ^vendor/(.*)$ /not-found
+RewriteRule ^config.php$ /not-found
 
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP_HOST} !^site-jdr$ [NC]

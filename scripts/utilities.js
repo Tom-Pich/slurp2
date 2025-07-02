@@ -1,7 +1,7 @@
 export function calculate(str) {
     if (str === null) return "";
     str = str.replace(/[+-]+$/g, ""); // trim + and - at the end
-    str = str.replace(/[^-\(\)\d/\*+\.]/g, ""); // only allow - + / * ( ) 0-9 .
+    str = str.replace(/[^-\(\)\d/\*+\.]/g, ""); // only allow - + / * ( ) 0-9 and .
     let result;
     try {
         result = eval(str);

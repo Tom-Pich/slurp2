@@ -20,7 +20,8 @@ class PageController
 
 		// user options
 		$this->page["mode"] = $_SESSION["user-options"]["mode"] ?? "auto";
-		$this->page["style"] = $_SESSION["user-options"]["style"] ?? NULL;
+		$this->page["style"] = $_SESSION["user-options"]["style"] ?? "normal";
+		$this->page["theme"] = $_SESSION["user-options"]["theme"] ?? "standard";
 	}
 
 	public function show()

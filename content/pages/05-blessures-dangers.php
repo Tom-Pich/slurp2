@@ -7,16 +7,19 @@ use App\Rules\WoundController;
 <article>
 	<h2>Blessures</h2>
 
+	<!-- Définitions -->
 	<details>
 		<summary>
 			<h3>Définitions</h3>
 		</summary>
-		<p><b>Dégâts bruts&nbsp;:</b> dégâts de l’attaque avant prise en compte de la RD.<br>
+		<p>
+			<b>Dégâts bruts&nbsp;:</b> dégâts de l’attaque avant prise en compte de la RD.<br>
 			<b>Dégâts effectifs&nbsp;:</b> dégâts nets après application du multiplicateur de type de dégâts et d’une éventuelle limite. Ce sont eux qui sont à soustraire des PdV du personnage.<br>
-			<b>PdVm&nbsp;:</b> PdV maximum du personnage (lorsqu’il n’est pas blessé).
+			<b>PdVm&nbsp;:</b> PdV maximum du personnage.
 		</p>
 	</details>
 
+	<!-- Effets blessures -->
 	<details>
 		<summary>
 			<h3>Effets d’une blessure</h3>
@@ -78,14 +81,12 @@ use App\Rules\WoundController;
 
 	</details>
 
+	<!-- Effets blessures membres -->
 	<details>
 		<summary>
 			<h3>Effets des blessures aux membres</h3>
 		</summary>
-		<p>
-			Chaque membre (bras, mains, jambes, pieds) a ses propres PdV qui sont calculés à partir des PdVm, ainsi que ses propres seuils de blessures. Les dégâts infligés à un membre ne sont pas décomptés du total des PdV du personnage.<br>
-			Utiliser le widget <i>Seuils de blessures</i> sur la <a href="table-jeu">Table de jeu</a> pour déterminer l’état d’un membre en fonction des dégâts qu’il a reçu.
-		</p>
+		<p>Chaque membre (bras, mains, jambes, pieds) a ses propres PdV qui sont calculés à partir des PdVm, ainsi que ses propres seuils de blessures. Les dégâts infligés à un membre ne sont pas décomptés du total des PdV du personnage.</p>
 
 		<table>
 			<tr>
@@ -101,7 +102,6 @@ use App\Rules\WoundController;
 			<caption>PdV des membres en fonction des PdVm totaux</caption>
 		</table>
 
-		<p>Voici les seuils d’états des membres</p>
 		<table class="left-2">
 			<tr>
 				<th>% PdVm</th>
@@ -116,6 +116,8 @@ use App\Rules\WoundController;
 			<caption>État des membres en fonction de leur PdVm propre</caption>
 		</table>
 
+		<p>Utiliser le widget <i>Seuils de blessures</i> sur la <a href="table-jeu">Table de jeu</a> pour déterminer l’état d’un membre en fonction des dégâts qu’il a reçu.</p>
+
 	</details>
 
 	<!-- Hémorragie -->
@@ -123,21 +125,40 @@ use App\Rules\WoundController;
 		<summary>
 			<h3>Hémorragie</h3>
 		</summary>
-		<p class="clr-invalid italic ta-center">Règle à revoir et à passer en gestion automatique.</p>
-		<p><i>Attention</i>&nbsp;: cette règle est optionnelle car elle augmente <i>drastiquement</i> la mortalité en l’absence de soins magiques.</p>
-		<p>Une blessure peut provoquer une hémorragie. Jet de <i>San</i> à -1 pour chaque tranche complète de 25&nbsp;% des PdVm perdus, une fois par minute&nbsp;:</p>
-		<p>Pour une <b>blessure à un membre</b>, le jet de <i>San</i> se fait sans malus si le membre n’a pas de blessure invalidante, à -1 s’il a reçu une blessure invalidante et à -2 s’il est détruit.</p>
-		<p>
-			<b>Échec, ME &le; 3&nbsp;:</b> perte de 10&nbsp;% des PdVm (5&nbsp;% des PdVm s’il s’agit de la main ou du pied).<br>
-			<b>Échec, ME &ge; 4&nbsp;:</b> perte de 20&nbsp;% des PdVm (10&nbsp;% des PdVm s’il s’agit de la main ou du pied).<br>
-			<b>Échec critique&nbsp;:</b> perte de 20&nbsp;% des PdVm et les prochains jets de <i>San</i> se font à -3 supplémentaire jusqu’à ce qu’une réussite soit obtenue.<br>
-			<b>Réussite, MR &le; 3&nbsp;:</b> pas de perte pour cette minute.<br>
-			<b>Réussite, MR &ge; 4&nbsp;:</b> pas de perte pour cette minute, les prochains jets de <i>San</i> se font à +3 jusqu’à ce qu’un échec soit obtenu.<br>
-			<b>Réussite critique</b> ou <b>3 réussites consécutives&nbsp;:</b> l’hémorragie s’arrête.
-		</p>
-		<p>Ne pas arrondir les PdV perdus par hémorragie avant la fin de cette dernière.</p>
-		<p>Si l’hémorragie est externe, un jet de <i>Premiers secours</i> peut être tenté chaque minute pour arrêter l’hémorragie.<br>
-			Si l’hémorragie est interne, seule la chirurgie (ou la magie) peut l’arrêter.</p>
+
+		<h4>Gravité «&nbsp;hémorragique&nbsp;» d’une blessure</h4>
+		<p>Il y a trois niveaux de gravité&nbsp;:</p>
+		<table class="left-2">
+			<tr>
+				<th>Niv.</th>
+				<th>Correspondance</th>
+			</tr>
+			<tr>
+				<th>Moyen</th>
+				<td>de 25% à 50% (exclu) des PdVm, ou veine sectionnée.</td>
+			</tr>
+			<tr>
+				<th>Grave</th>
+				<td>de 50% à 100% (exclu) des PdVm, ou veine importante sectionnée.</td>
+			</tr>
+			<tr>
+				<th>Très grave</th>
+				<td>100% ou plus des PdVm, ou veine majeure sectionnée.</td>
+			</tr>
+		</table>
+
+		<p>Une hémorragie peut être <i>externe</i> ou <i>interne</i> selon l’emplacement et le type de la blessure.</p>
+
+		<p>Il revient au MJ d’évaluer s’il y a hémorragie ou pas, ainsi que sa gravité.</p>
+
+		<h4>Effets d’une hémorragie</h4>
+		<p>Chaque minute, le blessé doit réaliser un jet de <i>San</i>. L’évolution de l’hémorragie ainsi que ses effets sont gérés par le widget de la <a href="/table-jeu">Table de jeu</a> et dépendent de sa gravité et de la MR du jet de <i>San</i>.</p>
+
+		<h4>Arrêter une hémorragie</h4>
+		<p>L’hémorragie s’arrête naturellement après une réussite critique au jet de <i>San</i> ou trois réussites consecutives.</p>
+		<p>Si l’hémorragie est externe, un jet de <i>Premiers secours</i> peut être tenté chaque minute pour l’arrêter.</p>
+		<p>Si l’hémorragie est interne, seule la chirurgie (ou la magie) peut l’arrêter.</p>
+
 	</details>
 
 </article>

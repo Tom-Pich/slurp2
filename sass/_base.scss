@@ -1,4 +1,4 @@
-/* Mon framework CSS v2025.01.23 */
+/* Mon framework CSS v2025.02.25 🖐️ linked to original ! */
 
 $brp-l: 1200px;
 $brp-m: 768px;
@@ -121,8 +121,20 @@ dialog {
 
 // Forms & buttons
 button, input[type=submit], .btn {
-	cursor: pointer; display: block; text-decoration: none; padding: .5em 1em; transition: all .2s; width: fit-content; font-family: inherit; line-height: inherit; background: var(--btn-clr, none); color: var(--text-clr, currentColor); border: 1px solid var(--btn-clr, currentColor);
-	&:hover {background: var(--btn-clr-hover, none); color: var(--text-clr-hover, var(--btn-clr, currentColor));}
+	//--btn-clr: var(--white);
+	//--text-clr: currentColor;
+	//--border-clr: var(--btn-clr);
+	//--btn-clr-hover: var(--text-clr);
+	//--text-clr-hover: var(--btn-clr);
+	//--border-clr-hover: var(--btn-clr);
+	cursor: pointer; display: block; text-decoration: none; padding: .5em 1em; transition: all .2s; width: fit-content; font-family: inherit; line-height: inherit;
+	background: var(--btn-clr, transparent);
+	color: var(--text-clr, currentColor);
+	border: 1px solid var(--border-clr, var(--btn-clr, currentColor));
+	&:hover {
+		background: var(--btn-clr-hover, var(--text-clr, transparent));
+		color: var(--text-clr-hover, var(--btn-clr, currentColor));
+		border: 1px solid var(--border-clr-hover, var(--text-clr-hover, currentColor));}
 }
 .btn-primary { --btn-clr: var(--clr-primary-500); --text-clr: var(--white); }
 input, select, textarea { padding: .5em 1em; color: currentColor; border: 1px solid currentColor; background-color: var(--white); min-width: 0; font-family: inherit;}
@@ -250,7 +262,7 @@ img:is(.aspect-photo, .aspect-square, .aspect-video) { object-fit: cover; }
 
 // inline SVG icon – don’t forget aria-hidden="true" on the SVG
 svg.inline-svg-icon { display: inline-block; height: 1em; fill: currentColor; position: relative; vertical-align: middle; bottom: var(--shift, .1em)}
-ul.svg-inline-bullet {
+ul.inline-svg-bullet {
 	// inline SVG as first element of <li>
 	list-style-type: none;
 	li { position: relative; }

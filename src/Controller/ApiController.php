@@ -15,7 +15,6 @@ use App\Rules\WeaponsController;
 use App\Rules\CriticalController;
 use App\Rules\ReactionController;
 use App\Rules\ExplosionController;
-use App\Repository\PowerRepository;
 use App\Repository\SpellRepository;
 use App\Repository\AvDesavRepository;
 use App\Repository\CreatureRepository;
@@ -117,24 +116,20 @@ class ApiController
 	public function getGeneralState(int $pdvm, int $pdv, int $pain_resistance, string $members)
 	{
 		$this->response["data"]["general"] = WoundController::getGeneralEffects($pdv, $pdvm, $pain_resistance)["description"];
-
-		$members_parsed = TextParser::parsePseudoArray2Array($members);
-		if ($members !== "") $this->response["data"]["members-error"] = true;
-		foreach ($members_parsed as $member => $damage) {
-			$member_full_name = WoundController::member_abbreviation[$member]["full-name"] ?? false;
-			$member_name = WoundController::member_abbreviation[$member]["member"] ?? false;
-			if ($member_full_name && is_numeric($damage)) {
-				$this->response["data"]["members"][ucfirst($member_full_name)] = WoundController::getMemberEffects($damage, $pdvm, $member_name, $pain_resistance)["description"];
-				$this->response["data"]["members-error"] = false;
-			}
-		}
-
+		$members_state = WoundController::getMembersState($pdvm, $members, $pain_resistance);
+		$this->response["data"]["members"] = $members_state["members"];
+		$this->response["data"]["members-error"] = $members_state["error"];
 		$this->sendResponse();
 	}
 
 	public function getWoundEffects(string $category,  int $dex, int $san, int $pdvm, int $pdv, int $pain_resistance, int $raw_dmg, int $rd, string $dmg_type, string $bullet_type, string $localisation, array $rolls)
 	{
 		$this->response["data"] = WoundController::getWoundEffects($category, $dex, $san, $pdvm, $pdv, $pain_resistance, $raw_dmg, $rd, $dmg_type, $bullet_type, $localisation, $rolls);
+		$this->sendResponse();
+	}
+
+	public function getBleedingEffects(int $san_test_mr, int $san_test_critical, int $pdvm, int $severity){
+		$this->response["data"] = WoundController::getBleedingEffects($san_test_mr, $san_test_critical, $pdvm, $severity);
 		$this->sendResponse();
 	}
 

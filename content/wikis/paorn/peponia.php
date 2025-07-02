@@ -48,7 +48,7 @@
 
 		<p><b>• Edama, 18 ans, fille du tailleur</b>. Amoureux l’un de l’autre depuis l’enfance mais elle est promise au fils du tailleur du château.</p>
 
-		<p><b>• La bande&nbsp;: Aze, Estur, Ezmond.</b> Leurs parents, tous exerçant des métiers « infâmes », histrion, bourreau, fossoyeur ou encore équarisseurs en font des enfants rebelles et décidés à se venger de l’injustice que la profession de leurs parents fait peser sur eux. Ils vivent de larcins et fréquentent les tavernes où ils jouent jusqu’au bout de la nuit. Ils sont bien connus dans le village mais personne n’ose s’opposer à eux de peur des représailles. Ils font la connaissance d’Aidan qui, pour s’intégrer au groupe, n’hésite pas à les aider dans leurs forfaits. C’est lui qui les présente à Jurgen qui les rejoint et participe à quelques cambriolages pour financer son addiction au jeu.</p>
+		<p><b>• La bande&nbsp;: Aze, Estur, Ezmond.</b> La bande que fréquentait Jurgen lorsqu’il vivait à Parna. Leurs parents, tous exerçant des métiers « infâmes », histrion, bourreau, fossoyeur ou encore équarisseurs en font des enfants rebelles et décidés à se venger de l’injustice que la profession de leurs parents fait peser sur eux. Ils vivent de larcins et fréquentent les tavernes où ils jouent jusqu’au bout de la nuit. Ils sont bien connus dans le village mais personne n’ose s’opposer à eux de peur des représailles. Ils font la connaissance d’Aidan qui, pour s’intégrer au groupe, n’hésite pas à les aider dans leurs forfaits. C’est lui qui les présente à Jurgen qui les rejoint et participe à quelques cambriolages pour financer son addiction au jeu.</p>
 
 	</div>
 <?php endif ?>
@@ -61,7 +61,9 @@
 
 <p><b>• Ewen</b>, 40 ans, patron de taverne. <?php if ($admin || $_SESSION["id"] === 6) { ?> <span class="admin">Il apprécie Jurgen pour la bonne humeur qu’il apporte avec lui lors de ses visites. Il connaît tous les potins du village.</span><?php } ?></p>
 
-<p><b>• Pyrrha, 45 ans, prêtresse du temple pentathéiste,</b> longs cheveux noirs cascadant en boucles abondantes, encadrant un visage rond et bienveillant. Yeux sombres brillant d'une lueur chaleureuse, reflétant sa nature compatissante. Malgré sa petite taille et ses formes rondes, elle se déplace avec une grâce naturelle. Sa mémoire infaillible des rites et des légendes et sa dévotion envers le Pentatos et sa communauté lui valent le respect et l'affection de tous.</p>
+<p><b>• Pyrrha</b>, 45 ans, prêtresse du temple pentathéiste, longs cheveux noirs cascadant en boucles abondantes, encadrant un visage rond et bienveillant. Yeux sombres brillant d'une lueur chaleureuse, reflétant sa nature compatissante. Malgré sa petite taille et ses formes rondes, elle se déplace avec une grâce naturelle. Sa mémoire infaillible des rites et des légendes et sa dévotion envers le Pentatos et sa communauté lui valent le respect et l'affection de tous.</p>
+
+<p><b>• Maître Athenios</b>, 40 ans, gestionnaire du château Karras. Cheveux longs ondulés noirs, barbe broussailleuse.</p>
 
 <!-- Lieux intéressants -->
 <h4>Lieux intéressants</h4>

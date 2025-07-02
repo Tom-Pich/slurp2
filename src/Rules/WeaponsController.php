@@ -110,7 +110,7 @@ class WeaponsController
 		'(1)' => '-4 pour parer un coup donné par un fléau, -2 pour le bloquer ou l’esquiver.',
 		'(2)' => 'RD doublée contre cette arme. Pas de limite de dégâts pour le torse ou les membres.',
 		'(3)' => 'Caractéristiques données pour la compétence <i>Épée</i>. Avec la compétence <i>Bâton</i>&nbsp;: parade à -1, +1 aux dégâts, Fmin -2.',
-		'(4)' => 'Comme des dégâts à mains nues pour sonner et assommer.',
+		'(4)' => 'Dégâts de type <i>Mains nues</i>',
 		'(5)' => 'Utilise la compétence <i>Lancer</i>.',
 		'(6)' => '1 pt de dégâts sur RD 0. La compétence <i>Contrôle du souffle</i> peut remplacer la <i>For</i> pour le calcul de portée.',
 	];
@@ -194,7 +194,7 @@ class WeaponsController
 		<?php
 	}
 
-	public static function displaySpecialWeapon(array $weapons, bool $display_headers = true)
+	public static function displaySpecialWeapons(array $weapons, bool $display_headers = true)
 	{
 		if ($display_headers) { ?>
 			<div class="flex-s fw-700 fs-300 gap-½ mt-½">
@@ -219,7 +219,7 @@ class WeaponsController
 		<?php }
 	}
 
-	/* public static function displaySpecialWeapon_v4(array $weapons)
+	/* public static function displaySpecialWeapons_v4(array $weapons)
 	{
 		foreach ($weapons as $w):
 		?>

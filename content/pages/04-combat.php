@@ -17,8 +17,8 @@
 		</summary>
 		<p>Si l’opposant peut éventuellement être surpris, il doit faire un <b>jet de <i>Réflexes</i></b> pour le déterminer, assorti d’éventuels modificateurs déterminés par le MJ selon la situation.</p>
 		<p><b>Réussite&nbsp;:</b> l’opposant n’est pas surpris.</p>
-		<p><b>ME &le; 3&nbsp;:</b> Surprise <i>partielle</i>. Agit en dernier lors du tour.</p>
-		<p><b>ME > 3&nbsp;:</b> Surprise <i>totale</i>. N’agit pas lors du premier tour. Au 2<sup>e</sup> tour, -5 au jet d’initiative.</p>
+		<p><b>ME &lt; 3&nbsp;:</b> Surprise <i>partielle</i>. Agit en dernier lors du tour.</p>
+		<p><b>ME &ge; 3&nbsp;:</b> Surprise <i>totale</i>. N’agit pas lors du premier tour. Au 2<sup>e</sup> tour, -5 au jet d’initiative.</p>
 		<p>Un personnage ayant <i>Réflexes de combat</i> ne peut jamais être totalement surpris.</p>
 	</details>
 
@@ -45,7 +45,9 @@
 
 
 		<details>
-			<summary><h4>Initiative et sorts</h4></summary>
+			<summary>
+				<h4>Initiative et sorts</h4>
+			</summary>
 			<p>Si un lanceur de sort ou un utilisateur de pouvoir est impliqué dans un combat, il doit également faire un jet de <i>Réflexes</i> avec un modificateur qui dépend du <i>Temps nécessaire</i> au lancer du sort.</p>
 			<table>
 				<tr>
@@ -77,10 +79,13 @@
 					<td>tour suivant* -6</td>
 				<tr>
 					<td>6 s</td>
-					<td>2 tours après* +0</td>
+					<td>2 tours après** +0</td>
 				</tr>
 			</table>
-			<p>*Le sort prend un tour complet pour être lancé. Le modificateur s’applique au jet de <i>Réflexes</i> du tour suivant.</p>
+			<p>
+				* Le sort prend un tour complet pour être lancé. Le modificateur s’applique au jet de <i>Réflexes</i> du tour suivant.<br>
+				** Le sort prend deux tours à être préparé. Le modificateur s’applique au jet de <i>Réflexes</i> au tour correspondant.
+			</p>
 		</details>
 
 		<h4>Armes de taille très différentes</h4>
@@ -99,13 +104,15 @@
 			<h3>Déroulement d’un tour de combat</h3>
 		</summary>
 		<p>Les différents protagoniste d’un combat au contact portent leur <b>attaque dans l’ordre de l’initiative</b>.</p>
-		<p>Un combattant impliqué dans un combat au contact a le droit à <b>deux actions par tour</b>.</p>
-		<!-- <p>Un combattant a le droit à jusqu’à trois défenses par tour, voire quatre s’il renonce à porter une attaque. Voir <i>Défense</i>, plus loin, pour plus de détails</p> -->
-		<p>Un combattant peut porter <b>deux attaques</b> dans le même tour si son adversaire n’est pas en état de porter lui-même une attaque (s’il est sonné, par exemple).</p>
-		<p>Un combattant peut <b>remplacer son attaque par une défense supplémentaire</b> (recommandé s’il est débordé par ses adversaires).</p>
-		<p>Un combattant à également le droit de faire jusqu’à <b>deux défenses d’urgence</b> dans un tour. Ces défenses ne comptent pas comme des actions. Voir la section <i>Défense</i>.</p>
-		<p>Au cours d’un tour de combat, la <b>vitesse</b> maximale de déplacement est de 1&nbsp;m/s, sauf en cas de <i>Déplacement</i> (voir ci-dessous).</p>
-		<p>Le joueur <i>peut</i> choisir de faire une <b>attaque massive</b> <i>ou</i> une <b>défense massive</b> lors d’un tour.</p>
+		<p>Un combattant impliqué dans un combat au contact a le droit à <b>deux actions</b> par tour.</p>
+		<ul>
+			<li><b>attaque + défense&nbsp;:</b> cas le plus courant.</li>
+			<li><b>2 défenses&nbsp;:</b> si ça devient très chaud.</li>
+			<li><b>2 attaques&nbsp;:</b> seulement si son adversaire ne peut pas attaquer (s’il est sonné, par exemple).</li>
+		</ul>
+		<p>Il a également le droit de faire jusqu’à <b>2 défenses d’urgence</b> par tour. Elles ne comptent pas comme des actions. Voir la section <i>Défense</i>.</p>
+		<p>Au cours d’un tour de combat, la <b>vitesse</b> maximale de déplacement est de 1&nbsp;m/s, sauf en cas de <i>Déplacement</i> (voir paragraphe ci-dessous).</p>
+		<p>Le joueur <i>peut</i> choisir de faire une <b>attaque massive</b> <i>ou</i> une <b>défense massive</b> lors d’un tour (mais pas les deux au cours du même tour).</p>
 	</details>
 
 	<!-- Déplacement -->
@@ -113,7 +120,12 @@
 		<summary>
 			<h3>Déplacement</h3>
 		</summary>
-		<p>Si le personnage choisit de se déplacer à une vitesse supérieure à 1&nbsp;m/s, il conserve ses deux actions, mais ne peut faire ni attaque massive, ni défense massive, et ses attaques et défenses subissent un malus de -3. Sa vitesse de déplacement est limité à 50&nbsp;% de sa <i>Vitesse</i>.</p>
+		<p>Si le personnage choisit de se déplacer à une vitesse supérieure à 1&nbsp;m/s&nbsp;:</p>
+		<ul>
+			<li>il conserve ses <b>2 actions</b> (+ 2 défenses d’urgences)</li>
+			<li><b>malus de -3</b> à toutes ses attaques et défenses</li>
+			<li>vitesse limitée à <b>50&nbsp;%</b> de sa <i>Vitesse</i></li>
+		</ul>
 	</details>
 </article>
 
@@ -128,7 +140,7 @@
 		</summary>
 		<p>Un jet d’attaque est soumis aux modificateurs suivants&nbsp;:</p>
 		<ol class="bold-bullet">
-			<li><b>État du personnage&nbsp;:</b> PdV, PdF, <i>Encombrement</i>, heaume, armures superposées, usage de la main «&nbsp;faible&nbsp;»&hellip;</li>
+			<li><b>État du personnage&nbsp;:</b> paramètres de base + heaume, armures superposées, usage de la main «&nbsp;faible&nbsp;».</li>
 			<li><b>Fmin de l’arme&nbsp;:</b> voir <a href="/armes-armures">Armes &amp; armures</a>.</li>
 			<li><b><i>Attaque Massive</i></b> (voir ci-dessous).</li>
 			<li><b>Difficulté de l’attaque&nbsp;:</b> position de l’attaquant, taille de la cible, localisation, etc, au jugé du MJ.</li>
@@ -187,8 +199,8 @@
 		<summary>
 			<h3>Attaque avec 2 armes</h3>
 		</summary>
-		<p>Attaque avec 2<sup>e</sup> arme après défense&nbsp;: considérée comme une <i>Attaque non conventionnelle</i>.</p>
-		<p>Parade à deux armes simultanées&nbsp;: si les deux scores de parade sont différents de 3 ou moins → +1 sur le meilleur score de parade. Si les deux scores de parade sont égaux → +2.</p>
+		<p>Attaquer avec une 2<sup>e</sup> arme après une parade est considéré comme une <i>Attaque non conventionnelle</i>.</p>
+		<p>Parade à deux armes simultanées&nbsp;: si les deux scores de parade sont différents de 3 ou moins, le défenseur obtient +1 sur le meilleur score de parade. Si les deux scores de parade sont égaux, il obtient un +2.</p>
 	</details>
 
 	<!-- Attaque à mains nues -->
@@ -200,73 +212,92 @@
 		<h4>Manœuvres d’attaque</h4>
 		<p>Une attaque à mains nues peut avoir plusieurs objectifs différents&nbsp;: causer des dégâts, saisir son adversaire, le faire tomber&hellip; Lorsque vous porter une attaque à mains nues, vous devez choisir une des manœuvres ci-dessous.</p>
 
-		<h5>Porter un coup</h5>
-		<p>Dans le but d’infliger des dégâts. Jet de <i>Combat à mains nues</i> ou de <i>Karaté</i>. Cet type d’attaque est traitée comme une attaque avec une arme.</p>
+		<!-- Porter un coup -->
+		<details>
+			<summary>
+				<h5>Porter un coup</h5>
+			</summary>
+			<p>Dans le but d’infliger des dégâts. Jet de <i>Combat à mains nues</i> ou de <i>Karaté</i>. Ce type d’attaque est traitée comme une attaque avec une arme.</p>
+		</details>
 
-		<h5>Bousculer</h5>
-		<p>
-			Dans le but de faire tomber l’adversaire par la force. Ce type d’attaque se traite en deux étapes, qui compte comme une seule action.<br>
-			<i>D’abord</i>, une attaque basée sur <i>Combat à mains nues</i> ou <i>Judo/lutte</i>. L’adversaire peut y opposer une défense normale. Si l’attaque réussit, cela signifie que le contact a été correctement effectué.<br>
-			<i>Ensuite</i>, voir <i>Faire tomber</i> plus loin.
-		</p>
+		<!-- Bousculer -->
+		<details>
+			<summary>
+				<h5>Bousculer</h5>
+			</summary>
+			<p>Dans le but de faire tomber l’adversaire par la force. Ce type d’attaque se traite en deux étapes, qui comptent comme une seule action.</p>
+			<ol>
+				<li><b>Attaque</b> basée sur <i>Combat à mains nues</i> ou <i>Judo/lutte</i>. L’adversaire peut y opposer une défense normale.</li>
+				<li>Manœuvre <b><i>Faire tomber</i></b> (voir ci-après).</li>
+			</ol>
+		</details>
 
-		<h5>Saisir</h5>
-		<p>Saisir son adversaire, dans le but de le gêner dans sa défense et ses attaques, de faciliter ses propres attaques, ou pour ensuite lui faire une prise. La saisie se fait avec la compétence <i>Combat à mains nues</i> ou <i>Judo/lutte</i>. Le défenseur peut y oppoer une défense classique.</p>
+		<!-- Saisir -->
+		<details>
+			<summary>
+				<h5>Saisir</h5>
+			</summary>
+			<p>Saisir son adversaire, dans le but de le gêner dans sa défense et ses attaques, de faciliter ses propres attaques, ou pour ensuite lui faire une prise. La saisie se fait avec la compétence <i>Combat à mains nues</i> ou <i>Judo/lutte</i>. Le défenseur peut y opposer une défense classique.</p>
+		</details>
 
-		<h5>Faire tomber</h5>
-		<p>Faire tomber son adversaire. Cette action nécessite d’avoir d’abord réussit une <i>bousculade</i> ou une <i>saisie</i>. On peut provoquer la chute soit par l’adresse, soit par la force.</p>
-		<table class="mt-½">
-			<tr>
-				<th></th>
-				<th>Adresse</th>
-				<th>Force</th>
-			</tr>
-			<tr>
-				<th>Attaque</th>
-				<td><i>Combat à mains nues</i>, <i>Judo/lutte</i></td>
-				<td><i>For</i></td>
-			</tr>
-			<tr>
-				<th>Défense*</th>
-				<td><i>Esquive</i>, parade avec <i>Combat à mains nues</i> ou avec <i>Judo/lutte</i></td>
-				<td><i>For</i>, parade avec <i>Judo/lutte</i></td>
-			</tr>
-		</table>
-		<p>* Comme dans le cas d’une attaque classique, la MR de l’attaque se transforme en malus au jet de défense, avec une limite de 5.</p>
-		<p>Cette manœuvre compte comme une action, si elle fait suite à une <i>Saisie</i>. Si elle fait suite à une <i>Bousculade</i>, elle en est la continuité et n’est pas considérée comme une action supplémentaire.</p>
+		<!-- Faire tomber -->
+		<details>
+			<summary>
+				<h5>Faire tomber (prérequis)</h5>
+			</summary>
+			<p>Faire tomber son adversaire. Cette action nécessite d’avoir d’abord réussit une <i>bousculade</i> ou une <i>saisie</i>. On peut provoquer la chute soit par l’adresse, soit par la force. Les combo {bousculer + faire tomber} et {saisir + faire tomber} ne comptent que comme une seule action.</p>
+			<table class="mt-½">
+				<tr>
+					<th></th>
+					<th>Adresse</th>
+					<th>Force</th>
+				</tr>
+				<tr>
+					<th>Attaque</th>
+					<td><i>Combat à mains nues</i>, <i>Judo/lutte</i></td>
+					<td><i>For</i></td>
+				</tr>
+				<tr>
+					<th>Défense*</th>
+					<td><i>Esquive</i>, parade avec <i>Combat à mains nues</i> ou avec <i>Judo/lutte</i></td>
+					<td><i>For</i>, parade avec <i>Judo/lutte</i></td>
+				</tr>
+			</table>
+			<p>* Comme dans le cas d’une attaque classique, la MR de l’attaque se transforme en malus au jet de défense, avec une limite de 5.</p>
+			<p>Cette manœuvre compte comme une action, si elle fait suite à une <i>Saisie</i>. Si elle fait suite à une <i>Bousculade</i>, elle en est la continuité et n’est pas considérée comme une action supplémentaire.</p>
+		</details>
 
-		<h5>Faire une prise / immobiliser</h5>
-		<p>Dans le but de mettre son adversaire dans l’incapacité de fuir, d’attaquer ou de se défendre. Cette manœuvre nécessite l’utilisation des deux mains. Elle doit nécessairement faire suite à une <i>Saisie</i> ou avoir lieu après avoir fait tombé l’adversaire (manœuvre <i>Faire tomber</i>).</p>
-		<p>Cette manœuvre peut s’appuyer sur l’adresse ou sur la force.</p>
-		<table class="mt-½">
-			<tr>
-				<th></th>
-				<th>Adresse</th>
-				<th>Force</th>
-			</tr>
-			<tr>
-				<th>Attaque</th>
-				<td><i>Judo/lutte</i></td>
-				<td><i>For</i></td>
-			</tr>
-			<tr>
-				<th>Défense*</th>
-				<td><i>Dex</i>, <i>Judo/lutte</i></td>
-				<td><i>For</i>, <i>Judo/lutte</i></td>
-			</tr>
-		</table>
-		<p>* Comme dans le cas d’une attaque classique, la MR de l’attaque se transforme en malus au jet de défense, avec une limite de 5.</p>
-		Cette manœuvre compte comme une action.
+		<!-- Immobiliser -->
+		<details>
+			<summary>
+				<h5>Immobiliser (prérequis)</h5>
+			</summary>
+			<p>Cette manœuvre nécessite l’utilisation des deux mains. Elle doit nécessairement faire suite à une <i>Saisie</i> ou avoir lieu après avoir fait tombé l’adversaire (manœuvre <i>Faire tomber</i>).</p>
+			<p>Cette manœuvre compte comme une action.</p>
+			<p>Elle peut s’appuyer sur l’adresse ou sur la force.</p>
+			<table class="mt-½">
+				<tr>
+					<th></th>
+					<th>Adresse</th>
+					<th>Force</th>
+				</tr>
+				<tr>
+					<th>Attaque</th>
+					<td><i>Judo/lutte</i></td>
+					<td><i>For</i></td>
+				</tr>
+				<tr>
+					<th>Défense*</th>
+					<td><i>Dex</i>, <i>Judo/lutte</i></td>
+					<td><i>For</i>, <i>Judo/lutte</i></td>
+				</tr>
+			</table>
+			<p>* Comme dans le cas d’une attaque classique, la MR de l’attaque se transforme en malus au jet de défense, avec une limite de 5.</p>
+		</details>
+
 
 		<h4>Attaque massive</h4>
 		<p>Il est possible de choisir une des options d’<i>Attaque massive</i> décrites plus haut</p>
-
-		<!-- <h4>Modificateurs d’attaque</h4>
-		<ol>
-			<li><b>État du personnage&nbsp;:</b> comme <i>Attaque au contact</i>.</li>
-			<li><b><i>Attaque massive</i></b></li>
-			<li><b>Difficulté&nbsp;:</b> décidée par le MJ. Le plus souvent entre <i>Moyenne</i> et <i>Difficile</i>.</li>
-		</ol> -->
 
 		<h4>Attaque d'un adversaire armé</h4>
 		<p>Si l’adversaire réussit sa parade, il inflige demi-dégâts à l’attaquant (prendre en compte la RD). Pour éviter d’être blessé, l’attaquant doit réussir une <i>Parade</i> ou une <i>Esquive</i>. Ce jet fait partie de l’action d’attaque. Il ne compte pas comme une action, et n’est pas non plus une <i>défense d’urgence</i> (voir ce terme dans la section <i>Défense</i>).</p>
@@ -277,15 +308,14 @@
 		<summary>
 			<h3>Dégâts à mains nues</h3>
 		</summary>
-		<h4>Pour les humains</h4>
-		<p>• Coup de poing&nbsp;: B.e-2<br>
-			• Coup de pied&nbsp;: B.e, +1 avec des bottes pesantes.<br>
-			• Coup de genou&nbsp;: B.e-1.<br>
-			• Coup de tête&nbsp;: B.e-1. Si l’attaque est ratée de plus de 3, l’attaquant subit la moitié des dégâts qu’il aurait dû infliger.</p>
-		<p>Avec la compétence <i>Karaté</i>&nbsp;: +1/5<sup>e</sup> du score de la compétence aux dégâts (sauf pour le coup de tête).</p>
-		<h4>Effets spéciaux</h4>
-		<p>Les dégâts à mains nus (et ceux d’une matraque) ont plus d’impact pour ce qui est du <i>Recul</i> et d’une possible perte de conscience (voir <i>Effets d’une blessure</i>).</p>
-		<p>Avec des gants de boxe, déterminer les effets de la blessure comme si le personnage n’avait pas de gants, mais les dégâts <i>effectifs</i> sont divisés par deux.</p>
+		<p>Pour les humains&nbsp;:</p>
+		<ul>
+			<li>Coup de poing&nbsp;: B.e-2</li>
+			<li>Coup de pied&nbsp;: B.e, +1 avec des bottes pesantes.</li>
+			<li>Coup de genou&nbsp;: B.e-1.</li>
+			<li>Coup de tête&nbsp;: B.e-1. Si l’attaque est ratée de plus de 3, l’attaquant subit la moitié des dégâts qu’il aurait dû infliger.</li>
+		</ul>
+		<p>Avec la compétence <i>Karaté</i>&nbsp;: +1/5<sup>e</sup> du score de la compétence aux dégâts (sauf pour le coup de tête).
 	</details>
 
 </article>
@@ -294,14 +324,17 @@
 <article>
 	<h2>Attaque à distance</h2>
 
+	<!-- Modificateurs d’attaques -->
 	<details>
 		<summary>
 			<h3>Modificateurs d’attaque</h3>
 		</summary>
-		<p><b>1. État du personnage&nbsp;:</b> comme pour une attaque au contact.</p>
-		<p><b>2. Fmin de l’arme&nbsp;:</b> voir le chapitre «&nbsp;Armes &amp; armures&nbsp;«.</p>
-		<p><b>3. Difficulté&nbsp;:</b> taille et mouvement de la cible, distance, condition de visée, etc. au jugé du MJ.</p>
-		<p><b>4. Recul&nbsp;:</b> en cas de tir multiple avec une arme à feu.</p>
+		<ol class="bold-bullet">
+			<li><b>État du personnage&nbsp;:</b> comme attaque au contact.</li>
+			<li><b>Fmin de l’arme&nbsp;:</b> voir <a href="/armes-armures">Armes &amp; armures</a>.</li>
+			<li><b>Difficulté&nbsp;:</b> taille et mouvement de la cible, distance, condition de visée, etc. au jugé du MJ.</li>
+			<li><b>Recul&nbsp;:</b> en cas de tir multiple avec une arme à feu.</li>
+		</ol>
 
 		<h4>Estimer la difficulté</h4>
 		<p>La <i>Portée utile</i> d’une arme à distance est la distance à laquelle une cible de la taille d’un torse humain est atteint sur un jet de difficulté <i>Moyenne</i> et dans des conditions idéales de visée (minimum 3 secondes, davantage si l’arme a une lunette de visée, l’arme doit être tenue dans les conditions idéales).</p>
@@ -350,10 +383,11 @@
 			</table>
 		</details>
 
-		<p>Si le tireur n’est pas dans des conditions idéales de visée (la cible est plus petite, elle se déplace, le temps de visée était raccourci, le pistolet est tenu à une main, ou encore le fusil n’est pas stabilisé), il revient au MJ d’estimer la difficulté du tir.</p>
+		<p>Si le tireur n’est pas dans des conditions idéales de visée (cible plus petite qu’un torse humain, en mouvement, temps de visée raccourci, pistolet tenu à une main, &hellip;), il revient au MJ d’estimer la difficulté du tir.</p>
 
 	</details>
 
+	<!-- Tirer avec une arme à feu -->
 	<details>
 		<summary>
 			<h3>Tirer avec une arme à feu</h3>
@@ -363,23 +397,23 @@
 		<p>Il faut arrêter de tirer pendant une seconde pour annuler cette pénalité.</p>
 	</details>
 
+	<!-- Tirer en rafale -->
 	<details>
 		<summary>
 			<h3>Tirer en rafale</h3>
 		</summary>
-		<p>Lors d’un tir en rafale, le nombre de balles qui atteignent la cible dépend du <i>Rcl</i> de l’arme, du nombre de balles que compte la rafale, et de la MR du tir.</p>
-		<p>Les effets d’une rafale sont gérés par le widget de la <a href="table-jeu">Table de jeu</a></p>
+		<p>Lors d’un tir en rafale, le nombre de balles qui atteignent la cible dépend du <i>Rcl</i> de l’arme, du nombre de balles que compte la rafale et de la MR du tir. Utiliser le widget de la <a href="table-jeu">Table de jeu</a>.</p>
 		<p>Si le tireur n’a pas visé avant son tir et que le décor permet de voir où il tire, appliquer un bonus de +2 si plus de 3 balles sont tirées lors de la rafale.</p>
 
 		<h4>Tir d’arrosage</h4>
-		<p><b>Cible unique&nbsp;:</b> +3 au tir, mais le nombre de balles qui touche la cible est divisée par deux.</p>
+		<p><b>Cible unique&nbsp;:</b> +3 au tir, mais le nombre de balles qui touchent la cible est divisée par deux.</p>
 		<p><b>Plusieurs cibles proches&nbsp;:</b> pas de bonus au tir. Le nombre de balles qui atteignent leur cible est également divisée par deux, mais elles sont réparties entre les différentes cibles visées.</p>
 
 		<h4>Recul en cas de tir en rafale</h4>
 		<p>Si la compétence du tireur est inférieure à 12, la pénalité de Rcl est augmentée de 1.</p>
 
-		<h4>Malfonction en rafale</h4>
-		<p>Lors de rafales longues, l’arme chauffe, augmentant ainsi la probabilité d’un enrayement. Pour les armes d’infanterie, le score de <i>Mlf</i> est diminué de 1 pour chaque tranche complète de 10 balles tirées au-delà des 10 premières balles. Cette dégradation est plus lente pour les armes lourdes.</p>
+		<!-- <h4>Malfonction en rafale</h4>
+		<p>Lors de rafales longues, l’arme chauffe, augmentant ainsi la probabilité d’un enrayement. Pour les armes d’infanterie, le score de <i>Mlf</i> est diminué de 1 pour chaque tranche complète de 10 balles tirées au-delà des 10 premières balles. Cette dégradation est plus lente pour les armes lourdes.</p> -->
 
 	</details>
 

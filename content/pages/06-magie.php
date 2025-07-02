@@ -20,13 +20,12 @@ use App\Entity\Spell;
 		<summary>
 			<h3>Terminologie</h3>
 		</summary>
-		<p>
-			<b>Hex&nbsp;:</b> surface hexagonale de «&nbsp;diamètre&nbsp;» moyen égal à 1 m.<br>
-			<b>Sujet&nbsp;:</b> objet, personne ou créature affectée par le sort. Parfois appelé « cible » pour les sorts hostiles.<br>
-			<b>Initiateur&nbsp;:</b> le lanceur du sort ou du pouvoir.<br>
-			<b>Coût énergétique&nbsp;:</b> quantité de PdM requis pour lancer le sort.<br>
-			<b>Score brut</b> d'un sort&nbsp;: score ne tenant compte d'aucun modificateur à l'exception du modificateur dû au niveau de fluide
-		</p>
+		<ul>
+			<li><b>Hex&nbsp;:</b> surface hexagonale de «&nbsp;diamètre&nbsp;» moyen égal à 1 m.</li>
+			<li><b>Sujet&nbsp;:</b> objet, personne ou créature affectée par le sort. Parfois appelé « cible » pour les sorts hostiles.</li>
+			<li><b>Initiateur&nbsp;:</b> le lanceur du sort ou du pouvoir.</li>
+			<li><b>Coût énergétique&nbsp;:</b> quantité de PdM requis pour lancer le sort.</li>
+		</ul>
 	</details>
 
 	<!-- L’avantage Magerie -->
@@ -99,7 +98,7 @@ use App\Entity\Spell;
 		<p>
 			<b>Coût&nbsp;:</b> Coût du niveau en points de personnage.<br>
 			<b>Int&nbsp;:</b> Intelligence minimale requise pour acquérir ce niveau.<br>
-			<b>Modificateur&nbsp;:</b> bonus aux scores des collèges.<br>
+			<b>Modificateur</b> aux scores des collèges.<br>
 			<b>Détection&nbsp;:</b> score pour savoir si un objet touché est magique ou percevoir une perturbation du fluide. Un seul jet peut être fait pour chaque objet ou chaque perturbation.<br>
 			<b>PdM&nbsp;:</b> nombre de PdM supplémentaires maximum que peut acquérir un mage.<br>
 			<b>Impro&nbsp;:</b> limite du score de compétence du collège en cas d'improvisation.
@@ -117,8 +116,8 @@ use App\Entity\Spell;
 			<summary>Exemple</summary>
 			<p>Aldwin a une <i>Int</i> de 13 et <i>Magerie 2</i>. Il souhaite apprendre le collège d’<i>Emprise mentale</i>.</p>
 			<p>Il investit 8 pts de personnage dedans. En tant que compétence de type I(-8), cela l’amène à un niveau de 0.</p>
-			<p>La base de cette compétence vaut 13 (son score d’<i>Int</i>), -1 à cause de son niveau de <i>Magerie</i>.</p>
-			<p>Son score dans ce collège sera donc de 12 + 0 = 12.</p>
+			<p>La base de cette compétence vaut 13 (son score d’<i>Int</i>), -1 à cause de son niveau 2 en <i>Magerie</i>.</p>
+			<p>Son score dans ce collège sera donc de 13 – 1 = 12.</p>
 		</details>
 	</details>
 
@@ -127,10 +126,10 @@ use App\Entity\Spell;
 		<summary>
 			<h3>Apprendre un sort</h3>
 		</summary>
-		<p>Un sort est une <i>spécialisation optionnelle</i> d’un collège. Le score d’un sort est également assorti d’un modificateur qui dépend de son niveau de puissance (voir <i>Lancer un sort</i> à la section suivante)</p>
-		<p class="mt-1 ta-center fw-700">score brut (sort) = score (collège) + pts investis – modificateur de puissance</p>
+		<p>Un sort est une <i>spécialisation optionnelle</i> d’un collège. Le score d’un sort est également assorti d’un modificateur qui dépend de son niveau de puissance (voir <i>Lancer un sort</i> à la section suivante).</p>
+		<p class="mt-1 ta-center fw-700">score brut = score collège + pts investis – modificateur de puissance</p>
 		<p>Un sort ayant plusieurs niveaux de puissance possèdera donc des scores différents selon le niveau auquel il est utilisé.</p>
-		<p>Il est <b>impossible de lancer un sort sans avoir un score brut &ge; 12</b> dans ce sort, que ce soit en l’improvisant ou en l’ayant appris.</p>
+		<p>Il est <b>impossible de lancer un sort sans avoir un score brut ≥ 12</b> dans ce sort, que ce soit en l’improvisant ou en l’ayant appris.</p>
 
 		<h4>Improviser un sort</h4>
 		<p>Il est possible d’improviser n’importe quel sort de niveau III ou moins (sauf les sorts de <i>Blocage</i> et d’<i>Enchantement</i>) y compris des sorts qui ne seraient pas décrits dans ces règles.</p>
@@ -147,8 +146,8 @@ use App\Entity\Spell;
 			<p>Comme le modificateur de puissance des sorts de niveau II vaut -2 (voir <i>Lancer un sort – Caractéristiques générales de sorts</i>, section suivante), il a un score d’improvisation au niveau II qui est de 10. Ce score étant inférieur à 12, Aldwin ne peut pas improviser de sorts de niveau II.</p>
 			<p>Il souhaite apprendre le sort <i>Idiotie</i>, de niveaux I-III. S’il ne l’apprend pas, il ne peut que l’improviser au niveau I. En investissant 3 pts de personnage dans ce sort, ses scores se calculent ainsi&nbsp;:</p>
 			<p class="fw-700">Score du collège (12) + modificateur de puissance (0 au niveau I et -2 au niveau II) + pts de personnage investis (3).</p>
-			<p>Ses scores pour ce sort sont donc 15 (au niveau I) et 12 (au niveau II).</p>
-			<p>Son score «&nbsp;théorique&nbsp;» au niveau III serait de 9. Mais comme son niveau de <i>Magerie</i> est insuffisant, il ne peut de toute façon pas le lancer.</p>
+			<p>Ses scores pour ce sort sont donc 15 (au niveau I) et 13 (au niveau II).</p>
+			<p>Son score «&nbsp;théorique&nbsp;» au niveau III serait de 10. Mais comme son niveau de <i>Magerie</i> est insuffisant, il ne peut de toute façon pas le lancer.</p>
 		</details>
 	</details>
 
@@ -189,7 +188,9 @@ use App\Entity\Spell;
 
 		<!-- Régulier -->
 		<details>
-			<summary><h4>Régulier</h4></summary>
+			<summary>
+				<h4>Régulier</h4>
+			</summary>
 			<p><b>Zone d’effet&nbsp;:</b> un sujet à la fois. Pour un sujet sensiblement plus gros qu’un être humain, le coût énergétique est augmenté sans excéder le double du coût normal. L’augmentation du coût est laissée à l’appréciation du MJ, mais ne s'applique qu'à des sujets très gros (éléphant ou géant, par exemple).</p>
 			<p><b>Portée&nbsp;:</b> -1 par mètre entre le sujet et l’initiateur (min. -1 si ce dernier ne touche pas le sujet)&nbsp;; -3 si l’initiateur ne peut ni toucher ni voir le sujet (voir par des substituts magiques fonctionne).</p>
 			<p><b>Diriger le sort&nbsp;:</b> 2 manières possibles de diriger ces sorts. L’initiateur peut affecter un hex donné (par exemple, «&nbsp;l’hex derrière cette porte&nbsp;») ou un sujet donné (par exemple «&nbsp;Untel dans la pièce à côté&nbsp;»). Aucune barrière physique ne s’oppose à un sort régulier. Un sort régulier ne frappe jamais une victime par erreur, sauf en cas d’échec critique.</p>
@@ -198,7 +199,9 @@ use App\Entity\Spell;
 
 		<!-- Zone -->
 		<details>
-			<summary><h4>Zone</h4></summary>
+			<summary>
+				<h4>Zone</h4>
+			</summary>
 			<p>Ces sorts affectent une zone circulaire et tous ceux qui se trouvent à l’intérieur. Pour le reste, ils fonctionnent comme les sorts <i>Réguliers</i>. Ces sorts peuvent être lancés sur un objet inanimé&nbsp;; la zone sera centrée sur cet objet et suivra ses déplacements.</p>
 			<p><b>Portée&nbsp;:</b> comme les sorts réguliers, la distance à prendre en compte est la distance qui sépare l'initiateur de la limite la plus proche de la zone</p>
 			<p><b>Taille de la zone&nbsp;:</b> la description des sorts de zone mentionne une <i>Zone de base</i> (qui vaut 3 mètres si elle n’est pas précisée). C’est le <i>diamètre</i> de la zone d’effet, en mètres, pour un coût énergétique standard. Augmenter le diamètre de la zone implique une augmentation proportionnelle du coût énergétique.</p>
@@ -210,7 +213,9 @@ use App\Entity\Spell;
 
 		<!-- Projectiles -->
 		<details>
-			<summary><h4>Projectile</h4></summary>
+			<summary>
+				<h4>Projectile</h4>
+			</summary>
 			<p>L’usage de ces sorts nécessite 2 étapes&nbsp;: créer le projectile (compétence dans le sort), puis le lancer (compétence <i>Lancer de sort</i>). Un projectile se déplace toujours en ligne droite. La précision d’un tel sort (pour déterminer la difficulté du tir) est comparable à celle d’un pistolet moderne. La portée ½D des sorts de <i>Projectiles</i> est de 25 m.</p>
 			<p><b>Défenses&nbsp;:</b> un sort de projectile peut être bloqué ou esquivé, mais seul les projectiles solides (tel que <i>Couteau ailé</i>) peuvent être parés. Une armure protège normalement, sauf mention contraire.</p>
 			<p><b>Projectile «&nbsp;en main&nbsp;»&nbsp;:</b> l'initiateur peut conserver son projectile en main quand celui-ci est prêt à être lancé. Il peut se déplacer, viser et lancer le projectile au moment voulu. C’est le seul type de sort dont l’effet puisse être retardé.<br>
@@ -219,14 +224,18 @@ use App\Entity\Spell;
 
 		<!-- Blocage -->
 		<details>
-			<summary><h4>Blocage</h4></summary>
+			<summary>
+				<h4>Blocage</h4>
+			</summary>
 			<p>Un sort de <i>Blocage</i> peut être jeté instantanément en guise de défense contre une attaque physique ou un autre sort. Un seul sort de <i>Blocage</i> peut être jeté à la fois. Il interrompt toute concentration en cours. Les sorts de blocage ne peuvent être improvisés. Si l’initiateur a déjà effectué une action au cours de la même seconde (attaque, défense…) le sort est lancé à -5.<br>
 				En termes de <i>rituel nécessaire</i>, l'initiateur doit être capable d'accomplir le rituel associé au score qu'il a dans son sort de <i>Blocage</i> (voir <i>Rituel nécessaire</i> plus loin).</p>
 		</details>
 
 		<!-- Information -->
 		<details>
-			<summary><h4>Information</h4></summary>
+			<summary>
+				<h4>Information</h4>
+			</summary>
 			<p>Jet de compétence fait secrètement par le MJ. Si le sort réussit, le MJ donne à l’initiateur les informations demandées, leur qualité dépendant de la MR. Si le sort échoue, l’initiateur ne perçoit rien. En cas d’échec critique, le MJ ment au joueur. L’initiateur dépense toujours le coût énergétique intégral, que le sort réussisse ou échoue.<br>
 				La plupart ne peuvent être tentés qu’une fois par jour pour chaque initiateur (ou groupe d’initiateurs, en cas de magie rituelle). Les sorts de <i>Recherche</i> font exception à la règle, sauf s'ils portent sur une cible spécifique.<br>
 				Avec les sorts de <i>Recherche</i>, tout objet connu peut être exclu si l’initiateur le souhaite (-1 à la compétence par objet ignoré).<br>
@@ -235,13 +244,17 @@ use App\Entity\Spell;
 
 		<!-- Enchantement -->
 		<details>
-			<summary><h4>Enchantement</h4></summary>
+			<summary>
+				<h4>Enchantement</h4>
+			</summary>
 			<p>Ces sorts permettent de créer des objets magiques. Ils fonctionnent un peu différemment des autres sorts (voir <i>Création d’objet magique</i>).</p>
 		</details>
 
 		<!-- Sorts spéciaux -->
 		<details>
-			<summary><h4>Sorts spéciaux</h4></summary>
+			<summary>
+				<h4>Sorts spéciaux</h4>
+			</summary>
 			<p>Ils n’obéissent à aucune règle énoncée ci-dessus. Tout est indiqué dans la description du sort.</p>
 		</details>
 	</details>
@@ -251,20 +264,100 @@ use App\Entity\Spell;
 <!-- Lancer un sort -->
 <article>
 	<h2>Lancer un sort</h2>
+
+	<!-- Étapes -->
+	<details>
+		<summary>
+			<h3>Étapes</h3>
+		</summary>
+		<p>Pour lancer un sort, suivre les étapes ci-dessous&nbsp;:</p>
+		<ol>
+			<li>Déterminer son score <i>brut</i> (affiché sur la fiche de personnage).</li>
+			<li>Déterminer le temps nécessaire et le rituel à accomplir pour le lancer.</li>
+			<li>Appliquer d’éventuels modificateurs de distance et d’autres sorts déjà actifs (voir <i>Modificateurs</i>).</li>
+			<li>Après ce temps nécessaire, faire un jet pour voir si le sort est réussi. Décompter les PdM utilisés (voir aussi <i>Réussite et échec</i>).</li>
+		</ol>
+	</details>
+
+	<!-- Modificateurs -->
 	<details>
 		<summary>
 			<h3>Modificateurs</h3>
 		</summary>
+		<p>Les modificateurs qui affectent le score des collèges affectent le score brut des sorts qui en dépendent.</p>
+
+		<ul class="flow">
+			<li><b>État de l’initiateur&nbsp;:</b> les modificateurs d’état affectant l’<i>Int</i> du personnage se répercutent sur les scores des collèges.</li>
+			<li><b>Encombrement&nbsp;:</b> même effet sur le score des collèges que pour la <i>Dex</i>.</li>
+			<li><b>Niveau de fluide&nbsp;:</b> le modificateur dû au niveau de fluide s’applique aux collèges. Voir la section <i>Fluide</i>, plus bas.</li>
+			<li><b>Distance initiateur – sujet&nbsp;:</b> ce modificateur n’affecte pas le score brut.</li>
+			<li><b>Autres sorts actifs&nbsp;:</b> si le sort actif nécessite une concentration, un autre sort peut être jeté à -3. Les sorts nécessitant une concentration le mentionnent dans leur description. Sinon (y compris dans le cas d’un sort projectile gardé «&nbsp;en main&nbsp;»), il peut être jeté à -1. Les sorts permanents ne sont pas considérés comme des sorts en cours. Ces pénalités sont cumulatives. Elles n’affectent pas le score brut du sort.</li>
+		</ul>
+
+		<h4>Modificateurs de longue distance</h4>
+		<p>Lorsque la description d’un sort précise qu’il agit à longue distance, utiliser le tableau ci-dessous pour déterminer le malus associé à la distance entre l’initiateur et le sujet.</p>
+		<table class="left-1">
+			<tr>
+				<th>Distance</th>
+				<th>Modif.</th>
+			</tr>
+			<tr>
+				<td>&le; 100 m</td>
+				<td>0</td>
+			</tr>
+			<tr>
+				<td>&le; 300 m</td>
+				<td>-1</td>
+			</tr>
+			<tr>
+				<td>&le; 1 km</td>
+				<td>-2</td>
+			</tr>
+			<tr>
+				<td>&le; 3 km</td>
+				<td>-3</td>
+			</tr>
+			<tr>
+				<td>&le; 10 km</td>
+				<td>-4</td>
+			</tr>
+			<tr>
+				<td>&le; 30 km</td>
+				<td>-5</td>
+			</tr>
+			<tr>
+				<td>&le; 100 km</td>
+				<td>-6</td>
+			</tr>
+			<tr>
+				<td>&le; 300 km</td>
+				<td>-7</td>
+			</tr>
+			<tr>
+				<td>&le; 1000 km</td>
+				<td>-8</td>
+			</tr>
+			<tr>
+				<td>chaque ×3</td>
+				<td>-1 sup.</td>
+			</tr>
+		</table>
+
+		<!-- <h4>Modificateurs affectant les collèges</h4>
+		<p><b>État de l’initiateur</b></p>
 		<p><b>Encombrement de l’initiateur&nbsp;:</b> le niveau d’encombrement affecte le score des collèges de la même manière qu’il affecte la <i>Dex</i>.</p>
-		<p><b>Niveau de fluide&nbsp;:</b> les modificateurs dus au niveau de fluide influe sur le score <i>brut</i> des sorts. Voir la section <i>Fluide</i>, plus bas.</p>
+		<p><b>Niveau de fluide&nbsp;:</b> le modificateur dû au niveau de fluide influe sur le score <i>brut</i> des sorts. Voir la section <i>Fluide</i>, plus bas.</p>
+
+		<h4>Modificateurs affectant le sort en cours</h4>
 		<p><b>Distance de la cible&nbsp;:</b> voir la description de la classe ou du sort. Ce modificateur n’affecte pas le score brut. Il n’a donc pas d’influence sur tous les facteurs qui dépendent de ce score (<i>Temps nécessaire</i>, <i>Coût énergétique</i>&hellip;)</p>
-		<p><b>Jeter des sorts en en prolongeant d’autres&nbsp;:</b> si le sort actif nécessite une concentration, un autre sort peut être jeté à -3. Les sorts nécessitant une concentration le mentionnent dans leur description. Sinon (y compris dans le cas d’un sort projectile gardé «&nbsp;en main&nbsp;»), il peut être jeté à -1. Les sorts permanents ne sont pas considérés comme des sorts en cours. Ces pénalités sont cumulatives. Elles n’affectent pas le score brut du sort.</p>
-		
+		<p><b>Jeter des sorts en en prolongeant d’autres&nbsp;:</b> si le sort actif nécessite une concentration, un autre sort peut être jeté à -3. Les sorts nécessitant une concentration le mentionnent dans leur description. Sinon (y compris dans le cas d’un sort projectile gardé «&nbsp;en main&nbsp;»), il peut être jeté à -1. Les sorts permanents ne sont pas considérés comme des sorts en cours. Ces pénalités sont cumulatives. Elles n’affectent pas le score brut du sort.</p> -->
+
 	</details>
 
+	<!-- Caractéristiques générales -->
 	<details>
 		<summary>
-			<h3>Caractéristiques générales des sorts</h3>
+			<h3>Caractéristiques générales</h3>
 		</summary>
 		<p>Sauf indication contraire dans la description du sort, les sorts ont les caractéristiques générales suivantes.</p>
 		<table>
@@ -320,6 +413,7 @@ use App\Entity\Spell;
 		</p>
 	</details>
 
+	<!-- Réduction du coût énergétique -->
 	<details>
 		<summary>
 			<h3>Réduction du coût énergétique</h3>
@@ -331,9 +425,10 @@ use App\Entity\Spell;
 		<p>Cette réduction s’applique au coût de lancer du sort et au coût de maintien. Le score à prendre en compte est le score brut. Un sort suffisamment maîtrisé peut donc devenir gratuit à prolonger voire à lancer.</p>
 	</details>
 
+	<!-- Temps et rituel nécessaires -->
 	<details>
 		<summary>
-			<h3>Temps et rituel nécessaire</h3>
+			<h3>Temps et rituel nécessaires</h3>
 		</summary>
 		<p>Un temps d’incantation est nécessaire avant de pouvoir lancer un sort. Ce <i>Temps nécessaire</i> peut être <i>rapide</i> ou <i>long</i> (voir description du sort). La valeur exacte de ce temps nécessaire dépend de son niveau de puissance.</p>
 		<p>Ce temps peut être raccourci grâce à un score de compétence élevé (sauf si le sort nécessite toujours un rituel ou un objet spécifique).</p>
@@ -379,6 +474,7 @@ use App\Entity\Spell;
 		</table>
 	</details>
 
+	<!-- Durée et prolongation -->
 	<details>
 		<summary>
 			<h3>Durée et prolongation</h3>
@@ -387,62 +483,10 @@ use App\Entity\Spell;
 		<p><b>Prolonger un sort&nbsp;:</b> aucun jet n’est nécessaire, l’initiateur paye la moitié du coût de base du sort pour le prolonger de sa durée de base (ou moins s'il le spécifie). L’initiateur doit être conscient et éveillé, même si la prolongation ne lui coûte aucun PdM.</p>
 	</details>
 
+	<!-- Réussite, échec et critiques -->
 	<details>
 		<summary>
-			<h3>Modificateurs de longue distance</h3>
-		</summary>
-		<p>Lorsqu’un sort agit à longue distance, utiliser le tableau ci-dessous pour déterminer le malus associé à la distance entre l’initiateur et le sujet.</p>
-		<table class="left-1">
-			<tr>
-				<th>Distance</th>
-				<th>Modif.</th>
-			</tr>
-			<tr>
-				<td>&le; 100 m</td>
-				<td>0</td>
-			</tr>
-			<tr>
-				<td>&le; 300 m</td>
-				<td>-1</td>
-			</tr>
-			<tr>
-				<td>&le; 1 km</td>
-				<td>-2</td>
-			</tr>
-			<tr>
-				<td>&le; 3 km</td>
-				<td>-3</td>
-			</tr>
-			<tr>
-				<td>&le; 10 km</td>
-				<td>-4</td>
-			</tr>
-			<tr>
-				<td>&le; 30 km</td>
-				<td>-5</td>
-			</tr>
-			<tr>
-				<td>&le; 100 km</td>
-				<td>-6</td>
-			</tr>
-			<tr>
-				<td>&le; 300 km</td>
-				<td>-7</td>
-			</tr>
-			<tr>
-				<td>&le; 1000 km</td>
-				<td>-8</td>
-			</tr>
-			<tr>
-				<td>chaque ×3</td>
-				<td>-1 sup.</td>
-			</tr>
-		</table>
-	</details>
-
-	<details>
-		<summary>
-			<h3>Réussite, échec et échec critique</h3>
+			<h3>Réussite, échec et critiques</h3>
 		</summary>
 		<p><b>Réussite&nbsp;:</b> le sort a été lancé et son coût énergétique doit être payé (même si la cible a résisté au sort).</p>
 		<p><b>Réussite critique&nbsp;:</b> le sort a fonctionné mieux que prévu (discrétion du MJ). Pas de dépense de PdM.</p>
