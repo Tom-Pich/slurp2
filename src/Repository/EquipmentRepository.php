@@ -32,7 +32,7 @@ class EquipmentRepository extends AbstractRepository
 		return $items;
 	}
 
-	public function getEquipmentPlace(int $id): string
+	public function getEquipmentPlace(int $id): ?string
 	{
 		$query = $this->db->prepare("SELECT id, Lieu FROM objets WHERE id = ?");
 		$query->execute([$id]);

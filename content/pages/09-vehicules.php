@@ -6,14 +6,49 @@
 		<summary>
 			<h3>Familles</h3>
 		</summary>
-		<p>Il existe 5 familles de véhicules : <i>terrestres</i>, <i>aériens</i>, <i>flottants</i>, <i>sous-marins</i>, <i>spatiaux</i>. Les caractéristiques <i>Accélération</i> et <i>Manœuvrabilité</i> ne peuvent être comparées qu’entre véhicules de la même famille.</p>
+		<p>Il existe 5 familles de véhicules&nbsp;: <i>terrestres</i>, <i>aériens</i>, <i>flottants</i>, <i>sous-marins</i>, <i>spatiaux</i>. Les caractéristiques <i>Accélération</i> et <i>Manœuvrabilité</i> ne peuvent être comparées qu’entre véhicules de la même famille.</p>
 	</details>
 
 	<details>
 		<summary>
 			<h3>Accélération (Acc)</h3>
 		</summary>
-		<p>
+		<p>L’<i>Accélération</i> d’un véhicule est quantifiée sur 7 niveaux.</p>
+		<table class="left-2">
+			<tr>
+				<th style="width: 10ch">Niv.</th>
+				<th>Qualificatif</th>
+			</tr>
+			<tr>
+				<td>0</td>
+				<td>Négligeable</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>Faible</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Médiocre</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Moyenne</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>Bonne</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>Très bonne</td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td>Excellente</td>
+			</tr>
+		</table>
+		<!-- <p>
 			<b>Nulle (0) :</b> Accélération très faible, sans effet en termes de jeu. C’est le cas des gros véhicules (camion, bus, gros navires) ou de ceux disposant d’un moyen de propulsion peu efficace (vélo, voilier, dirigeable).<br>
 			<b>Faible (1) :</b> Camion vide, camionnette chargée, voiture poussive.<br>
 			<b>Médiocre (2) :</b> Petite voiture moderne, camionnette.<br>
@@ -21,7 +56,7 @@
 			<b>Bonne (4) :</b> Voiture assez puissante, moto légère.<br>
 			<b>Très bonne (5) :</b> Voiture de sport moderne, moto moyenne.<br>
 			<b>Excellente (6) :</b> Voiture exceptionnelle, moto sportive.
-		</p>
+		</p> -->
 		<p>Si le véhicule est chargé, son <i>Acc</i> est diminuée de 1, sans toutefois pouvoir être inférieure à 0.</p>
 	</details>
 
@@ -36,8 +71,42 @@
 		<summary>
 			<h3>Maniabilité (Ma)</h3>
 		</summary>
-		<p>Plus la <i>Maniabilité</i> d’un véhicule est grande, plus des écarts de mouvements brusques et des virages serrés sont possibles.</p>
-		<p>
+		<p>Plus la <i>Maniabilité</i> d’un véhicule est grande, plus des écarts de mouvements brusques et des virages serrés sont possibles. Elle est quantifiée sur 7 niveaux.</p>
+		<table class="left-2">
+			<tr>
+				<th style="width: 10ch">Niv.</th>
+				<th>Qualificatif</th>
+			</tr>
+			<tr>
+				<td>0</td>
+				<td>Négligeable</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>Faible</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Médiocre</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Moyenne</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>Bonne</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>Très bonne</td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td>Excellente</td>
+			</tr>
+		</table>
+		<!-- <p>
 			<b>Nulle (0) :</b> Ne peut faire aucun écart. Lent et lourd à manœuvrer. Semi-remorque ou camion chargé. Tout véhicule d’une échelle de taille supérieure à 3 a automatiquement une maniabilité de zéro.<br>
 			<b>Mauvaise (1) :</b> Camionnette chargée. Voiture en mauvaise état, camion moyen vide.<br>
 			<b>Médiocre (2) :</b> Voiture moderne bas de gamme, camionnette vide. Très grosse moto.<br>
@@ -45,7 +114,7 @@
 			<b>Bonne (4) :</b> Voiture moderne de bonne qualité. Moto routière ou trail.<br>
 			<b>Très bonne (5) :</b> Voiture haut de gamme. Moto sportive.<br>
 			<b>Excellente (6) :</b> Voiture exceptionnelle.
-		</p>
+		</p> -->
 		<p>Si le véhicule est chargé, sa <i>Ma</i> est diminuée de 1, sans toutefois pouvoir être inférieure à 0.</p>
 	</details>
 
@@ -53,19 +122,22 @@
 		<summary>
 			<h3>Résistance aux dégâts (RD)</h3>
 		</summary>
-		<p>La RD d’un véhicule fonctionne exactement comme celle d’une armure. Elle dépend grandement de la partie considérée. Par défaut, le score indiqué correspond à la carrosserie. Les tables de localisation doivent indiquer la RD de chaque partie du véhicule.</p>
+		<p>La RD d’un véhicule fonctionne exactement comme celle d’une armure. Elle dépend grandement de la partie considérée.</p>
 	</details>
 
 	<details>
 		<summary>
 			<h3>Points de Structure (PdS)</h3>
 		</summary>
-		<p>Les points de Structure sont les PdV du véhicule. Pour un véhicule en métal de longueur <i>L</i> ayant les proportions d’une voiture : PdS = 13×<i>L</i><sup>0,96</sup>.</p>
+		<p>Les points de Structure sont les PdV du véhicule. Pour un véhicule en métal de longueur <i>L</i> ayant les proportions d’une voiture&nbsp;: PdS = 13×<i>L</i><sup>0,96</sup>.</p>
 		<p>Un véhicule ayant une forme plus compacte aura 10% de PdS en plus, un véhicule cubique ou sphérique en aura 20% en plus. À l’inverse, un véhicule fin ou très fin aura 10 à 20 % de PdS en moins.</p>
+
 		<h4>Quelques ordres de grandeur indicatifs</h4>
-		<p>48 à 52 PdS pour une voiture classique&nbsp;; 55 à 65 pour un pick-up, un SUV ou une voiture de luxe.<br>
+		<p>
+			48 à 52 PdS pour une voiture classique&nbsp;; 55 à 65 pour un pick-up, un SUV ou une voiture de luxe.<br>
 			100 PdS pour un bus, un camion ou un tracteur de semi-remorque,
-			26 à 33 PdS pour une moto</p>
+			26 à 33 PdS pour une moto
+		</p>
 	</details>
 
 	<details>
@@ -79,7 +151,7 @@
 		<summary>
 			<h3>Malfonction (Mlf)</h3>
 		</summary>
-		<p>Ce score mesure la fiabilité du véhicule. Le score par défaut est de 18 pour un véhicule fiable. Mais il peut baisser avec l’âge du véhicule, selon la qualité de son entretien, selon la technologie utilisée pour le fabriquer et selon son niveau d’endommagement. Le MJ fait un jet de Malfonction à chaque fois qu’il l’estime nécessaire.</p>
+		<p>Ce score mesure la fiabilité du véhicule. Le score par défaut est de 18 pour un véhicule fiable. Mais il peut baisser avec l’âge du véhicule, selon la qualité de son entretien, selon la technologie utilisée pour le fabriquer et selon son niveau d’endommagement. Le MJ fait un jet de <i>Malfonction</i> à chaque fois qu’il l’estime nécessaire.</p>
 	</details>
 
 </article>
@@ -88,6 +160,7 @@
 <article>
 	<h2>Actions</h2>
 
+	<!-- Jet de Contrôle -->
 	<details>
 		<summary>
 			<h3>Jet de Contrôle</h3>
@@ -100,6 +173,7 @@
 
 	</details>
 
+	<!-- Poursuites -->
 	<details>
 		<summary>
 			<h3>Poursuites</h3>
@@ -109,13 +183,32 @@
 
 		<h4>Portée</h4>
 		<p>Au début de la poursuite, le MJ définit la portée séparant les deux véhicules. Pour la fluidité du jeu, on ne distinguera que 5 types de portée.</p>
-		<p>
-			<b>Courte 1 :</b> Les véhicules sont très proches sans être au contact.<br>
-			<b>Courte 2 :</b> Des échanges de tir sont possibles quasiment à tout moment entre les véhicules. La distance réelle peut varier selon le décor.<br>
-			<b>Moyenne 1 :</b> Les deux véhicules se voient par intermittence.<br>
-			<b>Moyenne 2 :</b> Un échange de tir est rarement possible.<br>
-			<b>Longue :</b> Les véhicules ne peuvent pas se tirer dessus, mais la poursuite est possible.
-		</p>
+		<table class="left-2">
+			<tr>
+				<th>Portée</th>
+				<th>Description</th>
+			</tr>
+			<tr>
+				<th>Courte 1</th>
+				<td>Les véhicules sont très proches sans être au contact.</td>
+			</tr>
+			<tr>
+				<th>Courte 2</th>
+				<td>Des échanges de tir sont possibles quasiment à tout moment entre les véhicules. La distance réelle peut varier selon le décor.</td>
+			</tr>
+			<tr>
+				<th>Moyenne 1</th>
+				<td>Les deux véhicules se voient par intermittence.</td>
+			</tr>
+			<tr>
+				<th>Moyenne 2</th>
+				<td>Un échange de tir est rarement possible.</td>
+			</tr>
+			<tr>
+				<th>Longue</th>
+				<td>Les véhicules ne peuvent pas se tirer dessus, mais la poursuite est possible.</td>
+			</tr>
+		</table>
 
 		<h4>Annonce de la difficulté de la manœuvre</h4>
 		<p>Le conducteur qui est poursuivi annonce la difficulté qu’il s’impose pour sa conduite et fait un jet de conduite avec tous les modificateurs approprié (voir ci-dessous). Le poursuivant a le droit de refuser ce malus, mais il perd alors automatiquement la séquence, sans prendre le risque de faire un accident.</p>
@@ -124,7 +217,9 @@
 		<p><b>Accélération :</b> dans les cas où le véhicule change fréquement d’allure (route de montagne, ville, etc) l’accélération du véhicule est un facteur prépondérant. Le conducteur du véhicule ayant l’<i>Acc</i> la plus élévée ajoute 2×&Delta;<i>Acc</i> (différence d’Accélération) à sa MR s’il réussit son jet de conduite.</p>
 
 		<h4>Duel de contrôle</h4>
-		<p>Si les deux jets sont un succès, la situation n’évolue pas, sauf si la MR d’un des protagonistes est supérieure de 3 à celle de l’autre. Si un seul des protagonistes gagne, il peut faire varier d’un rang la portée de la poursuite. Si un des conducteurs rate son jet de Contrôle, il perd le duel et doit immédiatement refaire un jet de Contrôle pour éviter l’accident, avec les mêmes modificateurs que le premier jet.</p>
+		<p>Si les deux jets sont un succès, la situation n’évolue pas, sauf si la MR d’un des protagonistes est supérieure de 3 à celle de l’autre.</p>
+		<p>Si un seul des protagonistes gagne, il peut faire varier d’un rang la portée de la poursuite.</p>
+		<p>Si un des conducteurs rate son jet de <i>Contrôle</i>, il perd le duel et doit immédiatement refaire un jet de <i>Contrôle</i> pour éviter l’accident, avec les mêmes modificateurs que le premier jet.</p>
 
 		<details class="exemple">
 			<summary>Exemple</summary>
@@ -138,11 +233,12 @@
 
 	</details>
 
+	<!-- Échec au jet de Contrôle -->
 	<details>
 		<summary>
 			<h3>Échec au jet de Contrôle</h3>
 		</summary>
-		<p>En cas d’échec, les conséquences varient selon la ME du jet de contrôle, du type de véhicule et de la nature du terrain dans lequel ce véhicule se déplace. Pour une voiture, cela peut aller d’un simple dérapage à une sortie de route suivie de tonneaux. Le tableau suivant permet d’estimer les conséquences d’un jet de <i>Contrôle</i> raté.</p>
+		<p>En cas d’échec, les conséquences varient selon la ME du jet de contrôle, du type de véhicule et de la nature du terrain dans lequel ce véhicule se déplace. Pour une voiture, cela peut aller d’un simple dérapage à une sortie de route suivie de tonneaux. La table suivant permet d’estimer les conséquences d’un jet de <i>Contrôle</i> raté.</p>
 
 		<table class="left-2">
 			<tr>
@@ -151,7 +247,7 @@
 			</tr>
 			<tr>
 				<td>1</td>
-				<td>Erreur minime. Un 2<sup>e</sup> jet de contrôle, avec les mêmes malus, pour éviter l’accident. Les conséquences sont minimales</td>
+				<td>Erreur minime. Un 2<sup>e</sup> jet de contrôle, avec les mêmes malus, pour éviter l’accident. Les conséquences sont minimales.</td>
 			</tr>
 			<tr>
 				<td>2</td>
@@ -180,6 +276,7 @@
 
 	</details>
 
+	<!-- Collision -->
 	<details>
 		<summary>
 			<h3>Collision</h3>
@@ -191,14 +288,39 @@
 		<p>Les dégâts reçus par les passagers sont déterminés en utilisant les règles du paragraphe <i>Dégâts aux occupants</i>.</p>
 
 		<h4>Conséquences pour une créature percutée</h4>
-		<p>Déterminer la gravité de la collision (qui peut être différente de celle pour le véhicule).</p>
-		<p>Les dégâts (pour un être humain) se calculent en fonction de la gravité : Légère = 1d ; Moyenne = 3d ; Grave = 6d ; Très grave = 6d×2. La RD s’applique normalement. Ces dégâts sont augmentés en proportion des « PdV moyens » de la créature.</p>
+		<p>Déterminer la gravité de la collision pour la créature percutée (qui peut être différente de celle pour le véhicule).</p>
+		<p>Les dégâts (pour un être humain) se calculent en fonction de la gravité.</p>
+		<table>
+			<tr>
+				<th>Gravité</th>
+				<th>Dégâts subis</th>
+			</tr>
+			<tr>
+				<td>Légère</td>
+				<td>1d</td>
+			</tr>
+			<tr>
+				<td>Moyenne</td>
+				<td>3d</td>
+			</tr>
+			<tr>
+				<td>Grave</td>
+				<td>6d</td>
+			</tr>
+			<tr>
+				<td>Très grave</td>
+				<td>6d×2</td>
+			</tr>
+		</table>
+
+		<p>La RD s’applique normalement. Ces dégâts sont augmentés en proportion des «&nbsp;PdV moyens&nbsp;» de la créature.</p>
 
 		<h4>Éperonnage</h4>
 		<p>On peut placer à l’avant d’un véhicule de quoi éperonner un autre appareil en limitant les dégâts subis par l’attaquant.</p>
 		<p>Le véhicule qui éperonne subit des dégâts dont la gravité est d’un niveau inférieur à ce qu’il subirait sans son éperon (qui peut par ailleurs lui procurer une RD importante à l’endroit de l’impact).</p>
 	</details>
 
+	<!-- Attaque -->
 	<details>
 		<summary>
 			<h3>Attaque</h3>
@@ -206,12 +328,14 @@
 		<p>Une attaque d’un véhicule est traitée comme une attaque à distance.</p>
 	</details>
 
+	<!-- Défense -->
 	<details>
 		<summary>
 			<h3>Défense</h3>
 		</summary>
+
 		<h4>Se rendre plus difficile à toucher</h4>
-		<p>Si un pilote tente des manœuvres acrobatiques pour se rendre difficile à toucher. Il revient au MJ d’établir un lien entre la MR du jet de Contrôle du pilote et le malus infligé à l’attaquant.</p>
+		<p>Si un pilote tente des manœuvres acrobatiques pour se rendre difficile à toucher. Il revient au MJ d’établir un lien entre la MR du jet de <i>Contrôle</i> du pilote et le malus infligé à l’attaquant.</p>
 
 		<h4>Esquiver un missile direct</h4>
 		<p>Une esquive n’est possible que si on a le temps d’anticiper la trajectoire du missile, c’est-à-dire quand celui-ci est tiré d’assez loin.</p>
@@ -219,9 +343,9 @@
 		<h4>Défense contre missile guidé</h4>
 		<p>Trois stratégies anti-missiles existent :</p>
 		<ul>
-			<li>Détruire le missile en lui tirant dessus. Le missile encaisse les dégâts comme un véhicule (avec une <i>Intégrité</i> généralement élevée). Si le missile est gravement endommagé, il ne pourra pas atteindre son but.</li>
-			<li>Lancer un leurre. Le missile doit refaire un jet d’<i>Acquisition</i>. En cas d’échec, le missile suit le leurre.</li>
-			<li>Esquiver le missile au tout dernier moment. Une manœuvre <i>Assez difficile</i> imposera un -1 au jet d’attaque du missile, une manœuvre <i>Difficile</i> imposera un -3 et une manœuvre <i>Très difficile</i> un -5. Ceci suppose un véhicule dont la Ma est de 4. Modifier les malus en cas de Ma différente.</li>
+			<li><b>Détruire le missile</b> en lui tirant dessus. Le missile encaisse les dégâts comme un véhicule (avec une <i>Intégrité</i> généralement élevée). Si le missile est gravement endommagé, il ne pourra pas atteindre son but.</li>
+			<li><b>Lancer un leurre.</b> Le missile doit refaire un jet d’<i>Acquisition</i>. En cas d’échec, le missile suit le leurre.</li>
+			<li><b>Esquiver le missile</b> au tout dernier moment. Une manœuvre <i>Assez difficile</i> imposera un -1 au jet d’attaque du missile, une manœuvre <i>Difficile</i> imposera un -3 et une manœuvre <i>Très difficile</i> un -5. Ceci suppose un véhicule dont la Ma est de 4. Modifier les malus en cas de Ma différente.</li>
 		</ul>
 	</details>
 

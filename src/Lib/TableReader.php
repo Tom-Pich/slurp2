@@ -6,7 +6,7 @@ class TableReader
 {
 	/**
 	 * return the element of the array with the nearest index superior to value
-	 * @param array $table : an simple array or indexed array with integer indexes
+	 * @param array $table : a simple array or indexed array with integer indexes
 	 * @param float $value : the value of the index to be found. If index does not exist, return the nearest superior index.
 	 * @param bool $strict : if true, the index must be strictly superior to the value
 	 * @return any : the nearest array element superior (or equal) to the value provided. Null if that’s not possible

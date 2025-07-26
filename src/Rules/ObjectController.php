@@ -7,6 +7,26 @@ use App\Lib\DiceManager;
 
 class ObjectController
 {
+
+	public const dmg_levels = [
+		0 => "aucun",
+		1 => "très légers", // jusqu’à 10% des PdSm, dégâts très légers
+		2 => "légers",
+		3 => "moyens",
+		4 => "graves",
+		5 => "très graves",
+		6 => "extrême"
+	];
+
+	public const state_levels = [
+		0 => "état OK",
+		1 => "légèrement endommagé",
+		2 => "moyennement endommagé",
+		3 => "gravement endommagé",
+		4 => "hors-service",
+		5 => "détruit"
+	];
+
 	public const object_types = [
 		"générique" => [
 			"localisations" => [
@@ -45,7 +65,6 @@ class ObjectController
 		$netDamages = max($rawDamages - $rd, 0);
 
 		// evaluating damage level
-		$damageLevels = [0 => "aucun", 1 => "très légers", 2 => "légers", 3 => "moyens", 4 => "graves", 5 => "très graves", 6 => "extrême"];
 		if ($netDamages === 0) $damageIndex = 0;
 		elseif ($netDamages <= .1 * $pdsm) $damageIndex = 1;
 		elseif ($netDamages <= .25 * $pdsm) $damageIndex = 2;
@@ -58,7 +77,6 @@ class ObjectController
 		if ($dmgType !== "localises") $pds -= $netDamages;
 
 		// evaluating state level
-		$stateLevels = [0 => "état OK", 1 => "légèrement endommagé", 2 => "moyennement endommagé", 3 => "gravement endommagé", 4 => "hors-service", 5 => "détruit"];
 		if ($pds <= -$pdsm) $stateLevelIndex = 5;
 		elseif ($pds <= 0) $stateLevelIndex = 4;
 		elseif ($pds <= 0.5 * $pdsm) $stateLevelIndex = 3;
@@ -90,8 +108,8 @@ class ObjectController
 			"integrité" => $integrite,
 			"rd" => $rd,
 			"netDamages" => $netDamages,
-			"damagesLevel" => $damageLevels[$damageIndex],
-			"stateLevel" => $stateLevels[$stateLevelIndex],
+			"damagesLevel" => self::dmg_levels[$damageIndex],
+			"stateLevel" => self::state_levels[$stateLevelIndex],
 			"sideEffects" => $sideEffects,
 		];
 	}

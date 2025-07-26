@@ -2,7 +2,7 @@
 
 <div class="wiki-right-element">
 	<figure>
-		<img src="/assets/img_paorn/imegie-01.webp?v=2.0" />
+		<img src="/assets/img_paorn/imegie-01.webp?v=2.2" />
 		<figcaption>Plan de la ville</figcaption>
 	</figure>
 	<figure>
@@ -269,14 +269,14 @@
 
 <h4>Bâtiments notables</h4>
 <p><b>Université</b> d’Opalia, réputée dans toute la Burgonnie.</p>
-<p><b>Château du prince</b>, grosse bâtisse aux tours rondes et aux remparts bas, adossé à des contreforts rocheux dans la vieille ville.<br>
-	À l'intérieur des deux premiers murs d'enceintes logent les nobles aux services du Prince : conseillers, Grand conétable (ministre de la guerre), premier échevin (ministre de l'intérieur), chancelier (responsable de la justice et des affaires administratives), grand argentier (ministre des finances), le régent des Mines &amp; Forêts. Ainsi que les conseillers de ces conseillers, plus des nobles n'exerçant aucune charge particulière.</p>
+<p><b>Château du prince</b>, grosse bâtisse aux tours rondes et aux remparts bas, adossée à des contreforts rocheux dans la vieille ville.<br>
+	À l'intérieur des deux premiers murs d'enceintes logent les nobles aux services du Prince&nbsp;: conseillers, Grand conétable (ministre de la guerre), premier échevin (ministre de l'intérieur), chancelier (responsable de la justice et des affaires administratives), grand argentier (ministre des finances), le régent des Mines &amp; Forêts. Ainsi que les conseillers de ces conseillers, plus des nobles n'exerçant aucune charge particulière.</p>
 <p><b>Domus Veritas :</b> QG de l’Arcania, petite fortesse monobloc au pied du château du Prince.</p>
-<p><b>Cathédrale de la Sainte-Lumière :</b> jouxtant la place du marché au centre de la ville.</p>
+<p><b>Cathédrale de la Sainte-Lumière&nbsp;:</b> jouxtant la place du marché au centre de la ville.</p>
 <p><b>Capitainerie&nbsp;:</b> ce bâtiment héberge la capitainerie du port marchand, mais aussi les douanes. C’est un bâtiment à un seul étage, flanqué d’une tour. L’accès se fait obligatoirement par une lourde double porte de bois donnant dans une large cour intérieure.</p>
 
 <h4>Auberges &amp; tavernes</h4>
 <p><b>Auberge de la Dunette&nbsp;:</b> dans le quartier du port. Auberge de standing moyen.</p>
 <p><b>Auberge du Prince&nbsp;:</b> dans la vieille ville. Auberge de haut standing dans le quartier de Bellevue.</p>
-<p><b>Auberge <i>la Vieille Tour</i>&nbsp;:</b> dans la vieille ville, quartier des Consuls. Voir l’<a href="/paorn?article=auberge-vieille-tour">article qui lui est consacré</a>.</p>
+<p><b>Auberge <i>la Vieille Tour</i>&nbsp;:</b> dans la vieille ville, quartier des Consuls. Voir l’<a href="/paorn/auberge-vieille-tour">article qui lui est consacré</a>.</p>
 <p><b>Auberge <i>La perle</i>&nbsp;:</b> quartier de Bellevue. Une auberge confortable accueillant les marchands de passage. Elle propose (très discrètement) des jeunes filles à ses clients.</p>

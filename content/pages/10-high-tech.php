@@ -79,6 +79,44 @@
 		<p>Au moment où il va toucher sa cible, le missile doit effectuer un dernier jet d’<i>Acquisition</i>. Si ce jet est raté, le missile manque sa cible. Il peut tenter une réacquisition à -3 et pourra tenter une nouvelle attaque, ceci jusqu’à ce que le missile ait épuisé tout son carburant.</p>
 	</details>
 
+	<details>
+		<summary>
+			<h3>Impulsion EMP</h3>
+		</summary>
+		<p>Une forte impulsion électromagnétique (EMP) est capable d’affecter les systèmes électroniques, provisoirement ou de manière permanente. En cas d’EMP, tout appareil électronique doit faire un jet d’<i>Intégrité</i> (score par défaut = 10), modifié selon l’intensité de l’EMP.</p>
+		<p>Si le jet d’<i>Intégrité</i> est raté, l’appareil subit les effets indiqués. S’il est réussi, les effets sont réduits d’un cran. Si MR &ge; 5 ou sur une réussite critique, les effets sont réduits de 2 crans. Si Me &ge; 5 ou sur un échec critique, les effets sont aggravés d’un cran.</p>
+
+		<table class="left-2">
+			<tr>
+				<th width="15%">Intensité de l’EMP</th>
+				<th>Effets</th>
+			</tr>
+			<tr>
+				<td>Légère</td>
+				<td>Dégâts légers&nbsp;: l’appareil cesse de fonctionner pendant 1d minute(s). Passé ce délai, il refonctionnera normalement.</td>
+			</tr>
+			<tr>
+				<td>Moyenne</td>
+				<td>Dégâts moyens&nbsp;: L’appareil cesse de fonctionner pendant 1d minute(s). Après ce délai, il fonctionnera de nouveau avec des bugs mineurs ou une efficacité moindre.</td>
+			</tr>
+			<tr>
+				<td>Importante</td>
+				<td>Dégâts graves&nbsp;: L’appareil cesse de fonctionner pour 1d×10 minutes. Passé ce délai, l’appareil ne fonctionnera plus correctement&nbsp;: son efficacité sera grandement affectée.</td>
+			</tr>
+			<tr>
+				<td>Très importante</td>
+				<td>Hors service&nbsp;: L’appareil cesse de fonctionner. Il ne fonctionnera pas avant une réparation qui nécessitera de changer certains composants.</td>
+			</tr>
+			<tr>
+				<td>Extrême</td>
+				<td>Détruit&nbsp;: Plus de 80% des composants sont inutilisables. L’appareil est plus cher à réparer qu’à remplacer.</td>
+			</tr>
+		</table>
+
+		<h4>Blindage anti-EMP</h4>
+		<p>Il est possible de blinder un appareil spécifiquement contre ce genre de problème. Le niveau du blindage s’ajoute aux jets d’Intégrité.</p>
+	</details>
+
 </article>
 
 <!-- Piratage informatique -->
@@ -317,11 +355,11 @@
 <!-- Robots -->
 <article>
 	<h2>Robots</h2>
-
+	<p class="ta-center"><i>À venir</i></p>
 </article>
 
 <!-- Prothèse cybernétiques -->
 <article>
 	<h2>Prothèses cybernétiques</h2>
-
+	<p class="ta-center"><i>À venir</i></p>
 </article>

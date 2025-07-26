@@ -1,4 +1,7 @@
-<p>Les montagnes lauriennes sont parsemées de ruines très anciennes de toutes sortes&nbsp;: palais, tombeaux, temples dédiés à des dieux inconnus, etc. Ces ruines sont désignées sous le terme générique de <i>Pasganon</i>. Il court dans Paorn un grand nombre de légendes parlant des richesses fabuleuses qu’abriteraient ces anciens édifices et il n’est pas rare de voir des groupes d’aventuriers venir dans cette région.</p>
-<p>Les Lauriens considèrent toutefois que les ruines sont sacrée et ils en interdisent formellement l’accès. Les geôles de Parna regorgent de «&nbsp;contrevenants&nbsp;». Leurs rapines, une fois confisquées, ont largement contribué à la splendeur du Démétrion (voir <a href="/wiki/paorn/parna">Parna</a>).</p>
-<p>Ces ruines se trouvent, pour la plupart, dans la partie inhabitée de l’île. Ces régions inhabitées peuvent être dangereuses (présence de créatures monstrueuses).</p>
+<p>Les montagnes lauriennes sont parsemées de ruines très anciennes de toutes sortes&nbsp;: palais, tombeaux, temples, observatoires astronomiques, etc. Ces ruines sont désignées sous le terme générique de <i>Pasganon</i>. Il court dans Paorn un grand nombre de légendes parlant des richesses fabuleuses qu’abriteraient ces anciens édifices et il n’est pas rare de voir des groupes d’aventuriers venir dans cette région.</p>
+
+<p>Les Lauriens considèrent toutefois que les ruines sont sacrées et ils en interdisent formellement l’accès. Les geôles de Parna regorgent de « contrevenants ». Leurs rapines, une fois confisquées, ont largement contribué à la splendeur du Démétrion (voir <a href="/wiki/paorn/parna">Parna</a>).</p>
+
+<p>Ces ruines se trouvent, pour la plupart, dans la partie inhabitée de l’île. Ces régions inhabitées peuvent être dangereuses : d’une part il est facile de s’y perdre – elles s’étendent sur presque 40.000 km², et d’autre part elles sont fréquentées par des créatures dangereuses. Des rumeurs persistantes de géants et de dragons ne peuvent pas être complètement infondés.</p>
+
 <p class="admin">Habitants (animaux et créatures)&nbsp;: bouquetins, wyvernes, géants (dont cyclopes). Quelques monstres rares et solitaires.</p>

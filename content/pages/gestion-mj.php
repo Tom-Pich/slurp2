@@ -43,26 +43,30 @@ $playNotif = false;
 
 <!-- Objets orphelins -->
 <article>
-	<h2>Objets orphelins</h2>
+	<h2 class="flex-s gap-½">
+		Objets orphelins
+		<button class="nude ff-fas" data-role="open-dialog" data-dialog-name="orphan-objects-dialog" title="mode d’emploi">&#xf059;</button>
+	</h2>
+	<!-- <form id="items-form-test" class="grid gap-½" action="/submit/equipment-list" method="post"> -->
 	<form id="items-form" class="grid gap-½">
 		<?php
 		$n = 0;
 		foreach ($liste_objets_orphelins as $objet) { ?>
 			<div class="grid single-item-wrapper gap-½-1">
-				<div class="ta-right fs-300" style="grid-area: id; align-self: center"><?= $objet->id ?></div>
-				<input type="text" name="objet-gestionnaire[<?= $n ?>][Nom]" value="<?= $objet->name ?>" placeholder="Nom de l’objet" style="grid-area: name">
+				<div class="ta-right fs-300" style="grid-area: id; align-self: center" title="id de l’objet"><?= $objet->id ?></div>
+				<input type="text" name="objet-gestionnaire[<?= $n ?>][Nom]" value="<?= $objet->name ?>" placeholder="Nom de l’objet" style="grid-area: name" title="Nom de l’objet">
 				<div class="flex-s ai-center">
-					<label class="ff-fas">
+					<label class="ff-fas" title="contenant ?">
 						&#xf187;
-						<input type="checkbox" name="objet-gestionnaire[<?= $n ?>][Contenant]" <?= $objet->isContainer ? "checked" : "" ?> title="contenant ?">
+						<input type="checkbox" name="objet-gestionnaire[<?= $n ?>][Contenant]" <?= $objet->isContainer ? "checked" : "" ?> >
 					</label>
 				</div>
 				<input type="text" name="objet-gestionnaire[<?= $n ?>][Poids]" value="<?= $objet->weight ?>" class="ta-center" placeholder="Pds" title="poids">
-				<input type="text" name="objet-gestionnaire[<?= $n ?>][Lieu]" value="<?= $objet->place ?>" class="ta-center" placeholder="Lieu">
-				<input type="text" name="objet-gestionnaire[<?= $n ?>][Notes]" value="<?= $objet->notes ?>" placeholder="Notes" style="grid-area: notes">
-				<input type="text" name="objet-gestionnaire[<?= $n ?>][Secret]" value="<?= $objet->secret ?>" class="clr-invalid" placeholder="Notes du MJ" style="grid-area: notes-mj">
+				<input type="text" name="objet-gestionnaire[<?= $n ?>][Lieu]" value="<?= $objet->place ?>" class="ta-center" placeholder="Lieu" title="code lieu">
+				<input type="text" name="objet-gestionnaire[<?= $n ?>][Notes]" value="<?= $objet->notes ?>" placeholder="Notes" style="grid-area: notes" title="Notes visibles par le joueur">
+				<input type="text" name="objet-gestionnaire[<?= $n ?>][Secret]" value="<?= $objet->secret ?>" class="clr-invalid" placeholder="Notes du MJ" style="grid-area: notes-mj" title="Notes secrètes du MJ">
 				<input hidden name="objet-gestionnaire[<?= $n ?>][id]" value="<?= $objet->id ?>">
-				<input hidden name="objet-gestionnaire[<?= $n ?>][MJ]" value="<?= $objet->id_gm ?>">
+				<input hidden name="objet-gestionnaire[<?= $n ?>][MJ]" value="<?= $_SESSION["id"] ?>">
 			</div>
 		<?php
 			$n++;
@@ -73,7 +77,10 @@ $playNotif = false;
 
 <!-- Groupes et personnages -->
 <article>
-	<h2>Groupes &amp; Personnages</h2>
+	<h2 class="flex-s gap-½">
+		Groupes &amp; Personnages
+		<button class="nude ff-fas" data-role="open-dialog" data-dialog-name="characters-dialog" title="mode d’emploi">&#xf059;</button>
+	</h2>
 
 	<?php foreach ($groups as $group) { ?>
 		<details data-group="<?= $group->id ?>">
@@ -219,8 +226,12 @@ $playNotif = false;
 
 </article>
 
-<article><!-- Créer un personnage -->
-	<h2>Créer un personnage</h2>
+<!-- Créer un personnage -->
+<article>
+	<h2 class="flex-s gap-½">
+		Créer un personnage
+		<button class="nude ff-fas" data-role="open-dialog" data-dialog-name="create-characters-dialog" title="mode d’emploi">&#xf059;</button>
+	</h2>
 	<p>Les kits sont cumulatifs. En cas de conflit sur certaines valeurs, les dernières (dans l’ordre de lecture) écrasent les premières.</p>
 	<form method="post" action="/submit/create-character">
 		<div class="grid col-auto-fit gap-½" style="--col-min-width: 250px">
@@ -266,7 +277,8 @@ $playNotif = false;
 </article>
 
 <?php if ($admin) { ?>
-	<article id="gestionnaire-groupes"><!-- Groupes -->
+	<!-- Groupes -->
+	<article id="gestionnaire-groupes">
 		<h2>Groupes</h2>
 		<form action="/submit/groups" method="POST" autocomplete="off">
 			<div class="grid col-auto-fit gap-½ fl-wrap jc-center" style="--col-min-width: 250px">
@@ -343,6 +355,57 @@ $playNotif = false;
 	<button data-role="close-modal" class="ff-fas">&#xf00d;</button>
 	<h4 class="mt-½"></h4>
 	<div class="mt-½ flow"></div>
+</dialog>
+
+<!-- Help for orphan items -->
+<dialog data-name="orphan-objects-dialog">
+	<button data-role="close-modal" class="ff-fas">&#xf00d;</button>
+	<h4 class="mt-½">Objets orphelins</h4>
+	<div class="mt-½ flow">
+		<p>Cette section sert à gérer les objets sans propriétaire ou se trouvant dans un « lieu » incohérent.</p>
+		<p>Lorsqu’un objet est supprimé d’une fiche de personnage, il se retrouve dans cette liste.</p>
+
+		<p><b>Liste des actions possibles :</b></p>
+		<ul>
+			<li><b>Supprimer définitivement un objet :</b> effacer son nom.</li>
+			<li><b>Attribuer un lieu à un objet :</b> pi_{id-personnage}, ou pe_{id-personnage} ou ct_{id-contenant}. Le préfixe pi_ place l’objet dans la liste <i>Possession sur soi</i>, pe_ le place dans <i>Divers</i> et ct_ le place dans un contenant. Si la valeur donnée est incohérente, l’objet restera dans la liste. En passant la souris sur un titre de contenant (dans la fiche de perso correspondante), le code de localisation s’affichera.</li>
+			<li><b>Créer un objet :</b> vous pouvez créer un objet et le garder sans propriétaire (localisation pi_0) ou l’attribuer tout de suite.</li>
+		</ul>
+	</div>
+</dialog>
+
+<!-- Help for characters -->
+<dialog data-name="characters-dialog">
+	<button data-role="close-modal" class="ff-fas">&#xf00d;</button>
+	<h4 class="mt-½">Gestion des personnages</h4>
+	<div class="mt-½ flow">
+		<p>Cette section sert à gérer les personnages sous l’autorité du MJ. Elle est divisée en groupes (un groupe est un ensemble de personnages jouant ensemble). Chaque MJ a accès à ses propres groupes, ainsi qu’au groupe « <i>Personnages test</i> », commun à tous les MJ.</p>
+		<p>Vous pouvez gérer les éléments suivants sur chaque personnage – ces éléments ne sont pas gérables par leur joueur :</p>
+		<ul>
+			<li><b>Nombre total de pts de personnage :</b> à modifier à la fin de chaque scénario lors de l’attribution des pts de perso.</li>
+			<li><b>Groupe :</b> placer le personnage dans un groupe en y mettant son id. Rafraîchir la page après modification.</li>
+			<li><b>Attribuer le personnage à un joueur</b>.</li>
+			<li><b>Attribuer un statut à un personnage :</b> une fois que le personnage a été créé, lui attribuer le statut <i>Actif</i> permet de tenir compte du surcoût en pt de perso des modifications des caractéristiques principales. Le statut <i>Archivé</i> empêche le joueur d’accéder à son personnage. Le statut <i>Mort</i> a les mêmes effets que le statut <i>Archivé</i>. Il est juste indicatif.</li>
+			<li><b>Gérer les PdV, PdF et PdE :</b> les joueurs ne peuvent pas le faire. Par contre, ils gèrent eux-même leur PdM. Vous pouvez entrer une opération simple (comme 10-4, par exemple), elle sera automatiquement calculée.</li>
+			<li><b>Gérer les modificateurs de caractéristiques :</b> si vous avez besoin de modifier une caractéristique indépendamment de l’effet d’un élément d’état (fatigue, encombrement, blessure&hellip;).</li>
+			<li><b>Gérer le stress</b></li>
+			<li><b>Gérer le modificateur de magie :</b> en cas de fluide faible, par exemple. Il n’affecte que les sorts (pas les pouvoirs).</li>
+			<li>Gérer les blessures aux membres : attention à bien respecter l’écriture (J pour jambe, P pour pied, B pour bras, M pour main, G pour gauche et D pour droite, puis le nombre de pts de dégâts subis). Par exemple : JD 4, BD 1.</li>
+			<li><b>Autres éléments d’état :</b> notez ici des indications libres (une par ligne). Elles apparaîtront sur la fiche de perso.</li>
+		</ul>
+		<p>Vous avez également trois boutons : <span class="ff-far">&#xf0c7;</span> pour sauvegarder les modifications (provoquera une mise à jour de la fiche du perso automatiquement), <span class="ff-far">&#xf2c2;</span> pour voir la fiche complète du personnage et <span class="ff-fas">&#xf56e;</span> pour créer une sauvegarde du personnage dans son état actuel dans un fichier .txt. Pour l’instant, seul moi ai accès à ce fichier.</p>
+	</div>
+</dialog>
+
+<!-- Help for characters creation -->
+<dialog data-name="create-characters-dialog">
+	<button data-role="close-modal" class="ff-fas">&#xf00d;</button>
+	<h4 class="mt-½">Créer un personnage</h4>
+	<div class="mt-½ flow">
+		<p>Cette section sert à créer un nouveau personnage (🖐️ merci de ne pas créer des personnages à tort et à travers).</p>
+		<p>Vous pouvez attribuer un ou plusieurs kits au personnage. Ça lui attribuera certaines spécificités différentes de valeurs par défaut.</p>
+		<p>Après sa création, le personnage créé vous sera attribué et placé dans le groupe « <i>Personnages test</i> ».</p>
+	</div>
 </dialog>
 
 <script type="module" src="/scripts/characters-manager<?= PRODUCTION ? ".min" : "" ?>.js?v=<?= VERSION ?>" defer></script>

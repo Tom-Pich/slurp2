@@ -413,9 +413,9 @@ function color_modifier($original_score, $actual_score)
 				$sublist["lieu"] = in_array($sublist["lieu"], ["pi", "pe"]) ? ($sublist["lieu"] . "_" . $character->id) : $sublist["lieu"];
 			?>
 				<!-- Container wrapper -->
-				<details class="container-wrapper" data-role="container-wrapper" data-place="<?= $sublist["lieu"] ?>" title="<?= $sublist["lieu"] ?>" tabindex="-1" id="container-wrapper-<?= $sublist["lieu"] ?>">
+				<details class="container-wrapper" data-role="container-wrapper" data-place="<?= $sublist["lieu"] ?>" tabindex="-1" id="container-wrapper-<?= $sublist["lieu"] ?>">
 					<!-- Container title -->
-					<summary data-role="container-title-wrapper">
+					<summary data-role="container-title-wrapper" title="<?= $sublist["lieu"] ?>">
 						<h5 class="flex-s gap-½">
 							<div class="fl-1"><?= $sublist["nom"] ?></div>
 							<div><?= $sublist["sur-soi"] ? (round($sublist["poids"] ?? 0, 1) . "&nbsp;kg") : "" ?></div>

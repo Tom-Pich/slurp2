@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Lib\Sorter;
 use App\Lib\TextParser;
 use App\Lib\DiceManager;
+use App\Repository\CharacterRepository;
 use App\Repository\EquipmentRepository;
 
 class Equipment
@@ -55,19 +56,27 @@ class Equipment
 		}
 	}
 
-	public static function getEquipmentOwnerId(int $id): int
+	/**
+	 * @param int|string $ref object id (int) or location code
+	 * @return ?int owner id or 0
+	 */
+	public static function getEquipmentOwnerId(int|string $ref): int
 	{
-		$repo = new EquipmentRepository;
-		$location = $repo->getEquipmentPlace($id);
+		$location = $ref;
+		if (is_int($ref)) {
+			$repo = new EquipmentRepository;
+			$location = $repo->getEquipmentPlace($ref);
+			if (!$location) return 0;
+		}
 		if (in_array(substr($location, 0, 3), ["pi_", "pe_"])) {
 			return (int) substr($location, 3);
 		} else {
-			$parent_id = substr($location, 3);
+			$parent_id = (int) substr($location, 3);
 			return self::getEquipmentOwnerId($parent_id);
 		}
 	}
 
-	public static function getCarriedWeight(int $character_id)
+	public static function getCarriedWeight(int $character_id): float
 	{
 		$repo = new EquipmentRepository;
 		$carried_items = $repo->getCharacterEquipment($character_id, true);
@@ -92,7 +101,7 @@ class Equipment
 					"liste" => [],
 					"poids" => $item->weight,
 					"ordre" => null,
-					"ordre-par-defaut" => $item->order+1,
+					"ordre-par-defaut" => $item->order + 1,
 					"groupe" => $item->visibleByGroupId,
 					"non-vide" => false,
 					"sur-soi" => self::isCarried($item->id),
@@ -139,10 +148,14 @@ class Equipment
 		return [$equipment, $state];
 	}
 
-	public static function processEquipmentSubmit($post)
+	public static function processEquipmentSubmit(array $post)
 	{
 		$order = 0;
 		$repo = new EquipmentRepository;
+		$repo_characters = new CharacterRepository;
+
+		//echo "<pre>";
+		//print_r($_POST);
 
 		$post["objet"] = $post["objet"] ?? [];
 
@@ -171,7 +184,7 @@ class Equipment
 				$formatted_item["MJ"] = (int) $item["MJ"];
 
 				// prevent putting container in itself
-				$container_is_in_itself = $formatted_item["id"] == substr($formatted_item["Lieu"], 3) && substr($formatted_item["Lieu"], 0, 3) === "ct_" ;
+				$container_is_in_itself = $formatted_item["id"] == substr($formatted_item["Lieu"], 3) && substr($formatted_item["Lieu"], 0, 3) === "ct_";
 
 				if (!$container_is_in_itself) {
 					$repo->setEquipment($formatted_item);
@@ -209,19 +222,26 @@ class Equipment
 			$formatted_item["Groupe"] = null;
 			$formatted_item["Ordre"] = 99;
 			$formatted_item["MJ"] = (int) $item["MJ"];
+
+			// check attribution authorizations
+			$check["owner"] = self::getEquipmentOwnerId($formatted_item["Lieu"]);
+			$gm_characters_id = $repo_characters->getCharactersFromGM($formatted_item["MJ"]);
+			$check["character-group-id"] = $check["owner"] === 0 ? 0 : $repo_characters->getCharacterRef($check["owner"])["id_groupe"];
+			$check["is-test-character"] = $check["character-group-id"] === NULL;
+			$check["gm-has-clearance-for-attribution"] = in_array($check["owner"], $gm_characters_id) || $check["owner"] === 0;
+			
+			if (!$check["gm-has-clearance-for-attribution"]) $formatted_item["Lieu"] = "pi_0";
+			if ($check["is-test-character"]) $formatted_item["MJ"] = 0;
+
 			if ($formatted_item["id"] && $formatted_item["Nom"]) {
 				$repo->setEquipment($formatted_item);
 			} elseif ($formatted_item["id"] && !$formatted_item["Nom"]) {
 				$repo->deleteEquipment($formatted_item["id"]);
 			} elseif (!$formatted_item["id"] && $formatted_item["Nom"]) {
 				unset($formatted_item["id"]);
-				var_dump($formatted_item);
 				$repo->createEquipment($formatted_item);
 			}
 		}
-
-		//$redirect_url = isset($post["id_perso"]) ? ("/personnage-fiche?perso=" . $post["id_perso"]) : "/gestionnaire-mj";
-		//header("Location: " . $redirect_url); // redirect inutile dès que le submit sur la fiche de perso se fera via JS
 	}
 
 	public static function evaluateDamages(int $for, string $code, string $hands = "1M")
