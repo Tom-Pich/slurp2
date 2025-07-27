@@ -183,9 +183,9 @@ export class Opponents {
         if (["dex", "san", "pdvm", "pdv"].includes(param)) event.target.value = calculate(event.target.value);
         if (["dex", "san", "pdvm"].includes(param) && event.target.value <= 0) event.target.value = "";
         if (param === "painResistance" && ![-1, 0, 1].includes(parseInt(event.target.value))) event.target.value = "";
-		if (param === "members") event.target.value = event.target.value.toUpperCase()
+        if (param === "members") event.target.value = event.target.value.toUpperCase();
 
-        // updating this.lis
+        // updating this.list
         const value = event.target.value;
         this.list[index][param] = value !== "" && Number(value) == value ? parseInt(value) : value; // store value as int where relevant
 
@@ -220,16 +220,24 @@ export class Opponents {
 
     updateOpponentSelectors() {
         const opponentSelects = qsa("[name=opponent-selector]");
+
         opponentSelects.forEach((selector) => {
             // update options list
             selector.innerHTML = "";
-            this.list.forEach((opp, index) => {
-                if (!opp.name) return;
+            if (Object.entries(this.list[0]).length === 0) { // if no opponent
                 const option = ce("option");
-                option.value = index;
-                option.innerText = opp.name;
+                option.value = "";
+                option.innerText = "–";
                 selector.appendChild(option);
-            });
+            } else {
+                this.list.forEach((opp, index) => {
+                    if (!opp.name) return;
+                    const option = ce("option");
+                    option.value = index;
+                    option.innerText = opp.name;
+                    selector.appendChild(option);
+                });
+            }
 
             // store choice on change
             selector.addEventListener("change", (e) => {

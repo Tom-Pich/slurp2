@@ -10,8 +10,6 @@ use \App\Rules\ObjectController;
 		Protagonistes
 		<div class="flex-s gap-½">
 			<button class="nude ff-fas" data-role="open-dialog" data-dialog-name="opponents-dialog" title="mode d’emploi">&#xf059;</button>
-			<!-- <button class="nude ff-fas" data-role="set-opponent-number" value="1">&#xf055;</button>
-			<button class="nude ff-fas" data-role="set-opponent-number" value="-1">&#xf056;</button> -->
 		</div>
 	</legend>
 	<div class="flex gap-½ fl-column" data-role="opponents-wrapper"><!-- Filled with JS --></div>
@@ -68,7 +66,7 @@ use \App\Rules\ObjectController;
 	<legend class="flex-s gap-1 ai-center">
 		Jets de réussite
 		<div class="flex-s gap-½">
-			<button class="nude ff-fas" data-role="sort-scores">&#xf15d;</button>
+			<button class="nude ff-fas" data-role="sort-scores" title="Classer par ordre alphabétique">&#xf15d;</button>
 		</div>
 	</legend>
 	<div class="flex gap-½ fl-column" data-role="scores-wrapper"><!-- Filled with JS --></div>
@@ -197,7 +195,7 @@ use \App\Rules\ObjectController;
 <fieldset data-name="general-health-state" hidden>
 	<legend>État général &amp; PdV</legend>
 	<form class="flex-s gap-½" id="general-state-widget">
-		<select class="fl-1" name="opponent-selector" title="Sélectionner un protagoniste"><!-- filled with JS --></select>
+		<select class="fl-1" name="opponent-selector" title="Sélectionner un protagoniste" required><!-- filled with JS --></select>
 		<button class="nude">🎲</button>
 	</form>
 </fieldset>
@@ -209,7 +207,7 @@ use \App\Rules\ObjectController;
 
 		<div class="fl-1">
 			<div class="flex-s gap-½">
-				<select class="fl-1" name="opponent-selector" title="Sélectionner un protagoniste"><!-- filled with JS --></select>
+				<select class="fl-1" name="opponent-selector" title="Sélectionner un protagoniste" required><!-- filled with JS --></select>
 				<input type="text" style="width: 6ch" class="ta-center" name="raw-dmg" placeholder="xd±y" title="Dégâts bruts">
 				<input type="text" style="width: 6ch" class="ta-center" name="rd" placeholder="RD" title="RD localisation">
 			</div>
@@ -255,7 +253,7 @@ use \App\Rules\ObjectController;
 <fieldset data-name="bleeding-widget">
 	<legend>Hémorragie</legend>
 	<form class="flex-s gap-½">
-		<select class="fl-1" name="opponent-selector" title="Sélectionner un protagoniste"><!-- filled with JS --></select>
+		<select class="fl-1" name="opponent-selector" title="Sélectionner un protagoniste" required><!-- filled with JS --></select>
 		<select class="fl-1" name="severity">
 			<option value="0">Moyenne</option>
 			<option value="1">Grave</option>

@@ -72,6 +72,8 @@ userOptions.addEventListener("change", (e) => {
         document.documentElement.dataset.preset = e.target.value;
     } else if (e.target.name === "style"){
 		e.target.value === "compact" ? document.body.classList.add("compact") : document.body.classList.remove("compact")
+	} else if (e.target.name === "theme"){
+		 document.documentElement.dataset.theme = e.target.value
 	}
     const data = new FormData();
     data.append("option", e.target.name);

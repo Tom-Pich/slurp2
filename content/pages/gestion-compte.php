@@ -50,10 +50,10 @@
 			</div>
 		</div>
 		<div class="grid ai-center option-grid">
-			<div class="fw-700 bg-grey-900 p-½">Thème</div>
+			<div class="fw-700 bg-grey-900 p-½">Thème (expérimental)</div>
 			<div class="flex-s gap-1">
 				<label>
-					<input type="radio" name="theme" value="standard" <?= $page["theme"] === "standard" ? "" : "checked" ?>>
+					<input type="radio" name="theme" value="standard" <?= $page["theme"] === "standard" ? "checked" : "" ?>>
 					Standard
 				</label>
 				<label>

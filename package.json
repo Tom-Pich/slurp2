@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "sass": "sass --watch --style=compressed ./sass/main.scss:./styles.min.css",
-    "webpack": "webpack --config webpack.config.js"
+    "webpack": "webpack --config webpack.config.js",
+	"tchat": "cd ../jdr-tchat && node server.js"
   },
   "keywords": [],
   "author": "TomPich SitUp",

@@ -8,11 +8,11 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 
 $body_class = $page["body-class"];
 $body_class .=  $page["style"] !== "normal" ? (" " . $page["style"]) : "";
-$body_class .=  $page["theme"] !== "standard" ? (" " . $page["theme"]) : "";
+//$body_class .=  $page["theme"] !== "standard" ? (" " . $page["theme"]) : "";
 ?>
 
 <!DOCTYPE html>
-<html lang="fr" data-preset="<?= $page["mode"] ?>" data-mode="<?= $page["mode"] ?>">
+<html lang="fr" data-preset="<?= $page["mode"] ?>" data-mode="<?= $page["mode"] ?>" data-theme=<?= $page["theme"] ?>>
 
 <head>
 	<meta charset="utf-8">

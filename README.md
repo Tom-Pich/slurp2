@@ -14,11 +14,9 @@ Ce site a été volontairement développé avec le moins de bibliothèques possi
 - Back-end : PHP 8 et MySQL 8. PHP est chargé de tout le processing calculatoire.
 - Front-end : vanilla JS (dont le rôle est restreint aux échanges client-serveur, à la mise à jour du HTML, aux lancer de dés et au client _chat_ – il ne gère aucun traitement des règles).
 
-Étant donné qu’il s’agit du premier site que j’ai réalisé, le code est passé par plusieurs refactorisations et son architecture a été profondément modifiée à mesure que je gagnais en compétences. C’est pourquoi il reste quelques incohérences dans le nommage (parfois anglais, parfois français) ainsi que dans les commentaires (anglais ou français).
-
 ### Base de données
 La base de données n’est pas fournie dans le code source.
 
 ### Voir une démo
 Vous pouvez voir le site en fonctionnement à l’adresse [jdr.pichegru.net](https://jdr.pichegru.net).
-L’essentiel du site n’est cependant pas accessible si vous n’avez pas de compte (et vous ne pouvez pas en créer un vous-même). Si vous êtes intéressé, contactez-moi : t.pichegru@gmail.com. Je me ferai un plaisir de vous en créer un.
+L’essentiel du site n’est cependant pas accessible si vous n’avez pas de compte (et vous ne pouvez pas en créer un vous-même). Si vous êtes intéressé, contactez-moi : t.pichegru@gmail.com.

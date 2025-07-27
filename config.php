@@ -3,7 +3,7 @@
 define("IS_ONLINE", $_SERVER['HTTP_HOST'] === 'jdr.pichegru.net');
 define("DB_ACTIVE", true);
 define("GENERIC_PASSWORD", $_ENV["GENERIC_PASSWORD"]);
-define("VERSION", "3.23.1"); // 3.23 : scripts table jeu plus propres + widget hémorragie
+define("VERSION", "3.23.3"); // 3.23 : scripts table jeu plus propres + widget hémorragie
 define("DATE_VERSION", "juillet 2025");
 define("PRODUCTION", true); // run webpack before switching to true
 

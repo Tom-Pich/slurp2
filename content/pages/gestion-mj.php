@@ -43,7 +43,7 @@ $playNotif = false;
 
 <!-- Objets orphelins -->
 <article>
-	<h2 class="flex-s gap-½">
+	<h2 class="flex-s gap-1">
 		Objets orphelins
 		<button class="nude ff-fas" data-role="open-dialog" data-dialog-name="orphan-objects-dialog" title="mode d’emploi">&#xf059;</button>
 	</h2>
@@ -77,7 +77,7 @@ $playNotif = false;
 
 <!-- Groupes et personnages -->
 <article>
-	<h2 class="flex-s gap-½">
+	<h2 class="flex-s gap-1">
 		Groupes &amp; Personnages
 		<button class="nude ff-fas" data-role="open-dialog" data-dialog-name="characters-dialog" title="mode d’emploi">&#xf059;</button>
 	</h2>
@@ -228,7 +228,7 @@ $playNotif = false;
 
 <!-- Créer un personnage -->
 <article>
-	<h2 class="flex-s gap-½">
+	<h2 class="flex-s gap-1">
 		Créer un personnage
 		<button class="nude ff-fas" data-role="open-dialog" data-dialog-name="create-characters-dialog" title="mode d’emploi">&#xf059;</button>
 	</h2>

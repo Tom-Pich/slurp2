@@ -159,7 +159,7 @@ const woundEffectsWidget = new Widget("wound-effect", async function () {
 
     const result = await fetchResult("/api/wound-effects", data);
 
-    if (result.erreur) return "Data opposants manquantes";
+    if (result.erreur) return "Données manquantes";
 
     let formattedMsg = `<b>${opponent.name} – ${result["dégâts bruts"]} ( ${result["type dégâts"]} ${result["localisation"]})</b>`;
     formattedMsg += `<br>Dégâts effectifs&nbsp;: ${result["dégâts effectifs"]}`;

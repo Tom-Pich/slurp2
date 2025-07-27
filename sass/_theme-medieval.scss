@@ -1,3 +1,6 @@
-body.personnage-fiche.medieval {
-	#page-wrapper { background: linear-gradient(#000, #0004 85%, #000), url("/assets/img/bg-character-medieval-01.webp") center/cover ; }
+:root[data-theme=medieval] {
+	body.personnage-fiche {
+		#page-wrapper { background: linear-gradient(#000, #0004 85%, #000), url("/assets/img/bg-character-medieval-01.webp") center/cover ; }
+	}
 }
+

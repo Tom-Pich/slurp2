@@ -18,10 +18,8 @@ channel.onmessage = (event) => {
         html.dataset.mode = event.data.value;
         applyColorScheme();
     } else if (event.data.option === "style") {
-       /*  fetch(window.location.href)
-            .then((response) => response.text())
-            .then(updateDOM("body", response)); */
-        if (event.data.value !== "compact") document.body.classList.remove("compact");
-        else document.body.classList.add("compact");
+        event.data.value === "compact" ? document.body.classList.add("compact") : document.body.classList.remove("compact");
+    } else if (event.data.option === "theme") {
+        document.documentElement.dataset.theme = event.data.value;
     }
 };
