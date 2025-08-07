@@ -344,8 +344,10 @@ use \App\Rules\ObjectController;
 			</select>
 			<select class="fl-1" name="region" title="Région d’origine">
 				<option value="artaille">Artaille</option>
+				<option value="sordolia">Sordolia</option>
 				<option value="lauria">Lauria</option>
 				<option value="french">Français</option>
+				<option value="american">Américain</option>
 				<option value="taol-kaer">Taol Kaer</option>
 			</select>
 			<select class="fl-1" name="profile" title="profil du PNJ">

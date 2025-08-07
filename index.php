@@ -40,12 +40,17 @@ if (!isset($_SESSION["Statut"]) or !DB_ACTIVE) {
 }
 
 // ––– $pages_data ––––––––––––––––––––––––––––––––––––––––––––––––––––––
-include "content/pages/_pages-data.php";
+$pages_data = include "content/pages/_pages-data.php";
 
 // Front router –––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 $path = parse_url($_SERVER["REQUEST_URI"])["path"];
 $path_segments = array_filter(explode("/", $path)); // empty for home page, first level = $path_segments[1] (not [0] – array_filter)
 $path_segments[1] = $path_segments[1] ?? null;
+
+// Header CSP
+header("Content-Security-Policy: frame-ancestors 'self'; script-src 'self' 'unsafe-inline'");
+header("X-Content-Type-Options: nosniff");
+header("Strict-Transport-Security: max-age=31536000; includeSubDomains");
 
 // API
 if ($path_segments[1] === "api") {
@@ -389,7 +394,7 @@ elseif (in_array($path_segments[1], ["personnage-fiche", "personnage-gestion"]) 
 
 // wiki pages
 else if ($path_segments[1] === "wiki" && !empty($path_segments[2]) && count($path_segments) <= 3) {
-	$wiki = $path_segments[2];
+	$wiki = $path_segments[2]; // for now only "paorn"
 	$articles_data_file = "content/wikis/" . $wiki . "/_data.php";
 	if (file_exists($articles_data_file)) include $articles_data_file; // provides $articles
 	else {
@@ -400,7 +405,7 @@ else if ($path_segments[1] === "wiki" && !empty($path_segments[2]) && count($pat
 	$article_name = empty($path_segments[3]) ? "home" : $path_segments[3];
 	if (!empty($articles[$article_name])) {
 		$article = $articles[$article_name];
-		$page_data = $pages_data["wiki"];
+		$page_data = $pages_data["wiki"]; // loads template data
 		$page_data["title"] = ($article_name !== "home" ? "Wiki " . ucfirst($wiki) . " – " : "") . $article["title"];
 		$page_data["description"] = $article["description"] ?? null;
 		$page_data["wiki"] = $wiki;

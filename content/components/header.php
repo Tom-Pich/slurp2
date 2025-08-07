@@ -8,7 +8,6 @@ $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_
 
 $body_class = $page["body-class"];
 $body_class .=  $page["style"] !== "normal" ? (" " . $page["style"]) : "";
-//$body_class .=  $page["theme"] !== "standard" ? (" " . $page["theme"]) : "";
 ?>
 
 <!DOCTYPE html>
@@ -43,8 +42,12 @@ $body_class .=  $page["style"] !== "normal" ? (" " . $page["style"]) : "";
 		<div class="titles-wrapper flex-s gap-1">
 			<a href="/" title="Accueil"><img src="/assets/img/favicon.ico" width="64" height="64"></a>
 			<div>
-				<h2 class="fs-700">SLURP</h2>
-				<h1><?= $page["title"] ?></h1>
+				<p class="fs-700 fw-700 ff-accent">SLURP</p>
+				<?php if ($page["body-class"] === "wiki"): ?>
+					<p class="fs-600 fw-700 ff-accent"><?= $page["title"] ?></p>
+				<?php else : ?>
+					<h1><?= $page["title"] ?></h1>
+				<?php endif ?>
 			</div>
 		</div>
 

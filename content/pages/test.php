@@ -1,9 +1,16 @@
 <?php
 
+use App\Entity\Character;
+
 ini_set('xdebug.var_display_max_depth', 10);
 ini_set("xdebug.var_display_max_data", -1);
 
-$test = "Coucou";
+$character = new Character(27);
+// $controller = new ApiController;
+// $controller->getCharacter($character);
+$character->processCharacter();
+
+$test = $character;
 
 echo "<pre>";
-var_dump($test);
+print_r($test);

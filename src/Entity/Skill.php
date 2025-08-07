@@ -196,6 +196,11 @@ class Skill implements RulesItem
 				$attr_sum += $attr[$attr_match[$letter]]; // sum of current state attributes
 				$raw_attr_sum += $raw_attr[$attr_match[$letter]]; // sum of unmodified attributes
 				$attr_number++;
+				// if one attribute is at 0 (very bad condition), then the whole sum must be 0
+				if ($attr[$attr_match[$letter]] === 0){
+					$attr_sum = 0;
+					break;
+				}
 			}
 			$skill["entity-base"] = $skill_entity->base;
 			$skill["base"] = (int) floor($attr_sum / $attr_number);
@@ -214,6 +219,7 @@ class Skill implements RulesItem
 				$skill["virtual-score"] = $skill["base"] + $skill["niv"] + $skill["modif"];
 			} else {
 				$skill["score"] = $skill["base"] + $skill["niv"] + $skill["modif"];
+				if ($skill["base"] === 0) $skill["score"] = 0; // if character condition is very bad
 			}
 
 			// processing skill base cost
@@ -294,8 +300,8 @@ class Skill implements RulesItem
 				// get the group modif from the difference between this virtual niv and the actual raw niv
 				$skill["group_modif"] = $virtual_niv - $skill["niv"];
 
-				// update skill score
-				if (is_numeric($skill["score"])) $skill["score"] += $skill["group_modif"];
+				// update skill score if skill score > 0 i.e. character state is not too bad
+				if (is_numeric($skill["score"]) && $skill["score"] > 0) $skill["score"] += $skill["group_modif"];
 			}
 
 			// special skills retroaction on character modifiers

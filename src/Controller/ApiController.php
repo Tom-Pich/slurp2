@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Lib\TextParser;
 use App\Entity\Creature;
 use App\Entity\Attribute;
 use App\Entity\Character;

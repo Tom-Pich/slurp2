@@ -12,7 +12,7 @@ class EncumbranceController {
 		"3" => ["name" => "moyen", "description" => "-2 en <i>Dex</i>, <i>Vit</i>×0.5", "dex-modifier" => -2, "vit-multiplier" => 0.5],
 		"6" => ["name" => "pesant", "description" => "-3 en <i>Dex</i>, <i>Vit</i>×0.2", "dex-modifier" => -3, "vit-multiplier" => 0.2],
 		"10" => ["name" => "très pesant", "description" => "-4 en <i>Dex</i>, <i>Vit</i>×0.1", "dex-modifier" => -4, "vit-multiplier" => 0.1],
-		"12.5" => [ "name" => "max", "description" => "aucun jet, aucun déplacement", "dex-modifier" => -INF, "vit-multiplier" => 0],
+		"12.5" => [ "name" => "max", "description" => "aucun jet, aucun déplacement", "dex-modifier" => -100, "vit-multiplier" => 0],
 	];
 
 	static function getEffects(float $weight, int $for){
@@ -24,6 +24,6 @@ class EncumbranceController {
 				return $effects;
 			}
 		}
-		return [ "name" => "trop élevé&nbsp;! Impossible de porter ce poids.", "description" => "impossible de porter un tel poids&nbsp;!", "dex-modifier" => -INF, "vit-multiplier" => 0];
+		return [ "name" => "trop élevé&nbsp;! Impossible de porter ce poids.", "description" => "impossible de porter un tel poids&nbsp;!", "dex-modifier" => -100, "vit-multiplier" => 0];
 	}
 }

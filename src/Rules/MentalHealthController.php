@@ -12,8 +12,8 @@ class MentalHealthController
 			"name" => "catatonie",
 			"description" => "Catatonie. Position fœtale et semi-conscience. Le personnage ne résistera pas si quelqu’un veut le déplacer. Il restera fou si ses PdE atteignent définitivement 0. <b>Perte définitive d’un pt de <i>Volonté</i>, d’un pt de <i>Sang-froid</i> et de 2 PdE</b>.",
 			"attributes-effects" => "<i>Volonté</i> et <i>Sang-Froid</i> réduits à 0.",
-			"sf-modifier" => -INF,
-			"vol-modifier" => -INF,
+			"sf-modifier" => -100,
+			"vol-modifier" => -100,
 		],
 		"0.25" => [
 			"name" => "instable",

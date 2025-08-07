@@ -173,9 +173,9 @@ body.wiki {
 	--col-width: 250px;
 
 	aside.left {
-		a { display: block; --flow-space: .25em; text-decoration: none; color: inherit; width:fit-content }
+		a { display: block; --flow-space: .15em; text-decoration: none; color: inherit; width:fit-content }
 		a.active-link { font-weight: 700; }
-		a.child-article { margin-left: 1em; }
+		a.child-article { margin-left: 1em; --flow-space: 0; }
 	}
 
 	main {
@@ -183,27 +183,26 @@ body.wiki {
 		@include media-min ($brp-w) { position: relative; width: calc(100vw - var(--col-width) * 2 - 6em); max-width: 800px; }
 	}
 
+	section { margin-top: 2em; padding: 0; }
+
 	.wiki-right-element {
 		@include flow;
 		@include media-min ($brp-w) { width: var(--col-width); position: absolute; left: calc(100% + 2em); margin-top: 0; }
 		img { max-height: 50vh; margin-inline: auto; }
 	}
+	
 
-	h2 { font-size: var(--fs-700); }
-	h3 { font-size: var(--fs-600);  border-bottom: 1px solid var(--black); padding-bottom: .15em }
-	h4 { font-size: var(--fs-500); }
-	h5 { font-size: var(--fs-450); }
+	h2 { font-size: var(--fs-600); border-bottom: 1px solid var(--black); padding-bottom: .15em }
+	h3 { font-size: var(--fs-500); }
+	h4 { font-size: var(--fs-450); }
+	h5 { font-size: var(--fs-400); }
 	figcaption {text-align: center; font-style: italic;}
 	.float-left { float: left; margin-right: 1rem;  max-width: 50%; --flow-space: .5em;}
 
-	details.sub-article {
-		padding: .5em; border-radius: .5em; border: 1px solid var(--grey-900); background-color: var(--grey-900);
-		summary { font-weight: 700; }
-		&[open] { background-color: transparent; }
-	}
+	details:has(> summary > h3) { margin-top: 1.5em; }
 
-	.admin { color: var(--grey-500); }
-	:is(p, div).admin { border: .5px solid var(--grey-700); padding: 1em; }
+	.admin { color: var(--grey-500); border: .5px solid var(--grey-700); padding: .5em; }
+	ul.admin { padding-left:1.5em; }
 }
 
 body.account-page {

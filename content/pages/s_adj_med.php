@@ -3,7 +3,9 @@
 
 
 	<details>
-		<summary><h3>Densité de population</h3></summary>
+		<summary>
+			<h3>Densité de population</h3>
+		</summary>
 		<p>À l'échelle d'un pays, cette densité varie entre 10 et 50 habitants/km² selon l’hospitalité des terres et du climat.<br>
 			France, XIV<sup>e</sup> siècle&nbsp;: environ 40 habitants/km²</p>
 
@@ -39,7 +41,9 @@
 	</details>
 
 	<details>
-		<summary><h3>Taille des agglomérations</h3></summary>
+		<summary>
+			<h3>Taille des agglomérations</h3>
+		</summary>
 		<p><b>Densité</b> de population dans une zone urbaine&nbsp;: 150 à 160 habitants par hectare.</p>
 
 		<p>Les plus grandes villes font entre 25000 et 100000 habitants.<br>
@@ -60,7 +64,9 @@
 	<h2>Commerces &amp; échoppes</h2>
 
 	<details>
-		<summary><h3>Communs (200-400 habitants)</h3></summary>
+		<summary>
+			<h3>Communs (200-400 habitants)</h3>
+		</summary>
 		<p>
 			Barbier<br>
 			Cordonnier<br>
@@ -77,7 +83,9 @@
 	</details>
 
 	<details>
-		<summary><h3>Assez communs (800-1000 habitants)</h3></summary>
+		<summary>
+			<h3>Assez communs (800-1000 habitants)</h3>
+		</summary>
 		<p>
 			Artisan du cuir<br>
 			Auberge<br>
@@ -105,7 +113,9 @@
 	</details>
 
 	<details>
-		<summary><h3>Peu répandus (1700-2000 habitants)</h3></summary>
+		<summary>
+			<h3>Peu répandus (1700-2000 habitants)</h3>
+		</summary>
 		<p>
 			Armurier (fabricant d’armes)<br>
 			Blanchisseurs<br>
@@ -124,7 +134,9 @@
 	</details>
 
 	<details>
-		<summary><h3>Rares (2500-5000 habitants)</h3></summary>
+		<summary>
+			<h3>Rares (2500-5000 habitants)</h3>
+		</summary>
 		<p>
 			Apothicaire / Herboriste<br>
 			Armurier (fabricant d’armure)<br>
@@ -144,7 +156,9 @@
 	</details>
 
 	<details>
-		<summary><h3>Très rares (5000+ habitants)</h3></summary>
+		<summary>
+			<h3>Très rares (5000+ habitants)</h3>
+		</summary>
 		<p>
 			Confectionneur d’habits de luxe<br>
 			Fabricant de papier<br>
@@ -162,7 +176,9 @@
 <article> <!-- Métiers sans échoppe -->
 	<h2>Métiers sans échoppe</h2>
 	<details>
-		<summary><h3>Construction</h3></summary>
+		<summary>
+			<h3>Construction</h3>
+		</summary>
 		<p>
 			Couvreur<br>
 			Fossoyeur<br>
@@ -177,7 +193,9 @@
 	</details>
 
 	<details>
-		<summary><h3>Mines</h3></summary>
+		<summary>
+			<h3>Mines</h3>
+		</summary>
 		<p>
 			Abatteur (détache le minerai et le concasse avant manutention)<br>
 			Manutentionnaire (charge et transporte le minerai)
@@ -185,7 +203,9 @@
 	</details>
 
 	<details>
-		<summary><h3>Professions intellectuelles</h3></summary>
+		<summary>
+			<h3>Professions intellectuelles</h3>
+		</summary>
 		<p>
 			Avocat<br>
 			Chirurgien-barbier<br>
@@ -196,7 +216,9 @@
 	</details>
 
 	<details>
-		<summary><h3>Métiers de pauvres</h3></summary>
+		<summary>
+			<h3>Métiers de pauvres</h3>
+		</summary>
 		<p>
 			Assistant d'artisan<br>
 			Chiffonnier<br>
@@ -217,7 +239,9 @@
 	</details>
 
 	<details>
-		<summary><h3>Divers</h3></summary>
+		<summary>
+			<h3>Divers</h3>
+		</summary>
 		<p>
 			Artisan itinérant<br>
 			Charretier / muletier<br>
@@ -232,7 +256,9 @@
 	</details>
 
 	<details>
-		<summary><h3>Officiels</h3></summary>
+		<summary>
+			<h3>Officiels</h3>
+		</summary>
 
 		<p>
 			<b>Agent de l’ordre (garde, milicien, etc.)&nbsp;:</b> Chargé de maintenir l'ordre et la sécurité<br>
@@ -261,12 +287,14 @@
 		</p>
 	</details>
 
-	
+
 
 
 
 	<details>
-		<summary><h3>À la campagne</h3></summary>
+		<summary>
+			<h3>À la campagne</h3>
+		</summary>
 		<p>
 			Apiculteur<br>
 			Berger / vacher / porcher / bouvier<br>
@@ -290,7 +318,9 @@
 	<h2>Marchandises &amp; Ressources</h2>
 
 	<details>
-		<summary><h3>Aliments &amp; boissons</h3></summary>
+		<summary>
+			<h3>Aliments &amp; boissons</h3>
+		</summary>
 		<p>
 			<b>Céréales&nbsp;:</b> blé, orge, avoine, seigle, millet, épeautre<br>
 			<b>Légumes&nbsp;:</b> navets, chou, céleri, carottes, fèves, pois, haricots, lentille, ail, oignon, betteraves, épinards, poireaux, radis. <br>
@@ -310,7 +340,9 @@
 
 
 	<details>
-		<summary><h3>Biens de consommation courante</h3></summary>
+		<summary>
+			<h3>Biens de consommation courante</h3>
+		</summary>
 		<p>
 			<b>Vaisselle&nbsp;:</b> carafe, assiette, bol, cuillère, gobelet, pichet, plat, en terre cuite, en étain, en argent, en cuivre, en bois, en verre<br>
 			<b>Ustensiles de cuisine&nbsp;:</b> poêle, marmite, chaudron, louche, couteau, pots, mortier et pilon, écumoire, spatule<br>
@@ -333,7 +365,9 @@
 	</details>
 
 	<details>
-		<summary><h3>Ressources végétales</h3></summary>
+		<summary>
+			<h3>Ressources végétales</h3>
+		</summary>
 		<p>
 			<b>Cultures</b> (légumes, céréales, fruits, condiments, herbes aromatiques)<br>
 			<b>Produits de la forêt</b> (glands, faînes, merises, pommes sauvages, nèfles, aubépine, cynorhodons, noix, noisettes, chataîgnes, prunelles, framboises, mures, fraises, sorbes, cornouilles, plantes médicinales et aromatique).<br>
@@ -344,14 +378,18 @@
 	</details>
 
 	<details>
-		<summary><h3>Ressources animales</h3></summary>
+		<summary>
+			<h3>Ressources animales</h3>
+		</summary>
 		Élevage (viande, cuir, graisse, fourrure, lait, miel, œufs)<br>
 		Chasse (même matières premières)<br>
 		Pêche
 	</details>
 
 	<details>
-		<summary><h3>Ressources minérales &amp; métaux</h3></summary>
+		<summary>
+			<h3>Ressources minérales &amp; métaux</h3>
+		</summary>
 		Sel<br>
 		Pierre (pierre de taille, argile, boues)<br>
 		Métaux (cuivre, fer, plomb, étain, mercure, or, argent, (mithrill))<br>
@@ -363,7 +401,9 @@
 	<h2>Paysans &amp; agriculture</h2>
 
 	<details>
-		<summary><h3>Travaux de saisons</h3></summary>
+		<summary>
+			<h3>Travaux de saisons</h3>
+		</summary>
 		<p>La majorité de la main-d’œuvre est louée. Manouvriers, gens de peine, sont embauchés suivant les travaux et les saisons (laboureurs, faucheurs, moissonneurs, bergers, bûcherons).</p>
 		<h4>Hiver</h4>
 		<p>La terre gelée est au repos et les paysans se font bûcherons (le bois sert à tout&nbsp;: construction, cuisine, chauffage, fabrication de charrettes et outils) ou artisans (vannerie, tannerie - chaussures, harnais).</p>
@@ -380,7 +420,9 @@
 	</details>
 
 	<details>
-		<summary><h3>Outils &amp; techniques agricoles</h3></summary>
+		<summary>
+			<h3>Outils &amp; techniques agricoles</h3>
+		</summary>
 		<p><b>Rendement</b> de 1:2, soit 1-1,5 ha pour nourrir une personne.<br>
 			Au mieux, rendement de 1:5, soit 0,4-0,6 ha par personne.</p>
 		<p><b>L’araire&nbsp;:</b> charrue de bois dépourvue de roues. Elle creuse des sillons sans retourner la terre. Efficace sur les sols légers mais insuffisante pour les terres humides, argileuses du nord.<br>
@@ -396,14 +438,18 @@
 	</details>
 
 	<details>
-		<summary><h3>Récoltes et produits</h3></summary>
+		<summary>
+			<h3>Récoltes et produits</h3>
+		</summary>
 		<p>Polycultures de céréales (seigle, blé, avoine, orge). Les céréales sont complétées dans l’alimentation par quelques légumineuses&nbsp;: fèves, pois, lentilles.</p>
 		<p>Dans les forêts on récolte pour le bétail autant que pour les hommes&nbsp;: glands, faînes, merises, pommes sauvages, nèfles, fruits de l’aubépine, cynorhodons, noisettes, prunelles, framboises, mures, fraises. Le mille-pertuis ou la marjolaine peuvent servir de condiment ou de remèdes.</p>
 		<p>Élevage&nbsp;: le porc est l’animal prédominant car il donne plus de viande par rapport à son poids. Tout se mange et sa chair grasse se conserve bien.</p>
 	</details>
 
 	<details>
-		<summary><h3>Corvées, taxes &amp; impôts</h3></summary>
+		<summary>
+			<h3>Corvées, taxes &amp; impôts</h3>
+		</summary>
 		<p>Beaucoup de petits seigneurs tirent la plus grande part de leurs revenus des terres qu’ils possèdent. Elles sont exploitées par des serfs ou des manouvriers, ou cédées en fermage sous forme de tenure. Le seigneur a souvent mieux à faire que de s’occuper de ses domaines. Il confie cette tâche à un intendant qui surveille les travaux agricoles et lève les impôts.</p>
 		<p>Le seigneur fait payer cher sa protection, d’abord sous forme de corvées&nbsp;: curer les fossés, empierrer les chemins, rentrer du bois, rentrer du fourrage&hellip;</p>
 		<p>Puis à mesure que l’argent circule mieux, les corvées sont remplacées par les redevances directes et indirectes servant à payer la protection du seigneur, le loyer de la terre, les droits pour utiliser le moulin, le pressoir et le four à pain que le seigneur a fait construire et que lui seul a les moyens d’entretenir.</p>
@@ -411,7 +457,9 @@
 	</details>
 
 	<details>
-		<summary><h3>Différents types de paysans</h3></summary>
+		<summary>
+			<h3>Différents types de paysans</h3>
+		</summary>
 		<p><b>Les hommes libres&nbsp;:</b> des paysans qui travaillent sur les terres d’un seigneur et sont locataires de parcelles (tenures). Les seigneurs peuvent employer des salariés ou louer leur réserve à des fermiers.</p>
 		<p><b>Les serfs</b> sont attachés à une terre et un maître mais ne sont pas non plus des esclaves. Ils peuvent vivre en famille et posséder quelques biens. Les serfs exploitent une partie du domaine que le seigneur garde pour lui (la réserve).</p>
 		<p><b>Les laboureurs&nbsp;:</b> certains fermiers réussissent à s’enrichir. Les laboureurs, possèdent une paire de bœufs ou un cheval et un attelage. Rien à voir avec les pauvres <b>manouvriers</b> qui n’ont que leurs bras.</p>
@@ -423,7 +471,44 @@
 	<h2>Voyageurs</h2>
 
 	<details>
-		<summary><h3>Gens du commun</h3></summary>
+		<summary>
+			<h3>Distances quotidiennes</h3>
+		</summary>
+		<h4>À pied</h4>
+
+		<ul>
+			<li>En moyenne, un marcheur peut parcourir <b>25 à 30 km par jour</b>. Cette distance prend en compte les arrêts nécessaires, les repas, et le repos.</li>
+			<li>Sur de bonnes routes et sans bagages encombrants, cette distance pouvait s'étendre <b>jusqu'à 40 km par jour</b>. C’est un rythme soutenu, souvent pour des raisons impératives.</li>
+			<li>Sur un <b>terrain difficile</b> (montagne, forêt, chemins boueux), ou avec un <b>groupe plus important</b> (famille, pèlerins), la distance pouvait tomber à <b>15-20 km par jour</b>.</li>
+		</ul>
+
+		<p>Ces chiffres dépendent grandement de l'état des chemins (une voie pavée est un atout majeur), du poids des bagages, des conditions météorologiques et de la santé du voyageur.</p>
+
+		<h4>À cheval</h4>
+		<p>La distance que pouvait parcourir un cavalier au Moyen Âge sur de longues distances variait considérablement en fonction de plusieurs facteurs (état des routes, terrain, météo, etc.).</p>
+
+		<ul>
+			<li>Une distance moyenne de <b>30 à 50 km par jour</b> est réaliste. Cette estimation correspond à un rythme modéré (pas et trot), permettant de ne pas épuiser le cheval sur le long terme.</li>
+			<li>Des <b>pointes à 60 km par jour</b> étaient possibles sur de bonnes routes, mais ne pouvaient pas être maintenues sur plusieurs jours d'affilée.</li>
+			<li>Les messagers, qui utilisaient des chevaux de relais, pouvaient atteindre des vitesses bien plus élevées, allant parfois jusqu'à 100 km par jour, voire plus dans des cas exceptionnels. Cependant, ils changeaient de monture régulièrement.</li>
+		</ul>
+
+		<h4>Avec des chariots</h4>
+		<p>La distance parcourue par un chariot chargé de marchandises au Moyen Âge dépendait largement de l'animal de trait utilisé et de l'état des chemins. Le rythme était considérablement plus lent que celui d'un cavalier ou d'un voyageur à pied.</p>
+
+		<ul>
+			<li><b>Tiré par des bœufs :</b> les bœufs sont lents mais très endurants. Un chariot tiré par des bœufs pouvait parcourir <b>15 à 20 km par jour</b>. Leur allure est très faible, mais ils sont capables de tirer de lourdes charges sur de longues distances. C'était une méthode de transport courante pour les marchandises lourdes et volumineuses.</li>
+			<li><b>Tiré par des chevaux :</b> Les chevaux de trait sont plus rapides et plus vifs que les bœufs. Un chariot tiré par des chevaux pouvait parcourir <b>25 à 30 km par jour</b>, soit une vitesse comparable à celle d'un marcheur. Cependant, le coût d'entretien des chevaux était plus élevé que celui des bœufs, et ils nécessitaient plus d'attention.</li>
+		</ul>
+
+		<p>Ces chiffres sont des moyennes. Les conditions réelles sur les routes médiévales, souvent en mauvais état, boueuses ou encombrées, pouvaient réduire considérablement ces distances. Les convois de marchands voyageaient souvent en groupe pour des raisons de sécurité, ce qui pouvait également ralentir le rythme. De plus, les arrêts pour le repos des animaux et le chargement/déchargement de la marchandise étaient fréquents.</p>
+
+	</details>
+
+	<details>
+		<summary>
+			<h3>Gens du commun</h3>
+		</summary>
 		Dans les régions habitées, la plupart des rencontres seront des gens du communs vaquant à leurs occupations quotidiennes.
 		<h4>Villageois</h4>
 		<p>Près de leur village, ces personnes sont impliquées dans une tâche agricole (garde de troupeau, entretien des cultures, récoltes, recherches de noix ou de baies sauvages, recherche d’un animal égaré, etc) ou autre tâche quotidienne.</p>
@@ -452,7 +537,9 @@
 	</details>
 
 	<details>
-		<summary><h3>Marchands et artisans itinérants</h3></summary>
+		<summary>
+			<h3>Marchands et artisans itinérants</h3>
+		</summary>
 		<p>Les villages médiévaux ne sont généralement pas assez grands pour disposer de nombreux artisans et dépendent de marchands ambulants pour satisfaire à beaucoup de leurs besoins. Même les forgerons et les charrons (qui peuvent faire office de constructeurs de maison, de charpentiers, de fabricant de cercueil, etc.) seront des artisans itinérants si les villages locaux sont trop petits pour disposer d’artisans propres. Les villageois doivent également acheter certains biens nécessaires (sel, métaux, brai, outils, pots et vaisselles). Les plus riches attirent les marchands d’objets/produits de luxe tels que vins, huiles, étoffes, etc).</p>
 		<p>Parmi les commerçant et artisans itinérants typique, on trouve&nbsp;: <b>cordonniers et sabotiers</b>, vendant et réparant des biens en cuir et des chaussures ou des sabots&nbsp;; des <b>tailleurs</b> vendant, réparant ou confectionnant des vêtements divers sur commande&nbsp;; des <b>menuisiers</b> réparant les construction en bois et vendant des objets en bois tels que bols, ustensiles de cuisine, seaux, bacs, fûts&nbsp;; des <b>couvreurs</b> construisant ou réparant les toits&nbsp;; les <b>rétameurs et autres travailleurs de métaux</b> avec leur forge portable vendant et réparant des objets en métal, affûtant les lames&nbsp;; et les <b>médecins, herboristes et alchimistes</b> itinérants vendant des herbes médicinales ou des potions alchimiques.</p>
 		<p>Ces voyageurs professionnels utilisent généralement une charrette ou un chariot et se déplacent en compagnie d’assistant(s) qui peuvent être des membres de leur famille.</p>
@@ -478,7 +565,9 @@
 	</details>
 
 	<details>
-		<summary><h3>Dignitaires</h3></summary>
+		<summary>
+			<h3>Dignitaires</h3>
+		</summary>
 
 		<h4>Nobles et leur suite</h4>
 		<p>Des nobles de haut rang peuvent avoir des terres disséminées dans le royaume. Cela permet au roi de contrôler plus facilement les nobles en les privant d’une base compacte qui leur permettraient d’organiser facilement une rébellion. Au lieu de recevoir leur impôts et autres dus en un seul lieu, il est courant que des seigneurs et leur suite voyage de domaine en domaine, pour collecter ou profiter de leur dus en restant quelques jours dans un domaine avant de passer au domaine suivant. Cette coutume peut même s’appliquer aux rois. Des pourvoyeurs (voir plus loin) partent avec de l’avance sur le groupe principal, réquisitionnant des charrettes (souvent sans compensation) et exigeant céréales, foin, avoine, bière et viande aux paysans malchanceux.</p>
@@ -501,7 +590,9 @@
 	</details>
 
 	<details>
-		<summary><h3>Officiels</h3></summary>
+		<summary>
+			<h3>Officiels</h3>
+		</summary>
 
 		<h4>Baillis</h4>
 		<p>Ils sont responsables de la collecte des taxes et juges des offenses graves (banditisme, viol, meurtre, sorcellerie, apostasie, destruction de ponts et de routes, etc.) auprès de la couronne. Ce sont généralement des nobles influents. Ils peuvent se déplacer d’une cour de justice à l’autre, en étant accompagnés de gardes, serviteurs et scribe(s).</p>
@@ -526,7 +617,9 @@
 	</details>
 
 	<details>
-		<summary><h3>Saltimbanques</h3></summary>
+		<summary>
+			<h3>Saltimbanques</h3>
+		</summary>
 		<p>Des nombreuses sortes d’amuseurs publics peuvent être rencontrés entre deux marchés, foires, ville, festivals et banquets de riches maisons. Ils ont de nombreuses informations concernant les villes locales et connaissent toutes les rumeurs. Les saltimbanques se déplacent généralement en groupe, de plus en plus nombreux suivant l’ordre de mention dans la liste suivante&nbsp;:</p>
 
 		<p><b>Bardes et ménestrels&nbsp;:</b> ils chantent ou récitent les épopées de héros.</p>
@@ -542,7 +635,9 @@
 	</details>
 
 	<details>
-		<summary><h3>Équipement du voyageur</h3></summary>
+		<summary>
+			<h3>Équipement du voyageur</h3>
+		</summary>
 		<h4>La base</h4>
 		<p>
 			Vêtements et protection contre les intempéries<br>

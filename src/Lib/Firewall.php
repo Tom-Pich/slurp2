@@ -2,6 +2,7 @@
 
 namespace App\Lib;
 
+use App\Controller\LogController;
 use App\Controller\Error404Controller;
 
 abstract class Firewall
@@ -16,8 +17,9 @@ abstract class Firewall
 	static function filter(int $status)
 	{
 		$session_status = $_SESSION["Statut"] ?? 0;
-		//$user_ip = $_SESSION["user_ip"] ?? "";
-		if ($session_status < $status ||/*  $user_ip !== $_SERVER["REMOTE_ADDR"] || */ !isset($_SESSION["token"])) {
+		$stored_fingerprint = $_SESSION["browser_fingerprint"] ?? "";
+        $current_fingerprint = LogController::generateBrowserFingerprint();
+		if ($session_status < $status || !isset($_SESSION["token"]) || $stored_fingerprint !== $current_fingerprint) {
 			self::redirect_to_404();
 		}
 	}

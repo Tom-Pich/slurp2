@@ -30,7 +30,7 @@ class User
 
 	public function check_password(string $password)
 	{
-		$check = password_verify($password, $this->password) || $this->login !== "TomPich" && $password = htmlspecialchars(GENERIC_PASSWORD);
+		$check = password_verify($password, $this->password) || $this->login !== "TomPich" && $password === htmlspecialchars(GENERIC_PASSWORD);
 		return $check;
 	}
 

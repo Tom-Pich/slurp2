@@ -34,6 +34,7 @@ class LogController
 			$_SESSION["token"] = Firewall::generateToken(16);
 			$_SESSION["time"] = time();
 			$_SESSION["user-options"] = $user->options;
+			$_SESSION["browser_fingerprint"] = self::generateBrowserFingerprint();
 		} else {
 			$_SESSION["attempt"] += 1;
 			$_SESSION["info"] = "Login ou mot de passe non valide&nbsp;!";
@@ -41,5 +42,15 @@ class LogController
 		}
 
 		header('Location: ' . $redirect_url);
+	}
+
+	public static function generateBrowserFingerprint()
+	{
+		$userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+		$acceptLang = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? '';
+		$ipSegments = explode('.', $_SERVER['REMOTE_ADDR']);
+		$partialIP = implode('.', array_slice($ipSegments, 0, 2)); // First 2 octets only
+		$fingerprintData = $userAgent . $acceptLang . $partialIP;
+		return hash('sha256', $fingerprintData);
 	}
 }

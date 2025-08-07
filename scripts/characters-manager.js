@@ -13,7 +13,7 @@ const ws = new WebSocket(wsURL);
 ws.onopen = () => {}; // nothing to do (yet)
 ws.onmessage = (rawMessage) => {
     const message = JSON.parse(rawMessage.data);
-    console.log(message);
+    //console.log(message);
     if (message.type === "character-ping") {
         fetch("gestionnaire-mj")
             .then((response) => response.text())
@@ -76,15 +76,19 @@ function submitCharacterForm(form) {
         method: "post",
         body: form_data,
     }).then(() => {
+        const ping = new Message(sessionId, wsKey, "character-ping", parseInt(form_data.get("id")));
+        ws.send(ping.stringify());
+    });
+    /* .then(() => {
         fetch("/gestionnaire-mj")
             .then((response) => response.text())
             .then((response) => {
-                updateDOM(`#${form_id}`, response);
+                //updateDOM(`#${form_id}`, response);
                 const ping = new Message(sessionId, wsKey, "character-ping", parseInt(form_data.get("id")));
                 ws.send(ping.stringify());
             });
         //return response;
-    });
+    }); */
 }
 
 // character forms events
@@ -100,7 +104,8 @@ characterStateForms.forEach((form) => {
     });
 
     // submit form with save-character btn
-    saveBtn.addEventListener("click", () => {
+    saveBtn.addEventListener("click", (e) => {
+        e.preventDefault();
         submitCharacterForm(form);
     });
 
@@ -124,12 +129,12 @@ characterStateForms.forEach((form) => {
         if (target.hasAttribute("data-details")) {
             const id = int(target.dataset.id);
             const detailsDialog = qs("[data-name=details]");
-            if (target.dataset.type === "avdesav" || target.dataset.type === "power" && target.dataset.origin === "avantage") {
+            if (target.dataset.type === "avdesav" || (target.dataset.type === "power" && target.dataset.origin === "avantage")) {
                 const avdesav = await fetchResult("/api/get-avdesav?id=" + id);
                 detailsDialog.querySelector("h4").innerText = `${avdesav.name} (${avdesav.displayCost})`;
                 detailsDialog.querySelector("div").innerHTML = avdesav.description;
             }
-			if (target.dataset.type === "power" && target.dataset.origin === "sort") {
+            if (target.dataset.type === "power" && target.dataset.origin === "sort") {
                 const spell = await fetchResult("/api/get-spell?id=" + id);
                 detailsDialog.querySelector("h4").innerText = `${spell.name} (${spell.readableNiv})`;
                 detailsDialog.querySelector("div").innerHTML = spell.fullDescription;
@@ -176,6 +181,8 @@ function getCharacterDetails(id) {
         method: "post",
         body: data,
     })
+        //.then((response) => response.text())
+        //.then(response => console.log(response))
         .then((response) => response.json())
         .then((response) => response.data)
         .then((data) => {
@@ -196,8 +203,8 @@ function fillCharacterSummary(id, data) {
     ["For", "Dex", "Int", "San", "Per", "Vol", "Réflexes", "Sang-Froid", "Vitesse"].forEach((attr) => {
         fillValueInTemplate(clone, attr, data.attributes[attr]);
     });
-    
-	// PdXm
+
+    // PdXm
     ["PdVm", "PdFm", "PdMm", "PdEm"].forEach((PdX) => {
         fillValueInTemplate(clone, PdX, data.pdxm[PdX]);
     });

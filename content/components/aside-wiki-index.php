@@ -12,6 +12,7 @@ $articles_without_section = array_filter(
 	ARRAY_FILTER_USE_BOTH
 );
 
+// link class in table of content
 function lk_classes(string $title, string $current_title, bool $has_parent) {
 	$classes = "";
 	if ($current_title === $title) $classes .= "active-link ";

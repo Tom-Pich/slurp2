@@ -1,5 +1,5 @@
 <?php
-$pages_data = [
+return $pages_data = [
 
 	"home" => [
 		"title" => "Le moteur de JdR universel",

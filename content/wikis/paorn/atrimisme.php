@@ -1,78 +1,135 @@
-<h2>Atrimisme</h2>
+<h1>Atrimisme</h1>
 
-<p>L’atrimisme est la religion qui vénère Atrim. Elle est religion d'état en Burgonnie. Elle est également pratiquée dans la République Palane et le Salthar.</p>
+<p>L’atrimisme est la religion qui vénère Atrim. Elle est religion d’état en Burgonnie. Elle est également pratiquée dans la République Palane, le Salthar et la Tsovranie.</p>
 
-<h3>Principes</h3>
-<ul>
-	<li>L’atrimisme reconnaît l’existence d’autres dieux, mais Atrim est le seul qui se préoccupe réellement de l’humanité.</li>
-	<li>Les humains ne sont pas magiques par essence, ils doivent donc éviter d’utiliser la magie, qui est cause de corruption, sauf quand il s’agit de pouvoirs conférés par Atrim.</li>
-</ul>
+<!-- Principes -->
+<section>
+	<h2>Principes</h2>
+	<ul>
+		<li>L’atrimisme reconnaît l’existence d’autres dieux, mais Atrim est le seul qui se préoccupe réellement du salut de l’humanité.</li>
+		<li>Les humains ne sont pas magiques par essence, ils doivent donc éviter d’utiliser la magie, qui est cause de corruption, sauf quand il s’agit de pouvoirs conférés par Atrim.</li>
+	</ul>
 
-<div class="border p-1 flow">
-	<h4>Philosophie de l’Atrimisme</h4>
-	<p>Les atrimistes doivent se comporter avec tempérance et bienveillance.</p>
-	<p>Ils ne doivent pas pratiquer la magie, sauf si ce sont des pouvoirs conférés par <i>Atrim</i>.</p>
-</div>
+	<!-- Philosophie de l’Atrimisme -->
+	<details>
+		<summary>
+			<h3>Philosophie de l’Atrimisme</h3>
+		</summary>
+		<p>Les atrimistes doivent se comporter avec tempérance et bienveillance. Ils ne doivent pas pratiquer la magie, sauf si ce sont des pouvoirs conférés par <i>Atrim</i>.</p>
+	</details>
 
-<h3>Brève histoire</h3>
-<p>Il y a plus de 1000 ans, diverses civilisations prospéraient sur Paorn. Certaines d’entres elles faisaient un usage excessif de la magie.</p>
-<p>Atrim envoya un messager pour avertir l’humanité des dangers de la magie. Son message ne fut globalement pas écouté.</p>
-<p>Puis vint le <i>Cataclysme</i>, dont les causes exactes ont été oubliées. Les civilisations s’effondrèrent et une époque de chaos commença. Ce chaos dura quatre siècles, jusqu’à l’arrivée du prophète <i>Eldred</i>. Celui-ci structura les atrimistes et initia la reconstruction de la civilisation, fondée sur des principes de vertus et de justice.</p>
+	<!-- Mythe fondateur -->
+	<details>
+		<summary>
+			<h3>Mythe fondateur</h3>
+		</summary>
+		<p>Dans les temps anciens, avant que le monde ne prenne sa forme actuelle, de nombreuses divinités façonnèrent ensemble Paorn. Chacune apporta sa contribution: certaines créèrent les montagnes et les vallées, d’autres les océans et les rivières, d’autres encore le ciel et les astres. Puis vint le temps de peupler ce monde.</p>
 
-<h3>Les ouvrages sacrés</h3>
-<h4>Les Écrits – La voie d’Atrim</h4>
-<p>Il s’agit du principal livre saint de l’Atrimisme. Il décrit la vie et les enseignements d’Eldred</p>
-<h4>Les anciens parchemins</h4>
-<p>Une collection de textes divers, antérieurs à Eldred. Différents auteurs, inconnus. On y trouve des poèmes, des textes cabalistiques, des mythes.</p>
+		<p>Plusieurs divinités s’associèrent pour créer les humains, chacune insufflant en eux des qualités différentes selon ses desseins. Certains dieux y voyaient des serviteurs, d’autres des jouets, mais Atrim les considérait comme ses enfants et souhaitait les voir s’épanouir en harmonie avec la création.</p>
 
-<h3>Le clergé</h3>
-<p>Les prêtres – grand-prêtre – Archi-prêtre (Olméria)</p>
-<p>Les moines et moniales</p>
-<p>Les paladins et autres ordres guerriers (<i>Ordre des moines guerriers de la Nouvelle Étoile</i>)</p>
+		<p>D’autres races furent également créées : les elfes par les divinités sylvestres, les nains par les dieux des profondeurs terrestres, les hobbits par les esprits du foyer. Chaque race portait l’empreinte de ses créateurs.</p>
 
-<h3>Ordres religieux</h3>
-<h4>Les Humilitants</h4>
-<p>Cet ordre prône la vie simple et l'humilité, s'engageant dans la prière et le service désintéressé envers les nécessiteux.</p>
+		<p>Alors que les humains commençaient à prospérer, certaines divinités jalouses leur enseignèrent la magie, un pouvoir qui n’était pas destiné à leur nature. Atrim les mit en garde contre ces dons dangereux, mais beaucoup ignorèrent ses conseils.</p>
 
-<p>Les Humilitants vivent selon un vœu de pauvreté, renonçant aux biens matériels au profit de la spiritualité. Ils portent des tuniques simples, souvent de couleur terre, symbole de leur connexion à la nature et de leur engagement envers la simplicité. Les membres de l'ordre se déplacent pieds nus pour ressentir pleinement la terre sous leurs pieds et exprimer leur dévouement à la modestie.</p>
+		<p>L’usage de la magie eut des effets néfastes sur l’humanité. Certains humains, assoiffés de puissance, se tournèrent vers la magie noire et établirent des pactes avec des entités maléfiques. D’autres, sans tomber dans ces extrêmes, devinrent paresseux et orgueilleux, utilisant la magie pour satisfaire leurs moindres désirs au lieu de travailler honnêtement.</p>
 
-<p>Leur principal lieu de prière et de méditation est un petit sanctuaire modeste, niché dans les collines autour de Stomilie, où ils se retirent pour se recueillir et méditer sur la volonté d'Atrim. Les Humilitants croient que la paix intérieure et la connexion spirituelle résultent de la compréhension de la modestie et du renoncement.</p>
+		<p>Cette corruption progressive engendra également des créatures monstrueuses : lorsque des humains pratiquant la magie noire s’accouplèrent avec des êtres démoniaques, naquirent les premiers orcs et gobelins. D’autres races comme les elfes noirs furent le résultat d’expériences magiques perverses ou de malédictions divines.</p>
 
+		<p>Voyant son œuvre menacée, Atrim offrit à l’humanité une chance de rédemption. Il choisit un prophète parmi les humains, un être juste et pur nommé Eldar, pour guider ses enfants sur le chemin de la vertu. Par sa bouche, Atrim enseigna les préceptes qui allaient devenir le fondement de l’Atrimisme: la non-violence, le refus du mensonge, l’entraide, et surtout la prudence face à la magie.</p>
 
-<?php if ($admin): ?>
-	<div class="admin flow">
-		<h3>Mythe fondateur</h3>
-		<div>
-			<p>Dans les temps anciens, avant que le monde ne prenne forme, l'atrimisme enseigne qu’Atrim, entouré d'un océan primordial d'où émergeait la vie en germe, modela les terres, les cieux et les mers. Il façonna les premiers humains à son image, insufflant en eux la vie et le libre arbitre. Ces premiers êtres, Aetherius et Lumina, vivaient en harmonie avec la nature et adoraient Atrim comme leur créateur.</p>
-			<p>Cependant, la tentation frappa lorsque des déités mineures, jalouses du pouvoir d'Atrim et de l'amour qu'il portait à ses créations, corrompirent certains humains. Cela mena à des actes de magie noire et à la naissance de races monstrueuses. Atrim offrit à ses enfants une chance de rédemption. Il choisit un prophète parmi les humains, un être juste et pur, pour guider ses enfants sur le chemin de la vertu. Ce saint homme s’appelait Eldred.</p>
-			<p>Le prophète, éclairé par Atrim, partagea la sagesse divine et établit les préceptes de l'atrimisme. Ces enseignements soulignaient la responsabilité des humains envers la nature, les avertissements contre l'usage maléfique de la magie, et la recherche de l'harmonie avec le divin. Ainsi naquit l'atrimisme, une voie de piété et de dévotion envers Atrim, qui perdure à travers les âges.</p>
-			<p>L'épopée du prophète, les épreuves des premiers humains, et la quête de rédemption forment le cœur du mythe fondateur de l'atrimisme, inspirant les fidèles à suivre la voie de la vertu et à rejeter les tentations maléfiques qui parsèment le monde.</p>
-		</div>
+		<p>Le Cataclysme qui suivit fut interprété comme la conséquence inévitable de l’usage inconsidéré de la magie par les humains. Les civilisations s’effondrèrent, et seuls ceux qui avaient écouté les enseignements d’Atrim purent reconstruire un monde plus juste sur ces ruines.</p>
 
-		<h3>Le prophète Eldred</h3>
-		<div>
-			<p>Eldred naquit dans la cité sainte de Stomilie, il y a plus de 5200 ans. Dès sa jeunesse, il se distinguait par son esprit sage et réfléchi. Éduqué dans les enseignements de l'Atrimisme, Eldred développa une profonde connexion spirituelle avec Atrim.</p>
-			<p>Sa vie fut dédiée à la méditation, à la prière et à la compréhension des mystères de l'univers. Il parcourut le pays, partageant ses visions et enseignant la voie de la vertu. Eldred était connu pour ses paroles inspirantes et sa capacité à apporter la paix intérieure à ceux qui le rencontraient.</p>
-			<p>À un âge avancé, entouré de disciples et de fidèles, Eldred choisit de s'éteindre paisiblement lors d'une nuit étoilée. Les témoins rapportèrent avoir vu une lumière céleste entourer son corps au moment de son dernier souffle, symbolisant son retour à Atrim.</p>
-			<p>Son décès fut célébré comme un événement sacré, et on dit que son esprit veille toujours sur ceux qui suivent la voie de l'Atrimisme. Sa tombe devint un lieu de pèlerinage, où les croyants cherchaient inspiration et guidance spirituelle. Ainsi, Eldred demeure une figure vénérée dans l'histoire religieuse de Stomilie.</p>
-		</div>
+		<p>Aujourd’hui encore, les atrimistes considèrent que si d’autres divinités peuvent être honorées pour leur contribution à la création, seul Atrim se soucie véritablement du salut des âmes humaines et mérite une dévotion complète.</p>
+	</details>
+</section>
 
-		<h3>Notes Paorn 2002</h3>
-		<div>
-			<p>Après le <i>Cataclysme</i>, l'atrimisme a subsisté, mais les écrits anciens ayant été perdus, il subsiste de nombreuses querelles sur l'existence de certains dogmes.</p>
-			<p>La non-violence, principal enseignement d'Atrim, est toujours pratiquée, malheureusement on ne sait plus contre qui la non-violence était de rigueur. Certainement pas contre les mages. Il y a également comme axes directeurs le refus du mensonge et l'aide à son prochain.</p>
+<!-- Histoire -->
+<section>
+	<h2>Histoire</h2>
+	<p>Jusqu’à il y a un peu plus de 2000 ans, diverses civilisations humaines prospéraient sur Paorn. Beaucoup faisaient un usage excessif de la magie.</p>
+	<p>Atrim envoya un messager pour avertir l’humanité des dangers de la magie. Son message ne fut globalement pas écouté.</p>
+	<p>Puis vint le <i>Cataclysme</i>, dont les causes exactes ont été oubliées. Les civilisations s’effondrèrent et une époque de chaos commença. Ce chaos dura près de cinq siècles, jusqu’à l’arrivée du prophète <i>Eldar</i>. Celui-ci structura les atrimistes et initia la reconstruction de la civilisation, fondée sur des principes de vertus et de justice.</p>
 
-			<h4>Les Prêtres</h4>
-			<p>Ils doivent avoir : Vœu de chasteté (-1), Pacifique (-15), Sens du devoir envers tout croyant (-10), Pieu (-10), Intolérance envers les magiciens (-5), Résistance à la magie niveau 5 (10), Protecteur (église) (15), Vocation religieuse (5), Vœu de pauvreté (-10), Devoir (église) (-5), Alphabétisation (5), Théologie, Psychologie, Éloquence.</p>
-			<h4>Les Paladins</h4>
-			<p>Ils sont de simples chevaliers servant l'église et n'ayant qu'elle comme suzerain. Ils ont un pouvoir légal quasi-absolu tant qu'ils ne violent pas les lois impériales, et n'ont de compte à rendre qu'à leur supérieur hiérarchique : le grand prêtre (évêque). Statut social niveau 2 (10), Protecteur (église) (15), Résistance à la magie niveau 5 (10), Vocation religieuse (5), Immunité légale (5), Vœu de pauvreté (-10), Intolérance envers les magiciens (-5), Sens du devoir envers tout croyant (-10), Pieu (-10), Devoir (église) (-10), Alphabétisation (5), Réputation +2 (10)</p>
-			<h4>Hiérarchie du clergé</h4>
-			<p>Au sommet est l'Archiprêtre Jopéon XII, il se trouve à Olméria est vie au palais impérial. Il collabore au gouvernement de l'empire par Fordor XXIV.</p>
-			<p>Puis il y a les grands prêtres de Sordolia et d'Artaille. Après viennent les prêtres et les moines. Les prêtres se divisent encore en sous-groupe, mais ils ont tous en commun d'avoir une mission de dialogue avec le peuple. Ceux-ci vivent dans des églises plus ou moins grandes (de la chapelle à la cathédrale) au sein des villes et des villages. Ils peuvent être propriétaire terrien est être ainsi maître de leur domaine, sans aucun compte à rendre sinon au grand prêtre de leur province.</p>
-			<p>Il existent aussi des monastère, ou des moines vivent le plus souvent reclu. Ils vivent de la copie, de la culture, distillation, soins, etc…</p>
-			<p>La hiérarchie n'est pas la même que celle des églises.</p>
-			<p>Église&nbsp;: Evêque, Abbé, Curé</p>
-			<p>Monastère&nbsp;: Père supérieur, Moine</p>
-		</div>
-	</div>
-<?php endif ?>
+	<!-- Le prophète Eldar -->
+	<details>
+		<summary>
+			<h3>Le prophète Eldar</h3>
+		</summary>
+		<p>Eldar est né dans la cité sainte de Stomilie, il y a 1575 ans. Dès sa jeunesse, il se distinguait par son esprit sage et réfléchi. Éduqué dans les enseignements de l’Atrimisme, Eldar développa une profonde connexion spirituelle avec Atrim.</p>
+		<p>Sa vie fut dédiée à la prière et à la compréhension des mystères de l’univers. Il parcourut le pays, partageant ses visions et enseignant la <i>Voie de la Vertu</i>. Eldar était connu pour ses paroles inspirantes et sa capacité à apporter la paix intérieure à ceux qui le rencontraient.</p>
+		<p>À un âge avancé, entouré de disciples et de fidèles, Eldar s’éteint paisiblement lors d’une nuit étoilée. Les témoins rapportèrent avoir vu une lumière céleste entourer son corps au moment de son dernier souffle, symbolisant son retour à Atrim.</p>
+		<p>Son décès fut célébré comme un événement sacré, et on dit que son esprit veille toujours sur ceux qui suivent la voie de l’Atrimisme. Sa tombe devint un lieu de pèlerinage, où les croyants cherchaient inspiration et guidance spirituelle.</p>
+	</details>
+</section>
+
+<!-- Les ouvrages sacrés -->
+<section>
+	<h2>Les ouvrages sacrés</h2>
+
+	<!-- La voie de la Vertu -->
+	<details>
+		<summary>
+			<h3>La voie de la Vertu</h3>
+		</summary>
+		<p>Aussi appelé <i>La Voie</i>, ce livre est le principal livre saint de l’Atrimisme. Il décrit la vie et les enseignements d’Eldar.</p>
+		<p>Quelques citation d’Eldar, extraite de <i>La Voie</i> :</p>
+		<ul class="italic">
+			<li>La magie est comme le feu : utile au serviteur, dangereuse pour le maître.</li>
+			<li>La magie n’est ni lumière ni ténèbres ; elle est le miroir où l’âme contemple son propre reflet.</li>
+			<li>Qui cherche la vérité trouve Atrim ; qui fuit le mensonge marche à ses côtés.</li>
+			<li>La force véritable réside non dans le pouvoir de dominer autrui, mais dans la capacité à se maîtriser soi-même.</li>
+			<li>Un seul acte de bonté sincère vaut mieux que cent prières récitées sans conviction.</li>
+			<li>Méfie-toi de celui qui promet des miracles faciles, car les véritables prodiges d’Atrim demandent patience et dévotion.</li>
+			<li>Le plus grand mensonge est celui qu’on se raconte à soi-même.</li>
+			<li>À celui qui t’offense, offre ton pardon ; à celui qui souffre, offre ton aide ; à celui qui doute, offre ta foi.</li>
+			<li>La richesse des puissants n’est que poussière aux yeux d’Atrim ; seule la richesse du cœur est éternelle.</li>
+			<li>Ne cherche pas la perfection, mais l’amélioration constante. Même le plus humble des pas sur la Voie de la Vertu est précieux.</li>
+			<li>Comme l’eau pure lave le corps, la vérité lave l’âme.</li>
+		</ul>
+	</details>
+
+	<!-- Les écrits anciens -->
+	<details>
+		<summary>
+			<h3>Les écrits anciens</h3>
+		</summary>
+		<p>Une collection de textes divers, antérieurs à Eldar. Différents auteurs, inconnus. On y trouve des poèmes, des textes cabalistiques, des mythes.</p>
+	</details>
+
+	<!-- Interprétations et exégèses -->
+	<details>
+		<summary>
+			<h3>Interprétations et exégèses</h3>
+		</summary>
+		<h4>La magie est comme le feu : utile au serviteur, dangereuse pour le maître.</h4>
+		<p>Cette parole d'Eldar peut être interprétée de plusieurs façons profondes et complémentaires et reflète la sagesse fondamentale concernant la relation que les humains devraient entretenir avec la magie :</p>
+		<ul>
+			<li><b>L'interprétation orthodoxe :</b> la magie doit rester un outil et non devenir une fin en soi. Celui qui se contente d'utiliser la magie comme un serviteur - de façon limitée, encadrée et pour le bien commun - peut en tirer bénéfice sans corrompre son âme. En revanche, celui qui cherche à maîtriser la magie, à l'approfondir et à en faire le centre de son existence, finit par être consumé par elle, tout comme celui qui joue imprudemment avec le feu finit par se brûler. C'est pourquoi en Burgonnie, la pratique de la magie est strictement réglementée.</li>
+			<li><b>L'interprétation historique :</b> Les érudits atrimistes rappellent que cette parole fait référence à l'histoire même de l'humanité. Avant le Cataclysme, les civilisations qui maîtrisaient la magie finirent par être détruites par elle. Cette citation serait donc un avertissement historique d'Eldar, rappelant que les humains, n'étant pas magiques par essence, ne peuvent prétendre dominer cette force sans conséquences désastreuses.</li>
+			<li><b>L'interprétation symbolique :</b> le « serviteur » symbolise l'humilité et la prudence, tandis que le « maître » représente l'orgueil et la présomption. C'est notre attitude envers la magie qui détermine si elle nous sera bénéfique ou néfaste. Celui qui approche la magie avec humilité, reconnaissant ses limites et sa nature non-magique, peut l'utiliser sans danger. Celui qui, par orgueil, cherche à s'élever au-dessus de sa condition humaine grâce à la magie, finira par être détruit par elle.</li>
+		</ul>
+		<p>Cette citation continue d'inspirer et de guider les atrimistes dans leur relation prudente avec la magie, tout en permettant diverses interprétations qui ont nourri au fil des siècles les réflexions théologiques au sein de cette religion.</p>
+	</details>
+</section>
+
+<!-- Le clergé -->
+<section>
+	<h2>Le clergé</h2>
+	<h3>Le clergé régulier</h3>
+	<p>Les prêtres – grand-prêtre – Archi-prêtre (Olméria)</p>
+	<h3>Les ordres monastiques</h3>
+	<p>Les moines et moniales</p>
+	<h3>Les ordres guerriers</h3>
+	<p>Les paladins et autres ordres guerriers (<i>Ordre des moines guerriers de la Nouvelle Étoile</i>)</p>
+</section>
+
+<!-- Ordres religieux -->
+<section>
+	<h2>Ordres religieux</h2>
+	<h3>Les Humilitants</h3>
+	<p>Cet ordre prône la vie simple et l’humilité, s’engageant dans la prière et le service désintéressé envers les nécessiteux.</p>
+
+	<p>Les Humilitants vivent selon un vœu de pauvreté, renonçant aux biens matériels au profit de la spiritualité. Ils portent des tuniques simples, souvent de couleur terre, symbole de leur connexion à la nature et de leur engagement envers la simplicité. Les membres de l’ordre se déplacent pieds nus pour ressentir pleinement la terre sous leurs pieds et exprimer leur dévouement à la modestie.</p>
+
+	<p>Leur principal lieu de prière et de méditation est un petit sanctuaire modeste, niché dans les collines autour de Stomilie, où ils se retirent pour se recueillir et méditer sur la volonté d’Atrim. Les Humilitants croient que la paix intérieure et la connexion spirituelle résultent de la compréhension de la modestie et du renoncement.</p>
+</section>

@@ -72,6 +72,7 @@ class College
 				$item["points"] = Skill::niv2cost($item["niv"], -8, "I");
 				$item["modif"] = $item["modif"] ?? 0; 
 				$item["score"] = $attributes["Int"] + $item["niv"] + $item["modif"] + $modifiers["Magie"] + $special_traits["magerie"] - 3 + floor($special_traits["mult-memoire-infaillible"]/2);
+				if ($attributes["Int"] === 0) $item["score"] = 0; // when character is in very bad state
 
 				if ($item["modif"] > 0) {
 					$item["name"] .= ' (+' . $item["modif"] . ')';
