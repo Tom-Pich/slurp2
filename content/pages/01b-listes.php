@@ -14,21 +14,52 @@ $spells_repo = new SpellRepository;
 $affichage = $_POST["affichage"] ?? "categorie";
 ?>
 
-<!-- Intro + filtres -->
+<!-- Filtres -->
 <article class="as-start" data-morphdom="ignore">
 
-	<h4>Affichage par catégories</h4>
-	<p>L’affichage par catégorie permet l’accès aux règles générales sur certaines catégories d’avantages &amp; désavantages, compétences et sorts.</p>
+	<!-- formulaire de sélection -->
+	<form action="avdesav-comp-sorts" data-role="filter-form">
+		<p class="fw-700">Affichage</p>
+		<div class="flex-s gap-1 mt-½">
+			<label class="btn btn-primary fl-1 ta-center">
+				<input type="radio" name="affichage" value="categorie" <?= $affichage == "categorie" ? "checked" : "" ?>>
+				Catégories
+			</label>
+			<label class="btn btn-primary fl-1 ta-center">
+				<input type="radio" name="affichage" value="alpha" <?= $affichage == "alpha" ? "checked" : "" ?>>
+				Alphabétique
+			</label>
+		</div>
+		<p class="mt-½">L’affichage par catégories permet l’accès aux règles générales sur certaines catégories d’avantages &amp; désavantages, compétences et sorts.</p>
+
+		<div class="mt-1">
+			<p class="fw-700">Sorts à afficher</p>
+			<div class="flex-s mt-½ gap-½" data-role="spell-filter">
+				<input type="text" data-role="range-filter" style="width: 7ch;" class="ta-center watched" placeholder="1-5" value="1-5" pattern="\d(-\d)*">
+				<label class="btn btn-primary">
+					<input type="checkbox" checked data-role="origin-selector" value="RdB"> RdB
+				</label>
+				<label class="btn btn-primary">
+					<input type="checkbox" checked data-role="origin-selector" value="nouveau"> Nouveaux
+				</label>
+				<label class="btn btn-primary">
+					<input type="checkbox" checked data-role="origin-selector" value="ADD"> AD&amp;D
+				</label>
+			</div>
+		</div>
+		<div class="mt-1">
+			<p class="fw-700">Recherche par mots-clés</p>
+			<input type="text" name="keyword" class="full-width" placeholder="Entrez des mots-clés">
+		</div>
+	</form>
 
 	<hr>
 
 	<h4>Caractéristiques des sorts</h4>
-	<p>Valeurs par défaut&nbsp;:</p>
-	<ul>
-		<li><i>Classe</i>&nbsp;: régulier</li>
-		<li><i>Temps nécessaire</i>&nbsp;: rapide</li>
-	</ul>
-
+	<p>
+		<i>Classe</i> par défaut : régulier<br>
+		<i>Temps nécessaire</i> par défaut : rapide
+	</p>
 	<table>
 		<tr>
 			<th>Niv.</th>
@@ -39,78 +70,42 @@ $affichage = $_POST["affichage"] ?? "categorie";
 		<tr>
 			<td>I</td>
 			<td>2</td>
-			<td><?= Spell::cast_time[0][0] ?>&nbsp;s</td>
-			<td><?= Spell::cast_time[0][1] ?>&nbsp;s</td>
+			<td><?= Spell::cast_time[0][0] ?> s</td>
+			<td><?= Spell::cast_time[0][1] ?> s</td>
 		</tr>
 		<tr>
 			<td>II</td>
 			<td>4</td>
-			<td><?= Spell::cast_time[1][0] ?>&nbsp;s</td>
-			<td><?= Spell::cast_time[1][1] ?>&nbsp;s</td>
+			<td><?= Spell::cast_time[1][0] ?> s</td>
+			<td><?= Spell::cast_time[1][1] ?> s</td>
 		</tr>
 		<tr>
 			<td>III</td>
 			<td>6</td>
-			<td><?= Spell::cast_time[2][0] ?>&nbsp;s</td>
-			<td><?= Spell::cast_time[2][1] / 60 ?>&nbsp;min</td>
+			<td><?= Spell::cast_time[2][0] ?> s</td>
+			<td><?= Spell::cast_time[2][1] / 60 ?> min</td>
 		</tr>
 		<tr>
 			<td>IV</td>
 			<td>8</td>
-			<td><?= Spell::cast_time[3][0] ?>&nbsp;s</td>
-			<td><?= Spell::cast_time[3][1] / 60 ?>&nbsp;min</td>
+			<td><?= Spell::cast_time[3][0] ?> s</td>
+			<td><?= Spell::cast_time[3][1] / 60 ?> min</td>
 		</tr>
 		<tr>
 			<td>V</td>
 			<td>15+</td>
-			<td><?= Spell::cast_time[4][0] ?>&nbsp;s</td>
-			<td><?= Spell::cast_time[4][1] / 3600 ?>&nbsp;h</td>
+			<td><?= Spell::cast_time[4][0] ?> s</td>
+			<td><?= Spell::cast_time[4][1] / 3600 ?> h</td>
 		</tr>
 	</table>
-	<p class="italic">Voir le chapitre <a href="/magie">Magie</a> pour plus de détails.</p>
+	<p>Voir le chapitre <a href="/magie">Magie</a> pour plus de détails.</p>
 
-	<hr>
-
-	<!-- formulaire de sélection -->
-	<form action="avdesav-comp-sorts" data-role="filter-form">
-		<div class="flex-s jc-space-between">
-			<b>Affichage</b>
-			<label>
-				<input type="radio" name="affichage" value="categorie" <?= $affichage == "categorie" ? "checked" : "" ?>>
-				catégories
-			</label>
-			<label>
-				<input type="radio" name="affichage" value="alpha" <?= $affichage == "alpha" ? "checked" : "" ?>>
-				alphabétique
-			</label>
-		</div>
-		<div class="mt-½">
-			<div><b>Sorts à afficher</b></div>
-			<div class="flex-s ai-center jc-space-between mt-½" data-role="spell-filter">
-				Niv.
-				<input type="text" data-role="range-filter" style="width: 5ch;" class="ta-center watched" placeholder="1-5" value="1-5" pattern="\d(-\d)*">
-				<label>
-					<input type="checkbox" checked data-role="origin-selector" value="RdB"> RdB
-				</label>
-				<label>
-					<input type="checkbox" checked data-role="origin-selector" value="nouveau"> Nouveaux
-				</label>
-				<label>
-					<input type="checkbox" checked data-role="origin-selector" value="ADD"> AD&amp;D
-				</label>
-			</div>
-		</div>
-		<div class="mt-1 flex-s gap-½ ai-center">
-			<div><b>Recherche</b></div>
-			<input type="text" name="keyword" class="fl-1" placeholder="Entrez des mots-clés">
-		</div>
-	</form>
 </article>
 
 <!-- Avantages & Désavantages -->
 <article class="as-start" data-role="avdesavs-wrapper">
 	<h2>
-		<?php if ($_SESSION["Statut"] === 3) { ?><a href="gestion-listes?req=avdesav&id=0" class="edit-link ff-far">&#xf044;&nbsp;</a><?php } ?>
+		<?php if ($_SESSION["Statut"] === 3) { ?><a href="gestion-listes?req=avdesav&id=0" class="edit-link ff-far">&#xf044; </a><?php } ?>
 		Avantages &amp; Désavantages
 	</h2>
 
@@ -130,16 +125,16 @@ $affichage = $_POST["affichage"] ?? "categorie";
 				</summary>
 				<?php if ($category === "PNJ"): ?>
 					<p>Certains PNJ peuvent vous fournir aide et assis&shy;tance. Le coût de ces PNJ, en tant qu’<i>Avantage</i>, dépend de l’ampleur de l’aide qu’ils peuvent offrir. Cette aide est sincère et sans autre contrepartie qu’une aide équivalente et/ou une loyauté de la part du PJ lorsque nécessaire.<br>
-						Deux valeurs en points sont données&nbsp;: la 1<sup>ère</sup> correspond à une aide occasionnelle, la deuxième à une aide possible en toutes circonstances (sauf cas de force majeure).
+						Deux valeurs en points sont données : la 1<sup>ère</sup> correspond à une aide occasionnelle, la deuxième à une aide possible en toutes circonstances (sauf cas de force majeure).
 					</p>
 					<ul>
-						<li><b>Aide minime (1 ou 2 pts)&nbsp;:</b> fournir un toit, un coup de main sans risque, prêter une petite somme d’argent.</li>
+						<li><b>Aide minime (1 ou 2 pts) :</b> fournir un toit, un coup de main sans risque, prêter une petite somme d’argent.</li>
 						<li><b>Aide non négligeable (10 ou 15 pts) :</b> prêter main forte au PJ, prendre des risques raisonnés. Permet en gros de doubler les capacités du PJ.<br></li>
 						<li><b>Aide importante (15 ou 30 pts) :</b> fournir une aide substantielle au PJ, sans laquelle ce dernier pourrait avoir des problèmes sérieux ou échouer dans un objectif important, tirer le PJ d’un problème sérieux.<br></li>
 						<li><b>Aide très importante (30 ou 60 pts) :</b> résout à peu près tous les problèmes du PJ, dans la mesure du possible.</li>
 					</ul>
 
-					<p>D’autres PNJ peuvent être des <i>Désavantages</i>&nbsp;: les <i>Ennemis</i> et les <i>Subordonnés</i>.</p>
+					<p>D’autres PNJ peuvent être des <i>Désavantages</i> : les <i>Ennemis</i> et les <i>Subordonnés</i>.</p>
 
 				<?php elseif ($category === "Caractéristiques secondaires"): ?>
 					<p>Modifier les caractéristiques secondaires compte comme un <i>Avantage</i> ou un <i>Désavantage</i>. Ces modifications doivent rester exceptionnelles et justifiées, sauf pour les PdM supplémentaires.</p>
@@ -154,7 +149,7 @@ $affichage = $_POST["affichage"] ?? "categorie";
 <!-- Compétences -->
 <article class="as-start" data-role="skills-wrapper">
 	<h2>
-		<?php if ($_SESSION["Statut"] === 3) { ?><a href="gestion-listes?req=competence&id=0" class="edit-link ff-far">&#xf044;&nbsp;</a><?php } ?>
+		<?php if ($_SESSION["Statut"] === 3) { ?><a href="gestion-listes?req=competence&id=0" class="edit-link ff-far">&#xf044; </a><?php } ?>
 		Compétences
 	</h2>
 
@@ -181,7 +176,7 @@ $affichage = $_POST["affichage"] ?? "categorie";
 				<?php elseif ($category === "Langue"): ?>
 					<p>
 						La plupart des langues sont de type I(-4) mais un sabir/créole sera I(-2) et une langue à la structure grammaticale très complexe sera ardue I(-6). La difficulté dépend également de la proximité entre la langue maternelle du personnage et la langue apprise.<br>
-						Niveau par défaut de la langue maternelle&nbsp;: <i>Int</i> + 5 ± <i>Statut social</i>.
+						Niveau par défaut de la langue maternelle : <i>Int</i> + 5 ± <i>Statut social</i>.
 					</p>
 
 					<h4>Signification du score de compétence</h4>
@@ -228,7 +223,7 @@ $affichage = $_POST["affichage"] ?? "categorie";
 <!-- Sorts -->
 <article class="as-start" data-role="spells-wrapper">
 	<h2>
-		<?php if ($_SESSION["Statut"] == 3) { ?><a href="gestion-listes?req=sort&id=0" class="edit-link ff-far">&#xf044;&nbsp;</a><?php } ?>
+		<?php if ($_SESSION["Statut"] == 3) { ?><a href="gestion-listes?req=sort&id=0" class="edit-link ff-far">&#xf044; </a><?php } ?>
 		Sorts
 	</h2>
 	<?php if ($affichage == 'alpha') {

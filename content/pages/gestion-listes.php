@@ -105,8 +105,8 @@ else include "content/components/" . $file;
 		tinymce.init({
 			selector: 'textarea[tinyMCE]',
 			menubar: false,
-			plugins: ['lists', 'code'],
-			toolbar: 'bold italic bullist numlist code removeformat',
+			plugins: ['lists', 'code', 'link'],
+			toolbar: 'bold italic bullist numlist link code removeformat',
 			entity_encoding: "raw",
 			extended_valid_elements: "b,i",
 			formats: {

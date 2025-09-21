@@ -129,22 +129,20 @@ $body_class .=  $page["style"] !== "normal" ? (" " . $page["style"]) : "";
 						<?php if ($_SESSION['Statut'] >= 3) { ?> <li><a href="/test">Test</a></li> <?php } ?>
 					</ul>
 				</li>
-				<li>
-					<h4>Mes personnages</h4>
-					<ul class="sub-menu">
-						<?php if ($_SESSION['Statut']) {
-							if (count($characters_list)) {
-								foreach ($characters_list as $character) { ?>
+				<?php if ($_SESSION['Statut']): ?>
+					<li>
+						<h4>Mes personnages</h4>
+						<ul class="sub-menu">
+							<?php if (count($characters_list)): ?>
+								<?php foreach ($characters_list as $character) { ?>
 									<li><a href="/personnage-fiche?perso=<?= $character['id'] ?>"><?= $character['Nom'] ?></a></li>
-								<?php }
-							} else { ?>
+								<?php } ?>
+							<?php else: ?>
 								<li><i>Vous n’avez pas de personnage actif</i></li>
-							<?php }
-						} else { ?>
-							<li><i>Connectez-vous pour accéder à vos personnages</i></li>
-						<?php } ?>
-					</ul>
-				</li>
+							<?php endif ?>
+						</ul>
+					</li>
+				<?php endif ?>
 				<?php if ($_SESSION['Statut'] >= 2) { ?>
 					<li>
 						<h4><a href="/gestionnaire-mj"><?= $pages_data['gestionnaire-mj']["title"] ?></a></h4>

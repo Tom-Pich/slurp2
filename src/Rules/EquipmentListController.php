@@ -5,7 +5,7 @@ namespace App\Rules;
 class EquipmentListController
 {
 	const equipment_list = [
-		// label, poids, [ AD&D, Ombres d’Esteren ], catégorie
+		// label, poids, prix [ AD&D, OdE ], catégorie
 		["Couchage dans un dortoir", NULL, ["2 pc", "2 dB"], "auberge"],
 		["Chambre, auberge moyenne", NULL, ["4-10 pc", "5 dB"], "auberge"],
 		["Écurie et avoine, 1 cheval", NULL, ["2 pc"], "auberge"],
@@ -55,9 +55,9 @@ class EquipmentListController
 		["Grosse bouteille de céramique, 5 L", 2, ["5 pc"], "voyage"],
 		["Torche, ½ heure", 0.5, ["½ pc"], "voyage"],
 		["Torche, 1 heure", 0.75, ["1 pc"], "voyage"],
-		["Petite lanterne", 0.5, ["20 pc"], "voyage"],
-		["Huile de lampe (0.5 L, 24h)", 0.5, ["2 pc"], "voyage"],
-		["Briquet à amadou", NULL, ["5 pc"], "voyage"],
+		["Petite lanterne à huile, fermée<br>réserve 100 mL (10 h)", 0.5, ["40 pc"], "voyage"],
+		["Huile de lampe (0,5L, 50h)", 0.5, ["2 pc"], "voyage"],
+		["Briquet à amadou<br>percuteur, silex et fibres d’amadou", 0.15, ["5 pc"], "voyage"],
 		["Tente 4 places (+ 2 perches de 2 m)", 15, ["150 pc"], "voyage"],
 		["Couverture (laine)", 2, ["10 pc"], "voyage"],
 		["Sac de couchage (pour grand froid)", 6, ["100 pc"], "voyage"],
@@ -65,9 +65,10 @@ class EquipmentListController
 		["Corde (diam. 1 cm, 150), 10 m", 0.75, ["5 pc"], "voyage"],
 		["Grosse corde (diam. 2 cm, 600), 10 m", 3, ["15 pc"], "voyage"],
 		["Grappin léger (supporte 150kg)", 1, ["20 pc"], "voyage"],
+		["Pierre à aiguiser", 0.1, ["2 pc"], "voyage"],
 
-		["Outils de crochetage", NULL, ["30 pc"], "spécial"],
-		["Outils de crochetage BQ, (+1 crochetage)", NULL, ["200 pc"], "spécial"],
+		["Outils de crochetage", 0.1, ["30 pc"], "spécial"],
+		["Outils de crochetage BQ, (+1 crochetage)", 0.1, ["200 pc"], "spécial"],
 		["Serpe d’or (pour druide)", 0.25, ["500 pc"], "spécial"],
 		["Trousse premiers secours (+1 comp.)", 1, ["30 pc"], "spécial"],
 		["Labo d’alchimie improvisé (-2 comp.)", 4, ["50 pc"], "spécial"],

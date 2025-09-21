@@ -27,8 +27,8 @@ $dynamic-size-values: ( "½-1": var(--dynamic-space-½-1), "1-2": var(--dynamic-
 	color-scheme: light dark;
 
 	// base: Humanist – accent: Rounded-Sans
-	--ff-base: 'Seravek', 'Gill Sans Nova', 'Ubuntu', 'Calibri', 'DejaVu Sans', 'source-sans-pro', 'sans-serif';
-	--ff-accent: 'ui-rounded', 'Hiragino Maru Gothic ProN', 'Quicksand', 'Comfortaa', 'Manjari', 'Arial Rounded MT', 'Arial Rounded MT Bold', 'Calibri', 'source-sans-pro', 'sans-serif';
+	--ff-base: 'Seravek', 'Gill Sans Nova', 'Ubuntu', 'Calibri', 'source-sans-pro', sans-serif; // 'DejaVu Sans', 
+	--ff-accent: 'ui-rounded', 'Hiragino Maru Gothic ProN', 'Quicksand', 'Comfortaa', 'Manjari', 'Arial Rounded MT', 'Arial Rounded MT Bold', 'Calibri', 'source-sans-pro', sans-serif;
 
 	// sizing
 	--content-max-width: 1200px;
@@ -121,12 +121,12 @@ dialog {
 
 // Forms & buttons
 button, input[type=submit], .btn {
-	//--btn-clr: var(--white);
-	//--text-clr: currentColor;
-	//--border-clr: var(--btn-clr);
-	//--btn-clr-hover: var(--text-clr);
-	//--text-clr-hover: var(--btn-clr);
-	//--border-clr-hover: var(--btn-clr);
+	//--btn-clr: default = transparent;
+	//--text-clr: default = currentColor;
+	//--border-clr: default = --btn-clr or currentColor;
+	//--btn-clr-hover: default = --text-clr or transparent;
+	//--text-clr-hover: default = --btn-clr or currentColor;
+	//--border-clr-hover: --text-clr-hover or currentColor;
 	cursor: pointer; display: block; text-decoration: none; padding: .5em 1em; transition: all .2s; width: fit-content; font-family: inherit; line-height: inherit;
 	background: var(--btn-clr, transparent);
 	color: var(--text-clr, currentColor);

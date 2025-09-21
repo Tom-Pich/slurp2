@@ -108,15 +108,32 @@ class Character
 
 		// ––– Default modifiers and cost multipliers
 		$this->modifiers = [
-			"For" => 0, "Dex" => 0, "Int" => 0, "San" => 0, "Per" => 0, "Vol" => 0,
-			"Dégâts" => 0, "Réflexes" => 0, "Sang-Froid" => 0, "Vitesse" => 0,
-			"PdV" => 0, "PdF" => 0, "PdM" => 0, "PdE" => 0,
+			"For" => 0,
+			"Dex" => 0,
+			"Int" => 0,
+			"San" => 0,
+			"Per" => 0,
+			"Vol" => 0,
+			"Dégâts" => 0,
+			"Réflexes" => 0,
+			"Sang-Froid" => 0,
+			"Vitesse" => 0,
+			"PdV" => 0,
+			"PdF" => 0,
+			"PdM" => 0,
+			"PdE" => 0,
 			"Magie" => 0,
-			"For-mult" => 1, "Vitesse-mult" => 1,
+			"For-mult" => 1,
+			"Vitesse-mult" => 1,
 			"Encombrement" => 0,
 		];
 		$this->attr_cost_multipliers = [
-			"For" => 1, "Dex" => 1, "Int" => 1, "San" => 1, "Per" => 1, "Vol" => 1,
+			"For" => 1,
+			"Dex" => 1,
+			"Int" => 1,
+			"San" => 1,
+			"Per" => 1,
+			"Vol" => 1,
 		];
 		$this->special_traits = [
 			"type-perso" => "",
@@ -151,7 +168,7 @@ class Character
 		$this->attributes["PdE"] += $this->modifiers["PdE"];
 
 		// updating Calculs in DB
-		$stored_calculs = json_decode($raw_data["Calculs"], true);
+		$stored_calculs = $this->pdxm;
 		$calculs = ["PdVm" => $this->attributes["PdV"], "PdFm" => $this->attributes["PdF"], "PdMm" => $this->attributes["PdM"], "PdEm" => $this->attributes["PdE"]];
 		$PdXm_has_changed = $stored_calculs != $calculs;
 		if ($PdXm_has_changed) {
@@ -160,6 +177,7 @@ class Character
 				"Calculs" => json_encode($calculs, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
 			];
 			$repo->updateCharacterPdX($calculs_data);
+			$this->pdxm = $calculs;
 		}
 
 		// ––– state : For_global, For_deg, Dex, Int, Magie, PdV, PdF, (PdM), PdE, Stress, Membres, Autres + [ San, Per, Vol, Réflexes, Sang-Froid ]
@@ -186,9 +204,10 @@ class Character
 			if (!empty($this->state["Membres"])) {
 				$members_state = WoundController::getMembersState($this->attributes["PdV"], $this->state["Membres"], $this->special_traits["resistance-douleur"]);
 				$explicit_damages = [];
-				if ($members_state["error"]) {$explicit_damages[] = "Données de blessures aux membres incohérentes";}
-				else {
-					foreach($members_state["members"] as $member => $state){
+				if ($members_state["error"]) {
+					$explicit_damages[] = "Données de blessures aux membres incohérentes";
+				} else {
+					foreach ($members_state["members"] as $member => $state) {
 						$explicit_damages[] = "<b>" . ucfirst($member) . " ({$state["damage"]}) :</b> {$state["description"]}";
 					}
 				}
@@ -197,7 +216,7 @@ class Character
 			if (!empty($this->state["Autres"])) {
 				//$this->state["Autres"] = explode("\r\n", TextParser::pseudoMDParser($this->state["Autres"]));
 				$this->state["Autres"] = explode(PHP_EOL, $this->state["Autres"]);
-				$this->state["Autres"] = array_map(fn($x) => TextParser::pseudoMDParser($x), $this->state["Autres"] );
+				$this->state["Autres"] = array_map(fn($x) => TextParser::pseudoMDParser($x), $this->state["Autres"]);
 			}
 
 			foreach ([$this->state["Blessures"], $this->state["Fatigue"], $this->state["Stress"], $this->state["Santé-mentale"]] as $state) {
@@ -247,14 +266,14 @@ class Character
 			$this->attributes["San"] += $this->modifiers["San"];
 			$this->attributes["Per"] += $this->modifiers["Per"];
 			$this->attributes["Vol"] += $this->modifiers["Vol"];
-			$this->attributes["Dégâts"] = Attribute::getDamages( max($this->attributes["For"] + $this->modifiers["Dégâts"], 0) );
+			$this->attributes["Dégâts"] = Attribute::getDamages(max($this->attributes["For"] + $this->modifiers["Dégâts"], 0));
 			$this->attributes["Réflexes"] += $this->modifiers["Réflexes"];
 			$this->attributes["Sang-Froid"] += $this->modifiers["Sang-Froid"];
 			$this->attributes["Vitesse"] += $this->modifiers["Vitesse"]; // first modifier (avdesav, skills), than multiplier
 			$this->attributes["Vitesse"] *= $this->modifiers["Vitesse-mult"];
 
 			// preventing negative attributes value
-			foreach(["For", "Dex", "Int", "San", "Per", "Vol", "Réflexes", "Sang-Froid", "Vitesse"] as $attr_name){
+			foreach (["For", "Dex", "Int", "San", "Per", "Vol", "Réflexes", "Sang-Froid", "Vitesse"] as $attr_name) {
 				$this->attributes[$attr_name] = max($this->attributes[$attr_name], 0);
 			}
 		}
@@ -262,7 +281,7 @@ class Character
 		// ––– skills
 		$raw_skills = json_decode($raw_data["Compétences"], true);
 		[$this->skills, $this->points_count["skills"], $this->modifiers] = Skill::processSkills($raw_skills, $this->raw_attributes, $this->attributes, $this->modifiers, $this->special_traits);
-		
+
 		// rounding Vitesse after potential effect of skills
 		$this->attributes["Vitesse"] = round($this->attributes["Vitesse"], 1);
 		$this->raw_attributes["Vitesse"] = round($this->raw_attributes["Vitesse"], 1);
@@ -311,12 +330,6 @@ class Character
 
 	public static function createCharacter(array $post): void
 	{
-		$kit_base = isset($post["kit_base"]);
-		$kit_combattant = isset($post["kit_combattant"]);
-		$kit_magicien = isset($post["kit_magicien"]);
-		$kit_ange = isset($post["kit_ange"]);
-		$kit_demon = isset($post["kit_demon"]);
-
 		// Valeurs par défaut
 		$character = [
 			"id_joueur" => (int) $post["createur"],
@@ -325,14 +338,14 @@ class Character
 			"Statut" => "Création",
 			"Pts" => 120,
 			"Caractéristiques" => ["For" => 10, "Dex" => 10, "Int" => 10, "San" => 10, "Per" => 10, "Vol" => 10],
-			"État" => "{}", // if "État" => [], will create a JSON array and not a JSON object, which can be problematic
-			"Calculs" => [],
+			"État" => "{}",
+			"Calculs" => "[]",
 			"MPP" => [],
 			"Avdesav" => [],
 			"Compétences" => [],
-			"Sorts" => [],
-			"Pouvoirs" => [],
-			"Psi" => [],
+			"Sorts" => "[]",
+			"Pouvoirs" => "[]",
+			"Psi" => "[]",
 			"Description" => "",
 			"Background" => "",
 			"Notes" => "",
@@ -340,47 +353,81 @@ class Character
 		];
 
 		// Kits
-		if ($kit_base) {
-			if(!$kit_combattant) $character["Compétences"][] = ["id" => 26]; // Esquive
+		if (isset($post["kit_base"])) {
+			$character["Compétences"][] = ["id" => 26]; // Esquive
 			$character["Compétences"][] = ["id" => 181]; // Furtivité
 			$character["Compétences"][] = ["id" => 127]; // Culture générale
 			$character["Compétences"][] = ["id" => 148]; // Baratin
 			$character["Compétences"][] = ["id" => 147]; // Acteur
+			$character["Compétences"][] = ["id" => 155]; // Perception empathique
 		}
-		if ($kit_combattant) {
+		if (isset($post["kit_aventurier"])) {
+			$character["Compétences"][] = ["id" => 21]; // Combat à mains nues
+			$character["Compétences"][] = ["id" => 56]; // Connaissance de la Nature
+			$character["Compétences"][] = ["id" => 59]; // Escalade
+			$character["Compétences"][] = ["id" => 92]; // Fouille
+			$character["Compétences"][] = ["id" => 36]; // Lancer
+			$character["Compétences"][] = ["id" => 62]; // Nage
+			$character["Compétences"][] = ["id" => 63]; // Orientation
+			$character["Compétences"][] = ["id" => 66]; // Pistage
+			$character["Compétences"][] = ["id" => 67]; // Randonnée
+			$character["Compétences"][] = ["id" => 71]; // Survie
+			$character["Compétences"][] = ["id" => 113]; // Vigilance
+		}
+		if (isset($post["kit_contemporain"])) {
+			$character["Compétences"][] = ["id" => 162]; // Conduite
+			$character["Compétences"][] = ["id" => 95]; // Informatique
+			$character["Compétences"][] = ["id" => 62]; // Nage
+		}
+		if (isset($post["kit_combattant"])) {
 			$character["Avdesav"][] = ["id" => 29]; // Réflexes de combat
 			$character["Avdesav"][] = ["id" => 31]; // Résistance à la douleur
-			$character["Compétences"][] = ["id" => 21, "niv" => 0]; // Combat à mains nues
-			$character["Compétences"][] = ["id" => 26, "label" => "Esquive (+1)", "niv" => 0]; // Esquive
+			$character["Compétences"][] = ["id" => 21]; // Combat à mains nues
+			$character["Compétences"][] = ["id" => 26, "label" => "Esquive (+1)"]; // Esquive
 		}
-		if ($kit_magicien) {
-			$character["Caractéristiques"] = ["Int" => 13];
+		if (isset($post["kit_magicien"])) {
+			$character["Caractéristiques"]["Int"] = 13;
 			$character["Avdesav"][] = ["id" => 24, "nom" => "Magerie 1", "points" => 15]; // Magerie
-			$character["Avdesav"][] = ["id" => 6, "nom" => "Alphabétisation", "points" => 5]; // Alphabétisation
-			$character["Compétences"][] = ["id" => 144, "label" => "Sciences occultes", "niv" => -1]; // Sciences occultes
+			$character["Avdesav"][] = ["id" => 6, "points" => 5]; // Alphabétisation
+			$character["Compétences"][] = ["id" => 144]; // Sciences occultes
 		}
-		if ($kit_ange) {
+		if (isset($post["kit_ange"])) {
 			$character["Pts"] = 230;
-			$character["Caractéristiques"] = ["For" => 14, "San" => 12, "Vol" => 12];
+			$character["Caractéristiques"]["For"] = 14;
+			$character["Caractéristiques"]["San"] = 12;
+			$character["Caractéristiques"]["Vol"] = 12;
 			$character["MPP"] = ["pouvoirs"];
 			$character["Avdesav"][] = ["id" => 165]; // Pack Ange
 		}
-		if ($kit_demon) {
+		if (isset($post["kit_demon"]) && !isset($post["kit_ange"])) {
 			$character["Pts"] = 220;
-			$character["Caractéristiques"] = ["For" => 14, "San" => 12];
+			$character["Caractéristiques"]["For"] = 14;
+			$character["Caractéristiques"]["San"] = 12;
 			$character["MPP"] = ["pouvoirs"];
 			$character["Avdesav"][] = ["id" => 166]; // Pack Démon
 		}
+		if (isset($post["kit_policier"])) {
+			$character["Avdesav"][] = ["id" => 28]; // Pouvoir légal
+			$character["Avdesav"][] = ["id" => 73]; // Devoir
+			$character["Compétences"][] = ["id" => 16]; // Arme à feu
+			$character["Compétences"][] = ["id" => 21]; // Combat à mains nues
+			$character["Compétences"][] = ["id" => 58]; // Courses
+			$character["Compétences"][] = ["id" => 125]; // Criminologie
+			$character["Compétences"][] = ["id" => 191, "label" => "Droit"]; // Droit
+		}
+		if (isset($post["kit_enqueteur"])) {
+			$character["Compétences"][] = ["id" => 87]; // Enquête
+			$character["Compétences"][] = ["id" => 92]; // Fouille
+			$character["Compétences"][] = ["id" => 183]; // Interrogatoire
+			$character["Compétences"][] = ["id" => 66]; // Pistage
+			$character["Compétences"][] = ["id" => 143]; // Recherche
+		}
 
-		$character["Caractéristiques"] = json_encode($character["Caractéristiques"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-		$character["MPP"] = json_encode($character["MPP"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-		$character["Avdesav"] = json_encode($character["Avdesav"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-		$character["Compétences"] = json_encode($character["Compétences"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+		$character["Compétences"] = self::filterDuplicateSkills($character["Compétences"]);
 
-		$character["Calculs"] = json_encode($character["Calculs"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-		$character["Sorts"] = json_encode($character["Sorts"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-		$character["Pouvoirs"] = json_encode($character["Pouvoirs"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-		$character["Psi"] = json_encode($character["Psi"], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+		foreach (["Caractéristiques", "MPP", "Avdesav", "Compétences"] as $array_data) {
+			$character[$array_data] = json_encode($character[$array_data], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+		}
 
 		$character_repo = new CharacterRepository;
 		$character_repo->createCharacter($character);
@@ -393,11 +440,11 @@ class Character
 		$attributes_names = ["For", "Dex", "Int", "San", "Per", "Vol"];
 
 		$character = [
-			// commented values are not be updated by player
+			// commented values are not to be updated by player
 			"id" => (int) $post["id"],
 			//"id_joueur",
 			//"id_groupe",
-			"Nom" => strip_tags($post["Nom"]),
+			"Nom" => htmlspecialchars($post["Nom"]),
 			//"Statut",
 			"Pts" => (float) $post["Pts"],
 			"Caractéristiques" => [],
@@ -553,7 +600,7 @@ class Character
 						$f_pouvoirs[] = ["id" => (int) $id];
 					}
 					$pouvoirs = $f_pouvoirs;
-					$pouvoirs = array_filter($pouvoirs, fn ($x) => $x["id"] > 0);
+					$pouvoirs = array_filter($pouvoirs, fn($x) => $x["id"] > 0);
 				}
 
 				foreach ($pouvoirs as $pouvoir) {
@@ -632,7 +679,7 @@ class Character
 				}
 			}
 		}
-		
+
 		foreach (["Caractéristiques", "MPP", "Avdesav", "Compétences", "Sorts", "Pouvoirs", "Psi"] as $array_data) {
 			$character[$array_data] = json_encode($character[$array_data], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 		}
@@ -727,7 +774,7 @@ class Character
 		$character_id = (int) $post["id"];
 		$max = (int) $post["max"];
 		$pdm = $post["pdm"];
-		if ($pdm !== ""){
+		if ($pdm !== "") {
 			$pdm = (int) $post["pdm"];
 			$pdm = max(0, $pdm);
 			$pdm = min($max, $pdm);
@@ -737,5 +784,60 @@ class Character
 		// Update database
 		$repo = new CharacterRepository;
 		$repo->updateCharacterPdm($character_id, $pdm);
+	}
+
+	/**
+	 * Filters skills array to prevent duplicates according to specific rules during character creation:
+	 * - If two skills have the same id and no label or same label, keep just one
+	 * - If two skills have the same id and only one has a label, keep the one with the label
+	 * - If two skills have the same id but different labels, keep both
+	 * 
+	 * @param array $skills Array of skills to filter
+	 * @return array Filtered skills array
+	 */
+	private static function filterDuplicateSkills(array $skills): array
+	{
+		$filteredSkills = [];
+		$skillsById = [];
+
+		// Group skills by ID
+		foreach ($skills as $skill) {
+			$id = $skill["id"];
+			if (!isset($skillsById[$id])) $skillsById[$id] = [];
+			$skillsById[$id][] = $skill;
+		}
+
+		// Apply filtering rules for each group of skills with the same ID
+		foreach ($skillsById as $id => $skillsGroup) {
+			if (count($skillsGroup) <= 1) {
+				// No duplicates, add directly
+				$filteredSkills = array_merge($filteredSkills, $skillsGroup);
+				continue;
+			}
+
+			// Group same id skills by label
+			$skillsByLabel = [];
+			foreach ($skillsGroup as $skill) {
+				$label = $skill["label"] ?? "";
+				if (!isset($skillsByLabel[$label])) $skillsByLabel[$label] = [];
+				$skillsByLabel[$label][] = $skill;
+			}
+
+			// Apply rules
+			if (count($skillsByLabel) === 1) {
+				// All skills have the same label (or no label) → keep only the last one
+				$filteredSkills[] = end($skillsGroup);
+			} else {
+				// Skills have different labels
+				foreach ($skillsByLabel as $label => $labelSkills) {
+					// Skip unlabeled skills if we have labeled ones with same ID
+					if ($label === "" && count($skillsByLabel) > 1) continue;
+					// Keep the last skill of each distinct label
+					$filteredSkills[] = end($labelSkills);
+				}
+			}
+		}
+
+		return $filteredSkills;
 	}
 }

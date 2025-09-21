@@ -12,12 +12,6 @@ class User
 	public int $status;
 	public array $options;
 
-	/**
-	 * __construct
-	 *
-	 * @param  array $user as from database (id login mdp Statut)
-	 * @return void
-	 */
 	public function __construct(array $user = [])
 	{
 		$user["options"] = json_decode($user["options"] ?? "[]", true);
@@ -25,7 +19,7 @@ class User
 		$this->login = $user["login"] ?? "Invité";
 		$this->password = $user["mdp"] ?? "";
 		$this->status = $user["Statut"] ?? 0;
-		$this->options = $user["options"] ?? [];
+		$this->options = $user["options"];
 	}
 
 	public function check_password(string $password)

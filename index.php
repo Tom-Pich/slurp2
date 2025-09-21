@@ -27,20 +27,11 @@ $bdd = new PDO("mysql:host=" . DB_HOST . "; dbname=" . DB_NAME . "; charset=utf8
 
 // ––– Sessions –––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 session_start();
-if (!isset($_SESSION["Statut"]) or !DB_ACTIVE) {
-	$_SESSION["Statut"] = 0;
-	$_SESSION["id"] = 0;
-	$_SESSION["login"] = "Invité";
-	$_SESSION["attempt"] = 0;
-	$_SESSION["token"] = Firewall::generateToken(16);
-	$_SESSION["time"] = time();
-	$_SESSION["user-options"] = [];
-} else {
-	$_SESSION["time"] >= (time() - 3600 * 3) || !$_SESSION["id"] ? $_SESSION["time"] = time() : LogController::logout();
-}
+LogController::checkSessionValidity();
 
 // ––– $pages_data ––––––––––––––––––––––––––––––––––––––––––––––––––––––
 $pages_data = include "content/pages/_pages-data.php";
+
 
 // Front router –––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 $path = parse_url($_SERVER["REQUEST_URI"])["path"];
@@ -48,7 +39,7 @@ $path_segments = array_filter(explode("/", $path)); // empty for home page, firs
 $path_segments[1] = $path_segments[1] ?? null;
 
 // Header CSP
-header("Content-Security-Policy: frame-ancestors 'self'; script-src 'self' 'unsafe-inline'");
+header("Content-Security-Policy: frame-ancestors 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tiny.cloud");
 header("X-Content-Type-Options: nosniff");
 header("Strict-Transport-Security: max-age=31536000; includeSubDomains");
 
@@ -254,9 +245,7 @@ elseif ($path_segments[1] === "submit") {
 		case "/submit/log-in":
 			Firewall::checkToken();
 			Firewall::check(DB_ACTIVE);
-			foreach (["login", "password", "redirect-url"] as $item) {
-				Firewall::check(isset($_POST[$item]));
-			}
+			foreach (["login", "password", "redirect-url"] as $item) Firewall::check(isset($_POST[$item]));
 			LogController::login($_POST);
 			break;
 

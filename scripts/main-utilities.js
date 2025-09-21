@@ -47,3 +47,13 @@ export function applyColorScheme() {
     if (html.dataset.preset === "auto" && colorSchemeDark.matches) html.dataset.mode = "dark";
     else if (html.dataset.preset === "auto" && !colorSchemeDark.matches) html.dataset.mode = "light";
 }
+
+export function showSpinningWheel(targetForm = null){
+	qs("#loading-spinner").style.display = 'block';
+	if(targetForm) targetForm.querySelector("[type=submit]").disabled = true;
+}
+
+export function hideSpinningWheel(){
+	qs("#loading-spinner").style.display = 'none';
+	//console.log(qs("#loading-spinner"))
+}

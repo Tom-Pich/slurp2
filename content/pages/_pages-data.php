@@ -100,7 +100,7 @@ return $pages_data = [
 		"version" => 4,
 	],
 	"ombres-esteren" => [
-		"title" => "Les ombres d’Esteren",
+		"title" => "Les Ombres d’Esteren",
 		"description" => "Une adaptation libre des <i>Ombres d’Esteren</i>", 
 		"file" => "univers_ombres_esteren",
 		"version" => 4,

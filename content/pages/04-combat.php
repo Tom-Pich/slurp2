@@ -7,7 +7,7 @@
 		<summary>
 			<h3>Tour de combat</h3>
 		</summary>
-		<p>Chaque <b>tour</b> (ou round) dure trois secondes. Lors d’un tour, un personnage impliqué dans un combat au contact a le droit à deux actions qui sont, dans les cas les plus courants, <b>une</b> attaque et <b>une</b> défense.</p>
+		<p>Chaque <b>tour</b> (ou round) dure trois secondes. Lors d’un tour, un personnage impliqué dans un combat au contact a le droit à <b>deux actions</b> qui sont, dans les cas les plus courants, une attaque et une défense.</p>
 	</details>
 
 	<!-- Surprise -->

@@ -155,8 +155,8 @@ use App\Rules\WeaponsController;
 		<summary>
 			<h3>Force minimale</h3>
 		</summary>
-		<p>Certaines armes nécessite une force minimale (Fmin ou Fm) pour être maniée sans malus. -1 à la compétence pour chaque point de For &lt; Fmin.</p>
-		<p>Pour les armes à feu, en plus de la pénalité ci-dessus, le Rcl est augmenté de 1 par point de For &lt; Fmin (sans être plus que doublé).</p>
+		<p>La plupart des armes nécessitent une force minimale (<i>Fmin</i> ou <i>Fm</i>) pour être maniées sans malus. -1 à la compétence pour chaque point de <i>For</i> &lt; <i>Fmin</i>.</p>
+		<p>Pour les armes à feu, en plus de la pénalité ci-dessus, le <i>Rcl</i> est augmenté de 1 par point de For &lt; Fmin (sans être plus que doublé).</p>
 		<p>La <b>Fmin</b> d’une arme pouvant être maniée aussi bien à une main qu’à deux mains est réduite de 1 si elle est maniée à deux mains.</p>
 	</details>
 
@@ -166,9 +166,10 @@ use App\Rules\WeaponsController;
 			<h3>Armes devant être apprêtées</h3>
 		</summary>
 		<p>Certaines armes lourdes, longues ou mal équilibrées doivent être apprêtées après chaque utilisation (attaque et/ou parade). Cet apprêt dure le temps d’une action, pendant laquelle l’arme ne pourra pas être utilisée (voir <i>Déroulement d’un tour de combat</i> sur la page <a href="/combat">Combat</a>).</p>
-		<p>Si la <i>For</i> du porteur est supérieure de 5 pts à la Fmin de l’arme, il peut l’apprêter instantanément.</p>
+		<p>Si la <i>For</i> du porteur est supérieure de 5 pts à la <i>Fmin</i> de l’arme, il peut l’apprêter instantanément.</p>
 	</details>
 
+	<!-- Armes à distance -->
 	<details>
 		<summary>
 			<h3>Armes à distance</h3>
@@ -182,24 +183,27 @@ use App\Rules\WeaponsController;
 		<p>La deuxième portée est la portée au-delà de laquelle les dégâts sont divisés par deux (notée ½D).</p>
 
 		<h4>Malfonction (Mlf)</h4>
-		<p>Pour les armes à projectiles seulement. Tout jet de compétence &ge; <i>Mlf</i> (par défaut 17 pour la plupart des armes) signifie que l’arme a 50% de chance de dysfonctionner.<br>
+		<p>
+			Pour les armes à projectiles seulement. Tout jet de compétence &ge; <i>Mlf</i> (par défaut 17 pour la plupart des armes) signifie que l’arme a 50% de chance de dysfonctionner.<br>
 			La corde d’un arc se brise, une arbalète projettera son carreau de travers, et une arme à feu automatique ou semi-automatique s’enrayera.<br>
 			Les armes à feu particulièrement fiables (revolver, fusil de chasse, fusil à coup unique) ne peuvent pas s’enrayer. Leur score de <i>Mlf</i> est de 18 et un dysfonctionnement ne peut être dû qu’à une cartouche défectueuse.<br>
-			Une arme enrayée a 50% de chance d’être réparée en 1 tour (éjection de la cartouche coincée) sur un jet d’<i>Arme à feu</i> réussi. Sinon, il faut la compétence <i>Armurerie</i>.</p>
+			Une arme enrayée a 50% de chance d’être réparée en 1 tour (éjection de la cartouche coincée) sur un jet d’<i>Arme à feu</i> réussi. Sinon, il faut la compétence <i>Armurerie</i>.
+		</p>
 
 		<h4>Temps de rechargement</h4>
 		<p>Ce temps ne tient pas compte d’un temps de visée après rechargement.</p>
 		<ul>
-			<li><b>Arbalète légère / moyenne / lourde</b> : 4/8/20 secondes (manivelle nécessaire pour l’arbalète lourde)</li>
-			<li><b>Arc :</b> 3 secondes</li>
-			<li><b>Arquebuse :</b> 15 à 60 secondes (dépend du type d’arme)</li>
-			<li><b>Chargeur :</b> 3 secondes</li>
-			<li><b>Fronde :</b> 3 secondes</li>
-			<li><b>Revolver :</b> 2 secondes +1 seconde par balle</li>
+			<li><b>Arbalète légère / moyenne / lourde</b> : 4/8/20 secondes (manivelle nécessaire pour l’arbalète lourde)</li>
+			<li><b>Arc :</b> 3 secondes</li>
+			<li><b>Arquebuse :</b> 15 à 60 secondes (dépend du type d’arme)</li>
+			<li><b>Chargeur :</b> 3 secondes</li>
+			<li><b>Fronde :</b> 3 secondes</li>
+			<li><b>Revolver :</b> 2 secondes +1 seconde par balle</li>
 		</ul>
 		<p>Un jet de compétence à -3 (ou -2 avec <i>Réflexes de combat</i>) réduit ce temps de 1 seconde, sauf avec les armes à poudre noire (temps de rechargement diminué de 10%).</p>
 	</details>
 
+	<!-- Armes à feu -->
 	<details>
 		<summary>
 			<h3>Armes à feu</h3>
@@ -234,6 +238,7 @@ use App\Rules\WeaponsController;
 		</p>
 	</details>
 
+	<!-- Accessoires armes à feu -->
 	<details>
 		<summary>
 			<h3>Accessoires pour armes à feu</h3>
@@ -243,6 +248,7 @@ use App\Rules\WeaponsController;
 		<p><b>Silencieux :</b> décroit la portée de 1/3, et les dégâts de 1/4.</p>
 	</details>
 
+	<!-- Qualité des armes -->
 	<details>
 		<summary>
 			<h3>Qualités des armes</h3>
@@ -292,6 +298,7 @@ use App\Rules\WeaponsController;
 		</p>
 	</details>
 
+	<!-- Armures -->
 	<details>
 		<summary>
 			<h3>Armures</h3>
@@ -299,19 +306,22 @@ use App\Rules\WeaponsController;
 		<p>Une armure (ou toute autre protection) possède une <i>Résistance aux dégâts</i> (RD) à soustraire aux dégâts occasionnés par une attaque.</p>
 
 		<h4>Qualité de l’acier</h4>
-		<p>Excellent acier : poids -10% ; coût +25%.</p>
-		<p>Armure en bronze : poids +10% ; RD-1.</p>
+		<p>Excellent acier : poids -10% ; coût +25%.</p>
+		<p>Armure en bronze : poids +10% ; RD-1.</p>
 
 		<h4>Superposition d’armures</h4>
 		<p>Superposer des armures autres qu’un coutil et une armure métallique impose une pénalité de -1 à tous les jets basés sur la <i>Dex</i>, en plus d’un éventuel malus d’encombrement.</p>
 
 		<h4>Casques et couvre-chefs</h4>
-		<p>Protection souple couvrant les oreilles (coutil, cuir, cuir lourd)&nbsp;: -1 aux jets d’<i>Écouter</i>.</p>
-		<p>Casque et autres protections métalliques couvrant les oreilles&nbsp;: -2 aux jets d’<i>Écouter</i>.<br>
-			Heaume : tous les jets à -1, <i>Voir</i> et <i>Écouter</i> à -2.</p>
-		<p>Il est possible de cumuler une coiffe de maille et un casque&nbsp;: le coutil est alors compté qu’une seule fois (RD11). -3 au jet d’<i>Écouter</i>.</p>
+		<p>
+			Protection souple couvrant les oreilles (coutil, cuir, cuir lourd) : -1 aux jets d’<i>Écouter</i>.<br>
+			Casque et autres protections métalliques couvrant les oreilles : -2 aux jets d’<i>Écouter</i>.<br>
+			Heaume : tous les jets à -1, <i>Voir</i> et <i>Écouter</i> à -2.
+		</p>
+		<p>Il est possible de cumuler une coiffe de maille et un casque : le coutil est alors compté qu’une seule fois (RD11). -3 au jet d’<i>Écouter</i>.</p>
 	</details>
 
+	<!-- Boucliers -->
 	<details>
 		<summary>
 			<h3>Boucliers</h3>
@@ -664,7 +674,7 @@ use App\Rules\WeaponsController;
 		<summary>
 			<h3>Armures modernes</h3>
 		</summary>
-		<p><b>Casque de fantassin (NT6/7)&nbsp;:</b> RD5/6 ; 2/1,5 kg.</p>
+		<!-- <p><b>Casque de fantassin (NT6/7)&nbsp;:</b> RD5/6 ; 2/1,5 kg.</p>
 		<p><b>Casque anti-émeute (NT7)&nbsp;:</b> Visière couvrant le visage (RD3). RD5 contre le broyage et RD3 contre les autres types de dégâts ; 1 kg.</p>
 		<p>
 			<b>Gilet Pare-balle (NT6)&nbsp;:</b> RD7 (2 contre du perforant) ; 5 kg.<br>
@@ -673,7 +683,41 @@ use App\Rules\WeaponsController;
 		<p>
 			<b>Veste en Kevlar (NT7)&nbsp;:</b> Légère : RD4, 1,25 kg pour une veste. Moyenne : RD8, 2,5 kg pour une veste. Lourde : RD12, 3,75 kg pour une veste.<br>
 			Une veste couvre le torse et les parties génitales, et peut être dissimulée sous des vêtements. Les fibres de Kevlar protègent moins contre des dégâts perforants (RD divisée par 4). 25% des dégâts arrêtés par l’armure sont infligés sous forme de broyage, à cause du choc, en plus des dommages qui passent la RD. Des ajouts rigides et séparés, pour le ventre ou pour le dos, pesant 8 kg chacun, apportent une RD supplémentaire de 15.
-		</p>
-	</details>
+		</p> -->
+		<h4>Gilets pare-balles (NT8)</h4>
+		<p>Un gilet couvre le torse (face et dos), mais pas les côtés. Les gilets en fibres (IIA, II, IIA) protègent moins contre des dégâts perforants (RD divisée par 4). 25% des dégâts arrêtés par le gilet sont infligés sous forme de broyage, à cause du choc, en plus des dommages qui passent la RD.</p>
 
+		<table class="left-4">
+			<tr>
+				<th></th>
+				<th>RD</th>
+				<th>Poids</th>
+				<th>Remarque</th>
+			</tr>
+			<tr>
+				<td>IIA</td>
+				<td>9</td>
+				<td>2,5</td>
+				<td>fin et discret, port quotidien – agent en civil</td>
+			</tr>
+			<tr>
+				<td>II</td>
+				<td>12</td>
+				<td>3,2</td>
+				<td>épaisseur moyenne, port prolongé possible – agent FBI en mission standard</td>
+			</tr>
+			<tr>
+				<td>IIIA</td>
+				<td>14</td>
+				<td>4</td>
+				<td>assez épais, confort modéré – équipe d’intervention, agent en mission à risque</td>
+			</tr>
+			<tr>
+				<td>III</td>
+				<td>20</td>
+				<td>6,5</td>
+				<td>épais avec plaques rigides, confort limité - équipe tactique, SWAT</td>
+			</tr>
+		</table>
+	</details>
 </article>

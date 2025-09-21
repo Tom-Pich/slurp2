@@ -58,7 +58,7 @@ $playNotif = false;
 				<div class="flex-s ai-center">
 					<label class="ff-fas" title="contenant ?">
 						&#xf187;
-						<input type="checkbox" name="objet-gestionnaire[<?= $n ?>][Contenant]" <?= $objet->isContainer ? "checked" : "" ?> >
+						<input type="checkbox" name="objet-gestionnaire[<?= $n ?>][Contenant]" <?= $objet->isContainer ? "checked" : "" ?>>
 					</label>
 				</div>
 				<input type="text" name="objet-gestionnaire[<?= $n ?>][Poids]" value="<?= $objet->weight ?>" class="ta-center" placeholder="Pds" title="poids">
@@ -232,45 +232,94 @@ $playNotif = false;
 		Créer un personnage
 		<button class="nude ff-fas" data-role="open-dialog" data-dialog-name="create-characters-dialog" title="mode d’emploi">&#xf059;</button>
 	</h2>
-	<p>Les kits sont cumulatifs. En cas de conflit sur certaines valeurs, les dernières (dans l’ordre de lecture) écrasent les premières.</p>
-	<form method="post" action="/submit/create-character">
+	<p>Les kits vous permettent d’ajouter des « packs » d’avantages, désavantages et compétences afin de vous faciliter la création de personnages. Ils sont cumulatifs. Les compétences sont attribuées avec leur score par défaut.</p>
+	<form method="post" action="/submit/create-character" data-role="character-creation-form">
 		<div class="grid col-auto-fit gap-½" style="--col-min-width: 250px">
+
+			<!-- Base -->
 			<div class="card">
 				<label>
 					<input type="checkbox" name="kit_base">
-					<b>Kit de base</b>
+					<b>Base</b>
 				</label>
-				<p><i>Esquive</i>, <i>Furtivité</i>, <i>Culture générale</i>, <i>Baratin</i>, <i>Acteur</i></p>
+				<p class="ta-left"><i>Acteur</i>, <i>Baratin</i>, <i>Culture générale</i>, <i>Esquive</i>, <i>Furtivité</i>, <i>Perception empathique</i></p>
 			</div>
+
+			<!-- Aventurier -->
+			<div class="card">
+				<label>
+					<input type="checkbox" name="kit_aventurier">
+					<b>Aventurier</b>
+				</label>
+				<p class="ta-left"><i>Combat à mains nues</i>, <i>Connais&shy;sance de la Nature</i>, <i>Escalade</i>, <i>Fouille</i>, <i>Lancer</i>, <i>Nage</i>, <i>Orientation</i>, <i>Pistage</i>, <i>Randonnée</i>, <i>Survie</i>, <i>Vigilance</i></p>
+			</div>
+
+			<!-- Contemporain -->
+			<div class="card">
+				<label>
+					<input type="checkbox" name="kit_contemporain">
+					<b>Contemporain</b>
+				</label>
+				<p class="ta-left"><i>Conduite</i>, <i>Informatique</i>, <i>Nage</i></p>
+			</div>
+
+			<!-- Combattant -->
 			<div class="card">
 				<label>
 					<input type="checkbox" name="kit_combattant">
-					<b>Kit Combattant</b>
+					<b>Combattant</b>
 				</label>
-				<p><i>Réflexes de combat</i>, <i>Résistance à la douleur</i>, <i>Combat à Mains nues</i>, <i>Esquive</i></p>
+				<p class="ta-left"><i>Réflexes de combat</i>, <i>Résistance à la douleur</i>, <i>Combat à Mains nues</i>, <i>Esquive</i></p>
 			</div>
+
+			<!-- Magicien -->
 			<div class="card">
 				<label>
 					<input type="checkbox" name="kit_magicien">
-					<b>Kit Magicien</b>
+					<b>Magicien</b>
 				</label>
-				<p><i>Int</i> 13, <i>Magerie</i>, <i>Alphabétisation</i>, <i>Sciences occultes</i></p>
+				<p class="ta-left"><i>Int</i> 13, <i>Magerie</i>, <i>Alphabétisation</i>, <i>Sciences occultes</i></p>
 			</div>
+
+			<!-- Ange In Nomine -->
 			<div class="card">
 				<label>
 					<input type="checkbox" name="kit_ange">
-					<b>Kit Ange</b>
+					<b>Ange In Nomine</b>
 				</label>
-				<p><i>Pack Ange</i>, <i>Force</i> 14, <i>Santé</i> 12, <i>Volonté</i> 12</p>
+				<p class="ta-left"><i>Pack Ange</i>, <i>Force</i> 14, <i>Santé</i> 12, <i>Volonté</i> 12</p>
 			</div>
+
+			<!-- Démon In Nomine -->
 			<div class="card">
 				<label>
 					<input type="checkbox" name="kit_demon">
-					<b>Kit Démon</b>
+					<b>Démon In Nomine</b>
 				</label>
-				<p><i>Pack Démon</i>, <i>Force</i> 14, <i>Santé</i> 12</p>
+				<p class="ta-left"><i>Pack Démon</i>, <i>Force</i> 14, <i>Santé</i> 12</p>
 			</div>
+
+			<!-- Policier -->
+			<div class="card">
+				<label>
+					<input type="checkbox" name="kit_policier">
+					<b>Policier</b>
+				</label>
+				<p class="ta-left"><i>Pouvoir légal</i>, <i>Devoir</i>, <i>Arme à feu</i>, <i>Combat à mains nues</i>, <i>Course</i>, <i>Criminologie</i>, <i>Droit</i></p>
+			</div>
+
+			
+			<!-- Enquêteur -->
+			<div class="card">
+				<label>
+					<input type="checkbox" name="kit_enqueteur">
+					<b>Enquêteur</b>
+				</label>
+				<p class="ta-left"><i>Enquête</i>, <i>Fouille</i>, <i>Interrogatoire</i>, <i>Pistage</i>, <i>Recherche</i></p>
+			</div>
+
 			<input hidden name="createur" value="<?= $_SESSION["id"] ?>">
+
 		</div>
 		<button type="submit" class="btn-primary fs-500 ff-fas mx-auto mt-½" title="Créer un nouveau personnage">&#xe541;</button>
 	</form>

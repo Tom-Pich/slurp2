@@ -13,11 +13,14 @@ $articles_without_section = array_filter(
 );
 
 // link class in table of content
-function lk_classes(string $title, string $current_title, bool $has_parent) {
-	$classes = "";
-	if ($current_title === $title) $classes .= "active-link ";
-	if ($has_parent) $classes .= "child-article";
-	if ($classes !== "") return "class='" . $classes . "'";
+if (!function_exists("lk_classes")) {
+	function lk_classes(string $title, string $current_title, bool $has_parent)
+	{
+		$classes = "";
+		if ($current_title === $title) $classes .= "active-link ";
+		if ($has_parent) $classes .= "child-article";
+		if ($classes !== "") return "class='" . $classes . "'";
+	}
 }
 ?>
 
@@ -35,7 +38,7 @@ function lk_classes(string $title, string $current_title, bool $has_parent) {
 	$section_articles = array_filter($articles, fn($x) => isset($x["section"]) && $x["section"] === $section || isset($x["parent"]) && $articles[$x["parent"]]["section"] === $section);
 	foreach ($section_articles as $name => $article) { ?>
 		<a href="/wiki/<?= $wiki ?>/<?= $name ?>" <?= lk_classes($name, $page["current-article-name"], isset($article["parent"])) ?>>
-			<?= $article["title"] ?> <?= $article["status"]?? "" ?>
+			<?= $article["title"] ?> <?= $article["status"] ?? "" ?>
 		</a>
 	<?php }
 	?>

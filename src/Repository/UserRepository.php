@@ -35,14 +35,14 @@ class UserRepository extends AbstractRepository
 
 	public function getUserByLogin(string $login): ?User
 	{
+		if ($login === "Invité") return new User();
+		
 		$query = $this->db->prepare("SELECT * FROM utilisateurs WHERE login = ?");
 		$query->execute([$login]);
 		$item = $query->fetch(\PDO::FETCH_ASSOC);
 		$query->closeCursor();
-
-		if (!$item) {
-			return null;
-		}
+		
+		if (!$item) return null;
 
 		$user = new User($item);
 		return $user;

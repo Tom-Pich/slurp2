@@ -3,6 +3,7 @@ import { calculate, int } from "./utilities.js";
 import { wsURL, Message } from "./ws-utilities.js";
 import { updateDOM } from "./update-dom.js";
 import { fetchResult } from "./game-table-utilities.js";
+import { showSpinningWheel } from "./main-utilities.js";
 
 const sessionId = qs("#ws-data").dataset.sessionId;
 const wsKey = qs("#ws-data").dataset.wsKey;
@@ -79,16 +80,6 @@ function submitCharacterForm(form) {
         const ping = new Message(sessionId, wsKey, "character-ping", parseInt(form_data.get("id")));
         ws.send(ping.stringify());
     });
-    /* .then(() => {
-        fetch("/gestionnaire-mj")
-            .then((response) => response.text())
-            .then((response) => {
-                //updateDOM(`#${form_id}`, response);
-                const ping = new Message(sessionId, wsKey, "character-ping", parseInt(form_data.get("id")));
-                ws.send(ping.stringify());
-            });
-        //return response;
-    }); */
 }
 
 // character forms events
@@ -213,7 +204,7 @@ function fillCharacterSummary(id, data) {
     fillValueInTemplate(clone, "Dégâts", data.attributes["Dégâts"].estoc + "/" + data.attributes["Dégâts"].taille);
 
     // Avantages & Désavantages
-    const ignoredAvdesav = []; // liste des AvDésav inutiles pou le MJ
+    const ignoredAvdesav = []; // liste des AvDésav inutiles pour le MJ
     const avdesavCategories = ["Avantage", "Désavantage", "Travers", "Réputation"];
     avdesavCategories.forEach((category) => {
         const filteredElements = data.avdesav.filter((elem) => elem.catégorie === category && !ignoredAvdesav.includes(elem.id));
@@ -249,3 +240,13 @@ function fillValueInTemplate(template, label, value) {
     if (value === "") template.querySelector(`[data-content=${label}]`).remove();
     else template.querySelector(`[data-content=${label}]`).innerHTML = value;
 }
+
+// prevent kits incompatibility
+const characterCreationForm = qs("[data-role=character-creation-form]");
+characterCreationForm.addEventListener("change", (e) => {
+    if (e.target.name === "kit_ange" && e.target.checked) characterCreationForm.kit_demon.checked = false;
+    if (e.target.name === "kit_demon" && e.target.checked) characterCreationForm.kit_ange.checked = false;
+});
+characterCreationForm.addEventListener("submit", (e) => {
+    showSpinningWheel(e.target);
+});

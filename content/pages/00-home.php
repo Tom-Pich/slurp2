@@ -13,7 +13,7 @@
 <div class="flex gap-1-2">
 	<section class="p-0">
 		<h2 class="fs-500">Qui suis-je&nbsp;?</h2>
-		<p class="fs-300">Professeur de physique et d’informatique, développeur web professionnel depuis 2022, je suis passionné de JdR depuis le début des années 90. La crise sanitaire du COVID m’a donné envie de jouer à distance avec mon groupe de joueurs. Pour y parvenir dans des conditions optimales, j’ai développé ce site, que j’améliore continûment.</p>
+		<p class="fs-300">Professeur de physique et d’informatique, je suis passionné de JdR depuis le début des années 90. La crise sanitaire du COVID m’a donné envie de jouer à distance avec mon groupe de joueurs. Pour y parvenir dans des conditions optimales, j’ai développé ce site, que j’améliore continûment.</p>
 	</section>
 	<section class="p-0">
 		<h2 class="fs-500">Mentions légales</h2>

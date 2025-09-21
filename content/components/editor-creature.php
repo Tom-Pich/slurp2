@@ -20,11 +20,12 @@
 					<?php } ?>
 				</datalist>
 			</div>
+			<p>Pour créer une rubrique « généralités » sur une catégorie de créatures, ne pas renseigner les caractéristiques ci-dessous.</p>
 			<div class="flex-s gap-1 mt-1 ai-first-baseline">
 				<div style="width: 10ch">Poids</div>
 				<div>
-					<input type="text" name="Pds1" value="<?= $creature->weight_min ?>" style="width: 6ch" placeholder="min" class="ta-center" title="poids min" required> –
-					<input type="text" name="Pds2" value="<?= $creature->weight_max ?>" style="width: 6ch" placeholder="max" class="ta-center" title="poids max" required>
+					<input type="text" name="Pds1" value="<?= $creature->weight_min ?>" style="width: 6ch" placeholder="min" class="ta-center" title="poids min"> –
+					<input type="text" name="Pds2" value="<?= $creature->weight_max ?>" style="width: 6ch" placeholder="max" class="ta-center" title="poids max">
 				</div>
 			</div>
 			<div class="flex-s gap-1 mt-1 ai-first-baseline">
@@ -55,7 +56,7 @@
 				</div>
 				<div class="flex-s gap-½ ai-first-baseline">
 					<div>Int</div>
-					<input type="text" class="ta-center" style="width: 5ch" name="Int" value="<?= $creature->int ?>" placeholder="Int" required>
+					<input type="text" class="ta-center" style="width: 5ch" name="Int" value="<?= $creature->int ?>" placeholder="Int">
 				</div>
 				<div class="flex-s gap-½ ai-first-baseline">
 					<div>PdV*</div>
@@ -63,11 +64,11 @@
 				</div>
 				<div class="flex-s gap-½ ai-first-baseline">
 					<div>RD</div>
-					<input type="text" class="ta-center" name="RD" class="ta-center" style="width: 12ch" value="<?= $creature->rd ?>" placeholder="RD" required>
+					<input type="text" class="ta-center" name="RD" class="ta-center" style="width: 12ch" value="<?= $creature->rd ?>" placeholder="RD">
 				</div>
 				<div class="flex-s gap-½ ai-first-baseline">
 					<div>Vitesse</div>
-					<input type="text" class="ta-center" style="width: 5ch" name="Vitesse" value="<?= $creature->speed ?>" placeholder="Vit" required>
+					<input type="text" class="ta-center" style="width: 5ch" name="Vitesse" value="<?= $creature->speed ?>" placeholder="Vit">
 				</div>
 			</div>
 

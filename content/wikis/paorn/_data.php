@@ -29,7 +29,7 @@ $articles = [
 
 	"arcania" => ["title" => "Arcania", "section" => "Organisations"],
 
-	"atrimisme" => ["title" => "Atrimisme", "section" => "Culture"],
+	"atrimisme" => ["title" => "Atrimisme", "section" => "Culture", "status" => "🛠️"],
 	"pentatheisme" => ["title" => "Pentathéisme", "section" => "Culture"],
 	"langues" => ["title" => "Langues", "section" => "Culture"]
 ];

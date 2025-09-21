@@ -20,15 +20,14 @@
 
 	<p>Les bâtiments de la ville sont des chaumières de pierre et de bois. Quelques bâtiments sont entièrement en pierre avec toit en ardoise ou en cuivre (le temple d’Alba, la forteresse du Comte Savelmond de Salidam, ainsi que le « château » d’Isandir).</p>
 
-	<h3>Quartiers</h3>
-	<p>La ville est divisée en 4 quartiers : le <b>quartier marchand</b> à la porte sud, le <b>quartier noble</b> au centre-nord, le<b> quartier des artisans et des soldats</b> au nord et le <b>quartier des pêcheurs et artisanats « sales »</b> à l’ouest. Ce dernier quartier est pauvre et relativement mal famé. Elle compte trois accès : la porte sud, la porte nord et la porte des pêcheurs.</p>
+	<p>La ville compte trois accès : la porte sud, la porte nord et la porte des pêcheurs.</p>
 </section>
 
 <!-- Politique -->
 <section>
 	<h2>Politique &amp; organisation</h2>
 
-	<p>Le Comte Savelmond de Salidam dirige la ville de manière martiale. Il est assisté par son conseiller principal, Édevan de Sioril, mage puissant (Magerie 4, spécialisé en <i>Emprise mentale</i> et en <i>Connaissance</i>).</p>
+	<p>Savelmond Kartus, comte de Solidam, dirige la ville de manière martiale. Il est assisté par son conseiller principal, Sioril, un puissant mage (Magerie 4, spécialisé en <i>Emprise mentale</i> et en <i>Connaissance</i>).</p>
 </section>
 
 <!-- Économie -->
@@ -47,10 +46,10 @@
 		<li>le bailli princier Blaihad Fuldur, premier magistrat de la ville</li>
 		<li>Ludwin Rahen, patron de la guilde des marchands de Solidam</li>
 		<li>monseigneur Sephitras, grand-prêtre</li>
-		<li>Célendir Kartus, maréchal du comte</li>
+		<li>Ywein Kartus, maréchal et frère cadet du comte</li>
 	</ul>
 
-	<p>L’Arcania compte deux membres permanents à Salidam. Elle est dirigé par un certain Rudiger.</p>
+	<p>L’Arcania compte deux membres permanents à Salidam. Elle est dirigé par un certain Rudiguer.</p>
 </section>
 
 <!-- Aspects pratiques -->

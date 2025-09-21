@@ -50,7 +50,7 @@ body.personnage-fiche {
 	.main-header .titles-wrapper {
 		> a > img { max-width: 32px; }
 		> div { display: flex; }
-		> div > h2 {display: none;}
+		> div > p {display: none;}
 	}
 
 	main { columns: var(--col-width) auto; column-gap: .5em; flex: 1; }
@@ -169,10 +169,13 @@ body.gestionnaire-mj {
 }
 
 body.wiki {
-	$brp-w: "900px";
+
 	--col-width: 250px;
 
-	aside.left {
+	aside.left {@include media { display: none }}
+	details.phone-index { background-color: var(--grey-900); padding: .15em; --marker-offset-r: .25em }
+
+	aside.left, details.phone-index {
 		a { display: block; --flow-space: .15em; text-decoration: none; color: inherit; width:fit-content }
 		a.active-link { font-weight: 700; }
 		a.child-article { margin-left: 1em; --flow-space: 0; }
@@ -180,18 +183,19 @@ body.wiki {
 
 	main {
 		@include flow;
-		@include media-min ($brp-w) { position: relative; width: calc(100vw - var(--col-width) * 2 - 6em); max-width: 800px; }
+		@include media-min ($brp-l) { position: relative; width: calc(100vw - var(--col-width) * 2 - 6em); max-width: 800px; }
 	}
 
 	section { margin-top: 2em; padding: 0; }
 
 	.wiki-right-element {
 		@include flow;
-		@include media-min ($brp-w) { width: var(--col-width); position: absolute; left: calc(100% + 2em); margin-top: 0; }
+		//width: var(--col-width); position: absolute; left: calc(100% + 2em); margin-top: 0;
+		@include media-min ($brp-l) { width: var(--col-width); position: absolute; left: calc(100% + 2em); margin-top: 0; }
 		img { max-height: 50vh; margin-inline: auto; }
 	}
 	
-
+	h1 { @include media-min { --flow-space: 0; } }
 	h2 { font-size: var(--fs-600); border-bottom: 1px solid var(--black); padding-bottom: .15em }
 	h3 { font-size: var(--fs-500); }
 	h4 { font-size: var(--fs-450); }

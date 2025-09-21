@@ -5,39 +5,35 @@
 <!-- Principes -->
 <section>
 	<h2>Principes</h2>
-	<ul>
+	<ul class="flow">
 		<li>L’atrimisme reconnaît l’existence d’autres dieux, mais Atrim est le seul qui se préoccupe réellement du salut de l’humanité.</li>
 		<li>Les humains ne sont pas magiques par essence, ils doivent donc éviter d’utiliser la magie, qui est cause de corruption, sauf quand il s’agit de pouvoirs conférés par Atrim.</li>
+		<li>Les fidèles doivent suivre la <i>Voie de la Vertu</i>, enseignée par le prophète <i>Eldar</i>, afin de gagner leur salut. Parmi les vertus à cultiver, la <i>tempérance</i> et la <i>bienveillance</i> ont une importance majeure.</li>
 	</ul>
-
-	<!-- Philosophie de l’Atrimisme -->
-	<details>
-		<summary>
-			<h3>Philosophie de l’Atrimisme</h3>
-		</summary>
-		<p>Les atrimistes doivent se comporter avec tempérance et bienveillance. Ils ne doivent pas pratiquer la magie, sauf si ce sont des pouvoirs conférés par <i>Atrim</i>.</p>
-	</details>
 
 	<!-- Mythe fondateur -->
 	<details>
 		<summary>
 			<h3>Mythe fondateur</h3>
 		</summary>
-		<p>Dans les temps anciens, avant que le monde ne prenne sa forme actuelle, de nombreuses divinités façonnèrent ensemble Paorn. Chacune apporta sa contribution: certaines créèrent les montagnes et les vallées, d’autres les océans et les rivières, d’autres encore le ciel et les astres. Puis vint le temps de peupler ce monde.</p>
+		<p>Dans les temps anciens, avant que le monde ne prenne sa forme actuelle, de nombreuses divinités façonnèrent ensemble Paorn. Chacune apporta sa contribution : certaines créèrent les montagnes et les vallées, d’autres les océans et les rivières, d’autres encore le ciel et les astres. Puis vint le temps de peupler ce monde.</p>
 
-		<p>Plusieurs divinités s’associèrent pour créer les humains, chacune insufflant en eux des qualités différentes selon ses desseins. Certains dieux y voyaient des serviteurs, d’autres des jouets, mais Atrim les considérait comme ses enfants et souhaitait les voir s’épanouir en harmonie avec la création.</p>
+		<p>Plusieurs divinités s’associèrent pour créer les humains, chacune insufflant en eux des qualités différentes selon ses desseins. Certains dieux y voyaient des serviteurs, d’autres des jouets, mais Atrim les considérait comme ses enfants et souhaitait les voir vivre en harmonie avec la création.</p>
 
-		<p>D’autres races furent également créées : les elfes par les divinités sylvestres, les nains par les dieux des profondeurs terrestres, les hobbits par les esprits du foyer. Chaque race portait l’empreinte de ses créateurs.</p>
+		<p>D’autres races furent également créées : les elfes, les nains, les hobbits&hellip;. Chaque race portait l’empreinte de ses créateurs.</p>
 
 		<p>Alors que les humains commençaient à prospérer, certaines divinités jalouses leur enseignèrent la magie, un pouvoir qui n’était pas destiné à leur nature. Atrim les mit en garde contre ces dons dangereux, mais beaucoup ignorèrent ses conseils.</p>
 
-		<p>L’usage de la magie eut des effets néfastes sur l’humanité. Certains humains, assoiffés de puissance, se tournèrent vers la magie noire et établirent des pactes avec des entités maléfiques. D’autres, sans tomber dans ces extrêmes, devinrent paresseux et orgueilleux, utilisant la magie pour satisfaire leurs moindres désirs au lieu de travailler honnêtement.</p>
+		<p>L’usage de la magie eut des effets néfastes sur l’humanité. Certains humains, assoiffés de puissance, se tournèrent vers la magie noire et établirent des pactes avec des entités maléfiques. D’autres devinrent simplement paresseux et orgueilleux, utilisant la magie pour satisfaire leurs moindres désirs au lieu de travailler honnêtement.</p>
 
-		<p>Cette corruption progressive engendra également des créatures monstrueuses : lorsque des humains pratiquant la magie noire s’accouplèrent avec des êtres démoniaques, naquirent les premiers orcs et gobelins. D’autres races comme les elfes noirs furent le résultat d’expériences magiques perverses ou de malédictions divines.</p>
+		<p>Cette corruption progressive engendra également des créatures monstrueuses.</p>
 
-		<p>Voyant son œuvre menacée, Atrim offrit à l’humanité une chance de rédemption. Il choisit un prophète parmi les humains, un être juste et pur nommé Eldar, pour guider ses enfants sur le chemin de la vertu. Par sa bouche, Atrim enseigna les préceptes qui allaient devenir le fondement de l’Atrimisme: la non-violence, le refus du mensonge, l’entraide, et surtout la prudence face à la magie.</p>
+		<!-- Cette corruption progressive engendra également des créatures monstrueuses : lorsque des humains pratiquant la magie noire s’accouplèrent avec des êtres démoniaques, naquirent les premiers orcs et gobelins. D’autres races comme les elfes noirs furent le résultat d’expériences magiques perverses ou de malédictions divines. -->
 
-		<p>Le Cataclysme qui suivit fut interprété comme la conséquence inévitable de l’usage inconsidéré de la magie par les humains. Les civilisations s’effondrèrent, et seuls ceux qui avaient écouté les enseignements d’Atrim purent reconstruire un monde plus juste sur ces ruines.</p>
+		<p>Voyant son œuvre menacée, Atrim offrit à l’humanité une chance de rédemption. Il choisit un prophète nommé <i>Koës</i>, pour guider les humains sur le chemin de la vertu. Par sa bouche, Atrim enseigna les préceptes qui allaient devenir le fondement de l’Atrimisme : la tempérance, la bienveillance, et surtout la prudence face à la magie. Mais Koës ne fut pas écouté.</p>
+
+		<p>Le Cataclysme qui suivit fut interprété comme la conséquence inévitable de l’usage inconsidéré de la magie par les humains. Les civilisations s’effondrèrent.</p>
+		<!-- et seuls ceux qui avaient écouté les enseignements d’Atrim purent reconstruire un monde plus juste sur ces ruines. -->
 
 		<p>Aujourd’hui encore, les atrimistes considèrent que si d’autres divinités peuvent être honorées pour leur contribution à la création, seul Atrim se soucie véritablement du salut des âmes humaines et mérite une dévotion complète.</p>
 	</details>
@@ -46,9 +42,9 @@
 <!-- Histoire -->
 <section>
 	<h2>Histoire</h2>
-	<p>Jusqu’à il y a un peu plus de 2000 ans, diverses civilisations humaines prospéraient sur Paorn. Beaucoup faisaient un usage excessif de la magie.</p>
-	<p>Atrim envoya un messager pour avertir l’humanité des dangers de la magie. Son message ne fut globalement pas écouté.</p>
-	<p>Puis vint le <i>Cataclysme</i>, dont les causes exactes ont été oubliées. Les civilisations s’effondrèrent et une époque de chaos commença. Ce chaos dura près de cinq siècles, jusqu’à l’arrivée du prophète <i>Eldar</i>. Celui-ci structura les atrimistes et initia la reconstruction de la civilisation, fondée sur des principes de vertus et de justice.</p>
+	<p>Jusqu’à il y a 2500 ans, diverses civilisations humaines prospéraient sur Paorn. Beaucoup faisaient un usage excessif de la magie.</p>
+	<p>Atrim envoya un premier prophète, nommé <i>Koës</i>, pour avertir l’humanité des dangers de la magie. Son message ne fut pas écouté.</p>
+	<p>Puis vint le <i>Cataclysme</i>, dont les causes exactes ont été oubliées. Les civilisations s’effondrèrent et une époque de chaos commença. Ce chaos dura près de mille ans, jusqu’à l’arrivée du prophète <i>Eldar</i>. Celui-ci structura les atrimistes et initia la reconstruction de la civilisation, fondée sur des principes de vertus et de justice.</p>
 
 	<!-- Le prophète Eldar -->
 	<details>
@@ -74,15 +70,15 @@
 		<p>Aussi appelé <i>La Voie</i>, ce livre est le principal livre saint de l’Atrimisme. Il décrit la vie et les enseignements d’Eldar.</p>
 		<p>Quelques citation d’Eldar, extraite de <i>La Voie</i> :</p>
 		<ul class="italic">
-			<li>La magie est comme le feu : utile au serviteur, dangereuse pour le maître.</li>
+			<li>La magie est utile au serviteur et dangereuse pour le maître.</li>
 			<li>La magie n’est ni lumière ni ténèbres ; elle est le miroir où l’âme contemple son propre reflet.</li>
-			<li>Qui cherche la vérité trouve Atrim ; qui fuit le mensonge marche à ses côtés.</li>
+			<li>Qui cherche la vérité trouve Atrim ; qui fuit le mensonge marche à ses côtés.</li>
 			<li>La force véritable réside non dans le pouvoir de dominer autrui, mais dans la capacité à se maîtriser soi-même.</li>
 			<li>Un seul acte de bonté sincère vaut mieux que cent prières récitées sans conviction.</li>
 			<li>Méfie-toi de celui qui promet des miracles faciles, car les véritables prodiges d’Atrim demandent patience et dévotion.</li>
 			<li>Le plus grand mensonge est celui qu’on se raconte à soi-même.</li>
-			<li>À celui qui t’offense, offre ton pardon ; à celui qui souffre, offre ton aide ; à celui qui doute, offre ta foi.</li>
-			<li>La richesse des puissants n’est que poussière aux yeux d’Atrim ; seule la richesse du cœur est éternelle.</li>
+			<li>À celui qui t’offense, offre ton pardon ; à celui qui souffre, offre ton aide ; à celui qui doute, offre ta foi.</li>
+			<li>La richesse des puissants n’est que poussière aux yeux d’Atrim ; seule la richesse du cœur est éternelle.</li>
 			<li>Ne cherche pas la perfection, mais l’amélioration constante. Même le plus humble des pas sur la Voie de la Vertu est précieux.</li>
 			<li>Comme l’eau pure lave le corps, la vérité lave l’âme.</li>
 		</ul>
@@ -93,11 +89,11 @@
 		<summary>
 			<h3>Les écrits anciens</h3>
 		</summary>
-		<p>Une collection de textes divers, antérieurs à Eldar. Différents auteurs, inconnus. On y trouve des poèmes, des textes cabalistiques, des mythes.</p>
+		<p>Une collection de textes divers, antérieurs à Eldar. Différents auteurs, inconnus. On y trouve des poèmes, des textes cabalistiques, des mythes et de nombreuses prières.</p>
 	</details>
 
 	<!-- Interprétations et exégèses -->
-	<details>
+	<!-- <details>
 		<summary>
 			<h3>Interprétations et exégèses</h3>
 		</summary>
@@ -109,15 +105,81 @@
 			<li><b>L'interprétation symbolique :</b> le « serviteur » symbolise l'humilité et la prudence, tandis que le « maître » représente l'orgueil et la présomption. C'est notre attitude envers la magie qui détermine si elle nous sera bénéfique ou néfaste. Celui qui approche la magie avec humilité, reconnaissant ses limites et sa nature non-magique, peut l'utiliser sans danger. Celui qui, par orgueil, cherche à s'élever au-dessus de sa condition humaine grâce à la magie, finira par être détruit par elle.</li>
 		</ul>
 		<p>Cette citation continue d'inspirer et de guider les atrimistes dans leur relation prudente avec la magie, tout en permettant diverses interprétations qui ont nourri au fil des siècles les réflexions théologiques au sein de cette religion.</p>
-	</details>
+	</details> -->
 </section>
 
 <!-- Le clergé -->
 <section>
 	<h2>Le clergé</h2>
+
+	<!-- clergé séculier -->
+	<details>
+		<summary>
+			<h3>Le clergé séculier</h3>
+		</summary>
+
+		<p>Le clergé séculier est principalement constitué de prêtres ordonnés. Il est divisé en quatre niveaux hiérarchiques :</p>
+
+		<h4>Les Alvéors</h4>
+		<p>Les Alvéors sont les assistants des prêtres. Ils sont soit de jeunes aspirants au sacerdoce, ayant terminé leur formation théologique mais n'ayant pas encore reçu l'ordination complète, soit des laïcs ayant choisi de s’investir dans l’Église, sans pour autant devenir prêtre.</p>
+
+		<p><b>Fonctions :</b></p>
+		<ul>
+			<li>Assistance aux cérémonies et rituels</li>
+			<li>Enseignement des bases de la foi aux enfants et aux nouveaux convertis</li>
+			<li>Lecture des textes sacrés lors des offices</li>
+			<li>Visite des malades et des personnes âgées</li>
+			<li>Administration quotidienne des temples</li>
+		</ul>
+		<!-- <p>Lors des cérémonies, les alvéors portent une robe simple de couleur bleu clair avec une écharpe blanche.</p> -->
+
+		<h4>Les prêtres</h4>
+		<p>Les prêtres ordinaires sont les piliers de la pratique religieuse quotidienne.</p>
+		<p><b>Fonctions :</b></p>
+		<ul>
+			<li>Célébration des offices et rituels (cérémonies de naissance, mariages, funérailles)</li>
+			<li>Direction spirituelle des fidèles</li>
+			<li>Interprétation des textes sacrés</li>
+			<li>Médiation des conflits locaux</li>
+			<li>Supervision des Alvéors</li>
+		</ul>
+		<!-- <p>Lors des cérémonies, les prêtres ordinaires portent une robe bleue avec une étole dorée, symbole de sa fonction d'intermédiaire entre Atrim et les fidèles.</p> -->
+
+		<h4>Les Keldorns</h4>
+		<p>Les Keldorns sont les grands-prêtres de l’atrimisme. Chaque grande ville ou région possède son keldorn.</p>
+		<p><b>Types de Keldorns</b></p>
+		<ul>
+			<li><b>Keldorn ordinaire :</b> responsable d'une grande ville</li>
+			<li><b>Keldorn provincial ou Grand Keldorn :</b> supervise une province entière</li>
+			<li><b>Keldorn doctrinal :</b> spécialiste d'un aspect particulier de la théologie atrimiste</li>
+		</ul>
+
+		<p><b>Fonctions</b></p>
+		<ul>
+			<li>Supervision de tous les temples d'une région</li>
+			<li>Ordination des nouveaux prêtres</li>
+			<li>Interprétation officielle de la doctrine</li>
+			<li>Conseils aux dirigeants politiques</li>
+			<li>Participation au Conclave des Keldorns qui se réunit une fois tous les cinq ans à Olméria.</li>
+		</ul>
+
+		<!-- <p>Les Keldorns portent une robe bleue profond ornée de symboles atrimistes brodés en fil d'or, avec une cape blanche et un médaillon représentant l'œil vigilant d'Atrim.</p> -->
+
+		<h4>Le Valamir</h4>
+
+		<p>Le Valamir est le titre du chef spirituel de l'Atrimisme, résidant à Olméria.</p>
+		<p><b>Fonctions</b></p>
+		<ul>
+			<li>Direction spirituelle de l'ensemble du clergé</li>
+			<li>Interprétation finale et définitive des textes sacrés</li>
+			<li>Médiation entre l'Empereur burgon et la volonté divine</li>
+			<li>Présidence du Conclave des Keldorns</li>
+			<li>Désignation des nouveaux Keldorns</li>
+		</ul>
+		<!-- <p>Le Valamir porte une robe d'un bleu profond presque noir, constellée d'étoiles dorées, avec une couronne de lumière (cercle doré orné de petites flammes) symbolisant sa connexion directe avec Atrim.</p> -->
+
+	</details>
 	<h3>Le clergé régulier</h3>
-	<p>Les prêtres – grand-prêtre – Archi-prêtre (Olméria)</p>
-	<h3>Les ordres monastiques</h3>
 	<p>Les moines et moniales</p>
 	<h3>Les ordres guerriers</h3>
 	<p>Les paladins et autres ordres guerriers (<i>Ordre des moines guerriers de la Nouvelle Étoile</i>)</p>

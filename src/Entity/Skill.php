@@ -121,7 +121,7 @@ class Skill implements RulesItem
 	 */
 	public static function niv2cost(int $niv, int $difficulty, string $base): float|int
 	{
-		$niv_½ = $difficulty / 2;
+		$niv_½ = $difficulty / 2; // cheapest level after default
 		$niv_c = 4 + $difficulty / 2; // high level threshold
 		$x = $niv - $niv_½;
 		if ($niv <= $difficulty) return 0;
@@ -320,7 +320,7 @@ class Skill implements RulesItem
 		// id, Nom, Catégorie, Base, Difficulté, Description
 		$skill["id"] = (int) $post["id"];
 		$skill["Nom"] = $post["Nom"];
-		$skill["Catégorie"] = $post["Catégorie"];
+		$skill["Catégorie"] = htmlspecialchars($post["Catégorie"]);
 		$skill["Base"] = $post["Base"];
 		$skill["Difficulté"] = $post["Difficulté"];
 		$skill["Description"] = $post["Description"];

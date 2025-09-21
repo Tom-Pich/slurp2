@@ -58,9 +58,9 @@ class Creature implements RulesItem
 		$this->combat =  $data["Combat"] ?? "";
 		$this->image = $data["Image"] ?? "";
 
-		$weight_min = $this->weight_min >= 1000 ? (round($this->weight_min / 1000, 1) . "&nbsp;t") : ($this->weight_min . "&nbsp;kg");
+		$weight_min = $this->weight_min >= 1000 ? (round($this->weight_min / 1000, 1) . " t") : ($this->weight_min . " kg");
 		$this->readableWeight = $weight_min;
-		$weight_max = $this->weight_max >= 1000 ? (round($this->weight_max / 1000, 1) . "&nbsp;t") : ($this->weight_max . "&nbsp;kg");
+		$weight_max = $this->weight_max >= 1000 ? (round($this->weight_max / 1000, 1) . " t") : ($this->weight_max . " kg");
 		$this->readableWeight .= $this->weight_max !== $this->weight_min ?  ("-" . $weight_max) : "";
 
 		$this->w_mult_strength = isset($this->options["Mult_pds_for"]) ? (float) $this->options["Mult_pds_for"] : 1;
@@ -101,22 +101,29 @@ class Creature implements RulesItem
 
 	public function getFullDescription()
 	{
-		$image_url = $this->image ? self::creature_folder . $this->image: "";
-		$image = $this->image ? "<img src='$image_url' class='mt-½ aspect-square'>" : "";
-		$weight = !isset($this->options["Sans_pds"]) ? "<b>Poids :</b> $this->readableWeight&emsp;" : "";
-		$size = $this->size ? "<b>Taille :</b> $this->size" : "";
+		$image_url = $this->image ? self::creature_folder . $this->image : "";
+		$image = $this->image ? "<img src='$image_url' class='mt-½ aspect-square mx-auto' style='max-width: 350px' >" : "";
+		$is_general_category = $this->weight_min === NULL;
+		$attributes = "";
+		if (!$is_general_category) {
+			$weight = !isset($this->options["Sans_pds"]) ? "<b>Poids :</b> $this->readableWeight&emsp;" : "";
+			$size = $this->size ? "<b>Taille :</b> $this->size" : "";
+			$attributes = <<<HTML
+				<p>
+					<b>For :</b> $this->readableStrength&emsp;<b>Int :</b> $this->int<br>
+					<b>PdV :</b> $this->readablePdV&emsp;<b>RD :</b> $this->rd&emsp;<b>Vit :</b> $this->speed<br>
+					$weight
+					$size
+				</p>
+			HTML;
+		}
 		$avdesav = $this->avdesav ? "<p><b>Avantages &amp; Désavantages :</b> " . str_replace(" ;", " ;", $this->avdesav) . " </p>" : "";
 		$powers = $this->powers ? "<p><b>Pouvoirs :</b> " . str_replace(" ;", " ;", $this->powers) . "</p>" : "";
 
 		return <<<HTML
 			$this->description
 			$image
-			<p>
-				<b>For&nbsp;:</b> $this->readableStrength&emsp;<b>Int&nbsp;:</b> $this->int<br>
-				<b>PdV&nbsp;:</b> $this->readablePdV&emsp;<b>RD&nbsp;:</b> $this->rd&emsp;<b>Vit&nbsp;:</b> $this->speed<br>
-				$weight
-				$size
-			</p>
+			$attributes
 			$avdesav
 			$powers
 			$this->combat
@@ -171,8 +178,8 @@ class Creature implements RulesItem
 		$creature["Nom"] = strip_tags($post["Nom"]);
 		$creature["Origine"] = strip_tags($post["Origine"]);
 		$creature["Catégorie"] = strip_tags($post["Catégorie"]);
-		$creature["Pds1"] = (float) $post["Pds1"];
-		$creature["Pds2"] = (float) $post["Pds2"];
+		$creature["Pds1"] = $post["Pds1"] === "" ? NULL : (float) $post["Pds1"];
+		$creature["Pds2"] = $post["Pds2"] === "" ? NULL :  (float) $post["Pds2"];
 
 		$post["Options"]["Mult_pds_for"] ? $creature["Options"]["Mult_pds_for"] = (float) $post["Options"]["Mult_pds_for"] : "";
 		$post["Options"]["Mult_pds_pdv"] ? $creature["Options"]["Mult_pds_pdv"] = (float) $post["Options"]["Mult_pds_pdv"] : "";
@@ -181,14 +188,14 @@ class Creature implements RulesItem
 		$creature["Options"] = isset($creature["Options"]) ? json_encode($creature["Options"], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) : NULL;
 
 		$creature["Taille"] = $post["Taille"] ? strip_tags($post["Taille"]) : NULL;
-		$creature["Int"] = strip_tags($post["Int"]);
-		$creature["RD"] = strip_tags($post["RD"]);
-		$creature["Vitesse"] = strip_tags($post["Vitesse"]);
+		$creature["Int"] = $post["Int"] === "" ? NULL : strip_tags($post["Int"]);
+		$creature["RD"] = $post["RD"] === "" ? NULL : strip_tags($post["RD"]);
+		$creature["Vitesse"] = $post["Vitesse"] === "" ? NULL : strip_tags($post["Vitesse"]);
 		$creature["Description"] = $post["Description"] ? $post["Description"] : NULL;
 		$creature["Avdesav"] = $post["Avdesav"] ? $post["Avdesav"] : NULL;
 		$creature["Pouvoirs"] = $post["Pouvoirs"] ? $post["Pouvoirs"] : NULL;
-		$creature["Combat"] = $post["Combat"];
-		$creature["Image"] = $post["Image"];
+		$creature["Combat"] = $post["Combat"] ? $post["Combat"] : NULL;
+		$creature["Image"] = $post["Image"] ? $post["Image"] : NULL;
 
 		if (isset($file['Image']) && $file['Image']['error'] === 0) {
 			if ($file['Image']['size'] <= 520000) {
