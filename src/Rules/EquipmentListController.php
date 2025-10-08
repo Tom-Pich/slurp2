@@ -67,6 +67,8 @@ class EquipmentListController
 		["Grappin léger (supporte 150kg)", 1, ["20 pc"], "voyage"],
 		["Pierre à aiguiser", 0.1, ["2 pc"], "voyage"],
 
+		["Voyage en bâteau, par jour, confort basique", NULL, ["10-15pc"], "service"],
+
 		["Outils de crochetage", 0.1, ["30 pc"], "spécial"],
 		["Outils de crochetage BQ, (+1 crochetage)", 0.1, ["200 pc"], "spécial"],
 		["Serpe d’or (pour druide)", 0.25, ["500 pc"], "spécial"],

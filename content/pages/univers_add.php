@@ -13,9 +13,9 @@ $spells_repo = new SpellRepository;
 $creatures_repo = new CreatureRepository;
 ?>
 
-<div class="img-block">
+<!-- <div class="img-block">
 	<img src="/assets/img/page-add-1.webp" alt="Menhir Esteren">
-</div>
+</div> -->
 
 <!-- Personnages -->
 <article>
@@ -159,15 +159,18 @@ $creatures_repo = new CreatureRepository;
 
 		<h4>Système monétaire</h4>
 		<p>1 po = 20 pa = 80 pc</p>
-		<p>pièce d’or : taille d’une pièce de 20 ¢, 15 g<br>
+		<p>
+			pièce d’or : taille d’une pièce de 20 ¢, 15 g<br>
 			pièce d’argent : taille d’une pièce de 20 ¢, 10 g<br>
 			pièce de cuivre : taille d’une pièce de 50 ¢, 10 g<br>
-			piécette (½ pc) : taille d’une pièce de 2 ¢, 5 g</p>
+			piécette (½ pc) : taille d’une pièce de 2 ¢, 5 g
+		</p>
 		<p>Conversion AD&amp;D : 1 po AD&D = 12 pc = 0,15 po</p>
 
 		<h4>Échelle de valeurs</h4>
 		<p>1 pc représente environ 5 euros</p>
-		<p>Salaire journalier pauvre : 4 à 6 pc<br>
+		<p>
+			Salaire journalier pauvre : 4 à 6 pc<br>
 			Salaire journalier moyen : 15 à 20 pc<br>
 			Salaire journalier confortable : 30 à 40 pc<br>
 			Salaire journalier très élevé : 150+ pc<br>
@@ -175,8 +178,20 @@ $creatures_repo = new CreatureRepository;
 			Coût de la vie, statut social -1 : 100 pc/mois<br>
 			Coût de la vie, statut social 0 : 200 pc/mois<br>
 			Coût de la vie, statut social 1 : 400 pc/mois<br>
-			Coût de la vie, statut social 2 : 800 pc/mois</p>
+			Coût de la vie, statut social 2 : 800 pc/mois
+		</p>
 
+	</details>
+
+	<!-- Nourriture & logement -->
+	<details>
+		<summary>
+			<h3>Nourriture &amp; logement</h3>
+		</summary>
+		<?php
+		$items = array_filter(EquipmentListController::equipment_list, fn($item) => in_array($item[3], ["auberge", "nourriture"]));
+		EquipmentListController::displayEquipmentList($items, 0);
+		?>
 	</details>
 
 	<!-- Armes -->
@@ -295,6 +310,17 @@ $creatures_repo = new CreatureRepository;
 		?>
 	</details>
 
+	<!-- Services -->
+	<details>
+		<summary>
+			<h3>Services &amp; prestations</h3>
+		</summary>
+		<?php
+		$items = array_filter(EquipmentListController::equipment_list, fn($item) => in_array($item[3], ["service"]));
+		EquipmentListController::displayEquipmentList($items, 0);
+		?>
+	</details>
+
 	<!-- Équipement spécial -->
 	<details>
 		<summary>
@@ -302,17 +328,6 @@ $creatures_repo = new CreatureRepository;
 		</summary>
 		<?php
 		$items = array_filter(EquipmentListController::equipment_list, fn($item) => in_array($item[3], ["spécial"]));
-		EquipmentListController::displayEquipmentList($items, 0);
-		?>
-	</details>
-
-	<!-- Nourriture & logement -->
-	<details>
-		<summary>
-			<h3>Nourriture &amp; logement</h3>
-		</summary>
-		<?php
-		$items = array_filter(EquipmentListController::equipment_list, fn($item) => in_array($item[3], ["auberge", "nourriture"]));
 		EquipmentListController::displayEquipmentList($items, 0);
 		?>
 	</details>
@@ -352,7 +367,6 @@ $creatures_repo = new CreatureRepository;
 			<li><b>Onguent de guérison :</b> +2 aux jets de guérison, fabriqué à partir de plantes, 3 pc par dose. Une dose par jour.</li>
 		</ul>
 
-
 		<h4>Services magiques</h4>
 		<p><b>Identification de potion :</b> 5 pc</p>
 		<p><b>Lancer de sort (légal) :</b> 5/20/50/150/500+ pc</p>
@@ -361,9 +375,9 @@ $creatures_repo = new CreatureRepository;
 
 </article>
 
-<div class="img-block">
+<!-- <div class="img-block">
 	<img src="/assets/img/page-add-2.webp" alt="Menhir Esteren">
-</div>
+</div> -->
 
 <!-- Magie -->
 <article>
@@ -833,48 +847,51 @@ $creatures_repo = new CreatureRepository;
 
 			<details class="liste">
 				<summary>Baguette de sorcier</summary>
-				<p>
-					Tout ce qu’un <i>Bâton de sorcier</i> touche est considéré comme ayant été touché par le mage lui-même. Un mage peut donc fixer une pierre de puissance sur son bâton et en tirer parti normalement. Pointer un bâton réduit la distance entre le lanceur et la cible d’un mètre.<br>
-					Seul un personnage disposant de l’avantage <i>Magerie</i> peut tirer profit d’un tel objet.
-				</p>
-				<p><b>Prix :</b> 120 pc</p>
+				<div class="fs-300 flow">
+					<p>
+						Tout ce qu’un <i>Bâton de sorcier</i> touche est considéré comme ayant été touché par le mage lui-même. Un mage peut donc fixer une pierre de puissance sur son bâton et en tirer parti normalement. Pointer un bâton réduit la distance entre le lanceur et la cible d’un mètre.<br>
+						Seul un personnage disposant de l’avantage <i>Magerie</i> peut tirer profit d’un tel objet.
+					</p>
+					<p><b>Prix :</b> 120 pc</p>
+				</div>
 			</details>
 
 			<details class="liste">
 				<summary>Parchemin</summary>
-				<p>
-					Un <i>Parchemin</i> lu à haute voix par quelqu’un qui comprend et sait lire le langage employé et qui possède l’avantage <i>Magerie</i>, permettra au sort écrit d’être jeté. La magie du parchemin se dissipe alors et celui-ci tombe en poussière.<br>
-					Le temps nécessaire pour jeter le sort est multiplié par 2. Aucun coût énergétique pour le lecteur. Faire un jet sous le score de pouvoir du parchemin pour déterminer la réussite du sort. Le lecteur peut prolonger le sort, si le parchemin le permet.<br>
-					Un parchemin peut être lu en silence, afin de savoir ce qu’il contient, sans que le sort ne soit jeté. Des dégâts occasionnés à un manuscrit ne l’affecteront pas, tant qu’il demeure lisible.
-				</p>
-				<p><b>Prix :</b> 15 / 60 / 150 / 450 / 1500+ pc selon le niveau du sort.</p>
+				<div class="fs-300 flow">
+					<p>
+						Un <i>Parchemin</i> lu à haute voix par quelqu’un qui comprend et sait lire le langage employé et qui possède l’avantage <i>Magerie</i>, permettra au sort écrit d’être jeté. La magie du parchemin se dissipe alors et celui-ci tombe en poussière.<br>
+						Le temps nécessaire pour jeter le sort est multiplié par 2. Aucun coût énergétique pour le lecteur. Faire un jet sous le score de pouvoir du parchemin pour déterminer la réussite du sort. Le lecteur peut prolonger le sort, si le parchemin le permet.<br>
+						Un parchemin peut être lu en silence, afin de savoir ce qu’il contient, sans que le sort ne soit jeté. Des dégâts occasionnés à un manuscrit ne l’affecteront pas, tant qu’il demeure lisible.
+					</p>
+					<p><b>Prix :</b> 15 / 60 / 150 / 450 / 1500+ pc selon le niveau du sort.</p>
+				</div>
 			</details>
 
 			<details class="liste">
 				<summary>Pierre de puissance</summary>
-				<p>
-					Pierre précieuse servant de réservoir de PdM. Pour pouvoir l’utiliser, le mage doit la toucher physiquement. Un mage ne peut tirer parti de plusieurs pierres pour un même sort. Il peut par contre utiliser à la fois ses propres PdM et des PdM tirés d’une pierre de puissance.<br>
-					En fluide normal, une pierre de puissance récupère 1 PdM toutes les 12 heures. Si des pierres sont à 2 m ou moins l’une de l’autre, seule la plus grosse se recharge, sauf si celle-ci est pleine.<br>
-					Une pierre de puissance ne peut fournir de PdM pour l’utilisation de pouvoirs innés, de sorts de prêtres, ou des pouvoirs psi.
-				</p>
-				<p>La capacité maximale d'une pierre dépend de sa valeur (poids et type de pierre).</p>
+				<div class="fs-300 flow">
+					<p>Pierre précieuse servant de réservoir de PdM. Pour pouvoir l’utiliser, le mage doit la toucher physiquement. Un mage ne peut tirer parti de plusieurs pierres pour un même sort. Il peut par contre utiliser à la fois ses propres PdM et des PdM tirés d’une pierre de puissance.</p>
+					<p>En fluide normal, une pierre de puissance récupère 1 PdM toutes les 12 heures. Si des pierres sont à 2 m ou moins l’une de l’autre, seule la plus grosse se recharge, sauf si celle-ci est pleine.</p>
+					<p>Une pierre de puissance ne peut fournir de PdM pour l’utilisation de pouvoirs innés, de sorts de prêtres, ou des pouvoirs psi.</p>
+					<p>La capacité maximale d'une pierre dépend de sa valeur (poids et type de pierre).</p>
 
-				<fieldset class="widget" data-role="widget-pierre-puissance">
-					<legend>Prix des pierres de puissance</legend>
-					<table>
-						<tr>
-							<th>PdM</th>
-							<th>Pierre brute (pc)</th>
-							<th>Vente (pc)</th>
-						</tr>
-						<tr>
-							<td><input type="text" style="width: 5ch" class="ta-center" data-type="pdm"></td>
-							<td data-role="prix-brut"></td>
-							<td data-role="prix-vente"></td>
-						</tr>
-					</table>
-
-				</fieldset>
+					<fieldset class="widget mt-½" data-role="widget-pierre-puissance">
+						<legend>Prix des pierres de puissance</legend>
+						<table>
+							<tr>
+								<th>PdM</th>
+								<th>Pierre brute (pc)</th>
+								<th>Vente (pc)</th>
+							</tr>
+							<tr>
+								<td><input type="text" style="width: 5ch" class="ta-center" data-type="pdm"></td>
+								<td data-role="prix-brut"></td>
+								<td data-role="prix-vente"></td>
+							</tr>
+						</table>
+					</fieldset>
+				</div>
 
 			</details>
 
@@ -888,42 +905,45 @@ $creatures_repo = new CreatureRepository;
 
 			<details class="liste">
 				<summary>Armes magiques</summary>
-				<p>
-					Une arme magique procure un bonus de +1 à +4 aux jets de compétence et aux dégâts. Pour les projectiles, le bonus ne s’applique qu’aux dégâts. Pour les armes de tir, le bonus ne s’applique qu’à la compétence.<br>
-					<b>Indice de puissance :</b> II pour +1 ; III pour +2.
-				</p>
-				<p><b>Exemples de prix</b></p>
-				<ul>
-					<li><b>Épée longue BQ+1 :</b> 4200 pc</li>
-					<li><b>Épée longue TBQ+1 :</b> 6000 pc</li>
-					<li><b>Poignard TBQ+2 :</b> 11500 pc</li>
-					<li><b>Épée longue TBQ+2 :</b> 14000 pc</li>
-				</ul>
+				<div class="fs-300 flow">
+					<p>Une arme magique procure un bonus de +1 à +4 aux jets de compétence et aux dégâts. Pour les projectiles, le bonus ne s’applique qu’aux dégâts. Pour les armes de tir, le bonus ne s’applique qu’à la compétence.</p>
+					<p><b>Indice de puissance :</b> II pour +1 ; III pour +2.</p>
+					<p><b>Exemples de prix</b></p>
+					<ul>
+						<li><b>Épée longue BQ+1 :</b> 4200 pc</li>
+						<li><b>Épée longue TBQ+1 :</b> 6000 pc</li>
+						<li><b>Poignard TBQ+2 :</b> 11500 pc</li>
+						<li><b>Épée longue TBQ+2 :</b> 14000 pc</li>
+					</ul>
+				</div>
 			</details>
 
 			<details class="liste">
 				<summary>Armures magiques</summary>
-				<p>
-					+1 à +5 à la RD. De simples vêtements peuvent également être enchantés (mais attention à leur durée de vie !). En plus du bonus de RD, le poids d’une armure magique est réduit de 33% pour un bonus de +1 ou +2 et 50% pour un bonus &ge; +3.<br>
-					Il est possible d’enchanter seulement certaines parties d’une armure. Appliquer le pourcentage du prix des pièces au coût énergétique, au temps nécessaire et au coût des matériaux.<br>
-					Les bonus magiques de RD ne se cumulent pas. Si plusieurs bonus de RD s’appliquent à une même localisation, seul le meilleur prévaudra.<br>
-					<b>Indice de puissance :</b> I pour +1 ; II pour +2.
-				</p>
-
-				<p><b>Exemples de prix</b></p>
-				<ul>
-					<li><b>Cotte de maille complète BQ+1, taille humaine :</b> 2700 pc</li>
-				</ul>
+				<div class="fs-300 flow">
+					<p>+1 à +5 à la RD. De simples vêtements peuvent également être enchantés (mais attention à leur durée de vie !). En plus du bonus de RD, le poids d’une armure magique est réduit de 33% pour un bonus de +1 ou +2 et 50% pour un bonus &ge; +3.</p>
+					<p>Il est possible d’enchanter seulement certaines parties d’une armure. Appliquer le pourcentage du prix des pièces au coût énergétique, au temps nécessaire et au coût des matériaux.</p>
+					<p>Les bonus magiques de RD ne se cumulent pas. Si plusieurs bonus de RD s’appliquent à une même localisation, seul le meilleur prévaudra.</p>
+					<p><b>Indice de puissance :</b> I pour +1 ; II pour +2.</p>
+					<p><b>Exemples de prix</b></p>
+					<ul>
+						<li><b>Cotte de maille complète BQ+1, taille humaine :</b> 2700 pc</li>
+					</ul>
+				</div>
 			</details>
 
 			<details class="liste">
 				<summary>Boucliers magiques</summary>
-				<p>+1 à +4 à la compétence <i>Bouclier</i>. Son poids est réduit comme celui d’une armure.</p>
+				<div class="fs-300 flow">
+					<p>+1 à +4 à la compétence <i>Bouclier</i>. Son poids est réduit comme celui d’une armure.</p>
+				</div>
 			</details>
 
 			<details class="liste">
 				<summary>Cotte de maille elfique</summary>
-				<p>À porter par-dessus des vêtements légers, sans coutil. RD4, poids inférieur de 20 % à une cotte de maille normale (sans coutil). Très souple et totalement silencieuse. Ce n’est pas un objet magique à proprement parler, mais elle peut être enchantée.</p>
+				<div class="fs-300 flow">
+					<p>À porter par-dessus des vêtements légers, sans coutil. RD4, poids inférieur de 20 % à une cotte de maille normale (sans coutil). Très souple et totalement silencieuse. Ce n’est pas un objet magique à proprement parler, mais elle peut être enchantée.</p>
+				</div>
 			</details>
 
 		</details>
@@ -936,27 +956,37 @@ $creatures_repo = new CreatureRepository;
 
 			<details class="liste">
 				<summary>Anneau de protection</summary>
-				<p>Procure un bonus de +1 à +5 à tous les jets de résistance du porteur.</p>
+				<div class="fs-300 flow">
+					<p>Procure un bonus de +1 à +5 à tous les jets de résistance du porteur.</p>
+				</div>
 			</details>
 
 			<details class="liste">
 				<summary>Cape elfique</summary>
-				<p>Procure un bonus de +5 en <i>Furtivité</i>.</p>
+				<div class="fs-300 flow">
+					<p>Procure un bonus de +5 en <i>Furtivité</i>.</p>
+				</div>
 			</details>
 
 			<details class="liste">
 				<summary>Gantelets de force</summary>
-				<p>Augmente la For de leur porteur (de +1 à +5).</p>
+				<div class="fs-300 flow">
+					<p>Augmente la For de leur porteur (de +1 à +5).</p>
+				</div>
 			</details>
 
 			<details class="liste">
 				<summary>Sac sans fond</summary>
-				<p>Son volume intérieur est vingt fois plus grand que son volume extérieur. Son poids vaut 1/20<sup>e</sup> de que ce qu’il contient. S’il est percé ou déchiré (de l’extérieur comme de l’intérieur), il perd ses propriétés et son contenu disparaît. La dimension des objets ne peut pas excéder vingt fois la dimension du sac.</p>
+				<div class="fs-300 flow">
+					<p>Son volume intérieur est vingt fois plus grand que son volume extérieur. Son poids vaut 1/20<sup>e</sup> de que ce qu’il contient. S’il est percé ou déchiré (de l’extérieur comme de l’intérieur), il perd ses propriétés et son contenu disparaît. La dimension des objets ne peut pas excéder vingt fois la dimension du sac.</p>
+				</div>
 			</details>
 
 			<details class="liste">
 				<summary>Baguette de Boules de feu</summary>
-				<p>Une baguette de boules de feu est un objet à charge. Elle est définie par le niveau de puissance des boules de feu qu’elle peut envoyer et par le nombre maximum de charges qu’elle peut contenir (généralement 12). Il est possible d’envoyer des boules de feu d’un niveau inférieur (il suffit que son utilisateur le souhaite), mais cela utilisera dans tous les cas une charge entière.</p>
+				<div class="fs-300 flow">
+					<p>Une baguette de boules de feu est un objet à charge. Elle est définie par le niveau de puissance des boules de feu qu’elle peut envoyer et par le nombre maximum de charges qu’elle peut contenir (généralement 12). Il est possible d’envoyer des boules de feu d’un niveau inférieur (il suffit que son utilisateur le souhaite), mais cela utilisera dans tous les cas une charge entière.</p>
+				</div>
 			</details>
 
 
@@ -990,11 +1020,11 @@ $creatures_repo = new CreatureRepository;
 			Ses pouvoirs en font un familier capable de fournir une <i>Aide importante</i> en permanence, bien que son caractère fantasque et son indépendance limite sa fiabilité.
 		</p>
 		<p>L’imp confère certaines capacités à son maître :</p>
-			<ul>
-				<li><b><i>Communication mentale</i></b> et <b><i>Perception interne</i></b> y compris l’<i>Infravision</i> ;</li>
-				<li><b><i>Résistance à la magie</i> +2</b> ;</li>
-				<li>Lorsque l’imp se trouve dans un rayon de 30 m, son maître a <b>+1 à tous ses jets</b> pour utiliser ou détecter la magie (-1 si l’imp se trouve à plus d’un km). Ce modificateur affecte le rituel magique et la réduction en PdM. Lorsque l’imp meurt ou est définitivement chassé, le mage voit ses scores dans tous ses collèges définitivement réduits de 1.</li>
-			</ul>
+		<ul>
+			<li><b><i>Communication mentale</i></b> et <b><i>Perception interne</i></b> y compris l’<i>Infravision</i> ;</li>
+			<li><b><i>Résistance à la magie</i> +2</b> ;</li>
+			<li>Lorsque l’imp se trouve dans un rayon de 30 m, son maître a <b>+1 à tous ses jets</b> pour utiliser ou détecter la magie (-1 si l’imp se trouve à plus d’un km). Ce modificateur affecte le rituel magique et la réduction en PdM. Lorsque l’imp meurt ou est définitivement chassé, le mage voit ses scores dans tous ses collèges définitivement réduits de 1.</li>
+		</ul>
 
 		<!-- <h4>Imonoth (30 pts)</h4>
 		<p>Les imonoths sont de petites créatures servant d’espions aux mages de Laelith. Eux seuls connaissent le secret de leur invocation et leur origine exacte reste un mystère. Cette créature ailée de la taille d’un pigeon possède deux bras et deux jambes entre lesquels se trouve une voile de peau servant d’ailes, un peu à la manière des lézards volants. Leur peau parfaitement lisse, bleu sombre sauf sur le ventre, où elle est de couleur beige. Leur petite tête ronde est dépourvue de nez. Ils ont deux grands yeux rouge sombre sans pupille et une petite bouche avec de dents fines et pointue.</p>

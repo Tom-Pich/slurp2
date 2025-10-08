@@ -1,5 +1,6 @@
 <?php
 $admin = $_SESSION["Statut"] >= 3;
+if (!$admin) echo "<style>.admin {display: none !important}</style>" // hide for non admin
 ?>
 <details class="tablet-phone phone-index">
 	<summary class="fw-700">Menu</summary>

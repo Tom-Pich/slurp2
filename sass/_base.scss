@@ -1,4 +1,4 @@
-/* Mon framework CSS v2025.02.25 🖐️ linked to original ! */
+/* Mon framework CSS v2025.10.03 🖐️ linked to original ! */
 
 $brp-l: 1200px;
 $brp-m: 768px;
@@ -164,6 +164,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-app
 .ai-center {align-items: center;}
 .ai-start {align-items: start;}
 .ai-end {align-items: end;}
+.flex.ai-end { @include media { align-items: unset; } }
 .jc-center {justify-content: center;}
 .jc-space-between {justify-content: space-between;}
 .jc-space-around {justify-content: space-around;}

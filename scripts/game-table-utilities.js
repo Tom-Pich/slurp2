@@ -224,7 +224,8 @@ export class Opponents {
         opponentSelects.forEach((selector) => {
             // update options list
             selector.innerHTML = "";
-            if (Object.entries(this.list[0]).length === 0) { // if no opponent
+            if (Object.entries(this.list[0]).length === 0) {
+                // if no opponent
                 const option = ce("option");
                 option.value = "";
                 option.innerText = "–";
@@ -276,6 +277,7 @@ export class Scores {
         });
     }
 
+    // append individual widgets in local storage to wrapper
     fillWidgets() {
         this.skills.forEach((skill, index) => {
             const wrapper = this.template.content.cloneNode(true);
@@ -289,8 +291,16 @@ export class Scores {
         });
     }
 
+    // submit a score test from a widget
     action(event, skill) {
         event.preventDefault();
+
+        // If skill is empty, try to get it from the array
+        if (!skill || Object.keys(skill).length === 0) {
+            const index = parseInt(event.target.dataset.index);
+            skill = this.skills[index] || {};
+        }
+
         const rollResult = roll("3d").result;
         const testResult = scoreTester(skill.score + (skill.modif ?? 0), rollResult);
         const readableModif = skill.modif === 0 || skill.modif === "" || skill.modif === undefined ? "" : explicitSign(skill.modif);
@@ -299,15 +309,17 @@ export class Scores {
         flushMsg("chat-roll", testResult.symbol);
     }
 
+    // add, update or delete individual score widget
     updateScores(event) {
         const wrapper = event.target.closest("form");
         const index = parseInt(wrapper.dataset.index);
-        const param = event.target.name;
+        const param = event.target.name; // name of input that changed
 
         // data validation
         if (param === "score" || param === "modif") event.target.value = calculate(event.target.value);
         if (param === "modif") event.target.value = explicitSign(event.target.value);
 
+		// update skill in this.skills
         const value = event.target.value;
         this.skills[index][param] = value !== "" && Number(value) == value ? parseInt(value) : value; // store value as int where relevant
 
@@ -317,6 +329,7 @@ export class Scores {
         // adding empty slot if last slot name is filled
         if (param === "name" && value !== "" && index === this.skills.length - 1) {
             const wrapper = this.template.content.cloneNode(true);
+            wrapper.querySelector("form").addEventListener("submit", (event) => this.action(event, {}));
             this.wrapper.appendChild(wrapper);
         }
 

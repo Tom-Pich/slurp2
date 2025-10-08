@@ -65,6 +65,7 @@
 	<ul>
 		<li><a href="https://creator.nightcafe.studio/">Nightcafe</a>, en partie gratuit.</li>
 		<li><a href="https://www.artbreeder.com/">Artbreeder</a>, en partie gratuit et spécialisé dans les portraits.</li>
+		<li><a href="https://fluxai.art/fr/features/coat-of-arms-maker">Flux IA</a>, générateur de blasons</li>
 	</ul>
 
 	<h3>Outils divers</h3>

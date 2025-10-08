@@ -237,7 +237,7 @@ function color_modifier($original_score, $actual_score)
 										<div><?= $avdesav["points"] ?></div>
 									</div>
 								</summary>
-								<div class="mt-½ fs-300 ta-justify"><?= $avdesav["description"] ?? "" ?></div>
+								<div class="fs-300 flow"><?= $avdesav["description"] ?? "" ?></div>
 							</details>
 						<?php endif ?>
 
