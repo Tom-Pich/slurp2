@@ -25,7 +25,7 @@ Langues
 Classes sociales / groupes sociaux (rôle, relations avec les autres groupes)   
 Groupes professionnels particuliers (métiers, rôles, races, relations avec les autres groupes)  
 
-## Politique &amp; organisation
+## Politique & organisation
 Type de gouvernement  
 Dirigeant principal (nom, famille, arrivée au pouvoir, style de gouvernance)
 Organisation de l'exercice du pouvoir (budget, impôts, justice, armée, gestion de l'économie)  
@@ -39,13 +39,13 @@ Ressources et industries principales
 Commerce intérieur et extérieur  
 Établissements commerciaux notables  
 
-## Figures &amp; groupes d'influence
+## Figures & groupes d'influence
 PNJ importants  
 Familles influentes  
 Organisations majeures (guildes, ordres, sociétés, corporations...)  
 Relations entre les différents groupes de pouvoir  
 
-## Culture &amp; société
+## Culture & société
 Coutumes et traditions  
 Religions, cultes et mythes religieux  
 Arts et artisanat  
@@ -72,7 +72,7 @@ Rôle racial inhabituel
 Système social inhabituel  
 Dangers potentiels  
 
-## Ressources &amp; services
+## Ressources & services
 Auberges, hébergements et tavernes  
 Services spécialisés (mages, alchimistes, etc.)  
 Commerces notables   

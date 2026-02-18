@@ -71,6 +71,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 			<p id="file" class="ta-center clr-grey-500"></p>
 		</div>
 
+		<!-- Description -->
 		<div class="flow">
 			<h3>Description</h3>
 			<p>Cette description sera visible par les autres membres du groupe. Soyez évocateur, sans être trop long.</p>
@@ -104,7 +105,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 		<fieldset class="flow">
 			<legend>Caractéristiques</legend>
 
-			<div class="grid" style="grid-template-columns: repeat(6, 1fr); column-gap: var(--dynamic-space-1-2);">
+			<div class="grid" style="grid-template-columns: repeat(6, 1fr); column-gap: var(--ds-1-2);">
 				<?php foreach ($attributes_names as $attr_name) { ?>
 					<div class="ta-center fw-700"><?= $attr_name ?></div>
 				<?php } ?>
@@ -267,6 +268,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 								<input type="text" name="Compétences[<?= $n_post ?>][score]" value="<?= $comp['score'] ?>" style="width: 6ch" class="ta-center" title="score">
 								<input type="hidden" name="Compétences[<?= $n_post ?>][former-score]" value="<?= (int) $comp['score'] ? $comp['score'] : $comp["virtual-score"] ?>">
 								<input type="hidden" name="Compétences[<?= $n_post ?>][former-niv]" value="<?= $comp['niv'] ?>">
+								<input type="hidden" name="Compétences[<?= $n_post ?>][min-niv]" value="<?= $comp['min-niv'] ?>">
 								<input type="hidden" name="Compétences[<?= $n_post ?>][id]" value="<?= $comp['id'] ?>">
 							</div>
 						</summary>
@@ -619,10 +621,10 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 								<?php
 								$n_post++;
 								foreach ($character->psi as $pouvoir) {
-									if (in_array($discipline["id"], $pouvoir["data"]->data->colleges)) {
+									if (in_array($discipline["id"], $pouvoir["data"]->disciplines)) {
 								?>
 										<div class="flex-s gap-½ ai-center">
-											<input type="text" class="fl-1" name="Psi-pouvoirs[<?= $n_post ?>][nom]" value="<?= $pouvoir["data"]->name ?> (<?= $pouvoir["data"]->data->readableNiv ?>) <?= $pouvoir["modif"] ? ("(" . TextParser::parseInt2Modif($pouvoir["modif"]) . ")") : "" ?>">
+											<input type="text" class="fl-1" name="Psi-pouvoirs[<?= $n_post ?>][nom]" value="<?= $pouvoir["data"]->name ?> (<?= $pouvoir["data"]->readableNiv ?>) <?= $pouvoir["modif"] ? ("(" . TextParser::parseInt2Modif($pouvoir["modif"]) . ")") : "" ?>">
 											<div><?= $pouvoir["points"] ?></div>
 											<input type="text" name="Psi-pouvoirs[<?= $n_post ?>][score]" value="<?= $pouvoir["base-score"] ?>" style="width: 4ch" class="ta-center">
 											<input hidden name="Psi-pouvoirs[<?= $n_post ?>][id]" value="<?= $pouvoir["id"] ?>">

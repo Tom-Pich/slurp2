@@ -82,7 +82,7 @@ $body_class .=  $page["style"] !== "normal" ? (" " . $page["style"]) : "";
 				</form>
 			</dialog>
 
-			<?php if ($_SESSION["attempt"] and $_SESSION["attempt"] < 3) { ?>
+			<?php if ($_SESSION["attempt"] && $_SESSION["attempt"] < 3) { ?>
 				<p class="ta-center">Login/password erronés</p>
 			<?php } elseif ($_SESSION["attempt"] >= 3) { ?>
 				<p class="ta-center">Vous êtes banni&nbsp;!</p>

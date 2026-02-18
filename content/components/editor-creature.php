@@ -46,12 +46,12 @@
 				<?php endif ?>
 			</div>
 
-			<div class="flex-s gap-1 mt-2 ai-center jc-space-between">
+			<div class="flex-s gap-1 mt-2 ai-center jc-space-between fl-wrap">
 				<?php $mult_pds_for = $creature->w_mult_strength !== 1.0 ? $creature->w_mult_strength : "" ?>
 				<?php $mult_pds_pdv = $creature->w_mult_pdv !== 1.0 ? $creature->w_mult_pdv : "" ?>
 
 				<div class="flex-s gap-½ ai-first-baseline">
-					<div>For*</div>
+					<div>For<sup>(1)</sup></div>
 					<input type="text" style="width: 5ch" class="ta-center" name="Options[Mult_pds_for]" value="<?= $mult_pds_for ?>" placeholder="For">
 				</div>
 				<div class="flex-s gap-½ ai-first-baseline">
@@ -59,7 +59,7 @@
 					<input type="text" class="ta-center" style="width: 5ch" name="Int" value="<?= $creature->int ?>" placeholder="Int">
 				</div>
 				<div class="flex-s gap-½ ai-first-baseline">
-					<div>PdV*</div>
+					<div>PdV<sup>(1)</sup></div>
 					<input type="text" class="ta-center" style="width: 5ch" name="Options[Mult_pds_pdv]" value="<?= $mult_pds_pdv ?>" placeholder="PdV">
 				</div>
 				<div class="flex-s gap-½ ai-first-baseline">
@@ -72,7 +72,7 @@
 				</div>
 			</div>
 
-			<div class="mt-½">* Multiplicateur de poids pour la calcul de la <i>For</i> et des PdV. (par défaut&nbsp;: 1).</div>
+			<div class="mt-½">(1) Multiplicateur de poids pour la calcul de la <i>For</i> et des PdV. (par défaut&nbsp;: 1).</div>
 
 			<div class="mt-1">
 				<label>

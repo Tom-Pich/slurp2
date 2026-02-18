@@ -119,6 +119,9 @@ class CharacterRepository extends AbstractRepository
 		return $items;
 	}
 
+	/**
+	 * @return array of all characters id
+	 */
 	public function getAllCharacters(): array
 	{
 		$query = $this->db->query("SELECT id FROM persos");

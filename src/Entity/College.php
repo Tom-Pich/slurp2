@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use App\Lib\Sorter;
 use App\Repository\CollegeRepository;
-use App\Entity\Spell;
 
 //  id Nom Description
 class College
@@ -21,33 +20,6 @@ class College
 			$this->description = $college["Description"];
 		}
 	}
-
-	/**
-	 * convertToNewFormat – convert character colleges data to new format \
-	 *  and separates colleges from spell
-	 *
-	 * @param  array $spells
-	 * @return array
-	 */
-	/* public static function convertToNewFormat(array $spells): array
-	{
-		$new_format_list = [];
-		// new format : id, niv, modif
-		foreach ($spells as $item) {
-			if (isset($item["Pts"]) && $item["Catégorie"] === "Collège") {
-				$item["id"] = $item["id_RdB"];
-				unset($item["id_RdB"]);
-				$item["niv"] = Skill::cost2niv($item["Pts"], -8, "I");
-				unset($item["Pts"]);
-				$item["modif"] = isset($item["Modif"]) ? (int) $item["Modif"] : 0;
-				unset($item["Modif"]);
-			}
-			$new_format_list[] = $item;
-		}
-		$new_format_list = Sorter::sort($new_format_list, "id");
-		return $new_format_list;
-	} */
-
 	
 	/**
 	 * processColleges – process colleges data from character
@@ -69,6 +41,7 @@ class College
 				$id = $item["id"];
 				$college_entity = $repo->getCollege($id);
 				$item["name"] = $college_entity->name;
+				$item["niv"] = max($item["niv"], -3);
 				$item["points"] = Skill::niv2cost($item["niv"], -8, "I");
 				$item["modif"] = $item["modif"] ?? 0; 
 				$item["score"] = $attributes["Int"] + $item["niv"] + $item["modif"] + $modifiers["Magie"] + $special_traits["magerie"] - 3 + floor($special_traits["mult-memoire-infaillible"]/2);

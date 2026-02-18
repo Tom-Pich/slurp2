@@ -40,6 +40,7 @@ class Character
 	public array $special_traits;
 	public array $avdesav;
 	public array $skills;
+	public array $skill_groups;
 	public array $colleges;
 	public array $spells;
 	public array $powers;
@@ -280,7 +281,7 @@ class Character
 
 		// ––– skills
 		$raw_skills = json_decode($raw_data["Compétences"], true);
-		[$this->skills, $this->points_count["skills"], $this->modifiers] = Skill::processSkills($raw_skills, $this->raw_attributes, $this->attributes, $this->modifiers, $this->special_traits);
+		[$this->skills, $this->skill_groups, $this->points_count["skills"], $this->modifiers] = Skill::processSkills($raw_skills, $this->raw_attributes, $this->attributes, $this->modifiers, $this->special_traits);
 
 		// rounding Vitesse after potential effect of skills
 		$this->attributes["Vitesse"] = round($this->attributes["Vitesse"], 1);
@@ -288,6 +289,7 @@ class Character
 
 		// ––– colleges & spells
 		$raw_colleges_spells = json_decode($raw_data["Sorts"], true);
+		if (!$this->special_traits["magerie"]) $raw_colleges_spells = []; // avoid warning when deleting Magerie without previously deleting colleges
 		[$this->colleges, $this->points_count["colleges"]] = College::processColleges($raw_colleges_spells, $this->attributes, $this->modifiers, $this->special_traits);
 		[$this->spells, $this->points_count["spells"]] = Spell::processSpells($raw_colleges_spells, $this->colleges, $this->special_traits);
 
@@ -299,6 +301,13 @@ class Character
 		$raw_psis = json_decode($raw_data["Psi"], true);
 		[$this->disciplines, $this->points_count["disciplines"]] = Discipline::processDisciplines($raw_psis);
 		[$this->psi, $this->points_count["psi"]] = PsiPower::processPowers($raw_psis, $this->disciplines, $this->attributes);
+
+		/* foreach ($this->psi as $pouvoir) {
+			echo "<pre>";
+			var_dump($pouvoir["data"]->disciplines);
+			echo "</pre>";
+		}
+		die(); */
 
 		// ––– equipment
 		$equipment_repo = new EquipmentRepository;
@@ -504,14 +513,17 @@ class Character
 		// Compétences
 		if (isset($post["Compétences"])) {
 			foreach ($post["Compétences"] as $skill) {
+				$f_skill = [];
 				$f_skill["id"] = (int) $skill["id"];
-				isset($skill["former-niv"]) ? $f_skill["niv"] = (int) $skill["former-niv"] + (int) $skill["score"] - (int) $skill["former-score"] : "";
-				isset($skill["label"]) ? $f_skill["label"] = strip_tags($skill["label"]) : "";
-				$is_deleted_skill = empty($f_skill["label"]) && isset($f_skill["niv"]);
-				if (!$is_deleted_skill) {
-					$character["Compétences"][] = $f_skill;
-				}
-				unset($f_skill); // reset loop variable
+
+				// case not new skill → $skill["former-niv"] is set
+				if (isset($skill["former-niv"])) $f_skill["niv"] = (int) $skill["former-niv"] + (int) $skill["score"] - (int) $skill["former-score"];
+				if (isset($skill["label"])) $f_skill["label"] = trim(strip_tags($skill["label"]));
+				if (isset($skill["min-niv"]) && isset($f_skill["niv"]) && $f_skill["niv"] === (int) $skill["min-niv"]) unset($f_skill["niv"]);
+
+				// case deleted skill
+				$is_deleted_skill = empty($f_skill["label"]) && isset($skill["former-niv"]);
+				if (!$is_deleted_skill) $character["Compétences"][] = $f_skill;
 			}
 		}
 
@@ -523,7 +535,7 @@ class Character
 					$f_college["niv"] = (int) $college["former-niv"] + (int) $college["score"] - (int) $college["former-score"];
 					$f_college["modif"] = TextParser::parseModif($college["name"]);
 				} else {
-					$f_college["niv"] = Skill::cost2niv(1, -8, "I");
+					$f_college["niv"] = -3; // default niv for college;
 					$f_college["modif"] = 0;
 				}
 				if (!$f_college["modif"]) {
@@ -649,7 +661,7 @@ class Character
 					unset($f_pouvoir["modif"]);
 				}
 				$f_pouvoir["catégorie"] = "pouvoir";
-				$f_pouvoir["niv"] > Skill::cost2niv(0, -6, "I") ? $character["Psi"][] = $f_pouvoir : "";
+				$f_pouvoir["niv"] > -6 ? $character["Psi"][] = $f_pouvoir : "";
 			}
 		}
 

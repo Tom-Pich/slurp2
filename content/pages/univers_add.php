@@ -347,7 +347,7 @@ $creatures_repo = new CreatureRepository;
 	<!-- Objets spéciaux & services magiques -->
 	<details>
 		<summary>
-			<h3>Objets spéciaux &amp; services magiques</h3>
+			<h3>Objets spéciaux</h3>
 		</summary>
 
 		<h4>Objets spéciaux</h4>
@@ -366,10 +366,6 @@ $creatures_repo = new CreatureRepository;
 			<li><b>Guronsan :</b> fait récupérer 4 PdF durant 6h, max 2 par jour (5 pc). Un usage régulier peut créer une dépendance.</li>
 			<li><b>Onguent de guérison :</b> +2 aux jets de guérison, fabriqué à partir de plantes, 3 pc par dose. Une dose par jour.</li>
 		</ul>
-
-		<h4>Services magiques</h4>
-		<p><b>Identification de potion :</b> 5 pc</p>
-		<p><b>Lancer de sort (légal) :</b> 5/20/50/150/500+ pc</p>
 
 	</details>
 
@@ -1105,125 +1101,140 @@ $creatures_repo = new CreatureRepository;
 			<?php include "content/components/widget-creature-dmg.php" ?>
 		</details>
 
-
-		<h4>Avantages &amp; Désavantages</h4>
-
-		<!-- Crainte -->
+		<!-- Avantages & Désavantages -->
 		<details>
-			<summary>Crainte</summary>
-			<p>La créature craint ou déteste quelque chose et fera tout pour l’éviter. Ce n’est pas une phobie, aucun jet de <i>Sang-Froid</i> n’est à faire. Si la créature ne peut éviter l’objet de sa crainte, elle subira un malus allant de -1 à -3 à tous ses jets de réussite, selon son degré d’exposition à l’objet de sa <i>Crainte</i>.</p>
+			<summary>
+				<h4>Avantages &amp; Désavantages</h4>
+			</summary>
+			<!-- Crainte -->
+			<details>
+				<summary>Crainte</summary>
+				<p>La créature craint ou déteste quelque chose et fera tout pour l’éviter. Ce n’est pas une phobie, aucun jet de <i>Sang-Froid</i> n’est à faire. Si la créature ne peut éviter l’objet de sa crainte, elle subira un malus allant de -1 à -3 à tous ses jets de réussite, selon son degré d’exposition à l’objet de sa <i>Crainte</i>.</p>
+			</details>
+			<!-- Faiblesse -->
+			<details>
+				<summary>Faiblesse</summary>
+				<p>La créature ne tolère pas une certaine substance ou certaines conditions. L’exposition à l’objet de la <i>Faiblesse</i> a des conséquences diverses (ralentissement, paralysie, nausée, perte de PdF, etc.) mais n’inflige pas de dégâts à la créature, sinon, il s’agit d’une <i>Vulnérabilité</i>.</p>
+			</details>
+			<!-- Vulnérabilité -->
+			<details>
+				<summary>Vulnérabilité</summary>
+				<p>La créature est <i>soit</i> particulièrement sensible à une forme d’attaque, <i>soit</i> susceptible de prendre de dégâts par une substance ou dans des conditions généralement inoffensives.</p>
+				<ul>
+					<li><b>Eau bénite :</b> la créature subit 1d+2 pts de dégâts lorsqu’elle reçoit une dose d’eau bénite</li>
+				</ul>
+			</details>
+			<!-- Immunité -->
+			<details>
+				<summary>Immunité</summary>
+				<p>La créature est complètement insensible à une forme de dégâts ou un type de magie.</p>
+				<ul>
+					<li><b>Armes normales :</b> la créature ne peut être blessée par des attaques physiques, sauf par des armes en argent (qui ne font que la moitié des dégâts normaux) ou magiques. Elle subit tout de même ¼ des dégâts normaux sous forme de <i>Broyage</i> (quelle que soit l’arme) auxquels s’appliquent sa RD. Ce dernier point ne s’applique pas si la créature est immatérielle – pour elles, l’attaque les traverse sans leur faire le moindre mal.</li>
+				</ul>
+				<p><b>Immunité partielle :</b> la créature subit la moitié des dégâts d’un certain type d’attaque.</p>
+			</details>
 		</details>
 
-		<!-- Faiblesse -->
+		<!-- Catégories de créatures -->
 		<details>
-			<summary>Faiblesse</summary>
-			<p>La créature ne tolère pas une certaine substance ou certaines conditions. L’exposition à l’objet de la <i>Faiblesse</i> a des conséquences diverses (ralentissement, paralysie, nausée, perte de PdF, etc.) mais n’inflige pas de dégâts à la créature, sinon, il s’agit d’une <i>Vulnérabilité</i>.</p>
+			<summary>
+				<h4>Catégories de créatures</h4>
+			</summary>
+			<p>Les catégories ci-dessous ne sont pas exclusives les unes des autres.</p>
+			<!-- Extraplanaire -->
+			<details>
+				<summary>Extraplanaire</summary>
+				<p>Ces créatures ne peuvent être tuées ailleurs que sur leur plan d’origine. Si elles se trouvent sur un autre plan et que leur PdV arrivent à 0, elles se dématérialisent et retournent à leur plan d’origine.</p>
+			</details>
+			<!-- Non biologique -->
+			<details>
+				<summary>Non biologique</summary>
+				<p>Ces créatures sont dénuées de métabolisme – morts-vivants, créatures immatérielles, créatures animées par magie, etc. Elles « meurent » à 0 PdV.</p>
+				<p>Elles bénéficient toutes des points suivants :</p>
+				<ul>
+					<li>Elles sont insensibles à la douleur, et ne peuvent jamais être sonnées ou assommées.</li>
+					<li>Elles n’ont pas d’organes vitaux.</li>
+					<li>Elles sont immunisées au poison ainsi qu’aux sorts d’<i>Emprise mentale</i> et de <i>Contrôle physique</i>.</li>
+					<li>Aucun modificateur de dégâts lié à la localisation du coup ne s’applique, sauf pour les morts-vivants « matériels ».</li>
+					<li>Pour les morts-vivants matériels, le seul multiplicateur de dégâts qui s’applique concerne le crâne et vaut ×2, en tenant compte de la résistance de la boîte cranienne.</li>
+				</ul>
+				<p>Dans le widget <i>Effets des blessures</i> de la table de jeu, choisir le type <i>nbh</i> s’il s’agit d’un mort-vivant matériel, et <i>nbx</i> pour les autres.</p>
+			</details>
+			<!-- Squelettique -->
+			<details>
+				<summary>Squelettique</summary>
+				<p>-3 au toucher et dégâts réduits au minimum avec des armes perforantes. Dégâts tranchants divisés par 2.</p>
+			</details>
+			<!-- Végétale -->
+			<details>
+				<summary>Végétale</summary>
+				<p>Mêmes avantages que les créatures « non biologiques », mais elles ne meurent pas à 0 PdV. Elles suivent les seuils standards de PdV pour déterminer si elles meurent ou pas.</p>
+			</details>
+			<!-- Créature d’essence magique -->
+			<details>
+				<summary>Créature d’essence magique</summary>
+				<p>Ces créatures utilisent leurs pouvoirs innés avec un score minimum de 16 et le temps nécessaire à leur déclenchement est divisé par deux. Elles récupèrent 8 PdM par heure, sans condition de repos. Tous les démons sont d'essence magique.</p>
+			</details>
+			<!-- Centauroïde -->
+			<details>
+				<summary>Centauroïde</summary>
+				<p>Les créatures « centauroïdes » ont la moitié supérieur du corps qui est humanoïde, et l’autre moitié qui celle d’un animal quadrupède.</p>
+				<p>Elles ont deux scores de <i>Force</i> et deux scores de PdV, chacun de ces scores est associé à une partie de la créature.</p>
+				<p>Si une des deux moitiés meurt, l’autre meurt également.</p>
+			</details>
 		</details>
 
-		<!-- Vulnérabilité -->
+		<!-- Pouvoirs -->
 		<details>
-			<summary>Vulnérabilité</summary>
-			<p>La créature est <i>soit</i> particulièrement sensible à une forme d’attaque, <i>soit</i> susceptible de prendre de dégâts par une substance ou dans des conditions généralement inoffensives.</p>
-			<ul>
-				<li><b>Eau bénite :</b> la créature subit 1d+2 pts de dégâts lorsqu’elle reçoit une dose d’eau bénite</li>
-			</ul>
-		</details>
+			<summary>
+				<h4>Pouvoirs</h4>
+			</summary>
 
-		<!-- Immunité -->
-		<details>
-			<summary>Immunité</summary>
-			<p>La créature est complètement insensible à une forme de dégâts ou un type de magie.</p>
-			<ul>
-				<li><b>Armes normales :</b> la créature ne peut être blessée par des attaques physiques, sauf par des armes en argent (qui ne font que la moitié des dégâts normaux) ou magiques. Elle subit tout de même ¼ des dégâts normaux sous forme de <i>Broyage</i> (quelle que soit l’arme) auxquels s’appliquent sa RD. Ce dernier point ne s’applique pas si la créature est immatérielle – pour elles, l’attaque les traverse sans leur faire le moindre mal.</li>
-			</ul>
-			<p><b>Immunité partielle :</b> la créature subit la moitié des dégâts d’un certain type d’attaque.</p>
-		</details>
+			<!-- Généralités -->
+			<details>
+				<summary>Points de magie</summary>
+				<p>
+					<b>PdM :</b> une créature ayant des pouvoirs innés dispose d’autant de PdM que nécessaire pour pouvoir lancer ses pouvoirs comme indiqué dans les règles de AD&amp;D. Le nombre <i>minimum</i> de PdM d’une créature correspond à son <i>Int</i><br>
+					Un pouvoir pouvant être utilisé à volonté n’apporte aucun PdM et peut être lancé sans aucune dépense de PdM.<br>
+					Par exemple, un pouvoir niveau II pouvant être lancé 3 fois par jour rapporte 4×3 = 12 PdM.
+				</p>
+				<!-- <ul>
+					<li>Un pouvoir qui peut être lancé <b>une fois par jour</b> apporte autant de PdM que nécessaire pour le lancer.</li>
+					<li>Un pouvoir pouvant être lancé <b>deux fois par jour</b> apporte le même nombre de PdM mais possède en plus l’amélioration <i>demi-coût</i>. </li>
+					<li>Un pouvoir pouvant être lancé <b>trois fois par jour</b> apporte 1,5 fois le nombre de PdM nécessaire pour le lancer et possède l’amélioration <i>demi-coût</i>.</li>
+					<li>Un pouvoir pouvant être utilisé <b>à volonté</b> n’apporte aucun PdM et peut être lancé sans aucune dépense de PdM.</li>
+				</ul> -->
+				<!-- <p>Dans tous les cas, le nombre <i>minimum</i> de PdM d’une créature correspond à son <i>Int</i>.</p> -->
+				<!-- <p><b>Récupération de PdM :</b> 1 PdM par heure, sans condition de repos.</p> -->
+			</details>
 
-		<h4>Catégories de créatures</h4>
+			<!-- Demi-coût -->
+			<!-- <details>
+				<summary>Demi-coût</summary>
+				<p>Lorsqu'une créature possède un pouvoir dont le coût énergétique est réduit de moitié, le coût de maintien est également réduit de moitié, sauf mention contraire.</p>
+			</details> -->
 
-		<p>Les catégories ci-dessous ne sont pas exclusives les unes des autres.</p>
-
-		<!-- Extraplanaire -->
-		<details>
-			<summary>Extraplanaire</summary>
-			<p>Ces créatures ne peuvent être tuées ailleurs que sur leur plan d’origine. Si elles se trouvent sur un autre plan et que leur PdV arrivent à 0, elles se dématérialisent et retournent à leur plan d’origine.</p>
-		</details>
-
-		<!-- Non biologique -->
-		<details>
-			<summary>Non biologique</summary>
-			<p>Ces créatures sont dénuées de métabolisme – morts-vivants, créatures immatérielles, créatures animées par magie, etc. Elles « meurent » à 0 PdV.</p>
-			<p>Elles bénéficient toutes des points suivants :</p>
-			<ul>
-				<li>Elles sont insensibles à la douleur, et ne peuvent jamais être sonnées ou assommées.</li>
-				<li>Elles n’ont pas d’organes vitaux.</li>
-				<li>Elles sont immunisées au poison ainsi qu’aux sorts d’<i>Emprise mentale</i> et de <i>Contrôle physique</i>.</li>
-				<li>Aucun modificateur de dégâts lié à la localisation du coup ne s’applique, sauf pour les morts-vivants « matériels ».</li>
-				<li>Pour les morts-vivants matériels, le seul multiplicateur de dégâts qui s’applique concerne le crâne et vaut ×2, en tenant compte de la résistance de la boîte cranienne.</li>
-			</ul>
-			<p>Dans le widget <i>Effets des blessures</i> de la table de jeu, choisir le type <i>nbh</i> s’il s’agit d’un mort-vivant matériel, et <i>nbx</i> pour les autres.</p>
-		</details>
-
-		<!-- Squelettique -->
-		<details>
-			<summary>Squelettique</summary>
-			<p>-3 au toucher et dégâts réduits au minimum avec des armes perforantes. Dégâts tranchants divisés par 2.</p>
-		</details>
-
-		<!-- Végétale -->
-		<details>
-			<summary>Végétale</summary>
-			<p>Mêmes avantages que les créatures « non biologiques », mais elles ne meurent pas à 0 PdV. Elles suivent les seuils standards de PdV pour déterminer si elles meurent ou pas.</p>
-		</details>
-
-		<!-- Créature d’essence magique -->
-		<details>
-			<summary>Créature d’essence magique</summary>
-			<p>Ces créatures utilisent leurs pouvoirs innés avec un score minimum de 16 et le temps nécessaire à leur déclenchement est divisé par deux. Elles récupèrent 8 PdM par heure, sans condition de repos. Tous les démons sont d'essence magique.</p>
-		</details>
-
-		<!-- Centauroïde -->
-		<details>
-			<summary>Centauroïde</summary>
-			<p>Les créatures « centauroïdes » ont la moitié supérieur du corps qui est humanoïde, et l’autre moitié qui celle d’un animal quadrupède.</p>
-			<p>Elles ont deux scores de <i>Force</i> et deux scores de PdV, chacun de ces scores est associé à une partie de la créature.</p>
-			<p>Si une des deux moitiés meurt, l’autre meurt également.</p>
-		</details>
-
-		<h4>Pouvoirs</h4>
-
-		<!-- Généralités -->
-		<details>
-			<summary>Généralités</summary>
-			<p><b>PdM :</b> une créature ayant des pouvoirs innés dispose d’autant de PdM que nécessaire pour pouvoir lancer ses pouvoirs comme indiqué dans les règles de AD&amp;D.</p>
-			<ul>
-				<li>Un pouvoir qui peut être lancé <b>une fois par jour</b> apporte autant de PdM que nécessaire pour le lancer.</li>
-				<li>Un pouvoir pouvant être lancé <b>deux fois par jour</b> apporte le même nombre de PdM mais possède en plus l’amélioration <i>demi-coût</i>. </li>
-				<li>Un pouvoir pouvant être lancé <b>trois fois par jour</b> apporte 1,5 fois le nombre de PdM nécessaire pour le lancer et possède l’amélioration <i>demi-coût</i>.</li>
-				<li>Un pouvoir pouvant être utilisé à volonté n’apporte aucun PdM et peut être lancé sans aucune dépense de PdM.</li>
-			</ul>
-			<p>Dans tous les cas, le nombre <i>minimum</i> de PdM d’une créature correspond à son <i>Int</i>.</p>
-			<p><b>Récupération de PdM :</b> 1 PdM par heure, sans condition de repos.</p>
-		</details>
-
-		<details>
-			<summary>Demi-coût</summary>
-			<p>Lorsqu'une créature possède un pouvoir dont le coût énergétique est réduit de moitié, le coût de maintien est également réduit de moitié, sauf mention contraire.</p>
-		</details>
-
-		<details>
-			<summary>Drainage d’énergie vitale</summary>
-			<p>Un drainage de 1 niveau entraîne la perte définitive d’un pt de <i>San</i> et de <i>For</i>. Le sort <i>Restauration</i> peut annuler cette perte. Ce drainage ne se fait qu’au toucher, mais sa réussite est automatique (aucune dépense de PdM). Aucun jet de résistance permis.</p>
+			<!-- Drainage d’énergie vitale -->
+			<details>
+				<summary>Drainage d’énergie vitale</summary>
+				<p>Un drainage de 1 niveau entraîne la perte définitive d’un pt de <i>San</i> et de <i>For</i>. Le sort <i>Restauration</i> peut annuler cette perte. Ce drainage ne se fait qu’au toucher, mais sa réussite est automatique (aucune dépense de PdM). Aucun jet de résistance permis.</p>
+			</details>
 		</details>
 	</details>
+
+	<hr style="margin: .75em auto; width: 80%;">
 
 	<!-- Liste des créatures par catégorie -->
 	<?php
 	$categories = $creatures_repo->getDistinctCategories("ADD");
+	$categories_plural_forms = [
+		"Mort-vivant" => "Morts-vivants",
+		"Créature sylvestres" => "Créatures sylvestres",
+	];
 	foreach ($categories as $categorie) { ?>
 		<details>
 			<summary>
-				<h3><?= $categorie === "Mort-vivant" ? "Morts-vivants" : $categorie . "s" ?></h3>
+				<h3><?= $categories_plural_forms[$categorie] ?? $categorie . "s" ?></h3>
 			</summary>
 			<div>
 				<?php

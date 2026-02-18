@@ -23,7 +23,7 @@ use App\Controller\CharacterExportController;
 (new DotEnv(__DIR__ . '/.env'))->load();
 require_once "config.php";
 
-$bdd = new PDO("mysql:host=" . DB_HOST . "; dbname=" . DB_NAME . "; charset=utf8", DB_USER, DB_PASSWORD);
+$bdd = new \PDO("mysql:host=" . DB_HOST . "; dbname=" . DB_NAME . "; charset=utf8", DB_USER, DB_PASSWORD);
 
 // ––– Sessions –––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 session_start();
@@ -31,7 +31,6 @@ LogController::checkSessionValidity();
 
 // ––– $pages_data ––––––––––––––––––––––––––––––––––––––––––––––––––––––
 $pages_data = include "content/pages/_pages-data.php";
-
 
 // Front router –––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 $path = parse_url($_SERVER["REQUEST_URI"])["path"];

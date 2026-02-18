@@ -47,9 +47,9 @@ Aspects pratiques pour aventuriers
 
 			<li><b>Palidam :</b> La cité des fourrures. Ce petit port fortifié installé dans une baie bien protégée abrite le plus grand marché de peaux et de fourrures de Paorn.</li>
 
-			<li><b>Sardam :</b> La capitale provinciale, établie sur une vaste étendue défrichée autrefois connue comme la Clairière de Matar. Au fil des siècles, cette zone s’est considérablement agrandie pour accueillir non seulement la cité elle-même, mais également des terres agricoles fertiles qui s’étendent désormais sur plusieurs kilomètres autour des remparts. La ville est bordée au nord par les marais du Tonnerre. Ses impressionnantes maisons de granit aux façades décorées de bas-reliefs anciens s’alignent le long d’avenues bien planifiées. Le monumental château du gouverneur, avec ses remparts de 30 mètres de haut et ses donjons effilés, surplombe la cité depuis une colline stratégique.</li>
+			<li><b>Sardam :</b> La capitale provinciale, établie sur une vaste étendue défrichée autrefois connue comme la Clairière de Matar. Au fil des siècles, cette zone s’est considérablement agrandie pour accueillir non seulement la cité elle-même, mais également des terres agricoles fertiles qui s’étendent désormais sur plusieurs kilomètres autour des remparts. La ville est bordée au nord par les marais du Tonnerre. Ses impressionnantes maisons de granit aux façades décorées de bas-reliefs anciens s’alignent le long d’avenues bien planifiées. Le monumental château du gouverneur, avec ses remparts de 30 mètres de haut et ses donjons effilés, surplombe la cité depuis une colline stratégique. La ville compte environ 15.000 habitants.</li>
 
-			<li><b><a href="/wiki/paorn/solidam">Solidam</a> :</b> ville garnison, dernier avant-poste humain avant les grandes étendues nordiques et les Sinistérias. La ville, fortifiée par des hautes murailles, compte environ 3000 habitants.</li>
+			<li><b><a href="/wiki/paorn/solidam">Solidam</a> :</b> ville garnison, dernier avant-poste humain avant les grandes étendues nordiques et les Sinistérias. La ville, fortifiée par des hautes murailles, compte environ 3000 habitants, plus une garnison de 800 soldats impériaux stationnée dans la ville.</li>
 
 			<li><b>Voldam :</b> les plus fameux fabricants d’instruments de musique de l’empire sont regroupés dans cette petite ville. Leurs épinettes et luths jouissent d’une réputation flatteuse dans tout Paorn.</li>
 		</ul>
@@ -131,9 +131,29 @@ Aspects pratiques pour aventuriers
 	<h2>Particularités</h2>
 	<p>La région abrite des aurochs, des bisons et des rennes dans les plaines herbeuses. Des animaux sauvages (loups, ours, lions des montagnes, gloutons, etc.) peuvent représenter un danger pour le voyageur isolé. Des tribus de pillards humanoïdes (gobelins et orcs, essentiellement) mettent régulièrement à sac les villages mal défendus.</p>
 
+	<!-- Habitants forêts sordoliennes -->
+	<details>
+		<summary>
+			<h3>Habitants &amp; créatures des forêts sordoliennes</h3>
+		</summary>
+		<p>Les forêts sordoliennes sont dangereuses car habitées par de nombreuses créatures.</p>
+
+		<ul class="flow">
+			<li><b>Animaux :</b> ours bruns, lynx et lynx géants, pumas, loups, loups noirs (dire wolf), worgs, oiseaux géants, cerfs, chevreuils, sanglier, blaireau, mustélidés&hellip;</li>
+			<li><b>Dragons :</b> Les dragons restent, bien sûr, excessivement rares. Cinq espèces peuvent être aperçues en Sordolia : les dragons noirs, verts et rouges, ainsi que les dragons de bronze et d’argent, bien que ces deux derniers ne se montrent quasiment jamais sous leur vraie forme.</li>
+			<li><b>Créatures sylvestres :</b> dryades, farfadet (leprechaun), esprits-follets (sprite), pixies, satyres, licorne (très rares), centaures</li>
+			<li><b>Géants :</b> ettin, géant des collines, verbeeg, géants des bois</li>
+			<li><b>Humanoïdes :</b> elfes des bois, elfes noirs, gobelins, hobgobelins, orcs, orogs, ettercaps, ogres, trolls, trolls d’eau douce, trolls à deux têtes, trolls géants</li>
+			<li><b>Créatures insectoïdes :</b> Ankheg, araignées (énormes et géantes)</li>
+			<li><b>Monstres :</b> bulettes, catoblepas, ours-hiboux, griffons (très rares)</li>
+			<li><b>Autres créatures :</b> poudings bruns, étrangleurs (<a href="https://www.completecompendium.com/appendix/plandang/">plant - choke creeper</a>), sylvaniens (treant)</li>
+		</ul>
+		<!-- <p>Les territoires se situant au-delà du <i>Dernier Rempart</i> comptent encore d’autres créatures, plus adaptées au froid (comme le dragon blanc) ou plus rares encore (sorcières, géants des montagnes&hellip;)</p> -->
+	</details>
+
+	<h3>Dolmens et cercles de pierres</h3>
 	<p>La Sordolia a toujours été un « pays magique », comme en attestent les menhirs, dolmens et cercles de pierre que l’on trouve un peu partout.</p>
 
-	<p>Entre les animaux sauvages, les tribus de pillards humanoïdes et les attaques de mercenaires agissant pour le compte d’un quelconque seigneur, les Sordolains mènent une existence riche en périls.</p>
-
+	<h3>La cité maudite de Valtarno</h3>
 	<p>La cité maudite de Valtarno est réputée hantée par les fantômes assoiffés de sang de ses anciens habitants, ce qui pourrait expliquer le nombre de disparitions qui se produisent régulièrement dans le secteur.</p>
 </section>

@@ -1,0 +1,7 @@
+Bonjour Claude,
+Prends connaissance très attentivement du fichier **C:\Home\www\jdr\scenarii\cfdt-imegie\0-contexte.md** qui te présente le contexte de ma demande et suis les instructions qui y sont mentionnées.
+
+Nous allons travailler l’acte III de l’épisode 5, qui est déjà bien commencé.
+Les actes I et II de l’épisode 5 ont déja été joués et je t’ai mis un bref résumé de ce qu’il s’y est passé.
+Confirme-moi que tu as accès aux fichiers cités et que tu as bien compris ton rôle.
+Ne me fais aucune suggestion pour l’instant, je vais t’envoyer des questions dans un prompt ultérieur.

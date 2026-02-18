@@ -8,24 +8,25 @@
 $articles = [
 
 	"home" => ["title" => "Wiki Paorn", "description" => "Diverses notes à propos de Paorn"],
+	"burgonnie" => ["title" => "Burgonnie",],
+	
 
-	"burgonnie" => ["title" => "Burgonnie", "section" => "Pays &amp; Régions"],
-	"artaille" => ["title" => "Artaille", "parent" => "burgonnie",],
-	"sordolia" => ["title" => "Sordolia", "parent" => "burgonnie",],
-	"lauria" => ["title" => "Lauria", "section" => "Pays &amp; Régions"],
-
-	"duche-elmora" => ["title" => "Duché d’Elmora", "section" => "Lieux de Burgonnie"],
-	"almisie" => ["title" => "Almisie", "section" => "Lieux de Burgonnie"],
-	"imegie" => ["title" => "Imégie", "section" => "Lieux de Burgonnie"],
+	"artaille" => ["title" => "Artaille", "section" => "Artaille",],
+	"duche-elmora" => ["title" => "Duché d’Elmora", "section" => "Artaille"],
+	"imegie" => ["title" => "Imégie", "section" => "Artaille"],
 	"auberge-vieille-tour" => ["title" => "Auberge de la Vieille Tour", "parent" => "imegie", "min-height" => "900px"],
-	"port-goshal" => ["title" => "Port Goshal", "section" => "Lieux de Burgonnie"],
-	"solidam" => ["title" => "Solidam", "section" => "Lieux de Burgonnie"],
-	"stomilie" => ["title" => "Stomilie", "section" => "Lieux de Burgonnie"],
+	"almisie" => ["title" => "Almisie", "section" => "Artaille"],
+	"stomilie" => ["title" => "Stomilie", "section" => "Artaille"],
+	"port-goshal" => ["title" => "Port Goshal", "section" => "Artaille"],
 
-	"mikalas" => [ "title" => "Mikalas", "section" => "Lieux de Lauria" ],
-	"parna" => [ "title" => "Parna", "section" => "Lieux de Lauria", "status" => "🛠️" ],
-	"peponia" => [ "title" => "Péponia", "section" => "Lieux de Lauria" ],
-	"pasganon" => ["title" => "Pasganon", "section" => "Lieux de Lauria"],
+	"sordolia" => ["title" => "Sordolia", "section" => "Sordolia",],
+	"solidam" => ["title" => "Solidam", "section" => "Sordolia"],
+	
+	"lauria" => ["title" => "Lauria", "section" => "Lauria"],
+	"mikalas" => [ "title" => "Mikalas", "section" => "Lauria" ],
+	"parna" => [ "title" => "Parna", "section" => "Lauria", "status" => "🛠️" ],
+	"peponia" => [ "title" => "Péponia", "section" => "Lauria" ],
+	"pasganon" => ["title" => "Pasganon", "section" => "Lauria"],
 
 	"arcania" => ["title" => "Arcania", "section" => "Organisations"],
 

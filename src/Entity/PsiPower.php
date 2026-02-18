@@ -32,7 +32,14 @@ class PsiPower extends AbstractSpell
 		return $disciplines_name;
 	}
 
-	public static function processPowers(array $raw_psi, array $disciplines, array $attributes)
+	/**
+	 * Process psi power after discipline processing
+	 * @param array $raw_psi – raw data from DB
+	 * @param array $disciplines – processed discipline
+	 * @param array $attributes – character attributes
+	 * @return array of [processed powers, power points]
+	 */
+	public static function processPowers(array $raw_psi, array $disciplines, array $attributes): array
 	{
 		$raw_powers = array_filter($raw_psi, fn($x) => $x["catégorie"] === "pouvoir");
 		$repo = new PsiPowerRepository;
@@ -42,16 +49,19 @@ class PsiPower extends AbstractSpell
 		$points = 0;
 
 		foreach ($disciplines as $discipline) {
+			// collect all power data for each discipline
 			$powers_data = array_merge($powers_data, $repo->getPowersByDiscipline($discipline["id"]));
+			// add entry id => niv in $disciplines_id_niv
 			$disciplines_id_niv[$discipline["id"]] = $discipline["niv"];
 		}
 
 		foreach ($powers_data as $power_entity) {
-			$f_power = [];
+			$f_power = []; // final formatted power
+			// get character data for a known power
 			$known_power_data = array_filter($raw_powers, fn($x) => $x["id"] === $power_entity->id);
 			$known_power_data = array_values($known_power_data)[0] ?? [];
 			$f_power["id"] = $power_entity->id;
-			$f_power["niv"] = $known_power_data["niv"] ?? Skill::cost2niv(0, -6, "I");
+			$f_power["niv"] = $known_power_data["niv"] ?? -6; // default niv for unknown power
 			$f_power["modif"] = $known_power_data["modif"] ?? 0;
 			$f_power["points"] = Skill::niv2cost($f_power["niv"], -6, "I");
 
@@ -88,6 +98,8 @@ class PsiPower extends AbstractSpell
 			$powers[] = $f_power;
 			$points += $f_power["points"];
 		}
+
+		//var_dump($powers); die();
 
 		return [$powers, $points];
 	}

@@ -12,8 +12,8 @@ class Spell extends AbstractSpell
 {
 	public array $colleges;
 	public array $collegesName;
-	const improvisation = [12, 14, 17, 20, 25];
-	const niv_modifier = [0, -2, -5, -8, -13];
+	const improvisation = [12, 13, 14, 17, 20]; // [12, 14, 17, 20, 25];
+	const niv_modifier = [0, -1, -2, -5, -8]; // [0, -2, -5, -8, -13];
 	const pdm_cost = [2, 4, 6, 8, 15];
 	const cost_as_power = [5, 10, 15, 25, 40];
 

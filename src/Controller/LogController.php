@@ -18,12 +18,13 @@ class LogController
 	{
 		$login = $post["login"];
 		$password = htmlspecialchars($post["password"] ?? "");
-		$redirect_url = $post["redirect-url"] ?? "/";
+		$redirect_url = $post["redirect-url"] ?? "";
 
 		$user = (new UserRepository)->getUserByLogin($login);
 		$user_is_guest = $user->id === 0;
 		$user_exists = $user !== null;
-		$too_many_attempts = $_SESSION["attempt"] > 3;
+		if (!isset($_SESSION["attempt"])) $_SESSION["attempt"] = 0;
+		$too_many_attempts = $_SESSION["attempt"] > 2;
 		$passwords_match = $user->check_password($password);
 
 		if ($user_is_guest || $user_exists && $passwords_match && !$too_many_attempts) {
@@ -31,7 +32,6 @@ class LogController
 			$_SESSION["id"] = $user->id;
 			$_SESSION["login"] = $user->login;
 			$_SESSION["Statut"] = $user->status;
-			$_SESSION["attempt"] = 0;
 			$_SESSION["token"] = Firewall::generateToken(16);
 			$_SESSION["time"] = time();
 			$_SESSION["user-options"] = $user->options;
@@ -42,7 +42,8 @@ class LogController
 			$_SESSION["token"] = Firewall::generateToken(16);
 		}
 
-		header('Location: ' . $redirect_url);
+		 if($redirect_url) header('Location: ' . $redirect_url);
+
 	}
 
 	public static function generateBrowserFingerprint()

@@ -1,0 +1,157 @@
+[
+    {
+        "id": 147,
+        "niv": 0,
+        "label": "Acteur"
+    },
+    {
+        "id": 74,
+        "niv": -4,
+        "label": "Agronomie"
+    },
+    {
+        "id": 148,
+        "niv": 0,
+        "label": "Baratin (+3)"
+    },
+    {
+        "id": 149,
+        "niv": -4,
+        "label": "Commandement (+3)"
+    },
+    {
+        "id": 80,
+        "niv": -4,
+        "label": "Commerce"
+    },
+    {
+        "id": 121,
+        "niv": -2,
+        "label": "Connaissance de la Lauria"
+    },
+    {
+        "id": 56,
+        "niv": -2,
+        "label": "Connaissance de la Nature"
+    },
+    {
+        "id": 121,
+        "niv": -2,
+        "label": "Connaissance de l’Artaille"
+    },
+    {
+        "id": 22,
+        "niv": 0,
+        "label": "Couteau"
+    },
+    {
+        "id": 82,
+        "niv": -1,
+        "label": "Cuisine"
+    },
+    {
+        "id": 127,
+        "niv": -1,
+        "label": "Culture générale"
+    },
+    {
+        "id": 4,
+        "niv": -4,
+        "label": "Danse"
+    },
+    {
+        "id": 24,
+        "niv": 0,
+        "label": "Épée"
+    },
+    {
+        "id": 59,
+        "niv": -2,
+        "label": "Escalade"
+    },
+    {
+        "id": 26,
+        "niv": 0,
+        "label": "Esquive"
+    },
+    {
+        "id": 181,
+        "niv": 0,
+        "label": "Furtivité"
+    },
+    {
+        "id": 133,
+        "niv": -6,
+        "label": "Herboristerie"
+    },
+    {
+        "id": 97,
+        "niv": 1,
+        "label": "Jeu (dés et cartes)"
+    },
+    {
+        "id": 37,
+        "niv": 0,
+        "label": "Lancer de couteau"
+    },
+    {
+        "id": 47,
+        "niv": 1,
+        "label": "Lancer de sort"
+    },
+    {
+        "id": 195,
+        "niv": 1,
+        "label": "Langue – Burgon"
+    },
+    {
+        "id": 200,
+        "niv": 5,
+        "label": "Langue maternelle – Laurien (+1)"
+    },
+    {
+        "id": 61,
+        "niv": -1,
+        "label": "Monte (cheval)"
+    },
+    {
+        "id": 63,
+        "niv": -2,
+        "label": "Orientation"
+    },
+    {
+        "id": 155,
+        "niv": -2,
+        "label": "Perception empathique"
+    },
+    {
+        "id": 66,
+        "niv": -2,
+        "label": "Pistage"
+    },
+    {
+        "id": 54,
+        "niv": -13,
+        "label": "Premiers secours"
+    },
+    {
+        "id": 156,
+        "niv": -2,
+        "label": "Savoir-vivre (+3)"
+    },
+    {
+        "id": 144,
+        "niv": -2,
+        "label": "Sciences occultes"
+    },
+    {
+        "id": 192,
+        "niv": -1,
+        "label": "Séduction (d’une femme)(+5)"
+    },
+    {
+        "id": 113,
+        "niv": -1,
+        "label": "Vigilance"
+    }
+]

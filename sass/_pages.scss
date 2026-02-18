@@ -142,7 +142,7 @@ body.gestionnaire-mj {
 	main { display: block; }
 	:is(article, section) {width: unset;}
 	:is(article, section):not(:first-of-type) { margin-top: 2em; }
-	.card { border: 1px solid var(--grey-900); border-radius: 1em; padding: var(--dynamic-space-½-1);}
+	.card { border: 1px solid var(--grey-900); border-radius: 1em; padding: var(--ds-½-1);}
 	.single-item-wrapper {
 		grid-template-columns: 4ch 1fr 4ch 5ch 7ch 1fr 1fr;
 		grid-template-areas: "id name container weight location notes notes-mj";
@@ -206,7 +206,7 @@ body.wiki {
 	details:has(> summary > h3) { margin-top: 1.5em; }
 
 	.admin { color: var(--grey-500); }
-	:is(div, p, ul).admin { border: .5px solid var(--grey-700); padding: .5em; }
+	:is(div, p, ul, details).admin { border: .5px solid var(--grey-700); padding: .5em; }
 	ul.admin { padding-left:1.5em; }
 }
 

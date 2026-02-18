@@ -276,26 +276,26 @@ $repo = new SkillRepository;
 			<h3>Traits de caractère</h3>
 		</summary>
 		<p>Les <i>Traits de caractères</i> sont des <i>Désavantages</i> influençant le comportement du personnage, sans effet direct en terme de règles. Le joueur peut d’ailleurs les définir lui-même.</p>
-		<p>Pour être plus qu’un simple <i>Travers</i>, un <i>Trait de caractère</i> doit respecter l’une au moins des conditions suivantes&nbsp;:</p>
+		<p>Pour être plus qu’un simple <i>Travers</i>, un <i>Trait de caractère</i> doit respecter l’une au moins des conditions suivantes :</p>
 		<ul>
-			<li>Mettre parfois en danger le personnage&nbsp;;</li>
-			<li>Impliquer des dépenses régulières et importantes&nbsp;;</li>
-			<li>Limiter sa liberté d’action&nbsp;;</li>
+			<li>Mettre parfois en danger le personnage ;</li>
+			<li>Impliquer des dépenses régulières et importantes ;</li>
+			<li>Limiter sa liberté d’action ;</li>
 			<li>Imposer un malus aux JR au moins dans certaines circonstances.</li>
 		</ul>
 		<p>Certains <i>Traits de caractère</i> ne peuvent donc, par essence, qu’être des <i>Travers</i> (Modeste, Discret...).</p>
 
 		<h4>Traits de caractère vertueux</h4>
-		<p>Les traits de caractères vertueux (<i>Charitable</i>, <i>Honnête</i>, <i>Sens du devoir</i>, <i>Pacifique</i>, <i>Respect de la vérité</i>) constituent un moyen «&nbsp;facile&nbsp;» de gagner des points de personnage si le personnage n’est pas une crapule sans foi ni loi. Pensez-y au moment de sa création.</p>
+		<p>Les traits de caractères vertueux (<i>Charitable</i>, <i>Honnête</i>, <i>Sens du devoir</i>, <i>Pacifique</i>, <i>Respect de la vérité</i>) constituent un moyen « facile » de gagner des points de personnage si le personnage n’est pas une crapule sans foi ni loi. Pensez-y au moment de sa création.</p>
 
 		<h4>Coût des traits de caractères</h4>
-		<p><b>Travers (-1 pt)&nbsp;:</b> tendance légère, qui ne gêne pas le personnage. Compté comme un <i>Travers</i> (voir plus loin) et non comme un <i>Désavantage</i>.</p>
+		<p><b>Travers (-1 pt) :</b> tendance légère, qui ne gêne pas le personnage. Compté comme un <i>Travers</i> (voir plus loin) et non comme un <i>Désavantage</i>.</p>
 
-		<p><b>Marqué (-5 pts)&nbsp;:</b> rapidement remarqué par l’entourage du personnage. -1 aux JR, et/ou coûte jusqu’à 10% d’un salaire de base par mois, et/ou limite relativement la liberté d’action et/ou fait parfois prendre des risques.</p>
+		<p><b>Marqué (-5 pts) :</b> rapidement remarqué par l’entourage du personnage. -1 aux JR, et/ou coûte jusqu’à 10% d’un salaire de base par mois, et/ou limite relativement la liberté d’action et/ou fait parfois prendre des risques.</p>
 
-		<p><b>Fort (-10 pts)&nbsp;:</b> <i>Trait de caractère</i> central du personnage. -2 aux JR, et/ou coûte jusqu’à un salaire moyen par mois, et/ou limite beaucoup la liberté d’action, et/ou fait parfois courir des risques sérieux. -2 pour y résister.</p>
+		<p><b>Fort (-10 pts) :</b> <i>Trait de caractère</i> central du personnage. -2 aux JR, et/ou coûte jusqu’à un salaire moyen par mois, et/ou limite beaucoup la liberté d’action, et/ou fait parfois courir des risques sérieux. -2 pour y résister.</p>
 
-		<p><b>Extrême (-15 pts ou +)&nbsp;:</b> stade pathologique. Mène à terme à la banqueroute et/ou en prison, limite drastiquement la liberté d’action ou fait souvent risquer sa vie. -5 pour y résister. Tous les traits de caractères n’ont pas forcément une version à –15 pts.</p>
+		<p><b>Extrême (-15 pts ou +) :</b> stade pathologique. Mène à terme à la banqueroute et/ou en prison, limite drastiquement la liberté d’action ou fait souvent risquer sa vie. -5 pour y résister. Tous les traits de caractères n’ont pas forcément une version à –15 pts.</p>
 
 		<h4>Limites de Traits de caractères</h4>
 		<p>3 <i>Traits de caractère</i> maximum dont un seul allant jusqu’à -10 pts.</p>
@@ -305,16 +305,16 @@ $repo = new SkillRepository;
 		<summary>
 			<h3>Vivre ses désavantages</h3>
 		</summary>
-		<p>Il y a plusieurs manières possibles de «&nbsp;vivre&nbsp;» ses désavantages mentaux et traits de caractère. Certaines de ces manières permettent d’obtenir des points de personnages supplémentaires.</p>
-		<p>• <b>Par défaut (0 pt)&nbsp;:</b> le personnage les assume pleinement (sans pour autant en être fier).</p>
-		<p>• <b>C’est normal (0 pt)&nbsp;:</b> les personnes n’en souffrant pas sont considérés comme «&nbsp;anormaux&nbsp;» et traités selon le caractère du personnage.</p>
-		<p>• <b>S’efforcer de s’y plier (-5 pts)&nbsp;:</b> s’applique principalement aux désavantages vertueux. Jet de Vol pour s’y conformer. -1 PdE si échec.<br>
+		<p>Il y a plusieurs manières possibles de « vivre » ses désavantages mentaux et traits de caractère. Certaines de ces manières permettent d’obtenir des points de personnages supplémentaires.</p>
+		<p>• <b>Par défaut (0 pt) :</b> le personnage les assume pleinement (sans pour autant en être fier).</p>
+		<p>• <b>C’est normal (0 pt) :</b> les personnes n’en souffrant pas sont considérés comme « anormaux » et traités selon le caractère du personnage.</p>
+		<p>• <b>S’efforcer de s’y plier (-5 pts) :</b> s’applique principalement aux désavantages vertueux. Jet de Vol pour s’y conformer. -1 PdE si échec.<br>
 			Si, par ce biais, PdE &lt; 50% PdE max, le personnage perd le désavantage et doit le racheter au plus vite (il hérite de <i>Malchance</i> en attendant).</p>
-		<p>• <b>Lutter contre eux (-5 pts)&nbsp;:</b> jet de Vol pour ne pas y céder. -1 PdE en cas d’échec.<br>
+		<p>• <b>Lutter contre eux (-5 pts) :</b> jet de Vol pour ne pas y céder. -1 PdE en cas d’échec.<br>
 			Si, par ce biais, PdE &lt; 50% PdE max, le personnage ne cherchera plus à y résister. Le désavantage pourra même s’aggraver.</p>
-		<p>• <b>Ne pas en avoir conscience ou les nier (-5 pts)&nbsp;: </b> variante automatique pour certains désavantages mentaux (<i>Chimère</i> par exemple)
+		<p>• <b>Ne pas en avoir conscience ou les nier (-5 pts) : </b> variante automatique pour certains désavantages mentaux (<i>Chimère</i> par exemple)
 			et dans ce cas, elle n’apporte pas de points supplémentaires. </p>
-		<p>• <b>Tabou (-5 pts)&nbsp;:</b> interdiction/obligation «&nbsp;sacrée&nbsp;» absolue. Le personnage obéit toujours à ce désavantage. Si c’est impossible (sous la contrainte, par exemple), le personnage perd 1 PdE à chaque fois (max 1 PdE tout les 2 jours).</p>
+		<p>• <b>Tabou (-5 pts) :</b> interdiction/obligation « sacrée » absolue. Le personnage obéit toujours à ce désavantage. Si c’est impossible (sous la contrainte, par exemple), le personnage perd 1 PdE à chaque fois (max 1 PdE tout les 2 jours).</p>
 	</details>
 
 	<details>
@@ -331,7 +331,7 @@ $repo = new SkillRepository;
 		</summary>
 		<p><i>Trait de caractère</i> mineur (-1 pt) ne constituant pas un désavantage. À la création, il est possible de prendre jusqu’à 5 travers.<br>
 			Un <i>Travers</i> peut être racheté ou changé, si un événement justifie un léger changement de personnalité.</p>
-		<p><b>Quelques catégories de travers&nbsp;:</b> croyance, objectif mineur, goût ou dégoût, habitude, expression, manière particulière de se vêtir, un amour non partagé, des loisirs particuliers, un divertissement préféré, etc.</p>
+		<p><b>Quelques catégories de travers :</b> croyance, objectif mineur, goût ou dégoût, habitude, expression, manière particulière de se vêtir, un amour non partagé, des loisirs particuliers, un divertissement préféré, etc.</p>
 	</details>
 
 </article>
@@ -355,10 +355,10 @@ $repo = new SkillRepository;
 			<h3>Scores</h3>
 		</summary>
 
-		<p>Chaque compétence est associée à un <i>type</i>, par exemple D-4, DI-2, I(-8)&hellip;</p>
-		<p>Ce type permet de connaître la <b>base</b> de la compétence (D, DI, I&hellip;) et sa <b>difficulté</b> (-2, -4, -6 ou -8).</p>
+		<p>Chaque compétence est associée à un <i>type</i>, par exemple D-4, DI-2, I(-8)…</p>
+		<p>Ce type permet de connaître la <b>base</b> de la compétence (D, DI, I…) et sa <b>difficulté</b> (-2, -4, -6 ou -8).</p>
 
-		<p>La <i>base</i> de la compétence est la moyenne des caractéristiques sur lesquelles elle est basée (ou la valeur de la caractéristique si elle n’est basée que sur une seule caractéristique). Ces caractéristiques sont représentées par leur première lettre&nbsp;: D pour <i>Dex</i>, I pour <i>Int</i>, etc.</p>
+		<p>La <i>base</i> de la compétence est la moyenne des caractéristiques sur lesquelles elle est basée (ou la valeur de la caractéristique si elle n’est basée que sur une seule caractéristique). Ces caractéristiques sont représentées par leur première lettre : D pour <i>Dex</i>, I pour <i>Int</i>, etc.</p>
 
 		<details class="exemple">
 			<summary>Exemple</summary>
@@ -366,20 +366,20 @@ $repo = new SkillRepository;
 			<p>Sa difficulté est de -2.</p>
 		</details>
 
-		<p>Le score d’une compétence dépend&nbsp;:</p>
+		<p>Le score d’une compétence dépend :</p>
 		<ul>
 			<li>de sa base</li>
-			<li>de sa difficulté&nbsp;: <i>facile</i> (-2), <i>moyenne</i> (-4), <i>ardue</i> (-6) ou <i>très ardue</i> (-8)</li>
+			<li>de sa difficulté : <i>facile</i> (-2), <i>moyenne</i> (-4), <i>ardue</i> (-6) ou <i>très ardue</i> (-8)</li>
 			<li>du nombre de points de personnage investis dedans</li>
 		</ul>
 
 		<h4>Score par défaut</h4>
-		<p>En l’absence de points investis dans la compétence, son score correspond à la base + la difficulté (qui est un nombre négatif&nbsp;!). Si la difficulté de la compétence est notée entre parenthèses, aucun score par défaut n’est autorisée.</p>
+		<p>En l’absence de points investis dans la compétence, son score correspond à la base + la difficulté (qui est un nombre négatif !). Si la difficulté de la compétence est notée entre parenthèses, aucun score par défaut n’est autorisé.</p>
 
 		<details class="exemple">
 			<summary>Exemple</summary>
-			<p>La compétence <i>Bricolage</i> est de type DI-2. Si le personnage a 12 en <i>Dex</i> et 11 en <i>Int</i>, sa base vaudra donc (12+11)÷2 = 11,5, arrondi à 11. Sa difficulté est de -2.</p>
-			<p>Son score par défaut vaut donc 11-2 = 9.</p>
+			<p>La compétence <i>Bricolage</i> est de type DI-2. Si le personnage a 12 en <i>Dex</i> et 11 en <i>Int</i>, sa base vaudra donc (12+11)÷2 = 11,5, arrondi à 11.</p>
+			<p>Sa difficulté est de -2, donc son score par défaut vaut 11-2 = 9.</p>
 		</details>
 
 		<h4>Score et points de personnage</h4>
@@ -396,11 +396,11 @@ $repo = new SkillRepository;
 			</tr>
 			<?php for ($niv = -4; $niv <= 10; $niv++): ?>
 				<tr>
-					<td><?= $niv > 0 ? "+" . $niv : $niv ?></td>
-					<td><?= Skill::displaySkillCost($niv, -2) ?></td>
-					<td><?= Skill::displaySkillCost($niv, -4) ?></td>
-					<td><?= Skill::displaySkillCost($niv, -6) ?></td>
-					<td><?= Skill::displaySkillCost($niv, -8) ?></td>
+					<td <?= $niv === 0 ? "class=\"fw-700\"" : "" ?> ><?= $niv > 0 ? "+" . $niv : $niv ?></td>
+					<td <?= $niv === 0 ? "class=\"fw-700\"" : "" ?> ><?= Skill::displaySkillCost($niv, -2) ?></td>
+					<td <?= $niv === 0 ? "class=\"fw-700\"" : "" ?> ><?= Skill::displaySkillCost($niv, -4) ?></td>
+					<td <?= $niv === 0 ? "class=\"fw-700\"" : "" ?> ><?= Skill::displaySkillCost($niv, -6) ?></td>
+					<td <?= $niv === 0 ? "class=\"fw-700\"" : "" ?> ><?= Skill::displaySkillCost($niv, -8) ?></td>
 				</tr>
 			<?php endfor; ?>
 		</table>
@@ -443,7 +443,7 @@ $repo = new SkillRepository;
 
 		<h4>Compétences irrégulières</h4>
 		<p>Certaines compétences ont un niveau minimum. Ça signifie que leur niveau par défaut n’est pas celui donné par leur type, mais celui indiqué dans leur description.</p>
-		<p>Ce niveau par défaut est gratuit, et le coût de progression correspond à celui associé à leur type. Par exemple, la compétence <i>Esquive</i> et de type D(-8). Son niveau minimum est -3. Ce niveau coûte normalement 1 pt de personnage, qui est offert. Pour faire passer cette compétence au niveau 0, qui coûte normalement 8 pts, il faudra payer la différence, c’est-à-dire 7 pts.</p>
+		<p>Ce niveau par défaut est gratuit, et le coût de progression correspond à celui associé à leur type. Par exemple, la compétence <i>Esquive</i> et de type D-8. Son niveau minimum est -3. Ce niveau coûte normalement 1 pt de personnage, qui est offert. Pour faire passer cette compétence au niveau 0, qui coûte normalement 8 pts, il faudra payer la différence, c’est-à-dire 7 pts.</p>
 
 		<?php
 		$special_skills_name_list = [];
@@ -452,7 +452,7 @@ $repo = new SkillRepository;
 			$special_skills_name_list[] = "<i>{$skill->name}</i> (niv. min {$value["min-level"]})";
 		}
 		?>
-		<p><b>Liste des compétences irrégulières&nbsp;:</b> <?= join(", ", $special_skills_name_list) ?></p>
+		<p><b>Liste des compétences irrégulières :</b> <?= join(", ", $special_skills_name_list) ?></p>
 
 	</details>
 
@@ -461,8 +461,8 @@ $repo = new SkillRepository;
 		<summary>
 			<h3>Spécialisations</h3>
 		</summary>
-		<p><b>Spécialisation obligatoire&nbsp;:</b> compétences repérées par «&nbsp;(type)&nbsp;». Chaque spécialité est une compétence distincte.</p>
-		<p><b>Spécialisation optionnelle&nbsp;:</b> 1 pt par +1. Max 5 pts. Pas plus de pts dans la spécialité que dans la compétence de base.</p>
+		<p><b>Spécialisation obligatoire :</b> compétences repérées par « (type) ». Chaque spécialité est une compétence distincte.</p>
+		<p><b>Spécialisation optionnelle :</b> 1 pt par +1. Max 5 pts. Pas plus de pts dans la spécialité que dans la compétence de base.</p>
 	</details>
 
 	<!-- Compétence de background -->
@@ -470,8 +470,10 @@ $repo = new SkillRepository;
 		<summary>
 			<h3>Compétence de background</h3>
 		</summary>
-		<p>Compétence très peu utile dans le jeu mais nécessaire d’après l’historique du personnage (décision du MJ).<br>
-			Coût divisé par deux (y compris pour une spécialité optionnelle).</p>
+		<p>
+			Compétence très peu utile dans le jeu mais nécessaire d’après l’historique du personnage (décision du MJ).<br>
+			Coût divisé par deux (y compris pour une spécialité optionnelle).
+		</p>
 	</details>
 
 	<!-- Compétences proches -->
@@ -481,11 +483,15 @@ $repo = new SkillRepository;
 		</summary>
 		<p>Certaines compétences sont proches les unes des autres. En maîtriser une facilite la maîtrise des autres.</p>
 
-		<p>Toutes les compétences appartenant à un même groupe reçoivent un bonus de points de personnage égal au quart des points investis dans toutes les autres compétences du même groupe.</p>
+		<p>Lorsque plusieurs compétences appartiennent à un même groupe (voir la liste en fin de pararaphe), il faut déterminer quelle est la compétence <i>principale</i> du groupe (celle que le personnage maîtrise le mieux). Les autres sont appelées compétences <i>secondaires</i>.</p>
 
-		<p>Une compétence peut appartenir à deux groupes différents. Dans ce cas, elle reçoit des points de bonus de chacun des groupes.</p>
+		<h4>Compétence principale</h4>
+		<p>Il s’agit de la compétence maîtrisée au <i>niveau</i> le plus élevé (hors bonus). En cas d’égalité, sélectionner la compétence dont la plus complexe, c’est-à-dire celle dont le malus de difficulté est le plus élevé.</p>
 
-		<p>Ces calculs sont gérés automatiquement par la fiche de personnage.</p>
+		<h4>Compétences secondaires</h4>
+		<p>Les autres compétences du groupe auront un niveau par défaut égal au niveau de la compétence principale, -2 si leur complexité est égale ou moindre, -3 dans le cas contraire.</p>
+		<p>Il est possible d’améliorer une compétence secondaire en payant la différence de coût entre son niveau par défaut et son niveau souhaité. Cela peut avoir comme effet de permuter son rôle avec la compétence principale.</p>
+		<p>La fiche de personnage gère cet aspect automatiquement.</p>
 
 		<h4>Groupes de compétences proches</h4>
 
@@ -507,7 +513,7 @@ $repo = new SkillRepository;
 				$skills_name_list[] = $skill->name;
 			}
 		?>
-			<p><b><?= $readable_group_names[$group] ?? $group ?>&nbsp;:</b> <?= join(", ", $skills_name_list) ?></p>
+			<p><b><?= $readable_group_names[$group] ?? $group ?> :</b> <?= join(", ", $skills_name_list) ?></p>
 
 		<?php } ?>
 
@@ -515,11 +521,7 @@ $repo = new SkillRepository;
 
 		<details class="exemple">
 			<summary>Exemple</summary>
-			<p>Investir 13 pts dans la compétence <i>Épée</i> (<i>Dex</i>+3) permet aux autres compétences proches d’obtenir un bonus en points de 13÷4 = 3,25 pts (arrondi à 3 pts).</p>
-			<p>
-				Par conséquent, le personnage aura 3 pts gratuits dans sa compétence <i>Hache/Masse</i>, ce qui lui permettra de l’avoir à <i>Dex</i>.<br>
-				En ajoutant 1 pt supplémentaire dans cette compétence, ça fera 4 points au total, soit un score de <i>Dex</i>+1.
-			</p>
+			<p>Un personnage possède la compétence <i>Épée</i> à +3. Il aura ainsi gratuitement <i>Couteau</i> à +1, <i>Hache/Masse</i> à +1 et <i>Fléau</i> à +0 – car cette dernière compétence a une difficulté de -6.</p>
 		</details>
 	</details>
 

@@ -1,7 +1,7 @@
 <h1>L’encyclopédie de Paorn</h1>
 
 <div class="wiki-right-element border p-1">
-	<p>Les articles marqués du symbole 🛠️ sont en construction. Leur contenu peut encore profondément changer.</p>
+	<p>Les articles marqués du symbole 🛠️ ne sont qu’à l’état d’ébauche. Leur contenu peut encore profondément changer.</p>
 </div>
 
 <p class="italic">

@@ -1,0 +1,39 @@
+[
+    {
+        "id": 1,
+        "niv": 4,
+        "mult": 0.75,
+        "notes": "Déclenchement involontaire en situation de stress sur 10 ou moins",
+        "catégorie": "discipline"
+    },
+    {
+        "id": 1,
+        "niv": 0,
+        "catégorie": "pouvoir"
+    },
+    {
+        "id": 2,
+        "niv": 1,
+        "catégorie": "pouvoir"
+    },
+    {
+        "id": 3,
+        "niv": 0,
+        "catégorie": "pouvoir"
+    },
+    {
+        "id": 4,
+        "niv": 0,
+        "catégorie": "pouvoir"
+    },
+    {
+        "id": 5,
+        "niv": 0,
+        "catégorie": "pouvoir"
+    },
+    {
+        "id": 6,
+        "niv": 1,
+        "catégorie": "pouvoir"
+    }
+]

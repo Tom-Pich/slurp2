@@ -6,12 +6,14 @@
 		<summary>
 			<h3>Densité de population</h3>
 		</summary>
-		<p>À l'échelle d'un pays, cette densité varie entre 10 et 50 habitants/km² selon l’hospitalité des terres et du climat.<br>
-			France, XIV<sup>e</sup> siècle&nbsp;: environ 40 habitants/km²</p>
+		<p>
+			À l'échelle d'un pays, cette densité varie entre 10 et 50 habitants/km² selon l’hospitalité des terres et du climat.<br>
+			France, XIV<sup>e</sup> siècle : environ 40 habitants/km²
+		</p>
 
-		<p>Environ 90&nbsp;% de la population vit dans des villages et hameaux.</p>
+		<p>Environ 90 % de la population vit dans des villages et hameaux.</p>
 
-		<p>Distance moyenne entre chaque agglomération selon le niveau de population de la région. Un niveau de population épars correspond à une zone peu passante du haut Moyen-Âge, tandis qu’un niveau de population dense correspond à une région prospère à la fin du moyen-âge.</p>
+		<p>Distance moyenne entre chaque agglomération selon le niveau de population de la région. Un niveau de population épars correspond à une zone peu passante du haut Moyen Âge, tandis qu’un niveau de population dense correspond à une région prospère à la fin du Moyen Âge.</p>
 		<table>
 			<tr>
 				<th>Densité</th>
@@ -21,22 +23,23 @@
 			</tr>
 			<tr>
 				<td>Éparse</td>
-				<td>30-50 km</td>
-				<td>130-20 km</td>
+				<td>30-50</td>
+				<td>130-200</td>
 				<td>-</td>
 			</tr>
 			<tr>
 				<td>Moyenne</td>
-				<td>10-30 km</td>
-				<td>50-100 km</td>
-				<td>130-200 km</td>
+				<td>10-30</td>
+				<td>50-100</td>
+				<td>130-200</td>
 			</tr>
 			<tr>
 				<td>Dense</td>
-				<td>8-20 km</td>
-				<td>30-50 km</td>
-				<td>60-110 km</td>
+				<td>8-20</td>
+				<td>30-50</td>
+				<td>60-110</td>
 			</tr>
+			<caption>Espacement des centres d’habitation (km)</caption>
 		</table>
 	</details>
 
@@ -44,17 +47,17 @@
 		<summary>
 			<h3>Taille des agglomérations</h3>
 		</summary>
-		<p><b>Densité</b> de population dans une zone urbaine&nbsp;: 150 à 160 habitants par hectare.</p>
+		<p><b>Densité</b> de population dans une zone urbaine : 150 à 160 habitants par hectare.</p>
 
 		<p>Les plus grandes villes font entre 25000 et 100000 habitants.<br>
-			Paris au XIII<sup>e</sup> siècle (plus grande ville d'Occident)&nbsp;: 200 000 habitants.</p>
+			Paris au XIII<sup>e</sup> siècle (plus grande ville d'Occident) : 200 000 habitants.</p>
 
 		<h4>Zone agricole</h4>
-		<p>Zone d'exploitation agricole autour des agglomérations&nbsp;:</p>
+		<p>Zone d'exploitation agricole autour des agglomérations :</p>
 		<ul>
-			<li>Diamètre agricole d’un village&nbsp;: de 3 à 8 km</li>
-			<li>Diamètre agricole d’un bourg&nbsp;: 3 à 15 km</li>
-			<li>Diamètre agricole d’une ville&nbsp;: 8 à 50 km</li>
+			<li>Diamètre agricole d’un village : de 3 à 8 km</li>
+			<li>Diamètre agricole d’un bourg : 3 à 15 km</li>
+			<li>Diamètre agricole d’une ville : 8 à 50 km</li>
 		</ul>
 	</details>
 
@@ -261,29 +264,29 @@
 		</summary>
 
 		<p>
-			<b>Agent de l’ordre (garde, milicien, etc.)&nbsp;:</b> Chargé de maintenir l'ordre et la sécurité<br>
-			<b>Almoinier&nbsp;:</b> Responsable de la distribution des aumônes et de l'assistance aux pauvres<br>
-			<b>Bailli&nbsp;:</b> Représentant du pouvoir royal dans une localité, responsable de l'administration et de la justice<br>
-			<b>Capitaine de la garde&nbsp;:</b> Responsable de la supervision et du commandement des gardes et des soldats<br>
-			<b>Chambellan&nbsp;:</b> Responsable de la gestion de la chambre du seigneur, souvent chargé des finances et des affaires domestiques<br>
-			<b>Chancelier&nbsp;:</b> Responsable de la rédaction et de la conservation des documents officiels et des archives<br>
-			<b>Collecteur d'impôts ou de taxes&nbsp;:</b> Chargé de percevoir les impôts et les taxes pour le seigneur ou l'autorité locale<br>
-			<b>Connétable&nbsp;:</b> Officier militaire de haut rang, responsable de l'armée et de la défense du territoire<br>
-			<b>Écuyer&nbsp;:</b> Jeune noble en formation pour devenir chevalier, souvent au service d'un seigneur<br>
-			<b>Greffier&nbsp;:</b> Responsable de la tenue des registres et des documents judiciaires.<br>
-			<b>Hérault / Annonceur public&nbsp;:</b> Chargé de faire des annonces publiques et de transmettre les messages officiels<br>
-			<b>Intendant&nbsp;:</b> Responsable de la gestion des domaines et des finances du seigneur<br>
-			<b>Juge&nbsp;:</b> Responsable de l'administration de la justice et de la résolution des litiges<br>
-			<b>Maréchal&nbsp;:</b> Officier militaire responsable de la cavalerie et de l'organisation des armées<br>
-			<b>Messager&nbsp;:</b> Responsable de la transmission des messages entre différentes parties<br>
-			<b>Notaire&nbsp;:</b> Responsable de la rédaction et de la conservation des actes juridiques et des contrats<br>
-			<b>Officier&nbsp;:</b> Chargé d’une mission publique particulière par le roi ou le seigneur<br>
-			<b>Prévôt&nbsp;:</b> Officier chargé de la police et de la justice dans une ville ou une région<br>
-			<b>Procureur&nbsp;:</b> Représentant de l'accusation dans les affaires judiciaires.
-			<b>Sénéchal&nbsp;:</b> Responsable de l'administration des domaines seigneuriaux et de la justice<br>
-			<b>Sergent de justice (huissier)&nbsp;:</b> Chargé de l'exécution des décisions de justice et de la convocation des parties devant les tribunaux<br>
-			<b>Trésorier&nbsp;:</b> Responsable de la gestion des finances et des trésors du seigneur ou de l'autorité locale<br>
-			<b>Viguier&nbsp;:</b> Officier de justice et d'administration dans certaines régions, similaire au bailli
+			<b>Agent de l’ordre (garde, milicien, etc.) :</b> Chargé de maintenir l'ordre et la sécurité<br>
+			<b>Almoinier :</b> Responsable de la distribution des aumônes et de l'assistance aux pauvres<br>
+			<b>Bailli :</b> Représentant du pouvoir royal dans une localité, responsable de l'administration et de la justice<br>
+			<b>Capitaine de la garde :</b> Responsable de la supervision et du commandement des gardes et des soldats<br>
+			<b>Chambellan :</b> Responsable de la gestion de la chambre du seigneur, souvent chargé des finances et des affaires domestiques<br>
+			<b>Chancelier :</b> Responsable de la rédaction et de la conservation des documents officiels et des archives<br>
+			<b>Collecteur d'impôts ou de taxes :</b> Chargé de percevoir les impôts et les taxes pour le seigneur ou l'autorité locale<br>
+			<b>Connétable :</b> Officier militaire de haut rang, responsable de l'armée et de la défense du territoire<br>
+			<b>Écuyer :</b> Jeune noble en formation pour devenir chevalier, souvent au service d'un seigneur<br>
+			<b>Greffier :</b> Responsable de la tenue des registres et des documents judiciaires.<br>
+			<b>Hérault / Annonceur public :</b> Chargé de faire des annonces publiques et de transmettre les messages officiels<br>
+			<b>Intendant :</b> Responsable de la gestion des domaines et des finances du seigneur<br>
+			<b>Juge :</b> Responsable de l'administration de la justice et de la résolution des litiges<br>
+			<b>Maréchal :</b> Officier militaire responsable de la cavalerie et de l'organisation des armées<br>
+			<b>Messager :</b> Responsable de la transmission des messages entre différentes parties<br>
+			<b>Notaire :</b> Responsable de la rédaction et de la conservation des actes juridiques et des contrats<br>
+			<b>Officier :</b> Chargé d’une mission publique particulière par le roi ou le seigneur<br>
+			<b>Prévôt :</b> Officier chargé de la police et de la justice dans une ville ou une région<br>
+			<b>Procureur :</b> Représentant de l'accusation dans les affaires judiciaires.
+			<b>Sénéchal :</b> Responsable de l'administration des domaines seigneuriaux et de la justice<br>
+			<b>Sergent de justice (huissier) :</b> Chargé de l'exécution des décisions de justice et de la convocation des parties devant les tribunaux<br>
+			<b>Trésorier :</b> Responsable de la gestion des finances et des trésors du seigneur ou de l'autorité locale<br>
+			<b>Viguier :</b> Officier de justice et d'administration dans certaines régions, similaire au bailli
 		</p>
 	</details>
 
@@ -317,50 +320,51 @@
 <article> <!-- Marchandises -->
 	<h2>Marchandises &amp; Ressources</h2>
 
+	<!-- Aliments & boissons -->
 	<details>
 		<summary>
 			<h3>Aliments &amp; boissons</h3>
 		</summary>
 		<p>
-			<b>Céréales&nbsp;:</b> blé, orge, avoine, seigle, millet, épeautre<br>
-			<b>Légumes&nbsp;:</b> navets, chou, céleri, carottes, fèves, pois, haricots, lentille, ail, oignon, betteraves, épinards, poireaux, radis. <br>
-			<b>Fruits&nbsp;:</b> raisins, pommes, châtaignes, poires, coing, pêches, abricots, prune, cerises, mûres, fraises, noisettes, noix.<br>
-			<b>Sel &amp; épices&nbsp;:</b> sel, poivre, gingembre, cannelle, clou de girofle, safran, moutarde, anis, graines de coriandre, muscade.<br>
-			<b>Herbes aromatiques&nbsp;;</b> persil, sauge, romarin, thym, marjolaine, menthe, origan, sarriette, aneth, laurier, ciboulette, fenouil, coriandre<br>
-			<b>Produits animaux&nbsp;:</b> œufs, fromages, beurre, lait (vache, brebis, chèvre), crème, babeurre<br>
-			<b>Viandes&nbsp;:</b> bœuf, mouton, porc, chèvre, veau, cheval, lapin<br>
-			<b>Volailles&nbsp;:</b> poulet, canard, oie, dinde, caille, cygne, pigeon, pintade<br>
-			<b>Charcuterie&nbsp;:</b> saucisses, boudin, pâté, jambon, lard, viande séchée, rillette, terrine<br>
-			<b>Gibier&nbsp;:</b> cerf, daim, biche, sanglier, faisan, perdrix, coq de bruyère, lièvre, lapin.<br>
-			<b>Poissons &amp; fruits de mers&nbsp;:</b> hareng, morue, truite, carpe, anguille, saumon, huîtres, moules, crevettes<br>
-			<b>Condiments&nbsp;:</b> vinaigre, huile, miel, moutarde<br>
-			<b>Alcools&nbsp;:</b> vin, hydromel, liqueur, eau-de-vie, cidre, bière, hypocras (vin épicé), poiré (cidre de poire)
+			<b>Céréales :</b> blé, orge, avoine, seigle, millet, épeautre<br>
+			<b>Légumes :</b> navets, chou, céleri, carottes, fèves, pois, haricots, lentille, ail, oignon, betteraves, épinards, poireaux, radis. <br>
+			<b>Fruits :</b> raisins, pommes, châtaignes, poires, coing, pêches, abricots, prune, cerises, mûres, fraises, noisettes, noix.<br>
+			<b>Sel &amp; épices :</b> sel, poivre, gingembre, cannelle, clou de girofle, safran, moutarde, anis, graines de coriandre, muscade.<br>
+			<b>Herbes aromatiques ;</b> persil, sauge, romarin, thym, marjolaine, menthe, origan, sarriette, aneth, laurier, ciboulette, fenouil, coriandre<br>
+			<b>Produits animaux :</b> œufs, fromages, beurre, lait (vache, brebis, chèvre), crème, babeurre<br>
+			<b>Viandes :</b> bœuf, mouton, porc, chèvre, veau, cheval, lapin<br>
+			<b>Volailles :</b> poulet, canard, oie, dinde, caille, cygne, pigeon, pintade<br>
+			<b>Charcuterie :</b> saucisses, boudin, pâté, jambon, lard, viande séchée, rillette, terrine<br>
+			<b>Gibier :</b> cerf, daim, biche, sanglier, faisan, perdrix, coq de bruyère, lièvre, lapin.<br>
+			<b>Poissons &amp; fruits de mers :</b> hareng, morue, truite, carpe, anguille, saumon, huîtres, moules, crevettes<br>
+			<b>Condiments :</b> vinaigre, huile, miel, moutarde<br>
+			<b>Alcools :</b> vin, hydromel, liqueur, eau-de-vie, cidre, bière, hypocras (vin épicé), poiré (cidre de poire)
 		</p>
 	</details>
 
-
+	<!-- Biens de consommation courante -->
 	<details>
 		<summary>
 			<h3>Biens de consommation courante</h3>
 		</summary>
 		<p>
-			<b>Vaisselle&nbsp;:</b> carafe, assiette, bol, cuillère, gobelet, pichet, plat, en terre cuite, en étain, en argent, en cuivre, en bois, en verre<br>
-			<b>Ustensiles de cuisine&nbsp;:</b> poêle, marmite, chaudron, louche, couteau, pots, mortier et pilon, écumoire, spatule<br>
-			<b>Artisanat&nbsp;:</b> panier, sac, bourse, besace, couverture, drap, tapis, tonneaux, bassine, seau, pots, corde, chaîne, étui, jouet, instrument de musique<br>
-			<b>Éclairage&nbsp;:</b> chandelle, bougie, suif, cire, huile, lampe, briquet, torche, bougeoir, lanternes, chandeliers<br>
-			<b>Outils&nbsp;:</b> marteau, maillet, ciseau(x), scie, rabot, clous, pointes, pitons, pierre à affûter, pinces, tenailles, huile à lubrifier, chiffons, ficelle, lanières, poinçon, corde à nœuds, craie, faux, faucille, houe, lame d'araire ou de charue, meule de pierre, hache, burin, truelle<br>
-			<b>Confection&nbsp;:</b> soie, velours, chanvre, laine, lin, fourrure, cuir, feutre, dentelle, matériel de couture, de tissage, de filage de brodage, teinture, fil, aiguille<br>
-			<b>Vêtements&nbsp;:</b> chemise, robe, jupe, gilet, cape, tunique, surcot, pantalons (chausse, braies…), chaussures, chaussettes, manteau, gants<br>
-			<b>Accessoires vestimentaires&nbsp;:</b> ceinture, tablier, foulard, châle, écharpe, gants, coiffe, chapeau, capuche, ruban, épingle, broche, ceinture à bourse, éperons<br>
-			<b>Matériel pour fumer&nbsp;:</b> tabac ou autres plantes, pipes, tabatière, briquet à sliex<br>
-			<b>Lecture &amp; écriture&nbsp;:</b> livre, parchemin, encre, papier, plume, cire, sceau, cachet de cire, stylet<br>
-			<b>Bijoux&nbsp;:</b> anneau, bracelet, boucles d'oreille, pectoral, chevil&shy;lère, broche, gorgerin, fibule, collier, diadème, pendentif<br>
-			<b>Objets religieux&nbsp;:</b> statuette, icône, symbole religieux, encens, encensoir, chapelet, livre de prières<br>
-			<b>Toilette &amp; hygiène personnelle&nbsp;:</b> miroir, peigne, savon, brosse, gant de crin, onglier, bain de siège, parfum<br>
-			<b>Mobilier&nbsp;</b> armoire, bahut, crédence, siège, table, coffre, lit, banc, étagère<br>
-			<b>Harnachement&nbsp;:</b> selle, couverture de selle, brides, sac à nourriture, rênes, fouet, entrave, harnais, barde, étries, mors, licol.<br>
-			<b>Système de fermeture&nbsp;:</b> cadenas, clenche, charnière, gond, loquet, serrure, verrou, targette, boulon<br>
-			<b>Herbes médicinales et remèdes&nbsp;:</b> baume, onguent, tisane.
+			<b>Vaisselle :</b> carafe, assiette, bol, cuillère, gobelet, pichet, plat, en terre cuite, en étain, en argent, en cuivre, en bois, en verre<br>
+			<b>Ustensiles de cuisine :</b> poêle, marmite, chaudron, louche, couteau, pots, mortier et pilon, écumoire, spatule<br>
+			<b>Artisanat :</b> panier, sac, bourse, besace, couverture, drap, tapis, tonneaux, bassine, seau, pots, corde, chaîne, étui, jouet, instrument de musique<br>
+			<b>Éclairage :</b> chandelle, bougie, suif, cire, huile, lampe, briquet, torche, bougeoir, lanternes, chandeliers<br>
+			<b>Outils :</b> marteau, maillet, ciseau(x), scie, rabot, clous, pointes, pitons, pierre à affûter, pinces, tenailles, huile à lubrifier, chiffons, ficelle, lanières, poinçon, corde à nœuds, craie, faux, faucille, houe, lame d'araire ou de charue, meule de pierre, hache, burin, truelle<br>
+			<b>Confection :</b> soie, velours, chanvre, laine, lin, fourrure, cuir, feutre, dentelle, matériel de couture, de tissage, de filage de brodage, teinture, fil, aiguille<br>
+			<b>Vêtements :</b> chemise, robe, jupe, gilet, cape, tunique, surcot, pantalons (chausse, braies…), chaussures, chaussettes, manteau, gants<br>
+			<b>Accessoires vestimentaires :</b> ceinture, tablier, foulard, châle, écharpe, gants, coiffe, chapeau, capuche, ruban, épingle, broche, ceinture à bourse, éperons<br>
+			<b>Matériel pour fumer :</b> tabac ou autres plantes, pipes, tabatière, briquet à sliex<br>
+			<b>Lecture &amp; écriture :</b> livre, parchemin, encre, papier, plume, cire, sceau, cachet de cire, stylet<br>
+			<b>Bijoux :</b> anneau, bracelet, boucles d'oreille, pectoral, chevil&shy;lère, broche, gorgerin, fibule, collier, diadème, pendentif<br>
+			<b>Objets religieux :</b> statuette, icône, symbole religieux, encens, encensoir, chapelet, livre de prières<br>
+			<b>Toilette &amp; hygiène personnelle :</b> miroir, peigne, savon, brosse, gant de crin, onglier, bain de siège, parfum<br>
+			<b>Mobilier </b> armoire, bahut, crédence, siège, table, coffre, lit, banc, étagère<br>
+			<b>Harnachement :</b> selle, couverture de selle, brides, sac à nourriture, rênes, fouet, entrave, harnais, barde, étries, mors, licol.<br>
+			<b>Système de fermeture :</b> cadenas, clenche, charnière, gond, loquet, serrure, verrou, targette, boulon<br>
+			<b>Herbes médicinales et remèdes :</b> baume, onguent, tisane.
 		</p>
 	</details>
 
@@ -369,7 +373,7 @@
 			<h3>Ressources végétales</h3>
 		</summary>
 		<p>
-			<b>Cultures</b> (légumes, céréales, fruits, condiments, herbes aromatiques)<br>
+			<b>Cultures</b> (légumes, légumineuses, céréales, fruits, condiments, herbes aromatiques)<br>
 			<b>Produits de la forêt</b> (glands, faînes, merises, pommes sauvages, nèfles, aubépine, cynorhodons, noix, noisettes, chataîgnes, prunelles, framboises, mures, fraises, sorbes, cornouilles, plantes médicinales et aromatique).<br>
 			<b>Bois</b> (chauffage, construction, ébénisterie, vannerie, écorce pour tannerie)<br>
 			<b>Espèces rares</b> (champignons, plantes médicinales)<br>
@@ -381,32 +385,37 @@
 		<summary>
 			<h3>Ressources animales</h3>
 		</summary>
-		Élevage (viande, cuir, graisse, fourrure, lait, miel, œufs)<br>
-		Chasse (même matières premières)<br>
-		Pêche
+		<p>
+			Élevage (viande, cuir, graisse, fourrure, lait, miel, œufs)<br>
+			Chasse (même matières premières)<br>
+			Pêche
+		</p>
 	</details>
 
 	<details>
 		<summary>
 			<h3>Ressources minérales &amp; métaux</h3>
 		</summary>
-		Sel<br>
-		Pierre (pierre de taille, argile, boues)<br>
-		Métaux (cuivre, fer, plomb, étain, mercure, or, argent, (mithrill))<br>
-		Autres minéraux (sels, cristaux, pierres précieuses)
+		<p>
+			Sel<br>
+			Pierre (pierre de taille, argile, boues)<br>
+			Métaux (cuivre, fer, plomb, étain, mercure, or, argent, (mithrill))<br>
+			Autres minéraux (sels, cristaux, pierres précieuses)
+		</p>
 	</details>
 </article>
 
 <article> <!-- Paysans & agriculture -->
 	<h2>Paysans &amp; agriculture</h2>
 
+	<!-- Travaux de saisons -->
 	<details>
 		<summary>
 			<h3>Travaux de saisons</h3>
 		</summary>
 		<p>La majorité de la main-d’œuvre est louée. Manouvriers, gens de peine, sont embauchés suivant les travaux et les saisons (laboureurs, faucheurs, moissonneurs, bergers, bûcherons).</p>
 		<h4>Hiver</h4>
-		<p>La terre gelée est au repos et les paysans se font bûcherons (le bois sert à tout&nbsp;: construction, cuisine, chauffage, fabrication de charrettes et outils) ou artisans (vannerie, tannerie - chaussures, harnais).</p>
+		<p>La terre gelée est au repos et les paysans se font bûcherons (le bois sert à tout : construction, cuisine, chauffage, fabrication de charrettes et outils) ou artisans (vannerie, tannerie - chaussures, harnais).</p>
 		<h4>Printemps</h4>
 		<p>Labours (dès que la terre est dégelée) et semailles. Tailler la vigne.<br>
 			Le printemps est la période des disettes lorsque la moisson précédente a été maigre et que la nouvelle récolte tarde à venir.<br>
@@ -416,23 +425,67 @@
 			La récolte des épis est déposée sur l’aire (terrain plat où l’on bat le grain) puis battue au fléau ou piétinée par les mulets. Pendant les mois suivants, le grain sera moulu en fonction des besoins.</p>
 		<h4>Automne</h4>
 		<p>En octobre, la terre est travaillée à nouveau pour recevoir les semailles d’hiver qui germeront au printemps suivant. Temps des vendanges.<br>
-			La forêt donne ses fruits&nbsp;: miel, glands pour les porcs, noisettes, châtaignes (farine pour les plus pauvres). Dans les clairières on fabrique le charbon de bois.</p>
+			La forêt donne ses fruits : miel, glands pour les porcs, noisettes, châtaignes (farine pour les plus pauvres). Dans les clairières on fabrique le charbon de bois.</p>
 	</details>
 
+	<!-- Quelques chiffres -->
+	<details>
+		<summary>
+			<h3>Quelques chiffres</h3>
+		</summary>
+
+		<h4>Surfaces cultivées</h4>
+		<p>Un paysan et sa famille pouvaient généralement cultiver entre 4 et 10 hectares, avec une moyenne d'environ 6-8 hectares pour une exploitation familiale standard.</p>
+		<p>Cette surface dépendait de :</p>
+		<ul>
+			<li>La qualité du sol</li>
+			<li>Les outils disponibles (araire simple ou charrue plus efficace)</li>
+			<li>Le système agricole (assolement biennal ou triennal)</li>
+			<li>La force de travail familiale disponible</li>
+			<li>Le statut du paysan (serf ou homme libre)</li>
+		</ul>
+
+		<p>
+			Un paysan pouvait travailler 1 à 2 hectares à la seule force de ses bras. S’il disposait d’un animal de trait, cela pouvait monter jusqu’à 3 à 5 hectares<br>
+			Ces valeurs peuvent varier considérablement selon la qualité du sol (un sol lourd et argileux demandait plus d'effort) et le relief (les terrains en pente réduisaient l'efficacité)<br>
+			Ces estimations correspondent à ce qu'un paysan pouvait raisonnablement entretenir tout au long de l'année, en incluant toutes les tâches agricoles labour, semis, entretien, récolte
+		</p>
+
+		<h4>Rendements</h4>
+		<p>La table ci-dessous donne des indications sur la surface nécessaire pour couvrir les besoins alimentaires d’une personne (ha/personne), ainsi que sur le nombre de personnes qu’un paysan est capable de nourrir (y compris lui-même), en se basant sur une surface cultivée de 2 à 3 hectares par paysans.</p>
+		<p>Le rendement variait de 1:2 à 1:5.</p>
+		<table>
+			<tr>
+				<th>Rendement</th>
+				<th>ha/personne</th>
+				<th>personne/paysan</th>
+			</tr>
+			<tr>
+				<td>1:2</td>
+				<td>1 – 1,5</td>
+				<td>1,3 – 3</td>
+			</tr>
+			<tr>
+				<td>1:5</td>
+				<td>0,4 – 0,7</td>
+				<td>3 – 7</td>
+			</tr>
+		</table>
+	</details>
+
+	<!-- Outils & techniques agricoles -->
 	<details>
 		<summary>
 			<h3>Outils &amp; techniques agricoles</h3>
 		</summary>
-		<p><b>Rendement</b> de 1:2, soit 1-1,5 ha pour nourrir une personne.<br>
-			Au mieux, rendement de 1:5, soit 0,4-0,6 ha par personne.</p>
-		<p><b>L’araire&nbsp;:</b> charrue de bois dépourvue de roues. Elle creuse des sillons sans retourner la terre. Efficace sur les sols légers mais insuffisante pour les terres humides, argileuses du nord.<br>
-			<b>La charrue&nbsp;:</b> la charrue à versoir aère la terre en profondeur. Outil coûteux qui contient du fer et nécessite la force d’un animal de trait (des bœufs plutôt que des chevaux.<br>
-			<b>La herse&nbsp;:</b> instrument aratoire formé d’un châssis muni de fortes dents et qui sert, après le labour, à briser les mottes.<br>
-			<b>La houe&nbsp;:</b> Pioche à large fer courbé servant à remuer la terre.<br>
-			<b>Autres instruments&nbsp;:</b> faucille, faux, râteau, fourche, fléau à grains.
+		<p><b>L’araire :</b> charrue de bois dépourvue de roues. Elle creuse des sillons sans retourner la terre. Efficace sur les sols légers mais insuffisante pour les terres humides, argileuses du nord.<br>
+			<b>La charrue :</b> la charrue à versoir aère la terre en profondeur. Outil coûteux qui contient du fer et nécessite la force d’un animal de trait (des bœufs plutôt que des chevaux.<br>
+			<b>La herse :</b> instrument aratoire formé d’un châssis muni de fortes dents et qui sert, après le labour, à briser les mottes.<br>
+			<b>La houe :</b> Pioche à large fer courbé servant à remuer la terre.<br>
+			<b>Autres instruments :</b> faucille, faux, râteau, fourche, fléau à grains.
 		</p>
 
-		<p><b>L’assolement triennal&nbsp;:</b> pratique la plus répandue. 1<sup>e</sup> année&nbsp;: céréales d’hiver, 2<sup>e</sup> année&nbsp;: céréales de printemps, 3<sup>e</sup> année&nbsp;: jachère.</p>
+		<p><b>L’assolement triennal :</b> pratique la plus répandue. 1<sup>e</sup> année : céréales d’hiver, 2<sup>e</sup> année : céréales de printemps, 3<sup>e</sup> année : jachère.</p>
 		<p><b>L’irrigation</b></p>
 		<p><b>Le fumier</b> est l’un des seuls fertilisants que l’on connaisse à cette époque, mais son utilisation est peu répandue car il faut pour cela avoir un cheptel développé.</p>
 	</details>
@@ -441,9 +494,9 @@
 		<summary>
 			<h3>Récoltes et produits</h3>
 		</summary>
-		<p>Polycultures de céréales (seigle, blé, avoine, orge). Les céréales sont complétées dans l’alimentation par quelques légumineuses&nbsp;: fèves, pois, lentilles.</p>
-		<p>Dans les forêts on récolte pour le bétail autant que pour les hommes&nbsp;: glands, faînes, merises, pommes sauvages, nèfles, fruits de l’aubépine, cynorhodons, noisettes, prunelles, framboises, mures, fraises. Le mille-pertuis ou la marjolaine peuvent servir de condiment ou de remèdes.</p>
-		<p>Élevage&nbsp;: le porc est l’animal prédominant car il donne plus de viande par rapport à son poids. Tout se mange et sa chair grasse se conserve bien.</p>
+		<p>Polycultures de céréales (seigle, blé, avoine, orge). Les céréales sont complétées dans l’alimentation par quelques légumineuses : fèves, pois, lentilles.</p>
+		<p>Dans les forêts on récolte pour le bétail autant que pour les hommes : glands, faînes, merises, pommes sauvages, nèfles, fruits de l’aubépine, cynorhodons, noisettes, prunelles, framboises, mures, fraises. Le mille-pertuis ou la marjolaine peuvent servir de condiment ou de remèdes.</p>
+		<p>Élevage : le porc est l’animal prédominant car il donne plus de viande par rapport à son poids. Tout se mange et sa chair grasse se conserve bien.</p>
 	</details>
 
 	<details>
@@ -451,7 +504,7 @@
 			<h3>Corvées, taxes &amp; impôts</h3>
 		</summary>
 		<p>Beaucoup de petits seigneurs tirent la plus grande part de leurs revenus des terres qu’ils possèdent. Elles sont exploitées par des serfs ou des manouvriers, ou cédées en fermage sous forme de tenure. Le seigneur a souvent mieux à faire que de s’occuper de ses domaines. Il confie cette tâche à un intendant qui surveille les travaux agricoles et lève les impôts.</p>
-		<p>Le seigneur fait payer cher sa protection, d’abord sous forme de corvées&nbsp;: curer les fossés, empierrer les chemins, rentrer du bois, rentrer du fourrage&hellip;</p>
+		<p>Le seigneur fait payer cher sa protection, d’abord sous forme de corvées : curer les fossés, empierrer les chemins, rentrer du bois, rentrer du fourrage&hellip;</p>
 		<p>Puis à mesure que l’argent circule mieux, les corvées sont remplacées par les redevances directes et indirectes servant à payer la protection du seigneur, le loyer de la terre, les droits pour utiliser le moulin, le pressoir et le four à pain que le seigneur a fait construire et que lui seul a les moyens d’entretenir.</p>
 		<p>Les serfs doivent payer des impôts particuliers au moment d’un héritage et pour se marier à l’extérieur de la seigneurie.</p>
 	</details>
@@ -460,9 +513,9 @@
 		<summary>
 			<h3>Différents types de paysans</h3>
 		</summary>
-		<p><b>Les hommes libres&nbsp;:</b> des paysans qui travaillent sur les terres d’un seigneur et sont locataires de parcelles (tenures). Les seigneurs peuvent employer des salariés ou louer leur réserve à des fermiers.</p>
+		<p><b>Les hommes libres :</b> des paysans qui travaillent sur les terres d’un seigneur et sont locataires de parcelles (tenures). Les seigneurs peuvent employer des salariés ou louer leur réserve à des fermiers.</p>
 		<p><b>Les serfs</b> sont attachés à une terre et un maître mais ne sont pas non plus des esclaves. Ils peuvent vivre en famille et posséder quelques biens. Les serfs exploitent une partie du domaine que le seigneur garde pour lui (la réserve).</p>
-		<p><b>Les laboureurs&nbsp;:</b> certains fermiers réussissent à s’enrichir. Les laboureurs, possèdent une paire de bœufs ou un cheval et un attelage. Rien à voir avec les pauvres <b>manouvriers</b> qui n’ont que leurs bras.</p>
+		<p><b>Les laboureurs :</b> certains fermiers réussissent à s’enrichir. Les laboureurs, possèdent une paire de bœufs ou un cheval et un attelage. Rien à voir avec les pauvres <b>manouvriers</b> qui n’ont que leurs bras.</p>
 	</details>
 
 </article>
@@ -470,12 +523,13 @@
 <article> <!-- Voyageurs -->
 	<h2>Voyageurs</h2>
 
+	<!-- Distances quotidiennes -->
 	<details>
 		<summary>
 			<h3>Distances quotidiennes</h3>
 		</summary>
-		<h4>À pied</h4>
 
+		<h4>À pied</h4>
 		<ul>
 			<li>En moyenne, un marcheur peut parcourir <b>25 à 30 km par jour</b>. Cette distance prend en compte les arrêts nécessaires, les repas, et le repos.</li>
 			<li>Sur de bonnes routes et sans bagages encombrants, cette distance pouvait s'étendre <b>jusqu'à 40 km par jour</b>. C’est un rythme soutenu, souvent pour des raisons impératives.</li>
@@ -505,31 +559,32 @@
 
 	</details>
 
+	<!-- Gens du commun -->
 	<details>
 		<summary>
 			<h3>Gens du commun</h3>
 		</summary>
-		Dans les régions habitées, la plupart des rencontres seront des gens du communs vaquant à leurs occupations quotidiennes.
+		<p>Dans les régions habitées, la plupart des rencontres seront des gens du communs vaquant à leurs occupations quotidiennes.</p>
 		<h4>Villageois</h4>
 		<p>Près de leur village, ces personnes sont impliquées dans une tâche agricole (garde de troupeau, entretien des cultures, récoltes, recherches de noix ou de baies sauvages, recherche d’un animal égaré, etc) ou autre tâche quotidienne.</p>
 		<p>S’ils sont rencontrés sur la route, ils peuvent être en train d’amener leurs produits sur un marché voisin, de revenir du marché, d’aller visiter de la famille (ou d’en revenir), etc.</p>
 
 		<h4>Charretier</h4>
 		<p>Les charretiers transportent des marchandises diverses. Dans les zones rurales, il s’agira de produits agricoles ou d’outils (du fumier aux céréales, en passant par des socs de charrues ou de meule de pierre), que ce soit pour le compte de leur seigneur ou pour le leur.</p>
-		<p>Sinon, ils peuvent avoir un lien avec «&nbsp;industrie&nbsp;» locale (mine, carrière, argilière) et transporter du matériel approprié.</p>
+		<p>Sinon, ils peuvent avoir un lien avec « industrie » locale (mine, carrière, argilière) et transporter du matériel approprié.</p>
 		<p>Dans des zones peu sûres, ils peuvent être accompagnés d’hommes d’armes.</p>
 
 		<h4>Travailleurs itinérants</h4>
 		<p>Les travailleurs itinérants peuvent être des citadins très pauvres cherchant à compléter leur maigres revenus par des travaux agricoles saisonniers (particulièrement à la période des récoltes) ou des paysans qui ont déserté leur tenure ou fui la famine, la guerre, des inondations, la maladie, les incursions de brigands, etc.</p>
 
 		<h4>Mendiants &amp; religieux</h4>
-		<p>Les mendiants peuvent être des travailleurs itinérants qui n’ont pas trouvé de travail ou des mendiants «&nbsp;professionnels&nbsp;» (la plupart d’entre eux ayant alors un handicap feint ou réel).</p>
+		<p>Les mendiants peuvent être des travailleurs itinérants qui n’ont pas trouvé de travail ou des mendiants « professionnels » (la plupart d’entre eux ayant alors un handicap feint ou réel).</p>
 		<p>Les ermites solitaires demandant l’aumône aux voyageurs étaient courants au Moyen Âge. Ils vivaient souvent près de ponts ou de chapelles et demandaient l’aumône en échange de leur entretien.</p>
 		<p>Enfin, on peut rencontrer des religieux itinérants prêchant sur la route.</p>
 
 		<h4>Chasseurs communs</h4>
 		<p>Ces personnes chassent pour subvenir à leur besoin. Dans les zones habitées, ils chassent le petit gibier si le gibier plus prestigieux est réservés aux noble.</p>
-		<p>Dans les zones plus sauvages, les chasseurs recherchent un gibier plus «&nbsp;exotique&nbsp;», généralement pour leur capture et leur revente. Dans ce cas, ils sont généralement assez compétents et relativement bien équipés.</p>
+		<p>Dans les zones plus sauvages, les chasseurs recherchent un gibier plus « exotique », généralement pour leur capture et leur revente. Dans ce cas, ils sont généralement assez compétents et relativement bien équipés.</p>
 
 		<h4>Hors-la-loi</h4>
 		<p>Il peut s’agir de serfs en fuite, de chasseurs communs qui se sont fait prendre avec du gibier interdit ou de malfaiteurs fuyant la justice locale. Ils peuvent éventuellement être considérés par la population locale comme des justiciers.</p>
@@ -541,9 +596,9 @@
 			<h3>Marchands et artisans itinérants</h3>
 		</summary>
 		<p>Les villages médiévaux ne sont généralement pas assez grands pour disposer de nombreux artisans et dépendent de marchands ambulants pour satisfaire à beaucoup de leurs besoins. Même les forgerons et les charrons (qui peuvent faire office de constructeurs de maison, de charpentiers, de fabricant de cercueil, etc.) seront des artisans itinérants si les villages locaux sont trop petits pour disposer d’artisans propres. Les villageois doivent également acheter certains biens nécessaires (sel, métaux, brai, outils, pots et vaisselles). Les plus riches attirent les marchands d’objets/produits de luxe tels que vins, huiles, étoffes, etc).</p>
-		<p>Parmi les commerçant et artisans itinérants typique, on trouve&nbsp;: <b>cordonniers et sabotiers</b>, vendant et réparant des biens en cuir et des chaussures ou des sabots&nbsp;; des <b>tailleurs</b> vendant, réparant ou confectionnant des vêtements divers sur commande&nbsp;; des <b>menuisiers</b> réparant les construction en bois et vendant des objets en bois tels que bols, ustensiles de cuisine, seaux, bacs, fûts&nbsp;; des <b>couvreurs</b> construisant ou réparant les toits&nbsp;; les <b>rétameurs et autres travailleurs de métaux</b> avec leur forge portable vendant et réparant des objets en métal, affûtant les lames&nbsp;; et les <b>médecins, herboristes et alchimistes</b> itinérants vendant des herbes médicinales ou des potions alchimiques.</p>
+		<p>Parmi les commerçant et artisans itinérants typique, on trouve : <b>cordonniers et sabotiers</b>, vendant et réparant des biens en cuir et des chaussures ou des sabots ; des <b>tailleurs</b> vendant, réparant ou confectionnant des vêtements divers sur commande ; des <b>menuisiers</b> réparant les construction en bois et vendant des objets en bois tels que bols, ustensiles de cuisine, seaux, bacs, fûts ; des <b>couvreurs</b> construisant ou réparant les toits ; les <b>rétameurs et autres travailleurs de métaux</b> avec leur forge portable vendant et réparant des objets en métal, affûtant les lames ; et les <b>médecins, herboristes et alchimistes</b> itinérants vendant des herbes médicinales ou des potions alchimiques.</p>
 		<p>Ces voyageurs professionnels utilisent généralement une charrette ou un chariot et se déplacent en compagnie d’assistant(s) qui peuvent être des membres de leur famille.</p>
-		<p class="mt-1">D’autres exemples de marchand et artisans itinérant&nbsp;:</p>
+		<p class="mt-1">D’autres exemples de marchand et artisans itinérant :</p>
 
 		<h4>Colporteurs</h4>
 		<p>Ils voyagent à pied et vendent une grande variété d’articles (épingles, instruments de musique, bourses, rubans, dentelle, gants, couteaux, verres, peau de lapin, vestes, casquettes, chapeaux, ceintures, étains, pots). Dans les régions policées, ils ont besoin de licence et doivent rester sur le parcours qui leur a été attribué.</p>
@@ -555,7 +610,7 @@
 		<p>Chaque marchand local est accompagné d’un scribe et de 1-3 charrettes avec leur cocher (ou animaux de bât avec leur muletier). Si la région est peu sûre, il peut également y avoir quelques hommes d’armes.</p>
 
 		<h4>Maçons, charpentiers et terrassiers</h4>
-		<p>Ces artisans peuvent voyager sur de longues distances pour obtenir un travail sur un vaste chantier tel qu’un château, un temple ou des murs d’enceinte. Les grues et échafaudages sont construits sur place&nbsp;; les outils sont souvent fournis par l’employeur. Les journaliers par contre préfèrent utiliser leur propres outils pour terminer leur apprentissage.</p>
+		<p>Ces artisans peuvent voyager sur de longues distances pour obtenir un travail sur un vaste chantier tel qu’un château, un temple ou des murs d’enceinte. Les grues et échafaudages sont construits sur place ; les outils sont souvent fournis par l’employeur. Les journaliers par contre préfèrent utiliser leur propres outils pour terminer leur apprentissage.</p>
 
 		<h4>Scribes</h4>
 		<p>Ils sont généralement à la recherche d’un emploi permanent. Ils financent leur voyage en servant à l’occasion d’écrivain public. Ils peuvent également postuler pour un emplois sur un grand chantier mentionné plus haut comme comptable. Ils sont des sources fiables d’informations.</p>
@@ -620,18 +675,18 @@
 		<summary>
 			<h3>Saltimbanques</h3>
 		</summary>
-		<p>Des nombreuses sortes d’amuseurs publics peuvent être rencontrés entre deux marchés, foires, ville, festivals et banquets de riches maisons. Ils ont de nombreuses informations concernant les villes locales et connaissent toutes les rumeurs. Les saltimbanques se déplacent généralement en groupe, de plus en plus nombreux suivant l’ordre de mention dans la liste suivante&nbsp;:</p>
+		<p>Des nombreuses sortes d’amuseurs publics peuvent être rencontrés entre deux marchés, foires, ville, festivals et banquets de riches maisons. Ils ont de nombreuses informations concernant les villes locales et connaissent toutes les rumeurs. Les saltimbanques se déplacent généralement en groupe, de plus en plus nombreux suivant l’ordre de mention dans la liste suivante :</p>
 
-		<p><b>Bardes et ménestrels&nbsp;:</b> ils chantent ou récitent les épopées de héros.</p>
-		<p><b>Magiciens / illusionnistes&nbsp;:</b> ils peuvent être de vrais lanceur de sorts (de bas niveaux) ou de simples « illusionniste » ayant un bon score dans la compétence <i>Tour de passe-passe</i>.</p>
+		<p><b>Bardes et ménestrels :</b> ils chantent ou récitent les épopées de héros.</p>
+		<p><b>Magiciens / illusionnistes :</b> ils peuvent être de vrais lanceur de sorts (de bas niveaux) ou de simples « illusionniste » ayant un bon score dans la compétence <i>Tour de passe-passe</i>.</p>
 		<p><b>Montreurs d’ours</b></p>
 		<p><b>Jongleurs</b></p>
 		<p><b>Mangeurs de feu</b></p>
 		<p><b>Acrobates</b></p>
 
-		<p><b>Acteurs / Troupe de théâtre itinérante&nbsp;:</b> ils jouent des pièces et saynètes basées sur des légendes ou des personnages historiques. Ils peuvent également jouer des pièces satyriques à la demande d’opposants au personnage qui est raillé. Ils voyagent par groupe de 10 à 30 et possèdent des chariots pour transporter la scène, les décors, costumes et accessoires.</p>
+		<p><b>Acteurs / Troupe de théâtre itinérante :</b> ils jouent des pièces et saynètes basées sur des légendes ou des personnages historiques. Ils peuvent également jouer des pièces satyriques à la demande d’opposants au personnage qui est raillé. Ils voyagent par groupe de 10 à 30 et possèdent des chariots pour transporter la scène, les décors, costumes et accessoires.</p>
 
-		<p><b>Ménagerie itinérante&nbsp;:</b> ils sont les précurseurs des zoos et des cirques. Les animaux sont transporter dans des chariots cage. Compter une à deux personnes par animal, plus des hommes d’armes. Une ménagerie peut parfois être accompagnée par des magiciens, jongleurs, mangeur de feu, acrobates, etc.</p>
+		<p><b>Ménagerie itinérante :</b> ils sont les précurseurs des zoos et des cirques. Les animaux sont transporter dans des chariots cage. Compter une à deux personnes par animal, plus des hommes d’armes. Une ménagerie peut parfois être accompagnée par des magiciens, jongleurs, mangeur de feu, acrobates, etc.</p>
 	</details>
 
 	<details>
@@ -691,4 +746,155 @@
 
 	</details>
 
+</article>
+
+<!-- Organisation du pouvoir -->
+<article>
+	<h2>Organisation du pouvoir</h2>
+
+	<details>
+		<summary>
+			<h3>Armées &amp; marines</h3>
+		</summary>
+		<ul>
+			<li><b>Connétable :</b> commandant en chef, remplace le prince ou le roi</li>
+			<li><b>Autres grades :</b> maréchal, commandeur, capitaine, sergent</li>
+		</ul>
+	</details>
+
+	<details>
+		<summary>
+			<h3>Forces de l’ordre</h3>
+		</summary>
+		<ul>
+			<li>Échevin (magistrat chargé de la police) ou consul</li>
+			<li>Police administrative (poids et mesure, contrôle des prix, contrôle de la voirie)</li>
+		</ul>
+	</details>
+
+	<details>
+		<summary>
+			<h3>Diplomatie</h3>
+		</summary>
+		<ul>
+			<li>Émissaire, légat, envoyé, procureur</li>
+		</ul>
+	</details>
+
+	<details>
+		<summary>
+			<h3>Justice</h3>
+		</summary>
+		<ul>
+			<li>Juge (prêvot, bailli, sénéchal)</li>
+			<li>Procureur, greffier, avocat</li>
+			<li>sergent de justice (huissier), geôlier</li>
+			<li>Enquêteur</li>
+			<li>Tribunal, prison</li>
+		</ul>
+	</details>
+
+	<details>
+		<summary>
+			<h3>Pouvoir législatif</h3>
+		</summary>
+		<ul>
+			<li>Chancelier (contrôle de la rédaction des actes et sceau royal).</li>
+		</ul>
+	</details>
+
+	<details>
+		<summary>
+			<h3>Pouvoir financier</h3>
+		</summary>
+		<ul>
+			<li>Monnaie</li>
+			<li>Taxes, impôts, redevances, péage</li>
+			<li>Douanes</li>
+			<li>Dépenses publiques et planification de la vie économique</li>
+		</ul>
+	</details>
+
+	<details>
+		<summary>
+			<h3>Monopôles</h3>
+		</summary>
+		<ul>
+			<li>Exploitation de certaines matières premières (mines, forêts, sel)</li>
+		</ul>
+	</details>
+
+	<details>
+		<summary>
+			<h3>Administration des territoires</h3>
+		</summary>
+		<ul>
+			<li>Délégation et représentation locale (gouverneurs, commissaire, baillis, sénéchaux)</li>
+			<li>Entretien et construction de certains bâtiments publiques (route, rue, édifices publiques)</li>
+		</ul>
+	</details>
+
+	<details>
+		<summary>
+			<h3>Noms de bâtiments</h3>
+		</summary>
+		<ul>
+			<li>Palais, maison,</li>
+		</ul>
+	</details>
+
+</article>
+
+<!-- Château fort -->
+<article>
+	<h2>Chateau fort</h2>
+
+	<!-- Introduction -->
+	<details>
+		<summary>
+			<h3>Introduction</h3>
+		</summary>
+		<p>Voici quelques lieux communs sur les châteaux forts historiques. Ils permettront de garder en mémoire les éléments clés permettant de décrire un château réaliste.</p>
+		<p>Le château est constitué de deux enceintes. Entre les deux enceintes, il y a la basse-cour et à l’intérieur de la seconde enceinte, il y a notamment le donjon.</p>
+	</details>
+
+	<!-- Plan général -->
+	<details>
+		<summary>
+			<h3>Plan général</h3>
+		</summary>
+		<a href="/assets/img/chateau-01.jpg"><img src="/assets/img/chateau-01-400.webp" alt="plan château fort"></a>
+	</details>
+
+	<!-- L’enceinte extérieure -->
+	<details>
+		<summary>
+			<h3>L’enceinte extérieure</h3>
+		</summary>
+
+		<!-- La barbacane -->
+		<details>
+			<summary>
+				<h4>La barbacane</h4>
+			</summary>
+			<p>Petit fortin de bois édifié devant le pont-­levis. La barbacane avait pour but de retarder les assaillants, le temps de relever le pont-levis. Elle était traditionnellement bâtie avant le fossé qui entourait habituellement les ouvrages fortifiés. II arrivait qu’elle soit remplacée par un avant‑poste en pierre.</p>
+		</details>
+
+		<!-- La barbacane -->
+		<details>
+			<summary>
+				<h4>Les défenses extérieures</h4>
+			</summary>
+			<p>Tout autour du fos­sé, on aperçoit des haies vives et chevaux de frise (pieux fichés dans le sol) censés briser les charges à cheval.</p>
+		</details>
+
+		<!-- Le fossé -->
+		<details>
+			<summary>
+				<h4>Le fossé</h4>
+			</summary>
+			<p>Le fossé est une large tranchée profonde d’une quinzaine de mètres. Il avait pour objectif d’empêcher les agresseurs de s’attaquer directement aux murailles (avec des béliers, par exemple), aussi les sapeurs devaient‑ils d’abord les combler avec des pierres ou des fascines (fagots) avant de commencer à essayer de desceller les moellons des remparts. Les douves étaient en fait rarement remplies d’eau pendant la période médiévale. En plus de leur rôle défensif, elles tenaient lieu de dépotoir et de déversoir pour les latrines.</p>
+		</details>
+
+	</details>
 </article>

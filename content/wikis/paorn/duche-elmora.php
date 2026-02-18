@@ -1,4 +1,4 @@
-<h2>Duché d’Elmora</h2>
+<h1>Duché d’Elmora</h1>
 
 <div class="wiki-right-element">
 	<figure>

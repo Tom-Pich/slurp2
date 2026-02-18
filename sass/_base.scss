@@ -1,12 +1,17 @@
-/* Mon framework CSS v2025.10.03 🖐️ linked to original ! */
+/* Mon framework CSS v2026-02-14 🖐️ linked to original ! */
+/* Attention, class pc-center supprimée */
+/* variables --dynamic-space-x-y renommées */
+/* taille : 14300 → 13665 octets */
+/* media query applicable aussi à l’impression */
+/* body not scrollable quand dialog open */
 
-$brp-l: 1200px;
-$brp-m: 768px;
-$brp-s: 480px;
-$brp-nav: 768px;
+$brp-l: 1200px !default;
+$brp-m: 768px !default;
+$brp-s: 480px !default;
+$brp-nav: 768px !default;
 
 $size-values: (½: .5em, 1: 1em, 2: 2em);  // alt + : 172 → ¼ ; 171 → ½ ; 243 → ¾ 
-$dynamic-size-values: ( "½-1": var(--dynamic-space-½-1), "1-2": var(--dynamic-space-1-2), "1-5": var(--dynamic-space-1-5) , "3-5": var(--dynamic-space-3-5) );
+$dynamic-size-values: ( "½-1": var(--ds-½-1), "1-2": var(--ds-1-2), "3-5": var(--ds-3-5) );
 
 @mixin sizes($attr, $important: false) { @each $size, $value in $size-values {
 	&-#{$size} { @if $important {#{$attr}: $value !important;} @else {#{$attr}: $value;} }
@@ -17,10 +22,12 @@ $dynamic-size-values: ( "½-1": var(--dynamic-space-½-1), "1-2": var(--dynamic-
 @mixin fw-scale() { @each $step in (400, 700) { &-#{$step} {font-weight: #{$step}} }}
 @mixin fs-scale() { @each $step in (300, 400, 450, 500, 600, 700, 800, 900, 1000) { &-#{$step} { font-size: var(--fs-#{$step})} }}
 
-@mixin media($break-point: $brp-m) {@media screen and (max-width: #{$break-point}) {@content}};
-@mixin media-min($break-point: $brp-m) {@media screen and ( width > #{$break-point}) {@content}};
+//@mixin media($break-point: $brp-m) {@media screen and (max-width: #{$break-point}) {@content}};
+@mixin media($break-point: $brp-m) {@media (max-width: #{$break-point}) {@content}};
+//@mixin media-min($break-point: $brp-m) {@media screen and ( width > #{$break-point}) {@content}};
+@mixin media-min($break-point: $brp-m) {@media (width > #{$break-point})  {@content}};
 @mixin flow { > :where(:not(:first-child)) {margin-top: var(--flow-space, 1em);} }
-@mixin wrapper { width: min( 100% - 2 * var(--dynamic-space-1-2), var(--content-max-width)); margin-inline: auto; }
+@mixin wrapper { width: min( 100% - 2 * var(--ds-1-2), var(--content-max-width)); margin-inline: auto; }
 
 :root {
 
@@ -30,14 +37,14 @@ $dynamic-size-values: ( "½-1": var(--dynamic-space-½-1), "1-2": var(--dynamic-
 	--ff-base: 'Seravek', 'Gill Sans Nova', 'Ubuntu', 'Calibri', 'source-sans-pro', sans-serif; // 'DejaVu Sans', 
 	--ff-accent: 'ui-rounded', 'Hiragino Maru Gothic ProN', 'Quicksand', 'Comfortaa', 'Manjari', 'Arial Rounded MT', 'Arial Rounded MT Bold', 'Calibri', 'source-sans-pro', sans-serif;
 
-	// sizing
+	// sizing – min @ 540px, max @ 1400px
 	--content-max-width: 1200px;
-	--dynamic-space-½-1: clamp(0.5rem, calc(0.19rem + 0.93vw), 1rem);
-	--dynamic-space-½-2: clamp(0.5rem, calc(-0.44rem + 2.79vw), 2rem);
-	--dynamic-space-1-2: clamp(1rem, calc(0.37rem + 1.86vw), 2rem);
-	--dynamic-space-2-3: clamp(2rem, 1.37rem + 1.86vw, 3rem);
-	--dynamic-space-1-5: clamp(1rem, calc(-1.51rem + 7.44vw), 5rem);
-	--dynamic-space-3-5: clamp(3rem, calc(1.74rem + 3.72vw), 5rem);
+	--ds-½-1: clamp(0.5rem, 0.19rem + 0.93vw, 1rem);
+	--ds-½-2: clamp(0.5rem, -0.44rem + 2.79vw, 2rem);
+	--ds-1-2: clamp(1rem, 0.37rem + 1.86vw, 2rem);
+	--ds-2-3: clamp(2rem, 1.37rem + 1.86vw, 3rem);
+	--ds-1-5: clamp(1rem, -1.51rem + 7.44vw, 5rem);
+	--ds-3-5: clamp(3rem, 1.74rem + 3.72vw, 5rem);
 
 	// colors
 	--clr-primary-500: hsl(125, 71%, 23%);
@@ -52,7 +59,7 @@ $dynamic-size-values: ( "½-1": var(--dynamic-space-½-1), "1-2": var(--dynamic-
 	--grey-300: hsl(0 0% 30%);
 	--grey-500: hsl(0 0% 50%);
 	--grey-700: hsl(0 0% 70%);
-	--grey-900: hsl(0 0% 90%);
+	--grey-900: hsl(0, 0%, 90%);
 	--white: hsl(0 0% 100%);
 
 	// shadows
@@ -63,19 +70,13 @@ $dynamic-size-values: ( "½-1": var(--dynamic-space-½-1), "1-2": var(--dynamic-
 	--fs-200: .8rem;
 	--fs-300: .9rem;
 	--fs-400: 1rem;
-	--fs-450: clamp(1.05rem, calc(1.02rem + 0.09vw), 1.1rem);
-	--fs-500: clamp(1.13rem, calc(1.05rem + 0.23vw), 1.25rem);
-	--fs-600: clamp(1.27rem, calc(1.08rem + 0.55vw), 1.56rem);
-	--fs-700: clamp(1.42rem, calc(1.09rem + 0.98vw), 1.95rem);
-	--fs-800: clamp(1.60rem, calc(1.07rem + 1.56vw), 2.44rem);
-	--fs-900: clamp(1.80rem, calc(1.02rem + 2.33vw), 3.05rem);
-	--fs-1000: clamp(2.38rem, calc(1.35rem + 3.02vw), 4rem);
-
-	//--select-arrow: url("data:image/svg+xml; utf8, <svg width='24' height='24' fill='black' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='m7 10 5 5 5-5z'/></svg>");
-
-	// mode dark
-	//@media (prefers-color-scheme: dark) { }
-
+	--fs-450: clamp(1.05rem, 1.02rem + 0.09vw, 1.1rem);
+	--fs-500: clamp(1.13rem, 1.05rem + 0.23vw, 1.25rem);
+	--fs-600: clamp(1.27rem, 1.08rem + 0.55vw, 1.56rem);
+	--fs-700: clamp(1.42rem, 1.09rem + 0.98vw, 1.95rem);
+	--fs-800: clamp(1.60rem, 1.07rem + 1.56vw, 2.44rem);
+	--fs-900: clamp(1.80rem, 1.02rem + 2.33vw, 3.05rem);
+	--fs-1000: clamp(2.38rem, 1.35rem + 3.02vw, 4rem);
 }
 
 // Reset
@@ -102,19 +103,21 @@ em { color: var(--clr-primary-500) }
 blockquote { border-left: 1px solid var(--grey-700); padding-left: 1em; }
 
 details {
-	--marker-closed: "+";
-	--marker-open: "×";
-	--marker-offset-r: 0;
-	--marker-padding: 1.25em;
-	> summary { list-style-type: none; cursor: pointer; position: relative; padding-right: var(--marker-padding) !important;}
+	//--marker-closed: default = "+";
+	//--marker-open: default = "×";
+	//--marker-offset-r: default = 0;
+	//--marker-offset-t:  default = 0;
+	//--marker-padding:  default = 1.25em;
+	> summary { list-style-type: none; cursor: pointer; position: relative; padding-right: var(--marker-padding, 1.25em) !important;}
 	> summary::-webkit-details-marker { display: none; } // Safari
-	> summary { > :first-child::after, &:not(:has(:first-child))::after { content: var(--marker-closed); position: absolute; right: var(--marker-offset-r); top: var(--marker-offset-t)}}
-	&[open] > summary { > :first-child::after, &:not(:has(:first-child))::after {content: var(--marker-open);}}
+	> summary { > :first-child::after, &:not(:has(:first-child))::after { content: var(--marker-closed, "+"); position: absolute; right: var(--marker-offset-r, 0); top: var(--marker-offset-t, 0)}}
+	&[open] > summary { > :first-child::after, &:not(:has(:first-child))::after {content: var(--marker-open, "×");}}
 }
 
+body:has(dialog[open]) { overflow: hidden;}
 dialog {
-	position: fixed; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%); width: clamp(300px, 35vw, 500px);
-	border: 1px solid currentColor; padding: 2em 1em 1em 1em; z-index: 2;
+	/* position: fixed; */ top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%); width: clamp(300px, 35vw, 500px);
+	border: 1px solid currentColor; padding: 2em 1em 1em 1em; /* z-index: 2; */
 	&::backdrop { backdrop-filter: blur(5px);}
 	button[data-role=close-modal]:first-of-type { border: none; padding: 0; position: absolute; top: .5em; right: .75em; }
 }
@@ -159,16 +162,15 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-app
 
 .block { display: block; }
 .flex {display: flex; @include media {flex-direction: column;} }
-.flex-s {display: flex;}
 .flex-m {display: flex; @include media($brp-s) {flex-direction: column;} }
+.flex-s {display: flex;}
 .ai-center {align-items: center;}
 .ai-start {align-items: start;}
 .ai-end {align-items: end;}
-.flex.ai-end { @include media { align-items: unset; } }
+.flex.ai-end { @include media { align-items: center; } }
 .jc-center {justify-content: center;}
 .jc-space-between {justify-content: space-between;}
 .jc-space-around {justify-content: space-around;}
-.pc-center { place-content: center; }
 .fl-1 {flex: 1;}
 .fl-2 {flex: 2;}
 .fl-3 {flex: 3;}
