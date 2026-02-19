@@ -101,7 +101,7 @@ details {
 	@include flow; --flow-space: .5em; --marker-closed: "☰"; // ☰ or ≡ ?
 
 	&.exemple {
-		border: .5px solid var(--clr-primary-500); padding: .25em .5em; position: relative;
+		border: .5px solid var(--clr-primary-500); padding: .25em .5em; position: relative; --flow-space: 1em;
 		&::before { content: "\f0eb"; font-family: "fas"; position: absolute; top: -.5em; left: -.25em; transform: rotate(-10deg); background-color: var(--white); color: var(--clr-primary-500) }
 		summary { color: var(--clr-primary-500); font-weight: 700; }
 	}

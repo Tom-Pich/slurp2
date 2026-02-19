@@ -13,7 +13,7 @@ body.standard-page {
 	:is(section, article) h2:not(.bg-primary-500, .bg-secondary-500, .bg-tertiary-500) { background-color: var(--black);  }
 	:is(section, article) h3 { font-size: var(--fs-450) }
 	
-	summary:has(h3) { background-color: var(--grey-900); padding: .5em; --marker-offset-r: .5em; --marker-padding: 1.75em}
+	summary:has(h3) { background-color: var(--grey-900); padding: .5em; --marker-offset-r: .5em; --marker-padding: 1.75em; --marker-offset-t: .5em;}
 	details:has(> summary > h4) { border-block: .5px solid var(--grey-700); padding-block: .25em; }
 }
 

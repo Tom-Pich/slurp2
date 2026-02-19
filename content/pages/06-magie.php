@@ -364,41 +364,25 @@ use App\Entity\Spell;
 				<th>Rapide</th>
 				<th>Long</th>
 			</tr>
-			<tr>
-				<td>I</td>
-				<td>0</td>
-				<td>2</td>
-				<td><?= Spell::cast_time[0][0] ?> s</td>
-				<td><?= Spell::cast_time[0][1] ?> s</td>
-			</tr>
-			<tr>
-				<td>II</td>
-				<td>-2</td>
-				<td>4</td>
-				<td><?= Spell::cast_time[1][0] ?> s</td>
-				<td><?= Spell::cast_time[1][1] ?> s</td>
-			</tr>
-			<tr>
-				<td>III</td>
-				<td>-5</td>
-				<td>6</td>
-				<td><?= Spell::cast_time[2][0] ?> s</td>
-				<td><?= Spell::cast_time[2][1] / 60 ?> min</td>
-			</tr>
-			<tr>
-				<td>IV</td>
-				<td>-8</td>
-				<td>8</td>
-				<td><?= Spell::cast_time[3][0] ?> s</td>
-				<td><?= Spell::cast_time[3][1] / 60 ?> min</td>
-			</tr>
-			<tr>
-				<td>V</td>
-				<td>-13</td>
-				<td>15+</td>
-				<td><?= Spell::cast_time[4][0] ?> s</td>
-				<td><?= Spell::cast_time[4][1] / 3600 ?> h</td>
-			</tr>
+			<?php
+			foreach (["I", "II", "III", "IV", "V"] as $i => $niv):
+				$cast_time_long = Spell::cast_time[$i][1];
+				if ($cast_time_long >= 3600) {
+					$cast_time_long = (string) ((int) ($cast_time_long / 3600)) . " h";
+				} elseif ($cast_time_long >= 60){
+					$cast_time_long = (string) ((int) ($cast_time_long / 60)) . " min";
+				} else {
+					$cast_time_long = (string) $cast_time_long . " s";
+				}
+			?>
+				<tr>
+					<td><?= $niv ?></td>
+					<td><?= Spell::niv_modifier[$i] ?></td>
+					<td><?= Spell::pdm_cost[$i] ?></td>
+					<td><?= Spell::cast_time[$i][0] ?> s</td>
+					<td><?= $cast_time_long ?></td>
+				</tr>
+			<?php endforeach ?>
 		</table>
 		<p>
 			<b>Niv :</b> niveau de puissance<br>
@@ -415,9 +399,11 @@ use App\Entity\Spell;
 			<h3>Réduction du coût énergétique</h3>
 		</summary>
 		<p>Le coût énergétique d’un sort diminue pour une compétence élevée :</p>
-		<p>• -1 PdM à un niveau &ge; 15<br>
-			• -2 PdM à un niveau &ge; 17<br>
-			• -3 PdM à un niveau &ge; 19, et ainsi de suite.</p>
+		<ul>
+			<li>-1 PdM à un niveau &ge; 15</li>
+			<li>-2 PdM à un niveau &ge; 17</li>
+			<li>-3 PdM à un niveau &ge; 19, et ainsi de suite.</li>
+		</ul>
 		<p>Cette réduction s’applique au coût de lancer du sort et au coût de maintien. Le score à prendre en compte est le score brut. Un sort suffisamment maîtrisé peut donc devenir gratuit à prolonger voire à lancer.</p>
 	</details>
 

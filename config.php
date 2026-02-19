@@ -4,9 +4,10 @@ define("IS_ONLINE", $_SERVER['HTTP_HOST'] === 'jdr.pichegru.net');
 define("DB_ACTIVE", true);
 define("GENERIC_PASSWORD", $_ENV["GENERIC_PASSWORD"]);
 define("SESSION_DURATION", 10800);
-define("VERSION", "3.28.3"); // 3.28 : new skill groups management
-define("DATE_VERSION", "octobre 2025");
+define("VERSION", "3.28.4"); // 3.28 : new skill groups management
+define("DATE_VERSION", "février 2026");
 define("PRODUCTION", true); // run webpack before switching to true
+define("SKILL_V2", true); // coût compétences v2
 
 if (IS_ONLINE) {
 	define("DB_HOST", $_ENV["DB_HOST"]);

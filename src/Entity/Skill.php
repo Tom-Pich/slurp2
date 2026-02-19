@@ -127,6 +127,10 @@ class Skill implements RulesItem
 		$x = $niv - $niv_½;
 		if ($niv <= $difficulty) return 0;
 		if ($niv <= $niv_c) return 2 ** ($x - 1); // ½ - 1 - 2 - 4 - 8
+		if ("SKILL_V2") {
+			if ($niv > 7) return INF;
+			return 8 * ($x - 3);
+		}
 		if ($base === "I") return 4 * $x - 8; // intellectual skills - high level
 		return ($x ** 2 + $x - 4) / 2; // other skills - high level
 	}
@@ -238,6 +242,7 @@ class Skill implements RulesItem
 						// re-evaluate skill min-niv and niv
 						$min_modifier = $skill["difficulty"] >= $pool[$group]["difficulty"] ? -2 : -3;
 						$skill["min-niv"] = max($pool[$group]["niv"] + $min_modifier, $skill["min-niv"]);
+						$skill["min-niv"] = min(5, $skill["min-niv"]);
 						$skill["niv"] = max($skill["niv"], $skill["min-niv"]);
 					}
 				}

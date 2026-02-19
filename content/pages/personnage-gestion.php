@@ -440,7 +440,8 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 				<!-- Pouvoirs -->
 				<div class="mt-1 px-½">
-					<?php foreach ($character->powers as $pouvoir) {
+					<?php
+					foreach ($character->powers as $pouvoir) {
 						$type = $pouvoir["data"]->specific["Type"] ?? $pouvoir["origine"];
 						$niv_min = $pouvoir['data']->data->niv_min ?? 0;
 						$niv_max = $pouvoir['data']->data->niv_max ?? 0;
@@ -449,17 +450,30 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 						<details>
 							<summary>
 								<div class="flex-s gap-½ ai-center">
+
+									<!-- Nom du pouvoir -->
 									<input type="text" class="fl-1" name="Pouvoirs[<?= $n_post ?>][nom]" value="<?= $pouvoir["data"]->specific["Nom"] ??  $pouvoir["data"]->data->name . (isset($pouvoir["modif"]) ? " (+" . $pouvoir["modif"] . ")" : "") ?>">
+
+									<!-- niveau pouvoir ou « avantage » -->
 									<div class="radio-wrapper">
 										<?php if ($type === "sort"):
 											for ($i = 1; $i <= 5; $i++) {
 												$is_possible = $niv_min <= $i && $niv_max >= $i; ?>
-												<input type="radio" name="Pouvoirs[<?= $n_post ?>][niv]" value="<?= $i ?>" <?= $pouvoir['niv'] === $i ? 'checked' : '' ?> <?= (!$is_possible) ? "disabled" : "" ?> title="<?= $is_possible ? (Spell::cost_as_power[$i - 1] * $global_mult . " pts") : "" ?>">
+												<input	type="radio"
+														name="Pouvoirs[<?= $n_post ?>][niv]" value="<?= $i ?>"
+														<?= $pouvoir['niv'] === $i ? 'checked' : '' ?>
+														<?= (!$is_possible) ? "disabled" : "" ?>
+														title="<?= $is_possible ? (Spell::cost_as_power[$i - 1] * $global_mult . " pts") : "" ?>">
 											<?php }
 										elseif ($type === "avantage"): ?>
 											<i>Avantage</i>
 										<?php endif ?>
 									</div>
+
+									<!-- Coût de base du pouvoir -->
+									<div title="Coût de base du pouvoir" style="width: 5ch" class="ta-center desktop-tablet">[<?= $pouvoir["cost"] - $pouvoir["points"] ?>]</div>
+
+									<!-- Points investis dans score -->
 									<input type="text" name="Pouvoirs[<?= $n_post ?>][points]" value="<?= $pouvoir["points"] ? $pouvoir["points"] : "" ?>" style="width: 5ch" class="ta-center" placeholder="pts">
 								</div>
 							</summary>

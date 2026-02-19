@@ -162,11 +162,11 @@ class Character
 		[$this->avdesav, $this->attr_cost_multipliers, $this->special_traits, $this->attributes, $this->points_count] = AvDesav::processAvdesav($raw_avdesav, $this->attr_cost_multipliers, $this->special_traits, $this->attributes, $this->points_count);
 		$this->raw_attributes = $this->attributes;
 
-		// --- PdXm with modifiers
-		$this->attributes["PdV"] += $this->modifiers["PdV"];
-		$this->attributes["PdF"] += $this->modifiers["PdF"];
-		$this->attributes["PdM"] += $this->modifiers["PdM"];
-		$this->attributes["PdE"] += $this->modifiers["PdE"];
+		// --- PdXm with modifiers → À ce stade, toujours 0... Pourquoi c’est là ?
+		//$this->attributes["PdV"] += $this->modifiers["PdV"];
+		//$this->attributes["PdF"] += $this->modifiers["PdF"];
+		//$this->attributes["PdM"] += $this->modifiers["PdM"];
+		//$this->attributes["PdE"] += $this->modifiers["PdE"];
 
 		// updating Calculs in DB
 		$stored_calculs = $this->pdxm;
@@ -181,7 +181,10 @@ class Character
 			$this->pdxm = $calculs;
 		}
 
-		// ––– state : For_global, For_deg, Dex, Int, Magie, PdV, PdF, (PdM), PdE, Stress, Membres, Autres + [ San, Per, Vol, Réflexes, Sang-Froid ]
+		// ––– state : 	For_global, For_deg, Int, Dex, San, Per, Vol, Réflexes, Sang-Froid,
+		//				Magie, Autres, PdV, PdF, PdM, PdE,
+		//				Blessures, Membres, Stress, Fatigue, Santé-mentale,
+		//				Encombrement, Compteurs-equipement
 
 		// default value for state
 		$this->state["PdV"] = $this->state["PdV"] ?? $this->attributes["PdV"];
@@ -195,11 +198,12 @@ class Character
 
 		if ($with_state_modifiers) {
 			$this->state["Blessures"] = WoundController::getGeneralEffects($this->state["PdV"], $this->attributes["PdV"], $this->special_traits["resistance-douleur"]);
+
 			$this->state["Stress"] = StressController::getEffects($this->state["Stress"] ?? 0);
-			if ($this->state["Stress"]["sf-modifier"] !== 0) {
-				$this->state["PdF"] = $this->attributes["PdF"];
-			}
+			if ($this->state["Stress"]["sf-modifier"] !== 0) $this->state["PdF"] = $this->attributes["PdF"];
+
 			$this->state["Fatigue"] = FatigueController::getEffects($this->state["PdF"], $this->attributes["PdF"]);
+
 			$this->state["Santé-mentale"] = MentalHealthController::getEffects($this->state["PdE"], $this->attributes["PdE"]);
 
 			if (!empty($this->state["Membres"])) {
@@ -214,8 +218,8 @@ class Character
 				}
 				$this->state["Membres"] = $explicit_damages;
 			}
+
 			if (!empty($this->state["Autres"])) {
-				//$this->state["Autres"] = explode("\r\n", TextParser::pseudoMDParser($this->state["Autres"]));
 				$this->state["Autres"] = explode(PHP_EOL, $this->state["Autres"]);
 				$this->state["Autres"] = array_map(fn($x) => TextParser::pseudoMDParser($x), $this->state["Autres"]);
 			}
@@ -253,7 +257,7 @@ class Character
 			$this->state["Encombrement"] = EncumbranceController::getEffects($this->carried_weight, $this->attributes["For"]);
 			$this->modifiers["Dex"] += $this->state["Encombrement"]["dex-modifier"];
 			$this->modifiers["Vitesse-mult"] *= $this->state["Encombrement"]["vit-multiplier"];
-			$this->modifiers["Vitesse-mult"] = $this->modifiers["Vitesse-mult"];
+			//$this->modifiers["Vitesse-mult"] = $this->modifiers["Vitesse-mult"];
 			$this->modifiers["Encombrement"] = $this->state["Encombrement"]["dex-modifier"];
 			$this->modifiers["Magie"] += $this->state["Encombrement"]["dex-modifier"];
 
@@ -302,13 +306,6 @@ class Character
 		[$this->disciplines, $this->points_count["disciplines"]] = Discipline::processDisciplines($raw_psis);
 		[$this->psi, $this->points_count["psi"]] = PsiPower::processPowers($raw_psis, $this->disciplines, $this->attributes);
 
-		/* foreach ($this->psi as $pouvoir) {
-			echo "<pre>";
-			var_dump($pouvoir["data"]->disciplines);
-			echo "</pre>";
-		}
-		die(); */
-
 		// ––– equipment
 		$equipment_repo = new EquipmentRepository;
 		$raw_equipment = $equipment_repo->getCharacterEquipment($this->id);
@@ -323,16 +320,22 @@ class Character
 		foreach ($this->points_count["attributes"] as $points) {
 			$this->points_count["attributes"]["total"] += $points;
 		}
-		$this->points_count["total"] = $this->points_count["attributes"]["total"] + $this->points_count["avdesav"] + $this->points_count["skills"] + ($this->points_count["colleges"] ?? 0) + ($this->points_count["spells"] ?? 0) + ($this->points_count["powers"] ?? 0) + ($this->points_count["disciplines"] ?? 0) + ($this->points_count["psi"] ?? 0);
+		$this->points_count["total"] =
+			$this->points_count["attributes"]["total"] +
+			$this->points_count["avdesav"] +
+			$this->points_count["skills"] +
+			($this->points_count["colleges"] ?? 0) +
+			($this->points_count["spells"] ?? 0) +
+			($this->points_count["powers"] ?? 0) +
+			($this->points_count["disciplines"] ?? 0) +
+			($this->points_count["psi"] ?? 0);
 
 		// ––– Group members
 		$this->group_members = [];
 		if (!empty($this->id_group)) {
 			$ids = $repo->getCharactersFromGroup($this->id_group);
 			foreach ($ids as $id) {
-				if ($id !== $this->id) {
-					$this->group_members[] = new Character($id);
-				}
+				if ($id !== $this->id) $this->group_members[] = new Character($id);
 			}
 		}
 	}

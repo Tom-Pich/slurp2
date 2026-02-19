@@ -394,16 +394,20 @@ $repo = new SkillRepository;
 				<th>-6</th>
 				<th>-8</th>
 			</tr>
-			<?php for ($niv = -4; $niv <= 10; $niv++): ?>
+			<?php for ($niv = -4; $niv <= (SKILL_V2 ? 7 : 10); $niv++): ?>
 				<tr>
-					<td <?= $niv === 0 ? "class=\"fw-700\"" : "" ?> ><?= $niv > 0 ? "+" . $niv : $niv ?></td>
-					<td <?= $niv === 0 ? "class=\"fw-700\"" : "" ?> ><?= Skill::displaySkillCost($niv, -2) ?></td>
-					<td <?= $niv === 0 ? "class=\"fw-700\"" : "" ?> ><?= Skill::displaySkillCost($niv, -4) ?></td>
-					<td <?= $niv === 0 ? "class=\"fw-700\"" : "" ?> ><?= Skill::displaySkillCost($niv, -6) ?></td>
-					<td <?= $niv === 0 ? "class=\"fw-700\"" : "" ?> ><?= Skill::displaySkillCost($niv, -8) ?></td>
+					<td <?= $niv === 0 ? "class=\"fw-700\"" : "" ?>><?= $niv > 0 ? "+" . $niv : $niv ?></td>
+					<td <?= $niv === 0 ? "class=\"fw-700\"" : "" ?>><?= Skill::displaySkillCost($niv, -2) ?></td>
+					<td <?= $niv === 0 ? "class=\"fw-700\"" : "" ?>><?= Skill::displaySkillCost($niv, -4) ?></td>
+					<td <?= $niv === 0 ? "class=\"fw-700\"" : "" ?>><?= Skill::displaySkillCost($niv, -6) ?></td>
+					<td <?= $niv === 0 ? "class=\"fw-700\"" : "" ?>><?= Skill::displaySkillCost($niv, -8) ?></td>
 				</tr>
 			<?php endfor; ?>
 		</table>
+
+		<?php if (SKILL_V2): ?>
+			<p>Il n’est pas possible d’avoir un niveau de compétence supérieur à +7.</p>
+		<?php endif ?>
 
 		<details class="exemple">
 			<summary>Exemple de calculs de score</summary>
