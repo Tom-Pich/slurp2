@@ -1,20 +1,5 @@
 <h1>La Sordolia, province sauvage du nord</h1>
 
-<div class="wiki-right-element flow">
-	<figure>
-		<a href="/assets/img_paorn/sordolia.webp" target="_blank">
-			<img src="/assets/img_paorn/sordolia-600.webp" alt="carte de Sordolia">
-		</a>
-		<figcaption>Carte de la Sordolia</figcaption>
-	</figure>
-	<figure>
-		<a href="/assets/img_paorn/sordolia-dernier-rempart-01.webp" target="_blank">
-			<img src="/assets/img_paorn/sordolia-dernier-rempart-01.webp" alt="vue du Dernier Rempart">
-		</a>
-		<figcaption>Le Dernier Rempart</figcaption>
-	</figure>
-</div>
-
 <!--
 Figures et groupes d’influence
 Culture et société
@@ -22,7 +7,23 @@ Histoire
 Aspects pratiques pour aventuriers
 -->
 
-<p>La Sordolia est la province septentrionale de Burgonnie, une terre sauvage aux profondes forêts et aux habitants aussi rudes que le climat qui y règne.</p>
+<div class="has-right-block">
+	<p>La Sordolia est la province septentrionale de Burgonnie, une terre sauvage aux profondes forêts et aux habitants aussi rudes que le climat qui y règne.</p>
+	<div class="right flow">
+		<figure>
+			<a href="/assets/img_paorn/sordolia.webp" target="_blank">
+				<img src="/assets/img_paorn/sordolia-600.webp" alt="carte de Sordolia">
+			</a>
+			<figcaption>Carte de la Sordolia</figcaption>
+		</figure>
+		<figure>
+			<a href="/assets/img_paorn/sordolia-dernier-rempart-01.webp" target="_blank">
+				<img src="/assets/img_paorn/sordolia-dernier-rempart-01.webp" alt="vue du Dernier Rempart">
+			</a>
+			<figcaption>Le Dernier Rempart</figcaption>
+		</figure>
+	</div>
+</div>
 
 <!-- Géographie -->
 <section>

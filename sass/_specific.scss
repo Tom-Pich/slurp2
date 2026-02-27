@@ -98,7 +98,7 @@ label.btn {
 
 // details
 details {
-	@include flow; --flow-space: .5em; --marker-closed: "☰"; // ☰ or ≡ ?
+	@include flow; --flow-space: .5em; --marker-closed: "☰"; --marker-open: "×"; // ☰ or ≡ ?
 
 	&.exemple {
 		border: .5px solid var(--clr-primary-500); padding: .25em .5em; position: relative; --flow-space: 1em;

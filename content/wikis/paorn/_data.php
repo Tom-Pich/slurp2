@@ -21,6 +21,7 @@ $articles = [
 
 	"sordolia" => ["title" => "Sordolia", "section" => "Sordolia",],
 	"solidam" => ["title" => "Solidam", "section" => "Sordolia"],
+	"fort-leck" => ["title" => "Fort de Leck", "section" => "Sordolia"],
 	
 	"lauria" => ["title" => "Lauria", "section" => "Lauria"],
 	"mikalas" => [ "title" => "Mikalas", "section" => "Lauria" ],

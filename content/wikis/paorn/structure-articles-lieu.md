@@ -1,5 +1,10 @@
 Voici la structure à suivre pour les articles traitant d’un lieu (région, ville, hameau…). Elle est découpée en sections. Les thèmes devant être abordés dans cette section sont mentionnés.
 
+## Sections pirncipales
+Géographie, Habitants, Politique & organisation, Économie, 
+Figures & groupes d'influence, Culture & société, Histoire, 
+Particularités, Ressources & services
+
 ***
 
 # [Nom du lieu]
@@ -15,7 +20,7 @@ Bâtiments et lieux importants
 Sous-régions et quartiers  
 Villes & villages  
 Routes principales  
-Sites remarquables  
+Sites remarquables
 
 ## Habitants
 Races, cultures et/ou sous-races  

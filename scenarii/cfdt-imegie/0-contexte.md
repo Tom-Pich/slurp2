@@ -9,7 +9,7 @@ En plus du présent fichier, qui contient des généralités sur ce que j’atte
 
 ### Dans le dossier C:\Home\www\jdr\content
 Ce dossier regroupe les pages de mon site web de JdR. Tu vas utiliser les éléments suivants :
-- le fichier **C:\Home\www\jdr\content\pages\s_scenario.php**, qui est un guide pour l’écriture d’un scénario de JdR, auqule je ferai référence en disant "le guide" ou "mon guide".
+- le fichier **C:\Home\www\jdr\content\pages\s_scenario.php**, qui est un guide pour l’écriture d’un scénario de JdR, auquel je ferai référence en disant "le guide" ou "mon guide".
 - les fichiers contenus dans le dossier **C:\Home\www\jdr\content\wiki\paorn**. Ces articles décrivent certains éléments du monde de Paorn.
 
 ### Dans le dossier C:\Home\www\jdr\scenarii\cfdt-imegie
@@ -37,14 +37,14 @@ Consulte les fichiers suivants pour avoir les détails sur ces lieux :
 - Paorn : **C:\Home\www\jdr\content\wiki\paorn\home.php**
 - Burgonnie : **C:\Home\www\jdr\content\wiki\paorn\burgonnie.php**
 
-Les PJ ont commencé la campagne dans la ville d’Imégie, capitale de l’Artaille, puis ils se sont installé sur l’île de la Lauria.
+Les PJ ont commencé la campagne dans la ville d’**Imégie**, capitale de l’Artaille, puis ils se sont installés sur l’île de la Lauria.
 
 ### Scénarios déjà joués
 
 Tous les scénarios résumés ci-dessous ont été joués, sauf le dernier, qui est en cours. C’est celui-ci sur lequel nous allons travailler ensemble.
 
 #### Épisode 1 – Embrouille à Imégie
-Après avoir volé à un riche marchand d’Artaille des bijoux d’une grande valeur (eux-même obtenus de manière illégale par ce marchand), les PJ se sont attirés son inimitié, ainsi que celle d’une compagnie de mercenaires d’Imégie. Le scénario se termine alors que les PJ fuient Almisie, une autre grande ville de l’Artaille.
+Après avoir volé à un riche marchand d’Artaille – nommé Théolen – des bijoux d’une grande valeur (eux-même obtenus de manière illégale par ce marchand), les PJ se sont attirés son inimitié, ainsi que celle d’une compagnie de mercenaires d’Imégie. Le scénario se termine alors que les PJ fuient Almisie, une autre grande ville de l’Artaille.
 
 #### Épisode 2 – Le temple oublié
 Alors qu’ils revenaient d’Almisie, fuyant les mercenaires du riche marchand, les PJ découvrent un temple oublié, qu’ils explorent. Après son exploration, ils décident de quitter la région pour un certain temps afin de se faire un peu oublier.
@@ -52,7 +52,7 @@ Alors qu’ils revenaient d’Almisie, fuyant les mercenaires du riche marchand,
 #### Épisode 3 – Fuite vers la Lauria
 Nos trois compères ont pris un bateau pour atteindre l’île de la Lauria, située en face de la province de l’Artaille, et s’installent à _Péponia_, village natal de Jurgen. Ils y passent tout l’été. Jurgen s’est fait construire une petite maison dans ce village, où vit aussi sa famille.  
 Durant l’été, Jurgen a passé du temps avec un mage de _Parna_, capitale de la Lauria, afin d’améliorer ses connaissances en magie.  
-Les deux autres PJ, Grenn et Grissandre, sont restés au village. Ils ont contribué à la vie du village, en donnant un coup de mains aux champs et aux travaux d’entretien et de construction, se liant d’amitié avec certains villageois.
+Les deux autres PJ, Grenn et Grissandre, sont restés au village. Ils ont contribué à la vie du village, en donnant un coup de main aux champs et aux travaux d’entretien et de construction, se liant d’amitié avec certains villageois.
 
 #### Épisode 4 – Exploration des Pasganon
 Les PJ, alléchés par les rumeurs de trésors et d’antiques ruines (les *Pasganon*) dans la partie sauvage et montagneuse de l’île de la Lauria, décident de partir en exploration pour plusieurs jours.  

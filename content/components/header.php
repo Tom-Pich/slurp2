@@ -23,6 +23,8 @@ $body_class .=  $page["style"] !== "normal" ? (" " . $page["style"]) : "";
 	<link rel="shortcut icon" href="/assets/img/favicon.ico">
 	<title><?= $page["title"] ?></title>
 
+	<?php if ($_SESSION["Statut"] < 3) echo "<style>.admin:not(.user-{$_SESSION['id']}) {display: none !important}</style>" ?>
+
 	<?php if (!empty($page["canonical"])) { ?>
 		<link rel="canonical" href="https://jdr.pichegru.net<?= $page["canonical"] ?>">
 		<meta property="og:title" content="<?= $page["title"] ?>">

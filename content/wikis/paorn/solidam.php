@@ -1,17 +1,16 @@
 <h1>Solidam</h1>
 
-<div class="wiki-right-element">
-	<figure>
+<div class="has-right-block">
+	<img src="/assets/img_paorn/blason-solidam-400.webp" width="100px" class="float-left" alt="Blason de Solidam">
+	<p>Solidam est une ville garnison située en Sordolia, dernier avant-poste humain avant les grandes étendues nordiques et les Sinistérias.</p>
+	<p class="mt-1 ta-center">Devise de la ville : <i>Dernier Bastion, Première Défense</i></p>
+	<figure class="right">
 		<a href="/assets/img_paorn/sordolia-solidam-01.webp" target="_blank">
 			<img src="/assets/img_paorn/sordolia-solidam-01.webp" alt="vue de Solidam">
 		</a>
 		<figcaption>Solidam, vue depuis le sud</figcaption>
 	</figure>
 </div>
-
-<img src="/assets/img_paorn/blason-solidam-400.webp" width="100px" class="float-left" alt="Blason écartelé : au premier de gueules à la tour d'argent crénelée sur fond de montagnes d'azur ; au deuxième d'azur à la truite d'argent ondoyante en pal ; au troisième d'or à l'épée de sable posée en pal ; au quatrième de gueules à la tour d'argent crénelée sur fond de montagnes d'azur ; sur le tout, un écu d'argent à la flamme de gueules.">
-<p>Solidam est une ville garnison située en Sordolia, dernier avant-poste humain avant les grandes étendues nordiques et les Sinistérias.</p>
-<p class="mt-1 ta-center">Devise de la ville : <i>Dernier Bastion, Première Défense</i></p>
 
 <!-- Géographie -->
 <section>
@@ -189,19 +188,25 @@
 		</ul>
 	</details>
 
-	<h3>Exportations</h3>
-	<ul>
-		<li>Fourrures</li>
-		<li>Minerai de fer et d’étain</li>
-	</ul>
+	<!-- Exportations -->
+	<details>
+		<summary>
+			<h3>Exportations</h3>
+		</summary>
+		<ul>
+			<li>Fourrures</li>
+			<li>Minerai de fer et d’étain</li>
+		</ul>
+	</details>
 </section>
 
 <!-- PNJ influents -->
 <section>
 	<h2>Figures &amp; groupes d'influence</h2>
+
 	<p>Parmi les personnalités influentes de la ville, on compte :</p>
 	<ul class="flow">
-		<li><b>Sioril</b>, premier conseiller du comte</li>
+		<li><b>Sioril</b>, premier conseiller du comte. <span class="admin">Magerie 4, spécialisé en <i>Emprise mentale</i> et en <i>Connaissance</i>.</span></li>
 		<li><b>Le bailli princier</b> Blaihad Fuldur, premier magistrat de la ville</li>
 		<li><b>Ludwin Rahen</b>, patron de la guilde des marchands de Solidam</li>
 		<li><b>Monseigneur Sephiras</b>, grand-prêtre</li>
@@ -210,12 +215,9 @@
 
 	<p>Les bâtiments cléricaux abritent une petite garnison de paladins.</p>
 
-	<div class="admin">
-		<p><b>Sioril :</b> Magerie 4, spécialisé en <i>Emprise mentale</i> et en <i>Connaissance</i>.</p>
-	</div>
-
+	<!-- Arcania -->
 	<details class="admin">
-		
+
 		<summary>
 			<h3>L’Arcania</h3>
 		</summary>
@@ -242,7 +244,7 @@
 
 </section>
 
-<!-- Aspects pratiques -->
+<!-- Ressources & services -->
 <section>
 	<h2>Ressources &amp; services</h2>
 

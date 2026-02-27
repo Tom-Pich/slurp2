@@ -8,7 +8,8 @@
 	Ils assistent les gardes de la ville dans leurs enquêtes ou dans leurs interventions dès qu’une utilisation de la magie est soupçonnée.
 </p>
 
-<div class="admin flow">
+<!-- Mages de l’Arcania -->
+<section class="admin flow">
 	<h2>Mages de l’Arcania</h2>
 
 	<h3>Recrutement</h3>
@@ -37,7 +38,7 @@
 	<p>Les femmes de l’Arcania subissent un rituel magique qui décolore complètement leurs cheveux, les rendant d'un blanc pur comme la neige. Elles doivent porter ces cheveux coupés court (à hauteur des épaules maximum) et sans aucun ornement.</p>
 	<p>Comme les hommes, elles porteraient l'étoile à sept branches tatouée sur le front</p>
 	<p>Elles portent également une mince tresse spécifique sur le côté gauche, scellée avec un anneau d'argent gravé de runes</p>
-</div>
+</section>
 
 <h2>Législation, mages &amp; magie</h2>
 

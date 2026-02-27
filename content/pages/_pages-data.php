@@ -87,6 +87,14 @@ return $pages_data = [
 		"file" => "univers_add",
 		"version" => 4,
 	],
+		"wiki" => [
+		"title" => NULL, // géré dans _data.php dans le dossier wikis/{wiki}
+		"description" => NULL, // comme ci-dessus
+		"file" => "wiki-template",
+		"body-class" => "wiki",
+		"version" => 4,
+		"aside-left" => "aside-wiki-index", 
+	],
 	"in-nomine" => [
 		"title" => "In Nomine", 
 		"description" => "Une adaptation relativement libre de l’incontournable «&nbsp;Magna Veritas&nbsp;»", 
@@ -195,16 +203,6 @@ return $pages_data = [
 		"version" => 4,
 		"aside-right" => "chat-window",
 		"parameters-btn" => "widgets-help",
-	],
-
-	// Wiki
-	"wiki" => [
-		"title" => NULL, // géré dans _data.php dans le dossier wikis/{wiki}
-		"description" => NULL, // comme ci-dessus
-		"file" => "wiki-template",
-		"body-class" => "wiki",
-		"version" => 4,
-		"aside-left" => "aside-wiki-index", 
 	],
 
 	// Licence

@@ -1,20 +1,22 @@
 <h1>Imégie, capitale de l’Artaille</h1>
 
-<div class="wiki-right-element">
-	<figure>
-		<a href="/assets/img_paorn/imegie-01.webp?v=2.2" target="_blank">
-			<img src="/assets/img_paorn/imegie-01.webp?v=2.2">
-		</a>
-		<figcaption>Plan de la ville</figcaption>
-	</figure>
+<div class="has-right-block">
+	<img src="/assets/img_paorn/blason-imegie.png" width="70px" class="float-left">
+	<p>Cité portuaire aux maisons blanchies à la chaux, Imégie (également nommée la <i>Ville blanche</i>) est la capitale de l’Artaille.</p>
 	<figure>
 		<img src="/assets/img_paorn/imegie-02.jpg" />
 		<figcaption>Imégie – vieille ville</figcaption>
 	</figure>
-</div>
 
-<img src="/assets/img_paorn/blason-imegie.png" width="70px" class="float-left">
-<p>Cité portuaire aux maisons blanchies à la chaux, Imégie (également nommée la <i>Ville blanche</i>) est la capitale de l’Artaille.</p>
+	<div class="right flow">
+		<figure>
+			<a href="/assets/img_paorn/imegie-01.webp?v=2.2" target="_blank">
+				<img src="/assets/img_paorn/imegie-01.webp?v=2.2">
+			</a>
+			<figcaption>Plan de la ville</figcaption>
+		</figure>
+	</div>
+</div>
 
 <!-- Géographie -->
 <section>
@@ -42,13 +44,16 @@
 		<summary>
 			<h3>Quartiers</h3>
 		</summary>
-		<div class="wiki-right-element flow">
-			<figure>
+
+		<div class="has-right-block">
+			<p>La ville compte 17 quartiers différents, plus la zone de l'université qui jouit d’un statut spécial.</p>
+
+			<figure class="right">
 				<img src="/assets/img_paorn/imegie-rue-ville-haute.jpg" />
 				<figcaption>Une rue de la vieille ville</figcaption>
 			</figure>
 		</div>
-		<p>La ville compte 17 quartiers différents, plus la zone de l'université qui jouit d’un statut spécial.</p>
+
 		<ul class="flow">
 			<li><b>Quartiers des Consuls :</b> il abrite des bâtiments officiels (tribunal, les douanes, palais du peuple &ndash; pour les services administratifs de la ville : impôts, voirie, offices divers)</li>
 			<li><b>Quartier de la Citadelle :</b> il s'agit essentiellement d'un quartier militaire (avec la caserne principale de la ville). On y trouve également les Écuries du Prince.</li>
@@ -85,23 +90,26 @@
 		<summary>
 			<h3>Place du marché</h3>
 		</summary>
-		<div class="wiki-right-element flow">
-			<figure>
-				<img src="/assets/img_paorn/imegie-marche-01.jpg" />
-				<figcaption>Place du marché d’Imégie</figcaption>
-			</figure>
-			<figure>
-				<img src="/assets/img_paorn/imegie-marche-02.jpg" />
-				<figcaption>Cathédrale, place du marché</figcaption>
-			</figure>
+
+		<div class="has-right-block">
+			<p>Au cœur de la ville basse, la place du marché s'étend sous le regard imposant de la cathédrale. Chaque matin, ce lieu devient le centre névralgique de la cité, où l'activité commence dès les premières lueurs de l'aube.</p>
+			<p>Entourés de façade à colombage, de clochers et de hauts bâtiments, de majestueux platanes centenaires offrent une ombre bienfaisante, sous laquelle des bancs en pierre accueillent les anciens. Au centre, les eaux cristallines d’une grande fontaine sculptée apportent une fraîcheur bienvenue. Non loin de là, un lavoir résonne des paroles et des chants des lavandières.</p>
+			<p>Autour de la place, des tavernes, pâtisseries et auberges bordent les rues, leurs enseignes colorées invitant les passants à s'arrêter. Les étals des marchands débordent de marchandises variées : fruits et légumes, étoffes chatoyantes, épices exotiques. Les badauds se pressent, les clients marchandent, et les mendiants tendent la main, espérant une pièce ou un morceau de pain et de nombreux stands proposent toute sorte de plats préparés sur place.</p>
+			<p>Des artistes de rue – jongleurs, musiciens, crieurs publics – captivent les foules par leurs talents et leurs histoires. Les enfants jouent à cache-cache entre les étals, leurs rires se mêlant aux cris des vendeurs. Quelques gardes, en faction, veillent discrètement à la sécurité, leurs regards scrutateurs balayant la foule.</p>
+			<p>La place est également le royaume des animaux. Des chats et des chiens errent, profitant des restes de nourriture. Des ânes et des mulets, chargés de marchandises, avancent lentement, tandis que poules, moutons et cochons attendent d'être vendus.</p>
+			<p>Les odeurs se mêlent et se superposent : les effluves appétissants des plats préparés sur place, les senteurs des légumes et des fruits frais, l’odeur plus âcres des animaux et du sang, et la fumée des feux de bois qui crépite dans l'air.</p>
+			<p>Une partie de la place est occupée par des halles couvertes, offrant un abri contre le soleil brûlant et les intempéries. Sous ces toits protecteurs, la foule se presse encore plus dense, les voix résonnent, amplifiées par l'acoustique des lieux.</p>
+			<div class="right flow">
+				<figure>
+					<img src="/assets/img_paorn/imegie-marche-01.jpg" />
+					<figcaption>Place du marché d’Imégie</figcaption>
+				</figure>
+				<figure>
+					<img src="/assets/img_paorn/imegie-marche-02.jpg" />
+					<figcaption>Cathédrale, place du marché</figcaption>
+				</figure>
+			</div>
 		</div>
-		<p>Au cœur de la ville basse, la place du marché s'étend sous le regard imposant de la cathédrale. Chaque matin, ce lieu devient le centre névralgique de la cité, où l'activité commence dès les premières lueurs de l'aube.</p>
-		<p>Entourés de façade à colombage, de clochers et de hauts bâtiments, de majestueux platanes centenaires offrent une ombre bienfaisante, sous laquelle des bancs en pierre accueillent les anciens. Au centre, les eaux cristallines d’une grande fontaine sculptée apportent une fraîcheur bienvenue. Non loin de là, un lavoir résonne des paroles et des chants des lavandières.</p>
-		<p>Autour de la place, des tavernes, pâtisseries et auberges bordent les rues, leurs enseignes colorées invitant les passants à s'arrêter. Les étals des marchands débordent de marchandises variées : fruits et légumes, étoffes chatoyantes, épices exotiques. Les badauds se pressent, les clients marchandent, et les mendiants tendent la main, espérant une pièce ou un morceau de pain et de nombreux stands proposent toute sorte de plats préparés sur place.</p>
-		<p>Des artistes de rue – jongleurs, musiciens, crieurs publics – captivent les foules par leurs talents et leurs histoires. Les enfants jouent à cache-cache entre les étals, leurs rires se mêlant aux cris des vendeurs. Quelques gardes, en faction, veillent discrètement à la sécurité, leurs regards scrutateurs balayant la foule.</p>
-		<p>La place est également le royaume des animaux. Des chats et des chiens errent, profitant des restes de nourriture. Des ânes et des mulets, chargés de marchandises, avancent lentement, tandis que poules, moutons et cochons attendent d'être vendus.</p>
-		<p>Les odeurs se mêlent et se superposent : les effluves appétissants des plats préparés sur place, les senteurs des légumes et des fruits frais, l’odeur plus âcres des animaux et du sang, et la fumée des feux de bois qui crépite dans l'air.</p>
-		<p>Une partie de la place est occupée par des halles couvertes, offrant un abri contre le soleil brûlant et les intempéries. Sous ces toits protecteurs, la foule se presse encore plus dense, les voix résonnent, amplifiées par l'acoustique des lieux.</p>
 	</details>
 
 	<!-- La Grande Halle -->
@@ -109,15 +117,15 @@
 		<summary>
 			<h3>La Grande Halle</h3>
 		</summary>
-		<div class="wiki-right-element">
-			<figure>
+		<div class="has-right-block">
+			<p>Située dans le quartier des trois collines, c’est l’endroit où transitent toutes les marchandises entrant ou sortant d’Imégie par voie terrestre.</p>
+			<p>C’est un grand bâtiment avec une large cour intérieure où les chariots sont déchargés de leur marchandise puis rechargés, où les marchandises sont contrôlées par les autorités, les bêtes nourries et soignées&hellip;</p>
+			<p>L’endroit est bien entendu solidement gardé, de jour comme de nuit</p>
+			<figure class="right">
 				<img src="/assets/img_paorn/grande-halle-01.jpg" />
 				<figcaption>La grande halle</figcaption>
 			</figure>
 		</div>
-		<p>Située dans le quartier des trois collines, c’est l’endroit où transitent toutes les marchandises entrant ou sortant d’Imégie par voie terrestre.</p>
-		<p>C’est un grand bâtiment avec une large cour intérieure où les chariots sont déchargés de leur marchandise puis rechargés, où les marchandises sont contrôlées par les autorités, les bêtes nourries et soignées&hellip;</p>
-		<p>L’endroit est bien entendu solidement gardé, de jour comme de nuit</p>
 	</details>
 
 	<!-- Autres bâtiments notables -->
@@ -142,79 +150,77 @@
 
 	<p>Les Imégiens sont plutôt sympathiques, même s’ils ont une assez haute opinion d’eux-mêmes. Ils aiment faire la fête.</p>
 
-	<?php if ($admin): ?>
-		<details class="admin flow">
-			<summary>
-				<h3>Mages</h3>
-			</summary>
-			<table class="left-1 alternate-o">
-				<colgroup>
-					<col>
-					<col style="width: 6ch">
-					<col style="width: 6ch">
-					<col style="width: 6ch">
-					<col style="width: 6ch">
-					<col style="width: 6ch">
-				</colgroup>
-				<tr>
-					<th>Magerie</th>
-					<th>1</th>
-					<th>2</th>
-					<th>3</th>
-					<th>4</th>
-					<th>5</th>
-				</tr>
-				<tr>
-					<th>Total</th>
-					<th>50</th>
-					<th>25</th>
-					<th>12</th>
-					<th>6</th>
-					<th>3</th>
-				</tr>
-				<tr>
-					<td>Professeurs Université</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td>2</td>
-					<td>1</td>
-				</tr>
-				<tr>
-					<td>Élèves Université</td>
-					<td>40</td>
-					<td>10</td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>Arcania</td>
-					<td></td>
-					<td></td>
-					<td>6</td>
-					<td>2</td>
-					<td>1</td>
-				</tr>
-				<tr>
-					<td>Indépendant</td>
-					<td></td>
-					<td>10</td>
-					<td>3</td>
-					<td>2</td>
-					<td>1</td>
-				</tr>
-				<tr>
-					<td>Clandestins</td>
-					<td>10</td>
-					<td>5</td>
-					<td>3</td>
-					<td></td>
-					<td></td>
-				</tr>
-			</table>
-		</details>
-	<?php endif ?>
+	<details class="admin flow">
+		<summary>
+			<h3>Mages</h3>
+		</summary>
+		<table class="left-1 alternate-o">
+			<colgroup>
+				<col>
+				<col style="width: 6ch">
+				<col style="width: 6ch">
+				<col style="width: 6ch">
+				<col style="width: 6ch">
+				<col style="width: 6ch">
+			</colgroup>
+			<tr>
+				<th>Magerie</th>
+				<th>1</th>
+				<th>2</th>
+				<th>3</th>
+				<th>4</th>
+				<th>5</th>
+			</tr>
+			<tr>
+				<th>Total</th>
+				<th>50</th>
+				<th>25</th>
+				<th>12</th>
+				<th>6</th>
+				<th>3</th>
+			</tr>
+			<tr>
+				<td>Professeurs Université</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>2</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>Élèves Université</td>
+				<td>40</td>
+				<td>10</td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Arcania</td>
+				<td></td>
+				<td></td>
+				<td>6</td>
+				<td>2</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>Indépendant</td>
+				<td></td>
+				<td>10</td>
+				<td>3</td>
+				<td>2</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>Clandestins</td>
+				<td>10</td>
+				<td>5</td>
+				<td>3</td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+	</details>
 </section>
 
 <!-- Politique & organisation -->
@@ -246,11 +252,9 @@
 		</summary>
 		<p>Le quartier général de l’Arcania, la police magique, est le <i>Domus Veritas</i>, situé près du château du Prince</p>
 		<p>Le Grand Mage Brener est à la tête de ses services.</p>
-		<?php if ($admin): ?>
-			<div class="admin flow">
-				<p>L’arcania d’Imégie compte neuf mages : 1 M5 (Brener), 2 M4 (Alber dit l’<i>Olmérien</i> et Miller) et 6 M3.</p>
-			</div>
-		<?php endif ?>
+		<div class="admin flow">
+			<p>L’arcania d’Imégie compte neuf mages : 1 M5 (Brener), 2 M4 (Alber dit l’<i>Olmérien</i> et Miller) et 6 M3.</p>
+		</div>
 	</details>
 </section>
 
@@ -284,18 +288,16 @@
 			<h3>Famille Pelren</h3>
 		</summary>
 		<p>L’une des familles bourgeoises les plus influentes d'Imégie. Cette famille est un acteur majeur du commerce maritime de la ville. En tension avec la famille Brax. Dirigée par <i>Shinor Pelren</i>.</p>
-		<?php if ($admin): ?>
-			<div class="admin flow">
-				<p>Employeur de Nessalanta. Ils emploient une gouvernante, deux boniches et une cuisinière.</p>
-				<p>La famille est liée au père Adrione, en charge d’une église dans le quartier du marché.</p>
-				<p>
-					<b>Shinor Pelren</b> (50 ans), le chef de famille, est l’armateur le plus riche d’Imégie, et c’est lui qui possède le plus grand entrepôt de marchandise de la ville.<br>
-					Shinor a 5 enfants. Il vit avec sa femme et leur plus jeune fille (15 ans) et une autre fille (18 ans). Une autre fille (20 ans) est mariée et vit à Stomilie. Deux garçons (23 et 25 ans). L’un est plutôt désœuvré et bagarreur, l’autre, plus sérieux, aide son père dans ses affaires.
-				</p>
-				<p><b>Metho, le frère de Shinor</b>, est administrateur de la capitainerie du port.</p>
-				<p><b>Porsar Pelren (fils ainé de Shinor)</b> s’occupe de l’entrepôt de la famille.</p>
-			</div>
-		<?php endif ?>
+		<div class="admin flow">
+			<p>Employeur de Nessalanta. Ils emploient une gouvernante, deux boniches et une cuisinière.</p>
+			<p>La famille est liée au père Adrione, en charge d’une église dans le quartier du marché.</p>
+			<p>
+				<b>Shinor Pelren</b> (50 ans), le chef de famille, est l’armateur le plus riche d’Imégie, et c’est lui qui possède le plus grand entrepôt de marchandise de la ville.<br>
+				Shinor a 5 enfants. Il vit avec sa femme et leur plus jeune fille (15 ans) et une autre fille (18 ans). Une autre fille (20 ans) est mariée et vit à Stomilie. Deux garçons (23 et 25 ans). L’un est plutôt désœuvré et bagarreur, l’autre, plus sérieux, aide son père dans ses affaires.
+			</p>
+			<p><b>Metho, le frère de Shinor</b>, est administrateur de la capitainerie du port.</p>
+			<p><b>Porsar Pelren (fils ainé de Shinor)</b> s’occupe de l’entrepôt de la famille.</p>
+		</div>
 	</details>
 
 	<!-- Famille Brax -->
@@ -303,28 +305,24 @@
 		<summary>
 			<h3>Famille Brax</h3>
 		</summary>
-		<p>La deuxième famille bourgeoise en charge du port.</p>
-		<?php if ($admin): ?>
-			<div class="admin flow">
-				<div class="wiki-right-element">
-					<figure>
-						<img src="/assets/img_paorn/maison-brax-01.jpg" />
-						<figcaption>La maison Brax</figcaption>
-					</figure>
-				</div>
-				<p>Leur maison est située dans le quartier des Consuls. Porche vers cour intérieure, entrée habitation, RdC + 2 niveaux + comble + cave, dépendance (écurie + grenier à foin)</p>
-				<p>Un des membre de la famille Brax est un professeur de magie à l’université.</p>
-				<p>
-					<b>Suartone Brax</b>, chef de la famille Brax a le titre de <i>Bailli principal des douanes du Prince</i>. Il est en charge de la gestion des douanes du port de marchandise. C’est lui qui coordonne le contrôle des marchandises et des navires, ainsi que la collecte des taxes.
-				</p>
-				<p><b>Eldric Brax</b>, fils aîné de la famille. 32 ans, stature élancée et athlétique. Cheveux noirs soigneusement coiffés en arrière, révélant un front haut et des traits anguleux. Yeux perçants, d'un bleu glacial, suggérant une intelligence vive et une certaine ruse. Il porte une barbe de trois jours, ajoutant à son allure un air de mystère et de danger. Vêtu de vêtements de haute qualité, souvent dans des tons sombres, il privilégie les tenues discrètes mais élégantes, adaptées à ses activités clandestines. Une bague en argent orne son doigt, symbole de son appartenance à la haute bourgeoisie.</p>
-				<p>
-					For 12, Dex 12, Int 12, San 11, Per 11, Vol 10, PdV 11<br>
-					Épée 14, Esquive 12, Combat MN 12<br>
-					Épée longue BQ (P1d+2/T2d+1)
-				</p>
-			</div>
-		<?php endif ?>
+		<div class="has-right-block">
+			<p>La deuxième famille bourgeoise en charge du port.</p>
+			<p>Leur maison est située dans le quartier des Consuls. Porche vers cour intérieure, entrée habitation, RdC + 2 niveaux + comble + cave, dépendance (écurie + grenier à foin)</p>
+			<p>Un des membre de la famille Brax est un professeur de magie à l’université.</p>
+			<figure class="right">
+				<img src="/assets/img_paorn/maison-brax-01.jpg" />
+				<figcaption>La maison Brax</figcaption>
+			</figure>
+		</div>
+		<div class="admin flow">
+			<p><b>Suartone Brax</b>, chef de la famille Brax a le titre de <i>Bailli principal des douanes du Prince</i>. Il est en charge de la gestion des douanes du port de marchandise. C’est lui qui coordonne le contrôle des marchandises et des navires, ainsi que la collecte des taxes.</p>
+			<p><b>Eldric Brax</b>, fils aîné de la famille. 32 ans, stature élancée et athlétique. Cheveux noirs soigneusement coiffés en arrière, révélant un front haut et des traits anguleux. Yeux perçants, d'un bleu glacial, suggérant une intelligence vive et une certaine ruse. Il porte une barbe de trois jours, ajoutant à son allure un air de mystère et de danger. Vêtu de vêtements de haute qualité, souvent dans des tons sombres, il privilégie les tenues discrètes mais élégantes, adaptées à ses activités clandestines. Une bague en argent orne son doigt, symbole de son appartenance à la haute bourgeoisie.</p>
+			<p>
+				For 12, Dex 12, Int 12, San 11, Per 11, Vol 10, PdV 11<br>
+				Épée 14, Esquive 12, Combat MN 12<br>
+				Épée longue BQ (P1d+2/T2d+1)
+			</p>
+		</div>
 	</details>
 </section>
 

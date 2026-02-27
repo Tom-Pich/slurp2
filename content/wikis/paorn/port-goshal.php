@@ -11,15 +11,8 @@
 <p><b>Ordre des moines guerriers de la Nouvelle Étoile&nbsp;:</b> ordre religieux opposés aux paladins.</p>
 <p><b>Alliance des négociants de métaux</b> (alliance de marchands influents de la ville, monopole du commerce du métal, aux objectifs d’influence politique).</p>
 
-<?php if ($admin) { ?>
-
+<div class="has-right-block admin">
 	<h4>Erdno Brici</h4>
-	<div class="wiki-right-element">
-		<figure>
-			<img src="/assets/img_paorn/pnj_erdno_brici.jpg">
-			<figcaption>Erdno Brici</figcaption>
-		</figure>
-	</div>
 	<p>
 		Marchand influent et semi-mafieux, membre de l’Alliance des négociants de métaux.<br>
 		Possède deux entrepôts sur le port, place des Almisiens.<br>
@@ -28,7 +21,11 @@
 		Toujours accompagné de deux gardes du corps balaises.<br>
 		Anneau de <i>Détection des mensonges</i>
 	</p>
-<?php } ?>
+	<figure class="right">
+		<img src="/assets/img_paorn/pnj_erdno_brici.jpg">
+		<figcaption>Erdno Brici</figcaption>
+	</figure>
+</div>
 
 <h3>Lieux intéressants</h3>
 <h4>Quartiers</h4>

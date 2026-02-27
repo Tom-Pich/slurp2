@@ -129,6 +129,7 @@ class Skill implements RulesItem
 		if ($niv <= $niv_c) return 2 ** ($x - 1); // ½ - 1 - 2 - 4 - 8
 		if ("SKILL_V2") {
 			if ($niv > 7) return INF;
+			if ($base === "I") return 4 * ($x - 2);
 			return 8 * ($x - 3);
 		}
 		if ($base === "I") return 4 * $x - 8; // intellectual skills - high level

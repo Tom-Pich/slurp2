@@ -1,20 +1,20 @@
 <h2>Stomilie, ville sainte de Burgonie</h2>
 
-<div class="wiki-right-element">
-	<figure>
+<div class="has-right-block">
+	<p>
+		Stomilie est une ville fortifiée d’environ 10.000 habitants, de forme globalement circulaire.<br>
+		Située à 10 km de la mer, elle est construite sur une colline.<br>
+		Elle est considérée comme une ville sainte de l’Atrimisme, car c’est non loin de cette ville que le prohète Eldred est né, et son tombeau se trouve dans cette ville.<br>
+		Construite sur un terrain en pente, elle comporte de nombreux escaliers.<br>
+		Une petite rivière aux eaux réputées particulièrement pures jaillit de la colline<br>
+		Le seigneur des lieux est l’archiprêtre de Stomilie&nbsp;: Monseigneur Giorgio de Scamora, duc et archiprêtre.
+	</p>
+
+	<figure class="right">
 		<img src="/assets/img_paorn/stomilie_01.jpg" alt="">
 		<figcaption>Stomilie et sa cathédrale fortifiée</figcaption>
 	</figure>
 </div>
-
-<p>
-	Stomilie est une ville fortifiée d’environ 10.000 habitants, de forme globalement circulaire.<br>
-	Située à 10 km de la mer, elle est construite sur une colline.<br>
-	Elle est considérée comme une ville sainte de l’Atrimisme, car c’est non loin de cette ville que le prohète Eldred est né, et son tombeau se trouve dans cette ville.<br>
-	Construite sur un terrain en pente, elle comporte de nombreux escaliers.<br>
-	Une petite rivière aux eaux réputées particulièrement pures jaillit de la colline<br>
-	Le seigneur des lieux est l’archiprêtre de Stomilie&nbsp;: Monseigneur Giorgio de Scamora, duc et archiprêtre.
-</p>
 
 <h3>PNJ, groupes &amp; organisations</h3>
 <p>Les gardes de la villes sont dirigés par des paladins.</p>

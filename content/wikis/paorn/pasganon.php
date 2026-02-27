@@ -1,20 +1,5 @@
 <h1>Les Pasganon</h1>
 
-<div class="wiki-right-element flow">
-	<figure>
-		<a href="/assets/img_paorn/lauria-pasganon-01.webp" target="_blank">
-			<img src="/assets/img_paorn/lauria-pasganon-01.webp">
-		</a>
-		<figcaption>Ruines des Pasganon</figcaption>
-	</figure>
-	<figure>
-		<a href="/assets/img_paorn/lauria-pasganon-02.webp" target="_blank">
-			<img src="/assets/img_paorn/lauria-pasganon-02.webp">
-		</a>
-		<figcaption>Contreforts des Pasganon</figcaption>
-	</figure>
-</div>
-
 <!--
 Géographie
 Habitants
@@ -27,9 +12,26 @@ Particularités
 Aspects pratiques pour aventuriers
 -->
 
-<p>Les Pasganon désignent les montagnes qui recouvrent les deux tiers de l’île de la Lauria, soit près de 40&thinsp;000 km². Les sommets à plus de 2500 m ne sont par rares. Le point culminant est atteint par un volcan, le mont <i>Ténéphas</i>, qui culmine à plus de 3500 m.</p>
+<div class="has-right-block">
+	<p>Les Pasganon désignent les montagnes qui recouvrent les deux tiers de l’île de la Lauria, soit près de 40&thinsp;000 km². Les sommets à plus de 2500 m ne sont par rares. Le point culminant est atteint par un volcan, le mont <i>Ténéphas</i>, qui culmine à plus de 3500 m.</p>
 
-<p>Cette région est déserte et globalement assez aride. Seuls quelques ermites y vivent, dans le dénuement le plus total. Des parias et autres fugitifs s’y cachent parfois, mais ils s’aventurent rarement au cœur des montagnes, préférant ne pas trop s’éloigner des zones habitées.</p>
+	<p>Cette région est déserte et globalement assez aride. Seuls quelques ermites y vivent, dans le dénuement le plus total. Des parias et autres fugitifs s’y cachent parfois, mais ils s’aventurent rarement au cœur des montagnes, préférant ne pas trop s’éloigner des zones habitées.</p>
+
+	<div class="right flow">
+		<figure>
+			<a href="/assets/img_paorn/lauria-pasganon-01.webp" target="_blank">
+				<img src="/assets/img_paorn/lauria-pasganon-01.webp">
+			</a>
+			<figcaption>Ruines des Pasganon</figcaption>
+		</figure>
+		<figure>
+			<a href="/assets/img_paorn/lauria-pasganon-02.webp" target="_blank">
+				<img src="/assets/img_paorn/lauria-pasganon-02.webp">
+			</a>
+			<figcaption>Contreforts des Pasganon</figcaption>
+		</figure>
+	</div>
+</div>
 
 <h2>Les ruines</h2>
 <p>Les Pasganon sont parsemés de ruines très anciennes de toutes sortes : palais, tombeaux, temples, observatoires astronomiques, etc. Un grand nombre de légendes parlent des richesses fabuleuses qu’abriteraient ces anciens édifices et il n’est pas rare de voir des groupes d’aventuriers venir dans cette région.</p>

@@ -1,19 +1,19 @@
 <h1>L’Île de la Lauria</h1>
-<div class="wiki-right-element">
-	<figure>
-		<a href="/assets/img_paorn/lauria.webp?v=2" target="_blank">
-			<img src="/assets/img_paorn/lauria-600.webp?v=2">
-		</a>
-		<figcaption>L’île de la Lauria</figcaption>
-	</figure>
-</div>
 
 <!--
 Figures et groupes d'influence
 Aspects pratiques pour aventuriers
 -->
 
-<p>Séparée de la côte d’Artaille par une large passe aux courants capricieux, la Lauria est un territoire farouchement indépendant. Ses habitants ont développé au fil des siècles une culture originale, tournée vers l’artisanat, l’élevage et la méditation.</p>
+<div class="has-right-block">
+	<p>Séparée de la côte d’Artaille par une large passe aux courants capricieux, la Lauria est un territoire farouchement indépendant. Ses habitants ont développé au fil des siècles une culture originale, tournée vers l’artisanat, l’élevage et la méditation.</p>
+	<figure class="right">
+		<a href="/assets/img_paorn/lauria.webp?v=2" target="_blank">
+			<img src="/assets/img_paorn/lauria-600.webp?v=2">
+		</a>
+		<figcaption>L’île de la Lauria</figcaption>
+	</figure>
+</div>
 
 <!-- Géographie -->
 <section>
@@ -93,20 +93,16 @@ Aspects pratiques pour aventuriers
 	<h2>Économie</h2>
 	<p>Le sous-sol de leur pays étant très pauvre en métaux et en minéraux précieux, les Lauriens sont éleveurs, artisans où agriculteurs.</p>
 	<p>L’île entretient des relations commerciales avec la Burgonnie et l’Althusia, afin notamment de se procurer le fer et l’acier dont elle a besoin.</p>
-	<?php if ($admin): ?>
-		<p class="admin">Un proverbe dit&nbsp;: «&nbsp;En Lauria, si l’on n’est ni artisan, ni berger, on ne peut être que prêtre&nbsp;!&nbsp;» Bien que légèrement exagérée, cette affirmation n’est pas tout à fait fausse.</p>
-	<?php endif ?>
+	<p class="admin">Un proverbe dit&nbsp;: «&nbsp;En Lauria, si l’on n’est ni artisan, ni berger, on ne peut être que prêtre&nbsp;!&nbsp;» Bien que légèrement exagérée, cette affirmation n’est pas tout à fait fausse.</p>
 	<p>Sans le commerce avec l’étranger, l’île n’aurait jamais prospéré. Or, sans l’artisanat, aucun commerce n’aurait été possible. C’est pourquoi les Lauriens ont développé un talent exceptionnel pour le travail des peaux, le tissage et l’ébénisterie. Les meubles de Draki et les toiles de Mikalas comptent parmi les articles de luxe les plus prisés par les nobles de Paorn.</p>
 	<p>Garder les immenses troupeaux de chèvres et de moutons qui paissent sur les flancs des montagnes n’est pas considéré comme une tâche «&nbsp;inférieure&nbsp;». En effet, certains intellectuels et penseurs surmenés n’hésitent pas à quitter leurs occupations habituelles pour se faire pâtres et passer plusieurs années à jouer de la flûte (l’instrument national laurien), tout en méditant sur la vanité du monde. Une fois l’esprit en paix, ils retournent à leurs vies familiales et professionnelles sans que personne y trouve à redire.</p>
-	<?php if ($admin): ?>
-		<p class="admin">En Lauria, le terme «&nbsp;prêtre&nbsp;» désigne non seulement les hommes qui ont voué leur existence à un dieu (ou à des dieux), mais aussi ceux qui s’intéressent aux «&nbsp;sciences de l’esprit&nbsp;», que l’on considère ici comme étant d’essence divine. Cette catégorie englobe donc les religieux, les philosophes, les mathématiciens et les astrologues qui vivent en petites communautés autonomes dans les montagnes.</p>
-	<?php endif ?>
+	<p class="admin">En Lauria, le terme «&nbsp;prêtre&nbsp;» désigne non seulement les hommes qui ont voué leur existence à un dieu (ou à des dieux), mais aussi ceux qui s’intéressent aux «&nbsp;sciences de l’esprit&nbsp;», que l’on considère ici comme étant d’essence divine. Cette catégorie englobe donc les religieux, les philosophes, les mathématiciens et les astrologues qui vivent en petites communautés autonomes dans les montagnes.</p>
 </section>
 
 <!-- Culture et société -->
 <section>
 	<h2>Culture et société</h2>
-	
+
 	<h3>Religions</h3>
 	<p>Les Lauriens vénèrent un petit panthéon de dieux (le <a href="/wiki/paorn/pentatheisme">pentatos</a>), bien que l’Atrimisme connaissent une progression lente mais régulière depuis des siècles. Ces deux religions se tolèrent.</p>
 	<p>Les adeptes du pentatos considèrent que les convertis à l’atrimise ont trahi les croyances ancestrales, tandis que les atrimistes considèrent les adaptes des « anciens dieux » comme des égarés.</p>

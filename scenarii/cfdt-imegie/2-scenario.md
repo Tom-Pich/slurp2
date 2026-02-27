@@ -6,15 +6,14 @@
 
 ### Par-delà le Dernier Rempart
 
-Les PJ se réveillent à 10 km au-delà du Dernier Rempart, dans une zone montagneuse très sauvage et dangereuse. Jurgen est inconscient (0 PdF) et doit se reposer 24h. Les PJ sont en pleine forêt nordique sauvage. Ils essaient de s’orienter et doivent trouver de la nourriture, car ils n’en ont plus en réserve. Ils passent une première nuit sans heurts, malgré des bruits de grandes créatures dans la forêt.  
+Les PJ se réveillent à 10 km au-delà du Dernier Rempart, dans une zone montagneuse très sauvage et dangereuse. Jurgen est inconscient (0 PdF) et doit se reposer. Les PJ sont en pleine forêt nordique sauvage. Ils essaient de s’orienter et doivent trouver de la nourriture, car ils n’en ont plus en réserve. Ils passent une première nuit sans heurts, malgré des bruits de grandes créatures dans la forêt.  
 Le lendemain, ils découvrent un campement de chasseurs orcs. Ils ne se font pas repérer, mais alors qu’ils les observent, le groupe d’orcs se fait décimer en très peu de temps par une mystérieuse créature ressemblant à une femme de 8 pieds de haut (une sorte de sorcière appelée Annis).
 
 ### Le fort de Leck
-Quelques temps après, le même jour, ils rencontrent une patrouille de la garde du _Dernier Rempart_. Ceux-ci conduisent les PJ au fort de Leck, addossé au rempart. Le commandant du fort les questionne, un prêtre utilise la "Lecture d'Aura" et découvre que Jurgen est un mage. Les PJ sont traités comme des "hôtes sous surveillance" : ils sont nourris mais doivent passer la nuit dans une cellule (car l’usage de la magie est impossible dans la cellule, de part l’absence totale de fluide magique dans ce lieu).
+Quelques temps après, le même jour, ils rencontrent une patrouille de la garde du _Dernier Rempart_. Ceux-ci conduisent les PJ au fort de Leck, addossé au rempart. Le commandant du fort les questionne, un prêtre utilise son pouvoir de "Lecture d'Aura" et découvre que Jurgen est un mage. Les PJ sont traités comme des "hôtes sous surveillance" : ils sont nourris mais doivent passer la nuit dans une cellule (car l’usage de la magie est impossible dans la cellule, de part l’absence totale de fluide magique dans ce lieu).
 
 ### Voyage vers Solidam
-
-Le lendemain, les PJ sont escortés par cinq gardes du fort vers la première ville au sud, Solidam, situé à trois jours et demi de cheval. Le voyage se passe bien, même si le groupe se fait attaquer par deux trolls à deux têtes. Les PJ réalisent que la région entre le fort (au nord, contre le Dernier Rempart) et Solidam (au Sud) est totalement sauvage; Aucun humain n’y habite car elle est trop dangereuse.
+Le lendemain, les PJ sont escortés par cinq gardes du fort vers la première ville au sud, Solidam, situé à trois jours et demi de cheval. Le voyage se passe bien, même si le groupe se fait attaquer par deux trolls à deux têtes. Les PJ réalisent que la région entre le fort (au nord, contre le Dernier Rempart) et Solidam (au Sud) est totalement sauvage. Aucun humain n’y habite car elle est trop dangereuse.
 
 ## Acte II – À Solidam (résumé, terminé)
 

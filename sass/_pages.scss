@@ -6,8 +6,6 @@ body.standard-page {
 	main { display: flex; gap: 1em; flex-wrap: wrap;  gap: 1em; }
 	aside.left:empty + main { justify-content: center; }
 
-	//aside { border: 1px solid var(--grey-700); border-radius: 1em; }
-
 	:is(section, article) { border: 1px solid var(--grey-700); border-radius: 1em; box-shadow: var(--box-shadow); width: var(--col-width);  margin-top: .75em; }
 	:is(section, article) h2 { color: var(--white); font-size: var(--fs-450); margin: -1.25rem 0 1em; padding: .25em; }
 	:is(section, article) h2:not(.bg-primary-500, .bg-secondary-500, .bg-tertiary-500) { background-color: var(--black);  }
@@ -140,9 +138,15 @@ body.personnage-gestion {
 
 body.gestionnaire-mj {
 	main { display: block; }
-	:is(article, section) {width: unset;}
-	:is(article, section):not(:first-of-type) { margin-top: 2em; }
-	.card { border: 1px solid var(--grey-900); border-radius: 1em; padding: var(--ds-½-1);}
+	section {width: unset;}
+	section:not(:first-of-type) { margin-top: 2em; }
+	.card { border: 1px solid var(--grey-900); border-radius: 1em; padding: var(--ds-½-1); }
+	label.card {
+		cursor: pointer; transition: box-shadow .2s, background-color .2s;
+		&:hover { box-shadow: 1px 1px 5px 0 var(--grey-900); }
+		&:has(input:checked) { background-color: var(--clr-primary-900); }
+	}
+	
 	.single-item-wrapper {
 		grid-template-columns: 4ch 1fr 4ch 5ch 7ch 1fr 1fr;
 		grid-template-areas: "id name container weight location notes notes-mj";
@@ -171,14 +175,30 @@ body.gestionnaire-mj {
 body.wiki {
 
 	--col-width: 250px;
+	/* @include media {
+		#page-wrapper {
+			grid-template-rows: 1.5em auto;
+			&.active-index { grid-template-rows: auto auto; }
+		}
+	} */
 
-	aside.left {@include media { display: none }}
-	details.phone-index { background-color: var(--grey-900); padding: .15em; --marker-offset-r: .25em }
+	aside.left {
+		#show-wiki-nav {
+			font-weight: 700; cursor: pointer; margin-bottom: .5em; font-family: var(--ff-accent); font-size: var(--fs-500); position: relative;
 
-	aside.left, details.phone-index {
-		a { display: block; --flow-space: .15em; text-decoration: none; color: inherit; width:fit-content }
+			&::after { content:"☰"; position: absolute; top: 0; right: 0; }
+
+			@include media-min { display: none; }
+		}
+
+		a { display: block; --flow-space: 0; text-decoration: none; color: inherit; width:fit-content }
 		a.active-link { font-weight: 700; }
 		a.child-article { margin-left: 1em; --flow-space: 0; }
+
+		@include media {
+			max-height: 2.1em; overflow: hidden; transition: all .25s; border: 1px solid black; padding: .25em; 
+			&.active-index { max-height: 700px; overflow-y: scroll;}
+		}
 	}
 
 	main {
@@ -188,15 +208,20 @@ body.wiki {
 
 	section { margin-top: 2em; padding: 0; }
 
-	.wiki-right-element {
-		@include flow;
-		//width: var(--col-width); position: absolute; left: calc(100% + 2em); margin-top: 0;
-		@include media-min ($brp-l) { width: var(--col-width); position: absolute; left: calc(100% + 2em); margin-top: 0; }
+	.has-right-block {
+		position: relative; @include flow;
+		&:has(p:first-child) { margin-top: .5em }
+		@include media-min ($brp-l) { .right + p:nth-child(2) { --flow: 0; } }
+	}
+
+	.right {
+		@include media-min ($brp-l) { width: var(--col-width); position: absolute; left: calc(100% + 2em); top: 0; margin-top: 0; }
 		img { max-height: 50vh; margin-inline: auto; }
 	}
 	
 	h1 { @include media-min { --flow-space: 0; } }
 	h2 { font-size: var(--fs-600); border-bottom: 1px solid var(--black); padding-bottom: .15em }
+	//main > :is(h2, h3, h4) { color: var(--clr-invalid) } // must be in section
 	h3 { font-size: var(--fs-500); }
 	h4 { font-size: var(--fs-450); }
 	h5 { font-size: var(--fs-400); }

@@ -42,7 +42,7 @@ $playNotif = false;
 <div id="ws-data" hidden data-session-id="<?= $_SESSION["id"] ?>" data-ws-key="<?= WS_KEY ?>"></div>
 
 <!-- Objets orphelins -->
-<article>
+<section>
 	<h2 class="flex-s gap-1">
 		Objets orphelins
 		<button class="nude ff-fas" data-role="open-dialog" data-dialog-name="orphan-objects-dialog" title="mode d’emploi">&#xf059;</button>
@@ -73,10 +73,10 @@ $playNotif = false;
 		} ?>
 		<button type="submit" class="btn-primary fs-500 ff-fas mx-auto mt-½">&#xf0c7;</button>
 	</form>
-</article>
+</section>
 
 <!-- Groupes et personnages -->
-<article>
+<section>
 	<h2 class="flex-s gap-1">
 		Groupes &amp; Personnages
 		<button class="nude ff-fas" data-role="open-dialog" data-dialog-name="characters-dialog" title="mode d’emploi">&#xf059;</button>
@@ -224,110 +224,83 @@ $playNotif = false;
 		</details>
 	<?php } ?>
 
-</article>
+</section>
 
 <!-- Créer un personnage -->
-<article>
+<section>
 	<h2 class="flex-s gap-1">
 		Créer un personnage
 		<button class="nude ff-fas" data-role="open-dialog" data-dialog-name="create-characters-dialog" title="mode d’emploi">&#xf059;</button>
 	</h2>
-	<p>Les kits vous permettent d’ajouter des « packs » d’avantages, désavantages et compétences afin de vous faciliter la création de personnages. Ils sont cumulatifs. Les compétences sont attribuées avec leur score par défaut.</p>
+	<p>Les kits (optionnels) vous permettent d’ajouter des « packs » d’avantages, désavantages et compétences. Ils sont cumulatifs. Les compétences sont attribuées avec leur score par défaut.</p>
 	<form method="post" action="/submit/create-character" data-role="character-creation-form">
 		<div class="grid col-auto-fit gap-½" style="--col-min-width: 250px">
 
 			<!-- Base -->
-			<div class="card">
-				<label>
-					<input type="checkbox" name="kit_base">
-					<b>Base</b>
-				</label>
+			<label class="card">
+				<p><input type="checkbox" name="kit_base"> <b>Base</b></p>
 				<p class="ta-left"><i>Acteur</i>, <i>Baratin</i>, <i>Culture générale</i>, <i>Esquive</i>, <i>Furtivité</i>, <i>Perception empathique</i></p>
-			</div>
+			</label>
 
 			<!-- Aventurier -->
-			<div class="card">
-				<label>
-					<input type="checkbox" name="kit_aventurier">
-					<b>Aventurier</b>
-				</label>
-				<p class="ta-left"><i>Combat à mains nues</i>, <i>Connais&shy;sance de la Nature</i>, <i>Escalade</i>, <i>Fouille</i>, <i>Lancer</i>, <i>Nage</i>, <i>Orientation</i>, <i>Pistage</i>, <i>Randonnée</i>, <i>Survie</i>, <i>Vigilance</i></p>
-			</div>
+			<label class="card">
+				<p><input type="checkbox" name="kit_aventurier"> <b>Aventurier</b></p>
+				<p class="ta-left"><i>Combat MN</i>, <i>Connaissance de la Nature</i>, <i>Escalade</i>, <i>Fouille</i>, <i>Lancer</i>, <i>Nage</i>, <i>Orientation</i>, <i>Pistage</i>, <i>Randonnée</i>, <i>Survie</i>, <i>Vigilance</i></p>
+			</label>
 
 			<!-- Contemporain -->
-			<div class="card">
-				<label>
-					<input type="checkbox" name="kit_contemporain">
-					<b>Contemporain</b>
-				</label>
+			<label class="card">
+				<p><input type="checkbox" name="kit_contemporain"> <b>Contemporain</b></p>
 				<p class="ta-left"><i>Conduite</i>, <i>Informatique</i>, <i>Nage</i></p>
-			</div>
+			</label>
 
 			<!-- Combattant -->
-			<div class="card">
-				<label>
-					<input type="checkbox" name="kit_combattant">
-					<b>Combattant</b>
-				</label>
+			<label class="card">
+				<input type="checkbox" name="kit_combattant"> <b>Combattant</b>
 				<p class="ta-left"><i>Réflexes de combat</i>, <i>Résistance à la douleur</i>, <i>Combat à Mains nues</i>, <i>Esquive</i></p>
-			</div>
+			</label>
+
 
 			<!-- Magicien -->
-			<div class="card">
-				<label>
-					<input type="checkbox" name="kit_magicien">
-					<b>Magicien</b>
-				</label>
+			<label class="card">
+				<p><input type="checkbox" name="kit_magicien"> <b>Magicien</b></p>
 				<p class="ta-left"><i>Int</i> 13, <i>Magerie</i>, <i>Alphabétisation</i>, <i>Sciences occultes</i></p>
-			</div>
+			</label>
 
 			<!-- Ange In Nomine -->
-			<div class="card">
-				<label>
-					<input type="checkbox" name="kit_ange">
-					<b>Ange In Nomine</b>
-				</label>
+			<label class="card">
+				<p><input type="checkbox" name="kit_ange"> <b>Ange In Nomine</b></p>
 				<p class="ta-left"><i>Pack Ange</i>, <i>Force</i> 14, <i>Santé</i> 12, <i>Volonté</i> 12</p>
-			</div>
+			</label>
 
 			<!-- Démon In Nomine -->
-			<div class="card">
-				<label>
-					<input type="checkbox" name="kit_demon">
-					<b>Démon In Nomine</b>
-				</label>
+			<label class="card">
+				<p><input type="checkbox" name="kit_demon"> <b>Démon In Nomine</b></p>
 				<p class="ta-left"><i>Pack Démon</i>, <i>Force</i> 14, <i>Santé</i> 12</p>
-			</div>
+			</label>
 
 			<!-- Policier -->
-			<div class="card">
-				<label>
-					<input type="checkbox" name="kit_policier">
-					<b>Policier</b>
-				</label>
+			<label class="card">
+				<p><input type="checkbox" name="kit_policier"> <b>Policier</b></p>
 				<p class="ta-left"><i>Pouvoir légal</i>, <i>Devoir</i>, <i>Arme à feu</i>, <i>Combat à mains nues</i>, <i>Course</i>, <i>Criminologie</i>, <i>Droit</i></p>
-			</div>
+			</label>
 
-			
 			<!-- Enquêteur -->
-			<div class="card">
-				<label>
-					<input type="checkbox" name="kit_enqueteur">
-					<b>Enquêteur</b>
-				</label>
+			<label class="card">
+				<p><input type="checkbox" name="kit_enqueteur"> <b>Enquêteur</b></p>
 				<p class="ta-left"><i>Enquête</i>, <i>Fouille</i>, <i>Interrogatoire</i>, <i>Pistage</i>, <i>Recherche</i></p>
-			</div>
+			</label>
 
 			<input hidden name="createur" value="<?= $_SESSION["id"] ?>">
 
 		</div>
 		<button type="submit" class="btn-primary fs-500 ff-fas mx-auto mt-½" title="Créer un nouveau personnage">&#xe541;</button>
 	</form>
-</article>
+</section>
 
 <?php if ($admin) { ?>
 	<!-- Groupes -->
-	<article id="gestionnaire-groupes">
+	<section id="gestionnaire-groupes">
 		<h2>Groupes</h2>
 		<form action="/submit/groups" method="POST" autocomplete="off">
 			<div class="grid col-auto-fit gap-½ fl-wrap jc-center" style="--col-min-width: 250px">
@@ -363,7 +336,7 @@ $playNotif = false;
 			</div>
 			<button type="submit" class="btn-primary fs-500 ff-fas mx-auto mt-½">&#xf0c7;</button>
 		</form>
-	</article>
+	</section>
 <?php } ?>
 
 <template id="character-details">
