@@ -1,5 +1,6 @@
 import { qs, qsa, ce } from "./lib/dom-utils.js";
-import { calculate, int, explicitSign } from "./utilities.js";
+import { calculate, explicitSign, } from "./utilities.js";
+import {showSpinningWheel, hideSpinningWheel } from "./main-utilities.js";
 import { flushMsg } from "./ws-utilities.js";
 
 // roll a dice expression and return expression an result
@@ -13,7 +14,7 @@ export function roll(code) {
 
     if (match === null) {
         result = isNaN(parseInt(code)) ? 0 : parseInt(code);
-        (x = 0), (y = ""), (op = "+"), (z = result);
+        ((x = 0), (y = ""), (op = "+"), (z = result));
     } else {
         x = parseInt(match[1]);
         y = match[2] != "" ? parseInt(match[2]) : 6;
@@ -21,14 +22,23 @@ export function roll(code) {
         z = match[4] != undefined && match[4] != "" ? parseFloat(match[4]) : 0;
 
         // handling special cases: 1d-2 = 1d5-1, 1d-3 = 1d4-1, 1d-4 = 1d3-1, 1d-5=1d2-1
-        if (x === 1 && y === 6 && op === "-" && z === 2) {
-            result = Math.floor(Math.random() * 5);
-        } else if (x === 1 && y === 6 && op === "-" && z === 3) {
-            result = Math.floor(Math.random() * 4);
-        } else if (x === 1 && y === 6 && op === "-" && z === 4) {
-            result = Math.floor(Math.random() * 3);
-        } else if (x === 1 && y === 6 && op === "-" && z <= 5) {
-            result = Math.floor(Math.random() * 2);
+        if (x === 1 && y === 6 && op === "-" && z >= 2) {
+            switch (z) {
+                case 2:
+                    result = Math.floor(Math.random() * 5);
+                    break;
+                case 3:
+                    result = Math.floor(Math.random() * 4);
+                    break;
+                case 4:
+                    result = Math.floor(Math.random() * 3);
+                    break;
+                case 5:
+                    result = Math.floor(Math.random() * 2);
+                    break;
+                default:
+                    result = 0;
+            }
         }
 
         // regular dices throw
@@ -55,6 +65,7 @@ export function roll(code) {
     let expression = `${x}d${y === 6 ? "" : y}${op}${z}`;
     expression = expression.replace("+0", "");
     expression = expression.replace("-0", "");
+    console.log({ expression: expression, result: result });
     return { expression: expression, result: result };
 }
 
@@ -137,7 +148,9 @@ export class Widget {
         this.action = action.bind(this);
         this.form.addEventListener("submit", async (e) => {
             e.preventDefault();
+            showSpinningWheel();
             const result = await this.action();
+			 hideSpinningWheel();
             if (result === null) return;
             qs("#msg-input").value += result;
             flushMsg("chat-roll");
@@ -319,7 +332,7 @@ export class Scores {
         if (param === "score" || param === "modif") event.target.value = calculate(event.target.value);
         if (param === "modif") event.target.value = explicitSign(event.target.value);
 
-		// update skill in this.skills
+        // update skill in this.skills
         const value = event.target.value;
         this.skills[index][param] = value !== "" && Number(value) == value ? parseInt(value) : value; // store value as int where relevant
 

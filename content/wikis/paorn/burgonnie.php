@@ -65,7 +65,7 @@
 		<summary>
 			<h3>Gouvernement</h3>
 		</summary>
-		<p>L’empereur actuel, Fordor XXIV, règne depuis quarante-quatre ans, un record de longévité dans un pays où les "accidents" politiques sont monnaie courante. De petite taille mais à la volonté de fer, il a survécu à près de cinq cents tentatives d’assassinat.</p>
+		<p>L’empereur actuel, Fordor XXIV, règne depuis quarante-quatre ans, un record de longévité dans un pays où les "accidents" politiques sont monnaie courante. De petite taille mais à la volonté de fer, il a survécu à près d’une vingtaine de tentatives d’assassinat.</p>
 		<p>Le pouvoir impérial s’appuie sur plusieurs institutions :</p>
 		<ul>
 			<li><b>Le Grand Conseil impérial :</b> Composé de vingt-neuf sages choisis par l’empereur parmi les nobles ayant renoncé à leurs titres, il rédige les décrets que l’empereur doit ratifier.</li>

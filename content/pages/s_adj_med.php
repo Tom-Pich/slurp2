@@ -896,5 +896,232 @@
 			<p>Le fossé est une large tranchée profonde d’une quinzaine de mètres. Il avait pour objectif d’empêcher les agresseurs de s’attaquer directement aux murailles (avec des béliers, par exemple), aussi les sapeurs devaient‑ils d’abord les combler avec des pierres ou des fascines (fagots) avant de commencer à essayer de desceller les moellons des remparts. Les douves étaient en fait rarement remplies d’eau pendant la période médiévale. En plus de leur rôle défensif, elles tenaient lieu de dépotoir et de déversoir pour les latrines.</p>
 		</details>
 
+		<!-- Les poternes secondaires -->
+		<details>
+			<summary>
+				<h4>Les poternes secondaires</h4>
+			</summary>
+			<p>Les remparts sont percés, de loin en loin, de discrètes petites portes en fer, très étroites, réservées aux piétons. Tous les châteaux possédaient de telles poternes. Certaines étaient habilement dissimulées derrière des buissons et des arbres. Les défenseurs pouvaient les emprunter afin d’opérer des sorties nocturnes discrètes, sans avoir à ouvrir la grande porte.</p>
+		</details>
+
+		<!-- Le pont-levis -->
+		<details>
+			<summary>
+				<h4>Le pont-levis</h4>
+			</summary>
+			<p>Cet énorme panneau de bois est maintenu en place par d’épaisses chaînes. Parfois, le pont-levis était remplacé par des ouvrages de bois que les défenseurs pouvaient détruire rapidement en cas d’attaque, le but étant toujours de gêner le travail des sapeurs.</p>
+		</details>
+
+		<!-- La porte principale -->
+		<details>
+			<summary>
+				<h4>La porte principale</h4>
+			</summary>
+			<p>Flanquée des deux grosses tours rondes du châtelet d’entrée. Les arrivants sont obligés de passer sous un assommoir (trou aménagé au‑dessus de la porte et par lequel on peut bombarder les ennemis). La herse, actionnée par un treuil installé dans la partie supérieure de l’entrée où se trouve le poste de garde, était généralement faite en bois dur, renforcé par des clous et des plaques de métal. L’entrée principale constituant toujours le point faible par lequel les ennemis pouvaient pénétrer dans les lieux, elle était protégée par le pont-levis (qui se présentait comme une paroi de bois quasi infranchissable, une fois relevé), la herse et la porte elle‑même (que l’on condamnait, en cas de besoin, à l’aide d’épaisses poutres).</p>
+		</details>
+
+		<!-- Le châtelet d’entrée -->
+		<details>
+			<summary>
+				<h4>Le châtelet d’entrée</h4>
+			</summary>
+			<p>Bâties en saillie, deux énormes tours à mâchicoulis surmontées de toits en poivrière couverts d’ardoises défendent l’entrée du château. Une guette (tourelle de guet) crénelée se dresse dessus de la tour de gauche. Les tours dites "en poivrière" ne font leur apparition qu’aux alentours du douzième siècle. Leurs toits étaient recouverts de plaques d’ardoises ou de tuiles capables de résister aux flèches enflammées. Les mâchicoulis, sortes de surplombs en pierre, permettaient aux défenseurs de laisser tomber des projectiles divers (pierres, poix enflammée, eau bouillante, plus rarement huile bouillante) sur les attaquants quand ceux‑ci arrivaient près des murs.</p>
+		</details>
+
+		<!-- Les remparts -->
+		<details>
+			<summary>
+				<h4>Les remparts</h4>
+			</summary>
+			<p>Les courtines hautes de dix mètres sont surmontées par endroits de hourds en bois et leurs parois sont percées d’archères (meurtrières, étroites vers l’extérieur et larges à l’intérieur afin de permettre aux archers de viser). Des hommes d’armes parcourent inlassablement l’aléoir (chemin de ronde).</p>
+			<p>Les murs faisaient parfois plus de trois mètres d’épaisseur. Quand ils n’abritaient pas des couloirs exigus, ils étaient construits en sandwichs, un blocage de moellons et de cailloux liés par du mortier étant monté entre deux parements externes de pierre de taille. Comme les tours, leurs parois comportaient des "trous de boulin" dans lesquels on glissait des poutrelles pour édifier des échafaudages temporaires. Parmi ces derniers, il convient de citer les hourds, sortes de galeries en bois que l’on mettait en place en temps de guerre et qui remplissaient le même rôle que les mâchicoulis.</p>
+		</details>
+
+		<!-- Les talus -->
+		<details>
+			<summary>
+				<h4>Les talus</h4>
+			</summary>
+			<p>Des talus inclinés, recouverts de briques, sont visibles au pied des courtines. Ces remblais avaient deux fonctions. Premièrement, leur inclinaison permettait de faire ricocher les projectiles lancés depuis les hourds et les mâchicoulis. Deuxièmement, ils compliquaient la tâche des sapeurs et mineurs chargés de percer les murailles.</p>
+		</details>
+
 	</details>
+
+	<!-- Basse cour -->
+	<details>
+		<summary>
+			<h3>La basse cour (baille)</h3>
+		</summary>
+		<p>Les grands châteaux possédaient au moins deux enceintes, concentriques ou cloisonnées. Les étendues assez vastes – ou cours – qui séparaient ces remparts étaient occupées par diverses maisonnettes et échoppes, organisées à la manière de petits villages. C’est dans cet espace que venaient se réfugier les paysans des alentours lorsque la guerre menaçait.</p>
+
+		<p>Dans ces petites habitations à colombages vivent les paysans travaillant sur les réserves du seigneur. Elles sont bâties en torchis blanchi à la chaux. On peut noter la présence d’une forge, d’une échoppe de tailleur et de divers autres ateliers (menuiserie, poterie, etc). Forgerons, charpentiers et tailleurs jouaient un rôle important dans la vie des châteaux.</p>
+
+		<p>En cas de siège, les défenseurs doivent pouvoir disposer de viande fraîche et de lait, d’où l’utilité d’aménager des étables dans l’enceinte même du château. Les bovidés étaient considérés comme coûteux à une époque où les réserves de foin étaient précieuses ; c’est pourquoi l’on préférait généralement élever des moutons, bien moins exigeants sur le plan de la nourriture.</p>
+
+		<h4>Moulin</h4>
+		<p>Les seigneurs s’arrogeaient souvent le privilège de moudre le grain de leurs sujets&hellip; contre espèces sonnantes et trébuchantes! Si les ailes du moulin</p>
+
+		<h4>Fontaine</h4>
+		<p>Une belle fontaine ouvragée trône au milieu du désordre. Hommes et bêtes viennent s’y abreuver, au milieu des servantes occupées à laver leur linge.</p>
+
+	</details>
+
+	<!-- L’enceinte intérieure -->
+	<details>
+		<summary>
+			<h3>L’enceinte intérieure</h3>
+		</summary>
+
+		<p>Un peu plus haute que les remparts extérieurs, la chemise (autre nom de l’enceinte qui entoure le donjon) est de forme carrée et ses tours sont crénelées. Son entrée – défendue, elle aussi, par une herse et une lourde porte de chêne – est dépourvue de pont‑levis. Il n’y a pas de talus à la base des courtines.</p>
+
+		<p>En pénétrant dans l’enceinte intérieure, la première chose que l’on voit, c’est un immense donjon rectangulaire, dressé contre le rempart du fond. Mais, on y voit aussi d’autres bâtiments</p>
+
+		<!-- Les écuries -->
+		<details>
+			<summary>
+				<h4>Les écuries</h4>
+			</summary>
+			<p>Construites contre le mur est, elles abritent les chevaux du seigneur et de ses soldats.</p>
+		</details>
+
+		<!-- Le chenil -->
+		<details>
+			<summary>
+				<h4>Le chenil</h4>
+			</summary>
+			<p>Une meute de chiens hurlants est hébergée dans une maison basse en bois dont émane une odeur suffocante. On ne répétera jamais assez que la « vie de château » était extrêmement monotone. Au même titre que la guerre, la chasse était l’un des rares plaisirs que pouvaient s’offrir les seigneurs et c’est pourquoi ils entretenaient des meutes.</p>
+		</details>
+
+		<!-- La chapelle -->
+		<details>
+			<summary>
+				<h4>La chapelle</h4>
+			</summary>
+			<p>Une petite église aux bas­-reliefs délicats. Un château se devait d’avoir un lieu de culte. Celui‑ci pouvait aussi bien être aménagé dans la cour, que dans le donjon même.</p>
+		</details>
+
+		<!-- Le grenier -->
+		<details>
+			<summary>
+				<h4>Le grenier</h4>
+			</summary>
+			<p>Une petite bâtisse carrée et sans fenêtres est accolée au donjon. C’est le grenier, dans lequel sont entassées les réserves de céréales du châtelain.</p>
+		</details>
+
+		<!-- Les puits -->
+		<details>
+			<summary>
+				<h4>Les puits</h4>
+			</summary>
+			<p>Il ne suffisait pas de choisir un lieu élevé pour édifier un château, encore fallait‑il s’assurer que le sous‑sol abritait des sources ou nappes souterraines. En plus de fournir de l’eau aux habitants du fort, les puits offraient la possibilité de lutter contre les éventuels incendies. En général, chaque castel disposait de plusieurs puits, aménagés aussi bien à l’extérieur des bâtiments, que dans le donjon ou les tours d’enceinte. Il faut à ce propos signaler que les oubliettes, de sinistre mémoire, n’étaient en réalité que de simples puits.</p>
+		</details>
+
+		<!-- Baraque des domestiques -->
+		<details>
+			<summary>
+				<h4>Baraque des domestiques</h4>
+			</summary>
+			<p>Les domestiques ne logent pas dans le donjon, mais dans des bâtiments à part.</p>
+		</details>
+
+		<!-- La caserne -->
+		<details>
+			<summary>
+				<h4>La caserne</h4>
+			</summary>
+			<p>Si la garnison du château est importante, les soldats logent dans un bâtiment dédié.</p>
+		</details>
+
+		<!-- La maison de l’alchimiste -->
+		<details>
+			<summary>
+				<h4>La maison de l’alchimiste</h4>
+			</summary>
+			<p>Une fois débarrassée de ses aspects les plus folkloriques (pierre philosophale, élixir de longue vie, etc), l’alchimie se révèle comme une véritable science. Parfois, les alchimistes bénéficiaient de la protection d’un seigneur, ce qui leur évitait les tracas généralement associés à la sorcellerie.</p>
+		</details>
+	</details>
+
+	<!-- Le donjon -->
+	<details>
+		<summary>
+			<h3>Le donjon</h3>
+		</summary>
+
+		<p>Ce grand édifice rectangulaire et crénelé est le coeur de la forteresse. Pour des raisons de sécurité, ses murs ne sont percés que d’étroites meurtrières. On accède à sa porte en empruntant un escalier de bois qui conduit directement au premier étage. Le rez‑de‑chaussée, quant à lui, ne possède aucune ouverture apparente. Les escaliers extérieurs des donjons étaient en bois de manière à pouvoir être aisément détruits au cas où des ennemis parviendraient jusqu’à la cour intérieure.</p>
+
+		<!-- Rez-de-chaussée -->
+		<details>
+			<summary>
+				<h4>Rez‑de‑chaussée</h4>
+			</summary>
+
+			<p><b>Cave.</b> C’est là que les nobles remisent leurs vins et leurs réserves les plus précieuses (viandes séchées ou salées, etc). Un petit coffre encastré dans le mur est équipé d’une serrure complexe. On y range les épices, presque aussi coûteuses que la poudre d’or.</p>
+
+			<p><b>Salle des archives.</b> Une pièce dont les murs sont couverts d’étagères sur lesquelles sont rangés de nombreux parchemins et livres. Cet endroit est très important, car en cas de différend juridique, on se reporte souvent aux chartes, listes et registres de comptes du château. Quand les pièces justificatives sont cousues bout à bout et roulées pour être conservées, on les appelle "rôles".</p>
+
+			<p><b>Chambre des gardes.</b> C’est dans cette pièce mal éclairée que dorment les dix gardes chargés de la protection rapprochée du seigneur. Deux d’entre eux sont en permanence postés à l’entrée du premier étage.</p>
+		</details>
+
+		<!-- Premier étage -->
+		<details>
+			<summary>
+				<h4>Premier étage</h4>
+			</summary>
+
+			<p><b>Entrée.</b> Un perron de bois donne sur ce petit vestibule qui peut être isolé du reste du bâtiment par une petite herse de fer. La porte extérieure est également en fer. Un judas caché derrière une tenture de la grande salle permet d’observer à la dérobée les arrivants.</p>
+
+			<p><b>Cuisine.</b> Une grande salle possédant son propre puits et une immense cheminée où l’on peut faire cuire un boeuf entier. Les plats sont préparés sur de grandes tables de chêne. Les ustensiles de cuisine (couteaux, louches, etc) sont accrochés au mur. Saucissons et jambons pendent du plafond.</p>
+			
+			<p><b>Grande salle.</b> Une pièce immense et très haute de plafond (près de dix mètres) avec deux cheminées. Sur une estrade, un fauteuil de bois ouvragé sur lequel s’assoit le seigneur lorsqu’il tient audience. Quelques grandes tables et bancs, repoussés sur les côtés sont employés lors des réunions et banquets. Les murs sont couverts de somptueuses tapisseries cousues de fil d’or représentant des scènes de chasse. Des tentures accrochées à des anneaux du plafond permettent de diviser la grande salle en petits cabinets. Pendant la journée, le chapelain donne ici des cours aux enfants du seigneur et de ses officiers.</p>
+		</details>
+
+		<!-- Deuxième étage -->
+		<details>
+			<summary>
+				<h4>Deuxième étage</h4>
+			</summary>
+
+			<p><b>Chambre du chapelain.</b> Une cellule aux murs nus contenant une paillasse, un petit autel et le trésor du prêtre : une petite bible enluminée. Seul un brasero permet de chauffer cette pièce.</p>
+
+			<p><b>Chambre du chambellan.</b> Chargé de l’organisation administrative du château, le chambellan a droit à sa chambre personnelle. Il dort sur une paillasse et travaille souvent très tard le soir sur des registres de comptes qu’il amène ici.</p>
+
+			<p><b>Chambre du prévôt.</b> L’homme de confiance du seigneur: une chambre assez spacieuse, un bon matelas et une petite cheminée pour lui tout seul. Mais, quand son maître reçoit des invités, il doit leur céder ce "petit coin de paradis" et aller dormir avec ses hommes.</p>
+
+			<p><b>Chambre du seigneur.</b> Un grand lit à baldaquin (en fait, un matelas de paille posé sur une planche surélevée abrité derrière des tentures) dans lequel le baron, son épouse et ses enfants dorment ensemble. Les murs sont couverts de fresques guerrières aux couleurs vives. Dans un coin, un rouet sur lequel la baronne travaille le plus clair de son temps. Derrière une tenture, une porte secrète dissimule un étroit escalier (impossible d’y passer avec une armure) qui descend jusqu’au souterrain du sous‑sol.</p>
+
+			<p><b>Salle du treuil.</b> Ce réduit abrite le treuil permettant de remonter la herse du premier.</p>
+		</details>
+
+		<!-- Toit -->
+		<details>
+			<summary>
+				<h4>Toit</h4>
+			</summary>
+
+			<p><b>Colombier.</b> Quelques pigeons voyageurs sont gardés là, au cas où le seigneur aurait besoin d’appeler rapidement ses alliés.</p>
+
+			<p><b>Cheminées.</b> De petits cônes de briques ouverts du côté opposé au vent dominant.</p>
+
+			<p><b>Chemin de ronde.</b> Le donjon est une sorte de petit château en lui‑même, on l’a donc doté de créneaux et d’un petit chemin de ronde.</p>
+
+			<p><b>Réservoir d’eau.</b> Il permet de collecter l’eau de pluie acheminée jusqu’à lui par tout un système de canalisations et de chéneaux.</p>
+
+		</details>
+
+		<!-- Sous-sol -->
+		<details>
+			<summary>
+				<h4>Sous‑sol</h4>
+			</summary>
+
+			<p><b>Chambre de torture.</b> Une petite salle où règne une odeur de sang et de putréfaction. Un seul brasero est installé dans un coin, tandis que les murs sont couverts de tenailles, scies et autres instruments à l’aspect peu engageant. Partout, des anneaux permettent d’attacher les suppliciés dans des positions aussi inconfortables que possible. Contrairement à une idée reçue, les tribunaux médiévaux ne reconnaissaient pas "en théorie" les aveux faits sous la torture. Celle‑ci était toutefois largement employée ( "question préalable"), et la simple menace de nouveaux sévices suffisait à faire dire n’importe quoi au premier innocent venu.</p>
+
+			<p><b>Cachots.</b> De minuscules réduits étouffants dans lesquels on ne peut ni se coucher, ni se tenir debout. Rien n’étant prévu pour les besoins naturels des condamnés, la puanteur ambiante est à la limite du supportable. Les cachots des châteaux étaient rarement employés, car l’entretien des prisonniers revenait cher. Il était d’usage de mutiler ou de tuer les manants capturés, alors que les chevaliers et nobles étaient traités comme des invités de marque jusqu’à ce que leur rançon soit payée.</p>
+
+			<p><b>Chambre forte.</b> Une petite pièce fermée par une porte de bronze à l’énorme serrure. Elle contient le trésor seigneurial: objets en or, impôts, parchemins secrets&hellip;</p>
+
+			<p><b>Souterrain.</b> Un long couloir sinueux s’enfonce dans les profondeurs de la terre et conduit jusqu’au pied du ravin, en contrebas. Ce type d’issue secrète n’était pas fréquent au Moyen Âge. Dans la réalité, les souterrains faisaient souvent office de réfrigérateurs où l’on entreposait les denrées périssables.</p>
+		</details>
+	</details>
+
 </article>

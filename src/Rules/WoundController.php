@@ -481,12 +481,12 @@ class WoundController
 					3 => "Organe vital touché. Mort en quelques minutes, sauf intervention chirurgicale réussie ou soins magiques.",
 				];
 
-				if ($is_penetrating) $result["autres effets"] = TableReader::getWeightedResult($effects, !$is_major_wound ? [1, 0, 10, 5] : [1, 1, 5, 10]);
-				if ($is_blunting) $result["autres effets"] = TableReader::getWeightedResult($effects, !$is_major_wound ? [2, 0, 2, 1] : [1, 3, 2, 2]);
+				if ($is_penetrating) $result["autres effets"] = TableReader::pickResult($effects, !$is_major_wound ? [1, 0, 10, 5] : [1, 1, 5, 10]);
+				if ($is_blunting) $result["autres effets"] = TableReader::pickResult($effects, !$is_major_wound ? [2, 0, 2, 1] : [1, 3, 2, 2]);
 				if ($dmg_type === "exp") {
 					$explosion_gravity = max(floor(-DiceManager::getModifier($actual_dmg * 2, $pdvm) / 2), 1);
 					$explosion_effects = "Blessure invalidante aux tympans. Le personnage souffre d’une <i>Surdité partielle</i> de niveau $explosion_gravity.";
-					$result["autres effets"] = TableReader::getWeightedResult($effects, !$is_major_wound ? [1, 0, 5, 0] : [1, 1, 8, 5]);
+					$result["autres effets"] = TableReader::pickResult($effects, !$is_major_wound ? [1, 0, 5, 0] : [1, 1, 8, 5]);
 					$result["autres effets"] .= (" " . $explosion_effects);
 				}
 			}
@@ -499,8 +499,8 @@ class WoundController
 					3 => "Le personnage s’étouffe dans son sang. Mort en quelques minutes, sauf intervention chirurgicale réussie ou soins magiques.",
 				];
 
-				if ($is_penetrating) $result["autres effets"] = TableReader::getWeightedResult($effects, !$is_major_wound ? [1, 0, 1, 6] : [1, 1, 1, 5]);
-				else $result["autres effets"] = TableReader::getWeightedResult($effects, !$is_major_wound ? [2, 0, 4, 0] : [1, 3, 4, 0]);
+				if ($is_penetrating) $result["autres effets"] = TableReader::pickResult($effects, !$is_major_wound ? [1, 0, 1, 6] : [1, 1, 1, 5]);
+				else $result["autres effets"] = TableReader::pickResult($effects, !$is_major_wound ? [2, 0, 4, 0] : [1, 3, 4, 0]);
 			}
 
 			if ($is_skull) {
@@ -514,7 +514,7 @@ class WoundController
 					6 => "Lésion cérébrale. Le personnage tombe dans un coma qui durera 1d mois.",
 					7 => "Lésion cérébrale. Le personnage tombe dans un coma définitif.",
 				];
-				$result["autres effets"] = TableReader::getWeightedResult($effects, !$is_major_wound ? [2, 1, 0, 1, 0, 0, 1, 0] : [3, 3, 1, 3, 1, 1, 3, 1]);
+				$result["autres effets"] = TableReader::pickResult($effects, !$is_major_wound ? [2, 1, 0, 1, 0, 0, 1, 0] : [3, 3, 1, 3, 1, 1, 3, 1]);
 			}
 
 			if ($localisation === "visage") {
@@ -528,7 +528,7 @@ class WoundController
 					6 => "Nez cassé",
 					7 => "Nez arraché",
 				];
-				$result["autres effets"] = TableReader::getWeightedResult($effects, !$is_major_wound ? [1, 1, 0, 3, 1, 0, 1, 0] : [1, 0, 1, 3, 1, 1, 1, 1]);
+				$result["autres effets"] = TableReader::pickResult($effects, !$is_major_wound ? [1, 1, 0, 3, 1, 0, 1, 0] : [1, 0, 1, 3, 1, 1, 1, 1]);
 			}
 		}
 

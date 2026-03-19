@@ -371,7 +371,6 @@ use \App\Rules\ObjectController;
 	</form>
 </fieldset>
 
-
 <!-- Générateur de trucs divers -->
 <fieldset data-name="wild-generator" hidden>
 	<legend>Générer un truc</legend>
@@ -379,7 +378,9 @@ use \App\Rules\ObjectController;
 		<div class="fl-1 flex-s gap-½">
 			<select class="fl-1" name="category" required>
 				<option value="">--- choisissez une catégorie</option>
-				<option value="herbs">Plantes &amp; herbes</option>
+				<option value="herbs">Plantes &amp; herbes imaginaires</option>
+				<option value="castle_corridor">Dans les couloirs d’un château</option>
+				<!-- <option value="castle_personnality">Personnalités du château de Sardam</option> -->
 				<option value="books">Titre de livre</option>
 			</select>
 		</div>

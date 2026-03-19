@@ -19,6 +19,6 @@ class ReactionController
 
 	static public function getReaction(int $roll)
 	{
-		return TableReader::getResult(self::reactions, $roll);
+		return TableReader::pickResult(self::reactions, $roll);
 	}
 }

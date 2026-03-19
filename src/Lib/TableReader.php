@@ -5,65 +5,45 @@ namespace App\Lib;
 class TableReader
 {
 	/**
-	 * return the element of the array with the nearest index superior to value
-	 * @param array $table : a simple array or indexed array with integer indexes
-	 * @param float $value : the value of the index to be found. If index does not exist, return the nearest superior index.
-	 * @param bool $strict : if true, the index must be strictly superior to the value
-	 * @return any : the nearest array element superior (or equal) to the value provided. Null if that’s not possible
+	 * return a random array element
+	 * @param array $table simple or indexed array
+	 * @param int|float|array|null $x choice method.
+	 * 		null → pick element (default),
+	 * 		number → return nearest element with index ≥ $x
+	 *      array → pick element with weighted probability
+	 * @return mixed picked element
 	 */
-	static function getResult(array $table, float $value, bool $strict = false)
+	static function pickResult(array $table, int|float|array|null $x = null): mixed
 	{
-		foreach ($table as $index => $line) {
-			if ($strict && $value < $index) {
-				return $line;
-			} elseif (!$strict && $value <= $index) {
-				return $line;
+		if (is_numeric($x)) { // read as classical random table
+			foreach ($table as $index => $line) {
+				if ($x <= $index) return $line;
 			}
-		}
-	}
-
-	/**
-	 * return a random element of $table with weighted probability.
-	 * the probability weight for each element of $table is given as an integer
-	 * in the $index_weights.
-	 * @param array $table with n elements
-	 * @param array $index_weights contains n integers >= 0
-	 * @return any the element picked in $table
-	 */
-	static function getWeightedResult(array $table, array $index_weights)
-	{
-		if(count($table) !== count($index_weights)){
-			throw new \Exception("Both argument arrays must have the same dimensions");
+			return "Valeur non présente dans la table";
 		}
 
-		$indexes = [];
-		// add index number as many time as weight
-		foreach ($index_weights as $index => $weight) {
-			for ($i = 0; $i < $weight; $i++) {
-				$indexes[] = $index;
+		if (is_null($x)) { // pick an element
+			if (!count($table)) return "La table est vide";
+			shuffle($table);
+			return $table[0];
+		}
+
+		if (is_array($x)) { //pick an element with weighted probability
+
+			if (count($table) !== count($x)) throw new \Exception("arrays must have same dimension!");
+
+			$pickable_table = [];
+			$table = array_values($table); // get rid of potential incoherent indexes
+
+			foreach ($x as $index => $weight) {
+				for ($i = 0; $i < $weight; $i++) $pickable_table[] = $table[$index];
 			}
+
+			if (!count($pickable_table)) return "Aucun résultat à retourner";
+			$random_index = random_int(0, count($pickable_table) - 1);
+			return $pickable_table[$random_index];
 		}
 
-		// select a random index
-		$picked_index = $indexes[random_int(0, count($indexes) - 1)];
-
-		// return the picked element from the table
-		return $table[$picked_index];
+		throw new \Exception("Something unexpected happened! 😖");
 	}
-
-	/**
-	 * return a random array element, with equal probability for each element
-	 * @param array $array the source array
-	 * @return array the partial or total random array
-	 */
-	static function pickRandomArrayElements(array $array, int $qty = 1): array
-	{
-		if ($qty < 1) $qty = 1;
-		$length = count($array);
-		$qty = min($qty, $length);
-		shuffle($array);
-		if (!$length) return [];
-		return array_slice($array, 0, $qty);
-	}
-
 }

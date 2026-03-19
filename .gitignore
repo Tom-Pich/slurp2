@@ -1,4 +1,6 @@
 /characters-backup/
 /assets/music/
-/scenarii-blip/
+/scenarii/
+/db/
 .env
+markdown.css

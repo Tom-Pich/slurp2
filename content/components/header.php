@@ -128,6 +128,8 @@ $body_class .=  $page["style"] !== "normal" ? (" " . $page["style"]) : "";
 						<li><a href="/ecrire-scenario"><?= $pages_data['ecrire-scenario']["title"] ?></a></li>
 						<li><a href="/aide-de-jeu-medfan"><?= $pages_data['aide-de-jeu-medfan']["title"] ?></a></li>
 						<li><a href="/bibliotheque-liens"><?= $pages_data['bibliotheque-liens']["title"] ?></a></li>
+						<li><a href="/concevoir-personnage"><?= $pages_data['concevoir-personnage']["title"] ?></a></li>
+						<li><a href="/vocabulaire-relief"><?= $pages_data['vocabulaire-relief']["title"] ?></a></li>
 						<?php if ($_SESSION['Statut'] >= 3) { ?> <li><a href="/test">Test</a></li> <?php } ?>
 					</ul>
 				</li>

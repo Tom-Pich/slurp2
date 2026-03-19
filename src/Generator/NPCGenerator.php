@@ -1472,35 +1472,35 @@ class NPCGenerator
 		// generating name
 		$parameters["name"] = "Table de noms manquante";
 		if (isset(self::names[$gender . "-" . $region])) {
-			$parameters["name"] = TableReader::pickRandomArrayElements(self::names[$gender . "-" . $region])[0];
+			$parameters["name"] = TableReader::pickResult(self::names[$gender . "-" . $region]);
 		}
 		if (isset(self::names["surname-" . $region])) {
-			$surname = TableReader::pickRandomArrayElements(self::names["surname-" . $region])[0];
+			$surname = TableReader::pickResult(self::names["surname-" . $region]);
 			$parameters["name"] .= (" " . $surname);
 		}
 
 		if ($name_only) return $parameters;
 
 		// generating hair description
-		$hair_length = TableReader::getWeightedResult(self::hairLength["value"], $w_hair_length);
+		$hair_length = TableReader::pickResult(self::hairLength["value"], $w_hair_length);
 		$parameters["hair"] = "cheveux " . $hair_length;
 		if (!in_array($hair_length, ["courts", "très courts", "rasés"])) {
-			$hair_type = TableReader::getWeightedResult(self::hairType["value"], $w_hair_type);
+			$hair_type = TableReader::pickResult(self::hairType["value"], $w_hair_type);
 			$parameters["hair"] .= (" " . $hair_type);
 		}
 		if ($hair_length !== "rasés") {
-			$hair_color = TableReader::getWeightedResult(self::hairColor["value"], $w_hair_color);
+			$hair_color = TableReader::pickResult(self::hairColor["value"], $w_hair_color);
 			$parameters["hair"] .= (" " . $hair_color);
 		}
 
 		// generating regular entries
-		if ($gender === "male") $parameters["facialHair"] = TableReader::getWeightedResult(self::facialHair["value"], $w_facial_hair);
-		$parameters["eyes"] = TableReader::getWeightedResult(self::eyes["value"], $w_eyes);
-		$parameters["corpulence"] = TableReader::getWeightedResult(self::corpulence["value"], $w_corpulence);
-		$parameters["size"] = TableReader::getWeightedResult(self::size["value"], $w_size);
-		$parameters["beauty"] = TableReader::getWeightedResult(self::beauty["value"], $w_beauty);
-		$parameters["intelligence"] = TableReader::getWeightedResult(self::intelligence["value"], $w_intelligence);
-		$parameters["social"] = TableReader::getWeightedResult(self::social["value"], $w_social);
+		if ($gender === "male") $parameters["facialHair"] = TableReader::pickResult(self::facialHair["value"], $w_facial_hair);
+		$parameters["eyes"] = TableReader::pickResult(self::eyes["value"], $w_eyes);
+		$parameters["corpulence"] = TableReader::pickResult(self::corpulence["value"], $w_corpulence);
+		$parameters["size"] = TableReader::pickResult(self::size["value"], $w_size);
+		$parameters["beauty"] = TableReader::pickResult(self::beauty["value"], $w_beauty);
+		$parameters["intelligence"] = TableReader::pickResult(self::intelligence["value"], $w_intelligence);
+		$parameters["social"] = TableReader::pickResult(self::social["value"], $w_social);
 
 		// special traits
 		$special_trait_random = random_int(1, 100);
@@ -1509,9 +1509,9 @@ class NPCGenerator
 			//$trait_number = ceil($special_trait_random/10);
 			$trait_number = 3;
 			for ($i = 0; $i < $trait_number; $i++) {
-				$selected_trait = TableReader::getWeightedResult(self::specialTraits["value"], $w_special_traits);
+				$selected_trait = TableReader::pickResult(self::specialTraits["value"], $w_special_traits);
 				while (in_array($selected_trait, $parameters["specialTraits"])) {
-					$selected_trait = TableReader::getWeightedResult(self::specialTraits["value"], $w_special_traits);
+					$selected_trait = TableReader::pickResult(self::specialTraits["value"], $w_special_traits);
 				}
 				$parameters["specialTraits"][] = $selected_trait;
 			}

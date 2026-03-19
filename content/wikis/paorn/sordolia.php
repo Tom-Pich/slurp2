@@ -1,12 +1,5 @@
 <h1>La Sordolia, province sauvage du nord</h1>
 
-<!--
-Figures et groupes d’influence
-Culture et société
-Histoire
-Aspects pratiques pour aventuriers
--->
-
 <div class="has-right-block">
 	<p>La Sordolia est la province septentrionale de Burgonnie, une terre sauvage aux profondes forêts et aux habitants aussi rudes que le climat qui y règne.</p>
 	<div class="right flow">
@@ -28,7 +21,7 @@ Aspects pratiques pour aventuriers
 <!-- Géographie -->
 <section>
 	<h2>Géographie</h2>
-	<p>La Sordolia s’étend des rives du fleuve Absial aux contreforts des Sinistérias, formant la province septentrionale de Burgonnie. L’essentiel de la Sordolia est couvert de forêts, avec des résineux presque exclusifs dans le nord, au pied des Sinistérias. La région compte de nombreux lacs, étangs et marécages, ainsi des plaines herbeuses.</p>
+	<p>D’une superficie d’environ 320&thinsp;000 km², la Sordolia s’étend des rives du fleuve Absial aux contreforts des Sinistérias, formant la province septentrionale de Burgonnie. L’essentiel de la Sordolia est couvert de forêts, avec des résineux presque exclusifs dans le nord, au pied des Sinistérias. La région compte de nombreux lacs, étangs et marécages, ainsi des plaines herbeuses.</p>
 
 	<p>Sur la côte sud, le climat est frais mais sans extrême. Les précipitations sont abondantes toute l’année, portée par le vent dominant venant du sud-est et chargé d’embruns. L’intérieur des terres est un peu plus sec et surtout nettement plus froid en hiver.</p>
 
@@ -41,14 +34,13 @@ Aspects pratiques pour aventuriers
 
 			<li><b>Geldam :</b> La cité de l’or. Dirigée par une importante communauté naine, cette ville située à proximité des Sinistérias est en partie souterraine. Les bâtisses de surface sont réservées au commerce et aux étrangers. Dans le sous-sol, en revanche, on trouve les joailliers, les fonderies et – surtout – les plus grands coffres de Burgonnie. C’est à Geldam qu’est remisée la plus grande partie du trésor de la Couronne. Rien d’étonnant, donc, à ce que cette cité soit dotée d’un important dispositif de fortifications défendu par un détachement spécial de la garde impériale.</li>
 
-			<li><b>Karldam :</b> La cité des artisans, gros bourg d’environ 2500 habitants, à 110 km de Lardam. C’est là que sont fabriqués les plus beaux meubles de Sordolia. Cette ville de maisons basses, en torchis, est entourée d’une triple enceinte protectrice. Elle est entièrement vouée au commerce du bois et de ses dérivés.</li>
+			<li><b>Karldam :</b> La cité des artisans, à 110 km de Lardam. C’est là que sont fabriqués les plus beaux meubles de Sordolia. Cette ville de maisons basses, en torchis, est entourée d’une triple enceinte protectrice. Elle est entièrement vouée au commerce du bois et de ses dérivés.</li>
 
-			<li><b>Lardam :</b> ville portuaire assez grande, compte un peu plus de 5000 habitants. Dirigée par le duc Lancmon xxx. On y trouve le <i>Marché central</i>, grande halle où sont entreposées et vendues des marchandises en quantité relativement importante entre commerçants.</li>
+			<li><b>Lardam :</b> grande ville portuaire et capitale économique de la Sordolia. On y trouve le <i>Marché central</i>, grande halle où sont entreposées et vendues des marchandises en quantité relativement importante entre commerçants.</li>
 
+			<li><b>Palidam :</b> La cité des fourrures. Ce petit port fortifié installé dans une baie bien protégée abrite un des plus grand marché de peaux et de fourrures de Paorn.</li>
 
-			<li><b>Palidam :</b> La cité des fourrures. Ce petit port fortifié installé dans une baie bien protégée abrite le plus grand marché de peaux et de fourrures de Paorn.</li>
-
-			<li><b>Sardam :</b> La capitale provinciale, établie sur une vaste étendue défrichée autrefois connue comme la Clairière de Matar. Au fil des siècles, cette zone s’est considérablement agrandie pour accueillir non seulement la cité elle-même, mais également des terres agricoles fertiles qui s’étendent désormais sur plusieurs kilomètres autour des remparts. La ville est bordée au nord par les marais du Tonnerre. Ses impressionnantes maisons de granit aux façades décorées de bas-reliefs anciens s’alignent le long d’avenues bien planifiées. Le monumental château du gouverneur, avec ses remparts de 30 mètres de haut et ses donjons effilés, surplombe la cité depuis une colline stratégique. La ville compte environ 15.000 habitants.</li>
+			<li><b><a href="/wiki/paorn/sardam">Sardam</a> :</b> capitale provinciale, établie sur une vaste étendue défrichée autrefois connue comme la <i>Clairière de Matar</i>. La ville est bordée au nord par les marais du Tonnerre et compte environ 15&thinsp;000 habitants.</li>
 
 			<li><b><a href="/wiki/paorn/solidam">Solidam</a> :</b> ville garnison, dernier avant-poste humain avant les grandes étendues nordiques et les Sinistérias. La ville, fortifiée par des hautes murailles, compte environ 3000 habitants, plus une garnison de 800 soldats impériaux stationnée dans la ville.</li>
 
@@ -56,12 +48,40 @@ Aspects pratiques pour aventuriers
 		</ul>
 	</details>
 
+	<!-- Territoires & régions -->
+	<details>
+		<summary><h3>Territoires &amp; régions</h3></summary>
+
+		<p>La Sordolia est divisée en cinq grands territoires : les terres de la Couronne, gouvernées directement par le prince depuis Sardam, et quatre fiefs vassaux dont les seigneurs siègent à l'Assemblée provinciale.</p>
+
+		<ul class="flow">
+			<li>
+				<b>Les terres de la Couronne</b> — gouvernées directement par le prince d'Avrelanche depuis Sardam. Elles comprennent la majeure partie du territoire de Sordolia, limitée au Nord par le Dernier Rempart, à l’ouest par la <i>Marche Occidentale</i>, et à l’est et au sud-est par le duché de Karldam, le duché de Lardam et le compté de Palidam. C'est le cœur administratif et militaire de la province.
+			</li>
+			<li>
+				<b>Le duché de Lardam</b> — le fief le plus riche et le plus peuplé de Sordolia, tourné vers la mer et le commerce maritime. Son duc, <b>Lancmon Hareld</b>, est un homme d'affaires autant qu'un seigneur : il entretient des liens étroits avec les guildes de fourrures et les armateurs de la côte sud. La baronnie de Meck, au nord de Lardam, relève de ce duché en tant que vassal direct du duc.
+			</li>
+			<li>
+				<b>Le comté de Palidam</b> — la péninsule orientale et le pays de l'Ostwilt, dominés par le grand marché de peaux et de fourrures de Palidam. La comtesse <b>Erna Brokkeld</b>, veuve depuis cinq ans, gouverne seule avec une poigne réputée. Son territoire inclut une partie de la côte et les landes du pays de l'Ostwilt.
+			</li>
+			<li>
+				<b>Le duché de Karldam</b> — les terres du sud-est, entre le Haut Vildberg et la côte. Le duc <b>Diebold Krantz</b> tient Karldam, cité des artisans, et contrôle les routes commerciales vers le Verbleau. C'est un territoire relativement prospère, dont la renommée repose sur le travail du bois et de l'ébénisterie.
+			</li>
+			<li>
+				<b>La marche occidentale de Vorteldam</b> — territoire dépeuplé et âpre en frontière du Salthar, organisé moins comme un fief traditionnel que comme une zone tampon militaire. Son seigneur, le <b>baron Andries Vorn</b>, tient Vorteldam et les routes de l'Asbial. Sa loyauté au prince est sans faille — il n'a pas les moyens d'avoir des ambitions.
+			</li>
+		</ul>
+
+		<p>Cas particuliers : <b>Solidam</b> abrite une garnison impériale permanente et relève directement de l'autorité de l'Empire, sans seigneur burgon interposé. <b>Geldam</b> est gouvernée par la communauté naine selon ses propres lois, sous un accord ancien avec la Couronne qui lui garantit l'autonomie intérieure en échange d'une redevance annuelle et d'une neutralité armée.</p>
+
+	</details>
+
 	<!-- Sites remarquables -->
 	<details>
 		<summary>
 			<h3>Sites remarquables</h3>
 		</summary>
-		<ul>
+		<ul class="flow">
 			<li><b>La cité maudite :</b> L’antique Valtarno (ou Valtardam), une ville proche de la frontière du Salthar, détruite par les troupes impériales il y a trois siècles et réputée hantée. À raison, d’ailleurs, si l’on en juge par le nombre de disparitions qui se produisent régulièrement dans le secteur.</li>
 			<li><b>La péninsule de Komashkaïda :</b> Située à l’extrémité orientale de la Burgonnie du nord, habitée par des tribus de rudes guerriers aux mœurs barbares et des tribus naines.</li>
 			<li><b>Les cercles de pierre :</b> Menhirs, dolmens et cercles de pierre dispersés dans toute la région.</li>
@@ -81,7 +101,7 @@ Aspects pratiques pour aventuriers
 		</summary>
 		<ul>
 			<li><b>Sardam – Solidam :</b> 220 km (8-9 jours à pied, 5-8 jours à cheval)</li>
-			<li><b>Sardam – Lardam :</b> 256 km (9-11 jours à pied, 6-9 jours à cheval)</li>
+			<li><b>Sardam – Lardam :</b> 255 km (9-11 jours à pied, 6-9 jours à cheval)</li>
 			<li><b>Sardam – Palidam :</b> 315 km (11-13 jours à pied, 7-11 jours à cheval)</li>
 		</ul>
 	</details>
@@ -98,7 +118,7 @@ Aspects pratiques pour aventuriers
 <!-- Politique & organisation -->
 <section>
 	<h2>Politique &amp; organisation</h2>
-	<p>La Sordolia est dirigée par le prince Margor d’Avrelanche, un solide guerrier mesurant près de 2 mètres, assisté par son fils. Il vit dans un immense château fort aux murs de granit à Sardam. Homme pragmatique à la franchise légendaire, il est très respecté par ses sujets qui voient en lui un véritable « homme des bois ». Malgré son apparence, Margor joue de l’épinette en virtuose et sait se montrer fin politique quand les circonstances l’exigent.</p>
+	<p>La Sordolia est dirigée par le prince Margor d’Avrelanche. Voir <a href="/wiki/paorn/sardam">Sardam</a>.</p>
 </section>
 
 <!-- Économie -->
@@ -110,22 +130,18 @@ Aspects pratiques pour aventuriers
 	<p>Cette province exporte surtout de la viande, du bois, de la fourrure (castor, hermine de Komashkaïda et renard blanc), de la bière et des meubles qui se vendent à prix d’or dans tout Paorn.</p>
 
 	<p>Les colonies naines qui se sont installées aux abords de la chaîne des Sinistérias produisent des métaux précieux (argent et or) et des gemmes rares.</p>
-
-	<!-- Établissements commerciaux notables -->
-	<details>
-		<summary>
-			<h3>Établissements commerciaux notables</h3>
-		</summary>
-		<p>La <b>grande lutherie de Voldam</b>, dont les épinettes et luths jouissent d’une réputation flatteuse dans tout Paorn.</p>
-		<p>Le plus grand <b>marché de peaux et de fourrures</b> de Paorn se trouve à Palidam.</p>
-	</details>
+	
 </section>
+
+<!-- Figures et groupes d’influences -->
 
 <!-- Culture et société -->
 <section>
 	<h2>Culture et société</h2>
-	<p>Les cultures sordoliennes peuvent faire penser à la Hollande ou au nord de l’Allemagne près des côtes. Plus à l’intérieur des terres, on se rapproche de la culture scandinave.</p>
+	<p>Les cultures sordoliennes peuvent faire penser à la Hollande, au nord de l’Allemagne et aux Scandinaves.</p>
 </section>
+
+<!-- Histoire -->
 
 <!-- Particularités -->
 <section>
@@ -152,9 +168,14 @@ Aspects pratiques pour aventuriers
 		<!-- <p>Les territoires se situant au-delà du <i>Dernier Rempart</i> comptent encore d’autres créatures, plus adaptées au froid (comme le dragon blanc) ou plus rares encore (sorcières, géants des montagnes&hellip;)</p> -->
 	</details>
 
-	<h3>Dolmens et cercles de pierres</h3>
-	<p>La Sordolia a toujours été un « pays magique », comme en attestent les menhirs, dolmens et cercles de pierre que l’on trouve un peu partout.</p>
+	<!--Dolmens et cercles de pierres  -->
+	<details>
+		<summary>
+			<h3>Dolmens et cercles de pierres</h3>
+		</summary>
+		<p>La Sordolia a toujours été un « pays magique », comme en attestent les menhirs, dolmens et cercles de pierre que l’on trouve un peu partout.</p>
+	</details>
 
-	<h3>La cité maudite de Valtarno</h3>
-	<p>La cité maudite de Valtarno est réputée hantée par les fantômes assoiffés de sang de ses anciens habitants, ce qui pourrait expliquer le nombre de disparitions qui se produisent régulièrement dans le secteur.</p>
 </section>
+
+<!-- Aspects pratiques pour aventuriers -->

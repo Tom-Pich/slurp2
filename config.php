@@ -4,8 +4,8 @@ define("IS_ONLINE", $_SERVER['HTTP_HOST'] === 'jdr.pichegru.net');
 define("DB_ACTIVE", true);
 define("GENERIC_PASSWORD", $_ENV["GENERIC_PASSWORD"]);
 define("SESSION_DURATION", 10800);
-define("VERSION", "3.28.5"); // 3.28 : new skill groups management
-define("DATE_VERSION", "février 2026");
+define("VERSION", "3.29.0"); // 3.29: intégration de l’IA dans la table de jeu
+define("DATE_VERSION", "mars 2026");
 define("PRODUCTION", true); // run webpack before switching to true
 define("SKILL_V2", true); // coût compétences v2
 

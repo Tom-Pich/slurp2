@@ -19,6 +19,7 @@ use App\Controller\PageController;
 use App\Repository\UserRepository;
 use App\Controller\Error404Controller;
 use App\Controller\CharacterExportController;
+use App\Controller\GenerateMagicController;
 
 (new DotEnv(__DIR__ . '/.env'))->load();
 require_once "config.php";
@@ -405,6 +406,13 @@ else if ($path_segments[1] === "wiki" && !empty($path_segments[2]) && count($pat
 		$page = new Error404Controller;
 	}
 	$page->show();
+}
+
+// generate magic markdown
+elseif ($path_segments[1] === "generate-magic") {
+	Firewall::filter(3);
+	$controller = new GenerateMagicController;
+	$controller->generate();
 }
 
 // standard pages

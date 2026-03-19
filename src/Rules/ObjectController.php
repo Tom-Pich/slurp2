@@ -95,7 +95,8 @@ class ObjectController
 		$sideEffects = [];
 		if ($is_valid_object && $is_valid_localisation && $sideEffectNumber) {
 			for ($i = 0; $i < $sideEffectNumber; $i++) {
-				$effectDetail = TableReader::getResult(self::object_types[$objectType]["localisations"][$localisation], random_int(1, 6)); // read effect from table
+				$effectTable = self::object_types[$objectType]["localisations"][$localisation];
+				$effectDetail = TableReader::pickResult($effectTable, random_int(1, 6));
 				$effectLevel = DiceManager::isSuccess($integrite, $rolls[$i]) ? $damageIndex - 1 : $damageIndex; // severity depends on $damageIndex and Integrity check
 				$sideEffects[] = [$effectDetail, $effectLevel];
 			}
