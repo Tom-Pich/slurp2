@@ -33,7 +33,7 @@ function color_modifier($original_score, $actual_score)
 
 	<!-- Points -->
 	<div class="fs-300 no-print">
-		Pts&nbsp;: <?= $character->points ?> | éco&nbsp;: <?= $character->points - $character->points_count["total"] ?>
+		Pts : <?= $character->points ?> | éco : <?= $character->points - $character->points_count["total"] ?>
 	</div>
 
 	<!-- Description -->
@@ -66,7 +66,7 @@ function color_modifier($original_score, $actual_score)
 		<!-- Caractéristiques principale -->
 		<div class="flex-s gap-½ fs-450 jc-space-between ta-center">
 			<?php foreach ($attributes_names as $attr_name) { ?>
-				<div data-type="throwable-wrapper">
+				<div data-type="throwable-wrapper" <?= in_array($attr_name, ["Int", "Per", "Vol"]) ? "data-secret='true'" : "" ?>>
 					<b data-type="throwable-label"><?= $attr_name ?></b>
 					<span <?= color_modifier($character->raw_attributes[$attr_name], $character->attributes[$attr_name]) ?> data-type="throwable-score">
 						<?= $character->attributes[$attr_name] ?>
@@ -137,25 +137,25 @@ function color_modifier($original_score, $actual_score)
 				</li>
 			<?php } ?>
 			<li>
-				<b>Encombrement&nbsp;:</b>
+				<b>Encombrement :</b>
 				<?= $character->carried_weight ?> kg –
 				<?= $character->state["Encombrement"]["name"] ?>
 			</li>
 			<?php if ($character->state["Fatigue"]["dex-modifier"]) { ?>
-				<li><b>Fatigue&nbsp;:</b> <?= $character->state["Fatigue"]["name"] ?></li>
+				<li><b>Fatigue :</b> <?= $character->state["Fatigue"]["name"] ?></li>
 			<?php } ?>
 			<?php if ($character->state["Stress"]["sf-modifier"]) { ?>
 				<li>
-					<b>Stress&nbsp;:</b>
+					<b>Stress :</b>
 					<?= $character->state["Stress"]["name"] ?>
 					<?= $character->state["Stress"]["pde-loss"] ? "– perte de " . $character->state["Stress"]["pde-loss"] . " PdE" : "" ?>
 				</li>
 			<?php } ?>
 			<?php if ($character->state["Santé-mentale"]["sf-modifier"]) { ?>
-				<li><b>Santé mentale&nbsp;:</b> <?= $character->state["Santé-mentale"]["description"] ?></li>
+				<li><b>Santé mentale :</b> <?= $character->state["Santé-mentale"]["description"] ?></li>
 			<?php } ?>
 			<?php if ($character->state["Blessures"]["dex-modifier"]) { ?>
-				<li><b>Blessures&nbsp;:</b> <?= $character->state["Blessures"]["name"] ?></li>
+				<li><b>Blessures :</b> <?= $character->state["Blessures"]["name"] ?></li>
 			<?php } ?>
 			<?php foreach ($character->state["Membres"] as $member) { ?>
 				<li><?= $member ?></li>
@@ -418,7 +418,7 @@ function color_modifier($original_score, $actual_score)
 					<summary data-role="container-title-wrapper" title="<?= $sublist["lieu"] ?>">
 						<h5 class="flex-s gap-½">
 							<div class="fl-1"><?= $sublist["nom"] ?></div>
-							<div><?= $sublist["sur-soi"] ? (round($sublist["poids"] ?? 0, 1) . "&nbsp;kg") : "" ?></div>
+							<div><?= $sublist["sur-soi"] ? (round($sublist["poids"] ?? 0, 1) . " kg") : "" ?></div>
 						</h5>
 					</summary>
 					<!-- Container controls -->
@@ -480,12 +480,12 @@ function color_modifier($original_score, $actual_score)
 						<h5>Possessions de groupe</h5>
 					</summary>
 					<?php foreach ($possessions_communes as $key => $liste_contenant) {
-						$liste_contenant_string = implode("&nbsp;; ", array_map(function ($item) {
+						$liste_contenant_string = implode(" ; ", array_map(function ($item) {
 							$counter = TextParser::parseObjectCounter($item["Nom"]);
 							return $counter ? $counter["label"] : $item["Nom"];
 						}, $liste_contenant));
 					?>
-						<p><b><?= $key ?>&nbsp;:</b> <?= $liste_contenant_string ?></p>
+						<p><b><?= $key ?> :</b> <?= $liste_contenant_string ?></p>
 					<?php } ?>
 				</details>
 			<?php } ?>
@@ -532,22 +532,22 @@ $displayEmojis = false;
 <!-- Modal pour les possessions -->
 <dialog data-name="possession-notice" class="flow" data-morphdom="ignore">
 	<button data-role="close-modal" class="ff-fas">&#xf00d;</button>
-	<p class="mt-0"><b>Ajouter un objet&nbsp;:</b> cliquer sur <span class="ff-fas clr-primary-500">&#xf055;</span> dans l’emplacement désiré.</p>
-	<p><b>Supprimer un objet&nbsp;:</b> effacer son nom. Attention&nbsp;: si vous effacez un objet-contenant, vous perdrez tout son contenu avec&nbsp;!</p>
-	<p><b>Transformer un objet en contenant&nbsp;:</b> Insérer * devant son nom.</p>
-	<p><b>Transformer un contenant en objet simple&nbsp;:</b> cocher la case <span class="ff-fas clr-invalid">&#xf057;</span> dans la liste associée au contenant (pas possible si le contenant n’est pas vide).</p>
-	<p><b>Changer l’ordre des contenants&nbsp;:</b> utiliser les boutons <span class="ff-fas">&#xf0aa;</span> et <span class="ff-fas">&#xf0ab;</span>. Attention&nbsp;: un contenant vide peut perturber le positionnement des autres contenants. Dans ce cas, transformez-le en objet simple.</p>
-	<p><b>Déplacer un objet</b> (vers un autre endroit, ou à l’intérieur d’une liste, ou vers un autre personnage)&nbsp;: faire un <i>glisser-déposer</i> en vous servant de la poignée <span class="ff-fas">&#xf58e;</span> . Si la liste de destination est repliée, maintenant votre objet une demi-seconde sur son nom pour qu’elle s’ouvre automatiquement.</p>
-	<p><b>Partager</b> le contenu d’un contenant&nbsp;: cliquer sur la case <span class="ff-fas clr-secondary-dark">&#xe533;</span>. Les autres membres du groupe pourront voir ce contenu (mais pas le modifier).</p>
-	<p><b>Calcul automatique des dégâts</b> des armes blanches&nbsp;:</p>
+	<p class="mt-0"><b>Ajouter un objet :</b> cliquer sur <span class="ff-fas clr-primary-500">&#xf055;</span> dans l’emplacement désiré.</p>
+	<p><b>Supprimer un objet :</b> effacer son nom. Attention : si vous effacez un objet-contenant, vous perdrez tout son contenu avec !</p>
+	<p><b>Transformer un objet en contenant :</b> Insérer * devant son nom.</p>
+	<p><b>Transformer un contenant en objet simple :</b> cocher la case <span class="ff-fas clr-invalid">&#xf057;</span> dans la liste associée au contenant (pas possible si le contenant n’est pas vide).</p>
+	<p><b>Changer l’ordre des contenants :</b> utiliser les boutons <span class="ff-fas">&#xf0aa;</span> et <span class="ff-fas">&#xf0ab;</span>. Attention : un contenant vide peut perturber le positionnement des autres contenants. Dans ce cas, transformez-le en objet simple.</p>
+	<p><b>Déplacer un objet</b> (vers un autre endroit, ou à l’intérieur d’une liste, ou vers un autre personnage) : faire un <i>glisser-déposer</i> en vous servant de la poignée <span class="ff-fas">&#xf58e;</span> . Si la liste de destination est repliée, maintenant votre objet une demi-seconde sur son nom pour qu’elle s’ouvre automatiquement.</p>
+	<p><b>Partager</b> le contenu d’un contenant : cliquer sur la case <span class="ff-fas clr-secondary-dark">&#xe533;</span>. Les autres membres du groupe pourront voir ce contenu (mais pas le modifier).</p>
+	<p><b>Calcul automatique des dégâts</b> des armes blanches :</p>
 	<ol>
 		<li>Entrez dans les <b>notes</b> de l’objet le ou les <b>codes de dégâts</b> de l’arme <i>tels que</i> donnés dans les règles (ex. P.e+1, T.t-2, B.t&hellip;), en tenant compte d’un éventuel bonus de qualité ou de magie.</li>
 		<li>Pour une <b>arme maniée à deux mains</b>, si le maniement à deux mains est optionnel, insérez le caractère † dans les notes (n’importe où). S’il est obligatoire, entrez le caractère ‡.</li>
 		<li>Vous pouvez lire la <b>valeur des dégâts calculés</b> (le cas échéant) en survolant les notes avec le curseur.</li>
 	</ol>
 	<p>
-		<b>Créer un compteur</b> associé à un objet&nbsp;: ajouter au nom de l’objet les motifs <i>nombre/nombre</i> ou <i>(nombre %)</i>.<br>
-		Ces nombres peuvent être entiers ou décimaux (séparateur décimal&nbsp;: point).<br>
+		<b>Créer un compteur</b> associé à un objet : ajouter au nom de l’objet les motifs <i>nombre/nombre</i> ou <i>(nombre %)</i>.<br>
+		Ces nombres peuvent être entiers ou décimaux (séparateur décimal : point).<br>
 	</p>
 </dialog>
 

@@ -22,7 +22,7 @@ ws.onopen = () => {}; // nothing to do
 
 ws.onmessage = (rawMessage) => {
     const message = JSON.parse(rawMessage.data);
-    console.log(message);
+    //console.log(message);
     if (message.type === "character-ping" && [0, characterId].includes(message.content)) {
         updateCharacter(characterId);
     }
@@ -311,16 +311,17 @@ if (pdmInput) {
 }
 
 // make a test on game table
-const throwableItems = qsa("[data-type=throwable-label], [data-type=throwable-score]");
+const throwableItems = qsa("[data-type=throwable-wrapper]");
 const testDialog = qs("dialog[data-type=character-sheet-roll]");
 const testDialogBtn = testDialog.querySelector("[data-type=send-test]");
-const modifierInput = testDialog.querySelector("[data-type=test-modifier-value]");
-let label, score;
+const testDialogModifierInput = testDialog.querySelector("[data-type=test-modifier-value]");
+const testDialogLabel = testDialog.querySelector("[data-content=label]")
+const testDialogScore = testDialog.querySelector("[data-content=score]")
+const testDialogSecretCheckbox = testDialog.querySelector("[data-type=secret-test-checkbox]")
 
 throwableItems.forEach((item) => {
     item.addEventListener("click", (e) => {
-        const wrapper = item.closest("[data-type=throwable-wrapper]");
-        const isThrowableInSummary = wrapper.tagName === "SUMMARY";
+        const isThrowableInSummary = item.tagName === "SUMMARY";
 
         // click on label in summary → only open details, don’t roll
         if (isThrowableInSummary && e.target.dataset.type === "throwable-label") return;
@@ -328,23 +329,24 @@ throwableItems.forEach((item) => {
         e.preventDefault();
 
         testDialog.showModal();
-        modifierInput.focus();
-        modifierInput.value = ""; // reset modifier value
+        testDialogModifierInput.focus();
+        testDialogModifierInput.value = ""; // reset modifier value
 
-        label = trimModifier(wrapper.querySelector("[data-type=throwable-label]").innerText);
-        score = wrapper.querySelector("[data-type=throwable-score]").innerText;
-        testDialog.querySelector("[data-content=label]").innerText = label;
-        testDialog.querySelector("[data-content=score]").value = score;
+        const label = trimModifier(item.querySelector("[data-type=throwable-label]").innerText);
+        const score = item.querySelector("[data-type=throwable-score]").innerText;
+        testDialogLabel.innerText = label;
+        testDialogScore.value = score;
+		testDialogSecretCheckbox.checked = (item.dataset.secret === "true")
     });
 });
 
 testDialogBtn.addEventListener("click", (e) => {
-    const modifier = int(modifierInput.value);
+    const modifier = int(testDialogModifierInput.value);
     const readableModif = modifier === 0 ? "" : explicitSign(modifier);
-    const effectiveScore = parseInt(testDialog.querySelector("[data-content=score]").value);
+    const effectiveScore = parseInt(testDialogScore.value);
     const rollResult = roll("3d").result;
     const outcome = scoreTester(effectiveScore + modifier, rollResult);
-    const messageContent = `${label} (${effectiveScore}${readableModif}) → ${rollResult} (MR ${outcome.MR} ${outcome.symbol})`;
+    const messageContent = `${testDialogLabel.innerText} (${effectiveScore}${readableModif}) → ${rollResult} (MR ${outcome.MR} ${outcome.symbol})`;
     const isSecretTest = testDialog.querySelector("[data-type=secret-test-checkbox]").checked;
     const recipients = isSecretTest ? [gmId] : [];
     const message = new Message(sessionId, wsKey, "chat-roll", messageContent, recipients, outcome.symbol);

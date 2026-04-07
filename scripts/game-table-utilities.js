@@ -65,7 +65,7 @@ export function roll(code) {
     let expression = `${x}d${y === 6 ? "" : y}${op}${z}`;
     expression = expression.replace("+0", "");
     expression = expression.replace("-0", "");
-    console.log({ expression: expression, result: result });
+    //console.log({ expression: expression, result: result });
     return { expression: expression, result: result };
 }
 

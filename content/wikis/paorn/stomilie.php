@@ -11,7 +11,7 @@
 	</p>
 
 	<figure class="right">
-		<img src="/assets/img_paorn/stomilie_01.jpg" alt="">
+		<img src="/assets/img_paorn/artaille-stomilie-01.jpg" alt="Image de la ville de Stomilie">
 		<figcaption>Stomilie et sa cathédrale fortifiée</figcaption>
 	</figure>
 </div>

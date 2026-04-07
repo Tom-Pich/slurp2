@@ -2,7 +2,7 @@
 
 <div class="has-right-block">
 	<p>
-		Le <i>duché d’Elmora</i> (ou duché d’<i>Elmour</i> en parlé verbléan), situé dans la province de l'Artaille, comprend les villes d’Imégie, d’Almisie et de Stomilie. Il s’étend sur environ 65.000 km².<br>
+		Le <i>duché d’Elmora</i> (ou duché d’<i>Elmour</i> en verbléan), situé dans la province de l'Artaille, comprend les villes d’Imégie, d’Almisie et de Stomilie. Il s’étend sur environ 26.500 km².<br>
 		Entre ces trois villes, la densité de population est élevée : on trouve un village tout les 8 à 20 km et un bourg tout les 30 à 50 km.
 	</p>
 
@@ -14,7 +14,7 @@
 	</figure>
 </div>
 
-<p>La <i>Côte sauvage</i>, au sud (14.000 km² supplémentaires), en fait également théoriquement partie, bien qu’elle soit hors de contrôle des forces princières. Cette côte s'étend sur environ 220 km entre Imégie et Maylie.</p>
+<p>La <i>Côte sauvage</i>, au sud (4.100 km² supplémentaires), en fait également théoriquement partie, bien qu’elle soit hors de contrôle des forces princières. Cette côte s'étend sur environ 220 km entre Imégie et Maylie.</p>
 
 <p>Les terres sont fertiles et le climat est doux et sec sans être aride. Paysages vallonnés avec des forêts méditerrannéennes, du maquis de la garrigue et des zones cultivées.</p>
 

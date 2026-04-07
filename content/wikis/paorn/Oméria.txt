@@ -1,0 +1,4 @@
+<li><b>Marquis de Bonséjour :</b> Jeune noble ambitieux dirigeant l’École impériale de magie d’Olméria.</li>
+<li><b>Ostenter :</b> Mage de l’Arcania de haut rang travaillant avec le marquis de Bonséjour.</li>
+
+<li><b>L’École impériale de magie d’Olméria :</b> centre de formation des magiciens officiels de l’empire.</li>

@@ -28,12 +28,9 @@
 
 		<p>Cette corruption progressive engendra également des créatures monstrueuses.</p>
 
-		<!-- Cette corruption progressive engendra également des créatures monstrueuses : lorsque des humains pratiquant la magie noire s’accouplèrent avec des êtres démoniaques, naquirent les premiers orcs et gobelins. D’autres races comme les elfes noirs furent le résultat d’expériences magiques perverses ou de malédictions divines. -->
-
 		<p>Voyant son œuvre menacée, Atrim offrit à l’humanité une chance de rédemption. Il choisit un prophète nommé <i>Koës</i>, pour guider les humains sur le chemin de la vertu. Par sa bouche, Atrim enseigna les préceptes qui allaient devenir le fondement de l’Atrimisme : la tempérance, la bienveillance, et surtout la prudence face à la magie. Mais Koës ne fut pas écouté.</p>
 
 		<p>Le Cataclysme qui suivit fut interprété comme la conséquence inévitable de l’usage inconsidéré de la magie par les humains. Les civilisations s’effondrèrent.</p>
-		<!-- et seuls ceux qui avaient écouté les enseignements d’Atrim purent reconstruire un monde plus juste sur ces ruines. -->
 
 		<p>Aujourd’hui encore, les atrimistes considèrent que si d’autres divinités peuvent être honorées pour leur contribution à la création, seul Atrim se soucie véritablement du salut des âmes humaines et mérite une dévotion complète.</p>
 	</details>
@@ -92,21 +89,48 @@
 		<p>Une collection de textes divers, antérieurs à Eldar. Différents auteurs, inconnus. On y trouve des poèmes, des textes cabalistiques, des mythes et de nombreuses prières.</p>
 	</details>
 
-	<!-- Interprétations et exégèses -->
-	<!-- <details>
-		<summary>
-			<h3>Interprétations et exégèses</h3>
-		</summary>
-		<h4>La magie est comme le feu : utile au serviteur, dangereuse pour le maître.</h4>
-		<p>Cette parole d'Eldar peut être interprétée de plusieurs façons profondes et complémentaires et reflète la sagesse fondamentale concernant la relation que les humains devraient entretenir avec la magie :</p>
-		<ul>
-			<li><b>L'interprétation orthodoxe :</b> la magie doit rester un outil et non devenir une fin en soi. Celui qui se contente d'utiliser la magie comme un serviteur - de façon limitée, encadrée et pour le bien commun - peut en tirer bénéfice sans corrompre son âme. En revanche, celui qui cherche à maîtriser la magie, à l'approfondir et à en faire le centre de son existence, finit par être consumé par elle, tout comme celui qui joue imprudemment avec le feu finit par se brûler. C'est pourquoi en Burgonnie, la pratique de la magie est strictement réglementée.</li>
-			<li><b>L'interprétation historique :</b> Les érudits atrimistes rappellent que cette parole fait référence à l'histoire même de l'humanité. Avant le Cataclysme, les civilisations qui maîtrisaient la magie finirent par être détruites par elle. Cette citation serait donc un avertissement historique d'Eldar, rappelant que les humains, n'étant pas magiques par essence, ne peuvent prétendre dominer cette force sans conséquences désastreuses.</li>
-			<li><b>L'interprétation symbolique :</b> le « serviteur » symbolise l'humilité et la prudence, tandis que le « maître » représente l'orgueil et la présomption. C'est notre attitude envers la magie qui détermine si elle nous sera bénéfique ou néfaste. Celui qui approche la magie avec humilité, reconnaissant ses limites et sa nature non-magique, peut l'utiliser sans danger. Celui qui, par orgueil, cherche à s'élever au-dessus de sa condition humaine grâce à la magie, finira par être détruit par elle.</li>
-		</ul>
-		<p>Cette citation continue d'inspirer et de guider les atrimistes dans leur relation prudente avec la magie, tout en permettant diverses interprétations qui ont nourri au fil des siècles les réflexions théologiques au sein de cette religion.</p>
-	</details> -->
 </section>
+
+<!-- Symboles atrimistes -->
+<section>
+	<h2>Les symboles atrimistes</h2>
+
+	<h3>La croix d’Alliance</h3>
+	<p>Une croix aux quatre bras égaux, inscrite dans un cercle qui en recoupe les extrémités.</p>
+
+	<h4>Les quatre bras</h4>
+
+	<div class="has-right-block">
+
+		<p>L'égalité des bras est intentionnelle : aucune direction ne prime sur les autres.</p>
+
+		<ul>
+			<li>Bras supérieur : Atrim, le divin, l'origine</li>
+			<li>Bras inférieur : l'humanité, le terrestre, le monde créé</li>
+			<li>Deux bras latéraux : le lien entre les humains — la bienveillance, la communauté, la Voie partagée</li>
+		</ul>
+
+		<figure class="right">
+			<img src="/assets/img_paorn/croix-atrimiste.png" alt="La croix atrimiste">
+			<figcaption>La croix d’Alliance</figcaption>
+		</figure>
+
+		<p>L'axe vertical est le pacte : Atrim qui tend la main vers le bas, l'humanité qui tend la main vers le haut. L'axe horizontal est le devoir : ce que les hommes se doivent les uns aux autres.</p>
+
+	</div>
+
+	<h4>Le cercle</h4>
+
+	<p>Le cercle représente la frontière entre le sacré et le temporel — la limite que les hommes ne doivent pas franchir sans la grâce d'Atrim. C'est précisément ce que transgresse la magie : elle traverse ce cercle de force, sans y être invitée, et c'est pourquoi elle corrompt.</p>
+
+	<p>Pour le croyant, le cercle rappelle aussi que le divin et l'humain se rencontrent en un seul point : l'âme du fidèle, là où les quatre directions convergent. L'intersection de la croix — protégée par le cercle — c'est le lieu de chaque personne face à Atrim.</p>
+
+	<h4>Origine liturgique</h4>
+	<p>Selon la tradition atrimiste, c'est Eldar lui-même qui aurait tracé ce signe dans la poussière pour expliquer à ses disciples la nature du pacte entre Atrim et l'humanité. Le cercle n'était pas dans les enseignements de Koës — il est l'apport d'Eldar, symbole de la reconstruction après le Cataclysme : <i>le monde fut brisé en tous sens, et le cercle fut tracé pour qu'il ne le soit plus</i>.</p>
+
+
+</section>
+
 
 <!-- Le clergé -->
 <section>

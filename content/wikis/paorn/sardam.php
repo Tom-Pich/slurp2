@@ -3,7 +3,7 @@
 <!-- Introduction -->
 <div class="has-right-block">
 
-	<img src="/assets/img_paorn/blason-sardam-400.webp" width="100" class="float-left" alt="Blason de Solidam">
+	<img src="/assets/img_paorn/blason-sardam-400.webp" width="100" class="float-left" alt="Blason de Sardam">
 
 	<p>Sardam est la capitale provinciale de la Sordolia. Établie sur une vaste étendue défrichée autrefois connue comme la <i>Clairière de Matar</i>, elle est la plus grande ville de la province.</p>
 
@@ -12,8 +12,8 @@
 	<div class="right flow">
 
 		<figure>
-			<a href="/assets/img_paorn/sordolia-sardam-01.webp" target="_blank">
-				<img src="/assets/img_paorn/sordolia-sardam-01.webp" alt="vue de Sardam">
+			<a href="/assets/img_paorn/sordolia-sardam-01b.webp" target="_blank">
+				<img src="/assets/img_paorn/sordolia-sardam-01b.webp" alt="vue de Sardam">
 			</a>
 			<figcaption>Sardam, vue depuis le nord</figcaption>
 		</figure>
@@ -40,6 +40,10 @@
 
 	<p>Enfin, fait notable, Sardam est équipée d’un système de tout-à-l’égout : sa situation géographique, la nature du sol et la gestion des ressources en eau ont rendu un tel aménagement indispensable.</p>
 
+	<!-- Le château -->
+	 <h3>Le château du Prince</h3>
+	 <p>Voir l’<a href="/wiki/paorn/chateau-sardam">article</a> qui lui est consacré.</p>
+
 	<!-- Architecture -->
 	<details>
 		<summary>
@@ -51,71 +55,7 @@
 		<p>La tour de gauche représente <i>Matarcald le Défricheur</i>, fondateur légendaire de la ville. Un géant de granit sculpté en pied, de face, dans une posture d'autorité immobile. Il tient une hache à deux mains, lame vers le bas. Il ne porte pas d'armure mais une cape épaisse et une couronne simple — presque rustique. Son visage est carré, la barbe taillée en pointe, le regard droit devant lui. Sous ses pieds, une forêt stylisée d'arbres tombés — la Clairière de Matar en train d'être conquise. L'inscription en bas de la tour : <i>Il a offert la terre aux hommes</i> – en sordolien archaïque.</p>
 		<p>La tour de droite montre <i>Sendra d'Avrelanche</i>, guerrière et première princesse de Sordolia. Une femme debout, de profil à trois quarts, en armure complète, la main droite levée tenant une épée à la verticale. La posture évoque moins le combat que le serment. Ses cheveux sont tressés, visibles sous un heaume ouvert. Son visage est serein, presque froid. Derrière elle, en bas-relief plus discret, un château en construction. L'inscription : <i>Elle a tenu ce que d'autres n'osaient bâtir</i> – en sordolien archaïque.</p>
 	</details>
-
-	<!-- Le château -->
-	<details open>
-		<summary>
-			<h3>Le château du Prince</h3>
-		</summary>
-		<p>Le monumental château du Prince domine la cité depuis une colline stratégique. Ses remparts atteignent 30 mètres de hauteur et ses donjons effilés se découpent sur le ciel de Sordolia. C'est la résidence du prince Margor d'Avrelanche et le siège du pouvoir provincial.</p>
-
-		<p>Le château compte 200 à 250 résidents permanents, avec des pics à 300-350 lors de grandes assemblées ou visites officielles. La garde compte environ 50 hommes, en plus des résidents.</p>
-
-		<table class="border left-1">
-			<tr>
-				<th>Groupe</th>
-				<th>Effectif</th>
-			</tr>
-			<tr>
-				<td>Maison du prince (famille, suite, pages, chambellan)</td>
-				<td>20–30</td>
-			</tr>
-			<tr>
-				<td>Administration (chancelier, secrétaires, greffiers, messagers)</td>
-				<td>20–35</td>
-			</tr>
-			<tr>
-				<td>Personnel domestique (cuisines, écuries, entretien, valets)</td>
-				<td>80-120</td>
-			</tr>
-			<tr>
-				<td>Nobles résidents ou à appartements attitrés</td>
-				<td>15–25 + leurs propres gens (30–50)</td>
-			</tr>
-			<tr>
-				<td>Aumônier et petite chapellenie</td>
-				<td>3-6</td>
-			</tr>
-			<tr>
-				<td>Artisans en service permanent (armurier, maréchal-ferrant, tailleur...)</td>
-				<td>8-15</td>
-			</tr>
-		</table>
-
-		<div class="admin flow">
-			<h4>Quelques personnalités du chateau</h4>
-
-			<p><b>Le chancelier Aldric Vasshen</b> – administrateur des affaires courantes de la province</p>
-
-			<p><b>Baltus Reinhard</b>, intendant général du château — robe longue gris anthracite, ceinture de cuir noir. Méticuleux et distant, répond avec précision mais ne donne jamais plus que ce qu'on lui demande.</p>
-
-			<p><b>Kantrel, commandant et responsable de la sécurité du château.</b> Une cinquantaine d’années, de stature robuste. Trente ans de service, capitaine de la garde pendant 10 ans, désormais commandant de la garde du château depuis six ans. Homme respecté, d'origine modeste (fils d'un sergent de village), promu à la force du mérite.</p>
-
-			<p><b>Konrad, capitaine de la garde d’honneur :</b> armure légère aux armes de la province, cape bleu sombre. Direct et sans détours, méfiant envers les étrangers, loyal avant tout au Prince. Présent dans les espaces représentatifs, accompagne Margor dans les audiences, supervise la sécurité des appartements nobles. C'est lui qu'on voit, celui qui a une cape et une armure aux armes de la province.</p>
-
-			<p><b>Ostveig — capitaine de la garnison :</b> gère les rotations, les rondes, le tableau de service épinglé d'une dague, les cellules. Travail de terrain, sans représentation. C'est lui qu'on trouve dans les quartiers de la garde, pas dans les couloirs du Prince.</p>
-		</div>
-
-	</details>
-
-	<!-- Approvisionnement en eau -->
-	<details>
-		<summary>
-			<h3>Approvisionnement en eau</h3>
-		</summary>
-		<p>Aucune rivière ne passe à proximité de la ville. Mais le sous-sol de Sardam est très humide et l’eau qu’on y trouve est d’une grande pureté. Un léger courant circule en permanence dans les Marais du Tonnerre – sauf en période de gel – et ses eaux sont également propres. Les puits sont donc nombreux dans la ville. En complément des pluies, comme le climat de la région est relativement pluvieux, surtout à l’automne et au printemps, de nombreuses habitations sont pourvues de citernes sousterraines maçonnées.</p>
-	</details>
-
+	
 	<!-- Quartiers & secteurs -->
 	<details>
 		<summary>
@@ -141,6 +81,13 @@
 
 	</details>
 
+	<!-- Approvisionnement en eau -->
+	<details>
+		<summary>
+			<h3>Approvisionnement en eau</h3>
+		</summary>
+		<p>Aucune rivière ne passe à proximité de la ville. Mais le sous-sol de Sardam est très humide et l’eau qu’on y trouve est d’une grande pureté. Un léger courant circule en permanence dans les Marais du Tonnerre – sauf en période de gel – et ses eaux sont également propres. Les puits sont donc nombreux dans la ville. En complément des pluies, comme le climat de la région est relativement pluvieux, surtout à l’automne et au printemps, de nombreuses habitations sont pourvues de citernes sousterraines maçonnées.</p>
+	</details>
 
 	<!-- Le système d'évacuation de Sardam -->
 	<details>
@@ -267,6 +214,7 @@
 	
 
 </section>
+
 <!-- Culture & société -->
 <!-- Histoire -->
 <!-- Particularités -->
@@ -275,12 +223,11 @@
 <section>
 	<h2>Ressources &amp; services</h2>
 
-	<h3>Auberges &amp; tavernes</h3>
-	<ul>
-		<li>
-			<b>Auberge du Magelby.</b> Magelby signifie, en Sordolien, « le croisement tranquille ». Un établissement de quartier, ni luxueux ni miteux — le genre d'endroit ou mangent les artisans, les marchands de passage et les sergents de ville après leur service.<br>
-			Salle rectangulaire basse de plafond, poutres noircies par la fumée. Le sol est en dalles de granit, usé mais propre. Cinq ou six tables, des bancs. Un comptoir en bois épais derrière lequel officie Edvar, l'aubergiste, un homme rougeaud au tablier taché qui parle fort et rit facilement. Une cheminée large ou ronfle un feu de bouleau diffuse une chaleur sèche. Odeur dominante : ragoût de mouton et pain frais. Aux murs, des bois de cerf et un blason de Sardam en bois peint, passablement écaillé.<br>
-			Deux ou trois habitués sont accoudés au comptoir, en conversation à mi-voix. Un chat roux dort sur le rebord de la fenêtre.
-		</li>
-	</ul>
+	<h3>Auberge du Magelby</h3>
+
+	<p>Magelby signifie, en Sordolien, « le croisement tranquille ». Un établissement de quartier, ni luxueux ni miteux — le genre d'endroit ou mangent les artisans, les marchands de passage et les sergents de ville après leur service.</p>
+
+	<p>Salle rectangulaire basse de plafond, poutres noircies par la fumée. Le sol est en dalles de granit, usé mais propre. Cinq ou six tables, des bancs. Un comptoir en bois épais derrière lequel officie <b>Edvar</b>, l'aubergiste, un homme rougeaud au tablier taché qui parle fort et rit facilement. Une cheminée large où flambe un feu de bouleau diffuse une chaleur sèche. Odeur dominante : ragoût de mouton et pain frais. Aux murs, des bois de cerf et un blason de Sardam en bois peint, passablement écaillé.</p>
+
+	<p>Deux ou trois habitués sont accoudés au comptoir, en conversation à mi-voix. Un chat roux dort sur le rebord de la fenêtre.</p>
 </section>

@@ -70,7 +70,7 @@ ws.onmessage = (rawMessage) => {
 	if (message.sender !== id) {
 	  messageRef.innerText = users[message.sender].login;
 	}
-	if (message.recipients.length) {
+	if (message.recipients.length && message.sender === id) {
 	  const recipientLogins = [];
 	  message.recipients.forEach((recipientId) => {
 		const login = users[recipientId] === undefined ? "?" : users[recipientId].login;
@@ -121,7 +121,7 @@ inputEntry.addEventListener("keydown", function (e) {
   if (e.keyCode === 13 && !e.shiftKey) {
 	e.preventDefault();
 	flushMsg("chat-message");
-  } else if (e.keyCode === 13) inputEntry.value += "¬";
+  } /* else if (e.keyCode === 13) inputEntry.value += "¬"; */
 });
 
 // add emoji in chat entry

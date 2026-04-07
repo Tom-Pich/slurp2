@@ -22,6 +22,7 @@ $articles = [
 	"sordolia" => ["title" => "Sordolia", "section" => "Sordolia",],
 	"sardam" => ["title" => "Sardam", "section" => "Sordolia",],
 	"maison-avrelanche" => ["title" => "La Maison d’Avrelanche", "parent" => "sardam" ],
+	"chateau-sardam" => ["title" => "Le château de Sardam", "parent" => "sardam" ],
 	"solidam" => ["title" => "Solidam", "section" => "Sordolia"],
 	"fort-leck" => ["title" => "Fort de Leck", "section" => "Sordolia"],
 	
@@ -35,5 +36,6 @@ $articles = [
 
 	"atrimisme" => ["title" => "Atrimisme", "section" => "Culture", "status" => "🛠️"],
 	"pentatheisme" => ["title" => "Pentathéisme", "section" => "Culture"],
-	"langues" => ["title" => "Langues", "section" => "Culture"]
+	"langues" => ["title" => "Langues", "section" => "Culture"],
+	"calendrier-burgon" => ["title" => "Calendrier burgon", "section" => "Culture"],
 ];

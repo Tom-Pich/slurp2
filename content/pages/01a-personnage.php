@@ -490,7 +490,7 @@ $repo = new SkillRepository;
 		<p>Lorsque plusieurs compétences appartiennent à un même groupe (voir la liste en fin de pararaphe), il faut déterminer quelle est la compétence <i>principale</i> du groupe (celle que le personnage maîtrise le mieux). Les autres sont appelées compétences <i>secondaires</i>.</p>
 
 		<h4>Compétence principale</h4>
-		<p>Il s’agit de la compétence maîtrisée au <i>niveau</i> le plus élevé (hors bonus). En cas d’égalité, sélectionner la compétence dont la plus complexe, c’est-à-dire celle dont le malus de difficulté est le plus élevé.</p>
+		<p>Il s’agit de la compétence maîtrisée au <i>niveau</i> le plus élevé (hors bonus). En cas d’égalité, sélectionner la compétence la plus complexe, c’est-à-dire celle dont le malus de difficulté est le plus élevé.</p>
 
 		<h4>Compétences secondaires</h4>
 		<p>Les autres compétences du groupe auront un niveau par défaut égal au niveau de la compétence principale, -2 si leur complexité est égale ou moindre, -3 dans le cas contraire.</p>

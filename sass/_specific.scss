@@ -133,6 +133,7 @@ table {
 	}
 	&.left-1 { :is(td, th):nth-child(1){text-align: left;} }
 	&.left-2 { :is(td, th):nth-child(2){text-align: left;} }
+	&.left-3 { :is(td, th):nth-child(3){text-align: left;} }
 	&.left-4 { :is(td, th):nth-child(4){text-align: left;} }
 	&.right-2 { :is(td, th):nth-child(2){text-align: right;} }
 

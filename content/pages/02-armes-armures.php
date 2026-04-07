@@ -443,7 +443,7 @@ use App\Rules\WeaponsController;
 
 		<h4>IMI Desert Eagle</h4>
 		<p>Conçu au début des années 1980. Premier pistolet semi-automatique pouvant tirer du .357 magnum, .44 magnum et .50AE (plus puissante munition à ce jour pour un pistolet semi-auto). En plus de présenter une capacité limitée (7 à 9 coups selon les modèles), sa masse et son encombrement le rendent difficile à porter en permanence. Il n’est pas employé par les forces militaires ou de police à cause de sa taille et de son coût.</p>
-		<img src="assets/img_equipement/desert-eagle-50ae.png" height="70" class="mx-auto">
+		<img src="assets/img_equipement/desert-eagle-50ae.png" width="150" class="mx-auto">
 		<?php
 		$weapons = array_filter(WeaponsController::firearms, fn($weapon) => $weapon["cat"] === "desert-eagle");
 		WeaponsController::displayWeaponsList($weapons, true);
@@ -475,7 +475,7 @@ use App\Rules\WeaponsController;
 			Utilisée par de nombreux SWAT Teams. Les modèles les plus courants utilisent les calibres .30-06 US ou .308 Win (identique au 7,62N) et mesurent 113 cm pour 3,5&nbsp;kg.<br>
 			Avec une lunette +2, la portée utile passe à 100&nbsp;m.
 		</p>
-		<img src="assets/img_equipement/winchester-model70.png" height="70" class="mx-auto">
+		<img src="assets/img_equipement/winchester-model70.png" class="mx-auto">
 		<?php
 		$weapons = array_filter(WeaponsController::firearms, fn($weapon) => $weapon["cat"] === "winchester-classic-hunter");
 		WeaponsController::displayWeaponsList($weapons, true);
@@ -483,7 +483,7 @@ use App\Rules\WeaponsController;
 
 		<h4>Fusil d’assaut HK 416</h4>
 		<p>Le HK416 est un fusil d’assaut de calibre 5,56N. Fabriqué depuis 2005, il est devenu le fusil standard de l’armée française en 2017. C’est une arme très fiable (<i>Malf</i> 18).</p>
-		<img src="assets/img_equipement/hk-416.png" height="80" class="mx-auto">
+		<img src="assets/img_equipement/hk-416.png" class="mx-auto">
 		<?php
 		$weapons = array_filter(WeaponsController::firearms, fn($weapon) => $weapon["cat"] === "hk-416");
 		WeaponsController::displayWeaponsList($weapons, true);
@@ -527,7 +527,7 @@ use App\Rules\WeaponsController;
 			Pistolet-mitrailleur compact développé en 1964. Chambré en .45 ACP ou en 9 mm Parabellum. Un silencieux spécialement conçu diminue le bruit et facilite le contrôle de l’arme en tir automatique (Rcl réduit de 1), mais rend l’arme moins compacte et discrète.<br>
 			Tir automatique ou au coup par coup. Équipée d'une crosse d'épaule de petite taille, insuffisante pour permettre un tir stable, et d’une sangle à l’avant qui remplit médiocrement le rôle de poignée frontale. Très difficilement contrôlable en l’absence d'un entrainement adapté.
 		</p>
-		<img src="assets/img_equipement/ingram-mac-10.png" height="85" class="mx-auto">
+		<img src="assets/img_equipement/ingram-mac-10.png" width="150" class="mx-auto">
 		<?php
 		$weapons = array_filter(WeaponsController::firearms, fn($weapon) => $weapon["cat"] === "ingram-mac-10");
 		WeaponsController::displayWeaponsList($weapons, true);
