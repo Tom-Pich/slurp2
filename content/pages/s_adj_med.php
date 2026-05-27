@@ -1,20 +1,21 @@
-<article> <!-- Démographie -->
+<!-- Démographie -->
+<article>
 	<h2>Démographie médiévale</h2>
 
-
+	<!-- Densité de population -->
 	<details>
 		<summary>
 			<h3>Densité de population</h3>
 		</summary>
 		<p>
-			À l'échelle d'un pays, cette densité varie entre 10 et 50 habitants/km² selon l’hospitalité des terres et du climat.<br>
-			France, XIV<sup>e</sup> siècle : environ 40 habitants/km²
+			À l'échelle d'un pays, cette densité varie entre 10 et 50 habitants/km² selon l’hospitalité des terres et du climat. (environ 40 habitants/km² dans la France du XIV<sup>e</sup> siècle)
 		</p>
 
 		<p>Environ 90 % de la population vit dans des villages et hameaux.</p>
 
-		<p>Distance moyenne entre chaque agglomération selon le niveau de population de la région. Un niveau de population épars correspond à une zone peu passante du haut Moyen Âge, tandis qu’un niveau de population dense correspond à une région prospère à la fin du Moyen Âge.</p>
-		<table>
+		<p>Distance moyenne entre chaque agglomération selon le niveau de population de la région.</p>
+
+		<table class="left-1">
 			<tr>
 				<th>Densité</th>
 				<th>Village</th>
@@ -39,10 +40,13 @@
 				<td>30-50</td>
 				<td>60-110</td>
 			</tr>
-			<caption>Espacement des centres d’habitation (km)</caption>
+
 		</table>
+
+		<p>Un niveau de population é<i>pars</i> correspond à une zone peu passante du haut Moyen Âge, tandis qu’un niveau de population <i>dense</i> correspond à une région prospère à la fin du Moyen Âge.</p>
 	</details>
 
+	<!-- Taille des agglomérations -->
 	<details>
 		<summary>
 			<h3>Taille des agglomérations</h3>
@@ -63,7 +67,8 @@
 
 </article>
 
-<article> <!-- Commerces & échoppes -->
+<!-- Commerces & échoppes -->
+<article> 
 	<h2>Commerces &amp; échoppes</h2>
 
 	<details>
@@ -95,8 +100,8 @@
 			Boucher - volailler<br>
 			Boulanger<br>
 			Chandelier<br>
-			Chapeliers<br>
-			Épicier (marchand d'épices, de miel, de confiture...)<br>
+			Chapelier<br>
+			Épicier (marchand d'épices, de miel, de confiture&hellip;)<br>
 			Étable / Écurie<br>
 			Fabricant de fourreaux<br>
 			Fabricant d’arcs et de flèches<br>
@@ -105,10 +110,10 @@
 			Marchands de vins<br>
 			Maréchal-ferrant<br>
 			Meunier<br>
-			Poissonniers<br>
+			Poissonnier<br>
 			Prêteur sur gage<br>
 			Savonnier<br>
-			Sellier / Bourreliers<br>
+			Sellier / Bourrelier<br>
 			Tisserand (cardeur, fileur, etc)<br>
 			Tonnelier<br>
 			Vannier
@@ -121,7 +126,7 @@
 		</summary>
 		<p>
 			Armurier (fabricant d’armes)<br>
-			Blanchisseurs<br>
+			Blanchisseur<br>
 			Brasseur<br>
 			Copiste<br>
 			Cordier<br>
@@ -151,8 +156,8 @@
 			Gantier<br>
 			Joaillier / Orfèvre<br>
 			Marchand de papier, matériel d'écriture ou d'art<br>
-			Marchands de bois<br>
-			Marchands de foin<br>
+			Marchand de bois<br>
+			Marchand de foin<br>
 			Relieur<br>
 			Teinturier
 		</p>
@@ -176,8 +181,11 @@
 
 </article>
 
-<article> <!-- Métiers sans échoppe -->
+<!-- Métiers sans échoppe -->
+<article>
 	<h2>Métiers sans échoppe</h2>
+
+	<!-- Construction -->
 	<details>
 		<summary>
 			<h3>Construction</h3>
@@ -187,7 +195,7 @@
 			Fossoyeur<br>
 			Ingénieur<br>
 			Maçon<br>
-			Menuisier / charpentier / Scieur de long<br>
+			Menuisier / charpentier / scieur de long<br>
 			Ouvrier<br>
 			Peintre<br>
 			Plâtrier<br>
@@ -195,7 +203,7 @@
 		</p>
 	</details>
 
-	<details>
+	<!-- <details>
 		<summary>
 			<h3>Mines</h3>
 		</summary>
@@ -203,14 +211,15 @@
 			Abatteur (détache le minerai et le concasse avant manutention)<br>
 			Manutentionnaire (charge et transporte le minerai)
 		</p>
-	</details>
+	</details> -->
 
+	<!-- Professions intellectuelles -->
 	<details>
 		<summary>
 			<h3>Professions intellectuelles</h3>
 		</summary>
 		<p>
-			Avocat<br>
+			Avocat / Juriste<br>
 			Chirurgien-barbier<br>
 			Érudit<br>
 			Prêtre<br>
@@ -218,6 +227,7 @@
 		</p>
 	</details>
 
+	<!-- Métiers de pauvres -->
 	<details>
 		<summary>
 			<h3>Métiers de pauvres</h3>
@@ -231,16 +241,18 @@
 			Garçon d'écurie<br>
 			Lavandière<br>
 			Livreur de nourriture<br>
+			Livreur de bois<br>
 			Porteur<br>
 			Porteur d’eau<br>
 			Ramoneur<br>
 			Ratier<br>
-			Marins<br>
+			Marin<br>
 			Mineur<br>
 			Voleur / Mendiant
 		</p>
 	</details>
 
+	<!-- Divers -->
 	<details>
 		<summary>
 			<h3>Divers</h3>
@@ -258,35 +270,36 @@
 		</p>
 	</details>
 
+	<!-- Officiels -->
 	<details>
 		<summary>
 			<h3>Officiels</h3>
 		</summary>
 
 		<p>
-			<b>Agent de l’ordre (garde, milicien, etc.) :</b> Chargé de maintenir l'ordre et la sécurité<br>
-			<b>Almoinier :</b> Responsable de la distribution des aumônes et de l'assistance aux pauvres<br>
-			<b>Bailli :</b> Représentant du pouvoir royal dans une localité, responsable de l'administration et de la justice<br>
-			<b>Capitaine de la garde :</b> Responsable de la supervision et du commandement des gardes et des soldats<br>
-			<b>Chambellan :</b> Responsable de la gestion de la chambre du seigneur, souvent chargé des finances et des affaires domestiques<br>
-			<b>Chancelier :</b> Responsable de la rédaction et de la conservation des documents officiels et des archives<br>
-			<b>Collecteur d'impôts ou de taxes :</b> Chargé de percevoir les impôts et les taxes pour le seigneur ou l'autorité locale<br>
-			<b>Connétable :</b> Officier militaire de haut rang, responsable de l'armée et de la défense du territoire<br>
-			<b>Écuyer :</b> Jeune noble en formation pour devenir chevalier, souvent au service d'un seigneur<br>
-			<b>Greffier :</b> Responsable de la tenue des registres et des documents judiciaires.<br>
-			<b>Hérault / Annonceur public :</b> Chargé de faire des annonces publiques et de transmettre les messages officiels<br>
-			<b>Intendant :</b> Responsable de la gestion des domaines et des finances du seigneur<br>
-			<b>Juge :</b> Responsable de l'administration de la justice et de la résolution des litiges<br>
-			<b>Maréchal :</b> Officier militaire responsable de la cavalerie et de l'organisation des armées<br>
-			<b>Messager :</b> Responsable de la transmission des messages entre différentes parties<br>
-			<b>Notaire :</b> Responsable de la rédaction et de la conservation des actes juridiques et des contrats<br>
-			<b>Officier :</b> Chargé d’une mission publique particulière par le roi ou le seigneur<br>
-			<b>Prévôt :</b> Officier chargé de la police et de la justice dans une ville ou une région<br>
-			<b>Procureur :</b> Représentant de l'accusation dans les affaires judiciaires.
-			<b>Sénéchal :</b> Responsable de l'administration des domaines seigneuriaux et de la justice<br>
-			<b>Sergent de justice (huissier) :</b> Chargé de l'exécution des décisions de justice et de la convocation des parties devant les tribunaux<br>
-			<b>Trésorier :</b> Responsable de la gestion des finances et des trésors du seigneur ou de l'autorité locale<br>
-			<b>Viguier :</b> Officier de justice et d'administration dans certaines régions, similaire au bailli
+			<b>Agent de l’ordre (garde, milicien, etc.) :</b> chargé de maintenir l'ordre et la sécurité<br>
+			<b>Almoinier :</b> responsable de la distribution des aumônes et de l'assistance aux pauvres<br>
+			<b>Bailli :</b> représentant du pouvoir royal dans une localité, responsable de l'administration et de la justice<br>
+			<b>Capitaine de la garde :</b> responsable de la supervision et du commandement des gardes et des soldats<br>
+			<b>Chambellan :</b> responsable de la gestion de la chambre du seigneur, souvent chargé des finances et des affaires domestiques<br>
+			<b>Chancelier :</b> responsable de la rédaction et de la conservation des documents officiels et des archives<br>
+			<b>Collecteur d'impôts ou de taxes :</b> chargé de percevoir les impôts et les taxes pour le seigneur ou l'autorité locale<br>
+			<b>Connétable :</b> officier militaire de haut rang, responsable de l'armée et de la défense du territoire<br>
+			<b>Écuyer :</b> jeune noble en formation pour devenir chevalier, souvent au service d'un seigneur<br>
+			<b>Greffier :</b> responsable de la tenue des registres et des documents judiciaires.<br>
+			<b>Hérault / annonceur public :</b> chargé de faire des annonces publiques et de transmettre les messages officiels<br>
+			<b>Intendant :</b> responsable de la gestion des domaines et des finances du seigneur<br>
+			<b>Juge :</b> responsable de l'administration de la justice et de la résolution des litiges<br>
+			<b>Maréchal :</b> officier militaire responsable de la cavalerie et de l'organisation des armées<br>
+			<b>Messager :</b> responsable de la transmission des messages entre différentes parties<br>
+			<b>Notaire :</b> responsable de la rédaction et de la conservation des actes juridiques et des contrats<br>
+			<b>Officier :</b> chargé d’une mission publique particulière par le roi ou le seigneur<br>
+			<b>Prévôt :</b> officier chargé de la police et de la justice dans une ville ou une région<br>
+			<b>Procureur :</b> représentant de l'accusation dans les affaires judiciaires.<br>
+			<b>Sénéchal :</b> responsable de l'administration des domaines seigneuriaux et de la justice<br>
+			<b>Sergent de justice (huissier) :</b> chargé de l'exécution des décisions de justice et de la convocation des parties devant les tribunaux<br>
+			<b>Trésorier :</b> responsable de la gestion des finances et des trésors du seigneur ou de l'autorité locale<br>
+			<!-- <b>Viguier :</b> officier de justice et d'administration dans certaines régions, similaire au bailli -->
 		</p>
 	</details>
 
@@ -317,7 +330,8 @@
 
 </article>
 
-<article> <!-- Marchandises -->
+<!-- Marchandises -->
+<article>
 	<h2>Marchandises &amp; Ressources</h2>
 
 	<!-- Aliments & boissons -->
@@ -368,6 +382,7 @@
 		</p>
 	</details>
 
+	<!-- Ressources végétales -->
 	<details>
 		<summary>
 			<h3>Ressources végétales</h3>
@@ -381,6 +396,7 @@
 		</p>
 	</details>
 
+	<!-- Ressources animales -->
 	<details>
 		<summary>
 			<h3>Ressources animales</h3>
@@ -392,6 +408,7 @@
 		</p>
 	</details>
 
+	<!-- Ressources minérales & métaux -->
 	<details>
 		<summary>
 			<h3>Ressources minérales &amp; métaux</h3>
@@ -405,7 +422,8 @@
 	</details>
 </article>
 
-<article> <!-- Paysans & agriculture -->
+<!-- Paysans & agriculture -->
+<article>
 	<h2>Paysans &amp; agriculture</h2>
 
 	<!-- Travaux de saisons -->
@@ -435,42 +453,56 @@
 		</summary>
 
 		<h4>Surfaces cultivées</h4>
-		<p>Un paysan et sa famille pouvaient généralement cultiver entre 4 et 10 hectares, avec une moyenne d'environ 6-8 hectares pour une exploitation familiale standard.</p>
-		<p>Cette surface dépendait de :</p>
-		<ul>
-			<li>La qualité du sol</li>
-			<li>Les outils disponibles (araire simple ou charrue plus efficace)</li>
-			<li>Le système agricole (assolement biennal ou triennal)</li>
-			<li>La force de travail familiale disponible</li>
-			<li>Le statut du paysan (serf ou homme libre)</li>
-		</ul>
 
-		<p>
-			Un paysan pouvait travailler 1 à 2 hectares à la seule force de ses bras. S’il disposait d’un animal de trait, cela pouvait monter jusqu’à 3 à 5 hectares<br>
-			Ces valeurs peuvent varier considérablement selon la qualité du sol (un sol lourd et argileux demandait plus d'effort) et le relief (les terrains en pente réduisaient l'efficacité)<br>
-			Ces estimations correspondent à ce qu'un paysan pouvait raisonnablement entretenir tout au long de l'année, en incluant toutes les tâches agricoles labour, semis, entretien, récolte
-		</p>
+		<p>Un paysan pouvait travailler <b>1 à 2 hectares à la seule force de ses bras</b>. S’il disposait d’un bœuf, cela pouvait monter jusqu’à 3-4 hectares. Avec un cheval de trait (plus coûteux), il pouvait cultiver jusqu’à 4-6 hectares</p>
+
+		<p> Ces valeurs peuvent varier considérablement selon la qualité du sol (un sol lourd et argileux demandait plus d'effort) et le relief (les terrains en pente réduisaient l'efficacité)</p>
+
+		<p>Ces estimations correspondent à ce qu'un paysan pouvait raisonnablement entretenir tout au long de l'année, en incluant toutes les tâches agricoles labour, semis, entretien, récolte…</p>
 
 		<h4>Rendements</h4>
-		<p>La table ci-dessous donne des indications sur la surface nécessaire pour couvrir les besoins alimentaires d’une personne (ha/personne), ainsi que sur le nombre de personnes qu’un paysan est capable de nourrir (y compris lui-même), en se basant sur une surface cultivée de 2 à 3 hectares par paysans.</p>
-		<p>Le rendement variait de 1:2 à 1:5.</p>
+
+		<p>La table ci-dessous donne des indications sur la surface agricole* nécessaire pour couvrir les besoins alimentaires d’une personne (ha/personne), ainsi que sur le nombre de personnes qu’un paysan est capable de nourrir (y compris lui-même), en se basant sur une surface activement cultivée** de 2 à 2,5 hectares par paysan.</p>
+
+		<p>On estime que la moitié de la surface agricole est activement cultivée, l’autre étant en jachère ou dédiée au pâturage.</p>
+
 		<table>
 			<tr>
 				<th>Rendement</th>
-				<th>ha/personne</th>
+				<th>ha*/personne</th>
 				<th>personne/paysan</th>
 			</tr>
 			<tr>
-				<td>1:2</td>
-				<td>1 – 1,5</td>
-				<td>1,3 – 3</td>
+				<td>Faible</td>
+				<td>1,5</td>
+				<td>2,7 – 3,3</td>
 			</tr>
 			<tr>
-				<td>1:5</td>
-				<td>0,4 – 0,7</td>
-				<td>3 – 7</td>
+				<td>Médiocre</td>
+				<td>1,2</td>
+				<td>3,3 – 4,2</td>
+			</tr>
+			<tr>
+				<td>Moyen</td>
+				<td>1</td>
+				<td>4 – 5</td>
+			</tr>
+			<tr>
+				<td>Bon</td>
+				<td>0,8</td>
+				<td>5 – 6,3</td>
+			</tr>
+			<tr>
+				<td>Excellent</td>
+				<td>0,6</td>
+				<td>6,7 – 8,3</td>
 			</tr>
 		</table>
+
+		<p>
+			* Surface agricole : surface exploitée par l’homme pour ses activités agricoles. Inclut les surfaces en jachères et les zones de pâturage<br>
+			** Surface activement cultivée : surface nécessitant des travaux de semailles, labours, entretien, récolte… représentant l’essentiel du travail du paysan.
+		</p>
 	</details>
 
 	<!-- Outils & techniques agricoles -->
@@ -490,6 +522,7 @@
 		<p><b>Le fumier</b> est l’un des seuls fertilisants que l’on connaisse à cette époque, mais son utilisation est peu répandue car il faut pour cela avoir un cheptel développé.</p>
 	</details>
 
+	<!-- Récoltes et produits -->
 	<details>
 		<summary>
 			<h3>Récoltes et produits</h3>
@@ -499,6 +532,7 @@
 		<p>Élevage : le porc est l’animal prédominant car il donne plus de viande par rapport à son poids. Tout se mange et sa chair grasse se conserve bien.</p>
 	</details>
 
+	<!-- Corvées, taxes & impôts -->
 	<details>
 		<summary>
 			<h3>Corvées, taxes &amp; impôts</h3>
@@ -509,6 +543,7 @@
 		<p>Les serfs doivent payer des impôts particuliers au moment d’un héritage et pour se marier à l’extérieur de la seigneurie.</p>
 	</details>
 
+	<!-- Différents types de paysans -->
 	<details>
 		<summary>
 			<h3>Différents types de paysans</h3>
@@ -565,6 +600,7 @@
 			<h3>Gens du commun</h3>
 		</summary>
 		<p>Dans les régions habitées, la plupart des rencontres seront des gens du communs vaquant à leurs occupations quotidiennes.</p>
+		
 		<h4>Villageois</h4>
 		<p>Près de leur village, ces personnes sont impliquées dans une tâche agricole (garde de troupeau, entretien des cultures, récoltes, recherches de noix ou de baies sauvages, recherche d’un animal égaré, etc) ou autre tâche quotidienne.</p>
 		<p>S’ils sont rencontrés sur la route, ils peuvent être en train d’amener leurs produits sur un marché voisin, de revenir du marché, d’aller visiter de la famille (ou d’en revenir), etc.</p>
@@ -749,7 +785,8 @@
 </article>
 
 <!-- Organisation du pouvoir -->
-<article>
+<!-- Mal organisé, à revoir -->
+<article hidden>
 	<h2>Organisation du pouvoir</h2>
 
 	<details>
@@ -831,15 +868,6 @@
 		<ul>
 			<li>Délégation et représentation locale (gouverneurs, commissaire, baillis, sénéchaux)</li>
 			<li>Entretien et construction de certains bâtiments publiques (route, rue, édifices publiques)</li>
-		</ul>
-	</details>
-
-	<details>
-		<summary>
-			<h3>Noms de bâtiments</h3>
-		</summary>
-		<ul>
-			<li>Palais, maison,</li>
 		</ul>
 	</details>
 
@@ -1071,7 +1099,7 @@
 			<p><b>Entrée.</b> Un perron de bois donne sur ce petit vestibule qui peut être isolé du reste du bâtiment par une petite herse de fer. La porte extérieure est également en fer. Un judas caché derrière une tenture de la grande salle permet d’observer à la dérobée les arrivants.</p>
 
 			<p><b>Cuisine.</b> Une grande salle possédant son propre puits et une immense cheminée où l’on peut faire cuire un boeuf entier. Les plats sont préparés sur de grandes tables de chêne. Les ustensiles de cuisine (couteaux, louches, etc) sont accrochés au mur. Saucissons et jambons pendent du plafond.</p>
-			
+
 			<p><b>Grande salle.</b> Une pièce immense et très haute de plafond (près de dix mètres) avec deux cheminées. Sur une estrade, un fauteuil de bois ouvragé sur lequel s’assoit le seigneur lorsqu’il tient audience. Quelques grandes tables et bancs, repoussés sur les côtés sont employés lors des réunions et banquets. Les murs sont couverts de somptueuses tapisseries cousues de fil d’or représentant des scènes de chasse. Des tentures accrochées à des anneaux du plafond permettent de diviser la grande salle en petits cabinets. Pendant la journée, le chapelain donne ici des cours aux enfants du seigneur et de ses officiers.</p>
 		</details>
 
@@ -1124,4 +1152,80 @@
 		</details>
 	</details>
 
+</article>
+
+<!-- Fonctions dans une seigneurerie -->
+<article>
+	<h2>Fonctions dans une seigneurerie</h2>
+
+	<!-- Organisation domestique -->
+	<details>
+		<summary>
+			<h3>Organisation domestique</h3>
+		</summary>
+		<p><b>Chambellan :</b> gère l'organisation intérieure du château, supervise les serviteurs, organise les réceptions</p>
+		<p><b>Intendant / Majordome :</b> responsable des approvisionnements quotidiens, des stocks, des achats courants</p>
+		<p><b>Gouvernante</b> : supervise les servantes, la propreté, le linge, les chambres des hôtes</p>
+		<p><b>Chef cuisinier :</b> Dirige les cuisines, planifie les repas ordinaires et les banquets</p>
+		<p><b>Maître d'hôtel :</b> organise le service à table lors des repas du seigneur et des réceptions</p>
+		<p><b>Échanson :</b> responsable des vins et boissons, tient la cave</p>
+		<p><b>Palefrenier / Maître des écuries :</b> hère les chevaux, les écuries, l'équipement équestre</p>
+		<p><b>Chapelain :</b> Prêtre attaché à la chapelle du château, aumônier de la famille seigneuriale</p>
+	</details>
+
+	<!-- Gestion du domaine agricole -->
+	<details>
+		<summary>
+			<h3>Gestion du domaine agricole</h3>
+		</summary>
+		<p><b>Régisseur / Bayle :</b> supervise les terres agricoles du domaine, les fermiers, les récoltes</p>
+		<p><b>Prévôt de village :</b> représentant local du seigneur dans les villages, collecte les redevances en nature</p>
+		<p><b>Garde-champêtre :</b> gère et protège les forêts seigneuriales, fait respecter les droits de chasse</p>
+		<p><b>Meunier :</b> Exploite le moulin banal, collecte la part revenant au seigneur</p>
+	</details>
+
+	<!-- Finances -->
+	<details>
+		<summary>
+			<h3>Finances</h3>
+		</summary>
+		<p>Trésorier / Receveur : tient les comptes du domaine, gère les entrées et sorties d'argent</p>
+		<p>Collecteur des taxes : perçoit les taxes, redevances et droits de passage sur le domaine</p>
+		<p>Garde des sceaux : conserve et appose le sceau seigneurial sur les actes officiels — souvent le chapelain</p>
+	</details>
+
+	<!-- Aspect militaire -->
+	<details>
+		<summary>
+			<h3>Aspect militaire</h3>
+		</summary>
+		<p><b>Capitaine de la garde :</b> commande la garnison du château, organise les tours de garde et la défense</p>
+		<p><b>Connétable :</b> responsable militaire du domaine, commande les hommes d'armes en campagne</p>
+		<p><b>Sergent d'armes :</b> sous-officier chargé de l'entraînement et de la discipline des soldats</p>
+		<p><b>Maître armurier :</b> entretient et répare les armes et armures de la garnison</p>
+		<p><b>Veilleur / Guetteur :</b> poste permanent sur les tours, signale toute menace extérieure</p>
+	</details>
+
+	<!-- Justice -->
+	<details>
+		<summary>
+			<h3>Justice</h3>
+		</summary>
+		<p><b>Prévôt de justice :</b> rend la justice ordinaire au nom du seigneur pour les affaires courantes du domaine</p>
+		<p><b>Greffier / Clerc de justice :</b> rédige et conserve les actes judiciaires, les jugements, les contrats</p>
+		<p><b>Sergent de justice / Huissier :</b> exécute les décisions de justice, convoque les parties, opère les saisies</p>
+		<p><b>Geôlier :</b> garde les prisonniers dans les cachots du château</p>
+	</details>
+
+	<!-- Relations extérieures et administration -->
+	<details>
+		<summary>
+			<h3>Relations extérieures et administration</h3>
+		</summary>
+		<p><b>Sénéchal :</b> bras droit du seigneur pour l'administration générale — poste le plus important après le seigneur lui-même</p>
+		<p><b>Secrétaire / Clerc :</b> rédige la correspondance, les actes notariés, les ordres du seigneur</p>
+		<p><b>Héraut :</b> représente le seigneur lors des cérémonies, porte ses messages officiels, connaît les usages héraldiques</p>
+		<p><b>Ambassadeur / Envoyé :</b> négociateur ponctuel chargé de missions diplomatiques auprès des voisins</p>
+		<p><b>Bailli :</b> administrateur d'une portion du domaine ou d'une ville sous tutelle seigneuriale</p>
+	</details>
 </article>

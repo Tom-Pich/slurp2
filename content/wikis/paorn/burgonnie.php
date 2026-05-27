@@ -7,7 +7,7 @@
 	<h2>Géographie</h2>
 	<p>L’Empire Burgon bénéficie d’une situation géographique privilégiée. Protégé au nord par la chaîne des Sinistérias et à l’ouest par les monts du Salthar, il dispose sur sa façade est de côtes baignées par des courants chauds qui lui assurent un climat tempéré agréable tout au long de l’année.</p>
 
-	<p>Il s’étend sur plus de 1200 km du nord au sud, et environ 1000 km dans sa plus grande largeur, pour une surface d’environ 750 km<sup>2</sup>.</p>
+	<p>Il s’étend sur plus de 1200 km du nord au sud, et environ 1000 km dans sa plus grande largeur, pour une surface d’environ 750.000 km<sup>2</sup>.</p>
 
 	<p>Son territoire est composé de trois grandes provinces :</p>
 	<ul>
@@ -17,7 +17,7 @@
 	</ul>
 
 	<figure>
-		<img src="/assets/img_paorn/burgonnie-politique.webp" alt="Carte politique de la Burgonnie">
+		<img src="/assets/img_paorn/carte-burgonnie-politique.webp?v=2" alt="Carte politique de la Burgonnie">
 		<figcaption>Carte politique de la Burgonnie</figcaption>
 	</figure>
 

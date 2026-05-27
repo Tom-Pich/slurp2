@@ -8,8 +8,8 @@ Aspects pratiques pour aventuriers
 <div class="has-right-block">
 	<p>Séparée de la côte d’Artaille par une large passe aux courants capricieux, la Lauria est un territoire farouchement indépendant. Ses habitants ont développé au fil des siècles une culture originale, tournée vers l’artisanat, l’élevage et la méditation.</p>
 	<figure class="right">
-		<a href="/assets/img_paorn/lauria.webp?v=2" target="_blank">
-			<img src="/assets/img_paorn/lauria-600.webp?v=2">
+		<a href="/assets/img_paorn/carte-lauria.webp?v=2" target="_blank">
+			<img src="/assets/img_paorn/carte-lauria.webp?v=2">
 		</a>
 		<figcaption>L’île de la Lauria</figcaption>
 	</figure>

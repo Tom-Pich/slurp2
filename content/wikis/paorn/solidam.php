@@ -110,7 +110,7 @@
 
 	<p>L’économie de la ville est liée aux troupes impériales (800 hommes) stationnées dans la ville en permanence : gestion de l’import de nourriture, prostituées, armuriers, commerce de minerais&hellip;</p>
 
-	<p>Dans cette région au climat rude et aux terres sauvages, l’approvisionnement en nourriture est une tension constante. Solidam dépend d’une population paysanne d’environ 1500 habitants, cultivant environ 33 km² de terre, répartie autour de la route menant vers Sardam. Cela représente une bande de 1 km sur une distance de 30 km, couvrant environ 70 % des besoins des habitants.</p>
+	<p>Dans cette région au climat rude et aux terres sauvages, l’approvisionnement en nourriture est une tension constante. Solidam dépend d’une population paysanne d’environ 2200 habitants, cultivant environ 35 km² de terre, répartie autour de la route menant vers Sardam. Cela représente une bande de 1 km sur une distance de 35 km, couvrant environ 70 % des besoins des habitants.</p>
 
 	<!-- Ravitaillement de la ville -->
 	<details>
@@ -124,6 +124,7 @@
 			<li><b>Chasse :</b> 30 kg de viande par jour, équivalent de 1 cerf ou 2 sangliers de taille moyenne</li>
 			<li><b>Cultures maraîchères</b> péri-urbaines, au sud de la ville : légumes de saison, herbes, quelques fruits</li>
 			<li><b>Élevage intramuros :</b> environ 15 poulets par jour et 500 œufs quotidiens.</li>
+			<li>Production de bière par des brasseries intramuros (125 L/jour)</li>
 		</ul>
 		<p class="fw-700">Villages agricoles environnants (jusqu’à 30 km à l’est)</p>
 		<ul class="mt-0">

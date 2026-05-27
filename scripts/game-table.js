@@ -330,18 +330,11 @@ const npcWidget = new Widget("npc-generator", async function () {
     const size = result.size !== "moyenne" ? `${result.size}, ` : "";
     const beauty = result.beauty !== "moyenne" ? `${result.beauty}, ` : "";
     const intelligence = result.intelligence !== "moyenne" ? `${result.intelligence}, ` : "";
-    const specialTraits = result.specialTraits ? `<br>Choisir une particularité parmi&nbsp;: <i>${result.specialTraits}</i>` : "";
+    const specialTraits = result.specialTraits ? `Choisir une particularité parmi : <i>${result.specialTraits}</i>` : "";
 
     const formattedMsg = `/${userID}
-		<b>${result.name}</b><br>
-		${result.hair},
-		${facialHair}
-		yeux ${result.eyes},
-		${corpulence}
-		${size}
-		${beauty}
-		${intelligence}
-		${result.social}
+		<b>${result.name}</b>
+		${result.hair}, ${facialHair} yeux ${result.eyes}, ${corpulence} ${size} ${beauty} ${intelligence} ${result.social}
 		${specialTraits}
 	`;
     return formattedMsg;

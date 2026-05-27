@@ -7,9 +7,7 @@
 	</p>
 
 	<figure class="right">
-		<a href="/assets/img_paorn/artaille-wd.webp" target="_blank">
-			<img src="/assets/img_paorn/artaille-wd.webp">
-		</a>
+		<img src="/assets/img_paorn/carte-duche-elmora.webp">
 		<figcaption>Duché d’Elmora</figcaption>
 	</figure>
 </div>

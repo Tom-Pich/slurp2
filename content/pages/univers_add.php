@@ -13,10 +13,6 @@ $spells_repo = new SpellRepository;
 $creatures_repo = new CreatureRepository;
 ?>
 
-<!-- <div class="img-block">
-	<img src="/assets/img/page-add-1.webp" alt="Menhir Esteren">
-</div> -->
-
 <!-- Personnages -->
 <article>
 	<h2>Personnage</h2>
@@ -171,8 +167,8 @@ $creatures_repo = new CreatureRepository;
 		<p>1 pc représente environ 5 euros</p>
 		<p>
 			Salaire journalier pauvre : 4 à 6 pc<br>
-			Salaire journalier moyen : 15 à 20 pc<br>
-			Salaire journalier confortable : 30 à 40 pc<br>
+			Salaire journalier moyen : 10 à 12 pc<br>
+			Salaire journalier confortable : 20 à 40 pc<br>
 			Salaire journalier très élevé : 150+ pc<br>
 			Coût de la vie minimum : 50 pc/mois<br>
 			Coût de la vie, statut social -1 : 100 pc/mois<br>
@@ -371,10 +367,6 @@ $creatures_repo = new CreatureRepository;
 
 </article>
 
-<!-- <div class="img-block">
-	<img src="/assets/img/page-add-2.webp" alt="Menhir Esteren">
-</div> -->
-
 <!-- Magie -->
 <article>
 	<h2>Magie</h2>
@@ -407,8 +399,10 @@ $creatures_repo = new CreatureRepository;
 		</ul>
 		<details class="exemple">
 			<summary>Exemple</summary>
-			Un mage porte une protection de maille couvrant le torse, ainsi qu’un protection de cuir lourd couvrant la tête (mais pas le visage).<br>
-			À la louche, on dit -2 pour la cotte de maille sur le torse et -2×⅓ pour la tête, soit un malus total de -2.
+			<p>
+				Un mage porte une protection de maille couvrant le torse, ainsi qu’un protection de cuir lourd couvrant la tête (mais pas le visage).<br>
+				À la louche, on dit -2 pour la cotte de maille sur le torse et -2×⅓ pour la tête, soit un malus total de -2.
+			</p>
 		</details>
 	</details>
 

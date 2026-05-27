@@ -13,9 +13,9 @@ use App\Rules\WoundController;
 			<h3>Définitions</h3>
 		</summary>
 		<p>
-			<b>Dégâts bruts&nbsp;:</b> dégâts de l’attaque avant prise en compte de la RD.<br>
-			<b>Dégâts effectifs&nbsp;:</b> dégâts nets après application du multiplicateur de type de dégâts et d’une éventuelle limite. Ce sont eux qui sont à soustraire des PdV du personnage.<br>
-			<b>PdVm&nbsp;:</b> PdV maximum du personnage.
+			<b>Dégâts bruts :</b> dégâts de l’attaque avant prise en compte de la RD.<br>
+			<b>Dégâts effectifs :</b> dégâts nets après application du multiplicateur de type de dégâts et d’une éventuelle limite. Ce sont eux qui sont à soustraire des PdV du personnage.<br>
+			<b>PdVm :</b> PdV maximum du personnage.
 		</p>
 	</details>
 
@@ -39,11 +39,11 @@ use App\Rules\WoundController;
 		<p>Suivre les indications du widget.</p>
 		<p>Une blessure peut entraîner une chute, une perte de conscience, voire une mort immédiate.</p>
 		<p>
-			<b>Sonné 1&nbsp;:</b> pour les prochaines opportunités d’actions à venir (il y en a deux par rounds), le personnage ne peut rien faire, si ce n’est des actions «&nbsp;réflexes&nbsp;», type <i>Défense</i>, qui se font alors à -4. Le nombre d’actions perdues est déterminé par le widget de la <i>Table de jeu</i> ou, si ce n’est pas le cas, par la ME d’un jet de <i>San</i> (minimum 1).<br>
-			<b>Sonné 2&nbsp;:</b> comme <i>sonné 1</i>, sauf que le personnage perd totalement sa première prochaine action (y compris une action «&nbsp;réflexes&nbsp;»). Le jet de <i>San</i> pour déterminer le nombre d’actions perdues se fait à -5 (minimum 1), sauf si le widget de la table de jeu vous donne cette information.<br>
-			<b>Sonné 3&nbsp;:</b> le personnage est hors combat (aucune action) pendant une durée de l’ordre de 1 minute (20 rounds). Il tombe automatiquement. Si le MJ est généreux, il peut un peu moduler cette durée en fonction de la MR d’un jet de <i>San</i>.
+			<b>Sonné 1 :</b> pour les prochaines opportunités d’actions à venir (il y en a deux par rounds), le personnage ne peut rien faire, si ce n’est des actions « réflexes », type <i>Défense</i>, qui se font alors à -4. Le nombre d’actions perdues est déterminé par le widget de la <i>Table de jeu</i> ou, si ce n’est pas le cas, par la ME d’un jet de <i>San</i> (minimum 1).<br>
+			<b>Sonné 2 :</b> comme <i>sonné 1</i>, sauf que le personnage perd totalement sa première prochaine action (y compris une action « réflexes »). Le jet de <i>San</i> pour déterminer le nombre d’actions perdues se fait à -5 (minimum 2), sauf si le widget de la table de jeu vous donne cette information.<br>
+			<b>Sonné 3 :</b> le personnage est hors combat (aucune action) pendant une durée de l’ordre de 1 minute (20 rounds). Il tombe automatiquement. Si le MJ est généreux, il peut un peu moduler cette durée en fonction de la MR d’un jet de <i>San</i>.
 		</p>
-		<p><b>Un personnage ayant <i>Résistance à la douleur</i> réduit son niveau de «&nbsp;sonnage&nbsp;» de 1.</b> Le widget tient compte de ce facteur si vous le lui précisez.</p>
+		<p><b>Un personnage ayant <i>Résistance à la douleur</i> réduit son niveau de « sonnage » de 1.</b> Le widget tient compte de ce facteur si vous le lui précisez.</p>
 
 	</details>
 
@@ -65,7 +65,7 @@ use App\Rules\WoundController;
 			</tr>
 			<?php foreach (array_reverse(WoundController::general_levels) as $index => $level) { ?>
 				<tr>
-					<td><?= $index !== 0 ? ("&le; " . ((float) $index) * 100 . "&nbsp;%") : "0" ?></td>
+					<td><?= $index !== 0 ? ("&le; " . ((float) $index) * 100 . " %") : "0" ?></td>
 					<td>
 						<b><?= mb_convert_case($level["name"], MB_CASE_TITLE, "UTF-8") ?></b> –
 						<?= ucfirst($level["description"]) ?>
@@ -74,7 +74,7 @@ use App\Rules\WoundController;
 			<?php } ?>
 		</table>
 
-		<p>Si le personnage dispose de l’avantage <i>Résistance à la douleur</i>, ajouter 25&nbsp;% à son ratio PdV/PdVm, sauf si ses PdV sont &le; -100&nbsp;% PdVm.</p>
+		<p>Si le personnage dispose de l’avantage <i>Résistance à la douleur</i>, ajouter 25 % à son ratio PdV/PdVm, sauf si ses PdV sont &le; -100 % PdVm.</p>
 
 		<h4>Blessures &amp; fatigue</h4>
 		<p>Si le personnage est fatigué <i>et</i> blessé, les malus se cumulent. Si le personnage tombe en-dessous de la moitié de sa <i>For</i> normale, il ne peut pas tenir debout. Si sa vitesse tombe à 0, il peut à peine se déplacer en titubant.</p>
@@ -96,7 +96,7 @@ use App\Rules\WoundController;
 			<?php foreach (WoundController::members_pdv as $member => $pdvm) { ?>
 				<tr>
 					<td><?= ucfirst($member) ?></td>
-					<td><?= $pdvm * 100 ?>&nbsp;%</td>
+					<td><?= $pdvm * 100 ?> %</td>
 				</tr>
 			<?php } ?>
 			<caption>PdV des membres en fonction des PdVm totaux</caption>
@@ -109,7 +109,7 @@ use App\Rules\WoundController;
 			</tr>
 			<?php foreach (array_reverse(WoundController::members_levels) as $level => $state) { ?>
 				<tr>
-					<td>&le; <?= ((float) $level) * 100 ?>&nbsp;%</td>
+					<td>&le; <?= ((float) $level) * 100 ?> %</td>
 					<td><?= $state["description"] ?></td>
 				</tr>
 			<?php } ?>
@@ -126,8 +126,8 @@ use App\Rules\WoundController;
 			<h3>Hémorragie</h3>
 		</summary>
 
-		<h4>Gravité «&nbsp;hémorragique&nbsp;» d’une blessure</h4>
-		<p>Il y a trois niveaux de gravité&nbsp;:</p>
+		<h4>Gravité « hémorragique » d’une blessure</h4>
+		<p>Il y a trois niveaux de gravité :</p>
 		<table class="left-2">
 			<tr>
 				<th>Niv.</th>
@@ -188,8 +188,8 @@ use App\Rules\WoundController;
 		<h4>Rétablissement des membres</h4>
 		<p>Le cas échéant, faire également un jet pour chaque membre blessé.</p>
 		<p>
-			Un membre détruit ne peut pas avoir moins que -100&nbsp;% de ses PdVm propres. S’il a été sectionné, on considère qu’il est à 0 PdV.<br>
-			Ainsi, un personnage ayant 12 PdV et dont la main a été broyée aura perdu 6 PdV à sa main (une main a 25&nbsp;% des PdV max d’un humain). Après guérison, celle-ci sera toujours inutilisable, mais le personnage ne risquera pas l’infection.<br>
+			Un membre détruit ne peut pas avoir moins que -100 % de ses PdVm propres. S’il a été sectionné, on considère qu’il est à 0 PdV.<br>
+			Ainsi, un personnage ayant 12 PdV et dont la main a été broyée aura perdu 6 PdV à sa main (une main a 25 % des PdV max d’un humain). Après guérison, celle-ci sera toujours inutilisable, mais le personnage ne risquera pas l’infection.<br>
 			Si ce même personnage a eu la main sectionnée, on considère qu’il a perdu 3 PdV à sa main.<br>
 			Un bras ou une jambe guérit à un rythme réduit de moitié par rapport aux PdV généraux. Une main ou un pied guérit au quart de ce rythme.
 		</p>
@@ -213,7 +213,7 @@ use App\Rules\WoundController;
 				<td>+0</td>
 			</tr>
 			<tr>
-				<td>&gt; -100&nbsp;%</td>
+				<td>&gt; -100 %</td>
 				<td>-1</td>
 			</tr>
 			<tr>
@@ -236,11 +236,11 @@ use App\Rules\WoundController;
 				<th colspan="2">Modificateur d’environnement</th>
 			</tr>
 			<tr>
-				<td>Soins élémentaires, milieu «&nbsp;sale&nbsp;»</td>
+				<td>Soins élémentaires, milieu « sale »</td>
 				<td>-5</td>
 			</tr>
 			<tr>
-				<td>Soins élémentaires, milieu «&nbsp;propre&nbsp;»</td>
+				<td>Soins élémentaires, milieu « propre »</td>
 				<td>-3</td>
 			</tr>
 			<tr>
@@ -277,11 +277,11 @@ use App\Rules\WoundController;
 
 		<h4>Conséquences du jet de guérison</h4>
 		<ul>
-			<li><b>Réussite critique&nbsp;:</b> +2 PdV et +3 aux prochains jets de <i>San</i> jusqu’à guérison complète.</li>
-			<li><b>Réussite&nbsp;:</b> annule tous les malus dus à des échecs antérieurs aux jets de <i>San</i>. +1 PdV.</li>
-			<li><b>Échec (ME &le; 3)&nbsp;:</b> pas de récupération de PdV</li>
-			<li><b>Échec grave (ME &gt; 3)&nbsp;:</b> -1 PdV. -1 aux prochains jets de guérison.</li>
-			<li><b>Échec critique</b> (ou de 5+ si la blessure a trois jours ou moins)&nbsp;: -1d PdV et -5 aux jets de <i>San</i> suivants.</li>
+			<li><b>Réussite critique :</b> +2 PdV et +3 aux prochains jets de <i>San</i> jusqu’à guérison complète.</li>
+			<li><b>Réussite :</b> annule tous les malus dus à des échecs antérieurs aux jets de <i>San</i>. +1 PdV.</li>
+			<li><b>Échec (ME &le; 3) :</b> pas de récupération de PdV</li>
+			<li><b>Échec grave (ME &gt; 3) :</b> -1 PdV. -1 aux prochains jets de guérison.</li>
+			<li><b>Échec critique</b> (ou de 5+ si la blessure a trois jours ou moins) : -1d PdV et -5 aux jets de <i>San</i> suivants.</li>
 		</ul>
 
 		<p>Pour des créatures plus grosses ou plus petites que des humains, la récupération de PdV se fait en proportion de ses PdVm.</p>
@@ -289,11 +289,13 @@ use App\Rules\WoundController;
 	</details>
 
 	<!-- Rétablissement après inconscience -->
-	<details>
+	<details open>
 		<summary>
 			<h3>Rétablissement après inconscience</h3>
 		</summary>
 
+		<h4>Durée de l’inconscience</h4>
+		
 		<p>La durée de l’inconscience dépend de la fraction des PdV restant et d’un ou plusieurs jet de <i>San</i>. Consultez la table ci-dessous.</p>
 
 		<table class="left-2 mt-1">
@@ -302,41 +304,43 @@ use App\Rules\WoundController;
 			</colgroup>
 			<tr>
 				<th>PdV</th>
-				<th>Durée de l’inconsciences</th>
+				<th>Durée de l’inconscience</th>
 			</tr>
 			<tr>
-				<td>&gt; 50 %</td>
+				<th>&gt; 50 %</th>
 				<td>1d min puis jet de <i>San</i> chaque minute.</td>
 			</tr>
 			<tr>
-				<td>&le; 50 %</td>
+				<th>≤ 50 %</th>
 				<td>1d×5 min puis jet de <i>San</i> toutes les 5 min.</td>
 			</tr>
 			<tr>
-				<td>&le; 0</td>
+				<th>≤ 0</th>
 				<td>
 					15 minutes d’inconscience + 15 min par PdV négatif. Après ce délai, jet de <i>San</i> toutes les 15 minutes.<br>
-					Si ME &ge; 5&nbsp;: perte de 1d PdV et coma* de 1d jours.
+					Si ME &ge; 5 : perte de 1d PdV et <i>coma</i> de 1d jours.
 				</td>
 			</tr>
 			<tr>
-				<td>&le; -100 %</td>
+				<th>≤ -100 %</th>
 				<td>
-					Au bout de 2d-2 h, jet de <i>San</i> avec un modificateur qui dépend de ses PdV.<br>
-					De 0 pour -100&nbsp;% à -10 pour -300&nbsp;% (variation linéaire).<br>
-					• <b>ME &gt; 3&nbsp;:</b> mort<br>
-					• <b>ME &le; 3&nbsp;:</b> perte de 1d PdV et coma* de 1d×5 jours.<br>
-					• <b>Réussite&nbsp;:</b> le personnage reste inconscient jusqu’à ce que ses PdV dépassent le seuil de -100&nbsp;%.
+					<p>Au bout de 2d-2 h, jet de <i>San</i> avec un modificateur qui dépend de ses PdV : de 0 pour -100 % à -10 pour -300 % (variation linéaire).</p>
+					<ul>
+						<li><b>ME &gt; 3 :</b> mort</li>
+						<li><b>ME ≤ 3 :</b> perte de 1d PdV et coma de 1d×5 jours.</li>
+						<li><b>Réussite :</b> le personnage reste inconscient jusqu’à ce que ses PdV dépassent le seuil de -100 %.</li>
+					</ul>
 				</td>
 			</tr>
 		</table>
 
-		<p><b>* Coma&nbsp;:</b> si le personnage tombe dans le coma, à la fin de celui-ci, faire un jet de <i>San</i> dont les conséquences sont listées ci-dessous.</p>
+		<h4>Coma</h4>
+		<p>Si le personnage tombe dans le coma, à la fin de celui-ci, faire un jet de <i>San</i> dont les conséquences sont listées ci-dessous.</p>
 
 		<ul>
-			<li><b>ME &gt; 3&nbsp;:</b> le personnage meurt en 2d-2 heures.</li>
-			<li><b>ME &le; 3&nbsp;:</b> le coma se prolonge (redéterminer la durée aléatoirement sur la même base que le jet inital).</li>
-			<li><b>Réussite&nbsp;:</b> le personnage reprend conscience si son état général le lui permet. Il n’a plus de jet à faire pour éviter la mort due au coma en cours.</li>
+			<li><b>ME &gt; 3 :</b> le personnage meurt en 2d-2 heures.</li>
+			<li><b>ME &le; 3 :</b> le coma se prolonge (redéterminer la durée aléatoirement sur la même base que le jet inital).</li>
+			<li><b>Réussite :</b> le personnage reprend conscience si son état général le lui permet. Il n’a plus de jet à faire pour éviter la mort due au coma en cours.</li>
 		</ul>
 
 		<h4>Intervention chirurgicale</h4>
@@ -364,7 +368,7 @@ use App\Rules\WoundController;
 			</tr>
 			<tr>
 				<td>-1 à -3</td>
-				<td>Après 2d semaines d’amélioration, l’invalidité diminue de 50&nbsp;% et ne s’améliorera plus après ce délai.</td>
+				<td>Après 2d semaines d’amélioration, l’invalidité diminue de 50 % et ne s’améliorera plus après ce délai.</td>
 			</tr>
 			<tr>
 				<td>0 à 2</td>
@@ -384,7 +388,7 @@ use App\Rules\WoundController;
 			<h3>Soins magiques &amp; blessures aux membres</h3>
 		</summary>
 		<p>
-			Lorsque le membre revient à 100&nbsp;% de ses PdVm propres, il est considéré comme guéri (même s’il reste handicapé ou détruit).<br>
+			Lorsque le membre revient à 100 % de ses PdVm propres, il est considéré comme guéri (même s’il reste handicapé ou détruit).<br>
 			Si le membre a été sectionné, récupérer la moitié de ses PdVm propres suffit à cicatriser le moignon.
 		</p>
 		<h4>Sorts de soin</h4>
@@ -411,14 +415,14 @@ use App\Rules\WoundController;
 		<summary>
 			<h3>Chute</h3>
 		</summary>
-		<p>Les dégâts dus à une chute, pour un humain, sont les suivants&nbsp;:<br>
-			• 1 ou 2 mètres&nbsp;: 1d-3 par mètre,<br>
-			• 3 ou 4 mètres&nbsp;: 1d-2 par mètre,<br>
-			• 5 mètres ou plus&nbsp;: 1d-1 par mètre.</p>
+		<p>Les dégâts dus à une chute, pour un humain, sont les suivants :<br>
+			• 1 ou 2 mètres : 1d-3 par mètre,<br>
+			• 3 ou 4 mètres : 1d-2 par mètre,<br>
+			• 5 mètres ou plus : 1d-1 par mètre.</p>
 		<p>-1 point par mètre si l’arrivée se fait sur une surface molle (sable, boue). Les dégâts dus à une chute sont de type <i>Broyage</i>.</p>
 		<p>Un jet d’<i>Acrobatie</i> réussi réduira la distance de chute de 3 m.</p>
 		<p>La vélocité maximale en atmosphère terrestre, pour un être humain, est atteinte après 50 m de chute.</p>
-		<p><b>Localisation des dégâts&nbsp;:</b> faire un jet de localisation tous les 5 mètres de chute et répartir les dégâts entre les différentes parties affectées.</p>
+		<p><b>Localisation des dégâts :</b> faire un jet de localisation tous les 5 mètres de chute et répartir les dégâts entre les différentes parties affectées.</p>
 
 		<table>
 			<tr>
@@ -459,10 +463,10 @@ use App\Rules\WoundController;
 			<h3>Drogues</h3>
 		</summary>
 		<p>Chaque drogue est décrite en terme de jeu par les caractéristiques ci-dessous. Si la drogue est imaginaire, il faut préciser son ou ses modes d’administration, son origine, etc.</p>
-		<p><b>Effets&nbsp;:</b> modulés par un jet de <i>San</i>, par la quantité prise, la qualité, etc. Une personne dépendante aura des bonus à ce jet, ce qui diminuera les effets qu’elle pourra ressentir et la poussera à consommer plus que la dose standard.</p>
+		<p><b>Effets :</b> modulés par un jet de <i>San</i>, par la quantité prise, la qualité, etc. Une personne dépendante aura des bonus à ce jet, ce qui diminuera les effets qu’elle pourra ressentir et la poussera à consommer plus que la dose standard.</p>
 		<p><b>Addictivité</b></p>
-		<p><b>Surdosage&nbsp;:</b> lorsque la dose prise est importante, d’autres effets, potentiellement mortels, s’ajoutent aux effets «&nbsp;normaux&nbsp;».</p>
-		<p><b>Crise de manque&nbsp;:</b> ces effets sont modulés par un jet de <i>San</i>.</p>
+		<p><b>Surdosage :</b> lorsque la dose prise est importante, d’autres effets, potentiellement mortels, s’ajoutent aux effets « normaux ».</p>
+		<p><b>Crise de manque :</b> ces effets sont modulés par un jet de <i>San</i>.</p>
 		<p>Le processus de sevrage dépend de chaque personnage et est géré au cas par cas par le MJ, en fonction de l’addictivité de la drogue, des effets des crises de manque, de la <i>Vol</i> et de la <i>San</i> du personnage.</p>
 		<p>Les effets à long terme peuvent également être décrit si c’est utile au jeu.</p>
 
@@ -478,7 +482,7 @@ use App\Rules\WoundController;
 			<h3>Poisons</h3>
 		</summary>
 		<p>La description doit indiquer, selon le mode d’action (ingestion, injection, cutané, inhalation), le temps nécessaire à l’action du poison, sa virulence (le malus au jet de résistance) ainsi que ses effets, en cas de réussite ou d’échec du jet de résistance.</p>
-		<p><b>Doses multiples&nbsp;:</b> par dose supplémentaire, la virulence est augmentée de 2 et les effets augmentés de 50 %.</p>
+		<p><b>Doses multiples :</b> par dose supplémentaire, la virulence est augmentée de 2 et les effets augmentés de 50 %.</p>
 	</details>
 
 	<details>
@@ -509,8 +513,8 @@ use App\Rules\WoundController;
 		<p>Un bouclier pourra s’interposer entre un jet de flamme, ou une source de chaleur, et son porteur. La DP du bouclier comptera comme une RD.</p>
 
 		<h4>Vêtements enflammés</h4>
-		<p>4 pts de dégâts par le feu d’un seul coup&nbsp;: les vêtements prennent feu, 1d-3 pts de dégâts par tour<br>
-			10 pts de dégâts par le feu d’un seul coup&nbsp;: torche humaine, 1d-1 pts de dégâts par tour.</p>
+		<p>4 pts de dégâts par le feu d’un seul coup : les vêtements prennent feu, 1d-3 pts de dégâts par tour<br>
+			10 pts de dégâts par le feu d’un seul coup : torche humaine, 1d-1 pts de dégâts par tour.</p>
 		<p>Ces indications supposent le port de vêtements ordinaires.</p>
 	</details>
 
@@ -518,8 +522,8 @@ use App\Rules\WoundController;
 		<summary>
 			<h3>Inanition et déshydratation</h3>
 		</summary>
-		<p><b>Nourriture&nbsp;:</b> 1 PdF par repas raté (on compte deux repas par jour). Lorsque les PdF atteignent 3 pour cause de sous-alimentation, perte de PdV à la même vitesse.</p>
-		<p><b>Eau&nbsp;:</b> 1 PdF et 1 PdV par jour si 2/3 des besoins sont couverts. 2 PdF et 2 PdV par jour pour 1/3 des besoins. Sans eau&nbsp;: 3 PdF et 3 PdV par jour. Si les PdV ou les PdF atteignent 0 par manque d’eau, délire et mort au bout d’une journée.</p>
+		<p><b>Nourriture :</b> 1 PdF par repas raté (on compte deux repas par jour). Lorsque les PdF atteignent 3 pour cause de sous-alimentation, perte de PdV à la même vitesse.</p>
+		<p><b>Eau :</b> 1 PdF et 1 PdV par jour si 2/3 des besoins sont couverts. 2 PdF et 2 PdV par jour pour 1/3 des besoins. Sans eau : 3 PdF et 3 PdV par jour. Si les PdV ou les PdF atteignent 0 par manque d’eau, délire et mort au bout d’une journée.</p>
 		<p>Des jets de <i>San</i> réussis peuvent diminuer (légèrement) ces conséquences.</p>
 	</details>
 

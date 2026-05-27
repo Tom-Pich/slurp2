@@ -60,44 +60,8 @@ $affichage = $_POST["affichage"] ?? "categorie";
 		<i>Classe</i> par défaut : régulier<br>
 		<i>Temps nécessaire</i> par défaut : rapide
 	</p>
-	<table>
-		<tr>
-			<th>Niv.</th>
-			<th>PdM</th>
-			<th>Rapide</th>
-			<th>Long</th>
-		</tr>
-		<tr>
-			<td>I</td>
-			<td>2</td>
-			<td><?= Spell::cast_time[0][0] ?> s</td>
-			<td><?= Spell::cast_time[0][1] ?> s</td>
-		</tr>
-		<tr>
-			<td>II</td>
-			<td>4</td>
-			<td><?= Spell::cast_time[1][0] ?> s</td>
-			<td><?= Spell::cast_time[1][1] ?> s</td>
-		</tr>
-		<tr>
-			<td>III</td>
-			<td>6</td>
-			<td><?= Spell::cast_time[2][0] ?> s</td>
-			<td><?= Spell::cast_time[2][1] / 60 ?> min</td>
-		</tr>
-		<tr>
-			<td>IV</td>
-			<td>8</td>
-			<td><?= Spell::cast_time[3][0] ?> s</td>
-			<td><?= Spell::cast_time[3][1] / 60 ?> min</td>
-		</tr>
-		<tr>
-			<td>V</td>
-			<td>15+</td>
-			<td><?= Spell::cast_time[4][0] ?> s</td>
-			<td><?= Spell::cast_time[4][1] / 3600 ?> h</td>
-		</tr>
-	</table>
+	<?php include "content/components/table-spell-data.php"; ?>
+
 	<p>Voir le chapitre <a href="/magie">Magie</a> pour plus de détails.</p>
 
 </article>

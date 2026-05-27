@@ -16,10 +16,14 @@
 			<h3>Surprise</h3>
 		</summary>
 		<p>Si l’opposant peut éventuellement être surpris, il doit faire un <b>jet de <i>Réflexes</i></b> pour le déterminer, assorti d’éventuels modificateurs déterminés par le MJ selon la situation.</p>
-		<p><b>Réussite&nbsp;:</b> l’opposant n’est pas surpris.</p>
-		<p><b>ME &lt; 3&nbsp;:</b> Surprise <i>partielle</i>. Agit en dernier lors du tour.</p>
-		<p><b>ME &ge; 3&nbsp;:</b> Surprise <i>totale</i>. N’agit pas lors du premier tour. Au 2<sup>e</sup> tour, -5 au jet d’initiative.</p>
-		<p>Un personnage ayant <i>Réflexes de combat</i> ne peut jamais être totalement surpris.</p>
+
+		<ul>
+			<li><b>Réussite :</b> l’opposant n’est pas surpris.</li>
+			<li><b>ME &lt; 3 :</b> Surprise <i>partielle</i>. Agit en dernier lors du tour.</li>
+			<li><b>ME ≥ 3 :</b> Surprise <i>totale</i>*. N’agit pas lors du premier tour. Au 2<sup>e</sup> tour, -5 au jet d’initiative.</li>
+		</ul>
+
+		<p>* Un personnage ayant <i>Réflexes de combat</i> ne peut jamais être totalement surpris.</p>
 	</details>
 
 	<!-- Initiative -->
@@ -30,16 +34,13 @@
 
 		<p>L’initiative sert à déterminer <i>l’ordre des attaques</i> de chaque protagoniste impliqué dans un combat.</p>
 
-		<p>
-			Cet ordre est déterminé par la <b>MR d’un jet de <i>Réflexes</i></b> de chaque protagoniste.<br>
-			Il peut être soit redéterminé à chaque round, soit conservé pour les rounds suivants si le MJ le désire, de manière à accélérer le combat.
-		</p>
+		<p>Cet ordre est déterminé par la <b>MR d’un jet de <i>Réflexes</i></b> de chaque protagoniste.</p>
 
 		<p>Certaines situations particulières (une <i>Attaque massive</i> ou une <i>Défense massive</i>, par exemple), peuvent affecter l’initiative.</p>
 
 		<h4>Modificateurs</h4>
 		<p>
-			À ce jet s’appliquent tous les modificateurs habituels (de fatigue, de blessures, d’encombrement&hellip;) plus un malus dû au poids de l’arme&nbsp;: -1 par kg (arrondir le poids de l’arme à l’entier inférieur).<br>
+			À ce jet s’appliquent tous les modificateurs habituels (de fatigue, de blessures, d’encombrement&hellip;) plus un malus dû au poids de l’arme : -1 par kg (arrondir le poids de l’arme à l’entier inférieur).<br>
 			Ce malus ne s’applique que si l’arme doit être bougée. Il ne s’applique pas à, par exemple, une arbalète lourde pointant dans la direction de sa cible.
 		</p>
 
@@ -106,13 +107,13 @@
 		<p>Les différents protagoniste d’un combat au contact portent leur <b>attaque dans l’ordre de l’initiative</b>.</p>
 		<p>Un combattant impliqué dans un combat au contact a le droit à <b>deux actions</b> par tour.</p>
 		<ul>
-			<li><b>attaque + défense&nbsp;:</b> cas le plus courant.</li>
-			<li><b>2 défenses&nbsp;:</b> si ça devient très chaud.</li>
-			<li><b>2 attaques&nbsp;:</b> seulement si son adversaire ne peut pas attaquer (s’il est sonné, par exemple).</li>
-			<li class="clr-invalid"><b>2 attaques&nbsp;:</b> règles en cours de test. Le combattant peut <i>toujours</i> choisir 2 actions attaques.</li>
+			<li><b>attaque + défense :</b> cas le plus courant.</li>
+			<li><b>2 défenses :</b> si ça devient très chaud.</li>
+			<li><b>2 attaques :</b> seulement si son adversaire ne peut pas attaquer (s’il est sonné, par exemple).</li>
+			<li class="clr-invalid"><b>2 attaques :</b> règles en cours de test. Le combattant peut <i>toujours</i> choisir 2 actions attaques.</li>
 		</ul>
 		<p>Il a également le droit de faire jusqu’à <b>2 défenses d’urgence</b> par tour. Elles ne comptent pas comme des actions. Voir la section <i>Défense</i>.</p>
-		<p>Au cours d’un tour de combat, la <b>vitesse</b> maximale de déplacement est de 1&nbsp;m/s, sauf en cas de <i>Déplacement</i> (voir paragraphe ci-dessous).</p>
+		<p>Au cours d’un tour de combat, la <b>vitesse</b> maximale de déplacement est de 1 m/s, sauf en cas de <i>Déplacement</i> (voir paragraphe ci-dessous).</p>
 		<p>Le joueur <i>peut</i> choisir de faire une <b>attaque massive</b> <i>ou</i> une <b>défense massive</b> lors d’un tour (mais pas les deux au cours du même tour).</p>
 	</details>
 
@@ -121,11 +122,11 @@
 		<summary>
 			<h3>Déplacement</h3>
 		</summary>
-		<p>Si le personnage choisit de se déplacer à une vitesse supérieure à 1&nbsp;m/s&nbsp;:</p>
+		<p>Si le personnage choisit de se déplacer à une vitesse supérieure à 1 m/s :</p>
 		<ul>
 			<li>il conserve ses <b>2 actions</b> (+ 2 défenses d’urgences)</li>
 			<li><b>malus de -3</b> à toutes ses attaques et défenses</li>
-			<li>vitesse limitée à <b>50&nbsp;%</b> de sa <i>Vitesse</i></li>
+			<li>vitesse limitée à <b>50 %</b> de sa <i>Vitesse</i></li>
 		</ul>
 	</details>
 </article>
@@ -139,14 +140,14 @@
 		<summary>
 			<h3>Modificateurs d’attaque</h3>
 		</summary>
-		<p>Un jet d’attaque est soumis aux modificateurs suivants&nbsp;:</p>
+		<p>Un jet d’attaque est soumis aux modificateurs suivants :</p>
 		<ol class="bold-bullet">
-			<li><b>État du personnage&nbsp;:</b> paramètres de base + heaume, armures superposées, usage de la main «&nbsp;faible&nbsp;».</li>
-			<li><b>Fmin de l’arme&nbsp;:</b> voir <a href="/armes-armures">Armes &amp; armures</a>.</li>
+			<li><b>État du personnage :</b> paramètres de base + heaume, armures superposées, usage de la main « faible ».</li>
+			<li><b>Fmin de l’arme :</b> voir <a href="/armes-armures">Armes &amp; armures</a>.</li>
 			<li><b><i>Attaque Massive</i></b> (voir ci-dessous).</li>
-			<li><b>Difficulté de l’attaque&nbsp;:</b> position de l’attaquant, taille de la cible, localisation, etc, au jugé du MJ.</li>
+			<li><b>Difficulté de l’attaque :</b> position de l’attaquant, taille de la cible, localisation, etc, au jugé du MJ.</li>
 		</ol>
-		<p>À moins d’une bonne raison, en situation de combat «&nbsp;classique&nbsp;», une attaque se fera sans malus de difficulté.</p>
+		<p>À moins d’une bonne raison, en situation de combat « classique », une attaque se fera sans malus de difficulté.</p>
 	</details>
 
 	<!-- Attaque massive -->
@@ -189,10 +190,10 @@
 		<summary>
 			<h3>Coups spéciaux</h3>
 		</summary>
-		<p><b>Désarmer l’adversaire&nbsp;:</b> -3 au jet d’attaque ou de parade</p>
-		<p><b>Bloquer l’arme d’un adversaire&nbsp;:</b> maintenir une pression sur l’arme de l’adversaire, l’obligeant à garder le contact ou à reculer. -3 au jet d’attaque ou de parade</p>
-		<p><b>Attaque non conventionnelle&nbsp;:</b> utiliser son arme de manière inhabituelle (la garde, le manche, etc.). Les dégâts sont à évaluer en fonction du type de coup. -2 au jet d’attaque. L’adversaire doit réussir un jet de <i>Réflexes</i> pour avoir le droit à une défense.</p>
-		<p><b>Amortir ses coups&nbsp;:</b> pour causer des dégâts inférieurs aux dégâts normaux. Le joueur annonce ses dégâts sous forme de «&nbsp;dés + bonus&nbsp;». Frapper avec le plat d’une épée, le bout arrondi d’une lance, etc.&nbsp;: le type de dégâts qui change (<i>Broyage</i>).</p>
+		<p><b>Désarmer l’adversaire :</b> -3 au jet d’attaque ou de parade</p>
+		<p><b>Bloquer l’arme d’un adversaire :</b> maintenir une pression sur l’arme de l’adversaire, l’obligeant à garder le contact ou à reculer. -3 au jet d’attaque ou de parade</p>
+		<p><b>Attaque non conventionnelle :</b> utiliser son arme de manière inhabituelle (la garde, le manche, etc.). Les dégâts sont à évaluer en fonction du type de coup. -2 au jet d’attaque. L’adversaire doit réussir un jet de <i>Réflexes</i> pour avoir le droit à une défense.</p>
+		<p><b>Amortir ses coups :</b> pour causer des dégâts inférieurs aux dégâts normaux. Le joueur annonce ses dégâts sous forme de « dés + bonus ». Frapper avec le plat d’une épée, le bout arrondi d’une lance, etc. : le type de dégâts qui change (<i>Broyage</i>).</p>
 	</details>
 
 	<!-- Attaque avec deux armes -->
@@ -201,7 +202,7 @@
 			<h3>Attaque avec 2 armes</h3>
 		</summary>
 		<p>Attaquer avec une 2<sup>e</sup> arme après une parade est considéré comme une <i>Attaque non conventionnelle</i>.</p>
-		<p>Parade à deux armes simultanées&nbsp;: si les deux scores de parade sont différents de 3 ou moins, le défenseur obtient +1 sur le meilleur score de parade. Si les deux scores de parade sont égaux, il obtient un +2.</p>
+		<p>Parade à deux armes simultanées : si les deux scores de parade sont différents de 3 ou moins, le défenseur obtient +1 sur le meilleur score de parade. Si les deux scores de parade sont égaux, il obtient un +2.</p>
 	</details>
 
 	<!-- Attaque à mains nues -->
@@ -211,7 +212,7 @@
 		</summary>
 
 		<h4>Manœuvres d’attaque</h4>
-		<p>Une attaque à mains nues peut avoir plusieurs objectifs différents&nbsp;: causer des dégâts, saisir son adversaire, le faire tomber&hellip; Lorsque vous porter une attaque à mains nues, vous devez choisir une des manœuvres ci-dessous.</p>
+		<p>Une attaque à mains nues peut avoir plusieurs objectifs différents : causer des dégâts, saisir son adversaire, le faire tomber&hellip; Lorsque vous porter une attaque à mains nues, vous devez choisir une des manœuvres ci-dessous.</p>
 
 		<!-- Porter un coup -->
 		<details>
@@ -238,7 +239,7 @@
 			<summary>
 				<h5>Saisir</h5>
 			</summary>
-			<p>Saisir son adversaire, dans le but de le gêner dans sa défense et ses attaques, de faciliter ses propres attaques, ou pour ensuite lui faire une prise. La saisie se fait avec la compétence <i>Combat à mains nues</i> ou <i>Judo/lutte</i>. Le défenseur peut y opposer une défense classique.</p>
+			<p>Saisir son adversaire, dans le but de le gêner dans sa défense et ses attaques, de faciliter ses propres attaques, ou pour ensuite le faire tomber ou l’immobiliser La saisie se fait avec la compétence <i>Combat à mains nues</i> ou <i>Judo/lutte</i>. Le défenseur peut y opposer une défense classique.</p>
 		</details>
 
 		<!-- Faire tomber -->
@@ -246,7 +247,9 @@
 			<summary>
 				<h5>Faire tomber (prérequis)</h5>
 			</summary>
-			<p>Faire tomber son adversaire. Cette action nécessite d’avoir d’abord réussit une <i>bousculade</i> ou une <i>saisie</i>. On peut provoquer la chute soit par l’adresse, soit par la force. Les combo {bousculer + faire tomber} et {saisir + faire tomber} ne comptent que comme une seule action.</p>
+			<p>Faire tomber son adversaire. Cette action nécessite d’avoir d’abord réussit une <i>bousculade</i> ou une <i>saisie</i>. On peut provoquer la chute soit par l’adresse, soit par la force.</p>
+			<p>L’enchaînement {bousculer + faire tomber} compte comme <b>une seule et même action</b>.</p>
+			<p>L’enchaînement <b>{saisir + faire tomber}</b> compte comme deux actions distinctes.</p>
 			<table class="mt-½">
 				<tr>
 					<th></th>
@@ -265,7 +268,6 @@
 				</tr>
 			</table>
 			<p>* Comme dans le cas d’une attaque classique, la MR de l’attaque se transforme en malus au jet de défense, avec une limite de 5.</p>
-			<p>Cette manœuvre compte comme une action, si elle fait suite à une <i>Saisie</i>. Si elle fait suite à une <i>Bousculade</i>, elle en est la continuité et n’est pas considérée comme une action supplémentaire.</p>
 		</details>
 
 		<!-- Immobiliser -->
@@ -302,7 +304,7 @@
 		<p>Il est possible de choisir une des options d’<i>Attaque massive</i> décrites plus haut</p>
 
 		<h4>Attaque d’un adversaire armé</h4>
-		<p>Si l’adversaire réussit sa parade, il inflige demi-dégâts à l’attaquant (prendre en compte la RD). Pour éviter d’être blessé, l’attaquant doit réussir une <i>Parade</i> ou une <i>Esquive</i>. Ce jet fait partie de l’action d’attaque. Il ne compte pas comme une action, et n’est pas non plus une <i>défense d’urgence</i> (voir ce terme dans la section <i>Défense</i>).</p>
+		<p>Si l’adversaire réussit sa parade, il inflige demi-dégâts à l’attaquant (prendre en compte la RD). Pour éviter d’être blessé, l’attaquant doit réussir une <i>Parade</i> ou une <i>Esquive</i>. Ce jet fait partie de l’action d’attaque. Il ne compte pas comme une action, et n’est pas non plus considéré comme une <i>défense d’urgence</i>.</p>
 	</details>
 
 	<!-- Dégâts à mains nues -->
@@ -310,14 +312,14 @@
 		<summary>
 			<h3>Dégâts à mains nues</h3>
 		</summary>
-		<p>Pour les humains&nbsp;:</p>
+		<p>Pour les humains :</p>
 		<ul>
-			<li>Coup de poing&nbsp;: B.e-2</li>
-			<li>Coup de pied&nbsp;: B.e, +1 avec des bottes pesantes.</li>
-			<li>Coup de genou&nbsp;: B.e-1.</li>
-			<li>Coup de tête&nbsp;: B.e-1. Si l’attaque est ratée de plus de 3, l’attaquant subit la moitié des dégâts qu’il aurait dû infliger.</li>
+			<li>Coup de poing : B.e-2</li>
+			<li>Coup de pied : B.e, +1 avec des bottes pesantes.</li>
+			<li>Coup de genou : B.e-1.</li>
+			<li>Coup de tête : B.e-1. Si l’attaque est ratée de plus de 3, l’attaquant subit la moitié des dégâts qu’il aurait dû infliger.</li>
 		</ul>
-		<p>Avec la compétence <i>Karaté</i>&nbsp;: +1/5<sup>e</sup> du score de la compétence aux dégâts (sauf pour le coup de tête).
+		<p>Avec la compétence <i>Karaté</i> : +1/5<sup>e</sup> du score de la compétence aux dégâts (sauf pour le coup de tête).
 	</details>
 
 </article>
@@ -332,19 +334,19 @@
 			<h3>Modificateurs d’attaque</h3>
 		</summary>
 		<ol class="bold-bullet">
-			<li><b>État du personnage&nbsp;:</b> comme attaque au contact.</li>
-			<li><b>Fmin de l’arme&nbsp;:</b> voir <a href="/armes-armures">Armes &amp; armures</a>.</li>
-			<li><b>Difficulté&nbsp;:</b> taille et mouvement de la cible, distance, condition de visée, etc. au jugé du MJ.</li>
-			<li><b>Recul&nbsp;:</b> en cas de tir multiple avec une arme à feu.</li>
+			<li><b>État du personnage :</b> comme attaque au contact.</li>
+			<li><b>Fmin de l’arme :</b> voir <a href="/armes-armures">Armes &amp; armures</a>.</li>
+			<li><b>Difficulté :</b> taille et mouvement de la cible, distance, condition de visée, etc. au jugé du MJ.</li>
+			<li><b>Recul :</b> en cas de tir multiple avec une arme à feu.</li>
 		</ol>
 
 		<h4>Estimer la difficulté</h4>
 		<p>La <i>Portée utile</i> d’une arme à distance est la distance à laquelle une cible de la taille d’un torse humain est atteint sur un jet de difficulté <i>Moyenne</i> et dans des conditions idéales de visée (minimum 3 secondes, davantage si l’arme a une lunette de visée, l’arme doit être tenue dans les conditions idéales).</p>
-		<p>Dans les mêmes conditions de visée, un changement de portée entraîne un modificateur selon la progression logarithmique suivante, à un facteur 10<sup><i>n</i></sup> près&nbsp;: 1&nbsp;; 1,5&nbsp;; 2&nbsp;; 3&nbsp;; 5&nbsp;; 7.</p>
+		<p>Dans les mêmes conditions de visée, un changement de portée entraîne un modificateur selon la progression logarithmique suivante, à un facteur 10<sup><i>n</i></sup> près : 1 ; 1,5 ; 2 ; 3 ; 5 ; 7.</p>
 
 		<details class="exemple">
 			<summary>Exemple de changement de portée</summary>
-			<p>Un pistolet a une portée utile de 15 m. Dans des condition idéales de visée, une distance différentes apportera les modificateurs suivants&nbsp;:</p>
+			<p>Un pistolet a une portée utile de 15 m. Dans des condition idéales de visée, une distance différentes apportera les modificateurs suivants :</p>
 			<table>
 				<tr>
 					<th>Distance</th>
@@ -408,8 +410,8 @@
 		<p>Si le tireur n’a pas visé avant son tir et que le décor permet de voir où il tire, appliquer un bonus de +2 si plus de 3 balles sont tirées lors de la rafale.</p>
 
 		<h4>Tir d’arrosage</h4>
-		<p><b>Cible unique&nbsp;:</b> +3 au tir, mais le nombre de balles qui touchent la cible est divisée par deux.</p>
-		<p><b>Plusieurs cibles proches&nbsp;:</b> pas de bonus au tir. Le nombre de balles qui atteignent leur cible est également divisée par deux, mais elles sont réparties entre les différentes cibles visées.</p>
+		<p><b>Cible unique :</b> +3 au tir, mais le nombre de balles qui touchent la cible est divisée par deux.</p>
+		<p><b>Plusieurs cibles proches :</b> pas de bonus au tir. Le nombre de balles qui atteignent leur cible est également divisée par deux, mais elles sont réparties entre les différentes cibles visées.</p>
 
 		<h4>Recul en cas de tir en rafale</h4>
 		<p>Si la compétence du tireur est inférieure à 12, la pénalité de Rcl est augmentée de 1.</p>
@@ -431,9 +433,9 @@
 			<h3>Types de défense</h3>
 		</summary>
 		<ul class="mt-1">
-			<li><b>Esquive&nbsp;:</b> compétence <i>Esquive</i></li>
-			<li><b>Blocage&nbsp;:</b> compétence <i>Bouclier</i> -3 + DP</li>
-			<li><b>Parade&nbsp;:</b> compétence <i>Arme</i> -3*</li>
+			<li><b>Esquive :</b> compétence <i>Esquive</i></li>
+			<li><b>Blocage :</b> compétence <i>Bouclier</i> -3 + DP</li>
+			<li><b>Parade :</b> compétence <i>Arme</i> -3*</li>
 		</ul>
 		<p>*généralement, ce malus vaut -3, mais il y a des exceptions, mentionnées dans la <a href="/armes-armures">table des armes</a>. Une parade est possible seulement si l’arme est apprêtée.</p>
 	</details>
@@ -454,9 +456,9 @@
 			<h3>Défense d’urgence</h3>
 		</summary>
 
-		<p>Il est permis d’avoir jusqu’à <i>deux</i> défenses supplémentaires par tour, en plus des deux actions «&nbsp;de droit&nbsp;». Elles sont qualifiées de <i>défenses d’urgence</i> et suivent les règles ci-dessous. Ces défenses ne sont pas comptées comme des actions.</p>
+		<p>Il est permis d’avoir jusqu’à <i>deux</i> défenses supplémentaires par tour, en plus des deux actions « de droit ». Elles sont qualifiées de <i>défenses d’urgence</i> et suivent les règles ci-dessous. Ces défenses ne sont pas comptées comme des actions.</p>
 		<ul class="ta-justify">
-			<li>Ces défenses subissent un<b> malus supplémentaire</b>&nbsp;: -2 pour la première et -4 pour la seconde.</li>
+			<li>Ces défenses subissent un<b> malus supplémentaire</b> : -2 pour la première et -4 pour la seconde.</li>
 			<li>L’action précédant la défense d’urgence, ainsi que l’action suivante ne peuvent pas être des <b>attaques massives</b>.</li>
 			<li>L’arme ou le bouclier utilisé pour cette défense ne doit <b>pas avoir été utilisé</b> lors de l’action précédente et ne pourront pas être utilisé pour l’action suivante.</li>
 		</ul>
@@ -511,10 +513,10 @@
 		<summary>
 			<h3>Modificateurs de défense</h3>
 		</summary>
-		<p><b>1. État du personnage&nbsp;:</b> comme pour <i>Attaque au contact</i>. -4 s’il est <i>sonné</i>.</p>
-		<p><b>2. <i>Défense massive</i>&nbsp;:</b> voir ci-dessous.</p>
-		<p><b>3. MR de l’attaquant&nbsp;:</b> se transforme en malus au jet de défense. Limité à -5.</p>
-		<p><b>4. Conditions de défense&nbsp;:</b> déséquilibre, obscurité, position du défenseur, au jugé du MJ.</p>
+		<p><b>1. État du personnage :</b> comme pour <i>Attaque au contact</i>. -4 s’il est <i>sonné</i>.</p>
+		<p><b>2. <i>Défense massive</i> :</b> voir ci-dessous.</p>
+		<p><b>3. MR de l’attaquant :</b> se transforme en malus au jet de défense. Limité à -5.</p>
+		<p><b>4. Conditions de défense :</b> déséquilibre, obscurité, position du défenseur, au jugé du MJ.</p>
 	</details>
 
 	<!-- Défense massive -->
@@ -566,8 +568,8 @@
 			<h3>Contre une attaque à distance</h3>
 		</summary>
 		<p>Il est possible d’opposer une défense à une attaque à distance, si le défenseur n’est pas surpris.</p>
-		<p><b>Armes lancées (couteau, lance, sorts projectile, etc.)&nbsp;:</b> il faut d’abord réussir un jet de <i>Réflexes</i>, puis une <i>Esquive</i> ou un <i>Blocage</i> à -2. Il est possible de <i>parer</i> de grosses armes de jets (lance ou hache) à -2.</p>
-		<p><b>Armes à projectiles&nbsp;:</b> dans le cas d’un style de jeu «&nbsp;cinématographique&nbsp;», si le projectile est visible, que la cible n’est pas surprise et que la distance de tir est «&nbsp;raisonnable&nbsp;», le personnage peut tenter d’esquiver le projectile à -5, après avoir réussi un jet de <i>Réflexes</i>.</p>
+		<p><b>Armes lancées (couteau, lance, sorts projectile, etc.) :</b> il faut d’abord réussir un jet de <i>Réflexes</i>, puis une <i>Esquive</i> ou un <i>Blocage</i> à -2. Il est possible de <i>parer</i> de grosses armes de jets (lance ou hache) à -2.</p>
+		<p><b>Armes à projectiles :</b> dans le cas d’un style de jeu « cinématographique », si le projectile est visible, que la cible n’est pas surprise et que la distance de tir est « raisonnable », le personnage peut tenter d’esquiver le projectile à -5, après avoir réussi un jet de <i>Réflexes</i>.</p>
 	</details>
 
 	<!-- Défenses à mains nues -->
@@ -576,9 +578,9 @@
 			<h3>Défenses à mains nues</h3>
 		</summary>
 		<ul>
-			<li><b>Éviter un coup, une bousculade ou une saisie&nbsp;:</b> <i>Défense</i> classique.</li>
-			<li><b>Parer une arme&nbsp;:</b> possible seulement avec les compétences <i>Karaté</i> et <i>Judo/lutte</i>.</li>
-			<li>Se libérer d’une <b>saisie</b> ou d’une <b>immobilisation</b>, ou s’opposer à une manœuvre «&nbsp;<b><i>Faire tomber</i></b>&nbsp;»&nbsp;: voir le paragraphe <i>Attaques à mains nues</i>.</li>
+			<li><b>Éviter un coup, une bousculade ou une saisie :</b> <i>Défense</i> classique.</li>
+			<li><b>Parer une arme :</b> possible seulement avec les compétences <i>Karaté</i> et <i>Judo/lutte</i>.</li>
+			<li>Se libérer d’une <b>saisie</b> ou d’une <b>immobilisation</b>, ou s’opposer à une manœuvre « <b><i>Faire tomber</i></b> » : voir le paragraphe <i>Attaques à mains nues</i>.</li>
 		</ul>
 
 		<p>Il est possible de choisir de faire une <i>Défense massive</i>.</p>
@@ -609,7 +611,7 @@
 			<h3>Choisir une localisation</h3>
 		</summary>
 		<p>Si l’attaquant vise, le malus de difficulté est estimé par le MJ. Si l’attaque est ratée de 1, une autre localisation, déterminée aléa&shy;toirement, est atteinte.</p>
-		<p><b>Malus typiques&nbsp;:</b> en combat à l’arme blanche, viser une jambe ou un bras se fait à -3&nbsp;; la tête à -4&nbsp;; le visage, un organe vitale ou une main à -5, le torse à 0.</p>
+		<p><b>Malus typiques :</b> en combat à l’arme blanche, viser une jambe ou un bras se fait à -3 ; la tête à -4 ; le visage, un organe vitale ou une main à -5, le torse à 0.</p>
 		<p>Le cœur ne peut être atteint que par une attaque <i>perforante</i> ou par balle.</p>
 	</details>
 </article>
@@ -702,7 +704,7 @@
 			<h3>Explosion en espace confiné</h3>
 		</summary>
 		<p>Il faut dans un premier temps estimer la fraction de l’énergie retenue par le volume confiné. Ce n’est pas la même si le volume est entièrement scellé par des parois rigide et solide, ou s’il est en partie fermé par des fenêtres qui exploseront et laisseront passer une partie du souffle.</p>
-		<p>Il faut ensuite estimer la distance moyenne entre le centre du volume et les parois. Par exemple, pour une explosion qui a lieu dans un container fermé de 2&nbsp;m × 3&nbsp;m × 6&nbsp;m, cette distance moyenne est de (2÷2 + 3÷2 + 6÷2)/3 = 1,8&nbsp;m.</p>
+		<p>Il faut ensuite estimer la distance moyenne entre le centre du volume et les parois. Par exemple, pour une explosion qui a lieu dans un container fermé de 2 m × 3 m × 6 m, cette distance moyenne est de (2÷2 + 3÷2 + 6÷2)/3 = 1,8 m.</p>
 		<p>Enfin, les dégâts <i>supplémentaires</i> dus au caractère confiné de l’explosion sont obtenus en considérant une deuxième explosion qui a lieu à cette distance de la cible.</p>
 	</details>
 
@@ -717,11 +719,11 @@
 		<summary>
 			<h3>Caractéristiques des objets</h3>
 		</summary>
-		<p>Les caractéristiques régissant la manière dont un objet supporte des dégâts sont&nbsp;:</p>
+		<p>Les caractéristiques régissant la manière dont un objet supporte des dégâts sont :</p>
 		<ul>
-			<li><b>Résistance aux dégâts (RD)&nbsp;:</b> même principe qu’une armure.</li>
-			<li><b>Points de Structure (PdS)&nbsp;:</b> ce sont les «&nbsp;PdV&nbsp;» de l’objet.</li>
-			<li><b>Intégrité&nbsp;:</b> c’est la «&nbsp;Santé&nbsp;» de l’objet. Plus elle est élevée, mieux l’objet continue à fonctionner malgré les dégâts reçus.</li>
+			<li><b>Résistance aux dégâts (RD) :</b> même principe qu’une armure.</li>
+			<li><b>Points de Structure (PdS) :</b> ce sont les « PdV » de l’objet.</li>
+			<li><b>Intégrité :</b> c’est la « Santé » de l’objet. Plus elle est élevée, mieux l’objet continue à fonctionner malgré les dégâts reçus.</li>
 		</ul>
 		<details class="exemple">
 			<summary>Exemple</summary>
@@ -739,8 +741,8 @@
 		</summary>
 		<p>Il existe 2 types de dégâts affectant les objets.</p>
 		<ul>
-			<li><b>Dégâts localisés&nbsp;:</b> ils n’affectent qu’une zone très petite par rapport à la taille d’un objet. Ils n’affectent pas l’état général de l’objet mais sont capables de causer des effets secondaires (voir <i>Effets des dégâts</i>). Le MJ décide en fonction du type d’attaque et de la taille de l’objet si les dégâts infligés sont «&nbsp;localisés&nbsp;» ou pas.</li>
-			<li><b>Dégâts normaux&nbsp;:</b> tous les autres types de dégâts.</li>
+			<li><b>Dégâts localisés :</b> ils n’affectent qu’une zone très petite par rapport à la taille d’un objet. Ils n’affectent pas l’état général de l’objet mais sont capables de causer des effets secondaires (voir <i>Effets des dégâts</i>). Le MJ décide en fonction du type d’attaque et de la taille de l’objet si les dégâts infligés sont « localisés » ou pas.</li>
+			<li><b>Dégâts normaux :</b> tous les autres types de dégâts.</li>
 		</ul>
 	</details>
 
@@ -749,20 +751,20 @@
 		<summary>
 			<h3>Effets des dégâts</h3>
 		</summary>
-		<p>Les dégâts reçus par un objet ont des <b>effets généraux</b> (sauf s’ils sont «&nbsp;<i>localisés</i>&nbsp;») et peuvent entraîner des <b>effets secondaires</b>.</p>
+		<p>Les dégâts reçus par un objet ont des <b>effets généraux</b> (sauf s’ils sont « <i>localisés</i> ») et peuvent entraîner des <b>effets secondaires</b>.</p>
 		<p>Tous les calculs sont gérés par la <a href="table-jeu"><i>Table de jeu</i></a>.</p>
 
 		<h4>Dégâts reçus</h4>
-		<p>Les dégâts infligés sont retirés des PdS de l’objet (sauf s’il s’agit de dégâts <i>localisés</i>) en tenant compte de sa RD «&nbsp;générale&nbsp;».</p>
+		<p>Les dégâts infligés sont retirés des PdS de l’objet (sauf s’il s’agit de dégâts <i>localisés</i>) en tenant compte de sa RD « générale ».</p>
 
 		<h4>État général de l’objet</h4>
 
 		<ul>
-			<li><b>Légèrement endommagé&nbsp;:</b> l’objet est légèrement abîmé (déformation, fissure) mais continue de remplir sa fonction normalement (sauf en cas d’effets secondaires).</li>
-			<li><b>Moyennement endommagé&nbsp;:</b> l’objet est abîmé mais est encore globalement fonctionnel, au moins pendant un certain temps. Si c’est un objet étanche, il présente quelques petites brèches ne mettant pas en péril sa survie immédiate.</li>
-			<li><b>Gravement endommagé&nbsp;:</b> l’objet est très abîmé. Il ne fonctionne plus qu’en partie (au tiers de son potentiel). Beaucoup de systèmes ne fonctionnent plus. Si c’est un objet étanche, il présente une ou plusieurs brèches ne pouvant pas être réparée(s) de manière improvisée.</li>
-			<li><b>Hors service&nbsp;:</b> l’objet est inutilisable, mais, avec le matériel, le temps et les compétences nécessaires, il est réparable.</li>
-			<li><b>Détruit&nbsp;:</b> l’objet est endommagé au point d’être irréparable. Ce n’est plus qu’une carcasse broyée ou éventrée.</li>
+			<li><b>Légèrement endommagé :</b> l’objet est légèrement abîmé (déformation, fissure) mais continue de remplir sa fonction normalement (sauf en cas d’effets secondaires).</li>
+			<li><b>Moyennement endommagé :</b> l’objet est abîmé mais est encore globalement fonctionnel, au moins pendant un certain temps. Si c’est un objet étanche, il présente quelques petites brèches ne mettant pas en péril sa survie immédiate.</li>
+			<li><b>Gravement endommagé :</b> l’objet est très abîmé. Il ne fonctionne plus qu’en partie (au tiers de son potentiel). Beaucoup de systèmes ne fonctionnent plus. Si c’est un objet étanche, il présente une ou plusieurs brèches ne pouvant pas être réparée(s) de manière improvisée.</li>
+			<li><b>Hors service :</b> l’objet est inutilisable, mais, avec le matériel, le temps et les compétences nécessaires, il est réparable.</li>
+			<li><b>Détruit :</b> l’objet est endommagé au point d’être irréparable. Ce n’est plus qu’une carcasse broyée ou éventrée.</li>
 		</ul>
 
 		<h4>Effets secondaires</h4>
@@ -791,7 +793,7 @@
 		<p>Il se peut que les 4 niveaux n’aient pas nécessairement de sens pour une localisation donnée. Par exemple, un pneu est crevé dès que le niveau 1 est atteint.</p>
 
 		<h5>Cumul des niveaux de gravité</h5>
-		<p>Les niveaux de gravité sont cumulables&nbsp;: une localisation ayant déjà été endommagée avec un niveau de gravité de 1 et recevant des dommages d’un niveau de gravité de 2 passe au niveau 3 (et cesse immédiatement de fonctionner).</p>
+		<p>Les niveaux de gravité sont cumulables : une localisation ayant déjà été endommagée avec un niveau de gravité de 1 et recevant des dommages d’un niveau de gravité de 2 passe au niveau 3 (et cesse immédiatement de fonctionner).</p>
 
 	</details>
 
@@ -800,7 +802,7 @@
 		<summary>
 			<h3>Percer la paroi d’un objet</h3>
 		</summary>
-		<p>Pour traverser la paroi d’un objet, il faut passer 125&nbsp;% de sa RD. Si ce seuil n’est pas atteint, l’objet prend tout de même les dégâts passant la RD mais sa paroi n’est pas percée.</p>
+		<p>Pour traverser la paroi d’un objet, il faut passer 125 % de sa RD. Si ce seuil n’est pas atteint, l’objet prend tout de même les dégâts passant la RD mais sa paroi n’est pas percée.</p>
 	</details>
 
 	

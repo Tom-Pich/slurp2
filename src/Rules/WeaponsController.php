@@ -27,13 +27,14 @@ class WeaponsController
 		['nom' => 'Hachette', 'deg' => 'T.t+1, 7/F', 'Fm' => 8, 'pds' => 1, 'notes' => '(A)', 'cat' => 'exclu', 'prix' => [NULL],],
 		['nom' => 'Hache', 'deg' => 'T.t+2', 'Fm' => 11, 'pds' => 2, 'notes' => '(M)(A)', 'cat' => 'h-m', 'prix' => [50],],
 		['nom' => 'Hache à 2 mains', 'deg' => 'T.t+4', 'Fm' => 13, 'pds' => 3, 'notes' => '(A)', 'cat' => 'h-m', 'prix' => [100],],
-		['nom' => 'Hache d’arme', 'deg' => 'T.t+4 - P.e+3 - B.t+3', 'Fm' => 13, 'pds' => 3, 'notes' => '(A*)', 'cat' => 'h-m', 'prix' => [140],],
+		['nom' => 'Hache d’arme', 'deg' => 'T.t+4 - P.e+3 - B.t+3', 'Fm' => 13, 'pds' => 3, 'notes' => '(A*)(7)', 'cat' => 'h-m', 'prix' => [140],],
+		['nom' => 'Hache d’arme', 'deg' => 'T.t+4 - P.e+3 - P.t+3', 'Fm' => 13, 'pds' => 3, 'notes' => '(A*)(7)', 'cat' => 'h-m', 'prix' => [140],],
+		/* ['nom' => 'Marteau à 2 mains', 'deg' => 'P.t+4 - B.t+4', 'Fm' => 13, 'pds' => 3, 'notes' => '(A)', 'cat' => 'h-m', 'prix' => [140],], */
 		['nom' => 'Massette', 'deg' => 'B.t+2', 'Fm' => 10, 'pds' => 1, 'notes' => '(A)', 'cat' => 'exclu', 'prix' => [NULL],],
 		['nom' => 'Masse d’arme', 'deg' => 'B.t+3 - B.e+2', 'Fm' => 12, 'pds' => 2, 'notes' => '(M)(A)', 'cat' => 'h-m', 'prix' => [50],],
 		['nom' => 'Masse à 2 mains', 'deg' => 'B.t+4 - B.e+3', 'Fm' => 14, 'pds' => 4, 'notes' => '(A)', 'cat' => 'h-m', 'prix' => [80],],
 		['nom' => 'Marteau de guerre', 'deg' => 'P.t+2 - B.t+2', 'Fm' => 11, 'pds' => 1.5, 'notes' => '(M)(A)', 'cat' => 'h-m', 'prix' => [100],],
-		['nom' => 'Marteau à 2 mains', 'deg' => 'P.t+4 - B.t+4', 'Fm' => 13, 'pds' => 3, 'notes' => '(A)', 'cat' => 'h-m', 'prix' => [140],],
-		['nom' => 'Fléau', 'deg' => 'B.t+2', 'Fm' => 12, 'pds' => 2, 'notes' => '(M-A-PA-1)', 'cat' => 'h-m', 'prix' => [80],],
+		['nom' => 'Fléau', 'deg' => 'B.t+2', 'Fm' => 12, 'pds' => 2, 'notes' => '(M)(A)(PA)(1)', 'cat' => 'h-m', 'prix' => [80],],
 		['nom' => 'Fléau à 2 mains', 'deg' => 'B.t+4', 'Fm' => 13, 'pds' => 4, 'notes' => '(A)(PA)(1)', 'cat' => 'exclu', 'prix' => [100],],
 
 		['nom' => 'Hallebarde', 'deg' => 'T.t+4 - P.t+4 - P.e+3', 'Fm' => 13, 'pds' => 4, 'notes' => '(A*)', 'cat' => 'lance', 'prix' => [150],],
@@ -114,6 +115,7 @@ class WeaponsController
 		'(4)' => 'Dégâts de type <i>Mains nues</i>',
 		'(5)' => 'Utilise la compétence <i>Lancer</i>.',
 		'(6)' => '1 pt de dégâts sur RD 0. La compétence <i>Contrôle du souffle</i> peut remplacer la <i>For</i> pour le calcul de portée.',
+		'(7)' => 'Obligatoirement à deux mains. Existe sous deux formes : l’une avec une masse et l’autre avec un pic.',
 	];
 
 	const firearms = [

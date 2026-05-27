@@ -38,15 +38,24 @@ $displayEmojis = $displayEmojis ?? true;
 
 <dialog data-name="chat-help">
 	<button data-role="close-modal" class="ff-fas">&#xf00d;</button>
+	
 	<h4>Fonctionnalités du tchat</h4>
+
 	<ul class="mt-1 flow">
-		<li><b>Message privé&nbsp;:</b> "/" + n° du ou des destinataire(s), séparés par une virgule et <i>sans espace</i> – ex. «&nbsp;/2,3 Coucou&nbsp;»</li>
-		<li><b>Jet de widget privé&nbsp;:</b> même principe que pour les messages privés. Entrez /x,y pour spécifier les destinataires, puis utilisez le widget de votre choix.</li>
-		<li><b>Jet de réussite dans un message&nbsp;:</b> insérez dans votre message un score précédé du signe #. Un jet sera fait, avec affichage de la MR et d’un éventuel critique – ex. «&nbsp;Blabla #12 blabla.&nbsp;»</li>
-		<li><b>Jet classique dans un message&nbsp;:</b> insérez dans votre message une expression correspondant à un jet, précédée du signe #. Ex. «&nbsp;bla bla #2d+1&nbsp;». Il est possible de mélanger jets de réussite et jets classiques – ex. «&nbsp;Blabla #12 et blibli #1d+2&nbsp;»</li>
-		<li><b>Jet de dégâts dans un message&nbsp;:</b> insérez dans votre message une expression correspondant à un jet, précédée de la lettre «&nbsp;D&nbsp;» majuscule. Ça aura pour effet, en plus de faire le tirage, de préciser une locaisation aléatoire.</li>
-		<li><b>Mise en forme du message&nbsp;:</b> des mots entre astérisques (*) seront affichés en gras. Des mots entre underscores (_) seront affichés en italique.</li>
-		<li><b>Retour à la ligne&nbsp;:</b> vous pouvez insérer un retour à la ligne dans un message en faisant <key>Shift + Entrée</key>
+
+		<li><b>Message privé :</b> "/" + n° du ou des destinataire(s), séparés par une virgule et <i>sans espace</i> – ex. « /2,3 Coucou »</li>
+
+		<li><b>Jet de widget privé :</b> même principe que pour les messages privés. Entrez /x,y pour spécifier les destinataires, puis utilisez le widget de votre choix.</li>
+
+		<li><b>Jet de réussite dans un message :</b> insérez dans votre message un score précédé du signe #. Un jet sera fait, avec affichage de la MR et d’un éventuel critique – ex. « Blabla #12 blabla. »</li>
+
+		<li><b>Jet classique dans un message :</b> insérez dans votre message une expression correspondant à un jet, précédée du signe #. Ex. « bla bla #2d+1 ». Il est possible de mélanger jets de réussite et jets classiques – ex. « Blabla #12 et blibli #1d+2 »</li>
+
+		<li><b>Jet de dégâts dans un message :</b> insérez dans votre message une expression correspondant à un jet, précédée de la lettre « D » majuscule – ex. « Blabla D2d+1 blabla. ». Ça aura pour effet, en plus de faire le tirage, de préciser une localisation aléatoire.</li>
+
+		<li><b>Mise en forme du message :</b> des mots entre astérisques (*) seront affichés en gras. Des mots entre underscores (_) seront affichés en italique.</li>
+
+		<li><b>Retour à la ligne :</b> vous pouvez insérer un retour à la ligne dans un message en faisant <key>Shift + Entrée</key>
 		</li>
 	</ul>
 </dialog>

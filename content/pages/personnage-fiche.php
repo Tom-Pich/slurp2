@@ -3,6 +3,8 @@
 use App\Lib\TextParser;
 use App\Repository\EquipmentRepository;
 
+/** @var array $page */
+
 $character = $page["character"];
 $character->processCharacter(with_state_modifiers: true);
 $character_uses_pdm = $character->special_traits["magerie"] || $character->special_traits["pouvoirs"];
@@ -11,7 +13,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 $compact = $page["style"] === "compact";
 
 // modifies text color if score has changed due to character state
-function color_modifier($original_score, $actual_score)
+function color_modifier(int $original_score, int $actual_score)
 {
 	if ($actual_score < $original_score) return "style='color: var(--clr-invalid)'";
 	elseif ($actual_score > $original_score) return "style='color: var(--clr-secondary-500)'";
@@ -492,7 +494,7 @@ function color_modifier($original_score, $actual_score)
 		<?php endif; ?>
 	</fieldset>
 
-	<!--Notes -->
+	<!-- Notes -->
 	<?php if (!empty($character->notes)) { ?>
 		<details class="mt-1 no-print">
 			<summary>
@@ -500,6 +502,18 @@ function color_modifier($original_score, $actual_score)
 			</summary>
 			<div class="mt-½ flow">
 				<?= TextParser::pseudoMDParser($character->notes) ?>
+			</div>
+		</details>
+	<?php } ?>
+
+	<!-- Background -->
+	<?php if (!empty($character->background)) { ?>
+		<details class="mt-1 no-print">
+			<summary>
+				<h3>Background</h3>
+			</summary>
+			<div class="mt-½ flow">
+				<?= TextParser::pseudoMDParser($character->background) ?>
 			</div>
 		</details>
 	<?php } ?>

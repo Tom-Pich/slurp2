@@ -145,7 +145,8 @@ use App\Repository\SkillRepository;
 		<summary>
 			<h3>Réussite et échec critiques</h3>
 		</summary>
-		<table>
+
+		<table class="left-2 left-4">
 			<tr>
 				<th width="10%">Jet</th>
 				<th>Réussite critique</th>
@@ -236,9 +237,11 @@ use App\Repository\SkillRepository;
 			<h3>Déplacement</h3>
 		</summary>
 		<p>La caractéristique secondaire <i>Vitesse</i> indique la <b>vitesse de marche</b> (en km/h) du personnage lorsque celui-ci adopte une marche rapide pour un temps long (en voyage ou en randonnée, par exemple).</p>
-		<p>Lorsque le personnage veut faire un <b>sprint</b>, la <i>Vitesse</i> correspond à sa vitesse en m/s dans des conditions optimales.<br>
-			Ajouter 1/8<sup>e</sup> de la compétence <i>Course</i> (arrondi au quart de point).</p>
-		<p>La <i>Fatigue</i>, l’<i>Encombrement</i> et le niveau de blessures influent sur la <i>Vitesse</i>. L’<i>Encombrement</i> compte double en cas de sprint.</p>
+		<p>
+			Lorsque le personnage veut faire un <b>sprint</b>, la <i>Vitesse</i> correspond à sa vitesse en m/s dans des conditions optimales.<br>
+			Ajouter 1/8<sup>e</sup> de la compétence <i>Course</i> (arrondi au quart de point).
+		</p>
+		<p>La <i>Fatigue</i>, l’<i>Encombrement</i> et le niveau de blessures influent sur la <i>Vitesse</i>. L’<i>Encombrement</i> compte double.</p>
 	</details>
 
 	<details>
@@ -252,7 +255,7 @@ use App\Repository\SkillRepository;
 		<summary>
 			<h3>Soulever et déplacer des objets</h3>
 		</summary>
-		<p>Il est possible de soulever ou déplacer un poids, en kg, allant jusqu’à :</p>
+		<p>Il est possible de soulever ou déplacer un poids, en kg, allant jusqu’à :</p>
 		<ul>
 			<li><b>À une main :</b> 3×<i>For</i></li>
 			<li><b>À deux mains :</b> 10×<i>For</i></li>
@@ -267,9 +270,9 @@ use App\Repository\SkillRepository;
 			<h3>Nage</h3>
 		</summary>
 		<p>En cas d’échec à un jet de <i>Nage</i>, perte de 1 PdF. Refaire un jet toutes les 5 secondes, jusqu’à ce qu’il y ait noyade, sauvetage ou un jet de <i>Nage</i> réussi.</p>
-		<p><i>Encombrement</i> : dépend de la densité de l’équipement.</p>
-		<p>Vitesse de nage : 1/10<sup>e</sup> de la compétence en <i>Nage</i> en sprint.</p>
-		<p><b>Combat dans l’eau :</b> jets de <i>Nage</i> régulièrement si le personnage n’a pas pied. Perte rapide de PdF. Les dégâts sont réduits de moitié en immersion.</p>
+		<p><i>Encombrement</i> : dépend de la densité de l’équipement.</p>
+		<p>Vitesse de nage : 1/10<sup>e</sup> de la compétence en <i>Nage</i> en sprint.</p>
+		<p><b>Combat dans l’eau :</b> jets de <i>Nage</i> régulièrement si le personnage n’a pas pied. Perte rapide de PdF. Les dégâts sont réduits de moitié en immersion.</p>
 	</details>
 
 	<details>
@@ -277,9 +280,9 @@ use App\Repository\SkillRepository;
 			<h3>Retenir sa respiration</h3>
 		</summary>
 		<ul class="mt-½">
-			<li><b>Au repos :</b> <i>San</i>×6 secondes.</li>
-			<li><b>Activité physique modérée :</b> <i>San</i>×2 secondes.</li>
-			<li><b>Exercice physique important :</b> <i>San</i> secondes.</li>
+			<li><b>Au repos :</b> <i>San</i>×4 secondes.</li>
+			<li><b>Activité physique modérée :</b> <i>San</i>×2 secondes.</li>
+			<li><b>Exercice physique important :</b> <i>San</i> secondes.</li>
 		</ul>
 		<p><b>Modificateurs :</b> ×2 si hyperoxygénation ; ×½ si surprise et pas de préparation.</p>
 		<p><i>Contrôle du souffle</i> peut se substituer à la <i>San</i> pour le calcul de la durée de l’apnée. Une fois à bout de souffle, voir <i>Suffocation</i> (chapitre <i>Blessures &amp; Dangers</i>).</p>

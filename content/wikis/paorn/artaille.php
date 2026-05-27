@@ -12,9 +12,7 @@ Aspects pratiques pour aventuriers
 <div class="has-right-block">
 	<p>L’Artaille est la province la plus méridionnale de la Burgonie. Avec ses immenses prairies, ses vallées verdoyantes, ses collines ombragées et ses forêts giboyeuses, l'Artaille est une terre hospitalière où la vie peut être assez douce.</p>
 	<figure class="right">
-		<a href="/assets/img_paorn/artaille.webp" target="_blank">
-			<img src="/assets/img_paorn/artaille-600.webp">
-		</a>
+		<img src="/assets/img_paorn/carte-artaille.webp?v=2">
 		<figcaption>Carte de l’Artaille</figcaption>
 	</figure>
 </div>
@@ -43,6 +41,26 @@ Aspects pratiques pour aventuriers
 
 			<li><b>Maylie :</b> Le grand port commercial de Burgonnie. C’est de là que partent les nefs marchandes à destination de la Lauria, des îles du Tarot et de Majistra, loin à l'est. Les pirates, qui ont sévi de tous temps dans ce secteur, ont obligé les Maylars (habitants de Maylie) à constituer une flotte de guerre composée d'impressionnantes galères.</li>
 		</ul>
+	</details>
+
+	<!-- Territoires & régions -->
+	<details>
+		<summary>
+			<h3>Territoires &amp; régions</h3>
+		</summary>
+
+		<p>L’Artaille est divisée en <b>quatorze duchés ou comtés</b> .</p>
+
+		<figure>
+			<img src="/assets/img_paorn/carte-artaille-politique.webp" alt="Carte politique de l’Artaille">
+			<figcaption>Carte politique de l’Artaille</figcaption>
+		</figure>
+
+		<ul class="flow">
+			<li>
+				<b><a href="/wiki/paorn/duche-elmora">Duché d’Elmora</a></b> — ou duché d’Elmour. Gouverné par le prince de l’Artaille. C’est la région la plus riche et la plus puissante de la province.
+			</li>
+
 	</details>
 
 	<!-- Bourgs & villages -->

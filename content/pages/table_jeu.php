@@ -1,8 +1,222 @@
 <?php
 
 use \App\Rules\ObjectController;
+use App\Rules\EquipmentListController;
+use App\Rules\WeaponsController;
 
 ?>
+
+<!-- Mémo armes -->
+<fieldset data-name="mémo armes" hidden class="flow memo">
+	<legend>Mémo armes</legend>
+
+	<!-- Caractéristiques -->
+	<details>
+		<summary>
+			<h4>Caractéristiques</h4>
+		</summary>
+		<ul>
+			<li><b>Arme à apprêter :</b> ne peut pas être utilisée lors de l’action suivante</li>
+			<li><b>Fmin :</b> malus compétence + malus <i>Rcl</i></li>
+		</ul>
+	</details>
+
+	<!-- Armes courantes -->
+	<details>
+		<summary>
+			<h4>Armes courantes</h4>
+		</summary>
+
+		<?php
+		$selected_weapons_name = ["Arc moyen", "Épée longue", "Couteau", "Poignard", "Lance", "Hache", "Pistolet .45ACP", "Pistolet 9mmP"];
+		$weapons = array_filter(WeaponsController::weapons, fn($weapon) => in_array($weapon["nom"], $selected_weapons_name));
+		$firearms = array_filter(WeaponsController::firearms, fn($weapon) => in_array($weapon["nom"], $selected_weapons_name));
+		WeaponsController::displayWeaponsList(array_merge($weapons, $firearms));
+		?>
+
+	</details>
+
+</fieldset>
+
+<!-- Mémo combat -->
+<fieldset data-name="mémo combat" hidden class="flow memo">
+	<legend>Mémo combat</legend>
+
+	<!-- Base -->
+	<details>
+		<summary>
+			<h4>Base</h4>
+		</summary>
+		<ul>
+			<li><b>Surprise :</b> jet de <i>Réflexes</i></li>
+			<li>
+				<b>Initiative :</b> jet de <i>Réflexes</i>. -1 par kg d’arme ; sorts -3 par seconde
+			</li>
+			<li><b>Actions :</b> 2 + 2 défenses d’urgence</li>
+			<li><b>Déplacement :</b> 1 m/s max sinon malus</li>
+		</ul>
+	</details>
+
+	<!-- Attaque -->
+	<details>
+		<summary>
+			<h4>Attaque</h4>
+		</summary>
+		<ul>
+			<li><b>Modif au contact :</b> état, <i>Fmin</i>, attaque massive, difficulté</li>
+			<li><b>Modif à distance :</b> état, <i>Fmin</i>, difficulté, <i>Recul</i></li>
+			<li><b>Attaque massive :</b> <i>Précise</i>, <i>Puissante</i>, <i>Multiple</i>, <i>Feintée</i></li>
+			<li><b>Coups spéciaux :</b> désarmer, bloquer, attaque non conventionnelle, amortir le coup</li>
+			<li><b>À mains nues :</b> porter un coup, bousculer, saisir, faire tomber*, immobiliser*</li>
+		</ul>
+	</details>
+
+	<!-- Défense -->
+	<details>
+		<summary>
+			<h4>Défense</h4>
+		</summary>
+		<ul>
+			<li><b>Types :</b> <i>Esquive</i>, <i>Parade</i>, <i>Blocage</i></li>
+			<li><b>Défense d’urgence :</b> -2/-4, pas d’attaque massive avant ou après, limitation sur parade et blocage</li>
+			<li><b>Modif :</b> état, défense massive, MR attaquant (max -5), conditions</li>
+			<li><b>Défense massive :</b> <i>Préparée</i>, <i>Feintée</i>, <i>Rupture</i>, <i>Reculée</i>, <i>Multiple</i></li>
+			<li>Contre attaque à distance : possible contre arme lancée</li>
+			<li>À mains nues : voir règles</li>
+		</ul>
+	</details>
+
+</fieldset>
+
+<!-- Mémo blessures -->
+<fieldset data-name="mémo blessures" hidden class="flow memo">
+	<legend>Mémo blessures</legend>
+
+	<!-- Sonné -->
+	<details>
+		<summary>
+			<h4>Sonné</h4>
+		</summary>
+		<p><b>Niv. 1 :</b> le personnage ne peut rien faire sauf des actions « réflexes », type <i>Défense</i>, à -4. Nombre d’actions perdues : widget ou ME d’un jet de <i>San</i> (min 1).</p>
+		<p><b>Niv. 2 :</b> comme niveau 1, mais le personnage perd <i>totalement</i> sa première prochaine action (y compris « réflexes »). Nombre d’actions perdues : widget ou ME d’un jet de <i>San</i>-5 (min 2).</p>
+		<p><b>Niv. 3 :</b> aucune action pendant une durée de ~ 1 minute (20 rounds). Tombe automatiquement.</p>
+		<p>Niveau réduit de 1 si <i>Résistance à la douleur</i> (le widget en tient compte)</p>
+	</details>
+
+	<!-- PdV négatifs -->
+	<details>
+		<summary>
+			<h4>PdV négatifs</h4>
+		</summary>
+		<p><b>PdV &le; 0 :</b> Jet de <i>Vol</i> à chaque round pour ne pas perdre conscience. Le personnage ne peut pas se tenir debout.</p>
+		<p><b>PdV &le; -100 % :</b> Perte de conscience automatique.</p>
+	</details>
+
+	<!-- Rétablissement après inconscience -->
+	<details>
+		<summary>
+			<h4>Rétablissement après inconscience</h4>
+		</summary>
+		<p><b>PdV &gt; 50 % :</b> 1d min puis jet de <i>San</i> chaque minute.</p>
+		<p><b>PdV &le; 50 % :</b> 1d×5 min puis jet de <i>San</i> toutes les 5 min.</p>
+		<p><b>PdV &le; 0 :</b> voir règles.</p>
+	</details>
+</fieldset>
+
+<!-- Mémo magie -->
+<fieldset data-name="mémo magie" hidden class="flow memo">
+	<legend>Mémo magie</legend>
+
+	<!-- Divers -->
+	<details>
+		<summary>
+			<h4>Divers</h4>
+		</summary>
+		<ul>
+			<li><b>Détection magie par <i>Magerie</i> :</b> 8/11/13/15/auto</li>
+			<li><b>Modif :</b> état, encombrement, fluide, distance sujet, sorts actifs</li>
+		</ul>
+	</details>
+
+	<!-- Caractéristiques des sorts -->
+	<details>
+		<summary>
+			<h4>Caractéristiques des sorts</h4>
+		</summary>
+		<?php include "content/components/table-spell-data.php" ?>
+	</details>
+
+	<!-- Rituels -->
+	<details>
+		<summary>
+			<h4>Rituels</h4>
+		</summary>
+		<table class="left-2">
+			<colgroup>
+				<col style="width: 6ch">
+			</colgroup>
+			<tr>
+				<th>Score</th>
+				<th>Rituel</th>
+			</tr>
+			<tr>
+				<th>&le; 11</th>
+				<td>Mains et pieds libres, mouvements élaborés. Énoncer mots de puissance d’une voix ferme. Temps nécessaire ×2.</td>
+			</tr>
+			<tr>
+				<th>12-14</th>
+				<td>Énoncer quelques mots calmement, bouger seul bras. Aucun déplacement.</td>
+			</tr>
+			<tr>
+				<th>15-17</th>
+				<td>Énoncer un mot ou deux et bouger quelques doigts. Déplacement 1 m/s.</td>
+			</tr>
+			<tr>
+				<th>18-20</th>
+				<td>Prononcer un mot ou deux, <i>ou bien</i> faire de petits gestes.</td>
+			</tr>
+			<tr>
+				<th>21-24</th>
+				<td>Aucun rituel. Temps nécessaire ×½, arrondi à la seconde inférieure.</td>
+			</tr>
+		</table>
+	</details>
+</fieldset>
+
+<!-- Mémo AD&D -->
+<fieldset data-name="mémo AD&D" hidden class="flow memo">
+	<legend>Mémo AD&amp;D</legend>
+
+	<!-- Système monétaire -->
+	<details>
+		<summary>
+			<h4>Système monétaire</h4>
+		</summary>
+		<p>1 po = 20 pa = 80 pc</p>
+		<p>
+			pièce d’or : 15 g<br>
+			pièce d’argent : 10 g<br>
+			pièce de cuivre : 10 g<br>
+			piécette (½ pc) : 5 g
+		</p>
+		<p>Salaire journalier pauvre : 4 à 6 pc<br>
+			Salaire journalier moyen : 10 à 12 pc<br>
+			Salaire journalier confortable : 20 à 40 pc
+		</p>
+	</details>
+
+	<!-- Prix courants -->
+	<details>
+		<summary>
+			<h4>Prix courants</h4>
+		</summary>
+		<?php
+		$selected_item_names = ["Chambre, auberge moyenne", "Écurie et avoine, 1 cheval", "Repas (taverne)", "Chope de bière", "Ration de voyage (un repas)", "Vêtements moyens*", "Sacoche / Besace"];
+		$items = array_filter(EquipmentListController::equipment_list, fn($item) => in_array($item[0], $selected_item_names));
+		EquipmentListController::displayEquipmentList($items, 0);
+		?>
+	</details>
+</fieldset>
 
 <!-- Protagonistes -->
 <fieldset data-name="opponents" hidden>
@@ -378,10 +592,17 @@ use \App\Rules\ObjectController;
 		<div class="fl-1 flex-s gap-½">
 			<select class="fl-1" name="category" required>
 				<option value="">--- choisissez une catégorie</option>
-				<option value="herbs">Plantes &amp; herbes imaginaires</option>
-				<option value="castle_corridor">Dans les couloirs d’un château</option>
-				<!-- <option value="castle_personnality">Personnalités du château de Sardam</option> -->
-				<option value="books">Titre de livre</option>
+				<option value="fantasy-herbs">Plantes &amp; herbes (medfan)</option>
+				<optgroup label="Dans un château">
+					<option value="castle-corridor">Dans les couloirs</option>
+					<option value="castle-personnality">Personnalités</option>
+				</optgroup>
+				<optgroup label="Dans une rue animée (medfan)">
+					<option value="fantasy-street-inactive">Passants et inactifs (ville medfan)</option>
+					<option value="fantasy-street-animals">Animaux (ville medfan)</option>
+					<option value="fantasy-street">Tout le reste (ville medfan)</option>
+				</optgroup>
+				<!-- <option value="books">Titre de livre</option> -->
 			</select>
 		</div>
 		<button class="nude">🎲</button>
@@ -395,7 +616,7 @@ use \App\Rules\ObjectController;
 
 	<div class="mt-½" data-role="widget-choices" style="column-count: 2; column-gap: 1em">
 		<template>
-			<label class="mt-¼" style="display: block;">
+			<label class="mt-¼ block">
 				<input type="checkbox" data-role="show-widget" data-name="{widget-name}">
 				<span>{widget title}</span>
 			</label>

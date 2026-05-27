@@ -2,24 +2,26 @@
 
 require_once "vendor/autoload.php";
 
-use App\Lib\DotEnv;
-use App\Entity\Group;
-use App\Entity\Power;
-use App\Entity\Skill;
-use App\Entity\Spell;
-use App\Lib\Firewall;
-use App\Entity\AvDesav;
-use App\Entity\Creature;
-use App\Entity\PsiPower;
-use App\Entity\Character;
-use App\Entity\Equipment;
 use App\Controller\ApiController;
+use App\Controller\CharacterExportController;
+use App\Controller\Error404Controller;
+use App\Controller\GenerateMagicController;
+use App\Controller\GenerateSkillsController;
+use App\Controller\GenerateTraitsController;
 use App\Controller\LogController;
 use App\Controller\PageController;
+use App\Entity\AvDesav;
+use App\Entity\Character;
+use App\Entity\Creature;
+use App\Entity\Equipment;
+use App\Entity\Group;
+use App\Entity\Power;
+use App\Entity\PsiPower;
+use App\Entity\Skill;
+use App\Entity\Spell;
+use App\Lib\DotEnv;
+use App\Lib\Firewall;
 use App\Repository\UserRepository;
-use App\Controller\Error404Controller;
-use App\Controller\CharacterExportController;
-use App\Controller\GenerateMagicController;
 
 (new DotEnv(__DIR__ . '/.env'))->load();
 require_once "config.php";
@@ -409,9 +411,14 @@ else if ($path_segments[1] === "wiki" && !empty($path_segments[2]) && count($pat
 }
 
 // generate magic markdown
-elseif ($path_segments[1] === "generate-magic") {
+elseif ($path_segments[1] === "generate-md") {
 	Firewall::filter(3);
-	$controller = new GenerateMagicController;
+	$type = $path_segments[2] ?? null;
+	$controller = match($type){
+		"magic" => new GenerateMagicController,
+		"traits" => new GenerateTraitsController,
+		"skills" => new GenerateSkillsController,
+	};
 	$controller->generate();
 }
 

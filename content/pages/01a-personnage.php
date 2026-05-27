@@ -15,6 +15,26 @@ $attributes = [
 $repo = new SkillRepository;
 ?>
 
+<!-- Préalables -->
+<article>
+	<h2>Préalables</h2>
+
+	<details>
+		<summary>
+			<h3>Points de personnage</h3>
+		</summary>
+		<p>Un personnage se construit à partir de points de personnage (généralement entre 80 et 120 pts, voyez ça avec votre MJ).</p>
+		<p>Ces points de personnage permettent de définir les <b>Caractéristiques</b>, <b>Avantages, Désavantages &amp; Travers</b>, <b>Compétences</b> et enfin les <b>Sorts &amp; pouvoirs</b> traités dans les parties <i>Magie</i>, <i>Psioniques</i> et/ou <i>Univers</i>.</p>
+	</details>
+
+	<details>
+		<summary>
+			<h3>Concevoir son personnage</h3>
+		</summary>
+		<p>Avant de vous lancer dans l’aspect <i>technique</i> de la création de votre personnage, commencer par l’ébaucher. Vous pouvez utiliser <a href="/concevoir-personnage">cette page</a> comme guide.</p>
+	</details>
+</article>
+
 <!-- Caractéristiques -->
 <article>
 	<h2>Caractéristiques</h2>
@@ -206,19 +226,19 @@ $repo = new SkillRepository;
 			<h4 class="fl-1">Points de vie (PdV)</h4>
 			<h4><?= Attribute::pdv ?></h4>
 		</div>
-		<div>Capacité à encaisser des blessures.</div>
+		<p>Capacité à encaisser des blessures.</p>
 
 		<div class="flex-s">
 			<h4 class="fl-1">Points de fatigue (PdF)</h4>
 			<h4><?= Attribute::pdf ?></h4>
 		</div>
-		<div>Capacité à résister à l’effort, à la privation de sommeil, au manque de nourriture, etc. Voir le chapitre <i>Bases du système</i>.</div>
+		<p>Capacité à résister à l’effort, à la privation de sommeil, au manque de nourriture, etc. Voir le chapitre <i>Bases du système</i>.</p>
 
 		<div class="flex-s">
 			<h4 class="fl-1">Points de magie (PdM)</h4>
 			<h4><?= Attribute::pdm ?></h4>
 		</div>
-		<div>Réserve d’énergie pour l’utilisation de sorts et de pouvoirs magiques.</div>
+		<p>Réserve d’énergie pour l’utilisation de sorts et de pouvoirs magiques.</p>
 
 		<div class="flex-s">
 			<h4 class="fl-1">Points d’équilibre psychique (PdE)</h4>
@@ -236,6 +256,7 @@ $repo = new SkillRepository;
 <article>
 	<h2>Avantages, Désavantages &amp; Travers</h2>
 
+	<!-- Introduction -->
 	<details>
 		<summary>
 			<h3>Introduction</h3>
@@ -246,6 +267,7 @@ $repo = new SkillRepository;
 
 	</details>
 
+	<!-- Règle du 12 -->
 	<details>
 		<summary>
 			<h3>Règle du 12</h3>
@@ -263,6 +285,7 @@ $repo = new SkillRepository;
 		</details>
 	</details>
 
+	<!--  Limites de désavantages-->
 	<details>
 		<summary>
 			<h3>Limites de désavantages</h3>
@@ -271,6 +294,7 @@ $repo = new SkillRepository;
 		<p>Une même contrainte peut parfois être décrite par différents désavantages. En choisir un et un seul pour rendre compte d’une contrainte donnée.</p>
 	</details>
 
+	<!-- Traits de caractères -->
 	<details>
 		<summary>
 			<h3>Traits de caractère</h3>
@@ -283,7 +307,7 @@ $repo = new SkillRepository;
 			<li>Limiter sa liberté d’action ;</li>
 			<li>Imposer un malus aux JR au moins dans certaines circonstances.</li>
 		</ul>
-		<p>Certains <i>Traits de caractère</i> ne peuvent donc, par essence, qu’être des <i>Travers</i> (Modeste, Discret...).</p>
+		<p>Certains <i>Traits de caractère</i> ne peuvent donc, par essence, qu’être des <i>Travers</i> (Modeste, Discret&hellip;).</p>
 
 		<h4>Traits de caractère vertueux</h4>
 		<p>Les traits de caractères vertueux (<i>Charitable</i>, <i>Honnête</i>, <i>Sens du devoir</i>, <i>Pacifique</i>, <i>Respect de la vérité</i>) constituent un moyen « facile » de gagner des points de personnage si le personnage n’est pas une crapule sans foi ni loi. Pensez-y au moment de sa création.</p>
@@ -295,28 +319,39 @@ $repo = new SkillRepository;
 
 		<p><b>Fort (-10 pts) :</b> <i>Trait de caractère</i> central du personnage. -2 aux JR, et/ou coûte jusqu’à un salaire moyen par mois, et/ou limite beaucoup la liberté d’action, et/ou fait parfois courir des risques sérieux. -2 pour y résister.</p>
 
-		<p><b>Extrême (-15 pts ou +) :</b> stade pathologique. Mène à terme à la banqueroute et/ou en prison, limite drastiquement la liberté d’action ou fait souvent risquer sa vie. -5 pour y résister. Tous les traits de caractères n’ont pas forcément une version à –15 pts.</p>
+		<p><b>Extrême (-15 pts ou +) :</b> stade pathologique. Mène à terme à la banqueroute et/ou en prison, limite drastiquement la liberté d’action ou fait souvent risquer sa vie. -5 pour y résister. Tous les traits de caractères n’ont pas forcément une version à –15 pts. Demandez l’avis de votre MJ avant de faire ce choix.</p>
 
 		<h4>Limites de Traits de caractères</h4>
-		<p>3 <i>Traits de caractère</i> maximum dont un seul allant jusqu’à -10 pts.</p>
+		<p>Trois <i>Traits de caractère</i> maximum dont un seul à -10 pts. Attention : si votre MJ estime que vous ne jouez pas votre <i>Trait de caractère</i>, il peut vous forcer à la racheter.</p>
 	</details>
 
+	<!-- Vivre ses désavantages -->
 	<details>
 		<summary>
 			<h3>Vivre ses désavantages</h3>
 		</summary>
 		<p>Il y a plusieurs manières possibles de « vivre » ses désavantages mentaux et traits de caractère. Certaines de ces manières permettent d’obtenir des points de personnages supplémentaires.</p>
+
 		<p>• <b>Par défaut (0 pt) :</b> le personnage les assume pleinement (sans pour autant en être fier).</p>
+
 		<p>• <b>C’est normal (0 pt) :</b> les personnes n’en souffrant pas sont considérés comme « anormaux » et traités selon le caractère du personnage.</p>
-		<p>• <b>S’efforcer de s’y plier (-5 pts) :</b> s’applique principalement aux désavantages vertueux. Jet de Vol pour s’y conformer. -1 PdE si échec.<br>
-			Si, par ce biais, PdE &lt; 50% PdE max, le personnage perd le désavantage et doit le racheter au plus vite (il hérite de <i>Malchance</i> en attendant).</p>
-		<p>• <b>Lutter contre eux (-5 pts) :</b> jet de Vol pour ne pas y céder. -1 PdE en cas d’échec.<br>
-			Si, par ce biais, PdE &lt; 50% PdE max, le personnage ne cherchera plus à y résister. Le désavantage pourra même s’aggraver.</p>
-		<p>• <b>Ne pas en avoir conscience ou les nier (-5 pts) : </b> variante automatique pour certains désavantages mentaux (<i>Chimère</i> par exemple)
-			et dans ce cas, elle n’apporte pas de points supplémentaires. </p>
+
+		<p>
+			• <b>S’efforcer de s’y plier (-5 pts) :</b> s’applique principalement aux désavantages vertueux. Jet de Vol pour s’y conformer. -1 PdE si échec.<br>
+			Si, par ce biais, PdE &lt; 50% PdE max, le personnage perd le désavantage et doit le racheter au plus vite (il hérite de <i>Malchance</i> en attendant).
+		</p>
+		<p>
+			• <b>Lutter contre eux (-5 pts) :</b> jet de Vol pour ne pas y céder. -1 PdE en cas d’échec.<br>
+			Si, par ce biais, PdE &lt; 50% PdE max, le personnage ne cherchera plus à y résister. Le désavantage pourra même s’aggraver.
+		</p>
+
+		<p>• <b>Ne pas en avoir conscience ou les nier (-5 pts) :</b> variante automatique pour certains désavantages mentaux (<i>Chimère</i> par exemple)
+			et dans ce cas, elle n’apporte pas de points supplémentaires.</p>
+
 		<p>• <b>Tabou (-5 pts) :</b> interdiction/obligation « sacrée » absolue. Le personnage obéit toujours à ce désavantage. Si c’est impossible (sous la contrainte, par exemple), le personnage perd 1 PdE à chaque fois (max 1 PdE tout les 2 jours).</p>
 	</details>
 
+	<!-- Après la création du personnage -->
 	<details>
 		<summary>
 			<h3>Après la création du personnage</h3>
@@ -325,13 +360,16 @@ $repo = new SkillRepository;
 		<p>Il est également possible d’acquérir un <i>Avantage</i> ou un <i>Désavantage</i> ou de racheter un <i>Désavantage</i> si cela n’est pas incompatible avec la logique de l’<i>Avantage</i>/<i>Désavantage</i> (on ne rachète pas le désavantage <i>Borgne</i>, par exemple, mais on peut racheter une <i>Malchance</i> ou un <i>Trait de caractère</i>).</p>
 	</details>
 
+	<!-- Travers -->
 	<details>
 		<summary>
 			<h3>Travers</h3>
 		</summary>
-		<p><i>Trait de caractère</i> mineur (-1 pt) ne constituant pas un désavantage. À la création, il est possible de prendre jusqu’à 5 travers.<br>
-			Un <i>Travers</i> peut être racheté ou changé, si un événement justifie un léger changement de personnalité.</p>
-		<p><b>Quelques catégories de travers :</b> croyance, objectif mineur, goût ou dégoût, habitude, expression, manière particulière de se vêtir, un amour non partagé, des loisirs particuliers, un divertissement préféré, etc.</p>
+		<p>
+			<i>Trait de caractère</i> mineur (-1 pt) ne constituant pas un désavantage. À la création, il est possible de prendre jusqu’à 5 travers.<br>
+			Un <i>Travers</i> peut être racheté ou changé, si un événement justifie un léger changement de personnalité.
+		</p>
+		<p><b>Quelques catégories de travers :</b> croyance, objectif mineur, goût ou dégoût, habitude, expression, manière particulière de se vêtir, un amour non partagé, des loisirs particuliers, un divertissement préféré, &hellip;</p>
 	</details>
 
 </article>
@@ -406,6 +444,7 @@ $repo = new SkillRepository;
 		</table>
 
 		<?php if (SKILL_V2): ?>
+			<p>Au-delà d’un niveau de +3, un entraînement <i>actif</i> est nécessaire. Le seul fait d’utiliser la compétence en jeu ne suffit plus à la faire évoluer.</p>
 			<p>Il n’est pas possible d’avoir un niveau de compétence supérieur à +7.</p>
 		<?php endif ?>
 

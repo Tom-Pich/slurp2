@@ -1,12 +1,12 @@
-# SLURP v3.28 – Le moteur de JdR universel
+# SLURP v3.31 – Le moteur de JdR universel
 
-Ce projet contient le code source de mon application permettant de faire des parties de SLURP en ligne. SLURP est un moteur de règles universelles de JdR sur table. C’est un _fork_ de GURPS de ma propre invention. Le projet a démarré en 2000. 
+Ce projet contient le code source de mon application permettant de faire des parties de SLURP en ligne. SLURP est un moteur de règles universelles de JdR sur table. C’est un _fork_ de GURPS de ma propre invention. Le projet a démarré en 2000.
 
 Ce site contient :
 - Toutes les règles de SLURP ;
 - Un système d’utilisation et de gestion des personnages.
-- Une table de jeu, comportant des widgets permettant de gérer les règles en cours de partie et un système de _chat_ en websocket (le serveur de chat, en NodeJS, est extrêmement simple. Il n’est pas inclus dans le code étant donné qu’il doit être déployé sur un serveur différent de celui utilisé pour le site, qui est en _shared hosting_).
-- Une partie administration ouverte aux Meneurs de jeu permettant de gérer les personnages et les groupes dont il a la responsabilité.
+- Une table de jeu, comportant des widgets permettant de gérer les règles en cours de partie et un système de _chat_ en websocket (le serveur de chat, en NodeJS, est extrêmement simple. Il n’est pas inclus dans le code).
+- Une partie administration réservée aux Meneurs de Jeu permettant de gérer les personnages et les groupes dont il a la responsabilité.
 - Une partie administration qui m’est exclusivement réservée. Elle permet de gérer d’autres données du site (compétences, traits, pouvoirs, créatures, changement de mot de passe oublié...)
 
 ### Structure et architecture
@@ -19,4 +19,4 @@ La base de données n’est pas fournie dans le code source.
 
 ### Voir une démo
 Vous pouvez voir le site en fonctionnement à l’adresse [jdr.pichegru.net](https://jdr.pichegru.net).
-L’essentiel du site n’est cependant pas accessible si vous n’avez pas de compte (et vous ne pouvez pas en créer un vous-même). Si vous êtes intéressé, contactez-moi : t.pichegru@gmail.com.
+L’essentiel du site n’est cependant pas accessible si vous n’avez pas de compte (et vous ne pouvez pas en créer un vous-même). Si vous êtes intéressé, contactez-moi via le site.

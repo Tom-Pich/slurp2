@@ -5,8 +5,8 @@
 	<p>La Sordolia est la province septentrionale de Burgonnie, une terre sauvage aux profondes forêts et aux habitants aussi rudes que le climat qui y règne.</p>
 	<div class="right flow">
 		<figure>
-			<a href="/assets/img_paorn/sordolia.webp?v=2" target="_blank">
-				<img src="/assets/img_paorn/sordolia-600.webp?v=2" alt="carte de Sordolia">
+			<a href="/assets/img_paorn/carte-sordolia.webp?v=2" target="_blank">
+				<img src="/assets/img_paorn/carte-sordolia.webp?v=2" alt="carte de Sordolia">
 			</a>
 			<figcaption>Carte de la Sordolia</figcaption>
 		</figure>
@@ -58,30 +58,30 @@
 		<p>La Sordolia est divisée en <b>huit grands territoires</b> : les terres de la Couronne, gouvernées directement par le prince depuis Sardam, cinq fiefs vassaux dont les seigneurs siègent à l'Assemblée provinciale, la <i>Marche de Lund</i> et les <i>Marches Franches</i>.</p>
 
 		<figure>
-			<img src="/assets/img_paorn/sordolia-politique.webp?v=2" alt="Carte politique de la Sordolia">
+			<img src="/assets/img_paorn/carte-sordolia-politique.webp?v=2" alt="Carte politique de la Sordolia">
 			<figcaption>Régions politiques de la Sordolia</figcaption>
 		</figure>
 
 		<ul class="flow">
 			<li>
-				<b>Les terres de la Couronne</b> — en orange. Gouvernées directement par le prince d'Avrelanche depuis Sardam. Elles comprennent presque la moitié du territoire de Sordolia (environ 140.000 km<sup>2</sup>), limitée au Nord par le Dernier Rempart.
+				<b>Les terres de la Couronne</b> — la plus grande région, centrale, en vert foncé. Gouvernées directement par le prince d'Avrelanche depuis Sardam. Elles comprennent presque la moitié du territoire de Sordolia (environ 140.000 km<sup>2</sup>), limitée au Nord par le Dernier Rempart.
 			</li>
 
 			<li>
-				<b>Le duché de Lardam</b> — en jaune. Le fief le plus riche et le plus peuplé de Sordolia, tourné vers la mer et le commerce maritime. Son duc, <b>Lancmon Hareld</b>, est un homme d'affaires autant qu'un seigneur : il entretient des liens étroits avec les guildes de fourrures et les armateurs de la côte sud. La baronnie de Meck, au nord de Lardam, relève de ce duché en tant que vassal direct du duc.
+				<b>Le duché de Lardam</b> — sud, en vert clair. Le fief le plus riche et le plus peuplé de Sordolia, tourné vers la mer et le commerce maritime. Son duc, <b>Lancmon Hareld</b>, est un homme d'affaires autant qu'un seigneur : il entretient des liens étroits avec les guildes de fourrures et les armateurs de la côte sud. La baronnie de Meck, au nord de Lardam, relève de ce duché en tant que vassal direct du duc.
 			</li>
 
 			<li>
-				<b>Le comté de Palidam</b> — en bleu. La péninsule orientale et le pays de l'Ostwilt, dominés par le grand marché de peaux et de fourrures de Palidam. La comtesse <b>Erna Brokkeld</b>, veuve depuis cinq ans, gouverne seule avec une poigne réputée. Son territoire inclut une partie de la côte et les landes du pays de l'Ostwilt.
+				<b>Le comté de Palidam</b> — est, en vert clair. La péninsule orientale et le pays de l'Ostwilt, dominés par le grand marché de peaux et de fourrures de Palidam. La comtesse <b>Erna Brokkeld</b>, veuve depuis cinq ans, gouverne seule avec une poigne réputée. Son territoire inclut une partie de la côte et les landes du pays de l'Ostwilt.
 			</li>
 
 			<li>
-				<b>Le duché de Karldam</b> — en vert. Les terres du sud-est, entre le Haut Vildberg et la côte. Le duc <b>Diebold Krantz</b> tient Karldam, cité des artisans. C'est un territoire relativement prospère, dont la renommée repose sur le travail du bois et de l'ébénisterie.
+				<b>Le duché de Karldam</b> — sud est, en vert moyen. Les terres du sud-est, entre le Haut Vildberg et la côte. Le duc <b>Diebold Krantz</b> tient Karldam, cité des artisans. C'est un territoire relativement prospère, dont la renommée repose sur le travail du bois et de l'ébénisterie.
 			</li>
 
-			<li><b>Le duché de Voldam</b> – en bleu.</li>
+			<li><b>Le duché de Voldam</b> – en vert clair.</li>
 
-			<li><b>Le duché de Vorteldam</b> – en vert. Tenu par <b>Andries Vorn</b>, duc de Vorteldam et Marquis de Lund. C’est un vassal du prince d’Avrelanche, mais il gère également les Marches de Lund, dont il répond devant l’Empereur. Cette situation bâtarde le place parfois dans une situation politique tendue.</li>
+			<li><b>Le duché de Vorteldam</b> – en vert moyen. Tenu par <b>Andries Vorn</b>, duc de Vorteldam et Marquis de Lund. C’est un vassal du prince d’Avrelanche, mais il gère également les Marches de Lund, dont il répond devant l’Empereur. Cette situation bâtarde le place parfois dans une situation politique tendue.</li>
 
 		</ul>
 
@@ -90,7 +90,7 @@
 		<ul>
 			<li><b>La marche de Lund</b> — territoire dépeuplé et âpre, en frontière du Salthar, organisé moins comme un fief traditionnel que comme une zone tampon militaire. Son seigneur, <b>Andries Vorn</b>, tient Vorteldam et les routes de l'Asbial.</li>
 
-			<li><b>Les marches franches</b> – en jaune. Bien que sous la tutelle du Prince, ce territoire est, dans les faits, quasi-autonome. Il est occupé par une dizaine de clans humains, dirigé par des chefs de guerre.</li>
+			<li><b>Les marches franches</b> – péninsule du Komashkaïda. Bien que sous la tutelle du Prince, ce territoire est, dans les faits, quasi-autonome. Il est occupé par une dizaine de clans humains, dirigé par des chefs de guerre.</li>
 		</ul>
 
 		<h4>Cas particuliers</h4>
@@ -112,8 +112,6 @@
 
 			<li><b>La péninsule de Komashkaïda :</b> Située à l’extrémité orientale de la Burgonnie du nord, habitée par des tribus de rudes guerriers aux mœurs barbares et des tribus naines.</li>
 
-			<li><b>La forêt Rêveuse :</b> La plus grande forêt de Sordolia, et la plus dangereuse, abritant des tribus d’humanoïdes féroces.</li>
-
 			<li>
 				<b>Le Dernier Rempart :</b> Une gigantesque muraille édifiée dans les Sinistérias pour endiguer les attaques des humanoïdes du nord. Cette muraille est régulièrement ponctuée de petits forts abritant quelques dizaines d’hommes (le plus souvent une trentaine). Ces soldats montent la garde et surveillent ce qui se passe au-delà du Rempart, un peu à la manière du Mur dans <i>Game of Throne</i>. (Blason de ces soldats : une tour stylisée sur fond de montagnes)<br>
 				Régulièrement, des patrouilles solidement armées s’aventurent au-delà du mur dans le but de détecter d’éventuelles traces d’activités.
@@ -127,11 +125,30 @@
 			<h3>Routes de Sordolia</h3>
 		</summary>
 		<ul>
-			<li><b>Sardam – Solidam :</b> 220 km (8-9 jours à pied, 5-8 jours à cheval)</li>
-			<li><b>Sardam – Lardam :</b> 255 km (9-11 jours à pied, 6-9 jours à cheval)</li>
-			<li><b>Sardam – Palidam :</b> 315 km (11-13 jours à pied, 7-11 jours à cheval)</li>
+			<li><b>Sardam – Solidam :</b> 220 km (8-9 jours à pied, 5-7 jours à cheval)</li>
+			<li><b>Sardam – Lardam :</b> 255 km (9-10 jours à pied, 6-8 jours à cheval)</li>
+			<li><b>Sardam – Palidam :</b> 315 km (11-12 jours à pied, 7-11 jours à cheval)</li>
 		</ul>
 	</details>
+
+	<!-- La forêt Rêveuse -->
+	<details>
+		<summary>
+			<h3>La Forêt Rêveuse</h3>
+		</summary>
+
+		<div class="has-right-block">
+			<p>Avec ses quelque 40 000 km², la forêt Rêveuse est la plus grande forêt de Sordolia — et sans doute la moins connue. Elle s'étend depuis les rivages méridionaux jusqu'au pied du Dernier Rempart, large parfois de cent cinquante kilomètres, rétrécissant en d'autres endroits selon le relief. Un seul axe humain la traverse vraiment : la grande route nord-sud reliant la côté à Solidam et passant par Sardam, la capitale. Le long de cette route de quelques 325 km s'égrènent quelques villages distants de trente à cinquante kilomètres les uns des autres. Au-delà de ce couloir, c'est terra incognita — non pas déserte, mais étrangère. La forêt rêve depuis bien avant que les hommes n'y tracent leurs chemins, et rien dans son comportement ne suggère qu'elle les ait remarqués. Ceux qui s'y aventurent au-delà de la route rapportent tous la même chose : une lumière qui change trop vite, des sons qui portent à des distances impossibles, et le sentiment persistant d'être regardé par quelque chose qui n'a pas besoin de se montrer.</p>
+
+			<figure class="right">
+				<img src="/assets/img_paorn/sordiolia-foret-reveuse-01.webp" alt="La Forêt Rêveuse">
+				<figcaption>Sous-bois de la Forêt Rêveuse</figcaption>
+			</figure>
+		</div>
+
+		<p>Elle est pourtant habitée, densément, à sa manière. Les elfes sylvestres y ont leurs territoires depuis des millénaires ; discrets jusqu'à l'invisibilité, ni bienveillants ni hostiles, ils ont conclu avec les humains de la route un accord tacite : chacun chez soi, l'ennemi commun pourchassé par les deux camps. Cet ennemi commun a plusieurs visages : orcs, gobelins et hobgobelins se disputent les profondeurs de la forêt dans une guerre permanente et silencieuse dont les voyageurs ne voient que les restes — un campement calciné, des flèches dans des troncs. Des trolls et des ogres y vivent en solitaires. Des sylvaniens y veillent à leur façon — peu enclins à l'indulgence envers qui porterait une hache. Et puis il y a d’autres choses, plus mystérieuses… des phénomènes que les mages les plus érudits peinent à expliquer, des zones où le temps ne se comporte pas tout à fait comme prévu, des clairières desquelles personne ne revient jamais tout à fait pareil. La forêt Rêveuse est belle, mystérieuse, et, pour qui sait y lire les signes, parfois accueillante. Mais elle n'appartient à personne.</p>
+	</details>
+
 </section>
 
 <!-- Habitants -->

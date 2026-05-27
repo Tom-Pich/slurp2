@@ -55,4 +55,32 @@
 <p>Ils sont pourchassés par l’Arcania et les peines qu’ils encourent dépendent de leurs actions passées (qui sont révélées grâce à <i>Investigation mentale</i>). Dans tous les cas, la peine est sévère et un mage peut assez facilement être condamné à mort pour ce crime s’il a mené des actions illégales graves.</p>
 <p>Cependant, les mages gris restent assez nombreux. Ils vivent dans de petits villages ou bien retirés du monde. Tant qu’ils ne font pas parler d’eux, l’Arcania n’a pas le temps de s’en occuper.</p>
 
-<p>Il existe également un certain nombre de sorts permettant de fausser les informations obtenues par un mage de l’Arcania grâce à des sorts tels que <i>Lecture d’aura</i> ou <i>Investigation mentale</i>. Mais ces sorts sont peu répandus et leur utilisation est considéré comme un crime punissable de mort si l’Arcania s’en aperçoit.</p>
+<p>Il existe également un certain nombre de sorts permettant de fausser les informations obtenues par un mage de l’Arcania grâce à des sorts tels que <i>Lecture d’aura</i> ou <i>Investigation mentale</i>. Mais ces sorts sont peu répandus et leur utilisation est considérée comme un crime si l’Arcania s’en aperçoit.</p>
+
+<h2>Usage de la magie dans les interrogatoires</h2>
+
+<p>La magie est un outil légal entre les mains d'un mage patenté, sous réserve qu'elle ne viole pas les libertés fondamentales reconnues par le droit burgon. Or le droit burgon en reconnaît deux : la liberté d'action et la liberté de conscience. Toute magie portant atteinte à ces deux libertés est strictement encadrée.</p>
+
+<h3>Sorts autorisés sans restriction</h3>
+
+<p>Tous les sorts non intrusifs évaluant une réaction, notamment toutes les détections (<i>Perception des émotions</i>, <i>Détection des mensonges</i>, <i>Lecture d’Aura</i>).</p>
+
+<p>Ces sorts sont admis comme aide à l'interrogatoire dans toute enquête officielle, à condition que les questions posées relèvent directement de l'affaire instruite. Le résultat est une indication, pas une preuve — un juge prudent l'utilisera comme levier, pas comme verdict.</p>
+
+<h3>Sorts à usage encadré</h3>
+
+<p><b>Sorts d'influence légère</b> (<i>Suggestion</i>, <i>Injonction</i>, <i>Contrôle émotionnel</i>, etc.) — Ils n'accèdent pas aux pensées mais agissent sur la volonté. Légalement ambigus : ils ne violent pas la liberté de conscience (on ne lit rien), mais ils entament la liberté d'action. Leur usage est toléré dans le cadre d'une enquête officielle conduite sous autorité reconnue, mais le résultat n'est pas recevable seul devant un tribunal — il doit être corroboré.</p>
+
+<p><b>Lecture des pensées superficielles</b> — Légalement admise dans les seules affaires relevant d'un danger pour la sécurité de l'État ou pour la personne du souverain, sur ordre exprès de l'autorité provinciale ou impériale. Hors de ce cadre, son usage constitue une violation de la liberté de conscience, et ses résultats sont irrecevables. En pratique, les nobles s'y opposent farouchement, et aucun chancelier sensé ne l'ordonnera sur un vassal de rang sans y être contraint.</p>
+
+<h3>Sorts interdits</h3>
+
+<p><b>Investigation mentale</b> (fouille profonde de l'esprit) — Considerée comme une mutilation de la personne, au même titre qu'une torture physique. Interdite en toutes circonstances par le droit burgon. L'Arcania elle-même ne peut l'ordonner.</p>
+
+<h3>Limites à l’usage de la magie lors d’un interrogatoire</h3>
+
+<p><b>Les sorts ne garantissent ni l'exhaustivité ni la vérité absolue : </b>un sort raté, un contre-sort, une potion de résistance, une volonté exceptionnelle peuvent fausser les résultats. Un interrogatoire magiquement assisté reste un interrogatoire, pas un oracle.</p>
+
+<p>Un noble ou un homme averti peut arriver à un interrogatoire protégé. Ce n'est pas illégal en soi — se défendre contre une intrusion magique relève de la liberté d'action.</p>
+
+<p>La parole d'un mage a une valeur testimoniale renforcée (son honnêteté est magiquement garantie), ce qui fait de de lui un témoin précieux devant un tribunal — mais pas un inquisiteur tout-puissant.</p>

@@ -7,7 +7,7 @@
 	--ff-base: 'Open Sans', 'sans-serif';
 	--ff-accent: 'Rubik', 'sans-serif';
 	--page-content-areas: "main main main";
-	--col-width: 370px;
+	--col-width: 400px; //370px
 	@include media($brp-l) { --col-width: 350px; }
 	@include media { --col-width: 100%; }
 
@@ -30,7 +30,7 @@ aside, section, article { @include flow; }
 	display: grid; min-height: calc(100vh - 212px); padding: 1em; gap: 1em;
 	grid-template-columns: var(--col-width) 1fr var(--col-width);
 	@include media ($brp-l) { grid-template-columns: var(--col-width) 1fr; }
-	@include media { grid-template-columns: 1fr; }
+	@include media { grid-template-columns: 1fr;}
 	&:has(aside.left:empty) { @include media-min {grid-template-columns: 1fr var(--col-width);} }
 	&:has(aside.right:empty) { @include media-min {grid-template-columns: var(--col-width) 1fr;} }
 	&:has(aside.right:empty):has(aside.left:empty){ grid-template-columns: 1fr; }
@@ -47,7 +47,7 @@ h4 { font-size: var(--fs-450); --flow-space: 1em; }
 h5 { font-size: var(--fs-400); --flow-space: 1em; }
 p, ol, ul { text-align: justify; hyphens: auto; }
 dfn {text-decoration: underline var(--clr-700); cursor: help;}
-dialog { background-color: var(--white); color: var(--grey-200); width: clamp(300px, 70vw, 600px); }
+dialog { background-color: var(--white); color: var(--grey-200); width: clamp(300px, 80vw, 1000px); }
 
 // utilities
 .gap-¼ { gap: .25em; }

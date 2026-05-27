@@ -4,10 +4,10 @@ define("IS_ONLINE", $_SERVER['HTTP_HOST'] === 'jdr.pichegru.net');
 define("DB_ACTIVE", true);
 define("GENERIC_PASSWORD", $_ENV["GENERIC_PASSWORD"]);
 define("SESSION_DURATION", 10800);
-define("VERSION", "3.29.3"); // 3.29: intégration de l’IA dans la table de jeu
-define("DATE_VERSION", "avril 2026");
+define("VERSION", "3.31.0"); // 3.31: fichiers .md pour IA
+define("DATE_VERSION", "mai 2026");
 define("PRODUCTION", true); // run webpack before switching to true
-define("SKILL_V2", true); // coût compétences v2
+define("SKILL_V2", true); // coût compétences v2 → niv limité à +7
 
 if (IS_ONLINE) {
 	define("DB_HOST", $_ENV["DB_HOST"]);

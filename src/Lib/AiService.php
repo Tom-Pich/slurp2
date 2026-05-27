@@ -1,34 +1,43 @@
 <?php
 
 namespace App\Lib;
-// Un service générique pour appeler Gemini
+
+// Peut-être un jour...
 class AiService
 {
 	private string $apiKey;
-	private string $endpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
+	private ?string $endpoint = NULL;
 
-	public function __construct(string $apiKey)
+	public function __construct()
 	{
-		$this->apiKey = $apiKey;
+		$this->apiKey = $_ENV["AI_API_KEY"];
 	}
 
 	public function ask(string $prompt): mixed
 	{
 		$payload = json_encode([
-			'contents' => [['parts' => [['text' => $prompt]]]]
+			"model" => NULL,
+			"messages" => [
+				["role" => "system", "content" => "Tu es l’assistant d’un maître de jeu au cours d’une partie de JdR sur table. Tu dois l’aider dans ses séquences d’improvisation. Ne prends pas d’initiative scénaristique, contente-toi de rédiger la description demandée."],
+				["role" => "user", "content" => $prompt]
+			],
+			"max_tokens" => 300,
 		]);
 
-		$ch = curl_init("{$this->endpoint}?key={$this->apiKey}");
+		$ch = curl_init($this->endpoint);
 		curl_setopt_array($ch, [
 			CURLOPT_RETURNTRANSFER  => true,
 			CURLOPT_POST            => true,
 			CURLOPT_POSTFIELDS      => $payload,
-			CURLOPT_HTTPHEADER      => ['Content-Type: application/json'],
+			CURLOPT_HTTPHEADER      => [
+				"Authorization: Bearer $this->apiKey",
+				"Content-Type: application/json",
+			],
 			CURLOPT_SSL_VERIFYPEER  => IS_ONLINE,
 		]);
 
 		$response = json_decode(curl_exec($ch), true);
-
-		return $response["candidates"][0]["content"]["parts"][0]["text"];
+		return $response;
+		return $response["choices"][0]["message"]["content"] ?? "";
 	}
 }

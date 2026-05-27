@@ -102,15 +102,37 @@
 	<summary>
 		<h3>3. Les quartiers de la garde (aile nord-ouest)</h3>
 	</summary>
-	<p>Deux niveaux. Couloirs larges, plafonds bas, torches dans des anneaux de fer. Les murs sentent la graisse d'arme et la laine mouillée.</p>
 
-	<p>Les salles communes sont encombrées en dehors des tours de garde : tabourets renversés, dés oubliés sur une table, une veste d'uniforme pendue à un crampon. Les hommes parlent fort ou ne parlent pas du tout. Un sergent passe avec un registre sous le bras sans regarder personne. Un tableau de service épinglé par une dague — les rotations de garde, les noms, les heures. Une cible d'entraînement au fond avec des couteaux plantés dedans.</p>
+	<p>170 m<sup>2</sup> au sol,sur deux niveaux. Couloirs larges, plafonds bas, torches dans des anneaux de fer. Les murs sentent la graisse d'arme et la laine mouillée.</p>
+
+	<p class="fw-700">Rez-de-chaussé</p>
+	<ul>
+		<li>refectoire (la nourriture est amenée depuis les cuisines) qui fait aussi office de salle de réunion ~ 12,5×6 = 75 m²</li>
+		<li>armurerie ~ 50 m²</li>
+		<li>lattrines ~ 10 m²</li>
+		<li>accueil corps de garde. Sergent de permanence, tableau de service et lefs des armoires. ~ 8 m²</li>
+		<li>réserve de matériel courant — torches, huile, cordes, seaux — distincte de l'armurerie. Un réduit sous l'escalier ~ 4 m²</li>
+		<li>accès à la tour nord-ouest</li>
+		<li>murs et accès ~ 20 m²</li>
+	</ul>
+
+	<p class="fw-700">1er étage</p>
+	<ul>
+		<li>chambres des gardes (13 de 6 m²) ~ 80 m²</li>
+		<li>chambres des officiers (3 de 12 m²) ~ 36 m²</li>
+		<li>bureaux (2 de 12 m²) ~ 24 m²</li>
+		<li>accès tour nord-ouest</li>
+		<li>lattrines ~ 10 m²</li>
+		<li>murs et accès ~ 20 m²</li>
+	</ul>
+
+	<p>Le réféctoire est généralement occupé par les gardes en période de repos : tabourets renversés, dés oubliés sur une table, une veste d'uniforme pendue à un crampon. Les hommes parlent fort ou ne parlent pas du tout. Un sergent passe avec un registre sous le bras sans regarder personne. Un tableau de service épinglé par une dague — les rotations de garde, les noms, les heures. Une cible d'entraînement au fond avec des couteaux plantés dedans.</p>
 
 	<p>L'armurerie est fermée à clef, mais on entend derrière la porte le bruit régulier d'une pierre à aiguiser.</p>
 
-	<p>Le bureau d'Ostveig est adjacent : petite pièce de travail, une table, le registre des rondes. Propre, rangé, rien de superflu.</p>
+	<p>Le bureau d'Ostveig est situé au premier étage : petite pièce de travail de 4×3 m², une table, le registre des rondes. Propre, rangé, rien de superflu.</p>
 
-	<p class="italic">Ambiance : décontraction des gens habitués au danger, attention diffuse mais permanente.</p>
+	<p class="italic">Ambiance : décontraction des gens habitués au danger, attention diffuse mais permanente.</p>
 
 </details>
 
@@ -257,6 +279,7 @@
 	<summary>
 		<h3>Konrad, capitaine de la garde d’honneur</h3>
 	</summary>
+	<p>Cheveux très courts, barbe blonde broussailleuse, yeux brun-vert, apparence moyenne.</p>
 	<p>Armure légère aux armes de la province, cape bleu sombre.<span class="admin"> Direct et sans détours, méfiant envers les étrangers, loyal avant tout au Prince. Présent dans les espaces représentatifs, accompagne Margor dans les audiences, supervise la sécurité des appartements nobles.</span></p>
 </details>
 
@@ -271,16 +294,18 @@
 
 		<p>Gère les rotations, les rondes, le tableau de service épinglé d'une dague, les cellules. Travail de terrain, sans représentation. Son terrain, ce sont les quartiers de la garde, pas les couloirs du corps de logis.</p>
 
-		<p class="admin">Efficace, méthodique, peu loquace. En surface, un officier irréprochable : ponctuel, rigoureux, sans fantaisie. Ses hommes le respectent sans vraiment l'aimer — il ne cherche pas à être aimé. Sous cette surface bien tenue, une rancœur ancienne contre le commandant Kantrel qu'il n'exprime jamais directement et qu'il serait le premier à nier.</p>
-
-		<p class="admin">Il ne rit jamais vraiment. Quand quelque chose l'amuse, un sourire bref et sec traverse son visage sans jamais atteindre les yeux. En entretien, quand une question le met mal à l'aise, il répond d'abord par une phrase courte et s'arrête — comme pour tester jusqu'où l'interlocuteur va pousser avant d'en dire davantage.</p>
+		<div class="admin flow">
+			<p>Efficace, méthodique, peu loquace. En surface, un officier irréprochable : ponctuel, rigoureux, sans fantaisie. Ses hommes le respectent sans vraiment l'aimer — il ne cherche pas à être aimé. Sous cette surface bien tenue, une rancœur ancienne contre le commandant Kantrel qu'il n'exprime jamais directement et qu'il serait le premier à nier.</p>
+			
+			<p>Il ne rit jamais vraiment. Quand quelque chose l'amuse, un sourire bref et sec traverse son visage sans jamais atteindre les yeux. En entretien, quand une question le met mal à l'aise, il répond d'abord par une phrase courte et s'arrête — comme pour tester jusqu'où l'interlocuteur va pousser avant d'en dire davantage.</p>
+		</div>
 
 		<figure class="right">
 			<img src="/assets/img_paorn/sardam-capitaine-ostveig.webp" alt="portrait du capitaine Ostveig">
 			<figcaption>Le capitaine Ostveig</figcaption>
 		</figure>
 	</div>
-	
+
 </details>
 
 <!-- Frère Aldgrim, aumônier -->

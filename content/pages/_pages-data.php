@@ -15,7 +15,7 @@ return $pages_data = [
 		"description" => "Les règles concernant la création de personnage",
 		"file" => "01a-personnage",
 		"version" => 4,
-		"aside-left" => "aside-01-left",
+		//"aside-left" => "aside-01-left",
 	],
 	"avdesav-comp-sorts" => [
 		"title" => "Listes pour le personnage",

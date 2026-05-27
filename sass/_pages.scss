@@ -26,7 +26,7 @@ body.table-jeu {
 	#page-wrapper { background: url("/assets/img/bg-table.jpg") center/cover; }
 
 	main {
-		position: relative; columns: var(--col-width) auto; column-gap: 1em;
+		position: relative; columns: 380px auto; column-gap: 1em;
 		fieldset { margin-bottom: .5em; }
 		@include media ($brp-s) {columns: 1;}
 
@@ -36,7 +36,12 @@ body.table-jeu {
 			background-color: #fff5;
 			legend {color: white; font-family: var(--font-accent); font-weight: bold; font-size: var(--fs-450)}
 			input:not([type=checkbox]), select { width: 5ch; }
+			&.memo { color: white; }
 		}
+
+		table tr:nth-child(2n) { background-color: rgba(92, 24, 24, .5); }
+		table.alternate-o tr:nth-child(2n) { background-color: transparent; }
+		table.alternate-o tr:nth-child(2n+1) { background-color: rgba(92, 24, 24, .5); }
 	}
 
 	aside.right { margin-top: .75em; }

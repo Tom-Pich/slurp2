@@ -55,7 +55,7 @@ use App\Entity\Spell;
 				<td>-2</td>
 				<td>8</td>
 				<td>0</td>
-				<td>12</td>
+				<td><?= Spell::improvisation[0] ?></td>
 			</tr>
 			<tr>
 				<td>2</td>
@@ -64,7 +64,7 @@ use App\Entity\Spell;
 				<td>-1</td>
 				<td>11</td>
 				<td>5</td>
-				<td>14</td>
+				<td><?= Spell::improvisation[1] ?></td>
 			</tr>
 			<tr>
 				<td>3</td>
@@ -73,7 +73,7 @@ use App\Entity\Spell;
 				<td>0</td>
 				<td>13</td>
 				<td>10</td>
-				<td>17</td>
+				<td><?= Spell::improvisation[2] ?></td>
 			</tr>
 			<tr>
 				<td>4</td>
@@ -82,7 +82,7 @@ use App\Entity\Spell;
 				<td>+1</td>
 				<td>15</td>
 				<td>15</td>
-				<td>20</td>
+				<td><?= Spell::improvisation[3] ?></td>
 			</tr>
 			<tr>
 				<td>5</td>
@@ -91,7 +91,7 @@ use App\Entity\Spell;
 				<td>+2</td>
 				<td>auto.</td>
 				<td>&infin;</td>
-				<td>25</td>
+				<td><?= Spell::improvisation[4] ?></td>
 			</tr>
 		</table>
 
@@ -356,34 +356,7 @@ use App\Entity\Spell;
 			<h3>Caractéristiques générales</h3>
 		</summary>
 		<p>Sauf indication contraire dans la description du sort, les sorts ont les caractéristiques générales suivantes.</p>
-		<table>
-			<tr>
-				<th>Niv</th>
-				<th>Modif</th>
-				<th>PdM</th>
-				<th>Rapide</th>
-				<th>Long</th>
-			</tr>
-			<?php
-			foreach (["I", "II", "III", "IV", "V"] as $i => $niv):
-				$cast_time_long = Spell::cast_time[$i][1];
-				if ($cast_time_long >= 3600) {
-					$cast_time_long = (string) ((int) ($cast_time_long / 3600)) . " h";
-				} elseif ($cast_time_long >= 60){
-					$cast_time_long = (string) ((int) ($cast_time_long / 60)) . " min";
-				} else {
-					$cast_time_long = (string) $cast_time_long . " s";
-				}
-			?>
-				<tr>
-					<td><?= $niv ?></td>
-					<td><?= Spell::niv_modifier[$i] ?></td>
-					<td><?= Spell::pdm_cost[$i] ?></td>
-					<td><?= Spell::cast_time[$i][0] ?> s</td>
-					<td><?= $cast_time_long ?></td>
-				</tr>
-			<?php endforeach ?>
-		</table>
+		<?php include "content/components/table-spell-data.php" ?>
 		<p>
 			<b>Niv :</b> niveau de puissance<br>
 			<b>Modif :</b> modificateur de puissance<br>

@@ -56,8 +56,9 @@
 	<h3>Outils VTT</h3>
 	<ul>
 		<li><a href="https://www.owlbear.rodeo" target="_blank">owlbear.rodeo</a> : plateforme VTT simple et efficace</li>
-		<li><a href="https://www.dnd-compendium.com/play-online/character-tokens" target="_blank">dnd-compendium.com</a> : générateur de tokens</li>
-		<li><a href="https://thefatefulforce.com/battle-resources/token-creator/" target="_blank">thefatefulforce.com</a> : générateur de tokens</li>
+		<li><a href="https://thefatefulforce.com/battle-resources/token-creator/" target="_blank">thefatefulforce.com</a> : générateur de tokens 👍</li>
+		<li><a href="https://www.dnd-compendium.com/play-online/character-tokens" target="_blank">dnd-compendium.com</a> : autres générateurs de tokens</li>
+		
 	</ul>
 
 

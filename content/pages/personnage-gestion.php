@@ -265,6 +265,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 								<input type="text" name="Compétences[<?= $n_post ?>][label]" value="<?= $comp['label'] ?>" class="fl-1">
 								<div class="ta-center clr-grey-500 desktop-tablet" style="width: 6ch" title="type"><?= $comp['type'] ?></div>
 								<div class="ta-center clr-grey-500" style="width: 4ch" title="points"><?= $comp['points'] ?></div>
+								<div class="ta-center clr-grey-500" style="width: 4ch" title="niveau"><?= $comp['niv'] ?></div>
 								<input type="text" name="Compétences[<?= $n_post ?>][score]" value="<?= $comp['score'] ?>" style="width: 6ch" class="ta-center" title="score">
 								<input type="hidden" name="Compétences[<?= $n_post ?>][former-score]" value="<?= (int) $comp['score'] ? $comp['score'] : $comp["virtual-score"] ?>">
 								<input type="hidden" name="Compétences[<?= $n_post ?>][former-niv]" value="<?= $comp['niv'] ?>">

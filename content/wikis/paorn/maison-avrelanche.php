@@ -37,6 +37,8 @@
 
 <p>Il s'habille simplement — laine épaisse, cuir brun, bottes cloutées aussi adaptées au château qu'à la forêt. Jamais de bijoux sauf une chevalière de fer sombre portant le symbole de la maison.</p>
 
+<p>Il parle comme il décide, sans détour. Phrases courtes, sujet direct, pas de subordonnées en cascade ni de formulations prudentes. Il dit « je » là où un courtisan dirait « il nous semble que ». Il n'explique pas ses raisons — il les expose si on les lui demande, brièvement, une fois. Sans brutalité, c'est de l'économie. Il pose des questions auxquelles il attend des réponses du même calibre, et si la réponse est évasive, il répète la question exactement de la même façon, même ton, même rythme, sans signe d'impatience. Le silence, chez lui, n'est pas un vide à combler : il s'en sert comme d'un outil. Quand quelque chose lui convient, il ne le dit pas — il passe à autre chose. Les gens de cour trouvent ça déconcertant. Les gens de terrain trouvent ça reposant.</p>
+
 <div class="admin flow">
 	<p>Quand il joue de l'épinette — seul, tard le soir — sa main droite s'applique avec une concentration qu'on ne lui voit jamais en public. C'est la seule chose qu'il ne fait pas en étant ailleurs.</p>
 

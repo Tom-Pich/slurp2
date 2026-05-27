@@ -13,10 +13,11 @@ use App\Rules\WeaponsController;
 		<summary>
 			<h3>Dégâts</h3>
 		</summary>
+
 		<p>Les dégâts d’une arme sont caractérisés par un <i>Type</i> et une <i>Étendue</i>.</p>
 
 		<p>
-			Pour les armes blanche, il existe trois <b>types de dégâts</b>&nbsp;: broyage (B), perforant (P) et tranchant (T). Sur une créature vivante, à valeurs égales, les dégâts perforants sont plus efficaces que les dégâts tranchants, eux-mêmes plus efficaces que les dégâts de broyage. Ces différences sont gérées sur la <a href="/table-jeu">table de jeu</a>. Voir aussi <i>Effets d’une blessure</i> sur la page <a href="/blessures-dangers">Blessures et dangers</a>.<br>
+			Pour les armes blanche, il existe trois <b>types de dégâts</b> : broyage (B), perforant (P) et tranchant (T). Sur une créature vivante, à valeurs égales, les dégâts perforants sont plus efficaces que les dégâts tranchants, eux-mêmes plus efficaces que les dégâts de broyage. Ces différences sont gérées par la <a href="/table-jeu">table de jeu</a>.<br>
 			Les dégâts causés par les armes à feu sont traités plus loin dans cette section.
 		</p>
 
@@ -98,7 +99,10 @@ use App\Rules\WeaponsController;
 				</tr>
 			</table>
 
-			<p>Là encore, l’idée reste la même&nbsp;: le terme fixe doit être le plus petit possible. Toutefois, on ne permettra pas d’arriver à 0d. Par exemple, 2d-6 ne devient pas 0d+1. Dans ces cas limites, on calcule l’espérance mathématique du jet et on consulte la table ci-dessous pour obtenir la valeur corrigée. <i>Rappel&nbsp;: l’espérance sur 1d vaut 3,5</i>.</p>
+			<p>
+				Là encore, l’idée reste la même : le terme fixe doit être le plus petit possible. Toutefois, on ne permettra pas d’arriver à 0d. Par exemple, 2d-6 ne devient pas 0d+1. Dans ces cas limites, on calcule l’espérance mathématique du jet et on consulte la table ci-dessous pour obtenir la valeur corrigée.<br>
+				<i>Rappel : l’espérance sur 1d vaut 3,5</i>.
+			</p>
 
 			<table>
 				<tr>
@@ -157,7 +161,7 @@ use App\Rules\WeaponsController;
 		</summary>
 		<p>La plupart des armes nécessitent une force minimale (<i>Fmin</i> ou <i>Fm</i>) pour être maniées sans malus. -1 à la compétence pour chaque point de <i>For</i> &lt; <i>Fmin</i>.</p>
 		<p>Pour les armes à feu, en plus de la pénalité ci-dessus, le <i>Rcl</i> est augmenté de 1 par point de For &lt; Fmin (sans être plus que doublé).</p>
-		<p>La <b>Fmin</b> d’une arme pouvant être maniée aussi bien à une main qu’à deux mains est réduite de 1 si elle est maniée à deux mains.</p>
+		<p>La <i>Fmin</i> d’une arme pouvant être maniée aussi bien à une main qu’à deux mains est réduite de 1 si elle est maniée à deux mains.</p>
 	</details>
 
 	<!-- Armes devant être apprêtées -->
@@ -209,31 +213,34 @@ use App\Rules\WeaponsController;
 			<h3>Armes à feu</h3>
 		</summary>
 		<h4>Dégâts des armes à feu</h4>
-		<p>Selon le calibre et la géométrie de la balle, son pouvoir de pénétration (pour passer la RD) peut être différent de sa capacité à causer des dégâts à un être vivant. Pour simuler cela, à côté des dégâts d’une arme à feu il peut y avoir une des indications suivantes&nbsp;:</p>
+		<p>Selon le calibre et la géométrie de la balle, son pouvoir de pénétration (pour passer la RD) peut être différent de sa capacité à causer des dégâts à un être vivant. Pour simuler cela, à côté des dégâts d’une arme à feu il peut y avoir une des indications suivantes :</p>
 		<ul>
-			<li><b>(–)&nbsp;:</b> dégâts nets ÷2&nbsp;;</li>
-			<li><b>(+)&nbsp;:</b> dégâts nets ×1,5&nbsp;;</li>
-			<li><b>(++)&nbsp;:</b> dégâts nets ×2.</li>
+			<li><b>(–) :</b> dégâts nets* ÷2 ;</li>
+			<li><b>(+) :</b> dégâts nets* ×1,5 ;</li>
+			<li><b>(++) :</b> dégâts nets* ×2.</li>
 		</ul>
+		
+		<p>*Dégâts nets : dégâts passant la RD.</p>
 
-		<p><b>Munition perce-armure&nbsp;:</b> RD et dégâts nets ÷2<br>
-			<b>Munition à pointe creuse&nbsp;:</b> RD ×2 et dégâts nets ×1,5. Face à ce type de munition, une RD 0 devient RD 1.
+		<p>
+			<b>Munition perce-armure :</b> RD et dégâts nets ÷2<br>
+			<b>Munition à pointe creuse :</b> encore appelée <i>hollow pointe</i> ou <i>balle dum-dum</i> – RD ×2 et dégâts nets ×1,5. Face à ce type de munition, une RD 0 devient RD 1.
 		</p>
 
-		<p><b>Dégâts nets&nbsp;:</b> dégâts passant la RD.</p>
-
 		<h4>Vitesse de tir (VdT)</h4>
-		<p>Nombre maximum de tirs par seconde.<br>
+		<p>
+			Nombre maximum de tirs par seconde.<br>
 			Si <i>VdT</i> &gt; 3, il s’agit d’une arme automatique.<br>
 			Si <i>VdT</i> &lt; 3, il s’agit d’une arme à rechargement manuel (verrou, pompe, levier).<br>
-			Une <i>VdT</i> de 3 indique une arme semi-automatique.</p>
+			Une <i>VdT</i> de 3 indique une arme semi-automatique.
+		</p>
 
 		<h4>Coups (Cps)</h4>
 		<p>Réserve de munitions dans le chargeur.</p>
 
 		<h4>Recul (Rcl)</h4>
 		<p>
-			Correspond à la pénalité minimale en cas de tirs successifs, pour les armes à feu à répétition. Si le tireur a visé avant son tir, la pénalité de recul est multipliée par deux.<br>
+			Correspond à la pénalité <i>minimale</i> en cas de tirs successifs, pour les armes à feu à répétition. Si le tireur a visé avant son tir, la pénalité de recul est multipliée par deux.<br>
 			Si la <i>For</i> de l’utilisateur est supérieure d’au moins 5 à la <i>Fmin</i> de l’arme, le <i>Rcl</i> est diminué de 1, sans toutefois pouvoir être annulé.
 		</p>
 	</details>
@@ -327,7 +334,7 @@ use App\Rules\WeaponsController;
 			<h3>Boucliers</h3>
 		</summary>
 		<p>La <i>Défense passive</i> (DP) d’un bouclier s’ajoute au score de <i>Blocage</i> de base (<i>Bouclier</i>-3).</p>
-		<p>Pour frapper avec un bouclier, faire un jet de <i>Bouclier</i>. L’ennemi peut esquiver, bloquer ou parer à -2. Dégâts&nbsp;: B.e.</p>
+		<p>Pour frapper avec un bouclier, faire un jet de <i>Bouclier</i>. L’ennemi peut esquiver, bloquer ou parer à -2. Dégâts : B.e.</p>
 	</details>
 
 </article>
@@ -344,7 +351,7 @@ use App\Rules\WeaponsController;
 		$weapons = array_filter(WeaponsController::weapons, fn($weapon) => $weapon["cat"] === "arc");
 		WeaponsController::displayWeaponsList($weapons);
 		?>
-		<p class="fs-300">Poids des flèches et carreaux&nbsp;: 50 g</p>
+		<p class="fs-300">Poids des flèches et carreaux : 50 g</p>
 	</details>
 
 	<details>
@@ -413,7 +420,7 @@ use App\Rules\WeaponsController;
 		</summary>
 		<div class="fs-300">
 			<?php foreach (WeaponsController::weapons_notes as $index => $note) { ?>
-				<p><b><?= $index ?>&nbsp;:</b> <?= $note ?></p>
+				<p><b><?= $index ?> :</b> <?= $note ?></p>
 			<?php } ?>
 		</div>
 	</details>
@@ -472,8 +479,8 @@ use App\Rules\WeaponsController;
 		<h4>Winchester Classic Hunter</h4>
 		<p>
 			Carabine de chasse apparue en 1936 et toujours fabriquée à ce jour.<br>
-			Utilisée par de nombreux SWAT Teams. Les modèles les plus courants utilisent les calibres .30-06 US ou .308 Win (identique au 7,62N) et mesurent 113 cm pour 3,5&nbsp;kg.<br>
-			Avec une lunette +2, la portée utile passe à 100&nbsp;m.
+			Utilisée par de nombreux SWAT Teams. Les modèles les plus courants utilisent les calibres .30-06 US ou .308 Win (identique au 7,62N) et mesurent 113 cm pour 3,5 kg.<br>
+			Avec une lunette +2, la portée utile passe à 100 m.
 		</p>
 		<img src="assets/img_equipement/winchester-model70.png" class="mx-auto">
 		<?php
@@ -540,8 +547,8 @@ use App\Rules\WeaponsController;
 		<summary>
 			<h3>Grenades</h3>
 		</summary>
-		<p><b>Défensive&nbsp;:</b> grenade à fragmentation. Concussion : 2d+2 à 5d, Fragmentation : 1d+2 à 3d.</p>
-		<p><b>Offensive&nbsp;:</b> peu de fragmentation, charge explosive plus importante. Concussion : 5d à 6d, Fragmentation : dépend de la nature du sol.</p>
+		<p><b>Défensive :</b> grenade à fragmentation. Concussion : 2d+2 à 5d, Fragmentation : 1d+2 à 3d.</p>
+		<p><b>Offensive :</b> peu de fragmentation, charge explosive plus importante. Concussion : 5d à 6d, Fragmentation : dépend de la nature du sol.</p>
 	</details>
 
 	<!-- Explosifs -->
@@ -550,12 +557,12 @@ use App\Rules\WeaponsController;
 			<h3>Explosifs</h3>
 		</summary>
 		<p>Pour obtenir une explosion faisant 6d×<i>n</i> pts de dégâts, il faut n²×0,1 kg de TNT</p>
-		<p>Puissance relative d’autres explosifs&nbsp;:</p>
+		<p>Puissance relative d’autres explosifs :</p>
 		<ul>
-			<li>Poudre&nbsp;: avant 1600 ×0,3&nbsp;; avant 1850 ×0,4&nbsp;; après 1850 ×0,5</li>
-			<li>Carburant + nitrates&nbsp;: ×0,5</li>
-			<li>Dynamite&nbsp;: ×0,8</li>
-			<li>C4&nbsp;: ×1,4</li>
+			<li>Poudre : avant 1600 ×0,3 ; avant 1850 ×0,4 ; après 1850 ×0,5</li>
+			<li>Carburant + nitrates : ×0,5</li>
+			<li>Dynamite : ×0,8</li>
+			<li>C4 : ×1,4</li>
 		</ul>
 
 	</details>
@@ -567,7 +574,7 @@ use App\Rules\WeaponsController;
 		</summary>
 		<div class="fs-300">
 			<p>Toutes les caractéristiques sont identiques à celles de GURPS 4</p>
-			<p><b>Portée utile&nbsp;:</b> basée sur l’<i>Accuracy</i> (Acc 2 = 15 m).</p>
+			<p><b>Portée utile :</b> basée sur l’<i>Accuracy</i> (Acc 2 = 15 m).</p>
 			<p>Même progression de portées que GURPS (15, 20, 30, 70, 100, 150&hellip;)</p>
 			<p><a href="https://en.wikipedia.org/wiki/Table_of_handgun_and_rifle_cartridges">Liste des calibres</a> existants sur <i>Wikipédia</i>.</p>
 			<p><a href="http://www.sjgames.com/pyramid/sample.html?id=2794">Ballistic for GURPS</a> par Douglas Hampton Cole</p>
@@ -586,7 +593,7 @@ use App\Rules\WeaponsController;
 		<summary>
 			<h3>Armures antiques &amp; médiévales</h3>
 		</summary>
-		<p>Les poids des armures incluent des vêtements légers. Ils sont donnés pour une armure «&nbsp;hypo&shy;thétique&nbsp;» complète couvrant tout sauf le visage. De telles armures n’existent généralement pas. Il est donc préférable, pour être plus réaliste, de confectionner une armure composite, c’est-à-dire formée de plusieurs pièces d’armures différentes. Voir paragraphe suivant.</p>
+		<p>Les poids des armures incluent des vêtements légers. Ils sont donnés pour une armure « hypo&shy;thétique » complète couvrant tout sauf le visage. De telles armures n’existent généralement pas. Il est donc préférable, pour être plus réaliste, de confectionner une armure composite, c’est-à-dire formée de plusieurs pièces d’armures différentes. Voir paragraphe suivant.</p>
 
 		<table class="left-1">
 			<tr>
@@ -605,21 +612,21 @@ use App\Rules\WeaponsController;
 
 		<h4>Notes</h4>
 		<?php foreach (ArmorsController::armors_notes as $index => $note) { ?>
-			<p><b><?= $index ?>&nbsp;:</b> <?= $note ?></p>
+			<p><b><?= $index ?> :</b> <?= $note ?></p>
 		<?php } ?>
 
 		<h4>Taille des armures</h4>
-		<p>La taille d’une armure a un impact sur son prix et son poids. En terme de jeu, on distingue les tailles suivantes&nbsp;:</p>
+		<p>La taille d’une armure a un impact sur son prix et son poids. En terme de jeu, on distingue les tailles suivantes :</p>
 		<ul>
 			<?php foreach (ArmorsController::armor_sizes as $size) { ?>
-				<li><b><?= $size["nom"] ?></b> (<?= $size["notes"] ?>)&nbsp;: coût ×<?= $size["mult_prix"] ?>, poids ×<?= $size["mult_pds"] ?></li>
+				<li><b><?= $size["nom"] ?></b> (<?= $size["notes"] ?>) : coût ×<?= $size["mult_prix"] ?>, poids ×<?= $size["mult_pds"] ?></li>
 			<?php } ?>
 		</ul>
 
 		<h4>Qualité des armures</h4>
 		<p>
-			<b>Bonne qualité&nbsp;:</b> poids ×<?= ArmorsController::armor_qualities["bq"]["mult_pds"] ?>, prix ×<?= ArmorsController::armor_qualities["bq"]["mult_prix"] ?><br>
-			<b>Très bonne qualité&nbsp;:</b> +1 en RD, poids ×<?= ArmorsController::armor_qualities["tbq"]["mult_pds"] ?>, prix ×<?= ArmorsController::armor_qualities["tbq"]["mult_prix"] ?>
+			<b>Bonne qualité :</b> poids ×<?= ArmorsController::armor_qualities["bq"]["mult_pds"] ?>, prix ×<?= ArmorsController::armor_qualities["bq"]["mult_prix"] ?><br>
+			<b>Très bonne qualité :</b> +1 en RD, poids ×<?= ArmorsController::armor_qualities["tbq"]["mult_pds"] ?>, prix ×<?= ArmorsController::armor_qualities["tbq"]["mult_prix"] ?>
 		</p>
 		<p>Une armure de <i>Très bonne qualité</i> n’existe pas dans un contexte médiéval réaliste. Elle doit être réalisée avec des alliages modernes, ou exotiques.</p>
 
@@ -674,14 +681,14 @@ use App\Rules\WeaponsController;
 		<summary>
 			<h3>Armures modernes</h3>
 		</summary>
-		<!-- <p><b>Casque de fantassin (NT6/7)&nbsp;:</b> RD5/6 ; 2/1,5 kg.</p>
-		<p><b>Casque anti-émeute (NT7)&nbsp;:</b> Visière couvrant le visage (RD3). RD5 contre le broyage et RD3 contre les autres types de dégâts ; 1 kg.</p>
+		<!-- <p><b>Casque de fantassin (NT6/7) :</b> RD5/6 ; 2/1,5 kg.</p>
+		<p><b>Casque anti-émeute (NT7) :</b> Visière couvrant le visage (RD3). RD5 contre le broyage et RD3 contre les autres types de dégâts ; 1 kg.</p>
 		<p>
-			<b>Gilet Pare-balle (NT6)&nbsp;:</b> RD7 (2 contre du perforant) ; 5 kg.<br>
+			<b>Gilet Pare-balle (NT6) :</b> RD7 (2 contre du perforant) ; 5 kg.<br>
 			25% des dégâts arrêtés par l’armure sont infligés sous forme de broyage, à cause du choc, en plus des dommages qui passent la RD.
 		</p>
 		<p>
-			<b>Veste en Kevlar (NT7)&nbsp;:</b> Légère : RD4, 1,25 kg pour une veste. Moyenne : RD8, 2,5 kg pour une veste. Lourde : RD12, 3,75 kg pour une veste.<br>
+			<b>Veste en Kevlar (NT7) :</b> Légère : RD4, 1,25 kg pour une veste. Moyenne : RD8, 2,5 kg pour une veste. Lourde : RD12, 3,75 kg pour une veste.<br>
 			Une veste couvre le torse et les parties génitales, et peut être dissimulée sous des vêtements. Les fibres de Kevlar protègent moins contre des dégâts perforants (RD divisée par 4). 25% des dégâts arrêtés par l’armure sont infligés sous forme de broyage, à cause du choc, en plus des dommages qui passent la RD. Des ajouts rigides et séparés, pour le ventre ou pour le dos, pesant 8 kg chacun, apportent une RD supplémentaire de 15.
 		</p> -->
 		<h4>Gilets pare-balles (NT8)</h4>
