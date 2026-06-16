@@ -11,4 +11,7 @@ return  [
 	"un rat qui disparaît dans le trou d’un mur",
 	"un chien fatigué qui se gratte le cou avec peine",
 
+	"un cochon échappé d’une cour intérieure, reniflant le sol",
+	"deux poules échappées de leur poulailler, en panique devant des passants",
+
 ];

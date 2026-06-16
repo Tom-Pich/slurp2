@@ -10,8 +10,8 @@
 
 	<div class="right flow">
 		<figure>
-			<a href="/assets/img_paorn/imegie-01.webp?v=2.2" target="_blank">
-				<img src="/assets/img_paorn/imegie-01.webp?v=2.2">
+			<a href="/assets/img_paorn/carte-imegie.webp" target="_blank">
+				<img src="/assets/img_paorn/carte-imegie.webp">
 			</a>
 			<figcaption>Plan de la ville</figcaption>
 		</figure>
@@ -122,7 +122,7 @@
 			<p>C’est un grand bâtiment avec une large cour intérieure où les chariots sont déchargés de leur marchandise puis rechargés, où les marchandises sont contrôlées par les autorités, les bêtes nourries et soignées&hellip;</p>
 			<p>L’endroit est bien entendu solidement gardé, de jour comme de nuit</p>
 			<figure class="right">
-				<img src="/assets/img_paorn/grande-halle-01.jpg" />
+				<img src="/assets/img_paorn/imegie-grande-halle-01.jpg" />
 				<figcaption>La grande halle</figcaption>
 			</figure>
 		</div>
@@ -310,7 +310,7 @@
 			<p>Leur maison est située dans le quartier des Consuls. Porche vers cour intérieure, entrée habitation, RdC + 2 niveaux + comble + cave, dépendance (écurie + grenier à foin)</p>
 			<p>Un des membre de la famille Brax est un professeur de magie à l’université.</p>
 			<figure class="right">
-				<img src="/assets/img_paorn/maison-brax-01.jpg" />
+				<img src="/assets/img_paorn/imegie-maison-brax.jpg" />
 				<figcaption>La maison Brax</figcaption>
 			</figure>
 		</div>

@@ -22,7 +22,7 @@
 		Anneau de <i>Détection des mensonges</i>
 	</p>
 	<figure class="right">
-		<img src="/assets/img_paorn/pnj_erdno_brici.jpg">
+		<img src="/assets/img_paorn/vb-port-goshal-erdno-brici.jpg">
 		<figcaption>Erdno Brici</figcaption>
 	</figure>
 </div>

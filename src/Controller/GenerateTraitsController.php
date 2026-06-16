@@ -7,11 +7,13 @@ use App\Repository\AvDesavRepository;
 
 class GenerateTraitsController extends AbstractGenerateController
 {
+	private string $outputFile;
 	private string $outputPath;
 
 	public function __construct()
 	{
-		$this->outputPath = __DIR__ . "/../../scenarii/ressources-ia/avdesav.md";
+		$this->outputFile = "liste-avdesav.md";
+		$this->outputPath = __DIR__ . "/../../scenarii/ressources-ia/" . $this->outputFile;
 	}
 
 	public function generate(): void
@@ -50,6 +52,6 @@ class GenerateTraitsController extends AbstractGenerateController
 		file_put_contents($this->outputPath, $md);
 
 		$catCount = count($categories);
-		echo "<p style='font-family:sans-serif; padding:2rem'>✅ Fichier <code>scenarii/ressources-ia/avdesav.md</code> généré avec succès.<br>{$catCount} catégories · {$traitCount} avantages &amp; désavantages.</p>";
+		echo "<p style='font-family:sans-serif; padding:2rem'>✅ Fichier <code>scenarii/ressources-ia/{$this->outputFile}</code> généré avec succès.<br>{$catCount} catégories · {$traitCount} avantages &amp; désavantages.</p>";
 	}
 }

@@ -3,47 +3,14 @@
 // dans une rue animée d’une ville med-fan
 return  [
 
-	// enfants, passants et inactifs
-	/* "un petit groupe d'enfants qui se poursuivent en criant",
-	"trois enfants qui jouent au cerceau le long d'un mur",
-	"deux garçons qui se disputent une pomme, l'un finit par s'enfuir en riant",
-	"une fillette assise sur une marche, qui tresse des brins de paille",
-	"une femme qui fait ses courses, son nourrisson attaché dans le dos",
-	"trois badauds qui regardent un ouvrier travailler sans lui prêter main forte",
-	"deux femmes qui bavardent sur le seuil d'une maison, les bras croisés",
-	"une femme qui secoue un tablier par sa fenêtre ouverte au premier étage",
-	"une femme âgée qui progresse lentement avec son bâton, s'arrêtant à chaque pas",
-	"deux voisines qui discutent d'une fenêtre à l'autre en travers de la ruelle",
-	"un homme debout contre un mur, les bras croisés, qui regarde passer les gens",
-	"un vieil homme assis devant sa porte, qui somnole au soleil",
-	"un homme qui urine contre un mur au fond d'une impasse, sans se cacher",
-	"un groupe de cinq ouvriers qui rentrent du chantier, la démarche fatiguée",
-	"un garçon qui verse les eaux usées d'un seau par une fenêtre sans prévenir",
-	"un groupe d'hommes qui attendent devant un porche, cherchant visiblement du travail à la journée",
-	"un enfant qui court derrière un poulet échappé, sous les rires des passants",
-	"un homme qui lit une affiche collée sur un mur, en épelant les mots à mi-voix",
-	"une petite foule qui se presse devant une affiche fraîchement collée par un crieur public", */
-
-	// animaux domestiques
-	/* "un chien errant qui renifle les pavés à la recherche de restes",
-	"un chat sur un rebord de fenêtre, qui observe la rue sans bouger",
-	"une volée de pigeons qui s'envole brusquement d'un toit", */
-
-	// livreurs avec animal et/ou carriole
-	"un âne chargé de paniers d'osier, conduit par un homme aux bras maigres",
-	"deux livreurs de bois avec leur charette et leur âne, en train de décharger des bûches",
-	"deux hommes qui poussent une charrette à bras chargée de sacs de toile",
-	"un charretier qui tente de faire avancer son cheval bloqué au milieu de la rue",
-	"un muletier qui charge ses bêtes devant une échoppe, lentement et méthodiquement",
-	"une charrette coincée dans une ornière, son propriétaire qui invective les passants pour qu'ils aident",
+	// paysans livrant leur production
+	"un paysan conduisant deux moutons chez le boucher",
+	"un paysan conduisant cinq oies chez le boucher",
 
 	// personnes actives
 	"un porteur ployé sous une grosse caisse de bois cerclée de fer",
 	"deux porteurs qui négocient leur salaire à voix haute avec un marchand",
-	"un livreur qui dépose des pains enveloppés de linge sur le seuil d'une maison",
 	"un ramoneur, noir de suie, qui remonte une ruelle avec son équipement sur l'épaule",
-	"un porteur d'eau avec ses deux seaux suspendus à une palanche, qui frappe aux portes",
-	"un vendeur d'eau ambulant, sa cruche sur le dos, qui propose à boire aux passants",
 	"un tisserand qui transporte une pièce de laine roulée sous le bras",
 	"une lavandière qui revient du lavoir, son panier de linge propre sur la hanche",
 	"un messager à pied qui slalome dans la foule, un pli scellé serré contre sa poitrine",
@@ -51,25 +18,12 @@ return  [
 	"un héraut qui lit une proclamation à voix haute devant un groupe de badauds attentifs",
 	"un collecteur de taxes qui frappe à une porte, un assistant à ses côtés avec un registre",
 	"deux marchands qui discutent affaires dans l'embrasure d'une porte cochère",
-	"un apprenti boulanger qui livre des pains dans un grand panier plat",
 	"un apprenti forgeron qui court avec une pièce de métal encore fumante enveloppée de chiffons",
 	"un marchand de vin qui roule un tonneau vers la cave d'une taverne",
 	"une femme de ménage qui sort les paillasses d'une auberge pour les battre",
 	"un palefrenier qui conduit deux chevaux vers l'écurie, leur sabots claquant sur les pavés",
 	"un homme qui tient son cheval par la bride pendant qu'un enfant lui apporte de l'eau",
 	"une femme qui dispute son prix avec un marchand ambulant, le doigt pointé sur ses marchandises",
-
-	// commerçants temporaires
-	"un marchand avec un petit étal de fruits — pommes, poires, quelques prunes",
-	"un marchand avec un étal de légumes — choux, navets, bottes de poireaux",
-	"un vendeur de volailles avec ses poulets en cage et quelques œufs disposés sur un linge",
-	"un vendeur de poisson qui annonce sa marchandise d'une voix forte et rauque",
-	"un marchand de pâtés chauds, son plateau tenu à deux mains, qui interpelle les passants",
-	"un épicier ambulant avec ses petits sacs d'épices, de sel et de miel",
-	"un vendeur de châtaignes grillées, son réchaud posé à même le sol",
-	"un colporteur qui déballe sa pacotille — rubans, boutons, aiguilles, savonnettes",
-	"un brocanteur qui pousse une petite charrette chargée d'objets hétéroclites",
-	"un chiffonnier qui annonce d'une voix forte qu'il rachète de vieux tissus et ferrailles",
 
 	// artisans et commerçants fixes
 	"un forgeron sorti de son atelier pour inspecter une pièce de métal à la lumière",

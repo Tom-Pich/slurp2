@@ -25,6 +25,8 @@ $articles = [
 	"chateau-sardam" => ["title" => "Le château de Sardam", "parent" => "sardam" ],
 	"solidam" => ["title" => "Solidam", "section" => "Sordolia"],
 	"fort-leck" => ["title" => "Fort de Leck", "section" => "Sordolia"],
+	"fallenbeck" => ["title" => "Fallenbeck", "section" => "Sordolia"],
+	"sigherd" => ["title" => "Sigherd (fleuve)", "section" => "Sordolia"],
 	
 	"lauria" => ["title" => "Lauria", "section" => "Lauria"],
 	"mikalas" => [ "title" => "Mikalas", "section" => "Lauria" ],

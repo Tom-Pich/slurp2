@@ -1,38 +1,40 @@
 <h1>Sardam, capitale de la Sordolia</h1>
 
 <!-- Introduction -->
-<div class="has-right-block">
+<section class="has-right-block">
 
 	<img src="/assets/img_paorn/blason-sardam-400.webp" width="100" class="float-left" alt="Blason de Sardam">
 
-	<p>Sardam est la capitale provinciale de la Sordolia. Établie sur une vaste étendue défrichée autrefois connue comme la <i>Clairière de Matar</i>, elle est la plus grande ville de la province.</p>
+	<p>Sardam est la capitale provinciale de la Sordolia. Établie sur une vaste étendue défrichée autrefois connue comme la <i>Clairière de Matar</i>, elle est la seconde plus grande ville de la province, après Lardam.</p>
 
 	<p>Ses impressionnantes maisons de granit aux façades décorées de bas-reliefs anciens s'alignent le long d'avenues bien planifiées, témoignant d'une fondation organisée et d'une longue histoire urbaine.</p>
 
 	<div class="right flow">
 
 		<figure>
-			<a href="/assets/img_paorn/sordolia-sardam-01b.webp" target="_blank">
-				<img src="/assets/img_paorn/sordolia-sardam-01b.webp" alt="vue de Sardam">
+			<a href="/assets/img_paorn/sardam-01.webp?v=2" target="_blank">
+				<img src="/assets/img_paorn/sardam-01.webp?v=2" alt="vue de Sardam">
 			</a>
 			<figcaption>Sardam, vue depuis le nord</figcaption>
 		</figure>
 
 		<figure>
-			<img src="/assets/img_paorn/sordolia-sardam-02.webp" alt="Une rue de Sardam">
+			<img src="/assets/img_paorn/sardam-02.webp" alt="Une rue de Sardam">
 			<figcaption>Une rue de Sardam</figcaption>
 		</figure>
 
 	</div>
-</div>
+</section>
 
 <!-- Géographie -->
 <section>
 	<h2>Géographie</h2>
 
-	<p>Sardam compte environ 15&thinsp;000 habitants et s’étend sur une centaine d’hectares. La ville, de forme grossièrement circulaire, mesure entre 1 km et 1,2 km. Elle est construite sur un terrain plat, au cœur d’une immense clairière agrandie au fil des siècles, entourée de terres agricoles fertiles qui s’étendent sur plusieurs kilomètres autour des remparts.</p>
+	<p>Sardam compte environ 12&thinsp;000 habitants et s’étend sur une centaine d’hectares. La ville, de forme grossièrement circulaire, mesure entre 1 km et 1,2 km de diamètre. Elle est construite sur un terrain plat, au cœur d’une immense clairière (la <i>clairière de Matar</i>) agrandie au fil des siècles, entourée de terres agricoles fertiles qui s’étendent sur plusieurs kilomètres autour des remparts.</p>
 
-	<p>Au nord et au nord-est, s’étendent les Marais du Tonnerre, principale ressource en eau pour les activités artisanales de la cité. Le seul relief notable est une butte rocheuse située au centre de la ville, sur laquelle a été édifié le <a href="/wiki/paorn/chateau-sardam">château du Prince</a>.</p>
+	<p>La zone défrichée est traversée selon un axe nord-sud par la <i>Rojen</i>, large rivière navigable dont les eaux, généralement tranquilles, alimentent les <i>marais du Tonnerre</i>. Ces derniers se trouvent au nord et au nord est de l’emplacement de la ville.</p>
+
+	<p>Le seul relief notable est une butte rocheuse située au centre de la ville, sur laquelle a été édifié le <a href="/wiki/paorn/chateau-sardam">château du Prince</a>.</p>
 
 	<!-- Structure de la ville -->
 	<details>
@@ -80,7 +82,7 @@
 
 		<h4>Le Faubourg-du-Tonnerre — Extra-muros, au nord de la porte de Solidam</h4>
 
-		<p>Le Faubourg-du-Tonnerre s'est développé hors les murs, collé contre la muraille nord, sur des terres gagnées de haute lutte sur les marais. C'est le quartier des corps de métiers qui ont besoin d’eau du Tonnerre : tanneurs, corroyeurs, mégissiers, blanchisseuses. Leur proximité immédiate avec les marais est une nécessité pratique autant qu'un avantage fiscal — hors les murs, les matières premières entrent sans acquitter l'octroi.</p>
+		<p>Le Faubourg-du-Tonnerre s'est développé hors les murs, collé contre la muraille nord, sur des terres gagnées de haute lutte sur les marais. C'est le quartier des corps de métiers qui ont besoin d’eau : tanneurs, corroyeurs, mégissiers, blanchisseuses.</p>
 
 		<p>Les maisons sont basses, en bois pour la plupart, surélevées d'une marche ou deux pour se prémunir des crues hivernales. Les fondations reposent sur une terre gagnée sur la tourbe, et quelques murs penchent légèrement, inexorablement tirés vers les marais. Les ruelles sentent le tanin, la lessive et la vase. En été, l'odeur devient franche.</p>
 
@@ -88,21 +90,19 @@
 
 	</details>
 
-	<!-- Le problème de l’eau -->
+	<!-- Gestion de l’eau -->
 	<details>
 		<summary>
-			<h3>Le problème de l’eau</h3>
+			<h3>Gestion de l’eau</h3>
 		</summary>
 
-		<p>Aucune rivière ne passe à proximité de la ville. Mais le sous-sol de Sardam est très humide et l’eau qu’on y trouve est d’une grande pureté – on lui prête même des vertues médicinales. Un léger courant circule en permanence dans les Marais du Tonnerre – sauf en période de gel – et ses eaux sont également propres. Les puits sont donc nombreux dans la ville. En complément des pluies, comme le climat de la région est relativement pluvieux, surtout à l’automne et au printemps, de nombreuses habitations sont pourvues de citernes souterraines maçonnées.</p>
+		<p>Le sous-sol de Sardam est très humide et l’eau qu’on y trouve est d’une grande pureté – on lui prête même des vertues médicinales. Un léger courant circule en permanence dans les Marais du Tonnerre – sauf en période de gel – et ses eaux sont également propres. Les puits sont donc nombreux dans la ville.</p>
 
 		<p>La combinaison sous-sol très humide, nappe phréatique pure et terrain plat a contraint la ville à développer un système de canaux d’évacuation, plutôt que d’utiliser des fosses individuelles. Le réseau repose sur des canaux de granit maçonnés, couverts de dalles amovibles, qui courent sous les rues principales. La plupart des habitations sont raccordées au réseau via des conduits verticaux maçonnés rejoignant le canal de rue.</p>
 
-		<p>Les canaux convergent vers des collecteurs qui débouchent dans des bras périphériques des marais. La végétation marécageuse (roseaux, joncs, laîches) filtre naturellement une grande partie des matières organiques avant que les eaux ne rejoignent le courant principal en aval.</p>
+		<p>Les canaux convergent vers des collecteurs qui débouchent dans des bras périphériques des marais. La végétation marécageuse (roseaux, joncs, laîches) filtre naturellement une grande partie des matières organiques avant que les eaux ne rejoignent la Rojen.</p>
 
-		<p>Tous les bâtiments ne sont pas raccordés — les maisons modestes des faubourgs (quartier nord) n'ont souvent qu'une fosse maçonnée étanche dans leur cave ou arrière-cour. Ces fosses sont vidangées périodiquement par les maîtres-vidangeurs, une corporation de nuit dont l'activité est strictement encadrée. Le contenu traité finit sur les champs agricoles environnants.</p>
-
-		<p>Le système fonctionne — mais reste vulnérable. Une crue des marais qui reflue dans les collecteurs, un curage négligé pendant quelques années, une saison de gel prolongée qui fissure les maçonneries… et des puits commencent à se contaminer. Des épidémies sporadiques de fièvres intestinales rappellent périodiquement aux habitants que la pureté de leur eau n'est pas un acquis.</p>
+		<p>Le système fonctionne — mais reste vulnérable. Une crue qui reflue dans les collecteurs, un curage négligé pendant quelques années, une saison de gel prolongée qui fissure les maçonneries… et des puits commencent à se contaminer. Des épidémies sporadiques de fièvres intestinales rappellent périodiquement aux habitants que la pureté de leur eau n'est pas un acquis.</p>
 	</details>
 
 </section>
@@ -133,7 +133,29 @@
 <section>
 	<h2>Économie</h2>
 
-	<p>Les ressources économiques de la ville sont assez modestes : pas de mines aux environs, et une agriculture qui ne suffit même pas à ses besoins. L’essentielle de ses ressources sont liées à la forêt alentour et à la faune sauvage. Sardam est réputée pour ses fourrures et ses vêtements de luxe, fabriqués à partir de ses fourrures.</p>
+	<p>Les ressources économiques de la ville sont assez modestes : pas de mines aux environs et une agriculture qui ne suffit pas toute à fait à ses besoins. L’essentielle de ses ressources sont liées à la forêt alentour et à la faune sauvage. Sardam est réputée pour ses fourrures et ses vêtements de luxe, fabriqués à partir de ses fourrures.</p>
+
+	<p>Sa zone d’exploitation occupe les deux tiers de la clairière de Matar, le tiers restant étant marécageux. Cela représente environ 150 km² de terres très fertiles, parsemée de hameaux, petits villages et fermes fortifiées et peuplée par 6500 habitants. La production agricole locale couvre 70 % des besoins de la ville.</p>
+
+	<p>Le reste de ses besoins est couvert par les villages se situant sur la route de Solidam et la route de Palidam, ainsi que par l’import fluvial venant des riches régions du sud (principalement le duché de Lardam).</p>
+
+	<p>Son eau très pure permet de fabriquer la meilleure bière de toute la Sordolia.</p>
+
+	<!-- Ravitaillement de la ville -->
+	<details>
+		<summary>
+			<h3>Ravitaillement de la ville</h3>
+		</summary>
+
+		<ul>
+			<li>Chasse (150 kg) et pêche (150 kg) locales</li>
+			<li>Villages et hameaux environnants</li>
+			<li>13-14 chariots par jour</li>
+			<li>40-42 charettes par jour</li>
+			<li>2-3 bœufs, 22-23 porcs, 26-27 moutons, 480 poulets, 106-107 oies</li>
+			<li>50 t de bois par jour</li>
+			<li>Presque 2 gros bateaux par jour (30 t) et 4 petits (3 t)</li>
+		</ul>
 
 	<!-- Les blanchisseuses -->
 	<details>
@@ -192,8 +214,9 @@
 <!-- Culture & société -->
  <section>
 	<h2>Culture &amp; société</h2>
-	<p>L’<b>urte</b> est une boisson chaude très appréciée à Sardam. Il s’agit d’une infusion utilisant des baie de genièvre et d’autres plantes, servies à tout moment de la journée.</p>
+	<p>L’<b>urte</b> est une boisson chaude très appréciée à Sardam. Il s’agit d’une infusion utilisant des baie de genièvre et d’autres plantes, à laquelle on ajoute une pointe de vinaigre de cidre et – si les moyens le permettent – un peu de miel. Servie à tout moment de la journée.</p>
  </section>
+ 
 <!-- Histoire -->
 <!-- Particularités -->
 
@@ -214,4 +237,23 @@
 		<p>Un chat roux, mascotte de l’auberge, dort la plupart du temps sur le rebord d’une fenêtre.</p>
 
 	</details>
+
+	<!-- Huybert, pelleter-tailleur haut de gamme -->
+	 <details>
+		<summary>
+			<h3>Huybert, pelleter-tailleur haut de gamme</h3>
+		</summary>
+
+		<p><b>Boutique :</b> quartier de la Pelleterie — une des rares enseignes à avoir une vitrine vitrée (deux petits carreaux, coûteux, signe de standing). Enseigne : un renard blanc sur fond noir.</p>
+
+		<p><b>Physique :</b> la soixantaine, sec, voûté mais élégant. Doigts longs et précis d'artisan. Toujours vêtu d'un surcot sobre en drap gris foncé — jamais de fourrure sur lui-même, ce serait vulgaire.</p>
+
+		<p><b>Caractère :</b> affable et distingué. Ne vante jamais sa marchandise — il la présente. Si un client hésite, il range la pièce sans insister.</p>
+
+		<p><b>Clientèle :</b> nobles sordoliens, marchands prospères, émissaires impériaux de passage. Il a habillé Margite d'Avrelanche. Il ne le dit pas, mais ça se sait.</p>
+
+		<p><b>Spécialité :</b> hermine de Komashkaïda et renard blanc des Sinistérias — les deux fourrures les plus rares de Sordolia. Il ne travaille pas le castor, trop commun. Ses capes sont doublées de soie.</p>
+
+		<p><b>Prix :</b> entre 8 et 25 pièces d'or selon la pièce.</p>
+	 </details>
 </section>

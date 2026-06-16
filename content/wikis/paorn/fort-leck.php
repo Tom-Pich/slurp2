@@ -8,7 +8,7 @@
 
 	<div class="right">
 		<figure>
-			<img src="/assets/img_paorn/fort-leck-01.webp" alt="Fort de Leck, vue de la cours">
+			<img src="/assets/img_paorn/sd-fort-leck-01.webp" alt="Fort de Leck, vue de la cours">
 			<figcaption>Entraînement au fort de Leck</figcaption>
 		</figure>
 	</div>
@@ -21,7 +21,7 @@
 
 <p>De part et d’autre de la grande porte, deux tours s’élèvent jusqu’à la hauteur du rempart depuis le bâtiment principal et les entrepôts.</p>
 
-<img src="/assets/img_paorn/fort-leck-plan.webp" alt="Plan du fort de Leck">
+<img src="/assets/img_paorn/sd-fort-leck-plan.webp" alt="Plan du fort de Leck">
 
 <details>
 	<summary>
@@ -77,7 +77,7 @@
 	<p>Une cinquantaine d’années. Cheveux gris acier coupés court, barbe bien taillée, visage marqué par les années de service. Une large cicatrice traverse son front jusqu’à sa tempe droite. Yeux d’un bleu glacial</p>
 	<div class="right">
 		<figure>
-			<img src="/assets/img_paorn/fort-leck-commandant.webp" alt="Portrait du commandant Hansper">
+			<img src="/assets/img_paorn/sd-fort-leck-commandant.webp" alt="Portrait du commandant Hansper">
 			<figcaption>Le commandant Hansper</figcaption>
 		</figure>
 	</div>

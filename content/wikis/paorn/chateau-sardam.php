@@ -6,11 +6,11 @@
 
 	<div class="right flow">
 		<figure>
-			<img src="/assets/img_paorn/sordolia-sardam-chateau-01.webp" alt="le château de Sardam">
+			<img src="/assets/img_paorn/sardam-chateau-01.webp" alt="le château de Sardam">
 			<figcaption>Le château de Sardam</figcaption>
 		</figure>
 		<figure>
-			<img src="/assets/img_paorn/sordolia-sardam-chateau-02.webp" alt="plan du château de Sardam">
+			<img src="/assets/img_paorn/sardam-chateau-02.webp" alt="plan du château de Sardam">
 			<figcaption>Plan du château de Sardam</figcaption>
 		</figure>
 	</div>

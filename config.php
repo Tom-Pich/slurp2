@@ -4,8 +4,8 @@ define("IS_ONLINE", $_SERVER['HTTP_HOST'] === 'jdr.pichegru.net');
 define("DB_ACTIVE", true);
 define("GENERIC_PASSWORD", $_ENV["GENERIC_PASSWORD"]);
 define("SESSION_DURATION", 10800);
-define("VERSION", "3.31.0"); // 3.31: fichiers .md pour IA
-define("DATE_VERSION", "mai 2026");
+define("VERSION", "3.31.4"); // 3.31: fichiers .md pour IA
+define("DATE_VERSION", "juin 2026");
 define("PRODUCTION", true); // run webpack before switching to true
 define("SKILL_V2", true); // coût compétences v2 → niv limité à +7
 

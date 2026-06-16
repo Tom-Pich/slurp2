@@ -6,19 +6,21 @@
 		Vous trouverez dans cette section du site (en perpétuelle évolution) des articles sur différents aspects de ce monde.
 	</p>
 
-	<p>Burgonnie, Salthar, Tsovranie et Althusia sont les quatre principaux empires qui constituent Paorn.</p>
+	<p>La carte ci-dessous est la carte originale parue dans <i>Casus Belli</i>. Au cours de mes développements, la règle que je me suis imposée est de ne rien retirer des éléments présents sur cette carte. Mais j’en rajoute (bourgs, rivières, villages&hellip;). Consulter les cartes détaillées des différents articles.</p>
 
 	<figure>
-		<a href="/assets/img_paorn/paorn-complet.webp?v=2" target="_blank">
-			<img src="/assets/img_paorn/paorn-complet-800w.webp?v=2" alt="Carte du monde de Paorn">
+		<a href="/assets/img_paorn/carte-paorn.webp?v=2" target="_blank">
+			<img src="/assets/img_paorn/carte-paorn-800w.webp?v=2" alt="Carte du monde de Paorn">
 		</a>
 		<figcaption>Paorn, carte complète</figcaption>
 	</figure>
 
 	<div class="right border p-1">
-		<p>Les articles marqués du symbole 🛠️ ne sont qu’à l’état d’ébauche. Leur contenu peut encore profondément changer.</p>
+		<p>Les articles marqués du symbole 🛠️ ne sont qu’à l’état d’ébauche.</p>
 	</div>
 </div>
+
+<p>Burgonnie, Salthar, Tsovranie et Althusia sont les quatre principaux empires qui constituent Paorn.</p>
 
 <h2>La Burgonnie</h2>
 <p>L’Empire burgon évoque une Europe médiévale où s’entremêlent intrigues nobiliaires et luttes de pouvoir. S’étendant de la Sordiola au climat nordique, jusqu’à l’Artaille au climat bien plus clément évoquant les pays méditerranéens, ce territoire largement colonisé par les humains représente l’archétype du royaume de « low fantasy ». La magie y est une pratique étroitement encadrée par l’<i>Arcania</i>, organisation qui surveille et réglemente tout usage des arts occultes. Les aventuriers y découvriront un monde familier de châteaux, de forêts profondes et de cités marchandes, où les complots politiques sont aussi dangereux que les créatures tapies dans l’ombre.</p>

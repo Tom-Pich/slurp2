@@ -8,11 +8,13 @@ use App\Repository\SpellRepository;
 
 class GenerateMagicController extends AbstractGenerateController
 {
+	private string $outputFile;
 	private string $outputPath;
 
 	public function __construct()
 	{
-		$this->outputPath = __DIR__ . "/../../scenarii/ressources-ia/magic.md";
+		$this->outputFile = "liste-magie.md";
+		$this->outputPath = __DIR__ . "/../../scenarii/ressources-ia/" . $this->outputFile;
 	}
 
 	public function generate(): void
@@ -58,6 +60,6 @@ class GenerateMagicController extends AbstractGenerateController
 		file_put_contents($this->outputPath, $md);
 
 		$collegeCount = count($colleges);
-		echo "<p style='font-family:sans-serif; padding:2rem'>✅ Fichier <code>scenarii/ressources-ia/magic.md</code> généré avec succès.<br>{$collegeCount} collèges · {$spellCount} sorts.</p>";
+		echo "<p style='font-family:sans-serif; padding:2rem'>✅ Fichier <code>scenarii/ressources-ia/{$this->outputFile}</code> généré avec succès.<br>{$collegeCount} collèges · {$spellCount} sorts.</p>";
 	}
 }

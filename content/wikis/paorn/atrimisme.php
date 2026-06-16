@@ -144,8 +144,8 @@
 
 		<p>Le clergé séculier est principalement constitué de prêtres ordonnés. Il est divisé en quatre niveaux hiérarchiques :</p>
 
-		<h4>Les Alvéors</h4>
-		<p>Les Alvéors sont les assistants des prêtres. Ils sont soit de jeunes aspirants au sacerdoce, ayant terminé leur formation théologique mais n'ayant pas encore reçu l'ordination complète, soit des laïcs ayant choisi de s’investir dans l’Église, sans pour autant devenir prêtre.</p>
+		<h4>Les diacres</h4>
+		<p>Les diacres sont les assistants des prêtres. Ils sont soit de jeunes aspirants au sacerdoce, ayant terminé leur formation théologique mais n'ayant pas encore reçu l'ordination complète, soit des laïcs ayant choisi de s’investir dans l’Église, sans pour autant devenir prêtre.</p>
 
 		<p><b>Fonctions :</b></p>
 		<ul>
@@ -169,13 +169,13 @@
 		</ul>
 		<!-- <p>Lors des cérémonies, les prêtres ordinaires portent une robe bleue avec une étole dorée, symbole de sa fonction d'intermédiaire entre Atrim et les fidèles.</p> -->
 
-		<h4>Les Keldorns</h4>
-		<p>Les Keldorns sont les grands-prêtres de l’atrimisme. Chaque grande ville ou région possède son keldorn.</p>
-		<p><b>Types de Keldorns</b></p>
+		<h4>Les évêques</h4>
+		<p>Les évêques sont les grands-prêtres de l’atrimisme. Chaque grande ville ou région possède son évêques.</p>
+
 		<ul>
-			<li><b>Keldorn ordinaire :</b> responsable d'une grande ville</li>
-			<li><b>Keldorn provincial ou Grand Keldorn :</b> supervise une province entière</li>
-			<li><b>Keldorn doctrinal :</b> spécialiste d'un aspect particulier de la théologie atrimiste</li>
+			<li><b>évêque ordinaire :</b> responsable d'une grande ville</li>
+			<li><b>archevêque :</b> supervise une province entière</li>
+			<li><b>cardinal :</b> spécialiste d'un aspect particulier de la théologie atrimiste. Ils sont également des sortes de « ministres » du Valamir.</li>
 		</ul>
 
 		<p><b>Fonctions</b></p>
@@ -186,8 +186,6 @@
 			<li>Conseils aux dirigeants politiques</li>
 			<li>Participation au Conclave des Keldorns qui se réunit une fois tous les cinq ans à Olméria.</li>
 		</ul>
-
-		<!-- <p>Les Keldorns portent une robe bleue profond ornée de symboles atrimistes brodés en fil d'or, avec une cape blanche et un médaillon représentant l'œil vigilant d'Atrim.</p> -->
 
 		<h4>Le Valamir</h4>
 
@@ -200,7 +198,6 @@
 			<li>Présidence du Conclave des Keldorns</li>
 			<li>Désignation des nouveaux Keldorns</li>
 		</ul>
-		<!-- <p>Le Valamir porte une robe d'un bleu profond presque noir, constellée d'étoiles dorées, avec une couronne de lumière (cercle doré orné de petites flammes) symbolisant sa connexion directe avec Atrim.</p> -->
 
 	</details>
 	<h3>Le clergé régulier</h3>

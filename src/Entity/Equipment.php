@@ -56,6 +56,29 @@ class Equipment
 		}
 	}
 
+	// detects if an container is inside itself (directly or not)
+	// current_id is a recursive var with container id
+	public static function detectLocationLoop(int $id_object, array $post, int $location_id = 0)
+	{
+		// loop detected
+		if ($id_object === $location_id) return true;
+
+		if (!$location_id) {
+			$location = $post["objet"][$id_object]["Lieu"];
+		} else {
+			$location = $post["objet"][$location_id]["Lieu"];
+		}
+
+		// if object inside a container
+		if (substr($location, 0, 3) === "ct_") {
+			if ($location_id === (int) substr($location, 3)) return true; // container directly in itself
+			$current_id = (int) substr($location, 3); // current_id is now location id
+			return self::detectLocationLoop($id_object, $post, $current_id); // run with location one step above
+		}
+
+		return false;
+	}
+
 	/**
 	 * @param int|string $ref object id (int) or location code
 	 * @return ?int owner id or 0
@@ -154,39 +177,60 @@ class Equipment
 		$repo = new EquipmentRepository;
 		$repo_characters = new CharacterRepository;
 
-		//echo "<pre>";
 		//print_r($_POST);
+		//die();
 
 		$post["objet"] = $post["objet"] ?? [];
 
+		// objet modifié dans une fiche de personnage
 		foreach ($post["objet"] as $id => $item) {
 			$order++;
 			if ($id && empty($item["Nom"])) {
+				// objet dont le nom a été effacé → objet orphelin
 				$repo->makeItemOrphan($id);
 			} else {
+
 				$formatted_item = [];
 				$formatted_item["id"] = (int) $id;
 				$formatted_item["Nom"] = trim(strip_tags($item["Nom"]), "* ");
 
+				// contenant ou pas ?
 				$formatted_item["Contenant"] = (bool) $item["Contenant"];
 				if (!empty($post["sub-list"][$id]["Contenant-off"]) && empty($repo->getEquipmentFromPlace("ct_" . $id))) {
+					// si on décoche la case "contenant" de la sous-liste associée et que le contenant est vide
 					$formatted_item["Contenant"] = false;
 				}
 				if (substr($item["Nom"], 0, 1) === "*") {
+					// si on déclare l’object comme contenant
 					$formatted_item["Contenant"] = true;
 				}
+
 				$formatted_item["Poids"] = $item["Poids"] !== "" ? (float) $item["Poids"] : null;
 				$formatted_item["Notes"] = strip_tags($item["Notes"]);
 				isset($item["Secret"]) ? $formatted_item["Secret"] = strip_tags($item["Secret"]) : "";
 				$formatted_item["Lieu"] = strip_tags($item["Lieu"]);
 				$formatted_item["Groupe"] = !empty($post["sub-list"][$id]["Groupe"]) ? (int) $post["sub-list"][$id]["Groupe"] : null;
 				$formatted_item["Ordre"] = $order;
+				// Présence ou non du champ "Secret" au moment de l’inscription en base
 				$formatted_item["MJ"] = (int) $item["MJ"];
 
 				// prevent putting container in itself
-				$container_is_in_itself = $formatted_item["id"] == substr($formatted_item["Lieu"], 3) && substr($formatted_item["Lieu"], 0, 3) === "ct_";
+				//$container_is_in_itself = $formatted_item["id"] == substr($formatted_item["Lieu"], 3) && substr($formatted_item["Lieu"], 0, 3) === "ct_";
 
-				if (!$container_is_in_itself) {
+				// prevent putting container A inside another container B which is in A (infinite loop)
+				$creates_loop = false;
+				if ($formatted_item["Contenant"]) {
+					$item_is_in_container = substr($formatted_item["Lieu"], 0, 3) === "ct_";
+					if ($item_is_in_container) {
+						$creates_loop = self::detectLocationLoop($formatted_item["id"], $post);
+					}
+				}
+
+				//if ($creates_loop) echo "Loop detected " . $formatted_item["Nom"] . "\n";
+				//if (!$creates_loop) echo "OK";
+
+				if (!$creates_loop) {
+					//echo "save in DB, dude! \n";
 					$repo->setEquipment($formatted_item);
 				}
 			}
@@ -229,7 +273,7 @@ class Equipment
 			$check["character-group-id"] = $check["owner"] === 0 ? 0 : $repo_characters->getCharacterRef($check["owner"])["id_groupe"];
 			$check["is-test-character"] = $check["character-group-id"] === NULL;
 			$check["gm-has-clearance-for-attribution"] = in_array($check["owner"], $gm_characters_id) || $check["owner"] === 0;
-			
+
 			if (!$check["gm-has-clearance-for-attribution"]) $formatted_item["Lieu"] = "pi_0";
 			if ($check["is-test-character"]) $formatted_item["MJ"] = 0;
 

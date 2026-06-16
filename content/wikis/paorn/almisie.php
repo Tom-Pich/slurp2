@@ -6,7 +6,7 @@
 	<p>Almisie est une ville réputée pour son artisanat, en particulier pour ses cristalleries. Les artisans d’Almisie sont célèbres pour leur habileté à façonner des objets en cristal d’une finesse et d’une beauté inégalées. Dans les environs de la ville sont produits des vins réputés dans tout Paorn, Ces vignobles s’étendent à perte de vue sur les collines environnantes. Malgré sa relative richesse, Almisie ne possède pas de murs d’enceinte, mais ses troupes sont largement suffisantes pour assurer sa sécurité contre d’éventuels pillards.</p>
 
 	<figure class="right">
-		<img src="/assets/img_paorn/almisie_01.jpg" />
+		<img src="/assets/img_paorn/at-almisie-01.jpg" />
 		<figcaption>Almisie</figcaption>
 	</figure>
 
@@ -29,7 +29,7 @@
 	<p>Edar est un homme complexe, à la fois charismatique et calculateur. Il est connu pour son esprit stratégique et sa capacité à naviguer habilement dans les eaux troubles de la politique. Bien qu’il soit respecté par ses sujets pour sa gestion efficace de la ville et son soutien à l’artisanat local, il est également craint pour sa détermination implacable à protéger les intérêts d’Almisie, même au détriment de ses relations familiales.</p>
 
 	<figure class="right">
-		<img src="/assets/img_paorn/pnj-edar-valmor.jpg" />
+		<img src="/assets/img_paorn/at-almisie-edar-valmor.jpg" />
 		<figcaption>Edar Valmor, seigneur d’Almisie</figcaption>
 	</figure>
 </div>

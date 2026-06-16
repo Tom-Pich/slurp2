@@ -2,14 +2,22 @@
 
 <div class="has-right-block">
 	<img src="/assets/img_paorn/blason-solidam-400.webp" width="100" class="float-left" alt="Blason de Solidam">
-	<p>Solidam est une ville garnison située en Sordolia, dernier avant-poste humain avant les grandes étendues nordiques et les Sinistérias.</p>
+	<p>Solidam est une petite ville garnison située en Sordolia, dernier avant-poste humain avant les grandes étendues nordiques et les Sinistérias.</p>
 	<p class="mt-1 ta-center">Devise de la ville : <i>Dernier Bastion, Première Défense</i></p>
-	<figure class="right">
-		<a href="/assets/img_paorn/sordolia-solidam-01.webp" target="_blank">
-			<img src="/assets/img_paorn/sordolia-solidam-01.webp" alt="vue de Solidam">
-		</a>
-		<figcaption>Solidam, vue depuis le sud</figcaption>
-	</figure>
+	<div class="right flow">
+		<figure>
+			<a href="/assets/img_paorn/sd-solidam-01.webp" target="_blank">
+				<img src="/assets/img_paorn/sd-solidam-01.webp" alt="vue de Solidam">
+			</a>
+			<figcaption>Solidam, vue depuis le sud</figcaption>
+		</figure>
+		<figure>
+			<a href="/assets/img_paorn/carte-solidam.webp" target="_blank">
+				<img src="/assets/img_paorn/carte-solidam.webp" alt="carte des environs de Solidam">
+			</a>
+			<figcaption>Solidam et sa région immédiate</figcaption>
+		</figure>
+	</div>
 </div>
 
 <!-- Géographie -->
@@ -18,11 +26,11 @@
 
 	<p>Solidam se situe à 170 km à vol d’oiseau au nord de Sardam (220 km par la route), et à environ 100 km au sud du Dernier Rempart. Construite dans la large vallée du fleuve Sigherd, directement sur sa rive gauche, elle est entourée de forêt.</p>
 
-	<p>La ville s’étend sur environ 27 hectares et compte environ 3000 habitants, ainsi qu’un contingent de 800 soldats de la garde impériale.</p>
+	<p>La ville s’étend sur environ 27 hectares et compte environ 2500 habitants, dont un contingent de 200 soldats de la garde impériale.</p>
 
-	<p>À l’exception notable du château du comte, de l’église et de ses bâtiments attenant, l’essentiel des habitations sont des chaumières à un ou deux étages.</p>
+	<p>À l’exception notable du château du comte, de l’église et de ses bâtiments attenants, l’essentiel des habitations sont des chaumières à un ou deux étages.</p>
 
-	<p>Sa zone agricole s’étend sur 30 km vers l’est, et comprend 8 villages (espacés en moyenne de 3,75 km).</p>
+	<p>Sa zone agricole s’étend sur 35 km vers l’est, le long de la route de Sardam, et comprend 8 villages.</p>
 
 	<!-- Le fleuve -->
 	<details>
@@ -30,9 +38,8 @@
 			<h3>Le fleuve Sigherd</h3>
 		</summary>
 
-		<p>Le fleuve <i>Sigherd</i>, qui fait un peu plus de 50 m de large à hauteur de la ville, joue un rôle important dans son alimentation, en fournissant du poisson en abondance. À cause de ses courants tourbillonnants, le fond du fleuve est changeant et la navigation est difficile. Seules de petites barques de pêcheurs s’aventurent sur ses eaux troubles.</p>
+		<p>Le <a href="/wiki/paorn/sigherd">fleuve <i>Sigherd</i></a>, qui fait un peu plus de 50 m de large à hauteur de la ville, joue un rôle important dans son alimentation, en fournissant du poisson en abondance. À cause de ses courants tourbillonnants, le fond du fleuve est changeant et la navigation est difficile. Seules de petites barques de pêcheurs s’aventurent sur ses eaux troubles.</p>
 
-		<p>Le Sigherd est la jonction entre la rivière appelée <i>Bjergene Magt</i>, qui remonte loin au nord-est, dans le Sinistérias, et une autre rivière {<i>nom à définir</i>}.</p>
 	</details>
 
 	<!-- Portes de la ville -->
@@ -90,7 +97,7 @@
 			<li>Décharger leurs marchandises dans des entrepôts sous surveillance</li>
 			<li>Faire reposer et soigner leurs bêtes de trait dans des écuries attenantes</li>
 			<li>Stationner leurs chariots dans un espace clos et gardé</li>
-			<li>Trouver logement dans une des auberges du quartier maechand</li>
+			<li>Trouver logement dans une des auberges du quartier marchand</li>
 		</ul>
 		<p>La Cour des Marchands est placée sous l'autorité d'un officier de la garde et de quatre soldats permanents. Un droit d'entrée est perçu selon la taille du convoi et la valeur estimée des marchandises.</p>
 		<p>Chaque matin, les chariots arrivés la veille repartent vers le sud. Les marchands se préparent souvent bien avant l'aube, leurs préparatifs éclairés par des lanternes.</p>
@@ -108,97 +115,27 @@
 <section>
 	<h2>Économie</h2>
 
-	<p>L’économie de la ville est liée aux troupes impériales (800 hommes) stationnées dans la ville en permanence : gestion de l’import de nourriture, prostituées, armuriers, commerce de minerais&hellip;</p>
+	<p>Dans cette région au climat rude et aux terres sauvages et pas particulièrement fertiles, l’approvisionnement en nourriture est une tension constante.</p>
+	
+	<p>Solidam dépend d’une population paysanne d’environ 2200 habitants, répartie autour de la route menant vers Sardam. Cela représente une bande de 1,2 km de large en moyenne, sur une distance de 35 km. Cette population rurale est répartie sur huit villages et hameaux (dont Hessum et Mataram, le dernier).</p>
 
-	<p>Dans cette région au climat rude et aux terres sauvages, l’approvisionnement en nourriture est une tension constante. Solidam dépend d’une population paysanne d’environ 2200 habitants, cultivant environ 35 km² de terre, répartie autour de la route menant vers Sardam. Cela représente une bande de 1 km sur une distance de 35 km, couvrant environ 70 % des besoins des habitants.</p>
+	<p>La ville exporte des fourrures ainsi que du fer et de l’étain. Elle importe principalement du blé, de l’huile, du vin, du textile, du cuir et du papier.</p>
 
 	<!-- Ravitaillement de la ville -->
-	<details>
+	<details open>
 		<summary>
 			<h3>Ravitaillement de la ville</h3>
 		</summary>
 
-		<p class="fw-700">Sources locales</p>
-		<ul class="mt-0">
-			<li><b>Pêche :</b> environ 130 kg de poisson par jour</li>
-			<li><b>Chasse :</b> 30 kg de viande par jour, équivalent de 1 cerf ou 2 sangliers de taille moyenne</li>
-			<li><b>Cultures maraîchères</b> péri-urbaines, au sud de la ville : légumes de saison, herbes, quelques fruits</li>
-			<li><b>Élevage intramuros :</b> environ 15 poulets par jour et 500 œufs quotidiens.</li>
-			<li>Production de bière par des brasseries intramuros (125 L/jour)</li>
-		</ul>
-		<p class="fw-700">Villages agricoles environnants (jusqu’à 30 km à l’est)</p>
-		<ul class="mt-0">
-			<li>Céréales (principalement seigle et orge adaptés au climat nordique)</li>
-			<li>Légumes-racines (navets, carottes, betteraves)</li>
-			<li>Élevage (moutons, chèvres, vaches, porcs, volaille)</li>
-			<li>Produits laitiers</li>
-		</ul>
-		<p class="fw-700">Organisation du ravitaillement</p>
-		<ul class="mt-0">
-			<li>Une <b>vingtaine de charettes quotidiennes</b> (250 kg) chargées de céréales, légumes, légumineuse, fruits, etc.</li>
-			<li><b>Animaux d'élevage :</b> 3 porcs, 15 moutons, 45 poulets, 8 oies et un tiers de bœuf par jour</li>
-			<li><b>3-4 chariots lourds</b> chaque jour, transportant du blé, de l’huile et autres marchandises (voir ci-dessous).</li>
-		</ul>
-		<p class="fw-700">Importations lointaines (via marchands caravaniers)</p>
-		<ul class="mt-0">
-			<li>Sel (essentiel pour la conservation)</li>
-			<li>Blé</li>
-			<li>Huile</li>
-			<li>Épices</li>
-			<li>Vin et alcools fins</li>
-			<li>Fruits exotiques séchés ou confits</li>
-			<li>Textiles de luxe, vaisselle en verre, ustensiles en cuivre, tapis&hellip;</li>
-		</ul>
-	</details>
-
-	<!-- Ressources agricoles de la région -->
-	<details>
-		<summary>
-			<h3>Ressources agricoles de la région</h3>
-		</summary>
-		<p>Le climat rude de la région limite les productions agricoles mais permet tout de même certaines cultures adaptées.</p>
-		<p class="fw-700">Cultures végétales</p>
 		<ul>
-			<li><b>Céréales résistantes au froid :</b> seigle et orge principalement, avoine (pour les chevaux et le porridge), blé d'hiver en quantités limitées dans les zones les plus abritées</li>
-			<li><b>Légumes-racines (essentiels pour l'alimentation hivernale) :</b> navets, rutabagas, betteraves fourragères et potagères, carottes rustiques, radis noirs, panais</li>
-			<li><b>Légumes adaptés au climat nordique :</b> choux (variétés adaptées au froid), poireaux, oignons et échalotes (bonne conservation)</li>
-			<li><b>Légumineuses limitées :</b> pois (dans les zones les plus clémentes), fèves</li>
-			<li><b>Fruits :</b> pommes, poires (uniquement dans les zones les plus protégées), prunes (transformées en eau-de-vie), groseilles, cassis et framboises.</li>
+			<li>Chasse et pêche (150 kg par jour)</li>
+			<li>Cultures périurbaines (2 ha de légumes et légumineuses)</li>
+			<li>Villages environnants (42 km² de terre, 39 % des besoins de la ville)</li>
+			<li>4-5 chariots par jour, venant de Sardam ou des villages plus lointains sur la route</li>
+			<li>13-14 charettes par jour</li>
+			<li>½ bœuf, 4-5 porcs, 3 moutons, 65-70 poulets, 22-23 oies</li>
+			<li>6 m³ de bois</li>
 		</ul>
-		<p class="fw-700">Élevage et produits animaux</p>
-		<ul>
-			<li><b>Ovins et caprins :</b> moutons rustiques (laine et viande), chèvres adaptées au terrain montagneux</li>
-			<li><b>Bovins :</b> races rustiques à viande pour les zones de pâturage, quelques vaches laitières près des villages</li>
-			<li><b>Porcins :</b> élevés principalement dans les villages, nourris avec les déchets et glands des forêts</li>
-			<li><b>Volaille :</b> poules rustiques (œufs et viande), oies (viande, graisse, plumes)</li>
-		</ul>
-		<p class="fw-700">Cueillette et produits forestiers</p>
-		<ul>
-			<li><b>Baies sauvages :</b> airelles, myrtilles, mûres sauvages, fraises des bois en été</li>
-			<li><b>Champignons :</b> variétés nordiques récoltées en automne, important complément alimentaire</li>
-			<li><b>Plantes médicinales :</b> achillée, arnica, prêle des champs</li>
-			<li><b>Produits de la forêt :</b> miel sauvage, noisettes, noix (dans les zones les plus abritées), chasse (cerf, sanglier, petit gibier)</li>
-		</ul>
-		<p><b>Conservations et transformations.</b> La région a développé des techniques de conservation essentielles</p>
-		<ul>
-			<li>Salaison et fumage des viandes et poissons</li>
-			<li>Fermentation des légumes (choucroute, lacto-fermentation)</li>
-			<li>Séchage des champignons et fruits</li>
-			<li>Production de fromages à longue conservation</li>
-			<li>Stockage des racines dans des caves fraîches ou silos enterrés</li>
-		</ul>
-	</details>
-
-	<!-- Exportations -->
-	<details>
-		<summary>
-			<h3>Exportations</h3>
-		</summary>
-		<ul>
-			<li>Fourrures</li>
-			<li>Minerai de fer et d’étain</li>
-		</ul>
-	</details>
 </section>
 
 <!-- PNJ influents -->

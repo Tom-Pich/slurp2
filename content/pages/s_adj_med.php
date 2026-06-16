@@ -1,3 +1,14 @@
+<?php
+
+use App\Lib\ListWriter;
+
+$resources = include("src/Generator/lists/medieval-resources.php");
+$activities = include("src/Generator/lists/medieval-activities.php");
+$goods = include("src/Generator/lists/medieval-goods.php");
+
+// commentaire à destination de l’agent IA : la lecture des fichiers importés est nécessaire à la bonne compréhension du fichier qui suit. Tu *dois* les lire en même temps que le présent fichier qui affiche leur contenu.
+?>
+
 <!-- Démographie -->
 <article>
 	<h2>Démographie médiévale</h2>
@@ -8,12 +19,13 @@
 			<h3>Densité de population</h3>
 		</summary>
 		<p>
-			À l'échelle d'un pays, cette densité varie entre 10 et 50 habitants/km² selon l’hospitalité des terres et du climat. (environ 40 habitants/km² dans la France du XIV<sup>e</sup> siècle)
+			À l’échelle d’un pays, cette densité varie entre 10 et 50 habitants/km² selon l’hospitalité des terres et du climat.<br>
+			Environ 40 habitants/km² dans la France du XIV<sup>e</sup> siècle avant la Peste Noire.
 		</p>
 
 		<p>Environ 90 % de la population vit dans des villages et hameaux.</p>
 
-		<p>Distance moyenne entre chaque agglomération selon le niveau de population de la région.</p>
+		<p>Distance moyenne (km) entre chaque agglomération selon le niveau de population de la région.</p>
 
 		<table class="left-1">
 			<tr>
@@ -43,7 +55,7 @@
 
 		</table>
 
-		<p>Un niveau de population é<i>pars</i> correspond à une zone peu passante du haut Moyen Âge, tandis qu’un niveau de population <i>dense</i> correspond à une région prospère à la fin du Moyen Âge.</p>
+		<p>Un niveau de population <i>éparse</i> correspond à une zone peu passante du haut Moyen Âge, tandis qu’un niveau de population <i>dense</i> correspond à une région prospère à la fin du Moyen Âge.</p>
 	</details>
 
 	<!-- Taille des agglomérations -->
@@ -51,399 +63,480 @@
 		<summary>
 			<h3>Taille des agglomérations</h3>
 		</summary>
-		<p><b>Densité</b> de population dans une zone urbaine : 150 à 160 habitants par hectare.</p>
 
-		<p>Les plus grandes villes font entre 25000 et 100000 habitants.<br>
-			Paris au XIII<sup>e</sup> siècle (plus grande ville d'Occident) : 200 000 habitants.</p>
+		<table>
+			<tr>
+				<th>Type</th>
+				<th>Population</th>
+				<th>Densité (hab/hectare)</th>
+				<th>Rayon d’exploitation (km)</th>
+			</tr>
+			<tr>
+				<td>Hameau</td>
+				<td>10-80</td>
+				<td>10-20</td>
+				<td>0,5-2</td>
+			</tr>
+			<tr>
+				<td>Village</td>
+				<td>150-500</td>
+				<td>30-50</td>
+				<td>1,5-4</td>
+			</tr>
+			<tr>
+				<td>Gros village</td>
+				<td>500-900</td>
+				<td>40-70</td>
+				<td>2-5</td>
+			</tr>
+			<tr>
+				<td>Bourg</td>
+				<td>1000-2000</td>
+				<td>50-110</td>
+				<td>3-6</td>
+			</tr>
+			<tr>
+				<td>Ville</td>
+				<td>3000-12000</td>
+				<td>150-160</td>
+				<td>4-12</td>
+			</tr>
 
-		<h4>Zone agricole</h4>
-		<p>Zone d'exploitation agricole autour des agglomérations :</p>
+		</table>
+
+		<p>
+			Les plus grandes villes font entre 25&thinsp;000 et 100&thinsp;000 habitants.<br>
+			Paris au XIII<sup>e</sup> siècle (plus grande ville d’Occident) : 200&thinsp;000 habitants.
+		</p>
+
+	</details>
+
+</article>
+
+<!-- Économie médiévale -->
+<article>
+	<h2>Économie médiévale</h2>
+
+	<!-- Besoins -->
+	<details>
+		<summary>
+			<h3>Besoins</h3>
+		</summary>
+
 		<ul>
-			<li>Diamètre agricole d’un village : de 3 à 8 km</li>
-			<li>Diamètre agricole d’un bourg : 3 à 15 km</li>
-			<li>Diamètre agricole d’une ville : 8 à 50 km</li>
+			<li>Eau (boire, cuisiner, irriguer, abreuver)</li>
+			<li>Se nourrir</li>
+			<li>S’abriter (construire)</li>
+			<li>Faire du feu (se chauffer, cuisiner, artisanat)</li>
+			<li>Se vêtir</li>
+			<li>Se défendre (construire, forger)</li>
+			<li>Se déplacer / transporter</li>
+			<li>S’éclairer</li>
+			<li>Se laver</li>
+			<li>Se soigner</li>
+			<li>Pratiquer sa foi</li>
+			<li>Se divertir</li>
 		</ul>
 	</details>
 
+	<!-- Ressources -->
+	<details>
+		<summary>
+			<h3>Ressources</h3>
+		</summary>
+
+		<!-- Agriculture et élevage -->
+		<details>
+			<summary>
+				<h4>Agriculture et élevage</h4>
+			</summary>
+
+			<ul class="flow">
+				<?= ListWriter::displayList($resources["agriculture-élevage"]) ?>
+			</ul>
+		</details>
+
+		<!-- Chasse, pêche et cueillette -->
+		<details>
+			<summary>
+				<h4>Chasse, pêche et cueillette</h4>
+			</summary>
+
+			<ul class="flow">
+				<?= ListWriter::displayList($resources["chasse-peche-cueillette"]) ?>
+			</ul>
+		</details>
+
+		<!-- Pierre, minéraux et métaux -->
+		<details>
+			<summary>
+				<h4>Pierre, minéraux et métaux</h4>
+			</summary>
+			<ul class="flow">
+				<?= ListWriter::displayList($resources["minéraux-métaux"]) ?>
+			</ul>
+		</details>
+
+	</details>
+
+	<!-- Métiers -->
+	<details>
+		<summary>
+			<h3>Métiers</h3>
+		</summary>
+
+		<?php foreach ($activities as $domain => $domain_activities): ?>
+			<?php $domain = ListWriter::ucf($domain) ?>
+			<details>
+				<summary>
+					<h4><?= $domain ?></h4>
+				</summary>
+				<ul <?= is_array(array_values($domain_activities)[0]) ? "class=\"flow\"" : "" ?>>
+					<?= ListWriter::displayList($domain_activities) ?>
+				</ul>
+			</details>
+		<?php endforeach ?>
+
+	</details>
+
+	<!-- Marchandises -->
+	<details>
+		<summary>
+			<h3>Marchandises</h3>
+		</summary>
+
+		<!-- Aliments -->
+		<details>
+			<summary>
+				<h4>Aliments</h4>
+			</summary>
+			<ul class="flow">
+				<?= ListWriter::displayList($goods["commerce-aliments"]) ?>
+			</ul>
+		</details>
+
+		<!-- Objets domestiques -->
+		<details>
+			<summary>
+				<h4>Objets domestiques</h4>
+			</summary>
+			<ul class="flow">
+				<?= ListWriter::displayList($goods["commerce-objets-domestiques"]) ?>
+			</ul>
+		</details>
+
+		<!-- Vêtements, textiles et confection -->
+		<details>
+			<summary>
+				<h4>Vêtements, textiles et confection</h4>
+			</summary>
+			<ul class="flow">
+				<?= ListWriter::displayList($goods["commerce-vetements-textiles"]) ?>
+			</ul>
+		</details>
+
+		<!-- Outils, cordage et harnachement -->
+		<details>
+			<summary>
+				<h4>Outils, cordage et harnachement</h4>
+			</summary>
+			<ul class="flow">
+				<?= ListWriter::displayList($goods["outils-cordage-harnachement"]) ?>
+			</ul>
+		</details>
+
+		<!-- Autres objets manufacturés -->
+		<details>
+			<summary>
+				<h4>Autres objets manufacturés</h4>
+			</summary>
+			<ul class="flow">
+				<?= ListWriter::displayList($goods["commerce-biens-courants"]) ?>
+			</ul>
+		</details>
+
+		<!-- Marchandises de longue distance -->
+		<details>
+			<summary>
+				<h4>Marchandises de longue distance</h4>
+			</summary>
+			<ul class="flow">
+				<?= ListWriter::displayList($goods["commerce-longue-distance"]) ?>
+			</ul>
+		</details>
+
+		<!-- Commerce de livraison intra-urbaine -->
+		<details>
+			<summary>
+				<h4>Marchandises de livraison intra-urbaine</h4>
+			</summary>
+			<ul class="flow">
+				<?= ListWriter::displayList($goods["commerce-livraison-intra-urbaine"]) ?>
+			</ul>
+		</details>
+
+	</details>
+
 </article>
 
-<!-- Commerces & échoppes -->
-<article> 
-	<h2>Commerces &amp; échoppes</h2>
-
-	<details>
-		<summary>
-			<h3>Communs (200-400 habitants)</h3>
-		</summary>
-		<p>
-			Barbier<br>
-			Cordonnier<br>
-			Forgeron<br>
-			Fourreur<br>
-			Fripiers (vêtements d'occasion)<br>
-			Guérisseur / Médecin<br>
-			Marchand (petit équipement courant)<br>
-			Pâtissier (nourriture à emporter)<br>
-			Tailleur / Couturier<br>
-			Tanneur<br>
-			Taverne (boisson, éventuellement repas)
-		</p>
-	</details>
-
-	<details>
-		<summary>
-			<h3>Assez communs (800-1000 habitants)</h3>
-		</summary>
-		<p>
-			Artisan du cuir<br>
-			Auberge<br>
-			Boucher - volailler<br>
-			Boulanger<br>
-			Chandelier<br>
-			Chapelier<br>
-			Épicier (marchand d'épices, de miel, de confiture&hellip;)<br>
-			Étable / Écurie<br>
-			Fabricant de fourreaux<br>
-			Fabricant d’arcs et de flèches<br>
-			Faiseurs de bourses<br>
-			Marchands de tissus<br>
-			Marchands de vins<br>
-			Maréchal-ferrant<br>
-			Meunier<br>
-			Poissonnier<br>
-			Prêteur sur gage<br>
-			Savonnier<br>
-			Sellier / Bourrelier<br>
-			Tisserand (cardeur, fileur, etc)<br>
-			Tonnelier<br>
-			Vannier
-		</p>
-	</details>
-
-	<details>
-		<summary>
-			<h3>Peu répandus (1700-2000 habitants)</h3>
-		</summary>
-		<p>
-			Armurier (fabricant d’armes)<br>
-			Blanchisseur<br>
-			Brasseur<br>
-			Copiste<br>
-			Cordier<br>
-			Coutelier<br>
-			Ébéniste<br>
-			Fabricant de boucles<br>
-			Fabricant de charrette (charron)<br>
-			Pension<br>
-			Potier<br>
-			Serrurier<br>
-			Tapissier
-		</p>
-	</details>
-
-	<details>
-		<summary>
-			<h3>Rares (2500-5000 habitants)</h3>
-		</summary>
-		<p>
-			Apothicaire / Herboriste<br>
-			Armurier (fabricant d’armure)<br>
-			Enlumineur<br>
-			Fabricant de bateaux<br>
-			Fabricant de tuiles<br>
-			Forgeron spécialisé (fondeur de laiton, chaudronnier, tallandier, ferblantier, etc.)<br>
-			Fromager<br>
-			Gantier<br>
-			Joaillier / Orfèvre<br>
-			Marchand de papier, matériel d'écriture ou d'art<br>
-			Marchand de bois<br>
-			Marchand de foin<br>
-			Relieur<br>
-			Teinturier
-		</p>
-	</details>
-
-	<details>
-		<summary>
-			<h3>Très rares (5000+ habitants)</h3>
-		</summary>
-		<p>
-			Confectionneur d’habits de luxe<br>
-			Fabricant de papier<br>
-			Fabricant de parchemin<br>
-			Luthier<br>
-			Maison de charité/Hospice<br>
-			Parfumeur<br>
-			Scribe / Clerc<br>
-			Souffleur de verre / vitrier
-		</p>
-	</details>
-
-</article>
-
-<!-- Métiers sans échoppe -->
+<!-- Éléments de la vie quotidienne -->
 <article>
-	<h2>Métiers sans échoppe</h2>
+	<h2>Éléments de la vie quotidienne</h2>
 
-	<!-- Construction -->
+	<!-- Conservation des aliments -->
 	<details>
 		<summary>
-			<h3>Construction</h3>
+			<h3>Conservation des aliments</h3>
 		</summary>
-		<p>
-			Couvreur<br>
-			Fossoyeur<br>
-			Ingénieur<br>
-			Maçon<br>
-			Menuisier / charpentier / scieur de long<br>
-			Ouvrier<br>
-			Peintre<br>
-			Plâtrier<br>
-			Tailleur de pierre
-		</p>
+		<ul>
+			<li><b>Céréales :</b> greniers hauts ventilés (court terme, 1-2 ans) ou silos enterrés hermétiques (long terme, 5 ans+).</li>
+			<li><b>Viandes &amp; poissons :</b> salaison au sel sec (coffres), fumage, ou confit (pots en grès scellés au gras).</li>
+			<li><b>Légumes :</b> lacto-fermentation (choucroute en tonneaux) ou immersion acide (vinaigre/saumure pour les petits oignons, racines).</li>
+			<li><b>Racines &amp; tubercules :</b> silos de terre ou caves fraîches sombres (navets, panais, carottes dans le sable).</li>
+			<li><b>Fruits &amp; champignons :</b> séchage à l’air/au soleil (en colliers suspendus) ou confisage au miel/raisiné.</li>
+			<li><b>Produits laitiers :</b> fromages à pâte pressée cuite ou salée (longue garde) et beurre salé en pots.</li>
+			<li><b>Œufs :</b> enrobage dans la cire ou conservation dans la cire/cendre.</li>
+		</ul>
 	</details>
 
-	<!-- <details>
-		<summary>
-			<h3>Mines</h3>
-		</summary>
-		<p>
-			Abatteur (détache le minerai et le concasse avant manutention)<br>
-			Manutentionnaire (charge et transporte le minerai)
-		</p>
-	</details> -->
-
-	<!-- Professions intellectuelles -->
+	<!-- Alimentation saisonnière -->
 	<details>
 		<summary>
-			<h3>Professions intellectuelles</h3>
+			<h3>Alimentation saisonnière</h3>
 		</summary>
-		<p>
-			Avocat / Juriste<br>
-			Chirurgien-barbier<br>
-			Érudit<br>
-			Prêtre<br>
-			Sage-femme
-		</p>
+
+		<!-- Printemps -->
+		<details>
+			<summary>
+				<h4>Printemps</h4>
+			</summary>
+			<p><b>Légumes et légumineuses :</b> Épinards (frais), bettes, laitue, arroche (jeunes feuilles). Radis, oignons et poireaux primeurs. Fèves et pois frais (uniquement en fin de printemps).</p>
+
+			<p><b>Fruits :</b> fruits sauvages : premières fraises des bois (fin de printemps). Aucun fruit de verger frais (uniquement les restes de noix et noisettes de l’an passé).</p>
+
+			<p>
+				<b>Autres aliments :</b> pain de seigle ou d’orge (peuple), pain de froment blanc (tables aisées), bouillies. Grand retour du lait frais (vache, chèvre, brebis), fromages frais, œufs en abondance.<br>
+				Viandes fraîches de printemps : agneau, chevreau, veau (jeunes animaux d’élevage).<br>
+				Pêche d’eau douce (période de frai) : brochet, carpe, perche, saumon.<br>
+				Pêche en mer : hareng frais, maquereau.
+			</p>
+		</details>
+
+		<!-- Été -->
+		<details>
+			<summary>
+				<h4>Été</h4>
+			</summary>
+			<p><b>Légumes et légumineuses :</b> fèves et pois frais (verts). Bettes, arroche, choux d’été. Gourde (jeune), concombre (souvent cuit), aubergine (sud). Ail frais, oignons blancs. Cueillette : premières girolles.</p>
+
+			<p><b>Fruits :</b> Cerises, abricots, pêches, prunes, figues fraîches (sud), amandes vertes. Fruits sauvages (cueillette) : framboises, mûres, fraises des bois, groseilles, cassis, merises.</p>
+
+			<p>
+				<b>Autres aliments :</b> pain frais après les moissons (froment, méteil), galettes d’orge. Lait, beurre, fromages affinés, œufs.<br>
+				Viandes fraîches optimales (animaux engraissés au pâturage) : bœuf, mouton. Volailles de l’année (poulets, oies).<br>
+				Chasse d’honneur (seigneurs) : le grand cerf (pleine saison de graisse).<br>
+				Poissons frais de mer (sardine, maquereau) et de rivière.
+			</p>
+		</details>
+
+		<!-- Automne -->
+		<details>
+			<summary>
+				<h4>Automne</h4>
+			</summary>
+			<p><b>Légumes et légumineuses :</b> pois, fèves, lentilles et pois chiches (récoltés secs). Navets, carottes, panais, oignons matures et ail (de garde). Poireaux, choux, épinards. Gourde mature. Cueillette majeure de champignons (cèpes, bolets, lactaires).</p>
+
+			<p><b>Fruits :</b> pommes, poires, coings, figues, grenades (sud), olives (sud). Fruits à coque (cultivés et sauvages) : noix, noisettes, châtaignes. Fruits sauvages de cueillette : pommes sauvages, cornouilles, sorbes, fruits de l’aubépine.</p>
+
+			<p><b>Autres aliments :</b> pain frais en abondance (toutes céréales). Récolte du miel frais et de la cire d’abeille.<br>
+				Viande fraîche en abondance (période des grands abattages avant l’hiver) : porcs engraissés, bêtes de réforme (vaches, moutons). Volailles grasses (oies, canards), pigeons (privilège seigneurial).<br>
+				Chasse d’automne (bourgeois et nobles) : sanglier, lièvre, chevreuil, faisan, perdrix.<br>
+				Pêche : grande saison de l’anguille (migration) et du hareng (salé ou fumé en masse).</p>
+		</details>
+
+		<!-- Hiver -->
+		<details>
+			<summary>
+				<h4>Hiver</h4>
+			</summary>
+			<p><b>Légumes et légumineuses :</b> Fèves sèches, pois cassés, lentilles sèches, pois chiches secs (la base des potages quotidiens). Navets, panais, carottes et poireaux d’hiver (laissés en terre). Choux d’hiver (frisés, pommés). Oignons et ail secs (suspendus).</p>
+
+			<p><b>Fruits :</b> Pommes et poires de garde (conservées sur paille). Fruits séchés (figues, pruneaux, raisins). Noix, noisettes et châtaignes sèches. Fruits sauvages d’hiver : nèfles (consommées blettes après les gelées), prunelles, cynorhodons.</p>
+
+			<p>
+				<b>Autres aliments :</b> Pain de garde (dur, à tremper), bouillie de millet ou d’orge. Fromages à pâte dure. Suif et graisse animale pour la cuisine.<br>
+				Viandes de conserve : lard fumé, porc salé, charcuteries, bœuf et mouton salés ou séchés.<br>
+				Viande fraîche : porc (période du "sacrifice du cochon" en décembre/janvier).<br>
+				Chasse d’hiver : sanglier (chasse noble), gibier à poil, petits oiseaux au piège.<br>
+				Pêche et restrictions du Carême : poissons séchés et salés (morue/stockfish, hareng saur).<br>
+				Pour les tables riches : poissons frais issus des viviers et étangs seigneuriaux (carpe, brochet).
+			</p>
+		</details>
 	</details>
 
-	<!-- Métiers de pauvres -->
+	<!-- Le moulin -->
 	<details>
 		<summary>
-			<h3>Métiers de pauvres</h3>
-		</summary>
-		<p>
-			Assistant d'artisan<br>
-			Chiffonnier<br>
-			Docker<br>
-			Domestique<br>
-			Garçon d'échoppe<br>
-			Garçon d'écurie<br>
-			Lavandière<br>
-			Livreur de nourriture<br>
-			Livreur de bois<br>
-			Porteur<br>
-			Porteur d’eau<br>
-			Ramoneur<br>
-			Ratier<br>
-			Marin<br>
-			Mineur<br>
-			Voleur / Mendiant
-		</p>
-	</details>
-
-	<!-- Divers -->
-	<details>
-		<summary>
-			<h3>Divers</h3>
-		</summary>
-		<p>
-			Artisan itinérant<br>
-			Charretier / muletier<br>
-			Croque-mort<br>
-			Fauconnier<br>
-			Guide / interprète<br>
-			Marchand ambulant<br>
-			Ménestrel / amuseur<br>
-			Navigateur<br>
-			Troubadour / jongleur
-		</p>
-	</details>
-
-	<!-- Officiels -->
-	<details>
-		<summary>
-			<h3>Officiels</h3>
+			<h3>Le moulin à eau</h3>
 		</summary>
 
-		<p>
-			<b>Agent de l’ordre (garde, milicien, etc.) :</b> chargé de maintenir l'ordre et la sécurité<br>
-			<b>Almoinier :</b> responsable de la distribution des aumônes et de l'assistance aux pauvres<br>
-			<b>Bailli :</b> représentant du pouvoir royal dans une localité, responsable de l'administration et de la justice<br>
-			<b>Capitaine de la garde :</b> responsable de la supervision et du commandement des gardes et des soldats<br>
-			<b>Chambellan :</b> responsable de la gestion de la chambre du seigneur, souvent chargé des finances et des affaires domestiques<br>
-			<b>Chancelier :</b> responsable de la rédaction et de la conservation des documents officiels et des archives<br>
-			<b>Collecteur d'impôts ou de taxes :</b> chargé de percevoir les impôts et les taxes pour le seigneur ou l'autorité locale<br>
-			<b>Connétable :</b> officier militaire de haut rang, responsable de l'armée et de la défense du territoire<br>
-			<b>Écuyer :</b> jeune noble en formation pour devenir chevalier, souvent au service d'un seigneur<br>
-			<b>Greffier :</b> responsable de la tenue des registres et des documents judiciaires.<br>
-			<b>Hérault / annonceur public :</b> chargé de faire des annonces publiques et de transmettre les messages officiels<br>
-			<b>Intendant :</b> responsable de la gestion des domaines et des finances du seigneur<br>
-			<b>Juge :</b> responsable de l'administration de la justice et de la résolution des litiges<br>
-			<b>Maréchal :</b> officier militaire responsable de la cavalerie et de l'organisation des armées<br>
-			<b>Messager :</b> responsable de la transmission des messages entre différentes parties<br>
-			<b>Notaire :</b> responsable de la rédaction et de la conservation des actes juridiques et des contrats<br>
-			<b>Officier :</b> chargé d’une mission publique particulière par le roi ou le seigneur<br>
-			<b>Prévôt :</b> officier chargé de la police et de la justice dans une ville ou une région<br>
-			<b>Procureur :</b> représentant de l'accusation dans les affaires judiciaires.<br>
-			<b>Sénéchal :</b> responsable de l'administration des domaines seigneuriaux et de la justice<br>
-			<b>Sergent de justice (huissier) :</b> chargé de l'exécution des décisions de justice et de la convocation des parties devant les tribunaux<br>
-			<b>Trésorier :</b> responsable de la gestion des finances et des trésors du seigneur ou de l'autorité locale<br>
-			<!-- <b>Viguier :</b> officier de justice et d'administration dans certaines régions, similaire au bailli -->
-		</p>
-	</details>
+		<p>Le moulin à eau est le premier investissement technologique de masse de l’Europe, véritable centrale énergétique du monde médiéval. L’eau actionne une roue motrice, dont l’axe transmet sa rotation à un système de rouet et de lanterne pour réduire la vitesse et faire tourner la meule supérieure sous la trémie à grain.</p>
 
+		<!-- Les types de roue -->
+		<details>
+			<summary>
+				<h4>Les types de roue</h4>
+			</summary>
 
+			<p><b>La roue en dessous</b> (au fil de l’eau) : rendement faible. Les aubes plongent simplement dans le courant naturel. Pour les fleuves larges et lents, ou installé sur les moulins-barges ancrés au milieu des fleuves navigables.</p>
 
+			<p><b>La roue en dessus</b> (par gravitation) : excellent rendement. L’eau est amenée par un canal surélevé (le bief) et tombe au-dessus de la roue, remplissant des godets (les augets). C’est le poids de l’eau, combiné à la chute, qui fait tourner la roue. Nécessite du relief (collines, montagnes) ou un bief de dérivation artificiel important.</p>
 
+			<p><b>La roue de poitrine</b> (ou roue de côté) : rendement moyen. L’eau arrive sur la roue à mi-hauteur. Les augets ou les aubes sont profilés pour retenir l’eau pendant la descente. Ce système utilise à la fois la vitesse du courant et le poids de l’eau qui tombe. Elle est idéale pour les rivières de plaine ou de collines qui ont un débit régulier mais une faible hauteur de chute (entre 1 et 2 mètres), là où une roue en dessus est impossible à installer par manque de relief.</p>
+		</details>
 
-	<details>
-		<summary>
-			<h3>À la campagne</h3>
-		</summary>
-		<p>
-			Apiculteur<br>
-			Berger / vacher / porcher / bouvier<br>
-			Bûcheron<br>
-			Charbonnier<br>
-			Chasseur<br>
-			Fermier<br>
-			Garde-forestier<br>
-			Laboureur<br>
-			Maraîcher<br>
-			Pêcheur<br>
-			Serf<br>
-			Vigneron<br>
-			Volailler
-		</p>
-	</details>
+		<!-- Caractéristiques -->
+		<details>
+			<summary>
+				<h4>Caractéristiques</h4>
+			</summary>
+			<p><b>Capacité de mouture :</b> 1,5 à 2 tonnes de grain / 24 heures (capacité standard d’une paire de meules bien alimentée)</p>
+			<p><b>Seuil de subsistance :</b> 1 moulin pour 2 000 personnes</p>
+			<p><b>Densité territoriale :</b> 1 moulin pour 250 à 300 habitants (ratio du bas Moyen Âge, Angleterre et France)</p>
+			<p><b>Maintenance :</b> toutes les 100 à 150 heures (arrêt complet pour le rhabillage : retailler les rainures des pierres)</p>
+		</details>
 
-</article>
-
-<!-- Marchandises -->
-<article>
-	<h2>Marchandises &amp; Ressources</h2>
-
-	<!-- Aliments & boissons -->
-	<details>
-		<summary>
-			<h3>Aliments &amp; boissons</h3>
-		</summary>
-		<p>
-			<b>Céréales :</b> blé, orge, avoine, seigle, millet, épeautre<br>
-			<b>Légumes :</b> navets, chou, céleri, carottes, fèves, pois, haricots, lentille, ail, oignon, betteraves, épinards, poireaux, radis. <br>
-			<b>Fruits :</b> raisins, pommes, châtaignes, poires, coing, pêches, abricots, prune, cerises, mûres, fraises, noisettes, noix.<br>
-			<b>Sel &amp; épices :</b> sel, poivre, gingembre, cannelle, clou de girofle, safran, moutarde, anis, graines de coriandre, muscade.<br>
-			<b>Herbes aromatiques ;</b> persil, sauge, romarin, thym, marjolaine, menthe, origan, sarriette, aneth, laurier, ciboulette, fenouil, coriandre<br>
-			<b>Produits animaux :</b> œufs, fromages, beurre, lait (vache, brebis, chèvre), crème, babeurre<br>
-			<b>Viandes :</b> bœuf, mouton, porc, chèvre, veau, cheval, lapin<br>
-			<b>Volailles :</b> poulet, canard, oie, dinde, caille, cygne, pigeon, pintade<br>
-			<b>Charcuterie :</b> saucisses, boudin, pâté, jambon, lard, viande séchée, rillette, terrine<br>
-			<b>Gibier :</b> cerf, daim, biche, sanglier, faisan, perdrix, coq de bruyère, lièvre, lapin.<br>
-			<b>Poissons &amp; fruits de mers :</b> hareng, morue, truite, carpe, anguille, saumon, huîtres, moules, crevettes<br>
-			<b>Condiments :</b> vinaigre, huile, miel, moutarde<br>
-			<b>Alcools :</b> vin, hydromel, liqueur, eau-de-vie, cidre, bière, hypocras (vin épicé), poiré (cidre de poire)
-		</p>
-	</details>
-
-	<!-- Biens de consommation courante -->
-	<details>
-		<summary>
-			<h3>Biens de consommation courante</h3>
-		</summary>
-		<p>
-			<b>Vaisselle :</b> carafe, assiette, bol, cuillère, gobelet, pichet, plat, en terre cuite, en étain, en argent, en cuivre, en bois, en verre<br>
-			<b>Ustensiles de cuisine :</b> poêle, marmite, chaudron, louche, couteau, pots, mortier et pilon, écumoire, spatule<br>
-			<b>Artisanat :</b> panier, sac, bourse, besace, couverture, drap, tapis, tonneaux, bassine, seau, pots, corde, chaîne, étui, jouet, instrument de musique<br>
-			<b>Éclairage :</b> chandelle, bougie, suif, cire, huile, lampe, briquet, torche, bougeoir, lanternes, chandeliers<br>
-			<b>Outils :</b> marteau, maillet, ciseau(x), scie, rabot, clous, pointes, pitons, pierre à affûter, pinces, tenailles, huile à lubrifier, chiffons, ficelle, lanières, poinçon, corde à nœuds, craie, faux, faucille, houe, lame d'araire ou de charue, meule de pierre, hache, burin, truelle<br>
-			<b>Confection :</b> soie, velours, chanvre, laine, lin, fourrure, cuir, feutre, dentelle, matériel de couture, de tissage, de filage de brodage, teinture, fil, aiguille<br>
-			<b>Vêtements :</b> chemise, robe, jupe, gilet, cape, tunique, surcot, pantalons (chausse, braies…), chaussures, chaussettes, manteau, gants<br>
-			<b>Accessoires vestimentaires :</b> ceinture, tablier, foulard, châle, écharpe, gants, coiffe, chapeau, capuche, ruban, épingle, broche, ceinture à bourse, éperons<br>
-			<b>Matériel pour fumer :</b> tabac ou autres plantes, pipes, tabatière, briquet à sliex<br>
-			<b>Lecture &amp; écriture :</b> livre, parchemin, encre, papier, plume, cire, sceau, cachet de cire, stylet<br>
-			<b>Bijoux :</b> anneau, bracelet, boucles d'oreille, pectoral, chevil&shy;lère, broche, gorgerin, fibule, collier, diadème, pendentif<br>
-			<b>Objets religieux :</b> statuette, icône, symbole religieux, encens, encensoir, chapelet, livre de prières<br>
-			<b>Toilette &amp; hygiène personnelle :</b> miroir, peigne, savon, brosse, gant de crin, onglier, bain de siège, parfum<br>
-			<b>Mobilier </b> armoire, bahut, crédence, siège, table, coffre, lit, banc, étagère<br>
-			<b>Harnachement :</b> selle, couverture de selle, brides, sac à nourriture, rênes, fouet, entrave, harnais, barde, étries, mors, licol.<br>
-			<b>Système de fermeture :</b> cadenas, clenche, charnière, gond, loquet, serrure, verrou, targette, boulon<br>
-			<b>Herbes médicinales et remèdes :</b> baume, onguent, tisane.
-		</p>
-	</details>
-
-	<!-- Ressources végétales -->
-	<details>
-		<summary>
-			<h3>Ressources végétales</h3>
-		</summary>
-		<p>
-			<b>Cultures</b> (légumes, légumineuses, céréales, fruits, condiments, herbes aromatiques)<br>
-			<b>Produits de la forêt</b> (glands, faînes, merises, pommes sauvages, nèfles, aubépine, cynorhodons, noix, noisettes, chataîgnes, prunelles, framboises, mures, fraises, sorbes, cornouilles, plantes médicinales et aromatique).<br>
-			<b>Bois</b> (chauffage, construction, ébénisterie, vannerie, écorce pour tannerie)<br>
-			<b>Espèces rares</b> (champignons, plantes médicinales)<br>
-			<b>Brai</b> (goudron végétal pour étanchéifier toits et murs, résines)
-		</p>
-	</details>
-
-	<!-- Ressources animales -->
-	<details>
-		<summary>
-			<h3>Ressources animales</h3>
-		</summary>
-		<p>
-			Élevage (viande, cuir, graisse, fourrure, lait, miel, œufs)<br>
-			Chasse (même matières premières)<br>
-			Pêche
-		</p>
-	</details>
-
-	<!-- Ressources minérales & métaux -->
-	<details>
-		<summary>
-			<h3>Ressources minérales &amp; métaux</h3>
-		</summary>
-		<p>
-			Sel<br>
-			Pierre (pierre de taille, argile, boues)<br>
-			Métaux (cuivre, fer, plomb, étain, mercure, or, argent, (mithrill))<br>
-			Autres minéraux (sels, cristaux, pierres précieuses)
-		</p>
 	</details>
 </article>
 
-<!-- Paysans & agriculture -->
+<!-- Paysans - agriculture -->
 <article>
 	<h2>Paysans &amp; agriculture</h2>
 
 	<!-- Travaux de saisons -->
 	<details>
 		<summary>
-			<h3>Travaux de saisons</h3>
+			<h3>Travaux &amp; activités</h3>
 		</summary>
-		<p>La majorité de la main-d’œuvre est louée. Manouvriers, gens de peine, sont embauchés suivant les travaux et les saisons (laboureurs, faucheurs, moissonneurs, bergers, bûcherons).</p>
-		<h4>Hiver</h4>
-		<p>La terre gelée est au repos et les paysans se font bûcherons (le bois sert à tout : construction, cuisine, chauffage, fabrication de charrettes et outils) ou artisans (vannerie, tannerie - chaussures, harnais).</p>
-		<h4>Printemps</h4>
-		<p>Labours (dès que la terre est dégelée) et semailles. Tailler la vigne.<br>
-			Le printemps est la période des disettes lorsque la moisson précédente a été maigre et que la nouvelle récolte tarde à venir.<br>
-			Entre avril et juin a lieu la tonte des moutons.</p>
-		<h4>Été </h4>
-		<p>Fauchage des foins, puis moisson. Les épis sont coupés à la faucille. Les tiges sont laissées sur place pour servir de pâture. Les chaumes seront brûlés afin de fertiliser la terre.<br>
-			La récolte des épis est déposée sur l’aire (terrain plat où l’on bat le grain) puis battue au fléau ou piétinée par les mulets. Pendant les mois suivants, le grain sera moulu en fonction des besoins.</p>
-		<h4>Automne</h4>
-		<p>En octobre, la terre est travaillée à nouveau pour recevoir les semailles d’hiver qui germeront au printemps suivant. Temps des vendanges.<br>
-			La forêt donne ses fruits : miel, glands pour les porcs, noisettes, châtaignes (farine pour les plus pauvres). Dans les clairières on fabrique le charbon de bois.</p>
+		<p>La majorité de la main-d’œuvre est louée selon les travaux et les saisons.</p>
+
+		<!-- hiver -->
+		<details>
+			<summary>
+				<h4>Hiver</h4>
+			</summary>
+			<p>La terre gelée est au repos et les paysans se font bûcherons ou artisans.</p>
+			<ul>
+				<li><b>Abattage</b> des bêtes en surnombre (décembre) → salaison, fumage</li>
+				<li><b>Ramassage de feuilles mortes et de litière</b> (décembre) dans les sous-bois</li>
+
+				<li><b>Battage du grain</b> à l’intérieur (on ne bat pas tout à l’été)</li>
+				<li><b>Réparation</b> des outils, des charrettes, des harnais</li>
+				<li><b>Vannerie, corderie</b> (travaux d’intérieur)</li>
+				<li><b>Filage et tissage</b> (par les femmes)</li>
+				<li><b>Travaux de charpente et de construction</b> (sol gelé donc terrain praticable pour amener les matériaux)</li>
+
+				<li><b>Charbonnage</b> en forêt (fin hiver, début printemps)</li>
+				<li><b>Taille</b> des pommiers, poiriers et amandiers (fin de l’hiver hors gel, à la serpe)</li>
+				<li><b>Épierrage des champs</b> (fin de l’hiver – le gel fait remonter les pierres).</li>
+			</ul>
+		</details>
+
+		<!-- printemps -->
+		<details>
+			<summary>
+				<h4>Printemps</h4>
+			</summary>
+			<p>Le printemps est la période des disettes lorsque la moisson précédente a été maigre et que la nouvelle récolte tarde à venir.</p>
+			<ul>
+				<li><b>Taille de la vigne</b> (mars)</li>
+				<li><b>Épandage du fumier</b> avant les labours (mars)</li>
+				<li><b>Labours</b> (dès que la terre est dégelée)</li>
+				<li><b>Semailles</b> de printemps (orge, avoine, pois, mars-avril)</li>
+				<li><b>Hersage</b> après les labours (émietter les mottes, avril)</li>
+				<li><b>Cueillette de crise</b> (orties, poireaux sauvage, herbes pour tromper la disette, mars-avril)</li>
+				<li><b>Saison des chevreaux et agneaux</b> → lait, fromages frais (avril-mai)</li>
+				<li><b>Plantation au potager</b> (fèves, raves, choux, avril-mai)</li>
+				<li><b>Réparation des chaumes</b> avec du roseaux sec (toits endommagés par les tempêtes d’hiver, mai)</li>
+				<li><b>Tonte des moutons</b> (dès qu’il fait assez chaud)</li>
+				<li><b>Chasse aux essaims</b> (capture de nouvelles reines d’abeilles pour les ruches, juin)</li>
+				<li><b>Pêche</b> (dès le dégel des rivières)</li>
+				<li><b>Corvées seigneuriales</b> (entretien des fossés et chemins )</li>
+			</ul>
+		</details>
+
+		<!-- été -->
+		<details>
+			<summary>
+				<h4>Été </h4>
+			</summary>
+			<ul>
+				<li><b>Fauchage</b> des foins (juin, pour les bêtes, à la faux)</li>
+				<li><b>Retournement et séchage du foin</b> (plusieurs jours, juin)</li>
+				<li><b>Rentrage du foin</b> dans les granges</li>
+				<li><b>Soin de la vigne</b> (juin-juillet)</li>
+				<li><b>Moisson</b> (juillet-août, à la faucille)</li>
+				<li><b>Battage</b> immédiat d’une partie du grain (au fléau ou par un mulet, août)</li>
+				<li><b>Vaine pâture</b> (lâcher du bétail sur les champs, août)</li>
+				<li><b>Jardinage</b> intensif (récolte des légumes)</li>
+				<li><b>Rouissage du lin et du chanvre</b> (trempage dans la rivière,août)</li>
+				<li><b>Taille</b> des cerisiers et pruniers (fin de l’été)</li>
+			</ul>
+
+			<p><b>Le chaume</b> (les courtes tiges fichées au sol après la coupe) sert de pâture, mais il est aussi parfois brûlé pour fertiliser.</p>
+
+			<p><b>La paille</b> (les longues tiges coupées avec les épis, séparées au battage) sert principalement à la litière des animaux, mais également à la toiture (paille de seigle), comme fourrage d’appoint (en cas de disette fourragère), pour la vannerie et pour l’épandage dans les rues et dans les maisons.</p>
+		</details>
+
+		<!-- automne -->
+		<details>
+			<summary>
+				<h4>Automne</h4>
+			</summary>
+			<ul>
+				<li><b>Glanage</b> (les pauvres ramassent ce qui reste après la moisson, septembre)</li>
+				<li><b>Cueillette</b> (baies, pommes, noix, châtaignes, champignons, septembre)</li>
+				<li><b>Vendanges</b> (septembre-octobre)</li>
+				<li><b>Pressage</b> des pommes et des raisins (septembre-octobre)</li>
+				<li><b>Dîme et Cens</b> (impôts en nature, fin septembre)</li>
+				<li><b>Labours</b> (octobre)</li>
+				<li><b>Semailles</b> d’hiver (qui germeront au printemps suivant, octobre)</li>
+				<li><b>Glandée</b> (les porcs vont en forêt se gaver de glands – octobre-novembre)</li>
+				<li><b>Abattage des porcs</b> engraissés (novembre) → salaison, charcuterie</li>
+				<li><b>Rentrée des bêtes</b> à l’étable (fin octobre-novembre)</li>
+				<li><b>Préparation des ruches</b> pour l’hiver (fin octobre-novembre)</li>
+				<li><b>Curage d’automne</b> (nettoyage des fossés et canaux, novembre)</li>
+			</ul>
+		</details>
+
+		<!-- toute l’année -->
+		<details>
+			<summary>
+				<h4>Toute l’année</h4>
+			</summary>
+			<ul>
+				<li><b>La corvée d’eau :</b> va-et-vient entre les maisons et le puits, la fontaine ou la rivière.</li>
+				<li><b>Le ramassage du bois de chauffe :</b> vieillards ou enfants qui reviennent de la forêt avec de lourds fagots.</li>
+				<li><b>Le moulin et le four :</b> des paysans portant de lourds sacs de grain vers le moulin, ou revenant du four avec de grandes miches de pain noir.</li>
+				<li><b>La cuisine :</b> une fumée grisâtre qui s’échappe du chaume des toits (pas toujours de cheminée), l’odeur du bouillon de légumes qui mijote toute la journée.</li>
+
+				<li><b>Réparation du chaume des toits</b></li>
+				<li><b>Gâchage du torchis :</b> des villageois les pieds dans la boue, mélangeant de la terre, de la paille hachée et de la bouse pour colmater des fissures sur les murs.</li>
+				<li><b>Entretien des outils :</b> bruit strident d’une lourde meule à manivelle pour affûter les outils.</li>
+				<li><b>Réparation de clôture ou de bâtiment</b></li>
+				<li><b>Entretien des chemins d’accès :</b> reboucher une ornière remettre une planche par dessus un petit ruisseau.</li>
+
+				<li><b>Lessive :</b> groupe de femmes au bord du cours d’eau qui battent le linge.</li>
+				<li><b>Filage ambulant :</b> des femmes qui marchent, gardent les bêtes ou discutent sur le pas de leur porte, mais dont les mains s’activent à filer la laine au fuseau et à la quenouille.</li>
+
+				<li><b>Curage des étables :</b> un paysan qui sort le fumier à la fourche et l’accumule en un tas fumant devant l’entrée de sa maison.</li>
+				<li><b>La traite et le soin :</b> traite des vaches ou des brebis au piquet.</li>
+
+				<li><b>Garde des basses-cours :</b> des gamins avec des bâtons qui guident des oies ou quelques porcs sur les chemins.</li>
+				<li><b>Effarouchement :</b> des enfants postés près des potagers qui crient, agitent des chiffons ou lancent des cailloux pour chasser les oiseaux et les lièvres des cultures.</li>
+				<li><b>Recherche d’une bête égarée</b></li>
+			</ul>
+		</details>
 	</details>
 
 	<!-- Quelques chiffres -->
@@ -452,68 +545,86 @@
 			<h3>Quelques chiffres</h3>
 		</summary>
 
-		<h4>Surfaces cultivées</h4>
+		<p>Les surfaces mentionnées ci-dessous incluent : la terre cultivée, la terre en jachère, les pâturage, les haies, les chemins d’exploitation…</p>
 
-		<p>Un paysan pouvait travailler <b>1 à 2 hectares à la seule force de ses bras</b>. S’il disposait d’un bœuf, cela pouvait monter jusqu’à 3-4 hectares. Avec un cheval de trait (plus coûteux), il pouvait cultiver jusqu’à 4-6 hectares</p>
+		<h4>Surface exploitée</h4>
 
-		<p> Ces valeurs peuvent varier considérablement selon la qualité du sol (un sol lourd et argileux demandait plus d'effort) et le relief (les terrains en pente réduisaient l'efficacité)</p>
+		<p>Une famille de paysans (5 personnes en moyenne) exploite une surface qui dépend de ses moyens (outils, animal de bât) et de la difficulté d’exploitation (type de sol, dénivelé).</p>
 
-		<p>Ces estimations correspondent à ce qu'un paysan pouvait raisonnablement entretenir tout au long de l'année, en incluant toutes les tâches agricoles labour, semis, entretien, récolte…</p>
+		<!-- table exploitation -->
+		<table class="left-1">
+			<tr>
+				<th>Conditions</th>
+				<th>Surface (ha)</th>
+			</tr>
+			<tr>
+				<td>Optimale</td>
+				<td>15</td>
+			</tr>
+			<tr>
+				<td>Bonne</td>
+				<td>12,5</td>
+			</tr>
+			<tr>
+				<td>Moyenne</td>
+				<td>10</td>
+			</tr>
+			<tr>
+				<td>Difficile</td>
+				<td>7</td>
+			</tr>
+			<tr>
+				<td>Très difficile</td>
+				<td>5</td>
+			</tr>
+
+		</table>
 
 		<h4>Rendements</h4>
 
-		<p>La table ci-dessous donne des indications sur la surface agricole* nécessaire pour couvrir les besoins alimentaires d’une personne (ha/personne), ainsi que sur le nombre de personnes qu’un paysan est capable de nourrir (y compris lui-même), en se basant sur une surface activement cultivée** de 2 à 2,5 hectares par paysan.</p>
+		<p>Surface nécessaire à l’alimentation de 100 personnes selon la fertilité de la terre.</p>
 
-		<p>On estime que la moitié de la surface agricole est activement cultivée, l’autre étant en jachère ou dédiée au pâturage.</p>
-
+		<!-- table fertilité -->
 		<table>
 			<tr>
-				<th>Rendement</th>
-				<th>ha*/personne</th>
-				<th>personne/paysan</th>
+				<th>Fertilité</th>
+				<th>ha/100 pers.</th>
 			</tr>
 			<tr>
-				<td>Faible</td>
-				<td>1,5</td>
-				<td>2,7 – 3,3</td>
+				<td>Exceptionnelle</td>
+				<td>65</td>
 			</tr>
 			<tr>
-				<td>Médiocre</td>
-				<td>1,2</td>
-				<td>3,3 – 4,2</td>
+				<td>Bonne</td>
+				<td>100</td>
 			</tr>
 			<tr>
-				<td>Moyen</td>
-				<td>1</td>
-				<td>4 – 5</td>
+				<td>Moyenne</td>
+				<td>150</td>
 			</tr>
 			<tr>
-				<td>Bon</td>
-				<td>0,8</td>
-				<td>5 – 6,3</td>
-			</tr>
-			<tr>
-				<td>Excellent</td>
-				<td>0,6</td>
-				<td>6,7 – 8,3</td>
+				<td>Peu fertile</td>
+				<td>300</td>
 			</tr>
 		</table>
 
-		<p>
-			* Surface agricole : surface exploitée par l’homme pour ses activités agricoles. Inclut les surfaces en jachères et les zones de pâturage<br>
-			** Surface activement cultivée : surface nécessitant des travaux de semailles, labours, entretien, récolte… représentant l’essentiel du travail du paysan.
-		</p>
+		<p>Ces valeurs supposent une année de <b>productivité</b> « moyenne ». Le facteur de productivité est compris entre 0,6 (année catastrophique) et 1,2 (année exceptionnelle).</p>
+
+		<p>Il faut ensuite tenir compte des <b>pertes</b> liées au transport et au stockage (entre 10 et 20 %).</p>
+
+		<p>En moyenne, il faut <b>100 paysans et 200 hectares pour nourrir 20 personnes</b> non impliquée dans des activités agricoles, soit <b>15 citadins</b>.</p>
 	</details>
 
-	<!-- Outils & techniques agricoles -->
+	<!-- Outils et techniques agricoles -->
 	<details>
 		<summary>
-			<h3>Outils &amp; techniques agricoles</h3>
+			<h3>Outils et techniques agricoles</h3>
 		</summary>
-		<p><b>L’araire :</b> charrue de bois dépourvue de roues. Elle creuse des sillons sans retourner la terre. Efficace sur les sols légers mais insuffisante pour les terres humides, argileuses du nord.<br>
-			<b>La charrue :</b> la charrue à versoir aère la terre en profondeur. Outil coûteux qui contient du fer et nécessite la force d’un animal de trait (des bœufs plutôt que des chevaux.<br>
+		<p>
+			<b>L’araire :</b> charrue de bois dépourvue de roues. Elle creuse des sillons sans retourner la terre. Efficace sur les sols légers mais insuffisante pour les terres humides, argileuses du nord.<br>
+			<b>La charrue :</b> la charrue à versoir aère la terre en profondeur. Outil coûteux qui contient du fer et nécessite la force d’un animal de trait (des bœufs plutôt que des chevaux).<br>
 			<b>La herse :</b> instrument aratoire formé d’un châssis muni de fortes dents et qui sert, après le labour, à briser les mottes.<br>
-			<b>La houe :</b> Pioche à large fer courbé servant à remuer la terre.<br>
+			<b>La houe :</b> pioche à large fer courbé servant à remuer la terre.<br>
 			<b>Autres instruments :</b> faucille, faux, râteau, fourche, fléau à grains.
 		</p>
 
@@ -522,41 +633,311 @@
 		<p><b>Le fumier</b> est l’un des seuls fertilisants que l’on connaisse à cette époque, mais son utilisation est peu répandue car il faut pour cela avoir un cheptel développé.</p>
 	</details>
 
-	<!-- Récoltes et produits -->
-	<details>
-		<summary>
-			<h3>Récoltes et produits</h3>
-		</summary>
-		<p>Polycultures de céréales (seigle, blé, avoine, orge). Les céréales sont complétées dans l’alimentation par quelques légumineuses : fèves, pois, lentilles.</p>
-		<p>Dans les forêts on récolte pour le bétail autant que pour les hommes : glands, faînes, merises, pommes sauvages, nèfles, fruits de l’aubépine, cynorhodons, noisettes, prunelles, framboises, mures, fraises. Le mille-pertuis ou la marjolaine peuvent servir de condiment ou de remèdes.</p>
-		<p>Élevage : le porc est l’animal prédominant car il donne plus de viande par rapport à son poids. Tout se mange et sa chair grasse se conserve bien.</p>
-	</details>
-
-	<!-- Corvées, taxes & impôts -->
-	<details>
-		<summary>
-			<h3>Corvées, taxes &amp; impôts</h3>
-		</summary>
-		<p>Beaucoup de petits seigneurs tirent la plus grande part de leurs revenus des terres qu’ils possèdent. Elles sont exploitées par des serfs ou des manouvriers, ou cédées en fermage sous forme de tenure. Le seigneur a souvent mieux à faire que de s’occuper de ses domaines. Il confie cette tâche à un intendant qui surveille les travaux agricoles et lève les impôts.</p>
-		<p>Le seigneur fait payer cher sa protection, d’abord sous forme de corvées : curer les fossés, empierrer les chemins, rentrer du bois, rentrer du fourrage&hellip;</p>
-		<p>Puis à mesure que l’argent circule mieux, les corvées sont remplacées par les redevances directes et indirectes servant à payer la protection du seigneur, le loyer de la terre, les droits pour utiliser le moulin, le pressoir et le four à pain que le seigneur a fait construire et que lui seul a les moyens d’entretenir.</p>
-		<p>Les serfs doivent payer des impôts particuliers au moment d’un héritage et pour se marier à l’extérieur de la seigneurie.</p>
-	</details>
-
-	<!-- Différents types de paysans -->
-	<details>
-		<summary>
-			<h3>Différents types de paysans</h3>
-		</summary>
-		<p><b>Les hommes libres :</b> des paysans qui travaillent sur les terres d’un seigneur et sont locataires de parcelles (tenures). Les seigneurs peuvent employer des salariés ou louer leur réserve à des fermiers.</p>
-		<p><b>Les serfs</b> sont attachés à une terre et un maître mais ne sont pas non plus des esclaves. Ils peuvent vivre en famille et posséder quelques biens. Les serfs exploitent une partie du domaine que le seigneur garde pour lui (la réserve).</p>
-		<p><b>Les laboureurs :</b> certains fermiers réussissent à s’enrichir. Les laboureurs, possèdent une paire de bœufs ou un cheval et un attelage. Rien à voir avec les pauvres <b>manouvriers</b> qui n’ont que leurs bras.</p>
-	</details>
-
 </article>
 
-<article> <!-- Voyageurs -->
-	<h2>Voyageurs</h2>
+<!-- Le village médiéval -->
+<article>
+	<h2>Le village médiéval</h2>
+
+	<!-- Les bâtiments -->
+	<details>
+		<summary>
+			<h3>Les bâtiments</h3>
+		</summary>
+
+		<p>Quelques édifices typiques d’un village médiéval.</p>
+
+		<!-- La maison de paysan libre -->
+		<details>
+			<summary>
+				<h4>La maison de paysan libre</h4>
+			</summary>
+
+			<p>Ces chaumières sont réservées aux paysans auxquels le seigneur a concédé une tenure et qui ne sont pas soumis au servage.</p>
+
+			<p>Elle est constitué d’une grande pièce ou comprenant une cheminée, des couches, une table et des bancs avec parfois une petite pièce attenante contenant quelques provisions et du bois. En guise de dépendances, elles possèdent souvent une porcherie ou une étable.</p>
+
+			<figure>
+				<img src="/assets/img/village-maison-paysan-libre.webp" alt="Plan d’une maison de paysan">
+			</figure>
+		</details>
+
+		<!-- La maison riche -->
+		<details>
+			<summary>
+				<h4>La maison « riche »</h4>
+			</summary>
+
+			<p>Ce type de demeure est habité par des hommes libres tels que le boulanger ou certains paysans possédant leurs propres terres et leurs propres bêtes.</p>
+
+			<p>Une grande salle commune où siège une imposante cheminée sert de pièce à vivre. On y trouve une grande table, bancs et fauteuils. Il peut également y avoir une ou deux chambre à coucher. Il y a également un entrepôt pour les vivres, le vin, l’huile et le bois, ainsi qu’un grenier où l’on fait sécher la viande</p>
+
+			<figure>
+				<img src="/assets/img/village-maison-riche.webp" alt="Plan d’une maison riche">
+			</figure>
+		</details>
+
+		<!-- La maison de serf -->
+		<details>
+			<summary>
+				<h4>La maison de serf</h4>
+			</summary>
+
+			<p>Ces cahuttes rudimentaires servent de logis aux serfs dont la tenure est si petite qu’il leur faut à l’occasion se louer aux autres villageois pour assurer leur subsistance. Elles sont toujours très sales et d’une grande pauvreté.</p>
+
+			<p>Elle est constitué d’une unique pièce où l’on trouve une cheminée, des couches, une table et des bancs, quelques provisions et du bois.</p>
+
+			<figure>
+				<img src="/assets/img/village-maison-serf.webp" alt="Plan d’une maison de serf">
+			</figure>
+		</details>
+
+		<!-- Le manoir du régisseur -->
+		<details>
+			<summary>
+				<h4>Le manoir du régisseur</h4>
+			</summary>
+
+			<p>Le régisseur est un fonctionnaire du seigneur chargé de veiller à ce que les taxes de son maître soient bien perçues. Il supervise aussi toutes les activités du village et a la charge de la police. Le manoir ne lui appartient pas, mais il est autorisé à y habiter. En cas de visite du seigneur, il se retire dans l’étable avec ses proches.</p>
+
+			<p>Le manoir comporte une cave à demi enterrée, où sont stockés vivres, tonneaux et bois de chauffage, l’étage principal, où une grande salle à vivre et deux chambres, et un grenier.</p>
+
+			<p>Le manoir lui-même est entouré d’une palissade. À l’intérieur de cette cour, il y a parfois un puits, un potager, quelques animaux (poules, cochons, chèvres et/ou moutons, chevaux), une grange à foin et éventuellement une fromagerie.</p>
+
+			<figure>
+				<img src="/assets/img/village-manoir-regisseur.webp" alt="Plan d’un manoir de régisseur">
+			</figure>
+		</details>
+
+		<!-- Le moulin -->
+		<details>
+			<summary>
+				<h4>Le moulin</h4>
+			</summary>
+
+			<p>C’est ici qu’est moulu tout le grain (blé, orge, seigle, mais, avoine) des récoltes du village. Le moulin appartient au seigneur et le meunier prélève 20 % sur tout ce qu’il moud. Une partie de ce prélèvement constitue son salaire, l’autre étant reversée au seigneur.</p>
+
+			<p>On y trouve : une réserve de grains, la pièce centrale, où vit le meunier et qui contient la mécanique du moulin ainsi que la meule, la chambre du meunier.</p>
+
+			<figure>
+				<img src="/assets/img/village-moulin.webp" alt="Plan d’un moulin">
+			</figure>
+		</details>
+
+		<!-- La forge -->
+		<details>
+			<summary>
+				<h4>La forge</h4>
+			</summary>
+
+			<p>On vient y ferrer les chevaux et les bœufs, mais elle est aussi utilisée pour la fabrication des outils (socs de charrues, haches, faux, etc.) et de quelques armes qui sont revendues aux voyageurs de passage. Le seigneur perçoit également une taxe sur tout ce qui est produit par la forge.</p>
+
+			<p>On y trouve : la forge, l’enclos pour ferrer les bêtes, une ou deux chambres.</p>
+
+			<figure>
+				<img src="/assets/img/village-forge.webp" alt="Plan d’une forge">
+			</figure>
+		</details>
+
+		<!-- La chapelle -->
+		<details>
+			<summary>
+				<h4>La chapelle</h4>
+			</summary>
+
+			<p>Petit église, dont le grenier sert souvent de silo. Les offices ont lieu deux fois par semaine et tous les habitants sont conviés à y assister sous peine d’être accusés d’avoir le « mauvais œil ». En cas d’attaque de pillards, les villageois viennent s’abriter dans la chapelle dont les murs percés de meurtrières se prêtent parfaitement à une défense acharnée. Dans ce cas, les pigeons voyageurs qui sont élevés ici, sont envoyés pour prévenir le seigneur.</p>
+
+			<p>À l’étage ou attenant à la chapelle, on peut trouver l’habitation du prêtre, un pigeonnier et éventuellement un abris pour les pèlerins de passage. Il y a également, dans les environs immédiat du temple, le cimetière du village.</p>
+
+			<figure>
+				<img src="/assets/img/village-chapelle.webp" alt="Plan d’une chapelle">
+			</figure>
+		</details>
+
+		<!-- L’abattoir-saloir -->
+		<details>
+			<summary>
+				<h4>L’abattoir-saloir</h4>
+			</summary>
+
+			<p>Il est interdit aux villageois d’abattre une bête sans l’accord exprès du seigneur ou du régisseur. Chaque animal tué ici fait l’objet du versement d’une taxe. Personne ne vit dans ce bâtiment. On y trouve un entrepôt à sel, la salle d’abattage proprement dite et le saloir. Ces petits bâtiments donnant tous sur une même cours où patientent les animaux envoyé à l’abattage.</p>
+
+			<figure>
+				<img src="/assets/img/village-abattoir-saloir.webp" alt="Plan d’un petit abattoir-saloir">
+			</figure>
+		</details>
+
+		<!-- L’auberge -->
+		<details>
+			<summary>
+				<h4>L’auberge</h4>
+			</summary>
+
+			<p><b>Une salle principale</b> où voyageurs, bourgeois affairés, fermiers et ivrognes échangent nouvelles, rumeurs et défis, noyés dans la fumée de l’énorme cheminée.</p>
+
+			<p><b>Un étage</b> comprenant les appartements de l’aubergiste ainsi que quelques chambres au confort sommaire : une housse de lin bourrée de paille fraîche, de la lumière, une table et un siège en bois.</p>
+
+			<p><b>Un grenier</b> pour entreposer le mobilier inutilisé.</p>
+
+			<p><b>Une cave</b> bien remplie.</p>
+
+			<p><b>Une petite écurie</b> où la mule du propriétaire côtoie les montures de voyageurs.</p>
+
+			<p><b>Un aubergiste</b>, petite célébrité locale, aidé de son équipe.</p>
+
+			<figure>
+				<img src="/assets/img/village-auberge.webp" alt="Plan d’une auberge classique">
+			</figure>
+		</details>
+
+	</details>
+
+	<!-- Gérance -->
+	<details>
+		<summary>
+			<h3>Gérance</h3>
+		</summary>
+
+		<!-- Les deux type de maires -->
+		<details>
+			<summary>
+				<h4>Les deux types de maires</h4>
+			</summary>
+			<p><b>Le maire seigneurial (régisseur) :</b> c’est un paysan un peu plus riche que les autres, choisi par le seigneur pour être son contremaître dans le village. Il surveille les travaux et collecte les taxes.</p>
+			<p><b>Le maire de commune :</b> si le village est assez gros pour acheter une charte de franchise (accordant des libertés), ce maire-là est choisi par les villageois pour défendre leurs intérêts face au seigneur.</p>
+		</details>
+
+		<!-- Les trois scénarios possibles -->
+		<details>
+			<summary>
+				<h4>Les trois scénarios possibles</h4>
+			</summary>
+			<p><b>1. Le village est sur le fief d’un chevalier</b> qui vit sur place (manoir) : le chevalier commande, son régisseur applique au quotidien. Il n’y a pas de maire autonome.</p>
+			<p><b>2. Le village est le siège d’une prévôté</b> : Le prévôt s’installe sur place et absorbe le rôle de régisseur pour ce village. Ce n’est possible que si le village est choisi comme chef-lieu de la prévôté – il doit donc y avoir une bonne raison à cela</p>
+			<ul>
+				<li>Sans charte : le prévôt dirige seul.</li>
+				<li>Avec charte : le prévôt cohabite avec un maire élu par les habitants.</li>
+			</ul>
+			<p><b>3. Le seigneur vit loin</b> du village :</p>
+			<ul>
+				<li><b>Sans charte :</b> un régisseur unique gouverne seul au nom du seigneur lointain.</li>
+				<li><b>Avec charte :</b> le régisseur (qui protège les intérêt du seigneur) et le maire (qui protège la communauté des paysans) cohabitent et partagent le pouvoir.</li>
+			</ul>
+		</details>
+	</details>
+
+	<!-- Personnalités et ressources -->
+	<details>
+		<summary>
+			<h3>Personnalités &amp; ressources</h3>
+		</summary>
+
+		<p>Dans un village de 200-300 habitants.</p>
+
+		<!-- Personnalités -->
+		<details>
+			<summary>
+				<h4>Personnalités</h4>
+			</summary>
+
+			<p><b>L’intendant / régisseur :</b> l’homme de confiance et l’œil du seigneur. Il gère les comptes, le terrier (cadastre) et collecte les impôts. Il a un statut social supérieur, sait lire et ne se salit jamais les mains.</p>
+
+			<p><b>Le maire (si village franchisé) :</b> un riche paysan (laboureur) élu par ses pairs pour représenter la communauté et négocier avec le seigneur. Il a une forte autorité morale.</p>
+
+			<p><b>L’aubergiste / tavernier :</b> pas de comptoir formel ici. C’est souvant un paysan aisé qui ouvre la pièce principale de sa maison pour vendre la bière ou le cidre local.</p>
+
+			<p><b>Le curé :</b> souvent d’origine paysanne et presque aussi pauvre que ses ouailles. Il assure les sacrements et sert de scribe de secours car il est souvent le seul lettré du village.</p>
+
+			<p><b>Le meunier :</b> gérant du moulin banal du seigneur. Souvent impopulaire (on l’accuse toujours de tricher sur les taxes de mouture), il vit un peu à l’écart du village, près de l’eau.</p>
+
+			<p><b>Le forgeron / maréchal-ferrant :</b> l’artisan le plus important. Maître du feu et du fer, il répare les outils et soigne les sabots des bêtes de trait. La forge est permanente, mais le forgeron a également des activités agricoles.</p>
+
+			<p><b>Le fournier / boulanger :</b> un paysan-laboureur qui loue le four banal au seigneur. Il gère les stocks de bois, la cuisson collective et prélève la taxe en nature (le fournage). Note : Ce n’est jamais le meunier (interdiction seigneuriale pour éviter les fraudes).</p>
+
+			<p><b>La rebouteuse :</b> souvent une femme âgée. Elle connaît les simples (plantes médicinales), remet les os en place et accouche les femmes.</p>
+
+			<p class="mt-1">Le fournil banal (pendant la cuisson) et la taverne sont les meilleurs endroits pour interroger les locaux et capter les tensions de la région.</p>
+		</details>
+
+		<!-- Artisans paysans -->
+		<details>
+			<summary>
+				<h4>Les artisans paysans à temps partiels</h4>
+			</summary>
+			<p>Ils ont leurs propres champs et n’exercent ces métiers que sur commande ou pendant la morte-saison (automne/hiver).</p>
+			<p><b>Charpentier / charron / menuisier :</b> c’est le même homme qui façonne le bois. Il répare le toit d’une chaumière, taille une poutre, fabrique un coffre ou change l’essieu d’une charrette.</p>
+			<p><b>Cordonnier / bourrelier :</b> il travaille le cuir lourd. Il passe son temps à rapiécer les chaussures épaisses des paysans et à entretenir les harnais et selles des bêtes.</p>
+			<p><b>Tisserand :</b> il récupère la laine ou le lin filé à la maison par les femmes du village pour en faire des pièces de tissu brut et solide.</p>
+			<p><b>Vannier :</b> souvent un ancien ou un manouvrier qui tresse l’osier en hiver pour fournir les paniers indispensables aux récoltes et au transport.</p>
+		</details>
+
+		<!-- Marchandises et services -->
+		<details>
+			<summary>
+				<h4>Marchandises &amp; services</h4>
+			</summary>
+			<p><b>Alimentation rustique :</b> du pain de seigle ou d’orge « de garde » (très dur, à tremper), du lard salé, du fromage de chèvre sec, des œufs, du cidre ou de la bière locale.</p>
+
+			<p><b>Matériel de base :</b> Une corde de chanvre grossière, des torches de résine, des chevilles de bois, des sacs en toile.</p>
+
+			<p><b>Rien de luxe :</b> Impossible de trouver des armes ou armures neuves, des vêtements coupés, des épices, du vin fin, du savon, du papier, du parchemin ou des bougies de cire. Pour cela, il faut attendre le colporteur ambulant ou aller au bourg voisin.</p>
+
+			<p><b>Forgerie &amp; réparation :</b> faire ferrer un cheval, réparer un maillon d’armure, une boucle de ceinture, ou faire affûter une lame (Forgeron).</p>
+
+			<p><b>Logement rudimentaire :</b> une place dans la paille de la grange d’un laboureur contre une pièce ou un service. Pas de chambre privée disponible.</p>
+
+			<p><b>Soins d’urgence :</b> un cataplasme d’herbes pour stabiliser une plaie ou faire réduire une fracture (rebouteuse).</p>
+		</details>
+
+		<p class="mt-1">Dans un gros village de 700-800 habitants, c’est-à-dire un bourg agricole.</p>
+
+		<!-- Personnalités -->
+		<details>
+			<summary>
+				<h4>Personnalités (ajouts et évolutions)</h4>
+			</summary>
+
+			<p><b>L’intendant</b> peut évoluer vers le statut de <b>prévôt</b> si le village est un chef lieu de prévôté.</p>
+
+			<p><b>L’aubergiste (évolution) :</b> ce n’est plus une simple pièce chez un paysan. On trouve désormais une vraie auberge sur l’axe principal, dotée d’une salle commune dédiée, de quelques lits et d’une écurie gérée par un palefrenier à plein temps.</p>
+
+			<p><b>Le garde-chasse / forestier seigneurial :</b> un homme en armes (sergent) dédié à la protection des forêts et des terres du seigneur. Il traque impitoyablement les braconniers et les paysans qui volent du bois.</p>
+
+			<p><b>Le vicaire ou sacristain :</b> avec près de 800 âmes à gérer, le curé ne peut plus tout faire seul. Il est secondé par un vicaire (jeune prêtre) ou un sacristain lettré qui gère l’entretien de l’église et l’école paroissiale s’il y en a une.</p>
+
+			<p><b>Le boucher :</b> la demande est assez forte pour qu’un artisan se consacre à l’abattage et à la vente de viande fraîche plusieurs fois par semaine (et non plus seulement lors des grandes fêtes ou des abattages d’automne).</p>
+		</details>
+
+		<!-- Artisans -->
+		<details>
+			<summary>
+				<h4>Les artisans (évolutions et nouveaux venus)</h4>
+			</summary>
+			<p>Le <b>forgeron</b>, <b>charpentier</b> et le <b>cordonnier</b> passent désormais à plein temps. Ils ont leur propre échoppe fixe et forment un ou deux apprentis (des jeunes du village).</p>
+			<p><b>Le potier :</b> le village génère assez de casse pour faire vivre un potier. Il possède son propre four de cuisson et fournit le village et les hameaux voisins en jattes, cruches et pots en terre cuite.</p>
+			<p><b>Le maçon / couvreur :</b> avec 150 maisons, l’entretien des toits (chaume ou tuile) et des murs en pierre (souvent ceux de l’église ou du manoir seigneurial) justifie la présence d’un ouvrier du bâtiment permanent.</p>
+			<p><b>Le tailleur / couturier :</b> il ne fait pas de la haute couture, mais il assemble les vêtements de dessus (tuniques, manteaux) à partir des tissus bruts fournis par les tisserands locaux.</p>
+		</details>
+
+		<!-- Ressources et services -->
+		<details>
+			<summary>
+				<h4>Ressources &amp; services (évolutions)</h4>
+			</summary>
+			<p><b>Viande fraîche </b>de manière régulière (bœuf, mouton, porc selon les jours d’abattage chez le boucher).</p>
+			<p><b>Vaisselle de terre</b> neuve (cruches, gourdes en terre cuite chez le potier).</p>
+			<p><b>Chandelles de suif</b> basiques (fabriquées par le boucher ou l’aubergiste avec les graisses animales).</p>
+			<p><b>Tissu</b> de laine ou de lin au mètre (directement aux ateliers des tisserands).</p>
+			<p><b>Vrai logement :</b> un lit (généralement à partager avec d’autres voyageurs) à l’auberge, et un repas chaud payant (le "plat du jour" mijoté dans le chaudron commun).</p>
+			<p><b>Soin des montures :</b> une place d’écurie couverte pour les chevaux, avec du foin frais et de l’avoine (service payant géré par le palefrenier).</p>
+			<p><b>Logistique lourde :</b> possibilité de louer les services d’un charretier avec ses bœufs et sa charrette pour transporter du matériel ou du butin volumineux vers la ville la plus proche.</p>
+		</details>
+	</details>
+</article>
+
+<!-- Voyage et rencontres sur la route -->
+<article>
+	<h2>Voyage et rencontres sur la route</h2>
 
 	<!-- Distances quotidiennes -->
 	<details>
@@ -567,41 +948,56 @@
 		<h4>À pied</h4>
 		<ul>
 			<li>En moyenne, un marcheur peut parcourir <b>25 à 30 km par jour</b>. Cette distance prend en compte les arrêts nécessaires, les repas, et le repos.</li>
-			<li>Sur de bonnes routes et sans bagages encombrants, cette distance pouvait s'étendre <b>jusqu'à 40 km par jour</b>. C’est un rythme soutenu, souvent pour des raisons impératives.</li>
+			<li>Sur de bonnes routes et sans bagages encombrants, cette distance pouvait s’étendre <b>jusqu’à 40 km par jour</b>. C’est un rythme soutenu, souvent pour des raisons impératives.</li>
 			<li>Sur un <b>terrain difficile</b> (montagne, forêt, chemins boueux), ou avec un <b>groupe plus important</b> (famille, pèlerins), la distance pouvait tomber à <b>15-20 km par jour</b>.</li>
 		</ul>
 
-		<p>Ces chiffres dépendent grandement de l'état des chemins (une voie pavée est un atout majeur), du poids des bagages, des conditions météorologiques et de la santé du voyageur.</p>
+		<p>Ces chiffres dépendent grandement de l’état des chemins (une voie pavée est un atout majeur), du poids des bagages, des conditions météorologiques et de la santé du voyageur.</p>
 
 		<h4>À cheval</h4>
 		<p>La distance que pouvait parcourir un cavalier au Moyen Âge sur de longues distances variait considérablement en fonction de plusieurs facteurs (état des routes, terrain, météo, etc.).</p>
 
 		<ul>
 			<li>Une distance moyenne de <b>30 à 50 km par jour</b> est réaliste. Cette estimation correspond à un rythme modéré (pas et trot), permettant de ne pas épuiser le cheval sur le long terme.</li>
-			<li>Des <b>pointes à 60 km par jour</b> étaient possibles sur de bonnes routes, mais ne pouvaient pas être maintenues sur plusieurs jours d'affilée.</li>
-			<li>Les messagers, qui utilisaient des chevaux de relais, pouvaient atteindre des vitesses bien plus élevées, allant parfois jusqu'à 100 km par jour, voire plus dans des cas exceptionnels. Cependant, ils changeaient de monture régulièrement.</li>
+			<li>Des <b>pointes à 60 km par jour</b> étaient possibles sur de bonnes routes, mais ne pouvaient pas être maintenues sur plusieurs jours d’affilée.</li>
+			<li>Les messagers, qui utilisaient des chevaux de relais, pouvaient atteindre des vitesses bien plus élevées, allant parfois jusqu’à 100 km par jour, voire plus dans des cas exceptionnels. Cependant, ils changeaient de monture régulièrement.</li>
 		</ul>
 
 		<h4>Avec des chariots</h4>
-		<p>La distance parcourue par un chariot chargé de marchandises au Moyen Âge dépendait largement de l'animal de trait utilisé et de l'état des chemins. Le rythme était considérablement plus lent que celui d'un cavalier ou d'un voyageur à pied.</p>
+		<p>La distance parcourue par un chariot chargé de marchandises au Moyen Âge dépendait largement de l’animal de trait utilisé et de l’état des chemins. Le rythme était considérablement plus lent que celui d’un cavalier ou d’un voyageur à pied.</p>
 
 		<ul>
-			<li><b>Tiré par des bœufs :</b> les bœufs sont lents mais très endurants. Un chariot tiré par des bœufs pouvait parcourir <b>15 à 20 km par jour</b>. Leur allure est très faible, mais ils sont capables de tirer de lourdes charges sur de longues distances. C'était une méthode de transport courante pour les marchandises lourdes et volumineuses.</li>
-			<li><b>Tiré par des chevaux :</b> Les chevaux de trait sont plus rapides et plus vifs que les bœufs. Un chariot tiré par des chevaux pouvait parcourir <b>25 à 30 km par jour</b>, soit une vitesse comparable à celle d'un marcheur. Cependant, le coût d'entretien des chevaux était plus élevé que celui des bœufs, et ils nécessitaient plus d'attention.</li>
+			<li><b>Tiré par des bœufs :</b> les bœufs sont lents mais très endurants. Un chariot tiré par des bœufs pouvait parcourir <b>15 à 20 km par jour</b>. Leur allure est très faible, mais ils sont capables de tirer de lourdes charges sur de longues distances. C’était une méthode de transport courante pour les marchandises lourdes et volumineuses.</li>
+			<li><b>Tiré par des chevaux :</b> Les chevaux de trait sont plus rapides et plus vifs que les bœufs. Un chariot tiré par des chevaux pouvait parcourir <b>25 à 30 km par jour</b>, soit une vitesse comparable à celle d’un marcheur. Cependant, le coût d’entretien des chevaux était plus élevé que celui des bœufs, et ils nécessitaient plus d’attention.</li>
 		</ul>
 
 		<p>Ces chiffres sont des moyennes. Les conditions réelles sur les routes médiévales, souvent en mauvais état, boueuses ou encombrées, pouvaient réduire considérablement ces distances. Les convois de marchands voyageaient souvent en groupe pour des raisons de sécurité, ce qui pouvait également ralentir le rythme. De plus, les arrêts pour le repos des animaux et le chargement/déchargement de la marchandise étaient fréquents.</p>
 
 	</details>
 
-	<!-- Gens du commun -->
+	<!-- En région habitée -->
 	<details>
 		<summary>
-			<h3>Gens du commun</h3>
+			<h3>En région habitée</h3>
 		</summary>
 		<p>Dans les régions habitées, la plupart des rencontres seront des gens du communs vaquant à leurs occupations quotidiennes.</p>
-		
-		<h4>Villageois</h4>
+
+		<ul class="flow">
+			<li><b>Villageois au travail :</b> activités agricoles de saison, garde de bêtes, recherche de bêtes égarées, réparation de clôture, entretien des chemins et fossé. Liés aux corvées et au calendrier agricole du jour.</li>
+
+			<li><b>Convoi de ravitaillement local :</b> charrettes (éventuellement à bras) ou animaux de bât transportant des marchandises locales, animaux menés vers leur lieu d’abattage. Trajet de routine entre le champ, le moulin ou le marché.</li>
+
+			<li><b>Artisans et journaliers itinérants :</b> se déplacent de bourg en bourg à la recherche d’un chantier.</li>
+
+			<li><b>Corvéables de la route :</b> groupe de paysans locaux bouchant des ornières sous la surveillance d’un sergent seigneurial.</li>
+
+			<li><b>Chasseurs, pêcheurs et cueilleurs locaux :</b> cueilleurs de champignons, de baies ou de plantes, braconniers discrets, pêcheurs, bûcherons, charbonniers.</li>
+
+			<li><b>Le chasse-marée (zone de pêche importante) :</b> cavalier menant au galop un convoi de chevaux chargés de paniers de poisson de mer frais. Course contre la montre vers les halles avant que la marchandise ne tourne.</li>
+
+		</ul>
+
+		<!-- <h4>Villageois</h4>
 		<p>Près de leur village, ces personnes sont impliquées dans une tâche agricole (garde de troupeau, entretien des cultures, récoltes, recherches de noix ou de baies sauvages, recherche d’un animal égaré, etc) ou autre tâche quotidienne.</p>
 		<p>S’ils sont rencontrés sur la route, ils peuvent être en train d’amener leurs produits sur un marché voisin, de revenir du marché, d’aller visiter de la famille (ou d’en revenir), etc.</p>
 
@@ -623,108 +1019,73 @@
 		<p>Dans les zones plus sauvages, les chasseurs recherchent un gibier plus « exotique », généralement pour leur capture et leur revente. Dans ce cas, ils sont généralement assez compétents et relativement bien équipés.</p>
 
 		<h4>Hors-la-loi</h4>
-		<p>Il peut s’agir de serfs en fuite, de chasseurs communs qui se sont fait prendre avec du gibier interdit ou de malfaiteurs fuyant la justice locale. Ils peuvent éventuellement être considérés par la population locale comme des justiciers.</p>
+		<p>Il peut s’agir de serfs en fuite, de chasseurs communs qui se sont fait prendre avec du gibier interdit ou de malfaiteurs fuyant la justice locale. Ils peuvent éventuellement être considérés par la population locale comme des justiciers.</p> -->
 
 	</details>
 
+	<!-- Rencontres spécifiques -->
 	<details>
 		<summary>
-			<h3>Marchands et artisans itinérants</h3>
+			<h3>Rencontres plus rares</h3>
 		</summary>
-		<p>Les villages médiévaux ne sont généralement pas assez grands pour disposer de nombreux artisans et dépendent de marchands ambulants pour satisfaire à beaucoup de leurs besoins. Même les forgerons et les charrons (qui peuvent faire office de constructeurs de maison, de charpentiers, de fabricant de cercueil, etc.) seront des artisans itinérants si les villages locaux sont trop petits pour disposer d’artisans propres. Les villageois doivent également acheter certains biens nécessaires (sel, métaux, brai, outils, pots et vaisselles). Les plus riches attirent les marchands d’objets/produits de luxe tels que vins, huiles, étoffes, etc).</p>
-		<p>Parmi les commerçant et artisans itinérants typique, on trouve : <b>cordonniers et sabotiers</b>, vendant et réparant des biens en cuir et des chaussures ou des sabots ; des <b>tailleurs</b> vendant, réparant ou confectionnant des vêtements divers sur commande ; des <b>menuisiers</b> réparant les construction en bois et vendant des objets en bois tels que bols, ustensiles de cuisine, seaux, bacs, fûts ; des <b>couvreurs</b> construisant ou réparant les toits ; les <b>rétameurs et autres travailleurs de métaux</b> avec leur forge portable vendant et réparant des objets en métal, affûtant les lames ; et les <b>médecins, herboristes et alchimistes</b> itinérants vendant des herbes médicinales ou des potions alchimiques.</p>
-		<p>Ces voyageurs professionnels utilisent généralement une charrette ou un chariot et se déplacent en compagnie d’assistant(s) qui peuvent être des membres de leur famille.</p>
-		<p class="mt-1">D’autres exemples de marchand et artisans itinérant :</p>
 
-		<h4>Colporteurs</h4>
-		<p>Ils voyagent à pied et vendent une grande variété d’articles (épingles, instruments de musique, bourses, rubans, dentelle, gants, couteaux, verres, peau de lapin, vestes, casquettes, chapeaux, ceintures, étains, pots). Dans les régions policées, ils ont besoin de licence et doivent rester sur le parcours qui leur a été attribué.</p>
+		<ul class="flow">
+			<li><b>Marchands au long cours :</b> convoi de lourds chariots bâchés, escortés par des mercenaires.</li>
 
-		<h4>Marchands locaux</h4>
-		<p>Ces marchands restent cantonnés à une ville et des villages relativement proches. Comme les colporteurs, ils vendent et achètent une grande variété de biens.<br>
-			Les villes ont besoin de la production agricole des villages tandis que les villages importent les marchandises qu'ils ne produisent pas.<br>
-			Ils peuvent également faire le commerce d’un matériau brut produit localement. Ils voyagent généralement en plus petits groupes et sont moins bien protégés que les marchands ayant un plus grand rayon d’action.</p>
-		<p>Chaque marchand local est accompagné d’un scribe et de 1-3 charrettes avec leur cocher (ou animaux de bât avec leur muletier). Si la région est peu sûre, il peut également y avoir quelques hommes d’armes.</p>
+			<li><b>Chevalier en mission :</b> un homme d’armes en armure, seul ou avec son écuyer. Mission diplomatique ou ralliement à un ban militaire, accomplissement d’une quête pour leur suzerain.</li>
 
-		<h4>Maçons, charpentiers et terrassiers</h4>
-		<p>Ces artisans peuvent voyager sur de longues distances pour obtenir un travail sur un vaste chantier tel qu’un château, un temple ou des murs d’enceinte. Les grues et échafaudages sont construits sur place ; les outils sont souvent fournis par l’employeur. Les journaliers par contre préfèrent utiliser leur propres outils pour terminer leur apprentissage.</p>
+			<li><b>Messager :</b> cavalier épuisé crevant sa monture pour livrer un pli scellé</li>
 
-		<h4>Scribes</h4>
-		<p>Ils sont généralement à la recherche d’un emploi permanent. Ils financent leur voyage en servant à l’occasion d’écrivain public. Ils peuvent également postuler pour un emplois sur un grand chantier mentionné plus haut comme comptable. Ils sont des sources fiables d’informations.</p>
+			<li><b>Nobles en chasse :</b> le seigneur local et sa suite de cavaliers, de chiens et de fauconniers. Exigent que les voyageurs du peuple s’écartent et s’agenouillent sur leur passage.</li>
 
-		<h4>Bandits</h4>
-		<p>Pratiquant le vol des voyageurs comme un métier (plutôt que par nécessiter comme le font les hors-la-loi), les bandits sont généralement bien équipés et se battent plutôt bien. La plupart des bandits sont des ex-mercenaires, des déserteurs, des hors-la-loi reconvertis avec succès, des chevaliers sans terre et autres types de mécontents.</p>
+			<li><b>Apothicaire ambulant :</b> colporteur avec une charrette ou un bât rempli de fioles, d’herbes séchées et de reliques médicales. Vend des remèdes contre la peste, des poisons discrets ou des philtres d’amour douteux aux passants.</li>
+
+			<li><b>Officiels seigneuriaux ou royaux :</b> bailli, prévôt, intendant ou collecteur de taxes avec ses scribes et une troupe de sergents. Déplacement officiel pour tenir les assises de justice, lever l’impôt ou contrôler un domaine.</li>
+
+			<li><b>Haut dignitaire ecclésiastique :</b> évêque ou abbé sur une mule richement harnachée, escorté d’une suite de clercs et de gardes. En tournée d’inspection des paroisses et des monastères.</li>
+
+			<li><b>Patrouille :</b> 4 ou 5 gardes du seigneur inspectant les voyageurs. Cherchent un criminel en fuite, lèvent une taxe exceptionnelle ou annoncent le début d’une guerre.</li>
+
+			<li><b>Troupe de saltimbanques :</b> jongleurs, musiciens itinérants et montreurs d’ours voyageant de fête en fête. Colportent les chansons de geste, les satires politiques et les nouvelles du monde.</li>
+
+			<li><b>Brigands et fugitifs :</b> bandits de forêt embusqués ou criminels en cavale cachés dans les fourrés. Cherchent une cible isolée facile ou un otage à rançonner.</li>
+
+			<li><b>Écorcheurs et mercenaires licenciés :</b> groupe de soldats désœuvrés et cyniques entre deux contrats de guerre. Frontière floue entre le statut de soldat et celui de brigand de grand chemin.</li>
+
+			<li><b>Moine mendiant ou ermite :</b> frère mendiant marchant pieds nus, vivant d’aumônes. Prêche la pauvreté et demande le gîte en échange de bénédictions.</li>
+
+			<li><b>Pèlerins en groupe :</b> marcheurs armés de bourdons (bâtons) et de besaces, voyageant en bande pour la sécurité. Vont ou reviennent d’un sanctuaire lointain avec des rumeurs.</li>
+
+			<li><b>Nobles en grand déplacement :</b> une caravane imposante de chariots, de chevaliers et de valets.</li>
+		</ul>
+
 	</details>
 
+	<!-- Rencontres passives -->
 	<details>
 		<summary>
-			<h3>Dignitaires</h3>
+			<h3>Rencontres passives</h3>
 		</summary>
 
-		<h4>Nobles et leur suite</h4>
-		<p>Des nobles de haut rang peuvent avoir des terres disséminées dans le royaume. Cela permet au roi de contrôler plus facilement les nobles en les privant d’une base compacte qui leur permettraient d’organiser facilement une rébellion. Au lieu de recevoir leur impôts et autres dus en un seul lieu, il est courant que des seigneurs et leur suite voyage de domaine en domaine, pour collecter ou profiter de leur dus en restant quelques jours dans un domaine avant de passer au domaine suivant. Cette coutume peut même s’appliquer aux rois. Des pourvoyeurs (voir plus loin) partent avec de l’avance sur le groupe principal, réquisitionnant des charrettes (souvent sans compensation) et exigeant céréales, foin, avoine, bière et viande aux paysans malchanceux.</p>
-		<p>Les nobles et leur épouse voyagent dans des chariots de luxe ou à cheval. Leur suite peut être très vaste. Un roi, par exemple, est précédé de deux douzaines d’archers et accompagné de son <i>général</i> (responsable des opération militaire sur le terrain), de son <i>sénéchal</i> (responsable des palais et châteaux royaux, dont la fonction consiste, entre autre, à les garder libres de courtisans et vassaux indésirables), de son <i>chambellan</i> (comptable en chef), de son <i>maréchal</i> de la salle (dont le rôle est d’éjecter les intrus de l’entourage du roi), de son <i>intendant</i> (responsable de l’organisation du voyage, qui, notamment, informe les notables d’un lieu de l’arrivée imminente du roi), et de son <i>chancelier</i> (responsable de la justice), chacun d’entre eux ayant leurs propres serviteurs.<br>
-			En plus de cela, il y a généralement des chevaliers, écuyers, clercs, valets, charretiers, porteurs, fauconniers, chasseurs, messagers, cuisiniers et assistants de cuisine.<br>
-			La suite proprement dite peut être suivie par des nobles tombés en défaveur cherchant à retrouver les bonnes dispositions du roi, ainsi que d’autres solliciteurs divers. Ce dernier groupe passe généralement l’essentiel de son temps à se quereller, voler et assassiner, se rendant indésirables (ainsi que le roi) dans la région qu’ils traversent.</p>
-		<p>Les nobles mineurs comptent des dignitaires de l’église (qui peuvent également être d’importants propriétaires terriens), qui voyagent de la même manière, mais à une échelle réduite.</p>
+		<ul class="flow">
 
-		<h4>Nobles chasseurs</h4>
-		<p>Ce sont des dignitaires locaux (avec leur parents, amis ou invités) ou des membres de la suite d’un noble passant dans la région. Dans tous les cas, ils chassent pour le plaisir et sont accompagnés de serviteurs divers, rabatteurs, fauconniers et autre personnel nécessaire.</p>
+			<li><b>Gibet seigneurial :</b> fourches en bois où se balancent les restes de brigands pendus à la limite du fief. Avertissement du seigneur pour marquer son droit de haute justice.</li>
 
-		<h4>Chevaliers en mission</h4>
-		<p>Les chevaliers peuvent être à la recherche d’aventures pour leur propre compte ou accomplir une quête pour leur suzerain, leur dame ou pour l’accomplissement d’un vœu.<br>
-			Une quête peut consister en abattre des monstres ou des brigands, porter secours à des otages, se venger de personne ayant nui à eux-mêmes ou à leur seigneur ou encore obtenir un renseignement auprès d’un sage retiré du monde.<br>
-			Un chevalier peut également être en voyage vers un lieu où se déroule un conflit majeur, une croisade ou un tournoi. Les chevaliers sont généralement accompagnés d’un écuyer et éventuellement de compagnons d’armes si leur tâche le nécessite.</p>
+			<li><b>Maladrerie (Léproserie) :</b> bâtiment isolé entouré de palissades en bord de route. Zone d’exclusion sanitaire absolue.</li>
 
-		<h4>Bandits</h4>
-		<p>Dans des régions peu contrôlées, les voyageurs peuvent se faire détroussés (ou pire) par des bandes quasi-seigneuriale dirigées par des chevaliers ou des nobles qui imposent leur propre loi.</p>
+			<li><b>Croix de carrefour :</b> monument ou oratoire en pierre situé aux intersections dangereuses. Lieu de halte et de prière pour les voyageurs avant de s’enfoncer dans les bois.</li>
+
+			<li><b>Borne frontière :</b> pierre gravée marquant la limite d’un domaine.</li>
+
+			<li><b>Arbre à loques :</b> les branches sont couvertes de morceaux de tissus noués. Croyance populaire superstitieuse où l’on laisse un vêtement pour transférer une maladie à l’arbre.</li>
+
+			<li><b>Obstacle d’infrastructure :</b> pont de bois effondré, coulée de boue bloquant la voie ou ornières géantes.</li>
+
+		</ul>
 
 	</details>
 
-	<details>
-		<summary>
-			<h3>Officiels</h3>
-		</summary>
-
-		<h4>Baillis</h4>
-		<p>Ils sont responsables de la collecte des taxes et juges des offenses graves (banditisme, viol, meurtre, sorcellerie, apostasie, destruction de ponts et de routes, etc.) auprès de la couronne. Ce sont généralement des nobles influents. Ils peuvent se déplacer d’une cour de justice à l’autre, en étant accompagnés de gardes, serviteurs et scribe(s).</p>
-
-		<h4>Prévôts</h4>
-		<p>Ces hommes travaillent sous les ordres des baillis, appréhendant les hors-la-loi et collectant certaines taxes au nom des baillis.</p>
-
-		<h4>Intendants</h4>
-		<p>Les nobles importants ayant de trop nombreux domaines pour le gérer personnellement chargent des sénéchaux de le faire à leur place. Ils se rendent aux différents manoirs du seigneur pour concevoir et mettre en œuvre la gestion agricole du domaine, gérer la cour des manoirs en l’absence du seigneur, s’assurer que les services dus sont bien rendus et recevoir les doléances des villageois.</p>
-
-		<h4>Magistrats</h4>
-		<p>Ils voyagent pour rendre la justice et sont souvent nommé par le roi pour contrebalancer l’influence des baillis seigneuriaux.</p>
-
-		<h4>Pourvoyeurs</h4>
-		<p>Ils précèdent la suite d’un noble en voyage afin de réquisitionner carriole et provisions. S’opposer à un pourvoyeur authentique peut entraîner des sanctions sévères, mais certaines personnes se faisant passer pour de pourvoyeurs sont en fait des escrocs.</p>
-
-		<h4>Messagers</h4>
-		<p>Ils sont employés par des nobles, des officiels ou des dignitaires ecclésiastiques et ont en leur possession une preuve de leur statut. Dans les régions sauvages, ils ont toujours une monture. Les gêner dans leur tâche entraîne généralement de lourdes sanctions mais cela peut permettre d’obtenir des informations de première importance. Les marchands influents utilisent à l’occasion les services de messagers, mais ceux-ci ne jouissent pas du même statut et de la même protection juridique.</p>
-
-		<h4>Patrouille</h4>
-		<p>Soldats « officiels » assurant la sécurité dans une zone généralement civilisée. Dans une zone sauvage, une patrouille a généralement une mission spécifique.</p>
-	</details>
-
-	<details>
-		<summary>
-			<h3>Saltimbanques</h3>
-		</summary>
-		<p>Des nombreuses sortes d’amuseurs publics peuvent être rencontrés entre deux marchés, foires, ville, festivals et banquets de riches maisons. Ils ont de nombreuses informations concernant les villes locales et connaissent toutes les rumeurs. Les saltimbanques se déplacent généralement en groupe, de plus en plus nombreux suivant l’ordre de mention dans la liste suivante :</p>
-
-		<p><b>Bardes et ménestrels :</b> ils chantent ou récitent les épopées de héros.</p>
-		<p><b>Magiciens / illusionnistes :</b> ils peuvent être de vrais lanceur de sorts (de bas niveaux) ou de simples « illusionniste » ayant un bon score dans la compétence <i>Tour de passe-passe</i>.</p>
-		<p><b>Montreurs d’ours</b></p>
-		<p><b>Jongleurs</b></p>
-		<p><b>Mangeurs de feu</b></p>
-		<p><b>Acrobates</b></p>
-
-		<p><b>Acteurs / Troupe de théâtre itinérante :</b> ils jouent des pièces et saynètes basées sur des légendes ou des personnages historiques. Ils peuvent également jouer des pièces satyriques à la demande d’opposants au personnage qui est raillé. Ils voyagent par groupe de 10 à 30 et possèdent des chariots pour transporter la scène, les décors, costumes et accessoires.</p>
-
-		<p><b>Ménagerie itinérante :</b> ils sont les précurseurs des zoos et des cirques. Les animaux sont transporter dans des chariots cage. Compter une à deux personnes par animal, plus des hommes d’armes. Une ménagerie peut parfois être accompagnée par des magiciens, jongleurs, mangeur de feu, acrobates, etc.</p>
-	</details>
-
+	<!-- Équipement du voyageur -->
 	<details>
 		<summary>
 			<h3>Équipement du voyageur</h3>
@@ -785,113 +1146,489 @@
 </article>
 
 <!-- Organisation du pouvoir -->
-<!-- Mal organisé, à revoir -->
-<article hidden>
+<article>
 	<h2>Organisation du pouvoir</h2>
 
+	<!-- Structure hiérarchique -->
 	<details>
 		<summary>
-			<h3>Armées &amp; marines</h3>
+			<h3>Structure hiérarchique</h3>
 		</summary>
+
+		<!-- La direction politique -->
+		<details>
+			<summary>
+				<h4>La direction politique</h4>
+			</summary>
+
+			<p><b>Le seigneur :</b> autorité suprême du fief. Il détient le pouvoir de justice, de guerre et de ban (ordonner et punir). Toutes les décisions se prennent en son nom, mais sa liberté réelle dépend souvent de son armée et de ses finances.</p>
+
+			<p><b>Le sénéchal :</b> le principal serviteur du seigneur. Il coordonne les grands officiers (<i>connétable</i>, <i>chancelier</i>, <i>trésorier</i> et <i>grand intendant</i>) sans être leur supérieur hiérarchique, surveille l’exécution des décisions et peut gouverner au nom du seigneur en son absence. Rôle parfois fusionné avec celui de <i>chancelier</i> ou celui de <i>grand chambellan</i>.</p>
+		</details>
+
+		<!-- Organes de contrôle -->
+		<details>
+			<summary>
+				<h4>Les organes de contrôle, d’expertise et de décision</h4>
+			</summary>
+
+			<p><b>Le conseil seigneurial :</b> assemblée restreinte des proches du seigneur, des hauts fonctionnaires (dont au moins un légiste) et des vassaux les plus influents. Il débat des affaires stratégiques (guerre, traités, impôts exceptionnels) et conseille le seigneur dans sa prise de décision.</p>
+
+			<p><b>La chambre ou le bureau des comptes :</b> contrôle les comptes, épluche les registres des receveurs, valide les dépenses de la cour et traque les détournements de fonds. Travaille parallèlement avec le trésorier (pas de rapport hiérarchique).</p>
+		</details>
+
+		<!-- Les grands chefs de service -->
+		<details>
+			<summary>
+				<h4>Les grands chefs de service et leurs assistants</h4>
+			</summary>
+
+			<p><b>Connétable :</b> commandant suprême des armées. L’équivalent pour la marine est <b>l’Amiral</b>.</p>
+			<ul>
+				<li><b>Maréchal :</b> commande en second, discipline, logistique.</li>
+				<li><b>Maître d’artillerie :</b> machines de siège et artillerie.</li>
+				<li><b>Châtelain :</b> commandant d’une forteresse et de sa garnison (nommé directement par le connétable, rend compte à lui en temps de guerre).</li>
+				<li><b>Capitaines</b> nommés pour mener une campagne ou diriger une garnison spécifique</li>
+			</ul>
+
+			<p><b>Grand Juge :</b> chef de l’appareil judiciaire central. Il préside la haute cour au nom du seigneur, tranche les conflits de compétence entre prévôts et baillis, et examine les appels.</p>
+			<ul>
+				<li><b>Lieutenant civil :</b> adjoint spécialisé dans les litiges de biens, d’héritages et de contrats.</li>
+				<li><b>Lieutenant criminel :</b> adjoint spécialisé dans les crimes de sang, de haute trahison et la haute justice (peine de mort).</li>
+				<li><b>Procureur seigneurial :</b> l’accusateur public. Défend les intérêts et les droits du seigneur face aux accusés.</li>
+			</ul>
+
+			<p><b>Chancelier :</b> chef de la chancellerie (actes, sceau, archives, diplomatie écrite).</p>
+			<ul>
+				<li><b>Garde-sceau :</b> détient et appose le sceau du seigneur.</li>
+				<li><b>Secrétaire principal :</b> rédige la correspondance importante du seigneur.</li>
+			</ul>
+
+			<p><b>Trésorier :</b> gestion financière (gardien du trésor physique, liquidités courantes, salaires de la cour, travaille en lien direct avec la chambre des comptes).</p>
+			<ul>
+				<li><b>Garde du trésor :</b> clés et inventaire physique.</li>
+				<li><b>Contrôleur des comptes :</b> vérifie les comptes des receveurs avant transmission à la chambre.</li>
+				<li><b>Receveur général :</b> centralise les revenus des prévôts et régisseurs (interface avec le trésorier).</li>
+				<li><b>Maître de la monnaie :</b> atelier monétaire (si pertinent).</li>
+			</ul>
+
+			<p><b>Grand Chambellan :</b> chef des opérations civiles et économiques (administration des territoires, ressources naturelles, infrastructures, rentabilité des terres).</p>
+			<ul>
+				<li><b>Maître des eaux et forêts :</b> gestion forestière et droits de chasse/pêche.</li>
+				<li><b>Voyer général :</b> supervise l’état des routes, ponts, bâtiments publics</li>
+				<li><b>Maître des corvées :</b> planification des corvées sur la réserve</li>
+			</ul>
+		</details>
+
+		<!-- Relais d’autorité dans les territoires -->
+		<details>
+			<summary>
+				<h4>Relais d’autorité dans les territoires</h4>
+			</summary>
+
+			<p>Le <b>bailli</b> est représentant direct du seigneur et du conseil sur un grand district territorial (le bailliage). Il exerce localement les pouvoirs délégués du seigneur (justice, levée des troupes, collecte des taxes) et supervise les <b>prévôts</b> (affectés à des sous-district). C’est le visage de l’autorité centrale en province, un officier de carrière, instruit (légiste), souvent étranger à la région, payé par la cour centrale pour surveiller et brider les abus des prévôts. Il s’appuie sur une petite équipe : lieutenant, clerc, sergent, receveur local.</p>
+
+			<p>Beaucoup de prévôts, receveurs et sergents <b>achètent leur charge</b> et se remboursent sur les administrés. Ce système de privatisation peut générer des abus, de la corruption et des conflits d’intérêt avec les motivations des officiers.</p>
+
+			<p>Les <b>messagers et courriers</b> jouent un rôle essentiel dans la communication entre l’administration centrale et les territoires éloignés.</p>
+		</details>
+
+		<!-- Notes & remarques -->
+		<details>
+			<summary>
+				<h4>Notes &amp; remarques</h4>
+			</summary>
+
+			<p>Dans les faits, un même homme peut <b>cumuler plusieurs offices</b>, ce qui brouille la hiérarchie théorique et ouvre la porte aux abus.</p>
+
+			<p>Le pouvoir médiéval <b>repose beaucoup sur les vassaux.</b> Ces derniers (chevaliers et barons), doivent le service militaire (ost) est peuvent siéger au Conseil par devoir féodal. Ils entrent souvent en conflit avec les « légistes » (les roturiers instruits qui prennent le pouvoir administratif).</p>
+
+			<p>Pour un <b>seigneur local</b> (baron, châtelain), la quasi-totalité des rôles de grands chefs de service fusionne. Le sénéchal ou un unique régisseur gère les finances et le civil, tandis que le seigneur gère le militaire en direct.</p>
+		</details>
+
+	</details>
+
+	<!-- Défense -->
+	<details>
+		<summary>
+			<h3>1. Défense</h3>
+		</summary>
+
+		<h4>Organisation</h4>
+		<p>Dirigée par le <b>connétable</b>.</p>
+
+		<h4>Branches</h4>
 		<ul>
-			<li><b>Connétable :</b> commandant en chef, remplace le prince ou le roi</li>
-			<li><b>Autres grades :</b> maréchal, commandeur, capitaine, sergent</li>
+			<li>Armée permanente (chevaliers, garnison)</li>
+			<li>Levée (service militaire des vassaux, milice locale)</li>
+			<li>Fortifications (construction et entretien)</li>
+			<li>Ravitaillement militaire</li>
+			<li>Marine (à l’échelle d’un royaume côtier)</li>
+			<li>Renseignement (surveillance des frontières et espionnage militaire)</li>
+		</ul>
+
+		<h4>Acteurs du quotidien</h4>
+		<ul>
+			<li><b>Sergent d’armes :</b> commande une escouade de soldats professionnels sur le terrain.</li>
+			<li><b>Capitaine de la porte :</b> contrôle les entrées et sorties d’une place forte ou d’un château.</li>
+			<li><b>Guetteur :</b> surveille les approches depuis les tours et sonne l’alerte.</li>
+			<li><b>Capitaine de milice :</b> rassemble, arme et dirige les paysans en cas d’attaque locale.</li>
+			<li><b>Fourrier / Pourvoyeur :</b> réquisitionne ou achète les vivres et les logements pour la troupe.</li>
+			<li><b>Armurier seigneurial :</b> gère l’arsenal et entretient le matériel militaire de la garnison.</li>
+			<li><b>Éclaireur :</b> patrouille aux frontières et repère les mouvements ennemis à l’extérieur.</li>
+			<li><b>Maître d’armes :</b> entraîne les recrues, la garde et les proches du seigneur au combat.</li>
+		</ul>
+
+		<p>Le <b>titre de sergent</b> est particulièrement polyvalent au Moyen Âge. Il désigne un combattant non-chevalier mais aussi un officier subalterne chargé de faire exécuter les ordres.</p>
+	</details>
+
+	<!-- Maintien de l’ordre -->
+	<details>
+		<summary>
+			<h3>2. Maintien de l’ordre</h3>
+		</summary>
+
+		<h4>Organisation</h4>
+		<p>Géré par le <b>prévôt de la cité</b> (officier urbain, distinct du prévôt rural) sous la direction du seigneur et de son conseil.</p>
+		<p>Dans les territoires éloignés, supervisé par le <b>bailli</b>, appliqué localement par les <b>prévôts ruraux</b> et les châtelains.</p>
+
+		<h4>Branches</h4>
+		<ul>
+			<li>Guet et patrouilles (sécurité intérieure)</li>
+			<li>Contrôle des routes et des frontières</li>
+			<li>Contrôle des marchés (poids, mesures, fraudes)</li>
+			<li>Répression du banditisme</li>
+			<li>Gestion des prisons</li>
+			<li>Renseignement (surveillance des routes, recherche des criminels, détection des troubles)</li>
+		</ul>
+
+		<h4>Acteurs du quotidien</h4>
+		<ul>
+			<li><b>Sergent du prévôt :</b> patrouille en ville de jour, maintient le calme et exécute les ordres d’arrestation du prévôt.</li>
+			<li><b>Sergent du guet :</b> dirige les patrouilles nocturnes en ville et arrête les perturbateurs.</li>
+			<li><b>Garde des foires :</b> surveille les marchés, règle les disputes de marchands et arrête les voleurs à la tire.</li>
+			<li><b>Mesureur juré :</b> contrôle la conformité des poids, des balances et la qualité des marchandises.</li>
+			<li><b>Garde des prisons :</b> gère les registres de l’établissement et surveille les cellules de rétention.</li>
+			<li><b>Sergent des routes :</b> patrouille à cheval sur les grands chemins pour chasser les brigands.</li>
+			<li><b>Chasse-gueux :</b> expulse les vagabonds, les mendiants et les étrangers suspects hors des murs.</li>
+			<li><b>Informateur :</b> espion payé par le prévôt pour surveiller les tavernes et dénoncer les suspects.</li>
 		</ul>
 	</details>
 
+	<!-- Justice -->
 	<details>
 		<summary>
-			<h3>Forces de l’ordre</h3>
+			<h3>3. Justice</h3>
 		</summary>
+
+		<h4>Organisation</h4>
+		<p>Rendue directement par le <b>seigneur</b>, son conseil, le <b>prévôt de la cité</b>, ou le <b>Grand Juge</b> si cette fonction existe.</p>
+		<p>Dans les territoires éloignés, supervisé par le <b>bailli</b>, appliqué localement par les <b>prévôts ruraux</b>.</p>
+
+		<h4>Branches</h4>
 		<ul>
-			<li>Échevin (magistrat chargé de la police) ou consul</li>
-			<li>Police administrative (poids et mesure, contrôle des prix, contrôle de la voirie)</li>
+			<li>Organisation des juridictions et des recours</li>
+			<li>Enquête judiciaire et instruction</li>
+			<li>Jugement (tribunal seigneurial, cour royale…)</li>
+			<li>Exécution des peines</li>
+			<li>Gestion des amendes et confiscations</li>
+		</ul>
+
+		<h4>Acteurs du quotidien</h4>
+		<ul>
+			<li><b>Sergent de justice :</b> exécute les décisions du tribunal, procède aux saisies de biens et expulse les condamnés.</li>
+			<li><b>Enquêteur :</b> officier envoyé sur le terrain pour interroger les témoins, chercher les indices et rassembler les preuves.</li>
+			<li><b>Greffier :</b> rédige les dépositions, consigne les aveux sous la dictée et tient le registre des sentences.</li>
+			<li><b>Geôlier :</b> garde les accusés en attente de leur procès et gère le quotidien des cachots du tribunal.</li>
+			<li><b>Bourreau :</b> exécute les sentences de mort, applique les châtiments corporels et pratique la torture légale lors des interrogatoires.</li>
+			<li><b>Priseur-estimateur :</b> évalue la valeur des objets et des terres saisis pour s’assurer qu’ils couvrent le montant des amendes judiciaire</li>
 		</ul>
 	</details>
 
+	<!-- Législation & chancellerie -->
 	<details>
 		<summary>
-			<h3>Diplomatie</h3>
+			<h3>4. Législation &amp; chancellerie</h3>
 		</summary>
+
+		<h4>Organisation</h4>
+		<p>Préparée et mise en forme par le <b>chancelier</b> et les <b>légistes</b> du conseil, puis validée par le seigneur.</p>
+		<p>Dans les territoires éloignés, proclamée par le <b>bailli</b> et adaptée localement sous forme de bans par les <b>prévôts</b>.</p>
+
+		<h4>Branches</h4>
 		<ul>
-			<li>Émissaire, légat, envoyé, procureur</li>
+			<li>Édits, ordonnances, décrets (décisions importantes)</li>
+			<li>Bans locaux (réglementation pratique de la vie quotidienne – agriculture, ressources, infrastructures, sécurité et obligations collectives). </li>
+			<li>Réglementation du commerce et des métiers (guildes, prix…) </li>
+			<li>Conservation et interprétation du droit coutumier (règles héritées du passé)</li>
+			<li>Gestion des archives, des chartes (accord de privilèges) et du terrier</li>
+			<li>Rédaction, authentification et diffusion des actes officiels</li>
+		</ul>
+
+		<h4>Acteurs du quotidien</h4>
+		<ul>
+			<li><b>Crieur public :</b> diffuse verbalement les nouvelles lois, bans et décrets seigneuriaux sur les places publiques.</li>
+			<li><b>Clerc de chancellerie :</b> rédige les actes officiels, copie les chartes et met en forme la correspondance administrative.</li>
+			<li><b>Gardien des archives :</b> gère, classe et protège les registres du terrier, les cartes et les titres de propriété du fief.</li>
+			<li><b>Clerc des requêtes :</b> accueille le public, recueille les plaintes ou pétitions et les trie avant leur présentation au conseil.</li>
 		</ul>
 	</details>
 
+	<!-- Diplomatie -->
 	<details>
 		<summary>
-			<h3>Justice</h3>
+			<h3>5. Diplomatie</h3>
 		</summary>
+
+		<h4>Organisation</h4>
+		<p>Dirigée directement par le <b>seigneur</b>, assisté par le <b>chancelier</b> et les membres les plus influents de son conseil.</p>
+		<p>Dans les territoires éloignés, assurée par des <b>émissaires</b> envoyés en mission ponctuelle auprès des seigneurs voisins ou des vassaux frontaliers.</p>
+
+		<h4>Branches</h4>
 		<ul>
-			<li>Juge (prêvot, bailli, sénéchal)</li>
-			<li>Procureur, greffier, avocat</li>
-			<li>sergent de justice (huissier), geôlier</li>
-			<li>Enquêteur</li>
-			<li>Tribunal, prison</li>
+			<li>Relations avec le suzerain (hommage, obligations féodales, arbitrages)</li>
+			<li>Relations avec les vassaux (contrôle des fiefs, gestion des crises internes)</li>
+			<li>Négociations avec les voisins (frontières, traités, litiges et accords commerciaux)</li>
+			<li>Relations avec l’Église (gestion des conflits de pouvoir avec les évêques et abbayes)</li>
+			<li>Alliances matrimoniales et politique familiale</li>
+			<li>Ambassades et négociations</li>
+			<li>Gestion des crises diplomatiques (trêves, rançons, captifs, arbitrages)</li>
+		</ul>
+
+		<h4>Acteurs du quotidien</h4>
+		<ul>
+			<li><b>Héraut d’armes :</b> délivre les messages solennels, annonce les trêves ou les déclarations de guerre, et bénéficie d’un statut d’immunité inviolable.</li>
+			<li><b>Chevaucheur :</b> courrier à cheval rapide chargé de transporter la correspondance diplomatique urgente et secrète à travers les territoires.</li>
+			<li><b>Truchement :</b> interprète officiel chargé de traduire les discussions avec les émissaires étrangers ou les marchands de passage.</li>
+			<li><b>Poursuivant d’armes :</b> assistant du héraut d’armes, souvent utilisé pour les missions diplomatiques de moindre importance ou de repérage.</li>
+			<li><b>Hôte des émissaires :</b> officier subalterne chargé de loger, nourrir et surveiller discrètement les délégations étrangères invitées.</li>
 		</ul>
 	</details>
 
+	<!-- Finance & fiscalité -->
 	<details>
 		<summary>
-			<h3>Pouvoir législatif</h3>
+			<h3>6. Finance &amp; fiscalité</h3>
 		</summary>
+
+		<h4>Organisation</h4>
+		<p>Co-dirigé par la <b>chambre des comptes</b> (qui contrôle) et le <b>trésorier</b> ou argentier du seigneur (qui gère).</p>
+		<p>Dans les territoires éloignés, supervisé par un <b>receveur général</b>, collecté localement par les <b>prévôts</b>.</p>
+
+		<h4>Branches</h4>
 		<ul>
-			<li>Chancelier (contrôle de la rédaction des actes et sceau royal).</li>
+			<li>Revenus directs (taille, capitation, impôts)</li>
+			<li>Revenus indirects (péages, tonlieux, droits de marché)</li>
+			<li>Droits banaux (redevance d’usage du moulin, four, pressoir)</li>
+			<li>Droits régaliens et concessions (exploitation des mines, salines, grandes forêts…)</li>
+			<li>Droits féodaux (reliefs, aides, rachat des corvées)</li>
+			<li>Dépenses (armée, bâtiments, cour, personnel)</li>
+			<li>Monnaie et change *(à l’échelle royale)*</li>
+			<li>Comptabilité et trésorerie</li>
+			<li>Contrôle et audit des officiers comptables</li>
+		</ul>
+
+		<h4>Acteurs</h4>
+		<ul>
+			<li><b>Receveur local :</b> centralise les impôts d’une circonscription et organise leur transport sécurisé vers le trésor central.</li>
+			<li><b>Péager :</b> perçoit les taxes sur les marchandises aux portes des villes, sur les ponts et les cours d’eau.</li>
+			<li><b>Collecteur villageois :</b> habitant désigné par sa communauté pour lever l’impôt direct de porte en porte.</li>
+			<li><b>Essayeur des monnaies : </b>vérifie le poids, l’aloi et l’authenticité des pièces circulant sur les marchés seigneuriaux.</li>
+			<li><b>Clerc de la recette :</b> tient les registres des entrées d’argent et délivre les quittances officielles de paiement.</li>
 		</ul>
 	</details>
 
+	<!-- Administration des territoires -->
 	<details>
 		<summary>
-			<h3>Pouvoir financier</h3>
+			<h3>7. Administration des territoires</h3>
 		</summary>
+		<h4>Organisation</h4>
+		<p>Dirigée par le <b>Grand Chambellan</b>. Le <b>bailli central</b> gère la région autour du siège du pouvoir, et le <b>prévôt de ville</b> s’occupe de la ville où vit le noble.</p>
+		<p>Dans les territoires éloignés, supervisée par le<b> bailli</b>, administrée concrètement par les <b>prévôts ruraux</b>, les <b>maires</b> de village et les <b>régisseurs</b>.</p>
+
+		<h4>Branches</h4>
 		<ul>
-			<li>Monnaie</li>
-			<li>Taxes, impôts, redevances, péage</li>
-			<li>Douanes</li>
-			<li>Dépenses publiques et planification de la vie économique</li>
+			<li>Gestion de la réserve seigneuriale et planification agricole (travaux de la réserve, corvées, réglementation des récoltes et des communs).</li>
+			<li>Entretien des infrastructures, châteaux et bâtiments banaux (routes, ponts, édifices publics, moulins, fours, pressoirs).</li>
+			<li>Gestion des ressources naturelles sous autorité souveraine (coupe de bois, droits de chasse, pacage en forêt, exploitation des carrières et mines).</li>
+			<li>Relations avec les communautés d’habitants (chartes de franchises, examen des doléances, représentation locale via les prévôts).</li>
+			<li>Protection et surveillance des institutions charitables (hôpitaux, léproseries, aumônes).</li>
+			<li>Recensement de la population et gestion des archives, des chartes et du terrier.</li>
+		</ul>
+
+		<h4>Acteurs</h4>
+		<ul>
+			<li><b>Régisseur :</b> dirige les travaux agricoles sur la réserve du seigneur et planifie les corvées des paysans.</li>
+			<li><b>Garde-forestier :</b> surveille les bois seigneuriaux, réglemente la coupe de bois et traque le braconnage.</li>
+			<li><b>Voyer :</b> inspecte l’état des routes, des ponts et ordonne les réparations des infrastructures et bâtiments banaux.</li>
+			<li><b>Arpenteur :</b> mesure les parcelles de terre, tranche les litiges de limites de propriété et met à jour le terrier.</li>
+			<li><b>Maire de village :</b> notable local choisi pour représenter la communauté paysanne et faire l’interface avec les officiers seigneuriaux.</li>
 		</ul>
 	</details>
 
+</article>
+
+<!-- Organisation du territoire -->
+<article>
+	<h2>Organisation des territoires</h2>
+
+	<!-- Rangs de noblesse -->
 	<details>
 		<summary>
-			<h3>Monopôles</h3>
+			<h3>Rangs de noblesse</h3>
 		</summary>
-		<ul>
-			<li>Exploitation de certaines matières premières (mines, forêts, sel)</li>
-		</ul>
+
+		<p>La noblesse représentait environ 2 % de la population totale. Environ 80 % à 90 % de ces nobles étaient de simples chevaliers de village ou des écuyers sans terre, dont le niveau de vie matériel était parfois très proche de celui des riches laboureurs (les paysans aisés).</p>
+
+		<!-- Écuyer -->
+		<details>
+			<summary>
+				<h4>1. L’écuyer (noble de sang, sans terre)</h4>
+			</summary>
+			<p><b>Demeure :</b> pièce louée en ville, partage une chambrée dans la caserne d’un seigneur, ou squatte le manoir de son frère aîné.</p>
+			<p><b>Domaine :</b> aucun</p>
+			<p><b>Sources de revenus :</b> solde militaire, gains en tournois, gages d’un office public (souvent sergent de prévôt ou enquêteur) ou pension familiale (rente en argent versée par l’aîné de la famille).</p>
+			<p><b>Gouverne son domaine via :</b> aucun domaine à gouverner.</p>
+			<p><b>Autorité supérieure de contrôle :</b> le prévôt ou le bailli.</p>
+			<p><b>Rôle vis-à-vis du suzerain :</b> entièrement disponible pour son employeur (un baron, le prévôt ou le bailli). Il sert souvent de bras droit, de messager de confiance ou de lieutenant sur le terrain. Aucun pouvoir politique propre.</p>
+			<p><b>Justice &amp; Puissance militaire :</b> aucun droit de justice sur autrui, mais il possède le privilège juridique de la noblesse (exempté des taxes ordinaires, il ne peut être jugé que par ses pairs ou par un bailli, jamais par un tribunal roturier). Puissance militaire purement individuelle (destrier, armure, armes).</p>
+		</details>
+
+		<!-- Chevalier -->
+		<details>
+			<summary>
+				<h4>2. Le simple chevalier (seigneur de fief)</h4>
+			</summary>
+			<p><b>Demeure :</b> manoir fortifié ou maison forte (en bois ou en pierre).</p>
+			<p><b>Domaine :</b> un petit fief (1 village ou quelques hameaux, soit environ 20 à 50 foyers de paysans), qui est imbriqué territorialement dans une châtellenie ou une prévôté</p>
+			<p><b>Sources de revenus :</b> cens (loyers sur les terres), corvées (jours de travail gratuits des paysans), banalités (taxes obligatoires sur le moulin, le pressoir ou le four seigneurial) et revente des surplus agricoles.</p>
+			<p><b>Gouverne son domaine via :</b> lui-même en direct, parfois aidé par un régisseur agricole roturier pour les comptes ou d’un maire villageois pour relayer ses ordres.</p>
+			<p><b>Autorité supérieure de contrôle :</b> le prévôt de la circonscription locale ou son suzerain direct s’il gère son arrière-fief sans intermédiaire.</p>
+			<p><b>Rôle vis-à-vis du suzerain :</b> vassal direct (il lui a prêté hommage). Il lui doit l’aide militaire (servir à l’Ost à ses frais, généralement 40 jours par an) et le conseil (assister aux plaids et jugements du suzerain).</p>
+			<p><b>Justice &amp; Puissance militaire :</b> basse justice (conflits de voisinage, petits vols, dégâts des bêtes). Puissance militaire individuelle (le chevalier en armure lourde sur son destrier, accompagné de 1 ou 2 valets d’armes à pied).</p>
+		</details>
+
+		<!-- Châtelain -->
+		<details>
+			<summary>
+				<h4>3. Le châtelain (seigneur de châtellenie)</h4>
+			</summary>
+			<p><b>Demeure :</b> un véritable château fort en pierre (avec donjon, remparts et basse-cour).</p>
+			<p><b>Échelle du domaine :</b> une châtellenie (un bourg marchand fortifié au pied du château et une dizaine à une vingtaine de villages aux alentours) – territoire militaire et fiscal, qui correspond généralement à l’échelle d’une prévôté.</p>
+			<p><b>Sources de revenus :</b> droits de marché et de foire du bourg, tonlieu (taxe sur la vente des marchandises), péages stratégiques (ponts, rivières, cols), banalités élargies et revenus agricoles de ses terres propres.</p>
+			<p><b>Gouverne son domaine via :</b> un prévôt (fonctionnaire seigneurial qui installe son tribunal au château), des sergents pour la police des campagnes et un receveur pour la collecte des taxes.</p>
+			<p><b>Autorité supérieure de contrôle :</b> le bailli (royal, princier, ducal ou comtal) de la circonscription régionale supérieure ou le grand seigneur direct (baron, comte ou duc) s’il gère son territoire sans intermédiaire.</p>
+			<p><b>Rôle vis-à-vis du suzerain :</b> gardien d’un point stratégique du territoire. Il lui doit la garde de sa propre forteresse, l’aide militaire (mener le contingent de sa châtellenie à l’Ost) et le droit de gîte (obligation d’héberger le suzerain et sa suite).</p>
+			<p><b>Justice &amp; Puissance militaire :</b> moyenne justice et très souvent haute justice (droit de condamner à mort, gibet). Puissance militaire collective locale : il entretient une garnison permanente professionnelle (archers, sergents à pied) et peut convoquer tous les simples chevaliers de sa châtellenie (ses vassaux) pour former une troupe d’une cinquantaine de cavaliers.</p>
+		</details>
+
+		<!-- Le baron -->
+		<details>
+			<summary>
+				<h4>4. Le baron (seigneur de baronnie)</h4>
+			</summary>
+			<p><b>Demeure :</b> une forteresse majeure ou un château fort d’envergure, conçu pour résister à de véritables sièges.</p>
+			<p><b>Domaine :</b> la baronnie. C’est un territoire d’échelle intermédiaire qui englobe plusieurs châtellenies et jusqu’à une centaine de villages ou de bourgs marchands.</p>
+			<p><b>Sources de revenus :</b> les taxes sur les foires régionales, les impôts ou rachats de services versés par ses propres vassaux (les châtelains), les droits d’exploitation des ressources stratégiques (grandes forêts, carrières, mines) et les péages sur les axes commerciaux majeurs.</p>
+			<p><b>Gouverne son domaine via :</b> un appareil d’exécution complet. Le baron s’appuie sur son conseil seigneurial, son propre réseau de prévôts pour ses terres directes, un receveur général pour centraliser les finances et un capitaine de garnison pour l’aspect militaire.</p>
+			<p><b>Autorité supérieure de contrôle :</b> le bailli régional de son suzerain direct (le prince, le duc ou le comte).</p>
+			<p><b>Rôle vis-à-vis du suzerain :</b> il est un vassal de haut rang. Il siège à la cour pour conseiller le prince ou le duc sur la politique de la province. En cas de guerre, il doit mener personnellement le contingent militaire de sa baronnie, composé de ses châtelains et chevaliers.</p>
+			<p><b>Justice &amp; Puissance militaire :</b> haute justice complète sur ses terres (gibet, condamnations à mort). Puissance militaire d’envergure : il entretient une garde d’élite permanente et peut lever le ban de ses vassaux pour aligner une véritable petite armée de plusieurs centaines d’hommes d’armes.</p>
+		</details>
+
+		<!-- Le comte -->
+		<details>
+			<summary>
+				<h4>5. Le comte (seigneur de comté)</h4>
+			</summary>
+			<p><b>Demeure :</b> un grand château fort et un palais urbain dans la principale cité de son comté.</p>
+			<p><b>Domaine :</b> le comté. C’est un territoire d’échelle provinciale qui regroupe plusieurs baronnies et des dizaines de châtellenies.</p>
+			<p><b>Sources de revenus :</b> les taxes sur le commerce provincial, les impôts des villes de son domaine, les droits de mutation quand un fief change de mains, et le rachat du service militaire par ses barons.</p>
+			<p><b>Gouverne son domaine via :</b> son propre réseau de baillis, une petite chambre des comptes pour centraliser les impôts, et un conseil de juristes qui fixe les coutumes locales.</p>
+			<p><b>Autorité supérieure de contrôle :</b> le bailli royal (qui surveille toute la région) ou le roi en personne.</p>
+			<p><b>Rôle vis-à-vis du suzerain :</b> grand vassal direct du roi. Il lui doit le conseil à la cour royale et la levée de l’ost (l’armée) de son comté.</p>
+			<p><b>Justice &amp; Puissance militaire :</b> haute justice complète. Il peut lever une armée de plusieurs centaines de gens d’armes en convoquant ses barons.</p>
+		</details>
+
+		<!-- Duc -->
+		<details>
+			<summary>
+				<h4>6. Le duc (seigneur de duché)</h4>
+			</summary>
+			<p><b>Demeure :</b> un palais fortifié monumental, rivalisant parfois avec celui du roi.</p>
+			<p><b>Domaine :</b> le duché. C’est une principauté immense qui peut englober plusieurs comtés et baronnies. C’est le plus grand découpage territorial avant le royaume.</p>
+			<p><b>Sources de revenus :</b> les douanes aux frontières de son duché, les taxes sur les axes fluviaux ou maritimes majeurs, l’exploitation des mines d’or ou d’argent, et le prélèvement d’une part des taxes de ses vassaux (les comtes et barons).</p>
+			<p><b>Gouverne son domaine via :</b> un véritable appareil d’état miniature. Il a son propre sénéchal (chef des armées), des baillis ducaux, et un parlement ou une cour de justice souveraine.</p>
+			<p><b>Autorité supérieure de contrôle :</b> le roi uniquement (généralement via le grand chambellan ou le chancelier royal pour les affaires diplomatiques). Le duc est trop puissant pour être contrôlé par un simple fonctionnaire.</p>
+			<p><b>Rôle vis-à-vis du suzerain :</b> pair du royaume. Sa loyauté est le pilier de la stabilité du pays. Il traite presque d’égal à égal avec le roi.</p>
+			<p><b>Justice &amp; Puissance militaire :</b> justice souveraine (le roi ne peut casser ses jugements que dans des cas très rares). Puissance militaire stratégique : il dispose d’une armée permanente de métier et peut mobiliser des milliers de combattants en cas de guerre.</p>
+		</details>
+
 	</details>
 
+	<!-- Découpage administratif -->
 	<details>
 		<summary>
-			<h3>Administration des territoires</h3>
+			<h3>Découpage administratif</h3>
 		</summary>
-		<ul>
-			<li>Délégation et représentation locale (gouverneurs, commissaire, baillis, sénéchaux)</li>
-			<li>Entretien et construction de certains bâtiments publiques (route, rue, édifices publiques)</li>
-		</ul>
-	</details>
 
+		<p>Un territoire assez grand est divisé en <b>bailliages</b> (dirigés par des baillis), eux-même subdivisés en <b>prévôtés</b> (dirigées par des prévôt).</p>
+
+		<!-- Prévoté -->
+		<details>
+			<summary>
+				<h4>La prévôté (circonscription locale)</h4>
+			</summary>
+			<p><b>Centre d’action :</b> un bourg fortifié ou le château du seigneur local (le châtelain).</p>
+
+			<p><b>Échelle territoriale :</b> locale. Elle englobe<b> un chef-lieu et une dizaine à une vingtaine de villages ou hameaux</b> alentour (environ la même taille qu’une châtellenie – domaine d’un petit seigneur local).</p>
+
+			<p><b>Administré par :</b> le prévôt. C’est un roturier instruit (un juriste ou un riche marchand) ou un noble de rang inférieur (comme un écuyer). Il est salarié ou achète sa charge.</p>
+
+			<p><b>Compétences principales :</b> c’est le premier niveau de l’administration. Le prévôt gère le quotidien : il publie les édits du seigneur, surveille l’entretien des routes, arbitre les conflits de voisinage et gère les marchés locaux.</p>
+
+			<p><b>Finances &amp; Revenus :</b> il collecte directement les taxes de base (cens, péages, taxes de marché) et perçoit les amendes judiciaires. Il garde une part pour ses gages et reverse le reste au bailliage ou au seigneur.</p>
+
+			<p><b>Autorité supérieure :</b> le bailli ou le seigneur si son territoire est trop petit pour un réseau de bailliage.</p>
+
+			<p><b>Force publique &amp; Justice :</b> basse et moyenne justice (vols simples, bagarres, litiges fonciers). Pour faire appliquer ses décisions, le prévôt dispose d’une poignée de sergents à pied (la police locale).</p>
+		</details>
+
+		<!-- baillage -->
+		<details>
+			<summary>
+				<h4>Le bailliage (circonscription régionale)</h4>
+			</summary>
+
+			<p><b>Centre d’action :</b> une ville, dotée d’un château et d’un tribunal (l’auditoire).</p>
+
+			<p><b>Échelle territoriale :</b> régionale. Un bailliage est un grand territoire provincial (taille d’une baronnie) qui regroupe et chapeaute <b>plusieurs prévôtés (souvent entre 5 et 15)</b>.</p>
+
+			<p><b>Administré par :</b> le bailli. C’est un noble de robe (un grand juriste) ou un noble d’épée de confiance, nommé directement par le seigneur de la région. Sa charge est révocable.</p>
+
+			<p><b>Compétences principales :</b> c’est le représentant du seigneur en province. Le bailli supervise le travail de tous les prévôts, contrôle les comptes, inspecte les garnisons des châteaux, et gère les relations politiques avec la noblesse locale (les barons et comtes de la région).</p>
+
+			<p><b>Finances &amp; Revenus :</b> il ne collecte rien en directement. Sa chambre des comptes locale centralise les recettes envoyées par tous les prévôts, audite leur gestion, et prépare le convoi d’argent qui part vers le trésor du seigneur ou du roi.</p>
+
+			<p><b>Autorité supérieure :</b> le seigneur de la région ou son grand chambellan.</p>
+
+			<p><b>Force publique &amp; Justice :</b> haute justice en première instance (crimes de sang, trahison, fausse monnaie) et tribunal d’appel pour toutes les décisions des prévôts. Pour la force publique, le bailli commande à un capitaine qui dirige une compagnie de gens d’armes professionnels et de sergents à cheval capables d’intervenir dans toute la région.</p>
+		</details>
+
+	</details>
 </article>
 
 <!-- Château fort -->
 <article>
 	<h2>Chateau fort</h2>
 
-	<!-- Introduction -->
-	<details>
-		<summary>
-			<h3>Introduction</h3>
-		</summary>
-		<p>Voici quelques lieux communs sur les châteaux forts historiques. Ils permettront de garder en mémoire les éléments clés permettant de décrire un château réaliste.</p>
-		<p>Le château est constitué de deux enceintes. Entre les deux enceintes, il y a la basse-cour et à l’intérieur de la seconde enceinte, il y a notamment le donjon.</p>
-	</details>
-
 	<!-- Plan général -->
 	<details>
 		<summary>
 			<h3>Plan général</h3>
 		</summary>
-		<a href="/assets/img/chateau-01.jpg"><img src="/assets/img/chateau-01-400.webp" alt="plan château fort"></a>
+		<a href="/assets/img/chateau-01.jpg" target="_blank"><img src="/assets/img/chateau-01-400.webp" alt="plan château fort"></a>
 	</details>
 
 	<!-- L’enceinte extérieure -->
@@ -913,7 +1650,7 @@
 			<summary>
 				<h4>Les défenses extérieures</h4>
 			</summary>
-			<p>Tout autour du fos­sé, on aperçoit des haies vives et chevaux de frise (pieux fichés dans le sol) censés briser les charges à cheval.</p>
+			<p>Tout autour du fossé se trouvent des haies vives et chevaux de frise (pieux fichés dans le sol) censés briser les charges à cheval.</p>
 		</details>
 
 		<!-- Le fossé -->
@@ -921,7 +1658,7 @@
 			<summary>
 				<h4>Le fossé</h4>
 			</summary>
-			<p>Le fossé est une large tranchée profonde d’une quinzaine de mètres. Il avait pour objectif d’empêcher les agresseurs de s’attaquer directement aux murailles (avec des béliers, par exemple), aussi les sapeurs devaient‑ils d’abord les combler avec des pierres ou des fascines (fagots) avant de commencer à essayer de desceller les moellons des remparts. Les douves étaient en fait rarement remplies d’eau pendant la période médiévale. En plus de leur rôle défensif, elles tenaient lieu de dépotoir et de déversoir pour les latrines.</p>
+			<p>Le fossé avait pour objectif d’empêcher les agresseurs de s’attaquer directement aux murailles. Les sapeurs devaient d’abord le combler avec des pierres ou des fascines (fagots) avant de commencer à essayer de desceller les moellons des remparts. Les douves étaient en fait rarement remplies d’eau pendant la période médiévale. En plus de leur rôle défensif, elles tenaient lieu de dépotoir et de déversoir pour les latrines.</p>
 		</details>
 
 		<!-- Les poternes secondaires -->
@@ -929,7 +1666,7 @@
 			<summary>
 				<h4>Les poternes secondaires</h4>
 			</summary>
-			<p>Les remparts sont percés, de loin en loin, de discrètes petites portes en fer, très étroites, réservées aux piétons. Tous les châteaux possédaient de telles poternes. Certaines étaient habilement dissimulées derrière des buissons et des arbres. Les défenseurs pouvaient les emprunter afin d’opérer des sorties nocturnes discrètes, sans avoir à ouvrir la grande porte.</p>
+			<p>Les remparts sont percés, de loin en loin, de discrètes petites portes en fer, très étroites, réservées aux piétons. Certaines étaient habilement dissimulées derrière des buissons et des arbres. Les défenseurs pouvaient les emprunter afin d’opérer des sorties nocturnes discrètes, sans avoir à ouvrir la grande porte.</p>
 		</details>
 
 		<!-- Le pont-levis -->
@@ -945,7 +1682,7 @@
 			<summary>
 				<h4>La porte principale</h4>
 			</summary>
-			<p>Flanquée des deux grosses tours rondes du châtelet d’entrée. Les arrivants sont obligés de passer sous un assommoir (trou aménagé au‑dessus de la porte et par lequel on peut bombarder les ennemis). La herse, actionnée par un treuil installé dans la partie supérieure de l’entrée où se trouve le poste de garde, était généralement faite en bois dur, renforcé par des clous et des plaques de métal. L’entrée principale constituant toujours le point faible par lequel les ennemis pouvaient pénétrer dans les lieux, elle était protégée par le pont-levis (qui se présentait comme une paroi de bois quasi infranchissable, une fois relevé), la herse et la porte elle‑même (que l’on condamnait, en cas de besoin, à l’aide d’épaisses poutres).</p>
+			<p>Flanquée des deux grosses tours rondes du châtelet d’entrée. Les arrivants sont obligés de passer sous un assommoir. La herse, actionnée par un treuil installé dans la partie supérieure de l’entrée où se trouve le poste de garde, était généralement faite en bois dur, renforcé par des clous et des plaques de métal. L’entrée principale constituant toujours le point faible par lequel les ennemis pouvaient pénétrer dans les lieux, elle était protégée par le pont-levis, la herse et la porte elle‑même (que l’on condamnait, en cas de besoin, à l’aide d’épaisses poutres).</p>
 		</details>
 
 		<!-- Le châtelet d’entrée -->
@@ -953,7 +1690,7 @@
 			<summary>
 				<h4>Le châtelet d’entrée</h4>
 			</summary>
-			<p>Bâties en saillie, deux énormes tours à mâchicoulis surmontées de toits en poivrière couverts d’ardoises défendent l’entrée du château. Une guette (tourelle de guet) crénelée se dresse dessus de la tour de gauche. Les tours dites "en poivrière" ne font leur apparition qu’aux alentours du douzième siècle. Leurs toits étaient recouverts de plaques d’ardoises ou de tuiles capables de résister aux flèches enflammées. Les mâchicoulis, sortes de surplombs en pierre, permettaient aux défenseurs de laisser tomber des projectiles divers (pierres, poix enflammée, eau bouillante, plus rarement huile bouillante) sur les attaquants quand ceux‑ci arrivaient près des murs.</p>
+			<p>Bâties en saillie, deux énormes tours à mâchicoulis surmontées de toits en poivrière couverts d’ardoises défendent l’entrée du château. Une guette (tourelle de guet) crénelée se dresse dessus de la tour de gauche. Les tours dites « en poivrière » ne font leur apparition qu’aux alentours du XII<sup>e</sup> siècle. Leurs toits étaient recouverts de plaques d’ardoises ou de tuiles capables de résister aux flèches enflammées. Les mâchicoulis, sortes de surplombs en pierre, permettaient aux défenseurs de laisser tomber des projectiles divers (pierres, poix enflammée, eau bouillante, plus rarement huile bouillante) sur les attaquants quand ceux‑ci arrivaient près des murs.</p>
 		</details>
 
 		<!-- Les remparts -->
@@ -961,8 +1698,8 @@
 			<summary>
 				<h4>Les remparts</h4>
 			</summary>
-			<p>Les courtines hautes de dix mètres sont surmontées par endroits de hourds en bois et leurs parois sont percées d’archères (meurtrières, étroites vers l’extérieur et larges à l’intérieur afin de permettre aux archers de viser). Des hommes d’armes parcourent inlassablement l’aléoir (chemin de ronde).</p>
-			<p>Les murs faisaient parfois plus de trois mètres d’épaisseur. Quand ils n’abritaient pas des couloirs exigus, ils étaient construits en sandwichs, un blocage de moellons et de cailloux liés par du mortier étant monté entre deux parements externes de pierre de taille. Comme les tours, leurs parois comportaient des "trous de boulin" dans lesquels on glissait des poutrelles pour édifier des échafaudages temporaires. Parmi ces derniers, il convient de citer les hourds, sortes de galeries en bois que l’on mettait en place en temps de guerre et qui remplissaient le même rôle que les mâchicoulis.</p>
+			<p>Les courtines hautes de dix mètres sont surmontées par endroits de hourds en bois et leurs parois sont percées d’archères (meurtrières étroites vers l’extérieur et larges à l’intérieur). Des hommes d’armes parcourent l’aléoir (chemin de ronde).</p>
+			<p>Les murs faisaient parfois plus de trois mètres d’épaisseur. Quand ils n’abritaient pas des couloirs exigus, ils étaient construits en sandwichs, un blocage de moellons et de cailloux liés par du mortier étant monté entre deux parements externes de pierre de taille. Comme les tours, leurs parois comportaient des trous de boulin dans lesquels on glissait des poutrelles pour édifier des échafaudages temporaires. Parmi ces derniers, il convient de citer les hourds, sortes de galeries en bois que l’on mettait en place en temps de guerre et qui remplissaient le même rôle que les mâchicoulis.</p>
 		</details>
 
 		<!-- Les talus -->
@@ -970,7 +1707,7 @@
 			<summary>
 				<h4>Les talus</h4>
 			</summary>
-			<p>Des talus inclinés, recouverts de briques, sont visibles au pied des courtines. Ces remblais avaient deux fonctions. Premièrement, leur inclinaison permettait de faire ricocher les projectiles lancés depuis les hourds et les mâchicoulis. Deuxièmement, ils compliquaient la tâche des sapeurs et mineurs chargés de percer les murailles.</p>
+			<p>Des talus inclinés, recouverts de briques, sont visibles au pied des courtines. Ces remblais avaient deux fonctions : leur inclinaison permettait de faire ricocher les projectiles lancés depuis les hourds et les mâchicoulis, et ils compliquaient la tâche des sapeurs et mineurs chargés de percer les murailles.</p>
 		</details>
 
 	</details>
@@ -982,12 +1719,12 @@
 		</summary>
 		<p>Les grands châteaux possédaient au moins deux enceintes, concentriques ou cloisonnées. Les étendues assez vastes – ou cours – qui séparaient ces remparts étaient occupées par diverses maisonnettes et échoppes, organisées à la manière de petits villages. C’est dans cet espace que venaient se réfugier les paysans des alentours lorsque la guerre menaçait.</p>
 
-		<p>Dans ces petites habitations à colombages vivent les paysans travaillant sur les réserves du seigneur. Elles sont bâties en torchis blanchi à la chaux. On peut noter la présence d’une forge, d’une échoppe de tailleur et de divers autres ateliers (menuiserie, poterie, etc). Forgerons, charpentiers et tailleurs jouaient un rôle important dans la vie des châteaux.</p>
+		<p>Dans ces petites habitations vivent les paysans travaillant sur les réserves du seigneur. Elles sont bâties en torchis blanchi à la chaux. Présence d’une forge, d’une échoppe de tailleur et de divers autres ateliers (menuiserie, poterie, etc). Forgerons, charpentiers et tailleurs jouaient un rôle important dans la vie des châteaux.</p>
 
-		<p>En cas de siège, les défenseurs doivent pouvoir disposer de viande fraîche et de lait, d’où l’utilité d’aménager des étables dans l’enceinte même du château. Les bovidés étaient considérés comme coûteux à une époque où les réserves de foin étaient précieuses ; c’est pourquoi l’on préférait généralement élever des moutons, bien moins exigeants sur le plan de la nourriture.</p>
+		<p>En cas de siège, les défenseurs doivent pouvoir disposer de viande fraîche et de lait, d’où l’utilité d’aménager des étables dans l’enceinte même du château. Les bovidés étaient coûteux, on préférait généralement élever des moutons, bien moins exigeants sur le plan de la nourriture.</p>
 
 		<h4>Moulin</h4>
-		<p>Les seigneurs s’arrogeaient souvent le privilège de moudre le grain de leurs sujets&hellip; contre espèces sonnantes et trébuchantes! Si les ailes du moulin</p>
+		<p>Les seigneurs s’arrogeaient souvent le privilège de moudre le grain de leurs sujets&hellip; contre espèces sonnantes et trébuchantes !</p>
 
 		<h4>Fontaine</h4>
 		<p>Une belle fontaine ouvragée trône au milieu du désordre. Hommes et bêtes viennent s’y abreuver, au milieu des servantes occupées à laver leur linge.</p>
@@ -1017,7 +1754,7 @@
 			<summary>
 				<h4>Le chenil</h4>
 			</summary>
-			<p>Une meute de chiens hurlants est hébergée dans une maison basse en bois dont émane une odeur suffocante. On ne répétera jamais assez que la « vie de château » était extrêmement monotone. Au même titre que la guerre, la chasse était l’un des rares plaisirs que pouvaient s’offrir les seigneurs et c’est pourquoi ils entretenaient des meutes.</p>
+			<p>Une meute de chiens hurlants est hébergée dans une maison basse en bois dont émane une odeur suffocante. La chasse était l’un des rares plaisirs que pouvaient s’offrir les seigneurs et c’est pourquoi ils entretenaient des meutes.</p>
 		</details>
 
 		<!-- La chapelle -->
@@ -1025,7 +1762,7 @@
 			<summary>
 				<h4>La chapelle</h4>
 			</summary>
-			<p>Une petite église aux bas­-reliefs délicats. Un château se devait d’avoir un lieu de culte. Celui‑ci pouvait aussi bien être aménagé dans la cour, que dans le donjon même.</p>
+			<p>Un château se devait d’avoir un lieu de culte. Celui‑ci pouvait aussi bien être aménagé dans la cour, que dans le donjon même.</p>
 		</details>
 
 		<!-- Le grenier -->
@@ -1033,7 +1770,7 @@
 			<summary>
 				<h4>Le grenier</h4>
 			</summary>
-			<p>Une petite bâtisse carrée et sans fenêtres est accolée au donjon. C’est le grenier, dans lequel sont entassées les réserves de céréales du châtelain.</p>
+			<p>Une petite bâtisse carrée et sans fenêtres est accolée au donjon. C’est le grenier, dans lequel sont entassées les réserves de céréales.</p>
 		</details>
 
 		<!-- Les puits -->
@@ -1041,7 +1778,7 @@
 			<summary>
 				<h4>Les puits</h4>
 			</summary>
-			<p>Il ne suffisait pas de choisir un lieu élevé pour édifier un château, encore fallait‑il s’assurer que le sous‑sol abritait des sources ou nappes souterraines. En plus de fournir de l’eau aux habitants du fort, les puits offraient la possibilité de lutter contre les éventuels incendies. En général, chaque castel disposait de plusieurs puits, aménagés aussi bien à l’extérieur des bâtiments, que dans le donjon ou les tours d’enceinte. Il faut à ce propos signaler que les oubliettes, de sinistre mémoire, n’étaient en réalité que de simples puits.</p>
+			<p>Il ne suffisait pas de choisir un lieu élevé pour édifier un château, encore fallait‑il s’assurer que le sous‑sol abritait des sources ou nappes souterraines. En plus de fournir de l’eau aux habitants du fort, les puits offraient la possibilité de lutter contre les éventuels incendies. En général, chaque castel disposait de plusieurs puits, aménagés aussi bien à l’extérieur des bâtiments, que dans le donjon ou les tours d’enceinte.</p>
 		</details>
 
 		<!-- Baraque des domestiques -->
@@ -1065,7 +1802,7 @@
 			<summary>
 				<h4>La maison de l’alchimiste</h4>
 			</summary>
-			<p>Une fois débarrassée de ses aspects les plus folkloriques (pierre philosophale, élixir de longue vie, etc), l’alchimie se révèle comme une véritable science. Parfois, les alchimistes bénéficiaient de la protection d’un seigneur, ce qui leur évitait les tracas généralement associés à la sorcellerie.</p>
+			<p>Parfois, les alchimistes bénéficiaient de la protection d’un seigneur, ce qui leur évitait les tracas généralement associés à la sorcellerie.</p>
 		</details>
 	</details>
 
@@ -1075,7 +1812,7 @@
 			<h3>Le donjon</h3>
 		</summary>
 
-		<p>Ce grand édifice rectangulaire et crénelé est le coeur de la forteresse. Pour des raisons de sécurité, ses murs ne sont percés que d’étroites meurtrières. On accède à sa porte en empruntant un escalier de bois qui conduit directement au premier étage. Le rez‑de‑chaussée, quant à lui, ne possède aucune ouverture apparente. Les escaliers extérieurs des donjons étaient en bois de manière à pouvoir être aisément détruits au cas où des ennemis parviendraient jusqu’à la cour intérieure.</p>
+		<p>Ce grand édifice rectangulaire et crénelé est le cœur de la forteresse. Pour des raisons de sécurité, ses murs ne sont percés que d’étroites meurtrières. On accède à sa porte en empruntant un escalier de bois qui conduit directement au premier étage. Le rez‑de‑chaussée, quant à lui, ne possède aucune ouverture apparente. Les escaliers extérieurs des donjons étaient en bois de manière à pouvoir être aisément détruits au cas où des ennemis parviendraient jusqu’à la cour intérieure.</p>
 
 		<!-- Rez-de-chaussée -->
 		<details>
@@ -1085,7 +1822,7 @@
 
 			<p><b>Cave.</b> C’est là que les nobles remisent leurs vins et leurs réserves les plus précieuses (viandes séchées ou salées, etc). Un petit coffre encastré dans le mur est équipé d’une serrure complexe. On y range les épices, presque aussi coûteuses que la poudre d’or.</p>
 
-			<p><b>Salle des archives.</b> Une pièce dont les murs sont couverts d’étagères sur lesquelles sont rangés de nombreux parchemins et livres. Cet endroit est très important, car en cas de différend juridique, on se reporte souvent aux chartes, listes et registres de comptes du château. Quand les pièces justificatives sont cousues bout à bout et roulées pour être conservées, on les appelle "rôles".</p>
+			<p><b>Salle des archives.</b> Une pièce dont les murs sont couverts d’étagères sur lesquelles sont rangés de nombreux parchemins et livres. En cas de différend juridique, on se reporte souvent aux chartes, listes et registres de comptes du château.</p>
 
 			<p><b>Chambre des gardes.</b> C’est dans cette pièce mal éclairée que dorment les dix gardes chargés de la protection rapprochée du seigneur. Deux d’entre eux sont en permanence postés à l’entrée du premier étage.</p>
 		</details>
@@ -1098,9 +1835,9 @@
 
 			<p><b>Entrée.</b> Un perron de bois donne sur ce petit vestibule qui peut être isolé du reste du bâtiment par une petite herse de fer. La porte extérieure est également en fer. Un judas caché derrière une tenture de la grande salle permet d’observer à la dérobée les arrivants.</p>
 
-			<p><b>Cuisine.</b> Une grande salle possédant son propre puits et une immense cheminée où l’on peut faire cuire un boeuf entier. Les plats sont préparés sur de grandes tables de chêne. Les ustensiles de cuisine (couteaux, louches, etc) sont accrochés au mur. Saucissons et jambons pendent du plafond.</p>
+			<p><b>Cuisine.</b> Une grande salle possédant son propre puits et une immense cheminée où l’on peut faire cuire un bœuf entier. Les plats sont préparés sur de grandes tables de chêne. Les ustensiles de cuisine (couteaux, louches, etc) sont accrochés au mur. Saucissons et jambons pendent du plafond.</p>
 
-			<p><b>Grande salle.</b> Une pièce immense et très haute de plafond (près de dix mètres) avec deux cheminées. Sur une estrade, un fauteuil de bois ouvragé sur lequel s’assoit le seigneur lorsqu’il tient audience. Quelques grandes tables et bancs, repoussés sur les côtés sont employés lors des réunions et banquets. Les murs sont couverts de somptueuses tapisseries cousues de fil d’or représentant des scènes de chasse. Des tentures accrochées à des anneaux du plafond permettent de diviser la grande salle en petits cabinets. Pendant la journée, le chapelain donne ici des cours aux enfants du seigneur et de ses officiers.</p>
+			<p><b>Grande salle.</b> Une pièce immense et très haute de plafond avec deux cheminées. Sur une estrade, un fauteuil de bois ouvragé sur lequel s’assoit le seigneur lorsqu’il tient audience. Quelques grandes tables et bancs, repoussés sur les côtés sont employés lors des réunions et banquets. Les murs sont couverts de somptueuses tapisseries cousues de fil d’or représentant des scènes de chasse. Des tentures accrochées à des anneaux du plafond permettent de diviser la grande salle en petits cabinets. Pendant la journée, le chapelain donne ici des cours aux enfants du seigneur et de ses officiers.</p>
 		</details>
 
 		<!-- Deuxième étage -->
@@ -1113,9 +1850,9 @@
 
 			<p><b>Chambre du chambellan.</b> Chargé de l’organisation administrative du château, le chambellan a droit à sa chambre personnelle. Il dort sur une paillasse et travaille souvent très tard le soir sur des registres de comptes qu’il amène ici.</p>
 
-			<p><b>Chambre du prévôt.</b> L’homme de confiance du seigneur: une chambre assez spacieuse, un bon matelas et une petite cheminée pour lui tout seul. Mais, quand son maître reçoit des invités, il doit leur céder ce "petit coin de paradis" et aller dormir avec ses hommes.</p>
+			<p><b>Chambre des invités.</b></p>
 
-			<p><b>Chambre du seigneur.</b> Un grand lit à baldaquin (en fait, un matelas de paille posé sur une planche surélevée abrité derrière des tentures) dans lequel le baron, son épouse et ses enfants dorment ensemble. Les murs sont couverts de fresques guerrières aux couleurs vives. Dans un coin, un rouet sur lequel la baronne travaille le plus clair de son temps. Derrière une tenture, une porte secrète dissimule un étroit escalier (impossible d’y passer avec une armure) qui descend jusqu’au souterrain du sous‑sol.</p>
+			<p><b>Chambre du seigneur.</b> Un grand lit à baldaquin dans lequel le seigneur son épouse et ses enfants dorment ensemble. Les murs sont couverts de fresques guerrières aux couleurs vives. Dans un coin, un rouet sur lequel la châtelaine travaille le plus clair de son temps. Derrière une tenture, une porte secrète dissimule un étroit escalier qui descend jusqu’au souterrain du sous‑sol.</p>
 
 			<p><b>Salle du treuil.</b> Ce réduit abrite le treuil permettant de remonter la herse du premier.</p>
 		</details>
@@ -1142,90 +1879,76 @@
 				<h4>Sous‑sol</h4>
 			</summary>
 
-			<p><b>Chambre de torture.</b> Une petite salle où règne une odeur de sang et de putréfaction. Un seul brasero est installé dans un coin, tandis que les murs sont couverts de tenailles, scies et autres instruments à l’aspect peu engageant. Partout, des anneaux permettent d’attacher les suppliciés dans des positions aussi inconfortables que possible. Contrairement à une idée reçue, les tribunaux médiévaux ne reconnaissaient pas "en théorie" les aveux faits sous la torture. Celle‑ci était toutefois largement employée ( "question préalable"), et la simple menace de nouveaux sévices suffisait à faire dire n’importe quoi au premier innocent venu.</p>
+			<p><b>Chambre de torture.</b> Un seul brasero est installé dans un coin, tandis que les murs sont couverts de tenailles, scies et autres instruments à l’aspect peu engageant. Partout, des anneaux permettent d’attacher les suppliciés dans des positions aussi inconfortables que possible. Contrairement à une idée reçue, les tribunaux médiévaux ne reconnaissaient pas, en théorie les aveux faits sous la torture. Celle‑ci était toutefois largement employée ( "question préalable"), et la simple menace de nouveaux sévices suffisait à faire dire n’importe quoi au premier innocent venu.</p>
 
-			<p><b>Cachots.</b> De minuscules réduits étouffants dans lesquels on ne peut ni se coucher, ni se tenir debout. Rien n’étant prévu pour les besoins naturels des condamnés, la puanteur ambiante est à la limite du supportable. Les cachots des châteaux étaient rarement employés, car l’entretien des prisonniers revenait cher. Il était d’usage de mutiler ou de tuer les manants capturés, alors que les chevaliers et nobles étaient traités comme des invités de marque jusqu’à ce que leur rançon soit payée.</p>
+			<p><b>Cachots.</b></p>
 
-			<p><b>Chambre forte.</b> Une petite pièce fermée par une porte de bronze à l’énorme serrure. Elle contient le trésor seigneurial: objets en or, impôts, parchemins secrets&hellip;</p>
+			<p><b>Chambre forte.</b> Une petite pièce fermée par une porte de bronze à l’énorme serrure. Elle contient le trésor seigneurial : objets en or, impôts, parchemins secrets&hellip;</p>
 
 			<p><b>Souterrain.</b> Un long couloir sinueux s’enfonce dans les profondeurs de la terre et conduit jusqu’au pied du ravin, en contrebas. Ce type d’issue secrète n’était pas fréquent au Moyen Âge. Dans la réalité, les souterrains faisaient souvent office de réfrigérateurs où l’on entreposait les denrées périssables.</p>
 		</details>
 	</details>
 
-</article>
-
-<!-- Fonctions dans une seigneurerie -->
-<article>
-	<h2>Fonctions dans une seigneurerie</h2>
-
-	<!-- Organisation domestique -->
+	<!-- Personnel du château -->
 	<details>
 		<summary>
-			<h3>Organisation domestique</h3>
+			<h3>Personnel du château</h3>
 		</summary>
-		<p><b>Chambellan :</b> gère l'organisation intérieure du château, supervise les serviteurs, organise les réceptions</p>
-		<p><b>Intendant / Majordome :</b> responsable des approvisionnements quotidiens, des stocks, des achats courants</p>
-		<p><b>Gouvernante</b> : supervise les servantes, la propreté, le linge, les chambres des hôtes</p>
-		<p><b>Chef cuisinier :</b> Dirige les cuisines, planifie les repas ordinaires et les banquets</p>
-		<p><b>Maître d'hôtel :</b> organise le service à table lors des repas du seigneur et des réceptions</p>
-		<p><b>Échanson :</b> responsable des vins et boissons, tient la cave</p>
-		<p><b>Palefrenier / Maître des écuries :</b> hère les chevaux, les écuries, l'équipement équestre</p>
-		<p><b>Chapelain :</b> Prêtre attaché à la chapelle du château, aumônier de la famille seigneuriale</p>
+
+		<!-- Encadrement et offices -->
+		<details>
+			<summary>
+				<h4>Encadrement et offices</h4>
+			</summary>
+			<ul>
+				<li><b>Chambellan :</b> chef de l’administration intérieure et de la chambre du seigneur.</li>
+				<li><b>Panetier :</b> responsable du pain, du couvert et des stocks de nourriture sèche.</li>
+				<li><b>Échanson :</b> responsable de la cave et des boissons.</li>
+				<li><b>Maître queux :</b> chef des cuisines, planifie les repas ordinaires et les banquets.</li>
+				<li><b>Maître d’hôtel :</b> supervise le protocole, le service et le dressage dans la grande salle (Aula).</li>
+				<li><b>Chapelain :</b> prêtre du château, secrétaire et précepteur des enfants.</li>
+				<li><b>Barbier-chirurgien :</b> assure l’hygiène (barbe, cheveux) et les soins de santé courants (saignées, extractions dentaires, pansements).</li>
+				<li><b>Maréchal des écuries :</b> gère les chevaux, l’équipement équestre et les palefreniers.</li>
+				<li><b>Fauconnier / veneur :</b> gèrent les animaux de chasse (rapaces et chiens de meute).</li>
+			</ul>
+		</details>
+
+		<!-- Domesticité noble -->
+		<details>
+			<summary>
+				<h4>Domesticité noble</h4>
+			</summary>
+			<ul>
+				<li><b>Pages (7 à 14 ans) :</b> fils de nobles en formation. Portent les messages, servent à table et accompagnent la châtelaine.</li>
+				<li><b>Écuyers (14 à 21 ans) :</b> futurs chevaliers. Gardent le matériel militaire du seigneur, gèrent son destrier et découpent les viandes d’honneur.</li>
+			</ul>
+		</details>
+
+		<!-- Domesticité roturière -->
+		<details>
+			<summary>
+				<h4>Domesticité roturière</h4>
+			</summary>
+			<ul>
+				<li><b>Valets et serviteurs :</b> gèrent le gros œuvre quotidien (allumage des feux, transport de l’eau, nettoyage des dalles, entretien courant).</li>
+				<li><b>Commis :</b> main-d’œuvre des cuisines sous les ordres du maître queux (épluchage, plonge, tourne-broches).</li>
+				<li><b>Servantes et lingères :</b> cantonnées au gynécée (appartements privés) pour la couture, l’entretien des draps et les soins des enfants (nourrices).</li>
+			</ul>
+		</details>
+
+		<!-- Pôle militaire -->
+		<details>
+			<summary>
+				<h4>Pôle militaire</h4>
+			</summary>
+			<ul>
+				<li><b>Capitaine de la garde :</b> commandant de la garnison et de la défense du château.</li>
+				<li><b>Sergent d’armes :</b> sous-officier chargé de l’entraînement, des patrouilles et de la discipline des soldats.</li>
+				<li><b>Guetteurs :</b> surveillance permanente depuis les tours et les chemins de ronde.</li>
+				<li><b>Maître armurier &amp; forgeron :</b> entretien et réparation du métal (armes, armures, fers des chevaux, ferronnerie du château).</li>
+				<li><b>Geôlier :</b> gardien des prisons, des cachots et de la poterne (porte secrète).</li>
+			</ul>
+		</details>
 	</details>
 
-	<!-- Gestion du domaine agricole -->
-	<details>
-		<summary>
-			<h3>Gestion du domaine agricole</h3>
-		</summary>
-		<p><b>Régisseur / Bayle :</b> supervise les terres agricoles du domaine, les fermiers, les récoltes</p>
-		<p><b>Prévôt de village :</b> représentant local du seigneur dans les villages, collecte les redevances en nature</p>
-		<p><b>Garde-champêtre :</b> gère et protège les forêts seigneuriales, fait respecter les droits de chasse</p>
-		<p><b>Meunier :</b> Exploite le moulin banal, collecte la part revenant au seigneur</p>
-	</details>
-
-	<!-- Finances -->
-	<details>
-		<summary>
-			<h3>Finances</h3>
-		</summary>
-		<p>Trésorier / Receveur : tient les comptes du domaine, gère les entrées et sorties d'argent</p>
-		<p>Collecteur des taxes : perçoit les taxes, redevances et droits de passage sur le domaine</p>
-		<p>Garde des sceaux : conserve et appose le sceau seigneurial sur les actes officiels — souvent le chapelain</p>
-	</details>
-
-	<!-- Aspect militaire -->
-	<details>
-		<summary>
-			<h3>Aspect militaire</h3>
-		</summary>
-		<p><b>Capitaine de la garde :</b> commande la garnison du château, organise les tours de garde et la défense</p>
-		<p><b>Connétable :</b> responsable militaire du domaine, commande les hommes d'armes en campagne</p>
-		<p><b>Sergent d'armes :</b> sous-officier chargé de l'entraînement et de la discipline des soldats</p>
-		<p><b>Maître armurier :</b> entretient et répare les armes et armures de la garnison</p>
-		<p><b>Veilleur / Guetteur :</b> poste permanent sur les tours, signale toute menace extérieure</p>
-	</details>
-
-	<!-- Justice -->
-	<details>
-		<summary>
-			<h3>Justice</h3>
-		</summary>
-		<p><b>Prévôt de justice :</b> rend la justice ordinaire au nom du seigneur pour les affaires courantes du domaine</p>
-		<p><b>Greffier / Clerc de justice :</b> rédige et conserve les actes judiciaires, les jugements, les contrats</p>
-		<p><b>Sergent de justice / Huissier :</b> exécute les décisions de justice, convoque les parties, opère les saisies</p>
-		<p><b>Geôlier :</b> garde les prisonniers dans les cachots du château</p>
-	</details>
-
-	<!-- Relations extérieures et administration -->
-	<details>
-		<summary>
-			<h3>Relations extérieures et administration</h3>
-		</summary>
-		<p><b>Sénéchal :</b> bras droit du seigneur pour l'administration générale — poste le plus important après le seigneur lui-même</p>
-		<p><b>Secrétaire / Clerc :</b> rédige la correspondance, les actes notariés, les ordres du seigneur</p>
-		<p><b>Héraut :</b> représente le seigneur lors des cérémonies, porte ses messages officiels, connaît les usages héraldiques</p>
-		<p><b>Ambassadeur / Envoyé :</b> négociateur ponctuel chargé de missions diplomatiques auprès des voisins</p>
-		<p><b>Bailli :</b> administrateur d'une portion du domaine ou d'une ville sous tutelle seigneuriale</p>
-	</details>
 </article>

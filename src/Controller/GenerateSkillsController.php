@@ -7,11 +7,13 @@ use App\Repository\SkillRepository;
 
 class GenerateSkillsController extends AbstractGenerateController
 {
+	private string $outputFile;
 	private string $outputPath;
 
 	public function __construct()
 	{
-		$this->outputPath = __DIR__ . "/../../scenarii/ressources-ia/competences.md";
+		$this->outputFile = "liste-competences.md";
+		$this->outputPath = __DIR__ . "/../../scenarii/ressources-ia/" . $this->outputFile;
 	}
 
 	public function generate(): void
@@ -51,6 +53,6 @@ class GenerateSkillsController extends AbstractGenerateController
 		file_put_contents($this->outputPath, $md);
 
 		$catCount = count($categories);
-		echo "<p style='font-family:sans-serif; padding:2rem'>✅ Fichier <code>scenarii/ressources-ia/competences.md</code> généré avec succès.<br>{$catCount} catégories · {$skillCount} compétences.</p>";
+		echo "<p style='font-family:sans-serif; padding:2rem'>✅ Fichier <code>scenarii/ressources-ia/{$this->outputFile}</code> généré avec succès.<br>{$catCount} catégories · {$skillCount} compétences.</p>";
 	}
 }

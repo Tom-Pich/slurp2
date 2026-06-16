@@ -410,14 +410,14 @@ else if ($path_segments[1] === "wiki" && !empty($path_segments[2]) && count($pat
 	$page->show();
 }
 
-// generate magic markdown
+// generate lists markdown
 elseif ($path_segments[1] === "generate-md") {
 	Firewall::filter(3);
 	$type = $path_segments[2] ?? null;
 	$controller = match($type){
-		"magic" => new GenerateMagicController,
-		"traits" => new GenerateTraitsController,
-		"skills" => new GenerateSkillsController,
+		"magie" => new GenerateMagicController,
+		"avdesav" => new GenerateTraitsController,
+		"competences" => new GenerateSkillsController,
 	};
 	$controller->generate();
 }

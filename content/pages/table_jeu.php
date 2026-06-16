@@ -598,9 +598,11 @@ use App\Rules\WeaponsController;
 					<option value="castle-personnality">Personnalités</option>
 				</optgroup>
 				<optgroup label="Dans une rue animée (medfan)">
-					<option value="fantasy-street-inactive">Passants et inactifs (ville medfan)</option>
-					<option value="fantasy-street-animals">Animaux (ville medfan)</option>
-					<option value="fantasy-street">Tout le reste (ville medfan)</option>
+					<option value="fantasy-street-inactive">Passants et inactifs</option>
+					<option value="fantasy-street-animals">Animaux</option>
+					<option value="fantasy-street-delivery">Livreurs</option>
+					<option value="fantasy-street-light-merchants">Commerçants mobiles</option>
+					<option value="fantasy-street">Tout le reste</option>
 				</optgroup>
 				<!-- <option value="books">Titre de livre</option> -->
 			</select>

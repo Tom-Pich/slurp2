@@ -11,7 +11,7 @@
 	<p><b>Devise de la maison d’Avrelanche :</b> « <i>Ce qui descend ne remonte pas</i> ».</p>
 
 	<figure class="right">
-		<img src="/assets/img_paorn/sordolia-prince-margor.webp" alt="Portrait du prince Margor d’Avrelanche">
+		<img src="/assets/img_paorn/sardam-prince-margor.webp" alt="Portrait du prince Margor d’Avrelanche">
 		<figcaption>Le Prince Margor d’Avrelanche</figcaption>
 	</figure>
 

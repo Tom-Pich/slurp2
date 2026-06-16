@@ -36,6 +36,7 @@ class EquipmentListController
 		["Mocassins", 0.25, ["5 pc"], "vêtements"],
 		["Chaussures bourgeoises, de ville", 0.25, ["25 pc"], "vêtements"],
 		["Chaussures de marche cuir souple (RD1)", 0.5, ["15 pc"], "vêtements"],
+		["Bottes de cuir souple (RD1)", .75, ["20 pc"], "vêtements"], 
 		["Cape basique", 0.5, ["20 pc"], "vêtements"],
 		["Cape en belle fourrure", 1.5, ["500 pc"], "vêtements"],
 		["Cape lourde (tissu épais)", 1, ["40 pc"], "vêtements"],

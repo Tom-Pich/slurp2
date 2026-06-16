@@ -13,7 +13,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 $compact = $page["style"] === "compact";
 
 // modifies text color if score has changed due to character state
-function color_modifier(int $original_score, int $actual_score)
+function color_modifier(int|float $original_score, int|float $actual_score)
 {
 	if ($actual_score < $original_score) return "style='color: var(--clr-invalid)'";
 	elseif ($actual_score > $original_score) return "style='color: var(--clr-secondary-500)'";

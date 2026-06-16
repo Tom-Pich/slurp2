@@ -289,7 +289,7 @@ use App\Rules\WoundController;
 	</details>
 
 	<!-- Rétablissement après inconscience -->
-	<details open>
+	<details>
 		<summary>
 			<h3>Rétablissement après inconscience</h3>
 		</summary>
@@ -382,7 +382,7 @@ use App\Rules\WoundController;
 		</table>
 	</details>
 
-	<!-- Soins magiques & blessures aux membres -->
+	<!-- Soins magiques et blessures aux membres -->
 	<details>
 		<summary>
 			<h3>Soins magiques &amp; blessures aux membres</h3>

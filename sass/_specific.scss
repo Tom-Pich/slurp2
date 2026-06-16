@@ -57,12 +57,14 @@ dialog { background-color: var(--white); color: var(--grey-200); width: clamp(30
 .fs-200 { font-size: var(--fs-200) }
 
 .edit-link { color: inherit; text-decoration: none; }
+.title-hint { cursor: help; }
 
 .as-start { align-self: flex-start !important; }
 .ai-first-baseline { align-items: first baseline; }
 .col-3-s {grid-template-columns: repeat(3, 1fr);}
 
 :is(ol, ul).bold-bullet li::marker { font-weight: 700; }
+:is(ol, ul).border { padding-right: .25em; }
 [draggable=true]{cursor: move;}
 .no-break { break-inside: avoid; }
 .cursor-pointer { cursor: pointer; }

@@ -10,11 +10,11 @@
 
 	<div class="right flow">
 		<figure>
-			<img src="/assets/img_paorn/peponia-01.webp?v=2">
+			<img src="/assets/img_paorn/carte-peponia-01.webp?v=2">
 			<figcaption>Carte générale</figcaption>
 		</figure>
 		<figure>
-			<img src="/assets/img_paorn/peponia-02.webp">
+			<img src="/assets/img_paorn/carte-peponia-02.webp">
 			<figcaption>Péponia et ses alentours</figcaption>
 		</figure>
 	</div>

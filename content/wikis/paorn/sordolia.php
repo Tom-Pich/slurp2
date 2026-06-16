@@ -11,8 +11,8 @@
 			<figcaption>Carte de la Sordolia</figcaption>
 		</figure>
 		<figure>
-			<a href="/assets/img_paorn/sordolia-dernier-rempart-01.webp" target="_blank">
-				<img src="/assets/img_paorn/sordolia-dernier-rempart-01.webp" alt="vue du Dernier Rempart">
+			<a href="/assets/img_paorn/sd-dernier-rempart-01.webp" target="_blank">
+				<img src="/assets/img_paorn/sd-dernier-rempart-01.webp" alt="vue du Dernier Rempart">
 			</a>
 			<figcaption>Le Dernier Rempart</figcaption>
 		</figure>
@@ -25,6 +25,59 @@
 	<p>D’une superficie d’environ 320&thinsp;000 km², la Sordolia s’étend des rives du fleuve Absial aux contreforts des Sinistérias, formant la province septentrionale de Burgonnie. L’essentiel de la Sordolia est couvert de forêts, avec des résineux presque exclusifs dans le nord, au pied des Sinistérias. La région compte de nombreux lacs, étangs et marécages, ainsi des plaines herbeuses.</p>
 
 	<p>Sur la côte sud, le climat est frais mais sans extrême. Les précipitations sont abondantes toute l’année, portée par le vent dominant venant du sud-est et chargé d’embruns. L’intérieur des terres est un peu plus sec et surtout nettement plus froid en hiver.</p>
+
+
+	<!-- Territoires & régions -->
+	<details>
+		<summary>
+			<h3>Territoires &amp; régions</h3>
+		</summary>
+
+		<p>La Sordolia est divisée en <b>huit grands territoires</b> : les terres de la Couronne, gouvernées directement par le prince depuis Sardam, cinq fiefs vassaux dont les seigneurs siègent à l’Assemblée provinciale, la <i>Marche de Lund</i> et les <i>Marches Franches</i>.</p>
+
+		<figure>
+			<img src="/assets/img_paorn/carte-sordolia-politique.webp?v=2" alt="Carte politique de la Sordolia">
+			<figcaption>Régions politiques de la Sordolia</figcaption>
+		</figure>
+
+		<ul class="flow">
+			<li>
+				<b>Les terres de la Couronne</b> — la plus grande région, centrale, en vert foncé. Gouvernées directement par le prince d’Avrelanche depuis Sardam. Elles comprennent presque la moitié du territoire de Sordolia (environ 140.000 km<sup>2</sup>), limitée au Nord par le Dernier Rempart.
+			</li>
+
+			<li>
+				<b>Le duché de Lardam</b> — sud, en vert clair. Le fief le plus riche et le plus peuplé de Sordolia, tourné vers la mer et le commerce maritime. Son duc, <b>Lancmon Hareld</b>, est un homme d’affaires autant qu’un seigneur : il entretient des liens étroits avec les guildes de fourrures et les armateurs de la côte sud. La baronnie de Meck, au nord de Lardam, relève de ce duché en tant que vassal direct du duc.
+			</li>
+
+			<li>
+				<b>Le comté de Palidam</b> — est, en vert clair. La péninsule orientale et le pays de l’Ostwilt, dominés par le grand marché de peaux et de fourrures de Palidam. La comtesse <b>Erna Brokkeld</b>, veuve depuis cinq ans, gouverne seule avec une poigne réputée. Son territoire inclut une partie de la côte et les landes du pays de l’Ostwilt.
+			</li>
+
+			<li>
+				<b>Le duché de Karldam</b> — sud est, en vert moyen. Les terres du sud-est, entre le Haut Vildberg et la côte. Le duc <b>Diebold Krantz</b> tient Karldam, cité des artisans. C’est un territoire relativement prospère, dont la renommée repose sur le travail du bois et de l’ébénisterie.
+			</li>
+
+			<li><b>Le duché de Voldam</b> – en vert clair.</li>
+
+			<li><b>Le duché de Vorteldam</b> – en vert moyen. Tenu par <b>Andries Vorn</b>, duc de Vorteldam et Marquis de Lund. C’est un vassal du prince d’Avrelanche, mais il gère également les Marches de Lund, dont il répond devant l’Empereur. Cette situation bâtarde le place parfois dans une situation politique tendue.</li>
+
+		</ul>
+
+		<h4>Les Marches</h4>
+
+		<ul>
+			<li><b>La marche de Lund</b> — territoire dépeuplé et âpre, en frontière du Salthar, organisé moins comme un fief traditionnel que comme une zone tampon militaire. Son seigneur, <b>Andries Vorn</b>, tient Vorteldam et les routes de l’Asbial.</li>
+
+			<li><b>Les marches franches</b> – péninsule du Komashkaïda. Bien que sous la tutelle du Prince, ce territoire est, dans les faits, quasi-autonome. Il est occupé par une dizaine de clans humains, dirigé par des chefs de guerre.</li>
+		</ul>
+
+		<h4>Cas particuliers</h4>
+
+		<p><b>Solidam</b> abrite une garnison impériale permanente et relève directement de l’autorité de l’Empire, sans seigneur burgon interposé.</p>
+
+		<p><b>Geldam</b> est gouvernée par la communauté naine selon ses propres lois, sous un accord ancien avec la Couronne qui lui garantit l’autonomie intérieure en échange d’une redevance annuelle et d’une neutralité armée.</p>
+
+	</details>
 
 	<!-- Villes -->
 	<details>
@@ -41,63 +94,27 @@
 
 			<li><b>Palidam :</b> La cité des fourrures. Ce petit port fortifié installé dans une baie bien protégée abrite un des plus grand marché de peaux et de fourrures de Paorn.</li>
 
-			<li><b><a href="/wiki/paorn/sardam">Sardam</a> :</b> capitale provinciale, établie sur une vaste étendue défrichée autrefois connue comme la <i>Clairière de Matar</i>. La ville est bordée au nord par les marais du Tonnerre et compte environ 15&thinsp;000 habitants.</li>
+			<li><b><a href="/wiki/paorn/sardam">Sardam</a> :</b> capitale provinciale, établie sur une vaste étendue défrichée autrefois connue comme la <i>Clairière de Matar</i>.</li>
 
-			<li><b><a href="/wiki/paorn/solidam">Solidam</a> :</b> ville garnison, dernier avant-poste humain avant les grandes étendues nordiques et les Sinistérias. La ville, fortifiée par des hautes murailles, compte environ 3000 habitants, plus une garnison de 800 soldats impériaux stationnée dans la ville.</li>
+			<li><b><a href="/wiki/paorn/solidam">Solidam</a> :</b> ville garnison, dernier avant-poste humain avant les grandes étendues nordiques et les Sinistérias.</li>
 
 			<li><b>Voldam :</b> les plus fameux fabricants d’instruments de musique de l’empire sont regroupés dans cette petite ville. Leurs épinettes et luths jouissent d’une réputation flatteuse dans tout Paorn.</li>
 		</ul>
 	</details>
 
-	<!-- Territoires & régions -->
+	<!-- Villages -->
 	<details>
 		<summary>
-			<h3>Territoires &amp; régions</h3>
+			<h3>Villages</h3>
 		</summary>
 
-		<p>La Sordolia est divisée en <b>huit grands territoires</b> : les terres de la Couronne, gouvernées directement par le prince depuis Sardam, cinq fiefs vassaux dont les seigneurs siègent à l'Assemblée provinciale, la <i>Marche de Lund</i> et les <i>Marches Franches</i>.</p>
-
-		<figure>
-			<img src="/assets/img_paorn/carte-sordolia-politique.webp?v=2" alt="Carte politique de la Sordolia">
-			<figcaption>Régions politiques de la Sordolia</figcaption>
-		</figure>
-
-		<ul class="flow">
-			<li>
-				<b>Les terres de la Couronne</b> — la plus grande région, centrale, en vert foncé. Gouvernées directement par le prince d'Avrelanche depuis Sardam. Elles comprennent presque la moitié du territoire de Sordolia (environ 140.000 km<sup>2</sup>), limitée au Nord par le Dernier Rempart.
-			</li>
-
-			<li>
-				<b>Le duché de Lardam</b> — sud, en vert clair. Le fief le plus riche et le plus peuplé de Sordolia, tourné vers la mer et le commerce maritime. Son duc, <b>Lancmon Hareld</b>, est un homme d'affaires autant qu'un seigneur : il entretient des liens étroits avec les guildes de fourrures et les armateurs de la côte sud. La baronnie de Meck, au nord de Lardam, relève de ce duché en tant que vassal direct du duc.
-			</li>
-
-			<li>
-				<b>Le comté de Palidam</b> — est, en vert clair. La péninsule orientale et le pays de l'Ostwilt, dominés par le grand marché de peaux et de fourrures de Palidam. La comtesse <b>Erna Brokkeld</b>, veuve depuis cinq ans, gouverne seule avec une poigne réputée. Son territoire inclut une partie de la côte et les landes du pays de l'Ostwilt.
-			</li>
-
-			<li>
-				<b>Le duché de Karldam</b> — sud est, en vert moyen. Les terres du sud-est, entre le Haut Vildberg et la côte. Le duc <b>Diebold Krantz</b> tient Karldam, cité des artisans. C'est un territoire relativement prospère, dont la renommée repose sur le travail du bois et de l'ébénisterie.
-			</li>
-
-			<li><b>Le duché de Voldam</b> – en vert clair.</li>
-
-			<li><b>Le duché de Vorteldam</b> – en vert moyen. Tenu par <b>Andries Vorn</b>, duc de Vorteldam et Marquis de Lund. C’est un vassal du prince d’Avrelanche, mais il gère également les Marches de Lund, dont il répond devant l’Empereur. Cette situation bâtarde le place parfois dans une situation politique tendue.</li>
-
-		</ul>
-
-		<h4>Les Marches</h4>
-
 		<ul>
-			<li><b>La marche de Lund</b> — territoire dépeuplé et âpre, en frontière du Salthar, organisé moins comme un fief traditionnel que comme une zone tampon militaire. Son seigneur, <b>Andries Vorn</b>, tient Vorteldam et les routes de l'Asbial.</li>
+			
+			<li><b><a href="/wiki/paorn/fallenbeck">Fallenbeck</a></b> – gros village fortifié situé sur la route Sardam–Solidam, à 27,5 km au nord de Sardam. Halte incontournable pour les convois de ravitaillement à destination de Solidam.</li>
 
-			<li><b>Les marches franches</b> – péninsule du Komashkaïda. Bien que sous la tutelle du Prince, ce territoire est, dans les faits, quasi-autonome. Il est occupé par une dizaine de clans humains, dirigé par des chefs de guerre.</li>
+			<li><b>Sundrup</b>, petit village de 150 habitants sur la route Sardam-Solidam, à 27,5 km au nord de Fallenbeck. L’auberge est tenue par une femme seule d’une cinquantaine d’années (Johanna), peu loquace, efficace. Trois chambres de 4 lits. Repas simples et chers.</li>
 		</ul>
 
-		<h4>Cas particuliers</h4>
-
-		<p><b>Solidam</b> abrite une garnison impériale permanente et relève directement de l'autorité de l'Empire, sans seigneur burgon interposé.</p>
-
-		<p><b>Geldam</b> est gouvernée par la communauté naine selon ses propres lois, sous un accord ancien avec la Couronne qui lui garantit l'autonomie intérieure en échange d'une redevance annuelle et d'une neutralité armée.</p>
 
 	</details>
 
@@ -124,11 +141,32 @@
 		<summary>
 			<h3>Routes de Sordolia</h3>
 		</summary>
+
 		<ul>
-			<li><b>Sardam – Solidam :</b> 220 km (8-9 jours à pied, 5-7 jours à cheval)</li>
 			<li><b>Sardam – Lardam :</b> 255 km (9-10 jours à pied, 6-8 jours à cheval)</li>
 			<li><b>Sardam – Palidam :</b> 315 km (11-12 jours à pied, 7-11 jours à cheval)</li>
 		</ul>
+
+		<h4>De Sardam à Solidam</h4>
+		<p>220 km (8-9 jours à pied, 5-7 jours à cheval)</p>
+
+		<table class="border left-3">
+			<tr>
+				<th>Étape</th>
+				<th>km</th>
+				<th>Remarques</th>
+			</tr>
+			<tr>
+				<td>Fallenbeck</td>
+				<td>27,5</td>
+				<td>10 km pour sortir de la zone agricole de Sardam (hameaux, fermes fortifiées), puis entrée dans la zone forestière durant 13,5 km. Entrée dans zone agricole de Fallenbeck 4 km avant le village.</td>
+			</tr>
+			<tr>
+				<td>Sundrup</td>
+				<td>27,5</td>
+				<td>À partir de Fallenbeck commencent les contreforts des Monts Versdvar à l’Est. 4 km avant de sortir de la zone agricole de Fallenbeck, puis près de 20,5 km de forêt avant d’arrivée dans la zone agricole de Sundrup (3 km), puis au village lui-même.</td>
+			</tr>
+		</table>
 	</details>
 
 	<!-- La forêt Rêveuse -->
@@ -138,15 +176,15 @@
 		</summary>
 
 		<div class="has-right-block">
-			<p>Avec ses quelque 40 000 km², la forêt Rêveuse est la plus grande forêt de Sordolia — et sans doute la moins connue. Elle s'étend depuis les rivages méridionaux jusqu'au pied du Dernier Rempart, large parfois de cent cinquante kilomètres, rétrécissant en d'autres endroits selon le relief. Un seul axe humain la traverse vraiment : la grande route nord-sud reliant la côté à Solidam et passant par Sardam, la capitale. Le long de cette route de quelques 325 km s'égrènent quelques villages distants de trente à cinquante kilomètres les uns des autres. Au-delà de ce couloir, c'est terra incognita — non pas déserte, mais étrangère. La forêt rêve depuis bien avant que les hommes n'y tracent leurs chemins, et rien dans son comportement ne suggère qu'elle les ait remarqués. Ceux qui s'y aventurent au-delà de la route rapportent tous la même chose : une lumière qui change trop vite, des sons qui portent à des distances impossibles, et le sentiment persistant d'être regardé par quelque chose qui n'a pas besoin de se montrer.</p>
+			<p>Avec ses quelque 40 000 km², la forêt Rêveuse est la plus grande forêt de Sordolia — et sans doute la moins connue. Elle s’étend depuis les rivages méridionaux jusqu’au pied du Dernier Rempart, large parfois de cent cinquante kilomètres, rétrécissant en d’autres endroits selon le relief. Un seul axe humain la traverse vraiment : la grande route nord-sud reliant la côté à Solidam et passant par Sardam, la capitale. Le long de cette route de quelques 325 km s’égrènent quelques villages distants de trente à cinquante kilomètres les uns des autres. Au-delà de ce couloir, c’est terra incognita — non pas déserte, mais étrangère. La forêt rêve depuis bien avant que les hommes n’y tracent leurs chemins, et rien dans son comportement ne suggère qu’elle les ait remarqués. Ceux qui s’y aventurent au-delà de la route rapportent tous la même chose : une lumière qui change trop vite, des sons qui portent à des distances impossibles, et le sentiment persistant d’être regardé par quelque chose qui n’a pas besoin de se montrer.</p>
 
 			<figure class="right">
-				<img src="/assets/img_paorn/sordiolia-foret-reveuse-01.webp" alt="La Forêt Rêveuse">
+				<img src="/assets/img_paorn/sd-foret-reveuse01.webp" alt="La Forêt Rêveuse">
 				<figcaption>Sous-bois de la Forêt Rêveuse</figcaption>
 			</figure>
 		</div>
 
-		<p>Elle est pourtant habitée, densément, à sa manière. Les elfes sylvestres y ont leurs territoires depuis des millénaires ; discrets jusqu'à l'invisibilité, ni bienveillants ni hostiles, ils ont conclu avec les humains de la route un accord tacite : chacun chez soi, l'ennemi commun pourchassé par les deux camps. Cet ennemi commun a plusieurs visages : orcs, gobelins et hobgobelins se disputent les profondeurs de la forêt dans une guerre permanente et silencieuse dont les voyageurs ne voient que les restes — un campement calciné, des flèches dans des troncs. Des trolls et des ogres y vivent en solitaires. Des sylvaniens y veillent à leur façon — peu enclins à l'indulgence envers qui porterait une hache. Et puis il y a d’autres choses, plus mystérieuses… des phénomènes que les mages les plus érudits peinent à expliquer, des zones où le temps ne se comporte pas tout à fait comme prévu, des clairières desquelles personne ne revient jamais tout à fait pareil. La forêt Rêveuse est belle, mystérieuse, et, pour qui sait y lire les signes, parfois accueillante. Mais elle n'appartient à personne.</p>
+		<p>Elle est pourtant habitée, densément, à sa manière. Les elfes sylvestres y ont leurs territoires depuis des millénaires ; discrets jusqu’à l’invisibilité, ni bienveillants ni hostiles, ils ont conclu avec les humains de la route un accord tacite : chacun chez soi, l’ennemi commun pourchassé par les deux camps. Cet ennemi commun a plusieurs visages : orcs, gobelins et hobgobelins se disputent les profondeurs de la forêt dans une guerre permanente et silencieuse dont les voyageurs ne voient que les restes — un campement calciné, des flèches dans des troncs. Des trolls et des ogres y vivent en solitaires. Des sylvaniens y veillent à leur façon — peu enclins à l’indulgence envers qui porterait une hache. Et puis il y a d’autres choses, plus mystérieuses… des phénomènes que les mages les plus érudits peinent à expliquer, des zones où le temps ne se comporte pas tout à fait comme prévu, des clairières desquelles personne ne revient jamais tout à fait pareil. La forêt Rêveuse est belle, mystérieuse, et, pour qui sait y lire les signes, parfois accueillante. Mais elle n’appartient à personne.</p>
 	</details>
 
 </section>
@@ -193,8 +231,8 @@
 		<summary>
 			<h3>Les Anciens Royaumes du Nord</h3>
 		</summary>
-		<p>Avant la colonisation burgonne, la Sordolia n'était pas une terre vide — elle était morcelée en une vingtaine de petits royaumes humains, souvent pas plus grands qu'une vallée ou un bassin versant. Pas d'unité politique, pas de langue commune fixée, mais un fond culturel partagé : une même manière de voir les morts, les saisons, le ciel. Les chefs ne s'appelaient pas « rois » au sens burgon — c'était davantage des rois de collines, des seigneurs de clairières, dont le pouvoir reposait sur l'ancienneté de leur lignée et leur capacité à tenir les passages.</p>
-		Les cercles de pierre n'appartenaient à aucun royaume en particulier. C’était des lieux neutres, inter-royaumes — des espaces de trêve, de conseil, peut-être de calendrier agricole ou d'astronomie rituelle. Des endroits où les rois du nord se retrouvaient périodiquement, sans armes, pour des raisons que les Burgons n'ont jamais vraiment comprises et ont fini par qualifier de « superstitions de barbares ».
+		<p>Avant la colonisation burgonne, la Sordolia n’était pas une terre vide — elle était morcelée en une vingtaine de petits royaumes humains, souvent pas plus grands qu’une vallée ou un bassin versant. Pas d’unité politique, pas de langue commune fixée, mais un fond culturel partagé : une même manière de voir les morts, les saisons, le ciel. Les chefs ne s’appelaient pas « rois » au sens burgon — c’était davantage des rois de collines, des seigneurs de clairières, dont le pouvoir reposait sur l’ancienneté de leur lignée et leur capacité à tenir les passages.</p>
+		Les cercles de pierre n’appartenaient à aucun royaume en particulier. C’était des lieux neutres, inter-royaumes — des espaces de trêve, de conseil, peut-être de calendrier agricole ou d’astronomie rituelle. Des endroits où les rois du nord se retrouvaient périodiquement, sans armes, pour des raisons que les Burgons n’ont jamais vraiment comprises et ont fini par qualifier de « superstitions de barbares ».
 	</details>
 
 	<!-- La colonisation burgonne -->
@@ -202,8 +240,17 @@
 		<summary>
 			<h3>La colonisation burgonne</h3>
 		</summary>
-		<p>Commencée au début du XI<sup>e</sup> siècle, elle n'a pas été une conquête brutale et rapide, mais plutôt une absorption progressive sur deux ou trois générations. Des avant-postes marchands d'abord, des mariages dynastiques, puis des garnisons. Certains royaumes ont résisté, d'autres se sont fondus sans violence. Le résultat est la Sordolia actuelle : une population qui vit sous des institutions burgonnes, mais dont la langue, les noms de lieux, les proverbes et certaines pratiques funéraires trahissent encore les racines du nord.</p>
-		<p>Les descendants de ces anciens lignages existent peut-être encore — appauvris, sans mémoire claire de ce qu'ils étaient, portant des patronymes sordoliens qui cachent des noms de chefs d'il y a six siècles.</p>
+
+		<p>Pendant les deux premiers siècles de l’Empire, la Sordolia resta hors du champ d’action impérial. C’était une terre morcelée en une vingtaine de petits royaumes humains — les <i>Anciens Royaumes du Nord</i> — dont les chefs, que les chroniqueurs burgons appelleront plus tard – non sans une pointe de dédain – les <i>Rois de Clairières</i>, tenaient leur pouvoir de l’ancienneté de leur lignée et de leur capacité à tenir les passages dans les forêts et les montagnes. Ces royaumes n’avaient pas de langue écrite commune, pas d’armée unifiée, mais partageaient culture, pratiques funéraires et une vénération ancienne pour les cercles de pierre qui ponctuaient leurs territoires.</p>
+
+		<p>La colonisation burgonne, amorcée au début du XI<sup>e</sup> siècle sous <b>l’Empereur Séveran II le Diplomate</b>, ne fut pas une conquête militaire. Elle fut une absorption progressive sur deux ou trois générations : des avant-postes marchands d’abord, des mariages dynastiques, des garnisons acceptées en échange de protection contre les raids humanoïdes. Certains royaumes résistèrent et furent vaincus. D’autres se fondirent sans violence dans l’ordre burgon, leurs chefs requalifiés en comtes ou en barons vassaux. La fondation de <b>Sardam</b> en 1102 — sur la Clairière de Matar, défrichée selon la tradition par un ancêtre légendaire nommé <b>Matarcald le Défricheur</b> — symbolise cette transformation : une ville planifiée, construite en pierre, au cœur d’une terre qui ne connaissait que des établissements de bois.</p>
+
+		<p>En quelques générations, la Sordolia fut intégrée à l’Empire comme troisième province. Le résultat est la Sordolia actuelle : une population qui vit sous des institutions burgonnes, mais dont la langue, les toponymes, les proverbes et certaines pratiques funéraires trahissent encore les racines du nord.</p>
+
+		<p>Les cercles de pierre sont toujours là.</p>
+
+		<p>Les descendants des anciens lignages nobles existent encore — appauvris, sans mémoire claire de ce qu’ils étaient, portant des patronymes sordoliens qui cachent des noms de chefs d’il y a six siècles.</p>
+
 	</details>
 </section>
 
