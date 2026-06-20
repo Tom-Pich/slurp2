@@ -622,7 +622,7 @@ use App\Entity\Spell;
 		<summary>
 			<h3>Récupération</h3>
 		</summary>
-		<p>1 PdM par 15 minutes de repos (conversation banale autorisée) dans un environnement calme. Toute cause de stress et de tension (bruits, agitation, inconfort) empêche la récupération. Le maintien d'un sort qui ne demande aucune concentration n'empêche pas la récupération de PdM.</p>
+		<p>1 PdM par 15 minutes de repos (assis ou allongé – conversation banale autorisée) dans un environnement calme. Toute cause de stress et de tension (bruits, agitation, inconfort) empêche la récupération. Le maintien d'un sort qui ne demande aucune concentration n'empêche pas la récupération de PdM.</p>
 	</details>
 
 	<details>

@@ -4,13 +4,7 @@ namespace App\Lib;
 
 class DotEnv
 {
-    /**
-     * The directory where the .env file can be located.
-     *
-     * @var string
-     */
-    protected $path;
-
+    protected string $path; // directory where the .env file can be located.
 
     public function __construct(string $path)
     {

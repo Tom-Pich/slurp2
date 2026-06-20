@@ -2,6 +2,7 @@
 
 namespace App\Generator;
 
+use App\Lib\AiService;
 use App\Lib\TableReader;
 
 class NPCGenerator
@@ -49,15 +50,15 @@ class NPCGenerator
 		"w-taol-kaer" => [1, 1, 2, 2, 3, 3, 3],
 	];
 
-	const corpulence = [
-		"value" => ["maigre", "mince", "moyenne", "léger embonpoint", "gros(se)", "obèse", "athlétique", "barraqué", "armoire à glace",],
+	const build = [
+		"value" => ["maigre", "mince", "corpulence moyenne", "léger embonpoint", "gros(se)", "obèse", "athlétique", "barraqué(e)", "armoire à glace",],
 		"w-default" => [2, 6, 12, 6, 4, 1, 2, 0, 0],
 		"w-female" => [2, 6, 12, 6, 4, 1, 1, 0, 0],
 		"w-male-warrior" => [0, 2, 6, 3, 1, 0, 6, 3, 2],
 	];
 
 	const size = [
-		"value" => ["petite taille", "assez petite taille", "moyenne", "assez grande taille", "grand taille", "très grand(e)"],
+		"value" => ["petite taille", "assez petite taille", "taille moyenne", "assez grand(e)", "grand(e)", "très grand(e)"],
 		"w-default" => [1, 3, 6, 3, 2, 1],
 		"w-warrior" => [0, 1, 4, 4, 3, 2],
 		"w-sordolia" => [0, 1, 4, 4, 3, 2],
@@ -70,38 +71,68 @@ class NPCGenerator
 	];
 
 	const intelligence = [
-		"value" => ["pas fûté", "intelligence moyenne", "assez intelligent", "intelligence vive"],
+		"value" => ["pas fûté(e)", "intelligence moyenne", "assez intelligent", "intelligence vive"],
 		"w-default" => [1, 10, 3, 1],
 		"w-warrior" => [1, 5, 1, 0],
 	];
 
 	const social = [
-		"value" => ["brute", "désagréable", "condescendant(e)", "attitude distante", "attitude plutôt agréable", "assez jovial", "sympathique", "chaleureux"],
+		"value" => ["attitude brutale", "désagréable", "condescendant(e)", "attitude distante", "attitude plutôt agréable", "assez jovial", "sympathique", "chaleureux"],
 		"w-default" => [1, 2, 1, 5, 5, 2, 2, 1],
 		"w-warrior" => [2, 2, 2, 2, 1, 0, 0, 0],
 	];
 
 	const specialTraits = [
 		"value" => [
-			"pommettes saillantes", "visage anguleux", "boîteux",
-			"borgne", "marque de naissance au visage", "yeux vairrons",
-			"sourcils épais", "voix rauque", "voix agréable",
-			"cicatrice(s)", "tatouages", "dents proéminentes",
-			"tâches de rousseur", "démarche gracieuse", "mèches rebelles",
+			"pommettes saillantes",
+			"visage anguleux",
+			"boîteux",
+			"borgne",
+			"marque de naissance au visage",
+			"yeux vairrons",
+			"sourcils épais",
+			"voix rauque",
+			"voix agréable",
+			"cicatrice(s)",
+			"tatouages",
+			"dents proéminentes",
+			"tâches de rousseur",
+			"démarche gracieuse",
+			"mèches rebelles",
 		],
 		"w-default" => [
-			2, 2, 1,
-			1, 1, 1,
-			1, 1, 1,
-			1, 1, 1,
-			1, 1, 1
+			2,
+			2,
+			1,
+			1,
+			1,
+			1,
+			1,
+			1,
+			1,
+			1,
+			1,
+			1,
+			1,
+			1,
+			1
 		],
 		"w-warrior" => [
-			2, 2, 1,
-			1, 1, 1,
-			1, 2, 1,
-			3, 1, 1,
-			1, 0, 1
+			2,
+			2,
+			1,
+			1,
+			1,
+			1,
+			1,
+			2,
+			1,
+			3,
+			1,
+			1,
+			1,
+			0,
+			1
 		],
 	];
 
@@ -131,34 +162,33 @@ class NPCGenerator
 		$region = $parameters["region"] ?? "artaille";
 		$profile = $parameters["profile"] ?? "standard";
 		$name_only = isset($parameters["name-only"]);
-		$parameters = ["gender" => $gender, "region" => $region, "profile" => $profile, "name-only" => $name_only];
+		$use_ai = isset($parameters["use-ai"]);
+		$parameters = ["gender" => $gender, "region" => $region, "profile" => $profile];
 
 		// generating name
 		$parameters["name"] = "Table de noms manquante";
-		$name_file_path = __DIR__ . "/names/$region-$gender.txt";
-		$surname_file_path = __DIR__ . "/names/$region-surname.txt";
-		if(is_file($name_file_path)) $parameters["name"] = trim(TableReader::pickResult(file($name_file_path)));
-		if ($region === "american"){
+		$name_file_path = __DIR__ . "/names/$region-$gender.php";
+		$surname_file_path = __DIR__ . "/names/$region-surname.php";
+		if (is_file($name_file_path)) $parameters["name"] = TableReader::pickResult(include $name_file_path);
+		if ($region === "american") {
 			$second_name = TableReader::pickResult(["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "P", "R", "S", "T", "V", "W"]);
 			$parameters["name"] .= (" $second_name.");
 		}
-		if(is_file($surname_file_path)) $parameters["name"] .= (" " . trim(TableReader::pickResult(file($surname_file_path))));
-		if ($name_only) return $parameters;
+		if (is_file($surname_file_path)) $parameters["name"] .= (" " . TableReader::pickResult(include $surname_file_path) );
+		if ($name_only) return $parameters["name"];
 
 		// selecting weight arrays
-		if (!$name_only) {
-			$w_hair_length = self::weightArraySelector(self::hairLength, $parameters);
-			$w_hair_type = self::weightArraySelector(self::hairType, $parameters);
-			$w_hair_color = self::weightArraySelector(self::hairColor, $parameters);
-			$w_facial_hair = self::weightArraySelector(self::facialHair, $parameters);
-			$w_eyes = self::weightArraySelector(self::eyes, $parameters);
-			$w_corpulence = self::weightArraySelector(self::corpulence, $parameters);
-			$w_size = self::weightArraySelector(self::size, $parameters);
-			$w_beauty = self::weightArraySelector(self::beauty, $parameters);
-			$w_intelligence = self::weightArraySelector(self::intelligence, $parameters);
-			$w_social = self::weightArraySelector(self::social, $parameters);
-			$w_special_traits = self::weightArraySelector(self::specialTraits, $parameters);
-		}
+		$w_hair_length = self::weightArraySelector(self::hairLength, $parameters);
+		$w_hair_type = self::weightArraySelector(self::hairType, $parameters);
+		$w_hair_color = self::weightArraySelector(self::hairColor, $parameters);
+		$w_facial_hair = self::weightArraySelector(self::facialHair, $parameters);
+		$w_eyes = self::weightArraySelector(self::eyes, $parameters);
+		$w_build = self::weightArraySelector(self::build, $parameters);
+		$w_size = self::weightArraySelector(self::size, $parameters);
+		$w_beauty = self::weightArraySelector(self::beauty, $parameters);
+		$w_intelligence = self::weightArraySelector(self::intelligence, $parameters);
+		$w_social = self::weightArraySelector(self::social, $parameters);
+		$w_special_traits = self::weightArraySelector(self::specialTraits, $parameters);
 
 		// generating hair description
 		$hair_length = TableReader::pickResult(self::hairLength["value"], $w_hair_length);
@@ -173,9 +203,10 @@ class NPCGenerator
 		}
 
 		// generating regular entries
+		$parameters["facialHair"] = false;
 		if ($gender === "male") $parameters["facialHair"] = TableReader::pickResult(self::facialHair["value"], $w_facial_hair);
 		$parameters["eyes"] = TableReader::pickResult(self::eyes["value"], $w_eyes);
-		$parameters["corpulence"] = TableReader::pickResult(self::corpulence["value"], $w_corpulence);
+		$parameters["corpulence"] = TableReader::pickResult(self::build["value"], $w_build);
 		$parameters["size"] = TableReader::pickResult(self::size["value"], $w_size);
 		$parameters["beauty"] = TableReader::pickResult(self::beauty["value"], $w_beauty);
 		$parameters["intelligence"] = TableReader::pickResult(self::intelligence["value"], $w_intelligence);
@@ -196,6 +227,30 @@ class NPCGenerator
 			$parameters["specialTraits"] = join(", ", $parameters["specialTraits"]);
 		}
 
-		return $parameters;
+		// generating description text
+		$description = "<b>{$parameters["name"]}</b> – ";
+		$description .= $parameters["hair"] . ", ";
+		$description .= $parameters["facialHair"] ? $parameters["facialHair"].", " : "";
+		$description .= "yeux " . $parameters["eyes"] . ", ";
+		$description .= $parameters["corpulence"] . ", ";
+		$description .= $parameters["size"] . ", ";
+		$description .= $parameters["beauty"]. ", ";
+		$description .= $parameters["intelligence"]. ", ";
+		$description .= $parameters["social"]. ".<br>";
+		if (isset($parameters["specialTraits"])){
+			$description .= "Choisir une particularité parmi <i>{$parameters["specialTraits"]}</i>";
+		}
+
+		$parameters["description"] = $description;
+		//var_dump($description);
+
+		// use AI for MJ, if required and appropriate
+		if ($_SESSION["Statut"] >= 2 && !$name_only && $use_ai){
+			$ai = new AiService;
+			$prompt = "Voici quelques éléments décrivant une personne. Genre : {$parameters["gender"]}. Description : {$parameters["description"]}. Appuie-toi sur ces éléments pour élaborer un court paragraphe descriptif en conservant le nom (en gras). Si un paramètre est « moyen », ne le mentionne pas, élimine-le. Ne parle ni de ses vêtements, ni de son métier. Si tu dois choisir une particularité (indiqué dans la description), choisis celle qui correspond le mieux au personnage dans son ensemble.";
+			$description = $ai->ask($prompt);
+		}
+
+		return $description;
 	}
 };

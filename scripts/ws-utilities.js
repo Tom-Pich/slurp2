@@ -101,6 +101,6 @@ export async function flushMsg(type, label = null) {
     if (inlineTestRegexpResult || inlineRollRegexpResult || inlineDamageRegexpResult ) type = "chat-roll"; // changing message type
 
     const message = new Message(id, key, type, inputEntry.value, recipients, label);
-    ws.send(message.stringify());
+    if (inputEntry.value) ws.send(message.stringify());
     inputEntry.value = "";
 }

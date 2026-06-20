@@ -2,11 +2,20 @@
 
 namespace App\Lib;
 
-// Peut-être un jour...
 class AiService
 {
 	private string $apiKey;
-	private ?string $endpoint = NULL;
+    private string $endpoint = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions";
+    private string $model = "gemini-2.5-flash";
+	private const SYSTEM_PROMPT = <<<'PROMPT'
+		Tu es l’assistant d’un maître de jeu au cours d’une partie de jeu de rôle sur table. Ton rôle est de l’aider dans ses improvisations rapides. 
+
+		Consignes strictes :
+		1. Ne prends aucune initiative scénaristique ou narrative. Limite-toi strictement à répondre à la demande de l’utilisateur.
+		2. Rédige tes réponses dans un style concis (400 caractères max), factuel et télégraphique, adapté à une improvisation rapide en jeu.
+		3. N’utilise jamais de formatage Markdown (pas d’astérisques, pas de dièses, pas de tirets de liste Markdown).
+		4. Pour la mise en forme, utilise uniquement les balises HTML suivantes si nécessaire : <b> pour le texte important, <i> pour les termes spécifiques ou l'emphase, et <br> pour les retours à la ligne.
+		PROMPT;
 
 	public function __construct()
 	{
@@ -16,12 +25,18 @@ class AiService
 	public function ask(string $prompt): mixed
 	{
 		$payload = json_encode([
-			"model" => NULL,
+			"model" => $this->model,
 			"messages" => [
-				["role" => "system", "content" => "Tu es l’assistant d’un maître de jeu au cours d’une partie de JdR sur table. Tu dois l’aider dans ses séquences d’improvisation. Ne prends pas d’initiative scénaristique, contente-toi de rédiger la description demandée."],
-				["role" => "user", "content" => $prompt]
+				[
+					"role" => "system",
+					"content" => self::SYSTEM_PROMPT
+				],
+				[
+					"role" => "user",
+					"content" => $prompt
+				]
 			],
-			"max_tokens" => 300,
+			"max_tokens" => 2000,
 		]);
 
 		$ch = curl_init($this->endpoint);
@@ -37,7 +52,6 @@ class AiService
 		]);
 
 		$response = json_decode(curl_exec($ch), true);
-		return $response;
-		return $response["choices"][0]["message"]["content"] ?? "";
+		return $response["choices"][0]["message"]["content"] ?? $response[0]["error"]["status"] . " – retry delay: " . $response[0]["error"]["details"][2]["retryDelay"];
 	}
 }

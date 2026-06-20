@@ -165,7 +165,7 @@ use App\Rules\WeaponsController;
 			</tr>
 			<tr>
 				<th>12-14</th>
-				<td>Énoncer quelques mots calmement, bouger seul bras. Aucun déplacement.</td>
+				<td>Énoncer quelques mots calmement, bouger un seul bras. Aucun déplacement.</td>
 			</tr>
 			<tr>
 				<th>15-17</th>
@@ -569,6 +569,7 @@ use App\Rules\WeaponsController;
 				<option value="warrior">Guerrier</option>
 			</select>
 			<input type="checkbox" name="name-only" title="seulement un nom">
+			<input type="checkbox" name="use-ai" title="utiliser l’IA ?">
 		</div>
 		<button class="nude">🎲</button>
 	</form>
@@ -592,20 +593,24 @@ use App\Rules\WeaponsController;
 		<div class="fl-1 flex-s gap-½">
 			<select class="fl-1" name="category" required>
 				<option value="">--- choisissez une catégorie</option>
-				<option value="fantasy-herbs">Plantes &amp; herbes (medfan)</option>
+				<!-- <option value="fantasy-herbs">Plantes &amp; herbes (medfan)</option> -->
 				<optgroup label="Dans un château">
-					<option value="castle-corridor">Dans les couloirs</option>
-					<option value="castle-personnality">Personnalités</option>
+					<option value="castle[couloirs]">Dans les couloirs</option>
+					<option value="castle[personnalites]">Personnalités</option>
 				</optgroup>
 				<optgroup label="Dans une rue animée (medfan)">
-					<option value="fantasy-street-inactive">Passants et inactifs</option>
-					<option value="fantasy-street-animals">Animaux</option>
-					<option value="fantasy-street-delivery">Livreurs</option>
-					<option value="fantasy-street-light-merchants">Commerçants mobiles</option>
-					<option value="fantasy-street">Tout le reste</option>
+					<option value="fantasy-street[inactifs]">Passants et inactifs</option>
+					<option value="fantasy-street[vendeurs-mobiles]">Vendeurs mobiles</option>
+					<option value="fantasy-street[charrettes-chariots]">Charrettes &amp; chariots</option>
+					<option value="fantasy-street[actifs-divers]">Actifs divers</option>
+					<option value="fantasy-street[boutiques-ateliers]">Boutiques &amp; ateliers</option>
+					<option value="fantasy-street[animaux-domestiques]">Animaux domestiques</option>
+					<option value="fantasy-street[chantiers]">Chantiers</option>
+					<option value="fantasy-street[peu-frequent]">Rencontres peu fréquentes</option>
 				</optgroup>
 				<!-- <option value="books">Titre de livre</option> -->
 			</select>
+			<input type="checkbox" name="use-ai" title="utiliser l’IA ?">
 		</div>
 		<button class="nude">🎲</button>
 	</form>

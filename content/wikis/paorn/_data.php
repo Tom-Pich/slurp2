@@ -24,6 +24,7 @@ $articles = [
 	"maison-avrelanche" => ["title" => "La Maison d’Avrelanche", "parent" => "sardam" ],
 	"chateau-sardam" => ["title" => "Le château de Sardam", "parent" => "sardam" ],
 	"solidam" => ["title" => "Solidam", "section" => "Sordolia"],
+	"lardam" => ["title" => "Lardam", "section" => "Sordolia", "status" => "🛠️"],
 	"fort-leck" => ["title" => "Fort de Leck", "section" => "Sordolia"],
 	"fallenbeck" => ["title" => "Fallenbeck", "section" => "Sordolia"],
 	"sigherd" => ["title" => "Sigherd (fleuve)", "section" => "Sordolia"],

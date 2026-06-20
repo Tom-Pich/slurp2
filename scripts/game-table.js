@@ -318,26 +318,8 @@ const collisionWidget = new Widget("vehicle-collision", async function () {
 
 const npcWidget = new Widget("npc-generator", async function () {
     const data = new FormData(this.form);
-
     const result = await fetchResult("/api/npc-generator", data);
-
-    if (result.error) return `/${userID} Paramètres PNJ invalides`;
-
-    if (result["name-only"]) return `/${userID} ${result.name}`;
-
-    const facialHair = result.facialHair ? `${result.facialHair},` : "";
-    const corpulence = result.corpulence !== "moyenne" ? `${result.corpulence}, ` : "";
-    const size = result.size !== "moyenne" ? `${result.size}, ` : "";
-    const beauty = result.beauty !== "moyenne" ? `${result.beauty}, ` : "";
-    const intelligence = result.intelligence !== "moyenne" ? `${result.intelligence}, ` : "";
-    const specialTraits = result.specialTraits ? `Choisir une particularité parmi : <i>${result.specialTraits}</i>` : "";
-
-    const formattedMsg = `/${userID}
-		<b>${result.name}</b>
-		${result.hair}, ${facialHair} yeux ${result.eyes}, ${corpulence} ${size} ${beauty} ${intelligence} ${result.social}
-		${specialTraits}
-	`;
-    return formattedMsg;
+	return `/${userID} ${result}`;
 });
 
 // set and save NPC region

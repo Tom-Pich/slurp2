@@ -32,7 +32,7 @@
 
 	<p>Sardam compte environ 12&thinsp;000 habitants et s’étend sur une centaine d’hectares. La ville, de forme grossièrement circulaire, mesure entre 1 km et 1,2 km de diamètre. Elle est construite sur un terrain plat, au cœur d’une immense clairière (la <i>clairière de Matar</i>) agrandie au fil des siècles, entourée de terres agricoles fertiles qui s’étendent sur plusieurs kilomètres autour des remparts.</p>
 
-	<p>La zone défrichée est traversée selon un axe nord-sud par la <i>Rojen</i>, large rivière navigable dont les eaux, généralement tranquilles, alimentent les <i>marais du Tonnerre</i>. Ces derniers se trouvent au nord et au nord est de l’emplacement de la ville.</p>
+	<p>La zone défrichée est traversée selon un axe nord-sud par la <i>Rojen</i>, fleuve modeste mais navigable dont les eaux, généralement tranquilles, alimentent les <i>marais du Tonnerre</i>. Ces derniers se trouvent au nord et au nord est de l’emplacement de la ville.</p>
 
 	<p>Le seul relief notable est une butte rocheuse située au centre de la ville, sur laquelle a été édifié le <a href="/wiki/paorn/chateau-sardam">château du Prince</a>.</p>
 

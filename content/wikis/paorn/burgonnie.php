@@ -1,31 +1,30 @@
 <h1>La Burgonnie</h1>
 
-<p>L’Empire Burgon est l’une des grandes puissances de Paorn, un vaste territoire aux paysages enchanteurs et au climat privilégié. Sous l’apparente splendeur de ses villes et la richesse de ses terres fertiles se cache un système politique complexe, fait d’intrigues permanentes et de luttes de pouvoir. Cet empire morcelé maintient une stabilité relative, malgré ses divisions internes, grâce à des institutions séculaires et la poigne de fer de ses empereurs<!-- une structure sociale bien définie -->.</p>
+<p>L’Empire Burgon est l’une des grandes puissances de Paorn, un vaste territoire aux paysages enchanteurs et au climat privilégié. Derrière la splendeur de ses villes et la richesse de ses terres fertiles se cache un système politique complexe, fait d’intrigues permanentes et de luttes de pouvoir. Cet empire morcelé maintient une stabilité relative, malgré ses divisions internes, grâce à des institutions séculaires et la poigne de fer de ses empereurs<!-- une structure sociale bien définie -->.</p>
 
 <!-- Géographie -->
 <section>
 	<h2>Géographie</h2>
-	<p>L’Empire Burgon bénéficie d’une situation géographique privilégiée. Protégé au nord par la chaîne des Sinistérias et à l’ouest par les monts du Salthar, il dispose sur sa façade est de côtes baignées par des courants chauds qui lui assurent un climat tempéré agréable tout au long de l’année.</p>
 
-	<p>Il s’étend sur plus de 1200 km du nord au sud, et environ 1000 km dans sa plus grande largeur, pour une surface d’environ 750.000 km<sup>2</sup>.</p>
+	<div class="has-right-block">
+		<p>L’Empire Burgon bénéficie d’une situation géographique privilégiée. Protégé au nord par la chaîne des Sinistérias et à l’ouest par les monts du Salthar, il dispose sur sa façade est de côtes baignées par des courants chauds qui lui assurent un climat tempéré agréable tout au long de l’année.</p>
+		<p>Il s’étend sur plus de 1200 km du nord au sud, et environ 1000 km dans sa plus grande largeur, pour une surface d’environ 750.000 km<sup>2</sup>.</p>
+		<p>Sa capitale est Olméria, une majestueuse cité portuaire sur la rive sud du Golfe de Scaud.</p>
+		<p>Son territoire est composé de trois grandes provinces :</p>
+		<ul>
+			<li>La <a href="/wiki/paorn/sordolia">Sordolia</a> au nord</li>
+			<li>Le Verbleau au centre</li>
+			<li>L’<a href="wiki/paorn/artaille">Artaille</a> au sud</li>
+		</ul>
+		<figure class="right">
+			<img src="/assets/img_paorn/carte-burgonnie-politique.webp?v=2" alt="Carte politique de la Burgonnie">
+			<figcaption>Carte politique de la Burgonnie</figcaption>
+		</figure>
+	</div>
 
-	<p>Son territoire est composé de trois grandes provinces :</p>
-	<ul>
-		<li>La Sordolia au nord</li>
-		<li>Le Verbleau au centre</li>
-		<li>L’Artaille au sud</li>
-	</ul>
-
-	<figure>
-		<img src="/assets/img_paorn/carte-burgonnie-politique.webp?v=2" alt="Carte politique de la Burgonnie">
-		<figcaption>Carte politique de la Burgonnie</figcaption>
-	</figure>
-
-	<p>Environ 60% du territoire est couvert de forêts, souvent denses et parfois impénétrables. Le reste se compose principalement de plaines fertiles et de collines verdoyantes, offrant une grande variété de paysages, des forêts profondes du nord aux plaines vallonnées du sud.</p>
-
-	<p>La capitale, Olméria, abrite le palais impérial et constitue le centre politique et administratif de l’empire. </p>
-
-	<p>Les forêts burgonnes recèlent de nombreux dangers, depuis les bandes de brigands jusqu’aux créatures monstrueuses. On y trouve également de nombreux ermites et magiciens reclus, qui préfèrent la solitude des bois à la surveillance des autorités impériales.</p>
+	<!-- <p>Environ 60% du territoire est couvert de forêts, souvent denses et parfois impénétrables. Le reste se compose principalement de plaines fertiles et de collines verdoyantes, offrant une grande variété de paysages, des forêts profondes du nord aux plaines vallonnées du sud.</p> -->
+	<!-- <p>La capitale, <b>Olméria</b>, abrite le palais impérial et constitue le centre politique et administratif de l’empire. </p> -->
+	<!-- <p>Les forêts burgonnes recèlent de nombreux dangers, depuis les bandes de brigands jusqu’aux créatures monstrueuses. On y trouve également de nombreux ermites et magiciens reclus, qui préfèrent la solitude des bois à la surveillance des autorités impériales.</p> -->
 </section>
 
 <!-- Habitants -->
@@ -54,18 +53,19 @@
 		</summary>
 		<p>La société burgonne est hiérarchisée en classes bien définies :</p>
 		<ul>
-			<li><b>Les courtisans :</b> parents proches de l’empereur, ils vivent en permanence au palais impérial, sous surveillance étroite.</li>
-			<li><b>Les nobles :</b> ils constituent l’élite de l’empire, cultivés et amateurs d’arts, ils portent des armures ouvragées en signe de statut.</li>
+			<li><b>Les courtisans :</b> proches de l’empereur, ils vivent en permanence au palais impérial, sous surveillance étroite.</li>
+			<li><b>Les nobles</b> constituent l’élite de l’empire, généralement cultivés et amateurs d’arts.</li>
 			<li><b>Les bourgeois :</b> marchands, artisans et ouvriers des villes, ils supportent l’essentiel du poids des taxes mais détiennent un réel pouvoir économique.</li>
-			<li><b>Les intellectuels :</b> savants, artistes et érudits, ils bénéficient d’un statut privilégié malgré des ressources souvent modestes.</li>
-			<li><b>Les ouvriers libres et mercenaires :</b> Groupe hétéroclite comprenant rémouleurs, trappeurs, médecins itinérants et autres professions indépendantes.</li>
-			<li><b>Les serfs et métayers :</b> bien que théoriquement dépendants de leurs seigneurs, ils jouissent d’une liberté relative et peuvent même voyager dans l’empire.</li>
+			<!-- <li><b>Les intellectuels :</b> savants, artistes et érudits, ils bénéficient d’un statut privilégié malgré des ressources souvent modestes.</li> -->
+			<!-- <li><b>Les ouvriers libres et mercenaires :</b> Groupe hétéroclite comprenant rémouleurs, trappeurs, médecins itinérants et autres professions indépendantes.</li> -->
+			<li><b>Les religieux</b></li>
+			<li><b>Les mages</b></li>
+			<li><b>Les paysans</b> constituent l’immense majorité de la population. Le statut de <i>serf</i> n’existe pas. Les paysans sont libres d’aller et venir, bien que leurs moyens financiers le leur permettent rarement.</li>
 		</ul>
 	</details>
 </section>
 
-
-<!-- Politique & organisation -->
+<!-- Politique et organisation -->
 <section>
 	<h2>Politique &amp; organisation</h2>
 
@@ -76,7 +76,7 @@
 		<summary>
 			<h3>Gouvernement</h3>
 		</summary>
-		
+
 		<p>L’empereur actuel, Fordor XXIV, règne depuis 1446 (soit 44 ans en 1490 – année de début de campagne), un record de longévité dans un pays où les « accidents » politiques sont monnaie courante. De petite taille mais à la volonté de fer, il a survécu à près d’une vingtaine de tentatives d’assassinat.</p>
 
 		<p>Le pouvoir impérial s’appuie sur plusieurs institutions :</p>
@@ -97,10 +97,10 @@
 		<summary>
 			<h3>Forces de l’ordre</h3>
 		</summary>
-		<p>Plusieurs corps assurent le maintien de l’ordre :</p>
+		<p>Plusieurs corps assurent le maintien de l’ordre :</p>
 		<ul>
 			<li><b>Les carmins :</b> la police impériale reconnaissable à ses armures rouge sombre, redoutée pour sa brutalité. Ils n’officient généralement qu’à Oméria.</li>
-			
+
 			<li><b>La garde impériale :</b> Corps d’élite de l’armée, reconnaissable à ses armures noir et or, employé pour la défense des intérêts stratégiques.</li>
 
 			<li><b><a href="/wiki/paorn/arcania">L’Arcania</a> :</b> police magique chargée de traquer les magiciens illégaux.</li>
@@ -236,7 +236,7 @@
 	</details> -->
 
 	<!-- Duels -->
-	 <details>
+	<details>
 		<summary>
 			<h3>Les duels</h3>
 		</summary>
@@ -247,7 +247,7 @@
 			<li><b>Le duel « classique » :</b> se termine lorsqu’un adversaire est hors de combat ou déclare forfait. L’usage veut que l’on évite de porter des coups mortels.</li>
 			<li><b>Le duel à mort :</b> pour les cas les plus graves.</li>
 		</ul>
-	 </details>
+	</details>
 
 </section>
 
@@ -255,13 +255,15 @@
 <section>
 	<h2>Histoire</h2>
 
+	<p>Les dates sont donnée selon le <a href="wiki/paorn/calendrier-burgon">calendrier burgon</a>.</p>
+
 	<!-- Les confédérations primitives -->
 	<details>
 		<summary>
 			<h3>Les confédérations primitives (avant 795 T.A.)</h3>
 		</summary>
 
-		<p>Avant la fondation de l'Empire, le territoire que l'on appelle aujourd'hui la Burgonnie était partagé entre deux grandes confédérations de cités-états et de petits royaumes : le <b>Verbleau</b> au centre et le <b>Artaille</b> au sud. Ces deux entités n'avaient ni frontières fixes ni gouvernement centralisé — elles étaient des coalitions d'intérêts, remodelées à chaque génération par les guerres de succession, les alliances matrimoniales et les querelles de préséance.</p>
+		<p>Avant la fondation de l'Empire, le territoire que l'on appelle aujourd'hui la Burgonnie était partagé entre deux grandes confédérations de cités-états et de petits royaumes : le <b>Verbleau</b> au centre et l’<b>Artaille</b> au sud. Ces deux entités n'avaient ni frontières fixes ni gouvernement centralisé — elles étaient des coalitions d'intérêts, remodelées à chaque génération par les guerres de succession, les alliances matrimoniales et les querelles de préséance.</p>
 
 		<p>La religion atrimiste, déjà ancienne, jouait un rôle de ciment moral. Le prophète Eldar était mort depuis sept siècles, mais ses enseignements, rassemblés dans <i>La Voie de la Vertu</i>, étaient le patrimoine commun des deux confédérations. La ville de <b>Stomilie</b>, où Eldar était né et où reposait son tombeau, était déjà un lieu de pèlerinage respecté des deux clans — l'un des rares points de convergence entre des peuples souvent en guerre.</p>
 
@@ -370,10 +372,9 @@
 </section>
 
 <!-- Particularités -->
-<section>
+<!-- <section>
 	<h2>Particularités</h2>
 
-	<!-- Créatures et dangers -->
 	<details>
 		<summary>
 			<h3>Créatures et dangers</h3>
@@ -387,7 +388,6 @@
 		</ul>
 	</details>
 
-	<!-- Accidents -->
 	<details>
 		<summary>
 			<h3>Traditions des « accidents » politiques</h3>
@@ -398,5 +398,4 @@
 		<p>Le système successoral basé sur la généalogie permet des ascensions sociales fulgurantes lorsqu’un héritier éloigné se retrouve soudain à la tête d’un domaine important après la disparition de tous les prétendants directs.</p>
 	</details>
 
-
-</section>
+</section> -->

@@ -1,5 +1,16 @@
 Voici la structure à suivre pour les articles traitant d’un lieu (région, ville, hameau…). Elle est découpée en sections. Les thèmes devant être abordés dans cette section sont mentionnés.
 
+<!-- Introduction -->
+<!-- Géographie -->
+<!-- Habitants -->
+<!-- Politique amp; organisation -->
+<!-- Économie -->
+<!-- Figure &amp; groupes d’influence -->
+<!-- Culture &amp; société -->
+<!-- Histoire -->
+<!-- Particularité -->
+<!-- Ressources et services -->
+
 # [Nom du lieu]
 
 Courte introduction
