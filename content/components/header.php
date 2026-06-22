@@ -1,38 +1,34 @@
 <?php
-
 use App\Repository\CharacterRepository;
 
 global $pages_data;
 $character_repo = new CharacterRepository;
 $characters_list = $character_repo->getCharactersFromUser($_SESSION["id"], with_name: true);
 
-$body_class = $page["body-class"];
-$body_class .=  $page["style"] !== "normal" ? (" " . $page["style"]) : "";
+$body_class = $page->bodyClass;
+$body_class .=  $page->displayStyle !== "normal" ? (" " . $page->displayStyle) : "";
 ?>
 
 <!DOCTYPE html>
-<html lang="fr" data-preset="<?= $page["mode"] ?>" data-mode="<?= $page["mode"] ?>" data-theme=<?= $page["theme"] ?>>
-
+<html lang="fr" data-preset="<?= $page->displayMode ?>" data-mode="<?= $page->displayMode ?>" data-theme=<?= $page->displayTheme ?>>
 <head>
 	<meta charset="utf-8">
 	<meta name="google-site-verification" content="Yap48CUfjcjJnXZufVRoH0B0KB5-_UXQArZJiRkn_Qs">
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=yes">
-	<meta name="description" content="<?= $page["description"] ?>">
+	<meta name="description" content="<?= $page->description ?>">
 	<link rel="stylesheet" href="/styles.min.css?v=<?= VERSION ?>">
 
 	<link rel="shortcut icon" href="/assets/img/favicon.ico">
-	<title><?= $page["title"] ?></title>
+	<title><?= $page->title ?></title>
 
 	<?php if ($_SESSION["Statut"] < 3) echo "<style>.admin:not(.user-{$_SESSION['id']}) {display: none !important}</style>" ?>
 
-	<?php if (!empty($page["canonical"])) { ?>
-		<link rel="canonical" href="https://jdr.pichegru.net<?= $page["canonical"] ?>">
-		<meta property="og:title" content="<?= $page["title"] ?>">
-		<meta property="og:type" content="Website">
-		<meta property="og:url" content="https://jdr.pichegru.net<?= $page["canonical"] ?? "" ?>">
-		<meta property="og:description" content="<?= $page["description"] ?>">
-		<meta property="og:image" content="https://jdr.pichegru.net/assets/img/dices.png">
-	<?php } ?>
+	<link rel="canonical" href="<?= $page->canonical ?>">
+	<meta property="og:title" content="<?= $page->title ?>">
+	<meta property="og:type" content="Website">
+	<meta property="og:url" content="<?= $page->canonical ?>">
+	<meta property="og:description" content="<?= $page->description ?>">
+	<meta property="og:image" content="https://jdr.pichegru.net/assets/img/dices.png">
 
 	<script type="module" src="/scripts/main<?= PRODUCTION ? ".min" : "" ?>.js?v=<?= VERSION ?>" defer></script>
 </head>
@@ -45,10 +41,10 @@ $body_class .=  $page["style"] !== "normal" ? (" " . $page["style"]) : "";
 			<a href="/" title="Accueil"><img src="/assets/img/favicon.ico" width="64" height="64"></a>
 			<div>
 				<p class="fs-700 fw-700 ff-accent">SLURP</p>
-				<?php if ($page["body-class"] === "wiki"): ?>
-					<p class="fs-600 fw-700 ff-accent"><?= $page["title"] ?></p>
+				<?php if ($page->bodyClass === "wiki"): ?>
+					<p class="fs-600 fw-700 ff-accent"><?= $page->title ?></p>
 				<?php else : ?>
-					<h1><?= $page["title"] ?></h1>
+					<h1><?= $page->title ?></h1>
 				<?php endif ?>
 			</div>
 		</div>
@@ -67,8 +63,8 @@ $body_class .=  $page["style"] !== "normal" ? (" " . $page["style"]) : "";
 				</button>
 			</div>
 
-			<?php if (!empty($page["parameters-btn"])): ?>
-				<button class='ff-fas btn-primary btn-square mt-½ mx-auto' data-role='open-dialog' data-dialog-name='<?= $page["parameters-btn"] ?>'>
+			<?php if ($page->name === "table-jeu"): ?>
+				<button class='ff-fas btn-primary btn-square mt-½ mx-auto' data-role='open-dialog' data-dialog-name='widgets-help'>
 					&#xf085;
 				</button>
 			<?php endif; ?>
@@ -130,6 +126,7 @@ $body_class .=  $page["style"] !== "normal" ? (" " . $page["style"]) : "";
 						<li><a href="/bibliotheque-liens"><?= $pages_data['bibliotheque-liens']["title"] ?></a></li>
 						<li><a href="/concevoir-personnage"><?= $pages_data['concevoir-personnage']["title"] ?></a></li>
 						<li><a href="/vocabulaire-relief"><?= $pages_data['vocabulaire-relief']["title"] ?></a></li>
+						<li><a href="/qualite-jeu"><?= $pages_data['qualite-jeu']["title"] ?></a></li>
 						<?php if ($_SESSION['Statut'] >= 3) { ?> <li><a href="/test">Test</a></li> <?php } ?>
 					</ul>
 				</li>

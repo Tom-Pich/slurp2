@@ -15,7 +15,7 @@ $colleges_repo = new CollegeRepository;
 $powers_repo = new PowerRepository;
 $disciplines_repo = new DisciplineRepository;
 
-$character = $page["character"];
+$character = $payload;
 $character->processCharacter(with_state_modifiers: false);
 $attributes_names = ["For", "Dex", "Int", "San", "Per", "Vol"];
 $pdx_names = ["PdV", "PdF", "PdM", "PdE"];

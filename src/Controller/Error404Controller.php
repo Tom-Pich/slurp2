@@ -2,19 +2,23 @@
 
 namespace App\Controller;
 
-class Error404Controller
+class Error404Controller extends PageController
 {
-
-	public function show(){
-		$page = [
-			"title" => "Oups&hellip; Erreur 404&nbsp;!",
-			"description" => "La ressource demandée n’existe pas",
+	public function __construct()
+	{
+		$page_data = [
+			"name" => "404-error",
+			"title" => "Oups… Erreur 404 !",
 			"body-class" => "basic-page",
 			"file" => "zz-not-found",
-			"version" => 4,
 		];
-		$page_controller = new PageController($page);
+
+		parent::__construct($page_data);
+	}
+
+	public function show($payload = NULL){
+		
 		http_response_code(404);
-		$page_controller->show();
+		parent::show($payload);
 	}
 }

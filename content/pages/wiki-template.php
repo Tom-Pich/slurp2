@@ -1,3 +1,3 @@
 <?php
-// see also in <head> for element hiding
-include "content/wikis/" . $page["wiki"] . "/" . $page["current-article-name"] . ".php";
+// see also in <head> for content element hiding
+include "content/wikis/" . $wiki . "/" . $article_name . ".php";

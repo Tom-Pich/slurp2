@@ -1,12 +1,12 @@
 <?php
+// voir Page Controller pour les données possibles
 return $pages_data = [
 
 	"home" => [
 		"title" => "Le moteur de JdR universel",
-		"description" => "Système de jeu de rôle Souple Léger Universel Rapide et Précis",
+		"description" => "Système de jeu de rôle Souple Léger Universel Rapide et Précis (SLURP)",
 		"file" => "00-home",
 		"body-class" => "home",
-		"version" => 4,
 		"aside-left" => "aside-home-left",
 		"aside-right" => "aside-home-right",
 	],
@@ -14,183 +14,152 @@ return $pages_data = [
 		"title" => "Personnages",
 		"description" => "Les règles concernant la création de personnage",
 		"file" => "01a-personnage",
-		"version" => 4,
-		//"aside-left" => "aside-01-left",
 	],
 	"avdesav-comp-sorts" => [
 		"title" => "Listes pour le personnage",
 		"description" => "Tous les avantages, désavantages, compétences et sorts",
 		"file" => "01b-listes",
-		"version" => 4,
 	],
 	"armes-armures" => [
 		"title" => "Armes &amp; armures",
 		"description" => "Règles et listes portant sur les armes et les armures",
 		"file" => "02-armes-armures",
-		"version" => 4,
 	],
 	"bases-systeme" => [
 		"title" => "Bases du système",
-		"description" => "Les fondamentaux des règles",
+		"description" => "Les fondamentaux des règles de SLURP – jets de réussite",
 		"file" => "03-bases",
-		"version" => 4,
 	],
 	"combat" => [
 		"title" => "Combat",
 		"description" => "Toutes les règles concernant les différentes situations de combat",
 		"file" => "04-combat",
-		"version" => 4,
 	],
 	"blessures-dangers" => [
 		"title" => "Blessures &amp; dangers",
 		"description" => "Les blessures et leurs effets, la guérison et les effets de divers dangers",
 		"file" => "05-blessures-dangers",
-		"version" => 4,
 	],
 	"magie" => [
 		"title" => "Magie",
 		"description" => "Les règles sur la magie – sorts, pouvoirs magiques, objets magiques, alchimie&hellip;",
 		"file" => "06-magie",
-		"version" => 4,
 	],
 	"animaux" => [
-		"title" => "Animaux", 
-		"description" => "Les règles sur les animaux – leurs caractéristiques, leur gestion en combat&hellip;", 
+		"title" => "Animaux",
+		"description" => "Les règles sur les animaux – leurs caractéristiques, leur gestion en combat&hellip;",
 		"file" => "07-animaux",
-		"version" => 4,
 	],
 
 	// En version bêta
 	"psioniques" => [
-		"title" => "Psioniques", 
-		"description" => "Les pouvoirs psioniques", 
+		"title" => "Psioniques",
+		"description" => "Les pouvoirs psioniques",
 		"file" => "08-psioniques",
-		"version" => 4,
 	],
 	"vehicules" => [
-		"title" => "Véhicules", 
-		"description" => "Tout sur les véhicules&nbsp;: caractéristiques, règles de poursuites, combat, dégâts&hellip;", 
+		"title" => "Véhicules",
+		"description" => "Tout sur les véhicules&nbsp;: caractéristiques, règles de poursuites, combat, dégâts&hellip;",
 		"file" => "09-vehicules",
-		"version" => 4,
 	],
 	"high-tech" => [
-		"title" => "High-tech", 
-		"description" => "Armes technologiques, informatique, robots, cyberprothèses&hellip;", 
+		"title" => "High-tech",
+		"description" => "Armes technologiques, informatique, robots, cyberprothèses&hellip;",
 		"file" => "10-high-tech",
-		"version" => 4,
 	],
-	
+
 	// Univers
 	"adapted-dungeons-dragons" => [
 		"title" => "AD&D",
 		"description" => "Ce qu’il faut pour jouer dans l’esprit <i>Donjons &amp; Dragons</i>, sans le système abject d20.",
 		"file" => "univers_add",
-		"version" => 4,
-	],
-		"wiki" => [
-		"title" => NULL, // géré dans _data.php dans le dossier wikis/{wiki}
-		"description" => NULL, // comme ci-dessus
-		"file" => "wiki-template",
-		"body-class" => "wiki",
-		"version" => 4,
-		"aside-left" => "aside-wiki-index", 
 	],
 	"in-nomine" => [
-		"title" => "In Nomine", 
-		"description" => "Une adaptation relativement libre de l’incontournable «&nbsp;Magna Veritas&nbsp;»", 
+		"title" => "In Nomine",
+		"description" => "Une adaptation relativement libre de l’incontournable «&nbsp;Magna Veritas&nbsp;»",
 		"file" => "univers_in_nomine",
-		"version" => 4,
 	],
 	"cthulhu" => [
 		"title" => "Cthulhu",
-		"description" => "Quelques éléments pour jouer un <i>Cthulhu</i>", 
+		"description" => "Quelques éléments pour jouer un <i>Cthulhu</i>",
 		"file" => "univers_cthulhu",
-		"version" => 4,
 	],
 	"ombres-esteren" => [
 		"title" => "Les Ombres d’Esteren",
-		"description" => "Une adaptation libre des <i>Ombres d’Esteren</i>", 
+		"description" => "Une adaptation libre des <i>Ombres d’Esteren</i>",
 		"file" => "univers_ombres_esteren",
-		"version" => 4,
 	],
 
 	// Aides de jeu
 	"ecrire-scenario" => [
-		"title" => "Écrire un scénario", 
-		"description" => "Une évolution de l’article précédemment publié dans PTGPTB faisant la synthèse de nombreux articles sur la création de scénario", 
+		"title" => "Écrire un scénario",
+		"description" => "Une évolution de l’article précédemment publié dans PTGPTB faisant la synthèse de nombreux articles sur la création de scénario",
 		"file" => "s_scenario",
 		"body-class" => "standard-page writing-scenario",
-		"version" => 4,
 	],
 	"aide-de-jeu-medfan" => [
-		"title" => "Le Moyen Âge", 
-		"description" => "Quelques éléments sur le Moyen-Âge", 
+		"title" => "Le Moyen Âge",
+		"description" => "Quelques éléments sur le Moyen-Âge",
 		"file" => "s_adj_med",
-		"version" => 4,
 	],
 	"bibliotheque-liens" => [
-		"title" => "Bibliothèque de liens", 
-		"description" => "Quelques liens utiles", 
+		"title" => "Bibliothèque de liens",
+		"description" => "Quelques liens utiles",
 		"file" => "s_liens",
-		"version" => 4,
-		//"body-class" => "basic-page",
 	],
 	"concevoir-personnage" => [
-		"title" => "Concevoir son perso", 
-		"description" => "Une liste de traits de caractère pour aider à la création de PJ et de PNJ", 
+		"title" => "Concevoir son perso",
+		"description" => "Une liste de traits de caractère pour aider à la création de PJ et de PNJ",
 		"file" => "s_concevoir_perso",
-		//"body_class" => "basic-page",
-		"version" => 4,
 	],
 	"vocabulaire-relief" => [
-		"title" => "Vocabulaire du relief", 
-		"description" => "Une liste de vocabulaire permettant de décrire le relief d’un terrain, des plus grosses structures jusqu’au détails à l’échelle humaine", 
+		"title" => "Vocabulaire du relief",
+		"description" => "Une liste de vocabulaire permettant de décrire le relief d’un terrain, des plus grosses structures jusqu’au détails à l’échelle humaine",
 		"file" => "s_vocabulaire_relief",
-		//"body_class" => "basic-page",
-		"version" => 4,
+	],
+	"qualite-jeu" => [
+		"title" => "Améliorer le jeu",
+		"description" => "Quelques trucs et astuces pour améliorer la qualité des parties – pour le MJ et pour les joueurs.",
+		"file" => "s_qualite_jeu",
 	],
 	"test" => [
-		"title" => "Test", 
-		"description" => "", 
+		"title" => "Test",
+		"description" => "",
 		"file" => "test",
 		"body-class" => "test",
-		"version" => 4,
+		"access-restriction" => 3,
 	],
 
 	// Personnage (fiche et gestionnaire)
 	"personnage-fiche" => [
 		"title" => "", // nom du perso
-		"description" => "", 
+		"description" => "",
 		"file" => "personnage-fiche",
 		"body-class" => "personnage-fiche",
-		"version" => 4,
 		"aside-right" => "chat-window",
 	],
 	"personnage-gestion" => [
-		"title" => "Gestionnaire de personnages", 
-		"description" => "", 
+		"title" => "Gestionnaire de personnages",
+		"description" => "",
 		"file" => "personnage-gestion",
 		"body-class" => "personnage-gestion",
-		"version" => 4,
 	],
 
 	// Administration
 	"gestionnaire-mj" => [
-		"title" => "Gestionnaire du MJ", 
-		"description" => "", 
+		"title" => "Gestionnaire du MJ",
+		"description" => "",
 		"file" => "gestion-mj",
 		"body-class" => "standard-page gestionnaire-mj",
 		"access-restriction" => 2,
-		"version" => 4,
 		"aside-right" => "chat-window",
 	],
 	"gestion-listes" => [
 		"title" => "Gestionnaire des RdB",
-		"description" => "", 
+		"description" => "",
 		"file" => "gestion-listes",
 		"body-class" => "basic-page",
 		"access-restriction" => 3,
-		"version" => 4,
 	],
 	"mon-compte" => [
 		"title" => "Mon compte",
@@ -198,7 +167,6 @@ return $pages_data = [
 		"body-class" => "basic-page account-page",
 		"access-restriction" => 1,
 		"file" => "gestion-compte",
-		"version" => 4,
 	],
 
 	// Table de jeu
@@ -207,9 +175,7 @@ return $pages_data = [
 		"description" => "Un ensemble de widget permettant la gestion de la partie assistée par ordinateur, ainsi qu’une fenêtre de tchat",
 		"file" => "table_jeu",
 		"body-class" => "table-jeu",
-		"version" => 4,
 		"aside-right" => "chat-window",
-		"parameters-btn" => "widgets-help",
 	],
 
 	// Licence
@@ -218,7 +184,6 @@ return $pages_data = [
 		"description" => "Licence d’utilisation du JdR SLURP.",
 		"body-class" => "basic-page",
 		"file" => "licence",
-		"version" => 4,
 	]
-	
+
 ];

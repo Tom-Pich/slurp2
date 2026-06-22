@@ -32,7 +32,7 @@ $bdd = new \PDO("mysql:host=" . DB_HOST . "; dbname=" . DB_NAME . "; charset=utf
 session_start();
 LogController::checkSessionValidity();
 
-// ––– $pages_data ––––––––––––––––––––––––––––––––––––––––––––––––––––––
+// ––– pages data ––––––––––––––––––––––––––––––––––––––––––––––––––––––
 $pages_data = include "content/pages/_pages-data.php";
 
 // Front router –––––––––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -135,7 +135,7 @@ if ($path_segments[1] === "api") {
 			break;
 
 		case "/api/bleeding-effects":
-			Firewall::check(isset($_POST["san-test"]) && isset($_POST["pdvm"]) && isset($_POST["severity"]) );
+			Firewall::check(isset($_POST["san-test"]) && isset($_POST["pdvm"]) && isset($_POST["severity"]));
 			$san_test = json_decode($_POST["san-test"], true);
 			$san_test_mr = (int) $san_test["MR"];
 			$san_test_critical = (int) $san_test["critical"];
@@ -353,7 +353,7 @@ elseif ($path_segments[1] === "submit") {
 
 		case "/submit/set-user-option":
 			Firewall::filter(1);
-			Firewall::check(!empty($_POST["option"]), !empty($_POST["value"]));
+			Firewall::check(!empty($_POST["option"]) && !empty($_POST["value"]));
 			$id = $_SESSION["id"];
 			$option = htmlspecialchars($_POST["option"]);
 			$value = htmlspecialchars($_POST["value"]);
@@ -367,54 +367,11 @@ elseif ($path_segments[1] === "submit") {
 	}
 }
 
-// character pages
-elseif (in_array($path_segments[1], ["personnage-fiche", "personnage-gestion"]) && empty($path_segments[2])) {
-	Firewall::filter(1);
-	Firewall::check(!empty($_GET["perso"] && (int) $_GET["perso"]));
-	$character = new Character((int) $_GET["perso"]);
-	if (!$character->checkClearance()) {
-		(new Error404Controller)->show();
-	}
-	$page_name = $path_segments[1];
-	$page_data = $pages_data[$page_name];
-	$page_data["title"] = $character->name;
-	$page_data["character"] = $character;
-	$page = new PageController($page_data);
-	$page->show();
-}
-
-// wiki pages
-else if ($path_segments[1] === "wiki" && !empty($path_segments[2]) && count($path_segments) <= 3) {
-	$wiki = $path_segments[2]; // for now only "paorn"
-	$articles_data_file = "content/wikis/" . $wiki . "/_data.php";
-	if (file_exists($articles_data_file)) include $articles_data_file; // provides $articles
-	else {
-		$page = new Error404Controller;
-		$page->show();
-	}
-
-	$article_name = empty($path_segments[3]) ? "home" : $path_segments[3];
-	if (!empty($articles[$article_name])) {
-		$article = $articles[$article_name];
-		$page_data = $pages_data["wiki"]; // loads template data
-		$page_data["title"] = ($article_name !== "home" ? "Wiki " . ucfirst($wiki) . " – " : "") . $article["title"];
-		$page_data["description"] = $article["description"] ?? null;
-		$page_data["wiki"] = $wiki;
-		$page_data["articles"] = $articles;
-		$page_data["current-article-name"] = empty($path_segments[3]) ? "home" : $path_segments[3];
-		$page_data["current-article"] = $article;
-		$page = new PageController($page_data);
-	} else {
-		$page = new Error404Controller;
-	}
-	$page->show();
-}
-
 // generate lists markdown
 elseif ($path_segments[1] === "generate-md") {
 	Firewall::filter(3);
 	$type = $path_segments[2] ?? null;
-	$controller = match($type){
+	$controller = match ($type) {
 		"magie" => new GenerateMagicController,
 		"avdesav" => new GenerateTraitsController,
 		"competences" => new GenerateSkillsController,
@@ -422,19 +379,62 @@ elseif ($path_segments[1] === "generate-md") {
 	$controller->generate();
 }
 
-// standard pages
-else {
-	$page_name = $path_segments[1] ?? "home";
-	$page_data = $pages_data[$page_name] ?? null;
-	if (!empty($path_segments[2])) $page_data = null;
+// character pages
+elseif (in_array($path_segments[1], ["personnage-fiche", "personnage-gestion"]) && empty($path_segments[2])) {
+	Firewall::filter(1);
+	Firewall::check(!empty($_GET["perso"]) && (int) $_GET["perso"]);
+	$character = new Character((int) $_GET["perso"]);
+	if (!$character->checkClearance()) (new Error404Controller)->show();
+	$page_name = $path_segments[1];
+	$page_data = $pages_data[$page_name];
+	$page_data["name"] = $page_name;
+	$page_data["title"] = $character->name;
+	$page = new PageController($page_data);
+	$page->show($character);
+}
 
-	if ($page_data) {
-		$page_data["canonical"] = $path;
-		$access_restriction = $page_data["access-restriction"] ?? 0;
-		if ($access_restriction) Firewall::filter($access_restriction);
+// wiki pages
+else if ($path_segments[1] === "wiki" && !empty($path_segments[2]) && count($path_segments) <= 3) {
+	$wiki = $path_segments[2]; // for now only "paorn"
+
+	$articles_data = "content/wikis/" . $wiki . "/_data.php";
+	if (file_exists($articles_data)) {
+		$articles = include $articles_data;
+	} else {
+		$page = new Error404Controller;
+		$page->show();
+	}
+
+	$article_name = empty($path_segments[3]) ? "home" : $path_segments[3];
+	if (!empty($articles[$article_name])) {
+		$article = $articles[$article_name];
+		$page_data["name"] = "wiki/" . $wiki . "/" . $article_name;
+		$page_data["title"] = ($article_name !== "home" ? "Wiki " . ucfirst($wiki) . " – " : "") . $article["title"];
+		$page_data["description"] = $article["description"] ?? null;
+		$page_data["file"] = "wiki-page";
+		$page_data["body-class"] = "wiki";
+		$page_data["version"] = 4;
+		$page_data["aside-left"] = "aside-wiki-index";
 		$page = new PageController($page_data);
 	} else {
 		$page = new Error404Controller;
 	}
+	$page->show($articles);
+}
+
+// standard pages
+else {
+	$page_name = $path_segments[1] ?? "home";
+	$error = !empty($path_segments[2]) || empty($pages_data[$page_name]);
+
+	if ($error) {
+		$page = new Error404Controller;
+	} else {
+		$page_data = $pages_data[$page_name];
+		$page_data["name"] = $page_name;
+		$page = new PageController($page_data);
+	}
+	
+	if ($page->accessRestriction) Firewall::filter($page->accessRestriction);
 	$page->show();
 }

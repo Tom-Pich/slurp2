@@ -1,8 +1,6 @@
 <?php
-$wiki = $page["wiki"];
-$articles = $page["articles"];
-$article = $page["current-article"];
-$article_name = $page["current-article-name"];
+$articles = $payload;
+$article = $articles[$article_name];
 $url_root = "/wiki/" . $wiki;
 $sections = [];
 foreach ($articles as $a) if (isset($a["section"])) $sections[] = $a["section"];

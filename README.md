@@ -1,18 +1,16 @@
-# SLURP v3.31 – Le moteur de JdR universel
+# SLURP v3 – Le moteur de JdR universel
 
 Ce projet contient le code source de mon application permettant de faire des parties de SLURP en ligne. SLURP est un moteur de règles universelles de JdR sur table. C’est un _fork_ de GURPS de ma propre invention. Le projet a démarré en 2000.
 
 Ce site contient :
-- Toutes les règles de SLURP ;
-- Un système d’utilisation et de gestion des personnages.
-- Une table de jeu, comportant des widgets permettant de gérer les règles en cours de partie et un système de _chat_ en websocket (le serveur de chat, en NodeJS, est extrêmement simple. Il n’est pas inclus dans le code).
-- Une partie administration réservée aux Meneurs de Jeu permettant de gérer les personnages et les groupes dont il a la responsabilité.
-- Une partie administration qui m’est exclusivement réservée. Elle permet de gérer d’autres données du site (compétences, traits, pouvoirs, créatures, changement de mot de passe oublié...)
+- Toutes les règles de SLURP.
+- Une table de jeu, comportant des widgets d’assistance et un système de _chat_ en websocket (le serveur de chat n’est pas inclus ici).
+- Un système de gestion des personnages.
+- Une partie réservée aux MJ leur permettant de gérer leurs parties.
+- Une partie administration qui m’est exclusivement réservée.
 
 ### Structure et architecture
-Ce site a été volontairement développé avec le moins de bibliothèques possible. J’en utilise deux : _TinyMCE_ pour l’édition de texte dans la partie admin, et _Morphdom_ pour le DOM diffing.
-- Back-end : PHP 8 et MySQL 8. PHP est chargé de tout le processing calculatoire.
-- Front-end : vanilla JS (dont le rôle est restreint aux échanges client-serveur, à la mise à jour du HTML, aux lancer de dés et au client _chat_ – il ne gère aucun traitement des règles).
+Ce site est développé avec le moins de bibliothèques possible. J’en utilise deux : _TinyMCE_ pour l’édition de texte dans la partie admin, et _Morphdom_ pour le DOM diffing.
 
 ### Base de données
 La base de données n’est pas fournie dans le code source.

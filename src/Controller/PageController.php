@@ -5,44 +5,73 @@ namespace App\Controller;
 
 class PageController
 {
-	private array $page;
+	// private array $page;
+	public string $name;
+	public string $title;
+	public string $file;
+	public string $description;		// default ""
+	public string $bodyClass;		// default "standard
+	public int $version;			// default 4
+	public string $asideLeft;		// default ""
+	public string $asideRight;		// default ""
+	public int $accessRestriction;	// default 0
+
+	public string $displayMode;		// default "auto"
+	public string $displayStyle;	// default "normal"
+	public string $displayTheme;	// default "standard"
+
+	public string $canonical;
 
 	public function __construct(array $page_data)
 	{
-		$this->page = $page_data;
-		$this->page["title"] = $page_data["title"] ?? "No title";
-		$this->page["description"] = $page_data["description"] ?? "No description";
-		$this->page["file"] = $page_data["file"] ?? "zz-not-found";
-		$this->page["body-class"] = $page_data["body-class"] ?? "standard-page";
-		$this->page["version"] = $page_data["version"] ?? 3;
-		$this->page["aside-left"] = $this->page["aside-left"] ?? false;
-		$this->page["aside-right"] = $this->page["aside-right"] ?? false;
+		$this->name = $page_data["name"];
+		$this->title = $page_data["title"];
+		$this->file = "content/pages/" . $page_data["file"] . ".php";
+		$this->description = $page_data["description"] ?? "";
+		$this->bodyClass = $page_data["body-class"] ?? "standard-page";
+		$this->version = $page_data["version"] ?? 4;
+		$this->asideLeft = $page_data["aside-left"] ?? "";
+		$this->asideRight = $page_data["aside-right"] ?? "";
+		$this->accessRestriction = $page_data["access-restriction"] ?? 0;
 
 		// user options
-		$this->page["mode"] = $_SESSION["user-options"]["mode"] ?? "auto";
-		$this->page["style"] = $_SESSION["user-options"]["style"] ?? "normal";
-		$this->page["theme"] = $_SESSION["user-options"]["theme"] ?? "standard";
+		$this->displayMode = $_SESSION["user-options"]["mode"] ?? "auto";
+		$this->displayStyle = $_SESSION["user-options"]["style"] ?? "normal";
+		$this->displayTheme = $_SESSION["user-options"]["theme"] ?? "standard";
+
+		// processed page data
+		$canonical_url = "/" . $this->name;
+		if ($this->name === "home") $canonical_url = "";
+		if (str_ends_with($this->name, "/home")) $canonical_url = "/" . substr($this->name, 0, -5);
+		$this->canonical = "https://jdr.pichegru.net" . $canonical_url ;
 	}
 
-	public function show()
+	public function show($payload = NULL)
 	{
-		$page = $this->page;
-		//echo "<pre>";  var_dump($page); die();
+		$page = $this;
+
+		// wiki page specification
+		if ($page->file === "content/pages/wiki-page.php"){
+			$article_references = explode( "/", $page->name);
+			$wiki = $article_references[1];
+			$article_name = $article_references[2];
+			$page->file = "content/wikis/" . $wiki . "/" . $article_name . ".php";
+		}
+
 		include "content/components/header.php";
 
 		echo "<div id='page-wrapper'>";
 
 		echo "<aside class='left'>";
-		if ($page["aside-left"]) include "content/components/" . $page["aside-left"] . ".php";
+		if ($page->asideLeft) include "content/components/" . $page->asideLeft . ".php";
 		echo "</aside>";
 
-		if (isset($page["current-article"]["min-height"])) echo "<main style='min-height:{$page["current-article"]["min-height"]}'>";
-		else echo "<main>";
-		include "content/pages/" . $page["file"] . ".php";
+		echo "<main>";
+		include $page->file;
 		echo "</main>";
 
 		echo "<aside class='right'>";
-		if ($page["aside-right"]) include "content/components/" . $page["aside-right"] . ".php";
+		if ($page->asideRight) include "content/components/" . $page->asideRight . ".php";
 		echo "</aside>";
 
 		echo "</div>";

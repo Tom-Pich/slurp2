@@ -3,14 +3,12 @@
 use App\Lib\TextParser;
 use App\Repository\EquipmentRepository;
 
-/** @var array $page */
-
-$character = $page["character"];
+$character = $payload;
 $character->processCharacter(with_state_modifiers: true);
 $character_uses_pdm = $character->special_traits["magerie"] || $character->special_traits["pouvoirs"];
 $attributes_names = ["For", "Dex", "Int", "San", "Per", "Vol"];
 $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
-$compact = $page["style"] === "compact";
+$compact = $page->displayStyle === "compact";
 
 // modifies text color if score has changed due to character state
 function color_modifier(int|float $original_score, int|float $actual_score)

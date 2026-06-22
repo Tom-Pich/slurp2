@@ -4,23 +4,34 @@
 </Files>
 
 <IfModule mod_rewrite.c>
-RewriteEngine On
+    RewriteEngine On
+    RewriteBase /
 
-RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-RewriteBase /
-RewriteRule ^index\.php$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.php
+    # 1. Gestion des en-têtes d'autorisation
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
-RewriteRule ^content/(.*)$ /not-found
-RewriteRule ^src/(.*)$ /not-found
-RewriteRule ^vendor/(.*)$ /not-found
-RewriteRule ^config.php$ /not-found
+    # 2. Redirection HTTPS et Domaine Unique (Toujours en premier)
+    RewriteCond %{HTTPS} off [OR]
+    RewriteCond %{HTTP_HOST} !^jdr\.pichegru\.net$ [NC]
+    # On évite de boucler si on est en local (ex: site-jdr)
+    RewriteCond %{HTTP_HOST} !^site-jdr$ [NC]
+    RewriteRule ^(.*)$ https://jdr.pichegru.net/$1 [R=301,L]
 
-RewriteCond %{HTTPS} off
-RewriteCond %{HTTP_HOST} !^site-jdr$ [NC]
-RewriteRule ^(.*)$ https://jdr.pichegru.net/$1 [R=301,L]
+    # 3. Retrait du Slash Final (Sauf pour les vrais dossiers)
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # 4. Sécurité : Blocage des dossiers sensibles
+    # Fusionné en une seule règle plus performante
+    RewriteRule ^(content|src|vendor)/.*$ /not-found [L,R=301]
+    RewriteRule ^config\.php$ /not-found [L,R=301]
+
+    # 5. Routeur PHP (Rewrite global vers index.php)
+    # Si le fichier ou dossier demandé n'existe pas physiquement, on passe à index.php
+    RewriteRule ^index\.php$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.php [L]
 
 </IfModule>
 

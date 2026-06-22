@@ -1,11 +1,11 @@
 <?php
 // key : URL de l’article
-// title, section → évident
-// parent : position de l’article dans le sommaire
-// min-height : pour éviter le débordement des images sur colonne à droite
+// title, description → comme une page classique
+// section : groupe dans le sommaire
+// parent : position de l’article dans le sommaire et retrait
 // status : s’ajoute au titre dans la colonne sommaire
 
-$articles = [
+return $articles = [
 
 	"home" => ["title" => "Wiki Paorn", "description" => "Diverses notes à propos de Paorn"],
 	"burgonnie" => ["title" => "Burgonnie",],
@@ -14,7 +14,7 @@ $articles = [
 	"artaille" => ["title" => "Artaille", "section" => "Artaille",],
 	"duche-elmora" => ["title" => "Duché d’Elmora", "section" => "Artaille"],
 	"imegie" => ["title" => "Imégie", "section" => "Artaille"],
-	"auberge-vieille-tour" => ["title" => "Auberge de la Vieille Tour", "parent" => "imegie", "min-height" => "900px"],
+	"auberge-vieille-tour" => ["title" => "Auberge de la Vieille Tour", "parent" => "imegie"],
 	"almisie" => ["title" => "Almisie", "section" => "Artaille"],
 	"stomilie" => ["title" => "Stomilie", "section" => "Artaille"],
 	"port-goshal" => ["title" => "Port Goshal", "section" => "Artaille"],
