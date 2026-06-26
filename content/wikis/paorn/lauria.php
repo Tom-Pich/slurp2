@@ -1,5 +1,3 @@
-<h1>L’Île de la Lauria</h1>
-
 <!--
 Figures et groupes d'influence
 Aspects pratiques pour aventuriers

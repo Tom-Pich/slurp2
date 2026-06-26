@@ -1,5 +1,3 @@
-<h1>Le Sigherd, long fleuve sauvage</h1>
-
 <p>Le Sigherd est le plus long fleuve de Sordolia, et l’un des plus majestueux de tout Paorn. Il prend sa source au-delà du Dernier Rempart, dans les cimes glacées des monts Sinistérias, avant de s’enfoncer et de traverser toute la mystérieuse Forêt Rêveuse. L’emplacement exact de sa source reste inconnu à ce jour.</p>
 
 <p>Déjà large de près de 50 mètres à la hauteur de Solidam, il est alimenté tout au long de sa course par de tumultueux affluents nés dans les massifs environnants, avant de finir sa course en se jetant dans le bras de {nom à définir}.</p>

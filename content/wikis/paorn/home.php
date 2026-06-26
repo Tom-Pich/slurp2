@@ -1,5 +1,3 @@
-<h1>L’encyclopédie de Paorn</h1>
-
 <div class="has-right-block">
 	<p class="italic">Paorn est un monde créé par la revue <i>Casus Belli</i> en 1994. Je m’en suis librement inspiré pour en faire le cadre de mes campagnes de fantasy.</p>
 

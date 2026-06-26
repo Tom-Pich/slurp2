@@ -1,5 +1,3 @@
-<h1>La Burgonnie</h1>
-
 <p>L’Empire Burgon est l’une des grandes puissances de Paorn, un vaste territoire aux paysages enchanteurs et au climat privilégié. Derrière la splendeur de ses villes et la richesse de ses terres fertiles se cache un système politique complexe, fait d’intrigues permanentes et de luttes de pouvoir. Cet empire morcelé maintient une stabilité relative, malgré ses divisions internes, grâce à des institutions séculaires et la poigne de fer de ses empereurs<!-- une structure sociale bien définie -->.</p>
 
 <!-- Géographie -->
@@ -14,7 +12,7 @@
 		<ul>
 			<li>La <a href="/wiki/paorn/sordolia">Sordolia</a> au nord</li>
 			<li>Le Verbleau au centre</li>
-			<li>L’<a href="wiki/paorn/artaille">Artaille</a> au sud</li>
+			<li>L’<a href="/wiki/paorn/artaille">Artaille</a> au sud</li>
 		</ul>
 		<figure class="right">
 			<img src="/assets/img_paorn/carte-burgonnie-politique.webp?v=2" alt="Carte politique de la Burgonnie">
@@ -169,7 +167,7 @@
 			<h3>Organisations influentes</h3>
 		</summary>
 		<ul class="flow">
-			<li><b><a href="/wiki/paron/arcania">L’Arcania</a> :</b> Police magique impériale.</li>
+			<li><b><a href="/wiki/paorn/arcania">L’Arcania</a> :</b> Police magique impériale.</li>
 			<li><b>Les guildes commerciales et artisanales :</b> Elles contrôlent l’ensemble de l’économie et disposent d’une influence considérable.</li>
 		</ul>
 	</details>
@@ -185,7 +183,7 @@
 			<h3>Religion</h3>
 		</summary>
 
-		<p>L’<a href="/wiki/paorn/atrimsime">Atrimisme</a> est la religion dominante de l’Empire Burgon. Cette religion monothéiste est largement pratiquée dans toutes les couches de la société. Toutefois, certaines branches non orthodoxes existent, ainsi que quelques cultes minoritaires tolérés par les autorités.</p>
+		<p>L’<a href="/wiki/paorn/atrimisme">Atrimisme</a> est la religion dominante de l’Empire Burgon. Cette religion monothéiste est largement pratiquée dans toutes les couches de la société. Toutefois, certaines branches non orthodoxes existent, ainsi que quelques cultes minoritaires tolérés par les autorités.</p>
 
 		<p>En dehors de l’atrimisme, la pratique de la magie cléricale est autorisée, mais uniquement dans le cadre de cérémonies religieuses approuvées par les comices locaux.</p>
 
@@ -255,7 +253,7 @@
 <section>
 	<h2>Histoire</h2>
 
-	<p>Les dates sont donnée selon le <a href="wiki/paorn/calendrier-burgon">calendrier burgon</a>.</p>
+	<p>Les dates sont donnée selon le <a href="/wiki/paorn/calendrier-burgon">calendrier burgon</a>.</p>
 
 	<!-- Les confédérations primitives -->
 	<details>

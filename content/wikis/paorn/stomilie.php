@@ -1,5 +1,3 @@
-<h2>Stomilie, ville sainte de Burgonie</h2>
-
 <div class="has-right-block">
 	<p>
 		Stomilie est une ville fortifiée d’environ 10.000 habitants, de forme globalement circulaire.<br>

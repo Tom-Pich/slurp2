@@ -1,4 +1,3 @@
-<h1>Pentathéisme</h1>
 <p>Le pentathéisme est une religion originaire de l’île de la Lauria. Précédant l’arrivée de l’atrimisme sur l’île, elle reste profondément ancrée dans la culture laurienne, notamment dans les communautés rurales. Centrée sur le cycle de la nature, l’agriculture et la fertilité, elle vénère un panthéon de cinq divinités, le <i>Pentatos</i>.</p>
 
 <h2>Le Pentatos</h2>

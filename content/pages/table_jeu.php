@@ -569,7 +569,9 @@ use App\Rules\WeaponsController;
 				<option value="warrior">Guerrier</option>
 			</select>
 			<input type="checkbox" name="name-only" title="seulement un nom">
-			<input type="checkbox" name="use-ai" title="utiliser l’IA ?">
+			<?php if ($_SESSION["Statut"] >= 2) : ?>
+				<input type="checkbox" name="use-ai" title="utiliser l’IA ?">
+			<?php endif; ?>
 		</div>
 		<button class="nude">🎲</button>
 	</form>
@@ -610,7 +612,9 @@ use App\Rules\WeaponsController;
 				</optgroup>
 				<!-- <option value="books">Titre de livre</option> -->
 			</select>
-			<input type="checkbox" name="use-ai" title="utiliser l’IA ?">
+			<?php if ($_SESSION["Statut"] >= 2) : ?>
+				<input type="checkbox" name="use-ai" title="utiliser l’IA ?">
+			<?php endif; ?>
 		</div>
 		<button class="nude">🎲</button>
 	</form>

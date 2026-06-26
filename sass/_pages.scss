@@ -180,12 +180,6 @@ body.gestionnaire-mj {
 body.wiki {
 
 	--col-width: 250px;
-	/* @include media {
-		#page-wrapper {
-			grid-template-rows: 1.5em auto;
-			&.active-index { grid-template-rows: auto auto; }
-		}
-	} */
 
 	aside.left {
 		#show-wiki-nav {
@@ -226,14 +220,13 @@ body.wiki {
 	
 	h1 { @include media-min { --flow-space: 0; } }
 	h2 { font-size: var(--fs-600); border-bottom: 1px solid var(--black); padding-bottom: .15em }
-	//main > :is(h2, h3, h4) { color: var(--clr-invalid) } // must be in section
 	h3 { font-size: var(--fs-500); }
 	h4 { font-size: var(--fs-450); }
 	h5 { font-size: var(--fs-400); }
 	figcaption {text-align: center; font-style: italic;}
 	.float-left { float: left; margin-right: 1rem;  max-width: 50%; --flow-space: .5em;}
 
-	details:has(> summary > h3) { margin-top: 1.5em; }
+	details:has(> summary > h3) { margin-top: 1em; border: .5px solid silver; border-radius: .5em; padding: .5em .75em }
 
 	.admin { color: var(--grey-500); }
 	:is(div, p, ul, details).admin { border: .5px solid var(--grey-700); padding: .5em; }

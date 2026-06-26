@@ -1,5 +1,3 @@
-<h1>Le fort de Leck</h1>
-
 <div class="has-right-block">
 
 	<p>Le fort de Leck est un des petits forts qui se trouvent le long du <i>Dernier Rempart</i>. Comptant un peu plus de 30 occupants, il est typique des forts que l’on trouve à intervales réguliers sur le rempart.</p>

@@ -104,13 +104,13 @@ return [
 
 		"combustible" => ["bois de chauffage", "charbon de bois", "tourbe"],
 
-		"eau &amp; liquide" => ["eau", "vin", "bière", "huile"],
+		"eau & liquides" => ["eau", "vin", "bière", "huile"],
 
-		"animaux &amp; fourrage" => ["foin", "paille", "avoine", "fumier (à évacuer)"],
+		"animaux & fourrage" => ["foin", "paille", "avoine", "fumier (à évacuer)"],
 
 		"alimentation courante" => ["pain", "lait", "poisson frais"],
 
-		"matériaux &amp; consommables artisanaux" => ["sable", "chaux", "peaux brutes", "laine brute", "chiffons (pour papier)"]
+		"matériaux & consommables artisanaux" => ["sable", "chaux", "peaux brutes", "laine brute", "chiffons (pour papier)"]
 	]
 
 ];

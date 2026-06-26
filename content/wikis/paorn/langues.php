@@ -1,5 +1,3 @@
-<h1>Langues de Paorn</h1>
-
 <h2>Langues burgonnes</h2>
 <ul>
 	<li><b>Burgon (ou verbléanais) :</b> parlé dans tout l’empire, c’est également la langue principale dans le Verbleau.</li>

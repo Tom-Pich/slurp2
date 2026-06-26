@@ -1,5 +1,3 @@
-<h1>L’Artaille, douce province du sud</h1>
-
 <!--
 Économie
 Figures et groupes d'influence

@@ -19,12 +19,12 @@ $body_class .=  $page->displayStyle !== "normal" ? (" " . $page->displayStyle) :
 	<link rel="stylesheet" href="/styles.min.css?v=<?= VERSION ?>">
 
 	<link rel="shortcut icon" href="/assets/img/favicon.ico">
-	<title><?= $page->title ?></title>
+	<title><?= $page->titleTab ?></title>
 
 	<?php if ($_SESSION["Statut"] < 3) echo "<style>.admin:not(.user-{$_SESSION['id']}) {display: none !important}</style>" ?>
 
 	<link rel="canonical" href="<?= $page->canonical ?>">
-	<meta property="og:title" content="<?= $page->title ?>">
+	<meta property="og:title" content="<?= $page->titleTab ?>">
 	<meta property="og:type" content="Website">
 	<meta property="og:url" content="<?= $page->canonical ?>">
 	<meta property="og:description" content="<?= $page->description ?>">
@@ -41,10 +41,10 @@ $body_class .=  $page->displayStyle !== "normal" ? (" " . $page->displayStyle) :
 			<a href="/" title="Accueil"><img src="/assets/img/favicon.ico" width="64" height="64"></a>
 			<div>
 				<p class="fs-700 fw-700 ff-accent">SLURP</p>
-				<?php if ($page->bodyClass === "wiki"): ?>
-					<p class="fs-600 fw-700 ff-accent"><?= $page->title ?></p>
+				<?php if ($page->file === "wiki-page"): ?>
+					<p class="fs-600 fw-700 ff-accent"><?= $page->titleTab ?></p>
 				<?php else : ?>
-					<h1><?= $page->title ?></h1>
+					<h1><?= $page->titleH1 ?></h1>
 				<?php endif ?>
 			</div>
 		</div>
@@ -122,7 +122,7 @@ $body_class .=  $page->displayStyle !== "normal" ? (" " . $page->displayStyle) :
 					<h4>Aides de jeu</h4>
 					<ul class="sub-menu" style="--height: 13rem;">
 						<li><a href="/ecrire-scenario"><?= $pages_data['ecrire-scenario']["title"] ?></a></li>
-						<li><a href="/aide-de-jeu-medfan"><?= $pages_data['aide-de-jeu-medfan']["title"] ?></a></li>
+						<li><a href="/wiki/moyen-age">Wiki Moyen Âge</a></li>
 						<li><a href="/bibliotheque-liens"><?= $pages_data['bibliotheque-liens']["title"] ?></a></li>
 						<li><a href="/concevoir-personnage"><?= $pages_data['concevoir-personnage']["title"] ?></a></li>
 						<li><a href="/vocabulaire-relief"><?= $pages_data['vocabulaire-relief']["title"] ?></a></li>

@@ -1,8 +1,10 @@
-––– projets lointains
+# Todo site
+
+## projets lointains
 Désavantage Migraines
 Inconfort de PJ → moral ? Pts de perso ?
 Faire un effort supplémentaire : échanger PdF contre petit bonus ?
 Règles de dégradation des armures
 
-––– high-tech
+## high-tech
 Piratage info : rôle puissance machine ? Installation malware ?

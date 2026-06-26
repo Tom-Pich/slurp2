@@ -1,5 +1,3 @@
-<h1>Fallenbeck, gros village au nord de Sardam</h1>
-
 <p>Gros village fortifié de 800 habitants environ, situé sur la route <a href="/wiki/paorn/sardam">Sardam</a>–<a href="/wiki/paorn/solidam">Solidam</a>, à 27 km au nord de Sardam. Halte incontournable pour les convois de ravitaillement à destination de Solidam, Fallenbeck doit sa prospérité relative à sa position sur cette route marchande.</p>
 
 <!-- Géographie -->

@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="https://www.xml-sitemaps.com/css/sitemap.css"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:fo="http://www.w3.org/1999/XSL/Format"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://jdr.pichegru.net/</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/personnages</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/avdesav-comp-sorts</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/armes-armures</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/bases-systeme</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/combat</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/blessures-dangers</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/magie</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/animaux</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/psioniques</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/vehicules</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/high-tech</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/adapted-dungeons-dragons</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/in-nomine</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/cthulhu</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/ombres-esteren</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/ecrire-scenario</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/moyen-age</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/bibliotheque-liens</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/concevoir-personnage</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/vocabulaire-relief</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/qualite-jeu</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/table-jeu</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/burgonnie</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/artaille</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/duche-elmora</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/imegie</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/auberge-vieille-tour</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/almisie</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/stomilie</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/port-goshal</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/sordolia</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/sardam</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/maison-avrelanche</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/chateau-sardam</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/solidam</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/lardam</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/fort-leck</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/fallenbeck</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/sigherd</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/lauria</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/mikalas</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/parna</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/peponia</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/pasganon</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/arcania</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/atrimisme</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/pentatheisme</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/langues</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/paorn/calendrier-burgon</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/moyen-age/demographie</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/moyen-age/besoins-ressources</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/moyen-age/metiers</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/moyen-age/biens-marchandises</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/moyen-age/chiffres-agriculture</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/moyen-age/pouvoir-seigneurial</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/moyen-age/rangs-noblesse</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/moyen-age/decoupage-territoires</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/moyen-age/activites-agricoles-saisons</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/moyen-age/alimentation-saisons</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/moyen-age/conservation-aliments</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/moyen-age/outils-techniques-agricoles</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/moyen-age/voyage-route</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/moyen-age/transport-fluvial</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/moyen-age/moulin-hydraulique</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/moyen-age/calebasse</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/moyen-age/chateau-fort</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://jdr.pichegru.net/wiki/moyen-age/village</loc>
+  <lastmod>2026-06-26T09:36:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+</urlset>

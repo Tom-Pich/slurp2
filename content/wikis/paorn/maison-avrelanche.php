@@ -1,5 +1,3 @@
-<h1>La Maison d’Avrelanche</h1>
-
 <div class="has-right-block">
 
 	<img src="/assets/img_paorn/blason-avrelanche.webp" width="100" class="float-left" alt="Blason de la Maison d’Avrelanche">

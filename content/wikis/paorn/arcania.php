@@ -1,6 +1,3 @@
-<h1>Arcania</h1>
-
-
 <p>L’Arcania est une « police magique » officiant en Burgonnie et dont le rôle est d’assurer la sécurité de l’empire face aux menaces que constitue l’utilisation incontrôlée de la magie.</p>
 <p>À sa tête se trouve l’Archimage, qui est également conseiller de l’empereur. Celui-ci réside à Olméria.</p>
 <p>

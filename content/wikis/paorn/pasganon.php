@@ -1,5 +1,3 @@
-<h1>Les Pasganon</h1>
-
 <!--
 Géographie
 Habitants

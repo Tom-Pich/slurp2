@@ -1,5 +1,3 @@
-<h2>Mikalas, grand port de commerce</h2>
-
 <p>Mikalas est un grand port marchand qui n’a rien à envier aux plus grands ports de la côte est du continent. C'est là qu'accostent quotidiennement les lourds vaisseaux venus d'Althusia et de Burgonnie ou en partance vers les îles du Tarot. Ville tentaculaire aux innombrables entrepôts gorgés de richesses, Mikalas est également réputée pour la qualité des étoffes qui sont tissées dans ses immenses ateliers.</p>
 
 <p>Maisons de pierre calcaire aux toits de tuiles, basse (un niveau en général, quelques unes à deux niveaux). Ambiance calme et reposante. Nombreuses églises de pierres claires aux clochers élancés.</p>

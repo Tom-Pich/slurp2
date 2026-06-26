@@ -1,5 +1,3 @@
-<h1>Solidam</h1>
-
 <div class="has-right-block">
 	<img src="/assets/img_paorn/blason-solidam-400.webp" width="100" class="float-left" alt="Blason de Solidam">
 	<p>Solidam est une petite ville garnison située en Sordolia, dernier avant-poste humain avant les grandes étendues nordiques et les Sinistérias.</p>

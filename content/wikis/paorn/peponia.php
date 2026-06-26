@@ -1,5 +1,3 @@
-<h2>Péponia</h2>
-
 <!-- Description, Habitants, Politique, Activités -->
 <div class="has-right-block">
 	<p>Péponia est un village laurien typique. Situé sur les terres de la famille Karras, à mi-chemin entre Loelio et Parna, le village compte environ 600 habitants.</p>

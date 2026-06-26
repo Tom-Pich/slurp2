@@ -1,5 +1,3 @@
-<h1>La Sordolia, province sauvage du nord</h1>
-
 <!-- Introduction -->
 <div class="has-right-block">
 

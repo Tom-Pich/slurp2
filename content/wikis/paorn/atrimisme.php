@@ -1,5 +1,3 @@
-<h1>Atrimisme</h1>
-
 <p>L’atrimisme est la religion qui vénère Atrim. Elle est religion d’état en Burgonnie. Elle est également pratiquée dans la République Palane, le Salthar et la Tsovranie.</p>
 
 <!-- Principes -->

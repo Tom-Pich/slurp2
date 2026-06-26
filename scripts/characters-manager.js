@@ -228,7 +228,7 @@ function fillCharacterSummary(id, data) {
 
     fillValueInTemplate(clone, "Encombrement", `${data.state.Encombrement.name} (${data.carried_weight}&nbsp;kg)`);
 
-    const equipment = data.equipment[0].liste;
+    const equipment = data.equipment.filter(container => container.id === 0 && container.lieu === "pi")[0].liste; // Possessions sur soi
     const displayedEquipment = equipment.map((item) => `<span title="${item.notes} – ${item.secret}">${item.name}</span>`);
     fillValueInTemplate(clone, "Équipement", displayedEquipment.join(", "));
 

@@ -1,5 +1,3 @@
-<h1>Sardam, capitale de la Sordolia</h1>
-
 <!-- Introduction -->
 <section class="has-right-block">
 
@@ -156,6 +154,7 @@
 			<li>50 t de bois par jour</li>
 			<li>Presque 2 gros bateaux par jour (30 t) et 4 petits (3 t)</li>
 		</ul>
+	</details>
 
 	<!-- Les blanchisseuses -->
 	<details>
@@ -212,11 +211,11 @@
 </section>
 
 <!-- Culture & société -->
- <section>
+<section>
 	<h2>Culture &amp; société</h2>
 	<p>L’<b>urte</b> est une boisson chaude très appréciée à Sardam. Il s’agit d’une infusion utilisant des baie de genièvre et d’autres plantes, à laquelle on ajoute une pointe de vinaigre de cidre et – si les moyens le permettent – un peu de miel. Servie à tout moment de la journée.</p>
- </section>
- 
+</section>
+
 <!-- Histoire -->
 <!-- Particularités -->
 
@@ -239,7 +238,7 @@
 	</details>
 
 	<!-- Huybert, pelleter-tailleur haut de gamme -->
-	 <details>
+	<details>
 		<summary>
 			<h3>Huybert, pelleter-tailleur haut de gamme</h3>
 		</summary>
@@ -255,5 +254,5 @@
 		<p><b>Spécialité :</b> hermine de Komashkaïda et renard blanc des Sinistérias — les deux fourrures les plus rares de Sordolia. Il ne travaille pas le castor, trop commun. Ses capes sont doublées de soie.</p>
 
 		<p><b>Prix :</b> entre 8 et 25 pièces d'or selon la pièce.</p>
-	 </details>
+	</details>
 </section>

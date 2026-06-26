@@ -1,6 +1,3 @@
-<h1>Le château de Sardam</h1>
-
-
 <div class="has-right-block">
 	<p>Le monumental château du Prince domine la cité depuis une colline stratégique. Ses remparts atteignent 15 mètres de hauteur et ses donjons effilés se découpent sur le ciel de Sordolia. C'est la résidence du prince Margor d'Avrelanche et le siège du pouvoir provincial.</p>
 

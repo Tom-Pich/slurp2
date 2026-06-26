@@ -1,7 +1,8 @@
 <?php
 $articles = $payload;
-$article = $articles[$article_name];
-$url_root = "/wiki/" . $wiki;
+// $article_name and $wiki defined in PageController->show()
+
+$url_root = "/wiki/$wiki";
 $sections = [];
 foreach ($articles as $a) if (isset($a["section"])) $sections[] = $a["section"];
 $sections = array_unique($sections);
@@ -29,7 +30,7 @@ $articles_without_section = array_filter(
 	ARRAY_FILTER_USE_BOTH
 ); ?>
 <?php foreach ($articles_without_section as $name => $article): ?>
-	<a href="/wiki/<?= $wiki ?>/<?= $name ?>" <?= lk_classes($name, $article_name, false) ?>><?= $article["title"] ?></a>
+	<a href="/wiki/<?= $wiki ?>/<?= $name ?>" <?= lk_classes($name, $article_name, false) ?>><?= htmlspecialchars($article["title"]) ?></a>
 <?php endforeach ?>
 
 <!-- Sections -->
@@ -41,7 +42,7 @@ foreach ($sections as $section) {
 	if ($main_article) {
 		$main_article_name = array_keys($main_article)[0];
 		$link_open = "<a href='{$url_root}/{$main_article_name}'>";
-		$link_close = "";
+		$link_close = "</a>";
 	}
 	$section_articles = array_filter(
 		$articles,
@@ -49,7 +50,7 @@ foreach ($sections as $section) {
 			isset($x["parent"]) && $articles[$x["parent"]]["section"] === $section
 	);
 ?>
-	<h4><?= $link_open . $section . $link_close ?></h4>
+	<h4><?= $link_open . htmlspecialchars($section) . $link_close ?></h4>
 	<?php foreach ($section_articles as $name => $article): ?>
 		<a href="<?= $url_root ?>/<?= $name ?>" <?= lk_classes($name, $article_name, isset($article["parent"])) ?>>
 			<?= $article["title"] ?> <?= $article["status"] ?? "" ?>

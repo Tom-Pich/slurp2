@@ -4,7 +4,7 @@ define("IS_ONLINE", $_SERVER['HTTP_HOST'] === 'jdr.pichegru.net');
 define("DB_ACTIVE", true);
 define("GENERIC_PASSWORD", $_ENV["GENERIC_PASSWORD"]);
 define("SESSION_DURATION", 10800);
-define("VERSION", "3.32.1"); // 3.32: IA active
+define("VERSION", "3.33.0"); // 3.33: Wiki Moyen Âge
 define("DATE_VERSION", "juin 2026");
 define("PRODUCTION", true); // run webpack before switching to true
 define("SKILL_V2", true); // coût compétences v2 → niv limité à +7

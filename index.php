@@ -389,13 +389,15 @@ elseif (in_array($path_segments[1], ["personnage-fiche", "personnage-gestion"]) 
 	$page_data = $pages_data[$page_name];
 	$page_data["name"] = $page_name;
 	$page_data["title"] = $character->name;
+	$page_data["category"] = "character-page";
 	$page = new PageController($page_data);
 	$page->show($character);
 }
 
 // wiki pages
 else if ($path_segments[1] === "wiki" && !empty($path_segments[2]) && count($path_segments) <= 3) {
-	$wiki = $path_segments[2]; // for now only "paorn"
+	$wiki = $path_segments[2]; // "paorn" or "moyen-age"
+	$article_name = empty($path_segments[3]) ? "home" : $path_segments[3];
 
 	$articles_data = "content/wikis/" . $wiki . "/_data.php";
 	if (file_exists($articles_data)) {
@@ -404,16 +406,16 @@ else if ($path_segments[1] === "wiki" && !empty($path_segments[2]) && count($pat
 		$page = new Error404Controller;
 		$page->show();
 	}
-
-	$article_name = empty($path_segments[3]) ? "home" : $path_segments[3];
+	
 	if (!empty($articles[$article_name])) {
 		$article = $articles[$article_name];
 		$page_data["name"] = "wiki/" . $wiki . "/" . $article_name;
-		$page_data["title"] = ($article_name !== "home" ? "Wiki " . ucfirst($wiki) . " – " : "") . $article["title"];
-		$page_data["description"] = $article["description"] ?? null;
-		$page_data["file"] = "wiki-page";
-		$page_data["body-class"] = "wiki";
-		$page_data["version"] = 4;
+		$page_data["title"] = $article["title"] ;
+		$page_data["titleH1"] = $article["titleH1"] ?? $article["title"];
+		$page_data["description"] = $article["description"] ?? "";
+		$page_data["file"] = "wiki-page"; // virtual file, see PageController
+		$page_data["body-class"] = "wiki $wiki";
+		$page_data["category"] = $articles["home"]["title"];
 		$page_data["aside-left"] = "aside-wiki-index";
 		$page = new PageController($page_data);
 	} else {

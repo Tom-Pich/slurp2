@@ -1,5 +1,3 @@
-<h1>Âges &amp; calendrier burgon</h1>
-
 <p>Le calendrier de l'Empire Burgon est fondé sur les trois âges de l'histoire du monde, tels que définis par la tradition atrimiste. L'année commence au premier jour du printemps.</p>
 
 <!-- Les trois âges -->

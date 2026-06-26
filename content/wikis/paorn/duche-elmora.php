@@ -1,5 +1,3 @@
-<h1>Duché d’Elmora</h1>
-
 <div class="has-right-block">
 	<p>
 		Le <i>duché d’Elmora</i> (ou duché d’<i>Elmour</i> en verbléan), situé dans la province de l'Artaille, comprend les villes d’Imégie, d’Almisie et de Stomilie. Il s’étend sur environ 26.500 km².<br>

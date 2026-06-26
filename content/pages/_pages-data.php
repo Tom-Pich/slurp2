@@ -97,11 +97,11 @@ return $pages_data = [
 		"file" => "s_scenario",
 		"body-class" => "standard-page writing-scenario",
 	],
-	"aide-de-jeu-medfan" => [
+	/* "aide-de-jeu-medfan" => [
 		"title" => "Le Moyen Âge",
 		"description" => "Quelques éléments sur le Moyen-Âge",
 		"file" => "s_adj_med",
-	],
+	], */
 	"bibliotheque-liens" => [
 		"title" => "Bibliothèque de liens",
 		"description" => "Quelques liens utiles",

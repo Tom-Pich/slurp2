@@ -1,5 +1,3 @@
-<h1>Almisie, la cité qui travaille</h1>
-
 <img src="/assets/img_paorn/blason-almisie.png" width="70" class="float-left">
 
 <div class="has-right-block">

@@ -1,5 +1,3 @@
-<h1>Imégie, capitale de l’Artaille</h1>
-
 <div class="has-right-block">
 	<img src="/assets/img_paorn/blason-imegie.png" width="70px" class="float-left">
 	<p>Cité portuaire aux maisons blanchies à la chaux, Imégie (également nommée la <i>Ville blanche</i>) est la capitale de l’Artaille.</p>
@@ -358,7 +356,7 @@
 		<ul>
 			<li><b>Auberge de la Dunette :</b> dans le quartier du port. Auberge de standing moyen.</li>
 			<li><b>Auberge du Prince :</b> dans la vieille ville. Auberge de haut standing dans le quartier de Bellevue.</li>
-			<li><b><a href="wiki/paorn/auberge-vieille-tour">Auberge de la Vieille Tour</a> :</b> dans la vieille ville, quartier des Consuls.</li>
+			<li><b><a href="/wiki/paorn/auberge-vieille-tour">Auberge de la Vieille Tour</a> :</b> dans la vieille ville, quartier des Consuls.</li>
 			<li><b>Auberge de la Perle :</b> quartier de Bellevue. Une auberge confortable accueillant les marchands de passage. Elle propose (très discrètement) des jeunes filles à ses clients.</li>
 		</ul>
 	</details>

@@ -1,5 +1,3 @@
-<h2>Parna, capitale de la Lauria</h2>
-
 <div class="has-right-block">
 	<p>La capitale de la Lauria est une magnifique cité à flanc de montagne composée de milliers de petites maisons blanches, surplombée par la formidable <i>Tour d’Opale</i> où siègent le <i>Septar</i> et le <i>Grand Conseil des Aînés</i>.</p>
 	<p>À signaler également un fantastique «&nbsp;musée&nbsp;» archéologique&nbsp;: le <i>Démétrion</i>.</p>

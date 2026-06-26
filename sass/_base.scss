@@ -1,4 +1,4 @@
-/* Mon framework CSS v2026-02-14 🖐️ linked to original ! */
+/* Mon framework CSS v2026-06-26 🖐️ linked to original ! */
 /* Attention, class pc-center supprimée */
 /* variables --dynamic-space-x-y renommées */
 /* taille : 14300 → 13665 octets */
@@ -96,6 +96,7 @@ a {transition: all .2s; color: var(--clr-primary-500)}
 a:hover {color: var(--clr-primary-500)}
 img, picture, svg, video, iframe {display: block; max-width: 100%;}
 img {font-style: italic; height: auto;}
+figure > img { margin-inline: auto; }
 ul, ol {padding-left: 1.5em; --flow-space: .5em;}
 sub, sup {line-height: 0; font-size: 0.7em;}
 strong { font-weight: 700; color: var(--clr-primary-500) }

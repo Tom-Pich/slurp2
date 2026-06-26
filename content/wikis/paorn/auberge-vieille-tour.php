@@ -1,5 +1,3 @@
-<h2>Auberge de la Vieille Tour</h2>
-
 <section style="min-height: 850px; margin-top: 0;">
 	<div class="has-right-block">
 		<p>Située dans le quartie des Consuls, c’est un établissement de standing qui se distingue par son élégance rustique et son raffinement. De la salle commune, de taille assez modeste mais accueillante, se dégage une ambiance feutrée. Des musiciens talentueux jouent une musique distinguée, créant une atmosphère apaisante et sophistiquée.</p>
