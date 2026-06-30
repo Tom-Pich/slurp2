@@ -28,7 +28,7 @@ function color_modifier(int|float $original_score, int|float $actual_score)
 		<h3 id="character-name" data-id="<?= $character->id ?>" data-gm="<?= $character->id_gm ?>">
 			<?= $character->name ?>
 		</h3>
-		<a href="personnage-gestion?perso=<?= $character->id ?>" title="Éditer – Alt+Shift+E" accesskey="e" class="ff-fas edit-link">&#xf013;</a>
+		<a href="personnage-gestion?perso=<?= $character->id ?>" title="Éditer – Alt+Shift+E" accesskey="e" class="ff-fas edit-link no-print">&#xf013;</a>
 	</div>
 
 	<!-- Points -->
@@ -50,7 +50,7 @@ function color_modifier(int|float $original_score, int|float $actual_score)
 
 	<!-- Background -->
 	<?php if (!empty($character->background) && !$compact): ?>
-		<details class="no-print mt-½ hidden-when-compact">
+		<details class="no-print mt-½">
 			<summary>
 				<h3>Background</h3>
 			</summary>
@@ -253,7 +253,7 @@ function color_modifier(int|float $original_score, int|float $actual_score)
 				<?php } ?>
 			</div>
 		<?php elseif (count($sublist) && $compact): ?>
-			<p><?= join(", ", $sublist) ?></p>
+			<p class="ta-left"><?= join(" ; ", $sublist) ?></p>
 		<?php endif; ?>
 
 	<?php endforeach ?>
@@ -263,14 +263,7 @@ function color_modifier(int|float $original_score, int|float $actual_score)
 <fieldset>
 	<legend>Compétences</legend>
 
-	<?php if ($compact):
-		$skill_display_array = [];
-	?>
-			<?php foreach ($character->skills as $comp):
-				$skill_display_array [] = "<span data-type='throwable-wrapper'><span data-type='throwable-label'>" . $comp["label"]. "</span><span data-type='throwable-score'" . color_modifier($comp["raw-base"], $comp["base"]). "> ". $comp["score"]. "</span></span>";
-				?>
-			<?php endforeach ?>
-			<p><?= join(", ", $skill_display_array) ?></p>
+	<?php if ($compact): include "content/components/compact-character-sheet/compact-skills.php"; ?>
 	<?php else: ?>
 		<?php foreach ($character->skills as $comp): ?>
 
@@ -286,7 +279,6 @@ function color_modifier(int|float $original_score, int|float $actual_score)
 				</div>
 			</details>
 
-
 		<?php endforeach ?>
 	<?php endif ?>
 
@@ -294,45 +286,49 @@ function color_modifier(int|float $original_score, int|float $actual_score)
 
 <!-- Magie -->
 <?php if ($character->special_traits["magerie"]): ?>
-	<fieldset>
+	<fieldset <?= $compact ? "class=\"flow\"" : "" ?>>
 		<legend>Magie</legend>
 
-		<?php foreach ($character->colleges as $college) { ?>
+		<?php foreach ($character->colleges as $college): ?>
+			<?php $clr_style = color_modifier(0, $character->modifiers["Int"] + $character->modifiers["Magie"]) ?>
+			<?php if ($compact): include "content/components/compact-character-sheet/compact-spells.php"; ?>
+			<?php else: ?>
 
-			<details class="liste">
-				<summary>
-					<div>
-						<div><?= $college["name"] ?></div>
-						<div <?= color_modifier(0, $character->modifiers["Int"] + $character->modifiers["Magie"]) ?>><?= $college["score"] ?></div>
-					</div>
-				</summary>
+				<details class="liste">
+					<summary>
+						<div>
+							<div><?= $college["name"] ?></div>
+							<div <?= $clr_style ?>><?= $college["score"] ?></div>
+						</div>
+					</summary>
 
-				<?php foreach ($character->spells as $sort) {
-					if (in_array($college["id"], $sort["data"]->colleges) && (max($sort["scores"]) >= 12)) { ?>
+					<?php foreach ($character->spells as $sort):
+						if (in_array($college["id"], $sort["data"]->colleges) && (max($sort["scores"]) >= 12)): ?>
 
-						<details class="sous-liste">
-							<summary data-type="throwable-wrapper">
-								<div class="flex-s gap-½">
-									<div class="fl-1" data-type="throwable-label">
-										<?= $sort["label"] ?>
-										<?php if (!in_array($sort["data"]->class, ["Enchantement"])) { ?>
-											[<?= $sort["readable_costs"] ?>]
-										<?php } ?>
+							<details class="sous-liste">
+								<summary data-type="throwable-wrapper">
+									<div class="flex-s gap-½">
+										<div class="fl-1" data-type="throwable-label">
+											<?= $sort["label"] ?>
+											<?php if (!in_array($sort["data"]->class, ["Enchantement"])) { ?>
+												[<?= $sort["readable_costs"] ?>]
+											<?php } ?>
+										</div>
+										<div data-type="throwable-score"><?= $sort["readable_scores"] ?></div>
 									</div>
-									<div data-type="throwable-score"><?= $sort["readable_scores"] ?></div>
+								</summary>
+
+								<div class="fs-300 ta-justify">
+									<?= $sort["data"]->getFullDescription($sort["readable_time"]) ?>
 								</div>
-							</summary>
+							</details>
 
-							<div class="fs-300 ta-justify">
-								<?= $sort["data"]->getFullDescription($sort["readable_time"]) ?>
-							</div>
-						</details>
+						<?php endif ?>
+					<?php endforeach ?>
 
-				<?php }
-				} ?>
-
-			</details>
-		<?php } ?>
+				</details>
+			<?php endif ?>
+		<?php endforeach ?>
 
 	</fieldset>
 <?php endif ?>
@@ -341,33 +337,39 @@ function color_modifier(int|float $original_score, int|float $actual_score)
 <?php if ($character->special_traits["pouvoirs"] && count($character->powers)): ?>
 	<fieldset>
 		<legend>Pouvoirs</legend>
-		<?php
-		foreach ($character->powers as $pouvoir) {
-			$type = $pouvoir["data"]->specific["Type"] ?? $pouvoir["origine"];
-		?>
-			<details class="liste">
-				<summary data-type="throwable-wrapper">
-					<div>
-						<div data-type="throwable-label"><?= $pouvoir["label"] ?></div>
-						<div data-type="throwable-score" <?= color_modifier(0, $character->modifiers["Int"]) ?>><?= $pouvoir["score"] ?></div>
+
+		<?php if ($compact): include "content/components/compact-character-sheet/compact-spells.php"; ?>
+		<?php else: ?>
+			<?php foreach ($character->powers as $pouvoir):
+				$type = $pouvoir["data"]->specific["Type"] ?? $pouvoir["origine"];
+			?>
+				<details class="liste">
+					<summary data-type="throwable-wrapper">
+						<div>
+							<div data-type="throwable-label"><?= $pouvoir["label"] ?></div>
+							<div data-type="throwable-score" <?= color_modifier(0, $character->modifiers["Int"]) ?>><?= $pouvoir["score"] ?></div>
+						</div>
+					</summary>
+					<div class="fs-300">
+						<?php
+						if ($type === "sort") echo $pouvoir["data"]->data->getFullDescription();
+						else echo $pouvoir["data"]->data->description;
+						?>
 					</div>
-				</summary>
-				<div class="fs-300">
-					<?php
-					if ($type === "sort") echo $pouvoir["data"]->data->getFullDescription();
-					else echo $pouvoir["data"]->data->description;
-					?>
-				</div>
-			</details>
-		<?php } ?>
+				</details>
+			<?php endforeach ?>
+		<?php endif ?>
 	</fieldset>
 <?php endif ?>
 
 <!-- Psi -->
-<?php if ($character->special_traits["psi"]):	?>
+<?php if ($character->special_traits["psi"]): ?>
 	<fieldset>
 		<legend>Psi</legend>
-		<?php foreach ($character->disciplines as $discipline) { ?>
+		<?php foreach ($character->disciplines as $discipline): ?>
+			<?php if ($compact): include "content/components/compact-character-sheet/compact-psi.php"; ?>
+			<?php else: ?>
+
 			<details class="liste">
 				<summary>
 					<div>
@@ -394,7 +396,9 @@ function color_modifier(int|float $original_score, int|float $actual_score)
 				<?php }
 				} ?>
 			</details>
-		<?php } ?>
+
+			<?php endif ?>
+		<?php endforeach ?>
 	</fieldset>
 <?php endif ?>
 
@@ -403,7 +407,7 @@ function color_modifier(int|float $original_score, int|float $actual_score)
 	<fieldset>
 		<legend class="flex-s gap-½ ai-center">
 			Possessions
-			<button class="ff-far fs-200 btn-primary btn-square" data-role="open-dialog" data-dialog-name="possession-notice" title="mode d’emploi de la liste de possession">&#xf059;</button>
+			<button class="ff-far fs-200 btn-primary btn-square no-print" data-role="open-dialog" data-dialog-name="possession-notice" title="mode d’emploi de la liste de possession">&#xf059;</button>
 		</legend>
 
 		<form id="form-equipment" class="flow">
@@ -500,18 +504,6 @@ function color_modifier(int|float $original_score, int|float $actual_score)
 			</summary>
 			<div class="mt-½ flow">
 				<?= TextParser::pseudoMDParser($character->notes) ?>
-			</div>
-		</details>
-	<?php } ?>
-
-	<!-- Background -->
-	<?php if (!empty($character->background)) { ?>
-		<details class="mt-1 no-print">
-			<summary>
-				<h3>Background</h3>
-			</summary>
-			<div class="mt-½ flow">
-				<?= TextParser::pseudoMDParser($character->background) ?>
 			</div>
 		</details>
 	<?php } ?>

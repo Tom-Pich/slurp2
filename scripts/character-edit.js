@@ -52,9 +52,9 @@ addQuirkBtn.addEventListener("click", (e) => {
     e.target.dataset.number++;
 });
 
-// Cancel input modal btn (new avdesav, new skills...), has to be a function because of updateDOM
+// Cancel modal btn, has to be a function because of updateDOM
 function activateCloseInputModals() {
-    const closeInputModalBtns = qsa("[data-role=close-input-modal]");
+    const closeInputModalBtns = qsa("[data-role=close-modal]");
     closeInputModalBtns.forEach((btn) => {
         btn.addEventListener("click", (e) => {
             const dialog = e.target.closest("dialog");
@@ -88,6 +88,7 @@ form.addEventListener("keydown", (e) => {
 
 // submit form and reload page with morphdom
 form.addEventListener("submit", (e) => {
+	console.info("Character has been saved")
     e.preventDefault();
     const dialogs = qsa("dialog");
     dialogs.forEach((dialog) => dialog.close());

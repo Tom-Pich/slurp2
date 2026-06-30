@@ -37,7 +37,7 @@ class Equipment
 		$this->visibleByGroupId = $data["Groupe"] ?? null;
 		$this->order = $data["Ordre"] ?? 1;
 		if (substr($this->place, 0, 3) === "ct_") {
-			$this->containerName = $repo->getEquipment((int)substr($this->place, 3))->name;
+			$this->containerName = $repo->getEquipmentName((int)substr($this->place, 3));
 		}
 		$this->id_gm = $data["MJ"] ?? 0;
 	}
@@ -56,7 +56,7 @@ class Equipment
 		}
 	}
 
-	// detects if an container is inside itself (directly or not)
+	// detects if a container is inside itself (directly or not) after character save
 	// current_id is a recursive var with container id
 	public static function detectLocationLoop(int $id_object, array $post, int $location_id = 0)
 	{
@@ -177,17 +177,13 @@ class Equipment
 		$repo = new EquipmentRepository;
 		$repo_characters = new CharacterRepository;
 
-		//print_r($_POST);
-		//die();
-
 		$post["objet"] = $post["objet"] ?? [];
 
 		// objet modifié dans une fiche de personnage
 		foreach ($post["objet"] as $id => $item) {
 			$order++;
 			if ($id && empty($item["Nom"])) {
-				// objet dont le nom a été effacé → objet orphelin
-				$repo->makeItemOrphan($id);
+				$repo->makeItemOrphan($id); // objet dont le nom a été effacé → objet orphelin
 			} else {
 
 				$formatted_item = [];
@@ -214,10 +210,7 @@ class Equipment
 				// Présence ou non du champ "Secret" au moment de l’inscription en base
 				$formatted_item["MJ"] = (int) $item["MJ"];
 
-				// prevent putting container in itself
-				//$container_is_in_itself = $formatted_item["id"] == substr($formatted_item["Lieu"], 3) && substr($formatted_item["Lieu"], 0, 3) === "ct_";
-
-				// prevent putting container A inside another container B which is in A (infinite loop)
+				// Détection d’une boucle infinie de contenant (A est dans B qui est lui-même dans A)
 				$creates_loop = false;
 				if ($formatted_item["Contenant"]) {
 					$item_is_in_container = substr($formatted_item["Lieu"], 0, 3) === "ct_";
@@ -226,13 +219,7 @@ class Equipment
 					}
 				}
 
-				//if ($creates_loop) echo "Loop detected " . $formatted_item["Nom"] . "\n";
-				//if (!$creates_loop) echo "OK";
-
-				if (!$creates_loop) {
-					//echo "save in DB, dude! \n";
-					$repo->setEquipment($formatted_item);
-				}
+				if (!$creates_loop) $repo->setEquipment($formatted_item);
 			}
 		}
 

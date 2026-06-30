@@ -47,7 +47,8 @@ h4 { font-size: var(--fs-450); --flow-space: 1em; }
 h5 { font-size: var(--fs-400); --flow-space: 1em; }
 p, ol, ul { text-align: justify; hyphens: auto; }
 dfn {text-decoration: underline var(--clr-700); cursor: help;}
-dialog { background-color: var(--white); color: var(--grey-200); width: clamp(300px, 80vw, 1000px); }
+dialog { background-color: var(--white); color: var(--grey-200); width: clamp(300px, 80vw, 1000px); padding: 1em; }
+dialog:has(button:first-child) { > :nth-child(2) { margin-top: 0; padding-right: 1rem; } }
 
 // utilities
 .gap-¼ { gap: .25em; }

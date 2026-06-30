@@ -14,24 +14,23 @@
 	</div>
 </fieldset>
 
-
 <fieldset class="px-1">
 	<legend>Options</legend>
 
 	<form data-role="user-options">
 		<div class="grid ai-center option-grid">
-			<div class="fw-700 bg-grey-900 p-½">Thème</div>
+			<div class="fw-700 bg-grey-900 p-½">Mode</div>
 			<div class="flex-s gap-1">
 				<label>
-					<input type="radio" name="mode" value="light" <?= $page["mode"] === "light" ? "checked" : "" ?>>
+					<input type="radio" name="mode" value="light" <?= $page->displayMode === "light" ? "checked" : "" ?>>
 					Lumineux
 				</label>
 				<label>
-					<input type="radio" name="mode" value="auto" <?= !in_array($page["mode"], ["light", "dark"]) ? "checked" : "" ?>>
+					<input type="radio" name="mode" value="auto" <?= !in_array($page->displayMode, ["light", "dark"]) ? "checked" : "" ?>>
 					Automatique
 				</label>
 				<label>
-					<input type="radio" name="mode" value="dark" <?= $page["mode"] === "dark" ? "checked" : "" ?>>
+					<input type="radio" name="mode" value="dark" <?= $page->displayMode === "dark" ? "checked" : "" ?>>
 					Sombre
 				</label>
 			</div>
@@ -40,11 +39,11 @@
 			<div class="fw-700 bg-grey-900 p-½">Fiche de perso</div>
 			<div class="flex-s gap-1">
 				<label>
-					<input type="radio" name="style" value="normal" <?= $page["style"] !== "normal" ? "" : "checked" ?>>
+					<input type="radio" name="style" value="normal" <?= $page->displayStyle !== "normal" ? "" : "checked" ?>>
 					Normale
 				</label>
 				<label>
-					<input type="radio" name="style" value="compact" <?= $page["style"] === "compact" ? "checked" : "" ?>>
+					<input type="radio" name="style" value="compact" <?= $page->displayStyle === "compact" ? "checked" : "" ?>>
 					Compacte
 				</label>
 			</div>
@@ -53,11 +52,11 @@
 			<div class="fw-700 bg-grey-900 p-½">Thème (expérimental)</div>
 			<div class="flex-s gap-1">
 				<label>
-					<input type="radio" name="theme" value="standard" <?= $page["theme"] === "standard" ? "checked" : "" ?>>
+					<input type="radio" name="theme" value="standard" <?= $page->displayTheme === "standard" ? "checked" : "" ?>>
 					Standard
 				</label>
 				<label>
-					<input type="radio" name="theme" value="medieval" <?= $page["theme"] === "medieval" ? "checked" : "" ?>>
+					<input type="radio" name="theme" value="medieval" <?= $page->displayTheme === "medieval" ? "checked" : "" ?>>
 					Médiéval
 				</label>
 			</div>

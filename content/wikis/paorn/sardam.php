@@ -235,6 +235,9 @@
 
 		<p>Un chat roux, mascotte de l’auberge, dort la plupart du temps sur le rebord d’une fenêtre.</p>
 
+
+		<p><b>Milda, la serveuse.</b> Une vingtaine d’années, visage rond aux joues roses, cheveux châtains nattés en deux tresses qu’elle refait le matin – mais vers la fin du service, les mèches s’échappent et elle ne prend plus le temps de les replacer. Tablier taché d’une longue journée, démarche rapide et efficace. Elle ne sourit pas par politesse – elle sourit quand quelque chose lui plaît vraiment, ce qui lui donne un air légèrement brusque avec les clients qu’elle ne connaît pas. Elle travaille au Magelby depuis ses seize ans – d’abord à la cuisine, maintenant en salle. Elle loge à l’étage, dans la petite chambre sous les combles que lui loue Edvar à prix réduit.</p>
+
 	</details>
 
 	<!-- Huybert, pelleter-tailleur haut de gamme -->

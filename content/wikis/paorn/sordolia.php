@@ -264,7 +264,7 @@
 			<h3>La colonisation burgonne</h3>
 		</summary>
 
-		<p>Pendant les deux premiers siècles de l’Empire, la Sordolia resta hors du champ d’action impérial. C’était une terre morcelée en une vingtaine de petits royaumes humains — les <i>Anciens Royaumes du Nord</i> — dont les chefs, que les chroniqueurs burgons appelleront plus tard – non sans une pointe de dédain – les <i>Rois de Clairières</i>, tenaient leur pouvoir de l’ancienneté de leur lignée et de leur capacité à tenir les passages dans les forêts et les montagnes. Ces royaumes n’avaient pas de langue écrite commune, pas d’armée unifiée, mais partageaient culture, pratiques funéraires et une vénération ancienne pour les cercles de pierre qui ponctuaient leurs territoires.</p>
+		<p>Pendant les deux premiers siècles de l’Empire, la Sordolia resta hors du champ d’action impérial. C’était une terre morcelée en une myriade de petits royaumes humains — les <i>Anciens Royaumes du Nord</i> — dont les chefs, que les chroniqueurs burgons appelleront plus tard – non sans une pointe de dédain – les <i>Rois de Clairières</i>, tenaient leur pouvoir de l’ancienneté de leur lignée et de leur capacité à tenir les passages dans les forêts et les montagnes. Ces royaumes n’avaient pas de langue écrite commune, pas d’armée unifiée, mais partageaient culture, pratiques funéraires et une vénération ancienne pour les cercles de pierre qui ponctuaient leurs territoires.</p>
 
 		<p>La colonisation burgonne, amorcée au début du XI<sup>e</sup> siècle sous <b>l’Empereur Séveran II le Diplomate</b>, ne fut pas une conquête militaire. Elle fut une absorption progressive sur deux ou trois générations : des avant-postes marchands d’abord, des mariages dynastiques, des garnisons acceptées en échange de protection contre les raids humanoïdes. Certains royaumes résistèrent et furent vaincus. D’autres se fondirent sans violence dans l’ordre burgon, leurs chefs requalifiés en comtes ou en barons vassaux. La fondation de <b>Sardam</b> en 1102 — sur la Clairière de Matar, défrichée selon la tradition par un ancêtre légendaire nommé <b>Matarcald le Défricheur</b> — symbolise cette transformation : une ville planifiée, construite en pierre, au cœur d’une terre qui ne connaissait que des établissements de bois.</p>
 
@@ -272,7 +272,7 @@
 
 		<p>Les cercles de pierre sont toujours là.</p>
 
-		<p>Les descendants des anciens lignages nobles existent encore — appauvris, sans mémoire claire de ce qu’ils étaient, portant des patronymes sordoliens qui cachent des noms de chefs d’il y a six siècles.</p>
+		<p>Les descendants des anciens lignages nobles existent encore — certains faisant partie de la noblesse Sordolienne, d’autres, appauvris, sans mémoire claire de ce qu’ils étaient il y a quatre siècles.</p>
 
 	</details>
 </section>

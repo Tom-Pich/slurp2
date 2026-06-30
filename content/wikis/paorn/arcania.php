@@ -1,4 +1,5 @@
-<p>L’Arcania est une « police magique » officiant en Burgonnie et dont le rôle est d’assurer la sécurité de l’empire face aux menaces que constitue l’utilisation incontrôlée de la magie.</p>
+<p>L’Arcania est une « police magique » officiant en Burgonnie et dont le rôle est d’assurer la sécurité de l’empire face aux menaces que constitue l’utilisation incontrôlée de la magie. Son mandat est strictement limité aux affaires magiques, mais elle n’a de compte à rendre qu’à l’empereur lui-même, quel que soit le territoire où elle officie.</p>
+
 <p>À sa tête se trouve l’Archimage, qui est également conseiller de l’empereur. Celui-ci réside à Olméria.</p>
 <p>
 	Toutes les grandes villes de Burgonnie compte un « bureau » de l’Arcania, composé d’un nombre variable de mages (entre trois et une dizaine, selon la taille de la ville). Ces mages ont en charge la surveillance des activités magiques au sein de la ville et, théoriquement, également dans les alentours de la ville.<br>
@@ -24,17 +25,17 @@
 	<p>Il y a 6 grades dans l’organisation :</p>
 	<ol>
 		<li><b>Archimage</b> (chef suprême de l’Arcania, résidant à Olméria)</li>
-		<li><b>Magister</b> – Chef d'une section d'une grande ville. Il n’en existe qu’une douzaine.</li>
-		<li><b>Luminer</b> – Chef d'une ville de taille moyenne, ou éventuellement d’autres groupes spéciaux.</li>
+		<li><b>Magister</b> – Chef d’une grande ville. Il n’en existe qu’une douzaine.</li>
+		<li><b>Luminer</b> – Chef d’une ville de taille moyenne, ou éventuellement d’autres groupes spéciaux.</li>
 		<li><b>Scrutiner</b> – Enquêteur expérimenté, pouvant avoir d’autres enquêteurs sous ses ordres.</li>
 		<li><b>Vigiler</b> – Enquêteur ordinaire. Grade le plus courant.</li>
 		<li><b>Novimer</b> – Jeune recrue, ayant effectué moins de trois en de service</li>
 	</ol>
 
 	<h3>Les femmes dans l’Arcania</h3>
-	<p>Les femmes de l’Arcania subissent un rituel magique qui décolore complètement leurs cheveux, les rendant d'un blanc pur comme la neige. Elles doivent porter ces cheveux coupés court (à hauteur des épaules maximum) et sans aucun ornement.</p>
-	<p>Comme les hommes, elles porteraient l'étoile à sept branches tatouée sur le front</p>
-	<p>Elles portent également une mince tresse spécifique sur le côté gauche, scellée avec un anneau d'argent gravé de runes</p>
+	<p>Les femmes de l’Arcania subissent un rituel magique qui décolore complètement leurs cheveux, les rendant d’un blanc pur comme la neige. Elles doivent porter ces cheveux coupés court (à hauteur des épaules maximum) et sans aucun ornement.</p>
+	<p>Comme les hommes, elles porteraient l’étoile à sept branches tatouée sur le front</p>
+	<p>Elles portent également une mince tresse spécifique sur le côté gauche, scellée avec un anneau d’argent gravé de runes</p>
 </section>
 
 <h2>Législation, mages &amp; magie</h2>
@@ -56,28 +57,28 @@
 
 <h2>Usage de la magie dans les interrogatoires</h2>
 
-<p>La magie est un outil légal entre les mains d'un mage patenté, sous réserve qu'elle ne viole pas les libertés fondamentales reconnues par le droit burgon. Or le droit burgon en reconnaît deux : la liberté d'action et la liberté de conscience. Toute magie portant atteinte à ces deux libertés est strictement encadrée.</p>
+<p>La magie est un outil légal entre les mains d’un mage patenté, sous réserve qu’elle ne viole pas les libertés fondamentales reconnues par le droit burgon. Or le droit burgon en reconnaît deux : la liberté d’action et la liberté de conscience. Toute magie portant atteinte à ces deux libertés est strictement encadrée.</p>
 
 <h3>Sorts autorisés sans restriction</h3>
 
 <p>Tous les sorts non intrusifs évaluant une réaction, notamment toutes les détections (<i>Perception des émotions</i>, <i>Détection des mensonges</i>, <i>Lecture d’Aura</i>).</p>
 
-<p>Ces sorts sont admis comme aide à l'interrogatoire dans toute enquête officielle, à condition que les questions posées relèvent directement de l'affaire instruite. Le résultat est une indication, pas une preuve — un juge prudent l'utilisera comme levier, pas comme verdict.</p>
+<p>Ces sorts sont admis comme aide à l’interrogatoire dans toute enquête officielle, à condition que les questions posées relèvent directement de l’affaire instruite. Le résultat est une indication, pas une preuve — un juge prudent l’utilisera comme levier, pas comme verdict.</p>
 
 <h3>Sorts à usage encadré</h3>
 
-<p><b>Sorts d'influence légère</b> (<i>Suggestion</i>, <i>Injonction</i>, <i>Contrôle émotionnel</i>, etc.) — Ils n'accèdent pas aux pensées mais agissent sur la volonté. Légalement ambigus : ils ne violent pas la liberté de conscience (on ne lit rien), mais ils entament la liberté d'action. Leur usage est toléré dans le cadre d'une enquête officielle conduite sous autorité reconnue, mais le résultat n'est pas recevable seul devant un tribunal — il doit être corroboré.</p>
+<p><b>Sorts d’influence légère</b> (<i>Suggestion</i>, <i>Injonction</i>, <i>Contrôle émotionnel</i>, etc.) — Ils n’accèdent pas aux pensées mais agissent sur la volonté. Légalement ambigus : ils ne violent pas la liberté de conscience (on ne lit rien), mais ils entament la liberté d’action. Leur usage est toléré dans le cadre d’une enquête officielle conduite sous autorité reconnue, mais le résultat n’est pas recevable seul devant un tribunal — il doit être corroboré.</p>
 
-<p><b>Lecture des pensées superficielles</b> — Légalement admise dans les seules affaires relevant d'un danger pour la sécurité de l'État ou pour la personne du souverain, sur ordre exprès de l'autorité provinciale ou impériale. Hors de ce cadre, son usage constitue une violation de la liberté de conscience, et ses résultats sont irrecevables. En pratique, les nobles s'y opposent farouchement, et aucun chancelier sensé ne l'ordonnera sur un vassal de rang sans y être contraint.</p>
+<p><b>Lecture des pensées superficielles</b> — Légalement admise dans les seules affaires relevant d’un danger pour la sécurité de l’État ou pour la personne du souverain, sur ordre exprès de l’autorité provinciale ou impériale. Hors de ce cadre, son usage constitue une violation de la liberté de conscience, et ses résultats sont irrecevables. En pratique, les nobles s’y opposent farouchement, et aucun chancelier sensé ne l’ordonnera sur un vassal de rang sans y être contraint.</p>
 
 <h3>Sorts interdits</h3>
 
-<p><b>Investigation mentale</b> (fouille profonde de l'esprit) — Considerée comme une mutilation de la personne, au même titre qu'une torture physique. Interdite en toutes circonstances par le droit burgon. L'Arcania elle-même ne peut l'ordonner.</p>
+<p><b>Investigation mentale</b> (fouille profonde de l’esprit) — Considerée comme une mutilation de la personne, au même titre qu’une torture physique. Interdite en toutes circonstances par le droit burgon. L’Arcania elle-même ne peut l’ordonner.</p>
 
 <h3>Limites à l’usage de la magie lors d’un interrogatoire</h3>
 
-<p><b>Les sorts ne garantissent ni l'exhaustivité ni la vérité absolue : </b>un sort raté, un contre-sort, une potion de résistance, une volonté exceptionnelle peuvent fausser les résultats. Un interrogatoire magiquement assisté reste un interrogatoire, pas un oracle.</p>
+<p><b>Les sorts ne garantissent ni l’exhaustivité ni la vérité absolue : </b>un sort raté, un contre-sort, une potion de résistance, une volonté exceptionnelle peuvent fausser les résultats. Un interrogatoire magiquement assisté reste un interrogatoire, pas un oracle.</p>
 
-<p>Un noble ou un homme averti peut arriver à un interrogatoire protégé. Ce n'est pas illégal en soi — se défendre contre une intrusion magique relève de la liberté d'action.</p>
+<p>Un noble ou un homme averti peut arriver à un interrogatoire protégé. Ce n’est pas illégal en soi — se défendre contre une intrusion magique relève de la liberté d’action.</p>
 
-<p>La parole d'un mage a une valeur testimoniale renforcée (son honnêteté est magiquement garantie), ce qui fait de de lui un témoin précieux devant un tribunal — mais pas un inquisiteur tout-puissant.</p>
+<p>La parole d’un mage a une valeur testimoniale renforcée (son honnêteté est magiquement garantie), ce qui fait de de lui un témoin précieux devant un tribunal — mais pas un inquisiteur tout-puissant.</p>

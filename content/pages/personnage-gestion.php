@@ -41,13 +41,13 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 		<fieldset class="mt-1">
 			<legend>Bilan des points de personnage</legend>
 			<ul>
-				<li><b>Valeur du personnage&nbsp;:</b> <?= $character->points ?></li>
-				<li><b>Points économisés&nbsp;:</b> <?= $character->points - $character->points_count["total"] ?></li>
+				<li><b>Valeur du personnage :</b> <?= $character->points ?></li>
+				<li><b>Points économisés :</b> <?= $character->points - $character->points_count["total"] ?></li>
 			</ul>
 			<ul class="mt-½">
-				<li><b>Caractéristiques&nbsp;:</b> <?= $character->points_count["attributes"]["total"] ?></li>
-				<li><b>Avantages &amp; Désavantages&nbsp;:</b> <?= $character->points_count["avdesav"] ?></li>
-				<li><b>Compétences&nbsp;:</b> <?= $character->points_count["skills"] ?></li>
+				<li><b>Caractéristiques :</b> <?= $character->points_count["attributes"]["total"] ?></li>
+				<li><b>Avantages &amp; Désavantages :</b> <?= $character->points_count["avdesav"] ?></li>
+				<li><b>Compétences :</b> <?= $character->points_count["skills"] ?></li>
 				<?php if ($character->special_traits["magerie"]) { ?>
 					<li><b>Magie :</b> <?= $character->points_count["colleges"] + $character->points_count["spells"]; ?></li>
 				<?php }
@@ -94,7 +94,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 			<textarea name="Notes" form="noyau" placeholder="Notes diverses" class="mt-½" style="min-height: 12em;"><?= $character->notes ?></textarea>
 		</details>
 
-		<p class="mt-1">Le background et les notes peuvent être mis en forme&nbsp;: *<b>gras</b>*, _<i>italique</i>_ et **<b>titre</b></p>
+		<p class="mt-1">Le background et les notes peuvent être mis en forme : *<b>gras</b>*, _<i>italique</i>_ et **<b>titre</b></p>
 
 	</article>
 
@@ -147,25 +147,30 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 		<!-- Av-désav -->
 		<fieldset class="mt-2">
-			<legend>Avantages &amp; Désavantages</legend>
+			<legend class="flex-s gap-½ ai-center">
+				Avantages &amp; Désavantages
+				<div class="flex-s gap-½">
+					<button class="nude ff-fas" type="button" data-role="open-dialog" data-dialog-name="avdesav-dialog" title="mode d’emploi">&#xf059;</button>
+				</div>
+			</legend>
 
-			<!-- Mode d’emploi -->
-			<details class="bg-grey-900 px-½">
-				<summary class="fw-700">Mode d’emploi</summary>
+			<dialog data-name="avdesav-dialog" class="flow">
+				<button data-role="close-modal" class="ff-fas">&#xf00d;</button>
+				<h4>Gestion des Avantages, Désavantages &amp; Travers</h4>
 				<p>
-					<b>Nom&nbsp;:</b> ajouter une précision <i>si nécessaire</i>.<br>
-					<b>Coût&nbsp;:</b> coût en pts de personnage. Par défaut, le coût choisi est celui le plus proche de zéro
+					<b>Nom :</b> ajouter une précision <i>si nécessaire</i>, si l’<i>Avantage</i> ou le <i>Désavantage</i> possède plusieurs variantes.<br>
+					<b>Coût :</b> coût en pts de personnage. Par défaut, le coût choisi est celui le plus proche de zéro
 				</p>
 				<p><b>Pour supprimer un élément,</b> effacer son nom.</p>
-			</details>
+			</dialog>
 
 			<!-- Liste Avdésav du perso -->
-			<div class="mt-1 px-½" id="avdesav-wrapper">
+			<div class="flow px-½" id="avdesav-wrapper">
 				<?php
 				$n_post = 0;
 				$liste_nom_avdesav_perso = [];
 				foreach (["Zéro", "Avantage", "Désavantage", "Réputation", "Travers"] as $categorie) { ?>
-					<div class="mt-1">
+					<div>
 						<?php
 						foreach ($character->avdesav as $avdesav) {
 							if ($avdesav['catégorie'] === $categorie) { ?>
@@ -205,7 +210,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 												<input type="checkbox" name="Avdesav[<?= $n_post ?>][id]" value="<?= $avdesav->id ?>">
 												<?= $avdesav->name ?>
 											</label>
-											<div><?= $avdesav->displayCost() ?></div>&nbsp;
+											<div><?= $avdesav->displayCost() ?></div> 
 										</div>
 									</summary>
 									<div class="fs-300"><?= $avdesav->description ?></div>
@@ -218,7 +223,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 				<div class="flex-s jc-center gap-1 mt-2">
 					<button type="submit" class="btn-primary">Valider</button>
-					<button type="button" class="btn-primary" data-role="close-input-modal">Annuler</button>
+					<button type="button" class="btn-primary" data-role="close-modal">Annuler</button>
 				</div>
 
 			</dialog>
@@ -236,25 +241,31 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 		<!-- Compétences -->
 		<fieldset class="mt-2">
-			<legend>Compétences</legend>
+			<legend class="flex-s gap-½ ai-center">
+				Compétences
+				<div class="flex-s gap-½">
+					<button class="nude ff-fas" type="button" data-role="open-dialog" data-dialog-name="skills-dialog" title="mode d’emploi">&#xf059;</button>
+				</div>
+			</legend>
 
 			<!-- Mode d’emploi compétences -->
-			<details class="bg-grey-900 px-½">
-				<summary class="fw-700">Mode d’emploi</summary>
+			<dialog data-name="skills-dialog" class="flow">
+				<button data-role="close-modal" class="ff-fas">&#xf00d;</button>
+				<h4>Gestion des compétences</h4>
 				<p>
-					<b>Nom&nbsp;:</b> ajouter une précision <i>si nécessaire</i>.<br>
-					<b>Modificateur&nbsp;:</b> ajouter le modificateur entre parenthèse à côté du nom. Par exemple&nbsp;: (+2) ou (-1).<br>
-					<b>Compétence de background&nbsp;:</b> ajoutez une astérisque à côté du nom.<br>
-					<b>Spécialité&nbsp;:</b> indiquer, à côté du nom et entre parenthèses, le nom de la spécialité <i>optionnelle</i>, et le bonus souhaité. Par exemple&nbsp;: Commerce (joaillerie +3).<br>
-					<b>Score&nbsp;:</b> indiquer le score souhaité. Si ce score est inférieur au score par défaut, il sera automatiquement ramené au score par défaut.<br>
-					<b>Pts &nbsp;:</b> cette valeur est <i>calculée</i> à partir du score souhaité et des différents paramètres que vous avez indiqués (modificateur, &hellip;)<br>
+					<b>Nom :</b> ajouter une précision <i>si nécessaire</i>.<br>
+					<b>Modificateur :</b> ajouter le modificateur entre parenthèses à côté du nom. Par exemple : (+2) ou (-1).<br>
+					<b>Compétence de background :</b> ajoutez une astérisque à côté du nom.<br>
+					<b>Spécialité :</b> indiquer, à côté du nom et entre parenthèses, le nom de la spécialité <i>optionnelle</i>, et le bonus souhaité. Par exemple : Commerce (joaillerie +3).<br>
+					<b>Score :</b> indiquer le score souhaité. Si ce score est inférieur au score par défaut, il sera automatiquement ramené au score par défaut.<br>
+					<b>Pts  :</b> cette valeur est <i>calculée</i> à partir du score souhaité et des différents paramètres que vous avez indiqués (modificateur, &hellip;)<br>
 				</p>
 				<p>Pour <b>supprimer</b> une compétence, effacer son nom.</p>
-				<p><b>Attention&nbsp;:</b> les modificateurs dus à des <i>Avantages</i> ou des <i>Désavantages</i> doivent être rajoutés manuellement.</p>
-			</details>
+				<p><b>Attention :</b> les modificateurs dus à des <i>Avantages</i> ou des <i>Désavantages</i> doivent être rajoutés manuellement.</p>
+			</dialog>
 
 			<!-- Liste compétences du perso -->
-			<div class="mt-1 px-½">
+			<div class="px-½">
 				<?php
 				$liste_nom_comp_perso = [];
 				foreach ($character->skills as $comp) { ?>
@@ -300,7 +311,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 									<summary>
 										<div class="flex-s gap-½">
 											<label class="fl-1">
-												<input type="checkbox" name="Compétences[<?= $n_post ?>][id]" value="<?= $comp->id ?>">&nbsp;
+												<input type="checkbox" name="Compétences[<?= $n_post ?>][id]" value="<?= $comp->id ?>"> 
 												<?= $comp->name ?>
 											</label>
 											<div><?= $comp->base . $comp->readableDifficulty ?></div>
@@ -315,7 +326,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 				<?php } ?>
 				<div class="flex-s jc-center gap-1 mt-2">
 					<button type="submit" class="btn-primary">Valider</button>
-					<button type="button" class="btn-primary" data-role="close-input-modal">Annuler</button>
+					<button type="button" class="btn-primary" data-role="close-modal">Annuler</button>
 				</div>
 			</dialog>
 
@@ -326,30 +337,35 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 		</fieldset>
 
-
 		<!-- Magie -->
 		<?php if ($character->special_traits["magerie"]) { ?>
 			<fieldset class="mt-2">
-				<legend>Collèges &amp; sorts</legend>
+				<legend class="flex-s gap-½ ai-center">
+					Collèges &amp; sorts
+					<div class="flex-s gap-½">
+					<button class="nude ff-fas" type="button" data-role="open-dialog" data-dialog-name="spells-dialog" title="mode d’emploi">&#xf059;</button>
+				</div>
+				</legend>
 
 				<!-- Mode d’emploi -->
-				<details class="bg-grey-900 px-½">
-					<summary class="fw-700">Mode d’emploi</summary>
-					<p>
-						<b>Collèges&nbsp;:</b> même principe que pour les compétences. Vous pouvez ajouter un modificateur entre parenthèse à côté du nom.<br>
-						<b>Sorts&nbsp;:</b> préciser le nombre de points investis dans chaque sort (max 5). Vous pouvez ajouter un modificateur à côté du nom du sort.
-					</p>
-				</details>
+				<dialog data-name="spells-dialog" class="flow">
+					<button data-role="close-modal" class="ff-fas">&#xf00d;</button>
+					<h4>Gestion des collèges &amp; sorts</h4>
+						<p>
+							<b>Collèges :</b> même principe que pour les compétences. Vous pouvez ajouter un modificateur entre parenthèse à côté du nom.<br>
+							<b>Sorts :</b> préciser le nombre de points investis dans chaque sort (max 5). Vous pouvez ajouter un modificateur à côté du nom du sort.
+						</p>
+				</dialog>
 
 				<!-- Collèges et sorts -->
-				<div class="mt-1 px-½">
+				<div class="flow px-½">
 					<?php
 					foreach ($character->colleges as $college) {
 					?>
 						<details>
 							<summary>
 								<div class="flex-s gap-½ ai-center">
-									<input type="text" name="Collèges[<?= $n_post ?>][name]" value="<?= $college["name"] ?>" class="fl-1">
+									<input type="text" name="Collèges[<?= $n_post ?>][name]" value="<?= $college["name"] ?>" class="fl-1 fw-700">
 									<div class="ta-center clr-grey-500" style="width: 4ch" title="Pts"><?= $college["points"] ?></div>
 									<input type="text" name="Collèges[<?= $n_post ?>][score]" value="<?= $college["score"] ?>" style="width: 6ch" class="ta-center" title="Score">
 									<input hidden name="Collèges[<?= $n_post ?>][id]" value="<?= $college["id"] ?>">
@@ -357,7 +373,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 									<input hidden name="Collèges[<?= $n_post ?>][former-niv]" value="<?= $college["niv"] ?>">
 								</div>
 							</summary>
-							<div class="p-1">
+							<div class="p-½">
 								<?php $n_post++; ?>
 
 								<?php
@@ -409,7 +425,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 					<div class="flex-s jc-center gap-1 mt-2">
 						<button type="submit" class="btn-primary">Valider</button>
-						<button type="button" class="btn-primary" data-role="close-input-modal">Annuler</button>
+						<button type="button" class="btn-primary" data-role="close-modal">Annuler</button>
 					</div>
 				</dialog>
 
@@ -425,22 +441,28 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 		<!-- Pouvoirs -->
 		<?php if ($character->special_traits["pouvoirs"]) { ?>
 			<fieldset class="mt-2">
-				<legend>Pouvoirs</legend>
+				<legend class="flex-s gap-½ ai-center">
+					Pouvoirs
+					<div class="flex-s gap-½">
+						<button class="nude ff-fas" type="button" data-role="open-dialog" data-dialog-name="powers-dialog" title="mode d’emploi">&#xf059;</button>
+					</div>
+				</legend>
 
 				<!-- Mode d’emploi -->
-				<details class="bg-grey-900 px-½">
-					<summary class="fw-700">Mode d’emploi</summary>
+				<dialog data-name="powers-dialog" class="flow">
+					<button data-role="close-modal" class="ff-fas">&#xf00d;</button>
+					<h4>Gestion des pouvoirs</h4>
 					<p>
-						<b>Ajouter un pouvoir&nbsp;:</b> sélectionner le pouvoir souhaité. Il sera ajouté à son coût minimum.<br>
-						<b>Modificateur&nbsp;:</b> à préciser à côté du nom du pouvoir.<br>
-						<b>Case «&nbsp;Pts&nbsp;»&nbsp;:</b> points investis dans le <i>score</i> du pouvoir s’il s'agit d’un sort, ou dans le pouvoir lui-même s'il est de type <i>Avantage</i><br>
-						<b>×&nbsp;:</b> Multiplicateur de points investis. Il vaut 1 par défaut. Pour les pouvoirs de type <i>Avantage</i>, le multiplicateur s’applique aux points indiqués dans la case Pts. Il faut donc indiquer dans cette case le coût <i>normal</i> du pouvoir.<br>
-						<b>Supprimer un pouvoir&nbsp;:</b> effacer son nom.
+						<b>Ajouter un pouvoir :</b> sélectionner le pouvoir souhaité. Il sera ajouté à son coût minimum.<br>
+						<b>Modificateur :</b> à préciser à côté du nom du pouvoir.<br>
+						<b>Case « Pts » :</b> points investis dans le <i>score</i> du pouvoir s’il s'agit d’un sort, ou dans le pouvoir lui-même s'il est de type <i>Avantage</i><br>
+						<b>× :</b> Multiplicateur de points investis. Il vaut 1 par défaut. Pour les pouvoirs de type <i>Avantage</i>, le multiplicateur s’applique aux points indiqués dans la case Pts. Il faut donc indiquer dans cette case le coût <i>normal</i> du pouvoir.<br>
+						<b>Supprimer un pouvoir :</b> effacer son nom.
 					</p>
-				</details>
+				</dialog>
 
 				<!-- Pouvoirs -->
-				<div class="mt-1 px-½">
+				<div class="px-½">
 					<?php
 					foreach ($character->powers as $pouvoir) {
 						$type = $pouvoir["data"]->specific["Type"] ?? $pouvoir["origine"];
@@ -480,7 +502,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 							</summary>
 							<div class="flex-s jc-space-between mt-½ gap-½">
 								<input type="text" name="Pouvoirs[<?= $n_post ?>][mult]" value="<?= $pouvoir["mult"] ?? "" ?>" style="width: 6ch" class="ta-center" placeholder="×" title="Multiplicateur de coût en pts de personage">
-								<input type="text" name="Pouvoirs[<?= $n_post ?>][notes]" value="<?= $pouvoir["notes"] ?? "" ?>" class="fl-1" placeholder="Notes">&nbsp;
+								<input type="text" name="Pouvoirs[<?= $n_post ?>][notes]" value="<?= $pouvoir["notes"] ?? "" ?>" class="fl-1" placeholder="Notes"> 
 							</div>
 							<div class="fs-300 ta-justify" style="padding-bottom: 1em;">
 								<?php if ($type === "sort") {
@@ -579,7 +601,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 					<div class="flex-s jc-center gap-1 mt-2">
 						<button type="submit" class="btn-primary">Valider</button>
-						<button type="button" class="btn-primary" data-role="close-input-modal">Annuler</button>
+						<button type="button" class="btn-primary" data-role="close-modal">Annuler</button>
 					</div>
 
 				</dialog>
@@ -597,23 +619,29 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 			<fieldset class="mt-2">
 
-				<legend>Pouvoirs psioniques</legend>
+				<legend class="flex-s gap-½ ai-center">
+					Pouvoirs psioniques
+					<div class="flex-s gap-½">
+						<button class="nude ff-fas" type="button" data-role="open-dialog" data-dialog-name="psi-dialog" title="mode d’emploi">&#xf059;</button>
+					</div>
+				</legend>
 
 				<!-- Mode d’emploi psi -->
-				<details class="bg-grey-900 px-½">
-					<summary class="fw-700">Mode d’emploi</summary>
+				<dialog data-name="psi-dialog" class="flow">
+					<button data-role="close-modal" class="ff-fas">&#xf00d;</button>
+					<h4>Gestion des pouvoirs</h4>
 					<p>
-						<b>Ajouter une nouvelle discipline&nbsp;:</b> sélectionner la discipline souhaitée. Elle sera ajoutée au niveau 1.<br>
-						<b>×&nbsp;:</b> multiplicateur de coût dû à d’éventuelles limitations ou améliorations.<br>
-						<b>Notes&nbsp;:</b> préciser les éventuelles limitations ou améliorations.<br>
-						<b>Pouvoirs&nbsp;:</b> préciser le score souhaité. Ajouter un éventuel modificateur à côté du nom du pouvoir.<br>
-						<b>Supprimer une discipline&nbsp;:</b> mettre son niveau à 0.<br>
-						<b>Supprimer un pouvoir&nbsp;:</b> mettre son score à 0.
+						<b>Ajouter une nouvelle discipline :</b> sélectionner la discipline souhaitée. Elle sera ajoutée au niveau 1.<br>
+						<b>× :</b> multiplicateur de coût dû à d’éventuelles limitations ou améliorations.<br>
+						<b>Notes :</b> préciser les éventuelles limitations ou améliorations.<br>
+						<b>Pouvoirs :</b> préciser le score souhaité. Ajouter un éventuel modificateur à côté du nom du pouvoir.<br>
+						<b>Supprimer une discipline :</b> mettre son niveau à 0.<br>
+						<b>Supprimer un pouvoir :</b> mettre son score à 0.
 					</p>
-				</details>
+				</dialog>
 
 				<!-- Disciplines et pouvoirs connus -->
-				<div class="mt-1 px-½">
+				<div class="flow px-½">
 					<?php
 					$disciplines_connues_id = [];
 					foreach ($character->disciplines as $discipline) {
@@ -622,7 +650,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 						<details>
 							<summary>
 								<div class="flex-s gap-½ ai-center">
-									<div class="fl-1"><?= $discipline["nom"] ?></div>
+									<div class="fl-1 fw-700"><?= $discipline["nom"] ?></div>
 									<div>
 										<input type="text" name="Psi-disciplines[<?= $n_post ?>][niv]" value="<?= $discipline["niv"] ?>" style="width: 5ch" class="ta-center" title="Niveau">
 										<input type="text" name="Psi-disciplines[<?= $n_post ?>][mult]" value="<?= $discipline["mult"] ?? "" ?>" style="width: 5ch" class="ta-center" placeholder="×" title="Multipliateur dû à une amélioration ou une limitation">
@@ -632,7 +660,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 							</summary>
 							<input type="text" name="Psi-disciplines[<?= $n_post ?>][notes]" value="<?= $discipline["notes"] ?? "" ?>" class="full-width" placeholder="Notes">
 
-							<div class="p-1">
+							<div class="p-½">
 								<?php
 								$n_post++;
 								foreach ($character->psi as $pouvoir) {
@@ -670,7 +698,7 @@ $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
 
 					<div class="flex-s jc-center gap-1 mt-2">
 						<button type="submit" class="btn-primary">Valider</button>
-						<button type="button" class="btn-primary" data-role="close-input-modal">Annuler</button>
+						<button type="button" class="btn-primary" data-role="close-modal">Annuler</button>
 					</div>
 				</dialog>
 

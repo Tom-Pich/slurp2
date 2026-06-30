@@ -12,6 +12,7 @@ class LogController
 		session_regenerate_id(true);
 		session_destroy();
 		header('Location: /');
+		die();
 	}
 
 	public static function login($post)
@@ -21,13 +22,15 @@ class LogController
 		$redirect_url = $post["redirect-url"] ?? "";
 
 		$user = (new UserRepository)->getUserByLogin($login);
-		$user_is_guest = $user->id === 0;
-		$user_exists = $user !== null;
+		$user_exists = ($user !== null);
+		//$user_id = $user_exists ? $user->id : 0;
+		$user_is_guest = $user_exists && $user->id === 0;
+		//$user_exists = $user !== null;
 		if (!isset($_SESSION["attempt"])) $_SESSION["attempt"] = 0;
 		$too_many_attempts = $_SESSION["attempt"] > 2;
-		$passwords_match = $user->check_password($password);
+		$passwords_match = $user_exists ? $user->check_password($password) : false;
 
-		if ($user_is_guest || $user_exists && $passwords_match && !$too_many_attempts) {
+		if ($user_is_guest || /* $user_exists && */ $passwords_match && !$too_many_attempts) {
 			if (!$user_is_guest) session_regenerate_id(true);
 			$_SESSION["id"] = $user->id;
 			$_SESSION["login"] = $user->login;
@@ -38,7 +41,7 @@ class LogController
 			$_SESSION["browser_fingerprint"] = self::generateBrowserFingerprint();
 		} else {
 			$_SESSION["attempt"] += 1;
-			$_SESSION["info"] = "Login ou mot de passe non valide !";
+			$_SESSION["info"] = "Login ou mot de passe non valide !"; // non utilisé
 			$_SESSION["token"] = Firewall::generateToken(16);
 		}
 
@@ -64,6 +67,7 @@ class LogController
 		} else {
 			// handle session validity if session exists
 			$user_is_guest = $_SESSION["id"] === 0;
+			if (!$user_is_guest) $_SESSION["attempt"] = 0;
 			$session_expired = $_SESSION["time"] < (time() - SESSION_DURATION);
 			$invalid_browser_fingerprint = empty($_SESSION["browser_fingerprint"]) || $_SESSION["browser_fingerprint"] !== LogController::generateBrowserFingerprint();
 

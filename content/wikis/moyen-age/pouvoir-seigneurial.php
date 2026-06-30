@@ -322,3 +322,42 @@
 		</ul>
 	</details>
 </section>
+
+<!-- Bâtiments administratifs -->
+<section>
+	<h2>Bâtiments administratifs</h2>
+
+	<p>Lors de la sédentarisation du pouvoir (XIII<sup>e</sup>-XV<sup>e</sup> siècles), le château ou palais résidentiel devient vite trop étroit pour l’appareil d’État. L’administration colonise la ville sous forme de bâtiments autonomes spécialisés, formant un quartier administratif imbriqué dans la cité, généralement protégé par une enceinte propre ou situé à proximité immédiate du complexe princier.</p>
+
+	<!-- La Chambre des Comptes et le Trésor -->
+	<details>
+		<summary>
+			<h3>La Chambre des Comptes et le Trésor (Ministère des Finances)</h3>
+		</summary>
+		<p>Complexes fortifiés dédiés aux finances de tout le territoire. Bâtiments massifs et sécurisés abritant les coffres de l’État, les archives fiscales, les tables de calcul et les bureaux des auditeurs. Ces services s’émancipent du donjon seigneurial pour gérer les flux massifs de monnaie et les registres d’impôts (domaines, tailles, gabelles).</p>
+	</details>
+
+	<!-- Le Parlement et la Chancellerie -->
+	<details>
+		<summary>
+			<h3>Le Parlement et la Chancellerie (Justice et Intérieur)</h3>
+		</summary>
+		<p>Production des lois, des chartes et gestion de la haute justice du territoire. Nécessite d’immenses salles d’audience et un réseau d’écritoires pour les légions de juristes, scribes, notaires et greffiers. Ces institutions occupent des bâtiments civils monumentaux en ville, attirant autour d’eux les corporations d’avocats, de procureurs et de copistes.</p>
+	</details>
+
+	<!-- Les infrastructures techniques et militaires -->
+	<details>
+		<summary>
+			<h3>Les infrastructures techniques et militaires</h3>
+		</summary>
+		<p>L’Hôtel des Monnaies (frappe de la monnaie d’État) et l’Arsenal (production et stockage de l’artillerie, de la poudre et des armes du royaume) sont systématiquement isolés en ville. Ces édifices hautement fortifiés et gardés sont séparés du palais pour des raisons de sécurité évidentes (risques d’incendie, d’explosion ou d’émeutes) et de logistique d’approvisionnement.</p>
+	</details>
+
+	<!-- Les Hôtels des hauts dignitaires -->
+	<details>
+		<summary>
+			<h3>Les Hôtels des hauts dignitaires (Les Ministères)</h3>
+		</summary>
+		<p>Le Chancelier, le Connétable (armée) ou le Grand Argentier gèrent les affaires de l’État directement depuis leurs immenses demeures privées en ville (hôtels particuliers). La frontière entre public et privé est floue : ces résidences de prestige abritent les bureaux personnels du ministre, ses secrétaires permanents et une partie des archives courantes de sa fonction.</p>
+	</details>
+</section>

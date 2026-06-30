@@ -14,7 +14,7 @@
 
 	<p><b>Finances &amp; Revenus :</b> il collecte directement les taxes de base (cens, péages, taxes de marché) et perçoit les amendes judiciaires. Il garde une part pour ses gages et reverse le reste au bailliage ou au seigneur.</p>
 
-	<p><b>Autorité supérieure :</b> le bailli ou le seigneur si son territoire est trop petit pour un réseau de bailliage.</p>
+	<p><b>Autorité supérieure :</b> le bailli ou le seigneur si le territoire de ce dernier est trop petit pour un réseau de bailliage.</p>
 
 	<p><b>Force publique &amp; Justice :</b> basse et moyenne justice (vols simples, bagarres, litiges fonciers). Pour faire appliquer ses décisions, le prévôt dispose d’une poignée de sergents à pied (la police locale).</p>
 </section>

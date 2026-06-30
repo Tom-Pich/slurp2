@@ -21,6 +21,8 @@ return $articles = [
 	"transport-fluvial" => ["title" => "Transport fluvial", "section" => "Vie quotidienne"],
 	"moulin-hydraulique" => ["title" => "Moulin à eau", "section" => "Vie quotidienne"],
 	"calebasse" => ["title" => "Calebasse", "section" => "Vie quotidienne"],
+	"bois-energie" => ["title" => "Bois & énergie", "section" => "Vie quotidienne"],
+	"charbon-bois" => ["title" => "Charbon de bois", "titleH1" => "Le charbon de bois, production et usage", "section" => "Vie quotidienne"],
 
 	"chateau-fort" => ["title" => "Le château fort", "section" => "Lieux"],
 	"village" => ["title" => "Le village médiéval", "section" => "Lieux"],
@@ -28,17 +30,9 @@ return $articles = [
 ];
 
 /*
-# Organisation & Société
-Fait : Démographie, Besoins & ressources, Métiers, Biens & marchandises, L’agriculture en chiffre, Pourvoir seigneurial, Rangs de noblesse, Découpage administratif des territoires 
-
-# Vie quotidienne
-Fait : Activités agricoles & saisons, Alimentation & saisons, Conservation des aliments, Outils & techniques agricoles, Sur la route, Transport fluvial, Moulin à eau, Calebasse
 (vêtements)
 (tissage)
 (s’éclairer)
 (fenêtres)
-
-# Lieux
-Fait : Château fort, Village
 (Auberge)
 */

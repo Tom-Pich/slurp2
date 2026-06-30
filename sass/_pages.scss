@@ -77,6 +77,7 @@ body.personnage-fiche {
 	}
 
 	fieldset { break-inside: avoid-column; margin-top: 1em; max-height: 600px; overflow-y: auto; background-color: var(--white); padding-inline: .75em; }
+	legend { background-color: var(--white); border-radius: .5em; }
 
 	details:has(summary > h3) { border: 1px solid var(--grey-700); border-radius: .5em; padding: .5em; background-color: var(--white); }
 
@@ -126,9 +127,9 @@ body.personnage-fiche {
 	footer { display: none; }
 
 	@media print {
-		header, meter, footer, .no-print, [data-role=container-controls] { display: none; }
+		header, meter, footer, .no-print, #chat-container, [data-role=container-controls] { display: none; }
 		main { column-width: 200px; }
-		fieldset { max-height: none; break-inside: auto; }
+		fieldset { max-height: none; break-inside: avoid-column; }
 	}
 }
 
@@ -137,7 +138,7 @@ body.personnage-gestion {
 	input[type=text]:not(.border-grey-700){ border: unset; border-bottom: .5px solid var(--grey-900); padding-bottom: 0.15em; }
 	textarea {border: 1px solid var(--grey-700); padding: 0.5em; width: 100%;}
 	.radio-wrapper { display: flex; gap: .25em; justify-content: center; width: 10ch; }
-	dialog {width: clamp(340px,80vw,550px);}
+	dialog.add-character-element {width: clamp(340px,80vw,550px);}
 	dialog.add-character-element > details:not(:first-child) { margin-top: 1em; }
 }
 
@@ -225,8 +226,10 @@ body.wiki {
 	h5 { font-size: var(--fs-400); }
 	figcaption {text-align: center; font-style: italic;}
 	.float-left { float: left; margin-right: 1rem;  max-width: 50%; --flow-space: .5em;}
+	.float-left:first-child { margin-top: .25em; }
 
 	details:has(> summary > h3) { margin-top: 1em; border: .5px solid silver; border-radius: .5em; padding: .5em .75em }
+	details:has(> summary > h4) { border-block: .5px solid var(--grey-700); padding-block: .25em; }
 
 	.admin { color: var(--grey-500); }
 	:is(div, p, ul, details).admin { border: .5px solid var(--grey-700); padding: .5em; }

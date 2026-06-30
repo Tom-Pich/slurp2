@@ -24,6 +24,32 @@ ws.onmessage = (rawMessage) => {
     }
 };
 
+// Orphan items form
+const itemsForm = qs("#items-form");
+itemsForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    fetch("/submit/equipment-list", {
+        method: "post",
+        body: new FormData(itemsForm),
+    }).then(() => {
+        fetch("/gestionnaire-mj")
+            .then((response) => response.text())
+            .then((response) => {
+                updateDOM("#items-form", response);
+            });
+    });
+});
+
+itemsForm.addEventListener("reset", (e) => {
+    e.preventDefault();
+    fetch("/gestionnaire-mj")
+        .then((response) => response.text())
+        .then((response) => {
+            updateDOM("#items-form", response);
+        });
+});
+
+// ––– Characters management
 // calulate pdx cells content
 const pdxCells = qsa("[data-role=pdx-cell]");
 pdxCells.forEach((cell) => {
@@ -136,22 +162,6 @@ characterStateForms.forEach((form) => {
     });
 });
 
-// submit items form and update
-const itemsForm = qs("#items-form");
-itemsForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    fetch("/submit/equipment-list", {
-        method: "post",
-        body: new FormData(itemsForm),
-    }).then(() => {
-        fetch("/gestionnaire-mj")
-            .then((response) => response.text())
-            .then((response) => {
-                updateDOM("#items-form", response);
-            });
-    });
-});
-
 // load character details on group open
 groupWrappers.forEach((wrapper) => {
     wrapper.addEventListener("toggle", (e) => {
@@ -228,7 +238,7 @@ function fillCharacterSummary(id, data) {
 
     fillValueInTemplate(clone, "Encombrement", `${data.state.Encombrement.name} (${data.carried_weight}&nbsp;kg)`);
 
-    const equipment = data.equipment.filter(container => container.id === 0 && container.lieu === "pi")[0].liste; // Possessions sur soi
+    const equipment = data.equipment.filter((container) => container.id === 0 && container.lieu === "pi")[0].liste; // Possessions sur soi
     const displayedEquipment = equipment.map((item) => `<span title="${item.notes} – ${item.secret}">${item.name}</span>`);
     fillValueInTemplate(clone, "Équipement", displayedEquipment.join(", "));
 
@@ -241,6 +251,7 @@ function fillValueInTemplate(template, label, value) {
     else template.querySelector(`[data-content=${label}]`).innerHTML = value;
 }
 
+// ––– Character creation
 // prevent kits incompatibility
 const characterCreationForm = qs("[data-role=character-creation-form]");
 characterCreationForm.addEventListener("change", (e) => {

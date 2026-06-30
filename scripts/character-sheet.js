@@ -315,9 +315,9 @@ const throwableItems = qsa("[data-type=throwable-wrapper]");
 const testDialog = qs("dialog[data-type=character-sheet-roll]");
 const testDialogBtn = testDialog.querySelector("[data-type=send-test]");
 const testDialogModifierInput = testDialog.querySelector("[data-type=test-modifier-value]");
-const testDialogLabel = testDialog.querySelector("[data-content=label]")
-const testDialogScore = testDialog.querySelector("[data-content=score]")
-const testDialogSecretCheckbox = testDialog.querySelector("[data-type=secret-test-checkbox]")
+const testDialogLabel = testDialog.querySelector("[data-content=label]");
+const testDialogScore = testDialog.querySelector("[data-content=score]");
+const testDialogSecretCheckbox = testDialog.querySelector("[data-type=secret-test-checkbox]");
 
 throwableItems.forEach((item) => {
     item.addEventListener("click", (e) => {
@@ -336,22 +336,24 @@ throwableItems.forEach((item) => {
         const score = item.querySelector("[data-type=throwable-score]").innerText;
         testDialogLabel.innerText = label;
         testDialogScore.value = score;
-		testDialogSecretCheckbox.checked = (item.dataset.secret === "true")
+        testDialogSecretCheckbox.checked = item.dataset.secret === "true";
     });
 });
 
 testDialogBtn.addEventListener("click", (e) => {
     const modifier = int(testDialogModifierInput.value);
     const readableModif = modifier === 0 ? "" : explicitSign(modifier);
-    const effectiveScore = parseInt(testDialogScore.value);
+    const effectiveScore = Number(testDialogScore.value);
     const rollResult = roll("3d").result;
     const outcome = scoreTester(effectiveScore + modifier, rollResult);
     const messageContent = `${testDialogLabel.innerText} (${effectiveScore}${readableModif}) → ${rollResult} (MR ${outcome.MR} ${outcome.symbol})`;
     const isSecretTest = testDialog.querySelector("[data-type=secret-test-checkbox]").checked;
     const recipients = isSecretTest ? [gmId] : [];
-    const message = new Message(sessionId, wsKey, "chat-roll", messageContent, recipients, outcome.symbol);
-    ws.send(message.stringify());
-    testDialog.close();
+    if (Number.isInteger(effectiveScore)) {
+        const message = new Message(sessionId, wsKey, "chat-roll", messageContent, recipients, outcome.symbol);
+        ws.send(message.stringify());
+        testDialog.close();
+    }
 });
 
 testDialog.addEventListener("keydown", (e) => {

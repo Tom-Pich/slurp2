@@ -17,15 +17,17 @@ class EquipmentRepository extends AbstractRepository
 		return $object;
 	}
 
+	public function getEquipmentName(int $id): string{
+		$query = $this->db->prepare("SELECT Nom FROM objets WHERE id = ?");
+		$query->execute([$id]);
+		$item = $query->fetch(\PDO::FETCH_ASSOC);
+		return $item["Nom"];
+	}
+
 	public function getEquipmentFromPlace(string $place_code): array
 	{
 		$query = $this->db->prepare("SELECT * FROM objets WHERE lieu = ? ORDER BY Ordre, id");
 		$query->execute([$place_code]);
-		/* $items = [];
-		while($item = $query->fetch(\PDO::FETCH_ASSOC)){
-			$object = new Equipment($item);
-			$items[] = $object;
-		} */
 		$items = $query->fetchAll(\PDO::FETCH_ASSOC);
 		$query->closeCursor();
 
@@ -105,29 +107,55 @@ class EquipmentRepository extends AbstractRepository
 		return $group_list;
 	}
 
-	public function getOrphanEquiment($id = NULL): array
+	public static function creates_loop(int $id_object, array $indexed_places, ?array $container_chain = NULL)
 	{
-		if($id === NULL) $items_query = $this->db->query("SELECT id, Lieu FROM objets");
-		else {
+		if (is_null($container_chain)) $container_chain = [];
+
+		$place = $indexed_places[$id_object];
+		$place_prefix = substr($place, 0, 3);
+		if (in_array($place_prefix, ["pi_", "pe_"])) return false;
+		$id_container = (int) substr($place, 3);
+		if (in_array($id_container, $container_chain)) return true;
+		$container_chain[] = $id_container;
+		return self::creates_loop($id_container, $indexed_places, $container_chain); // on examine le container parent
+	}
+
+	public function getOrphanEquiment($id_mj = NULL): array
+	{
+		if ($id_mj === NULL) {
+			$items_query = $this->db->query("SELECT id, Lieu FROM objets");
+		} else {
 			$items_query = $this->db->prepare("SELECT id, Lieu FROM objets WHERE MJ IN (0, ?)");
-			$items_query->execute([$id]);
+			$items_query->execute([$id_mj]);
 		}
-		$full_items_id_place_list = $items_query->fetchAll(\PDO::FETCH_ASSOC);
+		$items_id_place_list = $items_query->fetchAll(\PDO::FETCH_ASSOC);
+		$indexed_place_list = [];
+		foreach ($items_id_place_list as $item) {
+			$indexed_place_list[$item["id"]] = $item["Lieu"]; // id_objet => lieu
+		}
 
 		$characters_query = $this->db->query("SELECT id FROM persos");
-		$full_characters_id_list = $characters_query->fetchAll(\PDO::FETCH_COLUMN);
+		$character_ids = $characters_query->fetchAll(\PDO::FETCH_COLUMN);
 
 		$container_query = $this->db->query("SELECT id FROM objets WHERE Contenant = 1");
-		$full_container_id_list = $container_query->fetchAll(\PDO::FETCH_COLUMN);
+		$container_ids = $container_query->fetchAll(\PDO::FETCH_COLUMN);
 
 		$orphan_items = [];
-		foreach ($full_items_id_place_list as $item) {
-			$place = $item["Lieu"];
-			$has_inconsistent_place = empty($place) || !in_array(substr($place, 0, 3), ["pi_", "pe_", "ct_"]);
-			$has_inexistant_owner = in_array(substr($place, 0, 3), ["pi_", "pe_"]) && !in_array(substr($place, 3), $full_characters_id_list);
-			$is_in_inexistant_container = substr($place, 0, 3) === "ct_" && !in_array(substr($place, 3), $full_container_id_list);
+		foreach ($indexed_place_list as $item_id => $place) {
+			$place_prefix = substr($place, 0, 3);
+			$place_id = (int) substr($place, 3);
+			$has_inconsistent_place = empty($place) || !in_array($place_prefix, ["pi_", "pe_", "ct_"]);
+			$has_inexistant_owner = in_array($place_prefix, ["pi_", "pe_"]) && !in_array($place_id, $character_ids);
+			$is_in_inexistant_container = $place_prefix === "ct_" && !in_array($place_id, $container_ids);
+			$is_container = in_array($item_id, $container_ids);
+			$creates_loop = $is_container && self::creates_loop($item_id, $indexed_place_list);
+			if($creates_loop){
+				// grosse prise de tête avec boucles infinies dans plein de méthodes → makeItemOphan règle tout
+				$has_inconsistent_place = true;
+				$this->makeItemOrphan($item_id);
+			}
 			if ($has_inconsistent_place || $has_inexistant_owner || $is_in_inexistant_container) {
-				$object = $this->getEquipment($item["id"]);
+				$object = $this->getEquipment($item_id);
 				$orphan_items[] = $object;
 			}
 		}
@@ -144,11 +172,10 @@ class EquipmentRepository extends AbstractRepository
 					$search_items_in_orphan_container = true;
 					$item_content = $this->getEquipmentFromPlace("ct_" . $item->id);
 					$orphan_container_content = [];
-					foreach ($item_content as $item_in_orphan_container){
-						//$orphan_items[] = new Equipment($item_in_orphan_container);
+					foreach ($item_content as $item_in_orphan_container) {
 						$orphan_container_content[] = new Equipment($item_in_orphan_container);
 					}
-					array_splice($orphan_items, $index+1+$insertion_index_modifier, 0, $orphan_container_content );
+					array_splice($orphan_items, $index + 1 + $insertion_index_modifier, 0, $orphan_container_content);
 					$insertion_index_modifier += count($orphan_container_content);
 				}
 			}

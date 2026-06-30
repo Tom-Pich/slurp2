@@ -194,9 +194,9 @@ class TextParser
 	/**
 	 * pseudoMDParser – convert custom simplified markdown to html string \
 	 * ** for h4 \
-	 * - for list item\
-	 * *text* for bold\
-	 * _text_ for italic\
+	 * \- for list item\
+	 * \*text\* for bold\
+	 * \_text\_ for italic\
 	 * default tag is p
 	 *
 	 * @param  string $text
@@ -358,7 +358,7 @@ class TextParser
 	 * transform a string serie of operations (with + and -) into a number
 	 * will return 0 if argument is not a number or a string, and if string cannot be parsed
 	 */
-	public static function evalString($value): int|float
+	public static function evalString(mixed $value): int|float
 	{
 		if (is_int($value) || is_float($value)) return $value;
 		if (!is_string($value)) return 0;

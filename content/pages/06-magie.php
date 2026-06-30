@@ -444,9 +444,17 @@ use App\Entity\Spell;
 			<h3>Réussite, échec et critiques</h3>
 		</summary>
 		<p><b>Réussite :</b> le sort a été lancé et son coût énergétique doit être payé (même si la cible a résisté au sort).</p>
-		<p><b>Réussite critique :</b> le sort a fonctionné mieux que prévu (discrétion du MJ). Pas de dépense de PdM.</p>
+
+		<p><b>Réussite critique :</b> le sort a fonctionné mieux que prévu (à la discrétion du MJ). Pas de dépense de PdM.</p>
+
 		<p><b>Échec :</b> le sort n’a pas agi. L’initiateur perd la moitié des PdM qu’aurait dû lui coûter le sort (sauf pour les sorts d’<i>Information</i> qui gardent leur coût énergétique normal).</p>
-		<p><b>Échec critique :</b> l’énergie nécessaire a été dépensée, mais le sort a échoué de manière spectaculaire. Le résultat est géré sur la <a href="table-jeu">Table de jeu</a>.</p>
+
+		<p><b>Échec critique :</b> l’énergie nécessaire a été dépensée, mais le sort a échoué de manière spectaculaire. Le résultat est géré sur la <a href="table-jeu">Table de jeu</a>. Quelques précisions sur les échecs critiques :</p>
+
+		<ul>
+			<li><b>Effets inverses ou qui se retournent contre leur initiateur :</b> le MJ n’hésitera pas à faire preuve d’imagination. La magie est imprévisible et chaotique lorsqu’elle n’est pas contrôlée. Les eFfets devront toutefois restés proportionnels au niveau de puissance auquel le sort est lancé.</li>
+			<li><b>Les intentions sont « pures »</b> si elles sont gratuites, complètement altruistes et dans un but exclusivement bienveillant.</li>
+		</ul>
 	</details>
 
 </article>

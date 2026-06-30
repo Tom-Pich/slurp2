@@ -127,10 +127,9 @@ class Spell extends AbstractSpell
 				for ($i = 1; $i <= 5; $i++) {
 					$cost_modifier = (int) max(0, floor(($spell["scores"][$i] - 13) / 2));
 					$spell["costs"][$i] = $spell["scores"][$i] >= 12 ? max(0, self::pdm_cost[$i - 1] - $cost_modifier) : null;
-					//if ($spell["scores"][$i] < 12)
 				}
 				$spell["readable_costs"] = array_filter($spell["costs"], fn ($cost) => !is_null($cost));
-				$spell["readable_costs"] = implode("/", $spell["readable_costs"]);
+				$spell["readable_costs"] = $spell_entity->class === "Enchantement" ? "spécial" : implode("/", $spell["readable_costs"]);
 
 				// process time
 				$time_dividers = [];

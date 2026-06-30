@@ -60,7 +60,7 @@ class CriticalController
 		10 => "Le sort se retourne contre son initiateur. Refaire un jet si ce n’est pas possible.",
 		11 => "Le sort échoue. L’initiateur perd 1d/1d+2/2d/2d+2/3d PdE selon le niveau de puissance.",
 		12 => "Le sort échoue. L’initiateur subit [1d×niveau de puissance] de dégâts, perd tous ses PdM et ceux des pierres de puissance qu’il portait.",
-		13 => "Le sort échoue. L’initiateur subit [1d×niveau de puissance] de dégâts, perd tous ses PdM et ceux des pierres de puissance qu’il portait.",
+		13 => "Le sort échoue. L’initiateur subit [1d×niveau de puissance] de dégâts, perd tous ses PdM et les pierres de puissance qu’il portait sont détruites.",
 		14 => "Le sort échoue. L’initiateur tombe dans le coma pendant 1d minutes / heures / jours / semaines / mois selon le niveau du sort.",
 		15 => "Explosion ! [1d×niveau de puissance] de dégâts explosifs centrés sur l’initiateur.",
 		16 => "Le sort échoue. L’initiateur vieillit de [1d×niveau de puissance] années et perd 1d/1d+2/2d/2d+2/3d PdE selon le niveau de puissance.",
