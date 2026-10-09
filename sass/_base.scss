@@ -121,6 +121,7 @@ dialog {
 	border: 1px solid currentColor; padding: 2em 1em 1em 1em; /* z-index: 2; */
 	&::backdrop { backdrop-filter: blur(5px);}
 	button[data-role=close-modal]:first-of-type { border: none; padding: 0; position: absolute; top: .5em; right: .75em; }
+	@include media { top: 5vh; transform: translateX(-50%); }
 }
 
 // Forms & buttons

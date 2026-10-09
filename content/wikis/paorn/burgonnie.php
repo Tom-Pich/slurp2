@@ -35,8 +35,8 @@
 		</summary>
 		<ul class="flow">
 			<li><b>Humains :</b> Ils constituent l’immense majorité de la population et occupent tous les échelons de la société.</li>
-			<li><b>Nains :</b> Principalement installés en Sordolia, ils sont respectés pour leurs compétences artisanales.</li>
-			<li><b>Elfes :</b> Ils préfèrent les bois du Verbleau où ils ont établi quelques cités importantes comme Thiliandiline et Varilia. En Sordolia, des tribus d’elfes des bois vivent isolées dans les profondes forêts.</li>
+			<li><b>Nains :</b> Principalement installés en Sordolia, ils sont respectés pour leurs compétences artisanales et minières.</li>
+			<li><b>Elfes :</b> Les <i>hauts-elfes</i> préfèrent les bois du Verbleau où ils ont établi quelques cités importantes comme Thiliandiline et Varilia. En Sordolia, des tribus d’<i>elfes des bois</i> (ou <i>elfes sylvestres</i>) vivent isolées dans les profondes forêts.</li>
 			<li><b>Hobbits :</b> parfois employés comme ouvriers salariés parmi les humains, la plupart d’entre eux vivent dans des communautés agraires autonomes, principalement dans le Verbleau et l’Artaille.</li>
 		</ul>
 	</details>
@@ -85,6 +85,7 @@
 		</ul>
 	</details>
 
+	<!-- Assemblées provinciales -->
 	<details>
 		<summary>
 			<h3>Les Assemblées Provinciales</h3>
@@ -373,32 +374,3 @@
 	</details>
 
 </section>
-
-<!-- Particularités -->
-<!-- <section>
-	<h2>Particularités</h2>
-
-	<details>
-		<summary>
-			<h3>Créatures et dangers</h3>
-		</summary>
-		<p>Les forêts burgonnes abritent une grande variété de créatures dangereuses :</p>
-		<ul class="flow">
-			<li>Des brigands et bandits organisés en communautés</li>
-			<li>Des monstres humanoïdes (gobelins, orcs, trolls) principalement dans le nord</li>
-			<li>Des animaux sauvages (loups, ours, sangliers&hellip;)</li>
-			<li>Des créatures mythiques dont l’existence est parfois attestée (licornes, basilics, dragons)</li>
-		</ul>
-	</details>
-
-	<details>
-		<summary>
-			<h3>Traditions des « accidents » politiques</h3>
-		</summary>
-
-		<p>La tradition des « accidents » politiques, longtemps au cœur de la culture burgonne, est en déclin depuis que la magie divinatoire permet d’en identifier les véritables causes. Les guildes d’accidenteurs, autrefois prospères, perdent progressivement de leur influence.</p>
-
-		<p>Le système successoral basé sur la généalogie permet des ascensions sociales fulgurantes lorsqu’un héritier éloigné se retrouve soudain à la tête d’un domaine important après la disparition de tous les prétendants directs.</p>
-	</details>
-
-</section> -->

@@ -342,7 +342,7 @@
 		<summary>
 			<h3>Le Parlement et la Chancellerie (Justice et Intérieur)</h3>
 		</summary>
-		<p>Production des lois, des chartes et gestion de la haute justice du territoire. Nécessite d’immenses salles d’audience et un réseau d’écritoires pour les légions de juristes, scribes, notaires et greffiers. Ces institutions occupent des bâtiments civils monumentaux en ville, attirant autour d’eux les corporations d’avocats, de procureurs et de copistes.</p>
+		<p>Production des lois, des chartes et gestion de la haute justice du territoire. Nécessite de grandes salles d’audience et un réseau d’écritoires pour les légions de juristes, scribes, notaires et greffiers. Ces institutions occupent des bâtiments civils monumentaux en ville, attirant autour d’eux les corporations d’avocats, de procureurs et de copistes.</p>
 	</details>
 
 	<!-- Les infrastructures techniques et militaires -->

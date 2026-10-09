@@ -54,7 +54,7 @@ return [
 
 		"charbon de bois" => [],
 
-		"chasse alimentaire" => ["cerf", "daim", "biche", "sanglier", "faisan", "perdrix", "coq de bruyère", "lièvre", "lapin", "auroch", "rennes", "bisons", "canard"],
+		"chasse alimentaire" => ["cerf", "daim", "biche", "sanglier", "chevreuil", "faisan", "perdrix", "coq de bruyère", "lièvre", "lapin", "canard"],
 
 		"chasse pour fourrures" => ["hermine", "martre", "fouine", "castor", "loutre", "lynx", "renard", "lièvre", "lapin", "chat sauvage", "loup", "ours"],
 		

@@ -1,10 +1,10 @@
-@import "./base";
+@use "base";
 //$brp-nav: 560px; // change default value of 768px
-@import "./header-nav";
-@import "./fontawesome";
-@import "./specific";
-@import "./pages";
-@import "./chat-window";
-@import "./dark-theme";
-@import "./style-compact";
-@import "./theme-medieval";
+@use "header-nav";
+@use "fontawesome";
+@use "specific";
+@use "pages";
+@use "chat-window";
+@use "dark-theme";
+@use "style-compact";
+@use "theme-medieval";

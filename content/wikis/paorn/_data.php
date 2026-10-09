@@ -23,6 +23,7 @@ return $articles = [
 	"sardam" => ["title" => "Sardam", "titleH1" => "Sardam, capitale de la Sordolia", "section" => "Sordolia",],
 	"maison-avrelanche" => ["title" => "La Maison d’Avrelanche", "parent" => "sardam" ],
 	"chateau-sardam" => ["title" => "Le château de Sardam", "parent" => "sardam" ],
+	"taverne-sablier-noir" => ["title" => "Le taverne du Sablier Noir", "parent" => "sardam" ],
 	"solidam" => ["title" => "Solidam", "section" => "Sordolia"],
 	"lardam" => ["title" => "Lardam", "titleH1" => "Lardam, capitale économique de la Sordolia", "section" => "Sordolia", "status" => "🛠️"],
 	"fort-leck" => ["title" => "Fort de Leck", "titleH1" => "Le fort de Leck", "section" => "Sordolia"],

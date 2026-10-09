@@ -46,7 +46,7 @@
 		</tr>
 		<tr>
 			<td>Nobles résidents ou à appartements attitrés</td>
-			<td>15–25 + leurs propres gens (30–50)</td>
+			<td>15–25 + leurs gens (30–50)</td>
 		</tr>
 		<tr>
 			<td>Aumônier et petite chapellenie</td>
@@ -57,6 +57,17 @@
 			<td>8-15</td>
 		</tr>
 	</table>
+
+	<h3>Personnel administratif du château</h3>
+	<ul class="flow">
+		<li><b>La direction :</b> le chancelier Vasshen et son secrétaire principal Otho.</li>
+
+		<li><b>La chancellerie et les archives :</b> 5 à 10 scribes et greffiers, dirigée par Kreun et chargée de copier les édits, de tenir le terrier (cadastre féodal) et d'authentifier les chartes.</li>
+
+		<li><b>La diplomatie et les messagers :</b> 10 à 15 messagers et courriers à cheval.</li>
+
+		<li><b>Les légistes :</b> 3 à 5 conseillers juridiques rattachés au Conseil seigneurial du Prince.</li>
+	</ul>
 </section>
 
 <!-- Géographie -->
@@ -162,18 +173,18 @@
 		<!-- Salle de l’Assemblée provinciale -->
 		<details>
 			<summary>
-				<h4>La salle de l’Assemblée provinciale (rez-de-chaussée de la partie nord de l’aile est)</h4>
+				<h4>La salle de l’Assemblée provinciale (rez-de-chaussée de la partie nord)</h4>
 			</summary>
 
-			<p>Construite au moment où les fiefs sordoliens ont exigé leur représentation formelle au sein de l'ordre burgon, cette salle rectangulaire se distingue du reste du château par ses proportions droites et sa pierre de taille plus claire. Des gradins de pierre s'élèvent sur trois côtés, offrant une soixantaine de places ordinaires destinées aux seigneurs tenants de fiefs titrés (les ducs, comtes et barons de la province).</p>
+			<p>Construite au moment où les fiefs sordoliens ont exigé leur représentation formelle au sein de l’ordre burgon, cette salle rectangulaire se distingue du reste du château par ses proportions droites et sa pierre de taille plus claire. Des gradins de pierre s’élèvent sur trois côtés, offrant une soixantaine de places ordinaires destinées aux seigneurs tenants de fiefs titrés (les barons, petits seigneurs et chevaliers de la province).</p>
 
-			<p>Le centre de la pièce (le « foyer ») abrite une table en fer à cheval destinée aux délibérations, séparée du premier rang des gradins par une balustrade basse en pierre sculptée. C'est sur les panneaux de cette balustrade que sont gravées en haut-relief les armes des cinq ducs et comtes vassaux directs de la province. Les armes de la maison d'Avrelanche dominent l'ensemble, sculptées au-dessus du trône présidentiel sur le mur nord. Faisant face aux gradins du côté ouest, une tribune surélevée en chêne sculpté est réservée à l'Archevêque de Sardam, sa présence rappelant l'autorité spirituelle de l'Église ; une monumentale Croix d'Alliance en bronze y est suspendue à la muraille de pierre.</p>
+			<p>Le centre de la pièce (le « foyer ») abrite une table en fer à cheval destinée aux délibérations, séparée du premier rang des gradins par une balustrade basse en pierre sculptée. C’est sur les panneaux de cette balustrade que sont gravées en haut-relief les armes des cinq ducs et comtes vassaux directs de la province. Les armes de la maison d’Avrelanche dominent l’ensemble, sculptées au-dessus du trône présidentiel sur le mur nord. Faisant face aux gradins du côté ouest, une tribune surélevée en chêne sculpté est réservée à l’Archevêque de Sardam, sa présence rappelant l’autorité spirituelle de l’Église ; une monumentale Croix d’Alliance en bronze y est suspendue à la muraille de pierre.</p>
 
-			<p>Les seigneurs n'ayant pas le rang de vassal direct (comme le baron Meck) siègent uniquement dans les gradins anonymes, sans que leurs armes n'apparaissent — un usage protocolaire rigide qui marque la hiérarchie politique de la province.</p>
+			<p>Les seigneurs n’ayant pas le rang de vassal direct (comme le baron Meck) siègent uniquement dans les gradins anonymes, sans que leurs armes n’apparaissent — un usage protocolaire rigide qui marque la hiérarchie politique de la province.</p>
 
-			<p>En dehors des sessions plénières biennales, les lourds fauteuils de chêne des grands vassaux sont protégés par des housses de lin gris par respect pour l'étiquette féodale.</p>
+			<p>En dehors des sessions plénières biennales, les cinq lourds fauteuils de chêne des grands vassaux sont protégés par des housses de lin gris par respect pour l’étiquette féodale.</p>
 
-			<p>Afin de faire vivre ce vaste espace, la salle est régulièrement réaffectée à des usages annexes. Elle accueille les audiences du Prévôt de Sardam (ou de son juge délégué) pour régler les litiges mineurs de la cité. Lors des périodes de forte activité bureaucratique — notamment la collecte des impôts ou la préparation d'un audit impérial —, elle se transforme en atelier d'archivage temporaire où les copistes étalent registres et parchemins. Enfin, la pureté de son acoustique, due à la courbure de ses gradins de pierre, en fait un lieu occasionnel de répétition privée pour le Prince, qui aime s'y installer le soir pour jouer de l'épinette loin des rumeurs de la cour.</p>
+			<p>En dehors des réunions biennales de l’Assemblée Provinciale, la salle est régulièrement réaffectée à des usages annexes. Elle accueille les « Petites Audiences » du Prince (lorsqu’il reçoit des envoyés de l’Empereur, ambassadeurs, délégués et représentants de guildes, pétitions de vassaux). Lors des périodes de forte activité bureaucratique — notamment la collecte des impôts ou la préparation d’un audit impérial —, elle se transforme en atelier d’archivage temporaire où les copistes étalent registres et parchemins. Enfin, la pureté de son acoustique, due à la courbure de ses gradins de pierre, en fait un lieu occasionnel de répétition privée pour le Prince, qui aime s’y installer le soir pour jouer de l’épinette loin des rumeurs de la cour.</p>
 
 		</details>
 
@@ -183,7 +194,7 @@
 				<h4>La salle des archives (rez-de-chaussée du bâtiment sud)</h4>
 			</summary>
 
-			<p>La porte est en chêne épais avec une serrure à deux points — elle était fermée en l’absence du greffier des archives, Orwald Kreun.</p>
+			<p>La porte est en chêne épais avec une serrure à deux points — elle était fermée en l’absence du Gardien des archives, Orwald Kreun.</p>
 
 			<p>La salle est voûtée, plus longue que large. L’odeur qui vous accueille est celle du vieux papier, de la cire et d’une légère acidité — de l’encre ancienne, de la poussière dans les reliures. Quatre fenêtres étroites percent le mur est : en ce moment de la journée, elles donnent une lumière froide mais suffisante. Le soir, ce serait une autre affaire.</p>
 

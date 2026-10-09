@@ -599,6 +599,7 @@ use App\Rules\WeaponsController;
 				<optgroup label="Dans un château">
 					<option value="castle[couloirs]">Dans les couloirs</option>
 					<option value="castle[personnalites]">Personnalités</option>
+					<option value="castle[details]">Petits détails sensoriels</option>
 				</optgroup>
 				<optgroup label="Dans une rue animée (medfan)">
 					<option value="fantasy-street[inactifs]">Passants et inactifs</option>

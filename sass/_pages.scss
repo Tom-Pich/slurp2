@@ -1,3 +1,5 @@
+@use "base" as *;
+
 body.basic-page{
 	main { width: min(100%, var(--content-max-width)); margin-inline: auto; @include flow; }
 }
@@ -229,7 +231,7 @@ body.wiki {
 	.float-left:first-child { margin-top: .25em; }
 
 	details:has(> summary > h3) { margin-top: 1em; border: .5px solid silver; border-radius: .5em; padding: .5em .75em }
-	details:has(> summary > h4) { border-block: .5px solid var(--grey-700); padding-block: .25em; }
+	details:has(> summary > h4) { border-block: .5px solid var(--grey-700); padding-block: .5em; margin-top: .75em; }
 
 	.admin { color: var(--grey-500); }
 	:is(div, p, ul, details).admin { border: .5px solid var(--grey-700); padding: .5em; }

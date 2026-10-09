@@ -268,13 +268,13 @@
 			<h3>Sous‑sol</h3>
 		</summary>
 
-		<p><b>Chambre de torture.</b> Un seul brasero est installé dans un coin, tandis que les murs sont couverts de tenailles, scies et autres instruments à l’aspect peu engageant. Partout, des anneaux permettent d’attacher les suppliciés dans des positions aussi inconfortables que possible. Contrairement à une idée reçue, les tribunaux médiévaux ne reconnaissaient pas, en théorie les aveux faits sous la torture. Celle‑ci était toutefois largement employée ( "question préalable"), et la simple menace de nouveaux sévices suffisait à faire dire n’importe quoi au premier innocent venu.</p>
+		<p><b>Chambre de torture.</b> Un seul brasero est installé dans un coin, tandis que les murs sont couverts de tenailles, scies et autres instruments à l’aspect peu engageant. Partout, des anneaux permettent d’attacher les suppliciés dans des positions aussi inconfortables que possible. Contrairement à une idée reçue, les tribunaux médiévaux ne reconnaissaient pas, en théorie les aveux faits sous la torture. Celle‑ci était toutefois largement employée ( « question préalable »), et la simple menace de nouveaux sévices suffisait à faire dire n’importe quoi au premier innocent venu.</p>
 
 		<p><b>Cachots.</b></p>
 
 		<p><b>Chambre forte.</b> Une petite pièce fermée par une porte de bronze à l’énorme serrure. Elle contient le trésor seigneurial : objets en or, impôts, parchemins secrets&hellip;</p>
 
-		<p><b>Souterrain.</b> Un long couloir sinueux s’enfonce dans les profondeurs de la terre et conduit jusqu’au pied du ravin, en contrebas. Ce type d’issue secrète n’était pas fréquent au Moyen Âge. Dans la réalité, les souterrains faisaient souvent office de réfrigérateurs où l’on entreposait les denrées périssables.</p>
+		<p><b>Souterrain.</b> Un long couloir sinueux s’enfonce dans les profondeurs de la terre et conduit jusqu’au pied du ravin, en contrebas. Ce type d’issue secrète n’était pas fréquent au Moyen Âge. Les souterrains faisaient souvent office de réfrigérateurs où l’on entreposait les denrées périssables.</p>
 	</details>
 </section>
 

@@ -1,10 +1,12 @@
+@use "base" as *;
+
 @font-face { font-family: "Rubik"; font-weight: 300 900; font-style: normal; font-display: swap; src: url('/assets/fonts/rubik-regular.woff2') format('woff2-variations');}
 @font-face { font-family: "Rubik"; font-weight: 300 900; font-style: italic; font-display: swap; src: url('/assets/fonts/rubik-italic.woff2') format('woff2-variations');}
 @font-face { font-family: "Open Sans"; font-weight: 300 800; font-stretch: 75% 100%; font-style: normal; font-display: swap;src: url('/assets/fonts/opensans-regular.woff2') format('woff2-variations');}
 @font-face { font-family: "Open Sans"; font-weight: 300 800; font-stretch: 75% 100%; font-style: italic; font-display: swap; src: url('/assets/fonts/opensans-italic.woff2') format('woff2-variations');}
 
 :root{
-	--ff-base: 'Open Sans', 'sans-serif';
+	--ff-base: 'Open Sans', 'Noto Color Emoji', 'sans-serif';
 	--ff-accent: 'Rubik', 'sans-serif';
 	--page-content-areas: "main main main";
 	--col-width: 400px; //370px

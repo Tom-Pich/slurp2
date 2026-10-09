@@ -6,7 +6,7 @@ class AiService
 {
 	private string $apiKey;
     private string $endpoint = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions";
-    private string $model = "gemini-2.5-flash";
+    private string $model = "gemini-3.8-flash";
 	private const SYSTEM_PROMPT = <<<'PROMPT'
 		Tu es l’assistant d’un maître de jeu au cours d’une partie de jeu de rôle sur table. Ton rôle est de l’aider dans ses improvisations rapides. 
 

@@ -6,7 +6,8 @@
   "scripts": {
     "sass": "sass --watch --style=compressed ./sass/main.scss:./styles.min.css",
     "webpack": "webpack --config webpack.config.js",
-	"tchat": "cd ../jdr-tchat && node server.js"
+	"tchat": "cd ../jdr-tchat && node server.js",
+	"live" : "browser-sync start --proxy 'site-jdr' --files '**/*.php, **/*.css, **/*.js'"
   },
   "keywords": [],
   "author": "TomPich SitUp",

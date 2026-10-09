@@ -11,6 +11,7 @@
 		<li><b><a href="https://chateauxpourtous.fr/le%20bati%20medieval%20urbain.htm" target="_blank">chateauxpourtous.fr</a> :</b> le bâti urbain au Moyen Âge</li>
 		<li><b><a href="https://jeretiens.net/les-heures-canoniales-matines-laudes-prime-tierce-sexte-none-vepres-complies/#Laudes_%E2%80%93_Laurore" target="_blank">jeretiens.net</a> :</b> les heures canoniales</li>
 		<li><b><a href="https://www.sylvieteper.fr/sommaire/" target="_blank">sylvieteper.fr</a> :</b> blog d’une écrivaine sur la vie au Moyen Âge.</li>
+		<li><b><a href="http://medieval.mrugala.net/">mrugala.net</a> :</b> site amateur sur le Moyen Âge. Moche, mais riche et intéressant.</li>
 	</ul>
 
 </article>

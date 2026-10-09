@@ -2,6 +2,7 @@
 <article>
 	<h2>Armes</h2>
 
+	<!-- Lance-roquette portatif -->
 	<details>
 		<summary>
 			<h3>Lance-roquette portatif</h3>
@@ -39,6 +40,7 @@
 		<p>* avec lunette de visée</p>
 	</details>
 
+	<!-- Lance-grenade -->
 	<details>
 		<summary>
 			<h3>Lance-grenade</h3>
@@ -51,6 +53,7 @@
 		</p>
 	</details>
 
+	<!-- Missiles guidés -->
 	<details>
 		<summary>
 			<h3>Missiles guidés</h3>
@@ -61,6 +64,7 @@
 		<p><b>Missile 125 mm&nbsp;:</b> dég. 6d×7(10)&nbsp;; vit.&nbsp;: 150 m·s<sup>-1</sup>&nbsp;; portée&nbsp;: 3 km</p>
 	</details>
 
+	<!-- Missiles à tête chercheuse -->
 	<details>
 		<summary>
 			<h3>Missiles à tête chercheuse</h3>
@@ -79,6 +83,7 @@
 		<p>Au moment où il va toucher sa cible, le missile doit effectuer un dernier jet d’<i>Acquisition</i>. Si ce jet est raté, le missile manque sa cible. Il peut tenter une réacquisition à -3 et pourra tenter une nouvelle attaque, ceci jusqu’à ce que le missile ait épuisé tout son carburant.</p>
 	</details>
 
+	<!-- Impulsion EMP -->
 	<details>
 		<summary>
 			<h3>Impulsion EMP</h3>
@@ -123,6 +128,7 @@
 <article>
 	<h2>Piratage informatique</h2>
 
+	<p class="clr-invalid ta-center italic">À revoir entièrement</p>
 	<details>
 		<summary>
 			<h3>Objectif d’un piratage</h3>

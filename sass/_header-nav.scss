@@ -1,3 +1,5 @@
+@use "base" as *;
+
 .main-header { 
 	background: linear-gradient(180deg, #fff0 0%, black 100%), url(/assets/img/bg-header-std.jpg) no-repeat center/cover;
 	color: white; padding-bottom: 0.25em;

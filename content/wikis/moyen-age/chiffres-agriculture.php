@@ -11,37 +11,39 @@
 		<th>Surface (ha)</th>
 	</tr>
 	<tr>
-		<td>Optimale</td>
+		<td>Optimales</td>
 		<td>15</td>
 	</tr>
 	<tr>
-		<td>Bonne</td>
+		<td>Bonnes</td>
 		<td>12,5</td>
 	</tr>
 	<tr>
-		<td>Moyenne</td>
+		<td>Moyennes</td>
 		<td>10</td>
 	</tr>
 	<tr>
-		<td>Difficile</td>
+		<td>Difficiles</td>
 		<td>7</td>
 	</tr>
 	<tr>
-		<td>Très difficile</td>
+		<td>Très difficiles</td>
 		<td>5</td>
 	</tr>
 
 </table>
 
+<p>La surface donnée ici correspond à la surface <i>maximale</i> exploitable. Les paysans peuvent éentuellement disposer de moins de terre que ce qu’ils peuvent réellement exploiter.</p>
+
 <h2>Rendements</h2>
 
-<p>Surface nécessaire à l’alimentation de 100 personnes selon la fertilité de la terre.</p>
+<p>Surface nécessaire à l’alimentation de 100 personnes selon la fertilité de la terre. La chasse, la pêche et la cueillette peuvent réduire ces besoins</p>
 
 <!-- table fertilité -->
 <table class="left-1">
 	<tr>
 		<th>Fertilité</th>
-		<th>ha/100 pers.</th>
+		<th>Surface (ha)</th>
 	</tr>
 	<tr>
 		<td>Exceptionnelle</td>

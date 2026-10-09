@@ -45,15 +45,18 @@ class LogController
 			$_SESSION["token"] = Firewall::generateToken(16);
 		}
 
-		 if($redirect_url) header('Location: ' . $redirect_url);
-
+		if ($redirect_url) header('Location: ' . $redirect_url);
 	}
 
 	public static function generateBrowserFingerprint()
 	{
 		$userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
 		$acceptLang = $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? '';
-		$ipSegments = explode('.', $_SERVER['REMOTE_ADDR']);
+
+		// $ipSegments = explode('.', $_SERVER['REMOTE_ADDR']);
+		$ip = $_SERVER['REMOTE_ADDR'] ?? '';
+		$ipSegments = explode('.', $ip);
+
 		$partialIP = implode('.', array_slice($ipSegments, 0, 2)); // First 2 octets only
 		$fingerprintData = $userAgent . $acceptLang . $partialIP;
 		return hash('sha256', $fingerprintData);
@@ -69,8 +72,10 @@ class LogController
 			$user_is_guest = $_SESSION["id"] === 0;
 			if (!$user_is_guest) $_SESSION["attempt"] = 0;
 			$session_expired = $_SESSION["time"] < (time() - SESSION_DURATION);
-			$invalid_browser_fingerprint = empty($_SESSION["browser_fingerprint"]) || $_SESSION["browser_fingerprint"] !== LogController::generateBrowserFingerprint();
+			//$invalid_browser_fingerprint = empty($_SESSION["browser_fingerprint"]) || $_SESSION["browser_fingerprint"] !== LogController::generateBrowserFingerprint();
+			$invalid_browser_fingerprint = !$user_is_guest && (empty($_SESSION["browser_fingerprint"]) || $_SESSION["browser_fingerprint"] !== LogController::generateBrowserFingerprint());
 
+			if ($user_is_guest) $_SESSION["browser_fingerprint"] = LogController::generateBrowserFingerprint(); // nouveau : rafraîchît la fingerprint pour un guest (pour les robots).
 			if ($user_is_guest || !$session_expired) $_SESSION["time"] = time();
 			if ($session_expired || $invalid_browser_fingerprint) LogController::logout();
 		}

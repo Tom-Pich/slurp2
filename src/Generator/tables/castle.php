@@ -53,5 +53,28 @@ return [
 		"Ancien commandant militaire retraité — manteau militaire soigneusement entretenu, cicatrice sur la joue. Calme et économe de ses mots.",
 		"Épouse d'un conseiller, présente comme hôtesse — robe de fête bordeaux et crème, bijoux de famille, coiffe élaborée. Mondaine et bavarde, colporte volontiers les rumeurs si on la flatte.",
 		"Émissaire d'un autre seigneur en mission diplomatique — tenue sobre aux couleurs d'une autre maison noble, sceau visible à la ceinture. Poli et mesuré.",
+	],
+
+	// détails
+	"details" => [
+		"Une tapisserie décrochée à un angle, la tringle tordue, personne ne l’a encore réparée",
+		"Un vitrail cassé remplacé provisoirement par un volet de bois – le froid passe dessous",
+		"Des marques de semelles boueuses sur un escalier de pierre, encore fraîches",
+		"Un chandelier à sept branches posé à même le sol dans un couloir, attendant d’être remonté",
+		"Un chat gris immobile au milieu d’un couloir, qui observe les PJ sans reculer",
+		"Un banc contre un mur avec une hotte abandonnée et un pain entamé – quelqu’un parti en urgence",
+		"Des gonds de porte rouillés : la porte résiste à l’ouverture, puis cède d’un coup",
+		"Une flaque sur les dalles sous une gouttière intérieure ; un seau est posé à côté mais déborde",
+		"Un blason de pierre au-dessus d’un linteau, si noirci par la suie qu’on ne distingue plus les armes",
+		"Des voix à travers une porte fermée – ton calme, impossible de distinguer les mots",
+		"Un racloir à boue à l’entrée d’une porte, cliquetant dans le courant d’air",
+		"La cloche du château – lointaine, étouffée par la pierre – sonne une heure indéterminée",
+		"Un bruit de pas rapides dans l’escalier juste au-dessus, puis plus rien",
+		"Le craquement régulier d’un plancher sous des pas qu’on ne voit pas",
+		"Une discussion animée qui s’interrompt net quand les PJ tournent le coin",
+		"L’air chaud des cuisines qui monte par une trappe dans le couloir et fait flotter la poussière",
+		"Odeur de suif rance autour d’une torche mal entretenue",
+		"Le froid de la pierre qui transpire – les murs de ce couloir ne sèchent jamais",
+		"Une marche plus haute que les autres",
 	]
 ];

@@ -10,7 +10,7 @@
 			</a>
 			<figcaption>Carte de la Sordolia</figcaption>
 		</figure>
-		
+
 		<figure>
 			<img src="/assets/img_paorn/sd-dernier-rempart-01.webp" alt="vue du Dernier Rempart">
 			<figcaption>Le Dernier Rempart</figcaption>
@@ -21,12 +21,12 @@
 <!-- Géographie -->
 <section>
 	<h2>Géographie</h2>
-	
+
 	<p>D’une superficie d’environ 320&thinsp;000 km², la Sordolia s’étend des rives du fleuve Absial aux contreforts des Sinistérias, formant la province septentrionale de Burgonnie. L’essentiel de la Sordolia est couvert de forêts. La région compte de nombreux lacs, étangs et marécages, ainsi que de très vastes plaines herbeuses.</p>
 
 	<p>Sur la côte sud, le climat est frais mais sans extrême. Les précipitations sont abondantes toute l’année, portée par le vent dominant venant du sud-est et chargé d’embruns. L’intérieur des terres est un peu plus sec et surtout nettement plus froid en hiver.</p>
 
-	<!-- Territoires & régions -->
+	<!-- Territoires et régions -->
 	<details>
 		<summary>
 			<h3>Territoires &amp; régions</h3>
@@ -46,7 +46,7 @@
 
 		<ul class="flow">
 			<li>
-				<b>Les terres de la Couronne</b> — la plus grande région, centrale, en vert foncé. Gouvernées directement par le prince Sardam. Elles comprennent presque la moitié du territoire de Sordolia (environ 140.000 km²), limitée au nord par le Dernier Rempart.
+				<b>Les terres de la Couronne</b> — la plus grande région, centrale, en vert foncé. Gouvernées directement par le prince Sardam ou par de petits seigneurs vassaux directs (les seigneurs de Skander). Elles comprennent presque la moitié du territoire de Sordolia (environ 140.000 km²), limitée au nord par le Dernier Rempart. Bien que très étendue, c’est la région la moins densément peuplée de la Sordolia car elle s’étend principalement sur le Nord sauvage de la Province.
 			</li>
 
 			<li>
@@ -61,7 +61,7 @@
 				<b>Le duché de Karldam</b> — sud est, en vert moyen. Les terres du sud-est, entre le Haut Vildberg et la côte. Le duc <b>Diebold Krantz</b> tient Karldam, cité des artisans. C’est un territoire relativement prospère, dont la renommée repose sur le travail du bois et de l’ébénisterie.
 			</li>
 
-			<li><b>Le duché de Voldam</b> – en vert clair.</li>
+			<li><b>Le duché de Voldam</b> – en vert clair, tenu par le duc <b>Barent Harkskamp</b>.</li>
 
 			<li><b>Le duché de Vorteldam</b> – en vert moyen. Tenu par <b>Andries Vorn</b>, duc de Vorteldam et Marquis de Lund. C’est un vassal du prince d’Avrelanche, mais il gère également les Marches de Lund, dont il répond devant l’Empereur. Cette situation bâtarde le place parfois dans une situation politique tendue.</li>
 
@@ -70,16 +70,10 @@
 		<h4>Les Marches</h4>
 
 		<ul>
-			<li><b>La marche de Lund</b> — territoire dépeuplé et âpre, en frontière du Salthar, organisé moins comme un fief traditionnel que comme une zone tampon militaire. <!-- Son seigneur, <b>Andries Vorn</b>, tient Vorteldam et les routes de l’Asbial. --></li>
+			<li><b>La marche de Lund</b> — territoire dépeuplé et âpre, en frontière du Salthar, organisé moins comme un fief traditionnel que comme une zone tampon militaire.</li>
 
-			<li><b>Les marches franches</b> – péninsule du Komashkaïda. Bien que sous la tutelle du Prince, ce territoire est, dans les faits, quasi-autonome. Il est occupé par une dizaine de clans humains, dirigé par des chefs de guerre.</li>
+			<li><b>Les marches franches</b> – péninsule du Komashkaïda. Bien que sous la tutelle du Prince, ce territoire est, dans les faits, quasi-autonome. Il est occupé par une dizaine de clans humains, dirigés par des chefs de guerre.</li>
 		</ul>
-
-		<!-- <h4>Cas particuliers</h4>
-
-		<p><b>Solidam</b> abrite une garnison impériale permanente et relève directement de l’autorité de l’Empire, sans seigneur burgon interposé.</p>
-
-		<p><b>Geldam</b> est gouvernée par la communauté naine selon ses propres lois, sous un accord ancien avec la Couronne qui lui garantit l’autonomie intérieure en échange d’une redevance annuelle et d’une neutralité armée.</p> -->
 
 	</details>
 
@@ -122,42 +116,31 @@
 			<h3>Routes</h3>
 		</summary>
 
-		<ul>
-			<li><b>Sardam – Lardam :</b> 255 km (9-10 jours à pied, 6-8 jours à cheval)</li>
-			<li><b>Sardam – Palidam :</b> 315 km (11-12 jours à pied, 7-11 jours à cheval)</li>
-		</ul>
+		<h4>Sardam – Lardam</h4>
+		<p>255 km (9-10 jours à pied, 6-8 jours à cheval)</p>
 
-		<h4>De Sardam à Solidam</h4>
+		<h4>Sardam – Palidam</h4>
+		<p>315 km (11-12 jours à pied, 7-11 jours à cheval)</p>
 
-		<table class="border left-1">
-			<tr>
-				<td><b>Total :</b> 220 km (8-9 jours à pied, 5-7 jours à cheval)</td>
-			</tr>
-			<tr>
-				<td>
-					<b>Étape 1 : Sardam – Fallenbeck (27,5 km).</b> 10 km pour sortir de la zone agricole de Sardam (hameaux, fermes fortifiées), puis forêt durant 13,5 km. 4 km de zone agricole puis arrivée au village.<br>
-					À partir de Fallenbeck : contreforts des Monts Versdvar visible à l’est. Étape faisable en bateau sur la Rojen.
-				</td>
-			</tr>
-			<tr>
-				<td><b>Étape 2 : Fallebenck – Sundrup (27,5 km).</b> 4 km de zone agricole, puis 20,5 km de forêt, puis 3 km de zone. Arrivée à Sundrup.</td>
-			</tr>
-			<tr>
-				<td><b>Étape 3 : Sundrup – Nordrup (19 km).</b> Passage par Mullerup (8,5 km) et de son pont (péage).</td>
-			</tr>
-			<tr>
-				<td><b>Étape 4 : Nordrup – Morthel (38,5 km).</b> Passage par un pont (28,5 km)</td>
-			</tr>
-			<tr>
-				<td><b>Étape 5 : Morthel – Giethmen (43,5 km).</b></td>
-			</tr>
-			<tr>
-				<td><b>Étape 6 : Giethmen – Mataram (36,3 km).</b></td>
-			</tr>
-			<tr>
-				<td><b>Étape 7 : Mataram – Solidam (29,2 km).</b></td>
-			</tr>
-		</table>
+		<h4>Sardam – Solidam</h4>
+
+		<p>220 km (8-9 jours à pied, 5-7 jours à cheval)</p>
+
+		<div>
+			<p class="bg-grey-900 p-½"><b>Étape 1 : Sardam – Fallenbeck (27,5 km).</b> 10 km pour sortir de la zone agricole de Sardam (hameaux, fermes fortifiées), puis forêt durant 13,5 km. 4 km de zone agricole puis arrivée à Fallenbeck. À partir de Fallenbeck : contreforts des Monts Versdvar visible à l’est. Étape faisable en bateau sur la Rojen.</p>
+
+			<p class="p-½"><b>Étape 2 : Fallebenck – Sundrup (27,5 km).</b> 4 km de zone agricole, puis 20,5 km de forêt, puis 3 km de zone. Arrivée à Sundrup.</p>
+
+			<p class="p-½ bg-grey-900"><b>Étape 3 : Sundrup – Nordrup (19 km).</b> Passage par Mullerup (8,5 km) et de son pont (péage).</p>
+
+			<p class="p-½"><b>Étape 4 : Nordrup – Morthel (38,5 km).</b> Passage par un pont (28,5 km)</p>
+
+			<p class="p-½ bg-grey-900"><b>Étape 5 : Morthel – Giethmen (43,5 km).</b></p>
+
+			<p class="p-½"><b>Étape 6 : Giethmen – Mataram (36,3 km).</b></p>
+
+			<p class="p-½ bg-grey-900"><b>Étape 7 : Mataram – Solidam (29,2 km).</b></p>
+		</div>
 
 	</details>
 
@@ -217,14 +200,15 @@
 	<p>Les habitants de cette région sont plutôt rudes et éprouvent un profond respect pour la nature, bien que les mœurs des habitants des cités côtières soient plus raffinées.</p>
 
 	<p>Les Sordoliens sont grands et ont une pilosité plutôt claire. Ce sont des gens droits, honnêtes, travailleurs et, malgré leur rudesse, prompts à aider leur prochain.</p>
-	
+
 	<p>Quelle que soit leur profession, tous ont appris à connaître les mystères et les dangers des forêts. Le maniement des armes – particulièrement de la hache – est enseigné aux enfants dès leur plus jeune âge, leur permettant de développer une adresse et une vaillance remarquables.</p>
 </section>
 
 <!-- Politique & organisation -->
 <section>
 	<h2>Politique &amp; organisation</h2>
-	<p>La Sordolia est dirigée par le prince Margor d’Avrelanche. Voir <a href="/wiki/paorn/sardam">Sardam</a>.</p>
+
+	<p>La Sordolia est dirigée par le <a href="/wiki/paorn/maison-avrelanche">prince Margor d'Avrelanche</a>, ainsi que cinq grandes familles nobles à la tête de duchés et comtés.</p>
 </section>
 
 <!-- Économie -->
@@ -240,6 +224,12 @@
 </section>
 
 <!-- Figures et groupes d’influences -->
+ <section>
+	<h2>Figures &amp; groupes d’influences</h2>
+
+	<h3>L’Église</h3>
+	<p>L’archevêque de Sordolia est <b>Monseigneur Olaus</b>. Voir l’article sur <a href="/wiki/paorn/sardam">Sardam</a> pour plus de détails.</p>
+ </section>
 
 <!-- Culture et société -->
 

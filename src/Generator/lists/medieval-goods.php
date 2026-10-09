@@ -19,7 +19,7 @@ return [
 
 		"condiments et assaisonnement" => ["huile", "vinaigre", "miel", "moutarde", "verjus (jus de raison vert, acidifant)"],
 
-		"épices exotiques" => ["poivre", "gingembre", "cannelle", "clou de girofle", "muscade", "safran"],
+		"épices exotiques" => ["poivre", "gingembre", "cannelle", "clou de girofle", "noix de muscade", "safran", "macis (tégument de la noix de muscade)", "maniguette (graine de paradis)", "cardamome", "galanga"],
 
 		"sucre et confiserie" => ["sucre de canne (très rare)", "épices confites", "sirop de fruits (raisiné – liquide brun-noir)"],
 

@@ -29,7 +29,7 @@ use App\Repository\SkillRepository;
 		<summary>
 			<h3>Dégâts inférieurs à 1d-1</h3>
 		</summary>
-		Pour les jets de dégâts inférieurs à 1d-1, utiliser les correspondances suivantes&nbsp;: 1d-2 → 1d5-1, 1d-3 → 1d4-1, 1d-4 → 1d3-1, 1d-5 → 1d2-1
+		Pour les jets de dégâts inférieurs à 1d-1, utiliser les correspondances suivantes : 1d-2 → 1d5-1, 1d-3 → 1d4-1, 1d-4 → 1d3-1, 1d-5 → 1d2-1
 	</details>
 
 	
@@ -44,7 +44,7 @@ use App\Repository\SkillRepository;
 		<summary>
 			<h3>Principes de base</h3>
 		</summary>
-		<p>Un jet sous une compétence ou une caractéristique est réussi si&nbsp;:</p>
+		<p>Un jet sous une compétence ou une caractéristique est réussi si :</p>
 		<p class="ta-center mt-1"><b>Résultat du jet (3d) &le; score ± modificateurs</b></p>
 		<p class="mt-1">3 et 4 sont toujours des réussites, 17 et 18 sont toujours des échecs.</p>
 		<p>Le <b>score brut</b> est le score sans aucun modificateur. Le <b>score net</b> est le score après application des différents modificateurs de circonstances ci-dessous.</p>
@@ -101,7 +101,7 @@ use App\Repository\SkillRepository;
 		<summary>
 			<h3>État du personnage</h3>
 		</summary>
-		<p>L’état du personnage dépend des facteurs suivants&nbsp;:</p>
+		<p>L’état du personnage dépend des facteurs suivants :</p>
 		<ol class="bold-bullet">
 			<li>Encombrement</li>
 			<li>Fatigue</li>
@@ -126,8 +126,8 @@ use App\Repository\SkillRepository;
 		</summary>
 		<ul class="mt-½">
 			<li><b>Matériel utilisé</b> pour entreprendre l’action.</li>
-			<li><b>Environnement&nbsp;:</b> obscurité, sol instable, etc.</li>
-			<li><b>Main dextre / main «&nbsp;faible&nbsp;»&nbsp;:</b> effectuer une action avec sa main «&nbsp;faible&nbsp;» qui nécessiterait l’usage de la main dextre se fait généralement à -3.</li>
+			<li><b>Environnement :</b> obscurité, sol instable, etc.</li>
+			<li><b>Main dextre / main «&nbsp;faible&nbsp;» :</b> effectuer une action avec sa main «&nbsp;faible&nbsp;» qui nécessiterait l’usage de la main dextre se fait généralement à -3.</li>
 		</ul>
 	</detailS>
 
@@ -257,10 +257,10 @@ use App\Repository\SkillRepository;
 		</summary>
 		<p>Il est possible de soulever ou déplacer un poids, en kg, allant jusqu’à :</p>
 		<ul>
-			<li><b>À une main :</b> 3×<i>For</i></li>
-			<li><b>À deux mains :</b> 10×<i>For</i></li>
-			<li><b>Sur le dos :</b> 12,5×<i>For</i></li>
-			<li><b>Traîner sur une surface lisse et nivelée :</b> 30×<i>For</i></li>
+			<li><b>À une main :</b> 3×<i>For</i></li>
+			<li><b>À deux mains :</b> 10×<i>For</i></li>
+			<li><b>Sur le dos :</b> 12,5×<i>For</i></li>
+			<li><b>Traîner sur une surface lisse et nivelée :</b> 30×<i>For</i></li>
 		</ul>
 		<p>Un jet de <i>For</i> réussi peut permettre de dépasser légèrement ces limites.</p>
 	</details>
@@ -284,7 +284,7 @@ use App\Repository\SkillRepository;
 			<li><b>Activité physique modérée :</b> <i>San</i>×2 secondes.</li>
 			<li><b>Exercice physique important :</b> <i>San</i> secondes.</li>
 		</ul>
-		<p><b>Modificateurs :</b> ×2 si hyperoxygénation ; ×½ si surprise et pas de préparation.</p>
+		<p><b>Modificateurs :</b> ×2 si hyperoxygénation ; ×½ si surprise et pas de préparation.</p>
 		<p><i>Contrôle du souffle</i> peut se substituer à la <i>San</i> pour le calcul de la durée de l’apnée. Une fois à bout de souffle, voir <i>Suffocation</i> (chapitre <i>Blessures &amp; Dangers</i>).</p>
 	</details>
 
@@ -326,7 +326,7 @@ use App\Repository\SkillRepository;
 		}
 
 		?>
-		<p>Le malus de <i>Dex</i> est doublé pour les compétences pour lesquelles il est <b>indispensable</b> d’être léger&nbsp;: <i><?= join(", ", $mvt_skills_names) ?></i></p>
+		<p>Le malus de <i>Dex</i> est doublé pour les compétences pour lesquelles il est <b>indispensable</b> d’être léger : <i><?= join(", ", $mvt_skills_names) ?></i></p>
 	</details>
 </article>
 
@@ -342,15 +342,15 @@ use App\Repository\SkillRepository;
 		<p>Des points de fatigue (PdF) peuvent être perdus suite à des efforts physiques, à un manque de sommeil, de nourriture, d’eau, à des températures extrêmes ou à un manque d’air.</p>
 
 		<h4>Efforts physiques</h4>
-		<p>Les PdF perdus sont estimés par le MJ. Un jet de <i>San</i> réussi (ou d’une compétence appropriée&nbsp;: <i>Course</i>, <i>Randonnée</i>, <i>Nage</i>, etc.) réduit le coût de fatigue d’un tiers.</p>
+		<p>Les PdF perdus sont estimés par le MJ. Un jet de <i>San</i> réussi (ou d’une compétence appropriée : <i>Course</i>, <i>Randonnée</i>, <i>Nage</i>, etc.) réduit le coût de fatigue d’un tiers.</p>
 		<ul class="mt-½">
-			<li>Effort peu intense, de longue durée (marche sur terrain plat) : 1 PdF / heure</li>
-			<li>Activité physique soutenu : 2-4 PdF / heure</li>
+			<li>Effort peu intense, de longue durée (marche sur terrain plat) : 1 PdF / heure</li>
+			<li>Activité physique soutenu : 2-4 PdF / heure</li>
 		</ul>
-		<p>L’<i>Encombrement</i> multiplie ce coût&nbsp;: ×1,5 pour <i>Léger</i>, ×2 pour <i>Moyen</i>, ×3 pour <i>Pesant</i>.</p>
+		<p>L’<i>Encombrement</i> multiplie ce coût : ×1,5 pour <i>Léger</i>, ×2 pour <i>Moyen</i>, ×3 pour <i>Pesant</i>.</p>
 
 		<h4>Sommeil écourté</h4>
-		<p>Une nuit blanche coûte 60&nbsp;% des PdF et une mauvaise nuit 40&nbsp;% des PdF (réduit d’un tiers en cas de réussite d’un jet de <i>San</i>).</p>
+		<p>Une nuit blanche coûte 6 PdF et une mauvaise nuit 4 PdF (réduit de 2 PdF en cas de réussite d’un jet de <i>San</i>).</p>
 
 	</details>
 
@@ -370,7 +370,7 @@ use App\Repository\SkillRepository;
 			<?php foreach (array_reverse(FatigueController::levels) as $index => $level) { ?>
 				<tr>
 					<td>
-						<?= $level["name"] ?> (PdF&nbsp;<?= $index !== 0 ? ("&le;&nbsp;" . ((float) $index) * 100 . "&nbsp;%") : "=&nbsp;0" ?>)
+						<?= $level["name"] ?> (PdF&nbsp;<?= $index !== 0 ? ("&le;&nbsp;" . ((float) $index) * 100 . " %"):"=&nbsp;0" ?>)
 					</td>
 					<td><?= ucfirst($level["description"]) ?></td>
 				</tr>
@@ -387,7 +387,7 @@ use App\Repository\SkillRepository;
 			<h3>Récupération</h3>
 		</summary>
 		<p>Le MJ décide du rythme de récupération en fonction des conditions de repos et du type d’effort fourni. La seule règle est que l’on est «&nbsp;frais et dispo&nbsp;» qu’après une nuit de sommeil.</p>
-		<p><b>Règle de coin de table&nbsp;:</b> en se reposant après un effort, on peut récupérer au maximum un quart des PdF dépensés.</p>
+		<p><b>Règle de coin de table :</b> en se reposant après un effort, on peut récupérer au maximum un quart des PdF dépensés.</p>
 		<p>Des PdF perdus par un manque de nourriture ou d’eau ne peuvent être regagnés qu’en mangeant ou en s’hydratant.</p>
 		<p>Ne tenir compte des PdF que si cela est important dans le jeu. Dans la plupart des situations, les PdF n’ont aucune importance.</p>
 	</details>
@@ -411,7 +411,7 @@ use App\Repository\SkillRepository;
 		<summary>
 			<h3>Jet de Sang-Froid et PdE</h3>
 		</summary>
-		<p>Des PdE peuvent être perdus au cours de trois types de situations&nbsp;: un traumatisme, une peur extrême ou un stress intense.</p>
+		<p>Des PdE peuvent être perdus au cours de trois types de situations : un traumatisme, une peur extrême ou un stress intense.</p>
 		<p>Lorsque plusieurs effets peuvent advenir (traumatisant et stressant, par exemple), un seul jet de <i>Sang-Froid</i> est à faire. Les conséquences sont déterminées à partir de cet unique jet.</p>
 	</details>
 
@@ -421,7 +421,7 @@ use App\Repository\SkillRepository;
 			<h3>Traumatisme</h3>
 		</summary>
 		<p>Un événement traumatisant provoque un choc psychologique. Il n’est pas nécessairement effrayant ni directement menaçant (perte d’un être cher, être témoin d’actes de barbarie, etc.).</p>
-		<p>Il peut entraîner la perte de PdE&nbsp;: faire un jet de <i>Sang-froid</i> pour résister au traumatisme. En cas de réussite, la perte de PdE est divisée par 2. Ce jet de <i>Sang-froid</i> peut être assorti d’un modificateur, mais ce modificateur ne dépendra, en général, pas de l’ampleur du traumatisme, qui est quantifié par la perte de PdE, mais de l’état ou du vécu du personnage.</p>
+		<p>Il peut entraîner la perte de PdE : faire un jet de <i>Sang-froid</i> pour résister au traumatisme. En cas de réussite, la perte de PdE est divisée par 2. Ce jet de <i>Sang-froid</i> peut être assorti d’un modificateur, mais ce modificateur ne dépendra, en général, pas de l’ampleur du traumatisme, qui est quantifié par la perte de PdE, mais de l’état ou du vécu du personnage.</p>
 
 		<table class="left-1">
 			<tr>
@@ -525,7 +525,7 @@ use App\Repository\SkillRepository;
 				<td>III</td>
 				<td>
 					<b>Choc ou panique.</b> Éventuellement réaction inconvenante* et nouveau <i>Travers</i>*. Perte PdF et PdE.
-					<!-- Jet de <i>SF</i>&nbsp;: ✅ <b>choc</b><sup>(1)</sup> ou ❌ <b>panique</b><sup>(2)</sup><br>
+					<!-- Jet de <i>SF</i> : ✅ <b>choc</b><sup>(1)</sup> ou ❌ <b>panique</b><sup>(2)</sup><br>
 					Jet de <i>SF</i> pour éviter une réaction inconvenante<sup>(3)</sup>.<br>
 					Jet de <i>SF</i> pour éviter un nouveau <i>Travers</i><sup>(4)</sup>.<br>
 					<b>Perte de 2 PdE + 1d PdF</b> -->
@@ -535,8 +535,8 @@ use App\Repository\SkillRepository;
 				<td>IV</td>
 				<td>
 					<b>Choc grave, panique totale ou évanouis&shy;sement.</b> Éventuellement réaction inconvenante* et nouveau <i>Travers</i>*. Perte PdF, PdE et PdV.
-					<!-- Jet de <i>SF</i>&nbsp;: ✅ <b>choc</b> grave<sup>(1)</sup> ou ❌ voir ligne suivante.<br>
-					Jet de <i>SF</i> si le 1<sup>er</sup> est raté&nbsp;: <b>panique</b> totale<sup>(2)</sup> / <b>évanouissement</b><sup>(5)</sup>.<br>
+					<!-- Jet de <i>SF</i> : ✅ <b>choc</b> grave<sup>(1)</sup> ou ❌ voir ligne suivante.<br>
+					Jet de <i>SF</i> si le 1<sup>er</sup> est raté : <b>panique</b> totale<sup>(2)</sup> / <b>évanouissement</b><sup>(5)</sup>.<br>
 					Jet de <i>SF</i> -3 pour éviter une réaction inconvenante<sup>(3)</sup>.<br>
 					Jet de <i>SF</i> -3 pour éviter un nouveau <i>Travers</i><sup>(4)</sup>.<br>
 					<b>Perte de 3 PdE + 1d PdF + 1 PdV</b> -->
@@ -546,7 +546,7 @@ use App\Repository\SkillRepository;
 				<td>V</td>
 				<td>
 					<b>Catatonie ou évanouissement long.</b> Éventuellement attaque cardiaque légère, nouveau <i>Travers</i>* et séquelles physiques*. Perte PdF, PdE et PdV.
-					<!-- Jet de <i>SF</i>&nbsp;: ✅ <b>catatonie</b><sup>(6)</sup> ou ❌ <b>évanouissement</b> long<sup>(5)</sup>.<br>
+					<!-- Jet de <i>SF</i> : ✅ <b>catatonie</b><sup>(6)</sup> ou ❌ <b>évanouissement</b> long<sup>(5)</sup>.<br>
 					Jet de <i>San</i> pour éviter une attaque cardiaque légère<sup>(7)</sup>.<br>
 					Jet de <i>SF</i> -3 pour éviter un nouveau <i>Travers</i><sup>(4)</sup>.<br>
 					Jet de <i>SF</i> pour éviter des séquelles physiques<sup>(8)</sup>.<br>
@@ -557,7 +557,7 @@ use App\Repository\SkillRepository;
 				<td>–</td>
 				<td>
 					<b>Catatonie longue ou coma.</b> Éventuellement attaque cardiaque, nouveau <i>Travers</i>* et séquelles physiques*. Perte PdF, PdE et PdV.
-					<!-- Jet de <i>SF</i>&nbsp;: ✅ <b>catatonie</b> longue<sup>(6)</sup> ou ❌ <b>coma</b><sup>(9)</sup>.<br>
+					<!-- Jet de <i>SF</i> : ✅ <b>catatonie</b> longue<sup>(6)</sup> ou ❌ <b>coma</b><sup>(9)</sup>.<br>
 					Jet de <i>San</i> pour éviter une attaque cardiaque<sup>(7)</sup>.<br>
 					Jet de <i>SF</i> -3 pour éviter un nouveau <i>Travers</i><sup>(4)</sup>.<br>
 					Jet de <i>SF</i> -1 pour éviter des séquelles physiques<sup>(8)</sup>.<br>
@@ -568,7 +568,7 @@ use App\Repository\SkillRepository;
 				<td>–</td>
 				<td>
 					<b>Catatonie très longue ou coma long.</b> Éventuellement attaque cardiaque, nouveau <i>Travers</i>*, séquelles physiques* et perte d’<i>Int</i> définitive. Perte PdF, PdE et PdV.
-					<!-- Jet de <i>SF</i>&nbsp;: ✅ <b>catatonie</b> très longue<sup>(6)</sup> ou ❌ <b>coma</b> long<sup>(9)</sup>.<br>
+					<!-- Jet de <i>SF</i> : ✅ <b>catatonie</b> très longue<sup>(6)</sup> ou ❌ <b>coma</b> long<sup>(9)</sup>.<br>
 					Jet de <i>San</i> -3 pour éviter une attaque cardiaque<sup>(7)</sup>.<br>
 					Jet de <i>SF</i> -3 pour éviter un nouveau <i>Travers</i><sup>(4)</sup>.<br>
 					Jet de <i>SF</i> -3 pour éviter des séquelles physiques<sup>(8)</sup>.<br>
@@ -580,10 +580,10 @@ use App\Repository\SkillRepository;
 
 		<h4>Précision sur certains éléments</h4>
 		<ul class="flow">
-			<li><b>Sonné&nbsp;:</b> une claque peut permettre au personnage de reprendre ses esprits (nouveau jet de <i>Sang-Froid</i>)</li>
-			<li><b>Réaction inconvenante&nbsp;:</b> lacher ce qu’on a en main (et qu’il ne fallait pas lacher&nbsp;!), vomir, se faire pipi dessus (voir pire&hellip;).</li>
-			<li><b>Nouveau <i>Travers</i></b>&nbsp;: si le personnage passe sous en seuil de PdE provoquant un <i>Désavantage mental</i> temporaire, alors le personnage n’hérite pas d’un nouveau travers, mais le <i>Désavantage mental</i> sera permanent.</li>
-			<li><b>Séquelles physique&nbsp;:</b> vieillissement, blanchiment des cheveux, mutisme, bégaiement&hellip; au choix du MJ.</li>
+			<li><b>Sonné :</b> une claque peut permettre au personnage de reprendre ses esprits (nouveau jet de <i>Sang-Froid</i>)</li>
+			<li><b>Réaction inconvenante :</b> lacher ce qu’on a en main (et qu’il ne fallait pas lacher&nbsp;!), vomir, se faire pipi dessus (voir pire&hellip;).</li>
+			<li><b>Nouveau <i>Travers</i></b> : si le personnage passe sous en seuil de PdE provoquant un <i>Désavantage mental</i> temporaire, alors le personnage n’hérite pas d’un nouveau travers, mais le <i>Désavantage mental</i> sera permanent.</li>
+			<li><b>Séquelles physique :</b> vieillissement, blanchiment des cheveux, mutisme, bégaiement&hellip; au choix du MJ.</li>
 		</ul>
 
 		<h4>Peur causée par des sorts</h4>
@@ -609,7 +609,7 @@ use App\Repository\SkillRepository;
 		<h4>Niveaux de stress</h4>
 		<p>
 			<?php foreach (array_slice(StressController::levels, 1) as $index => $level) { ?>
-				<b><?= $index + 1 ?>. <?= $level["name"] ?>&nbsp;:</b> <?= $level["description"] ?><br>
+				<b><?= $index + 1 ?>. <?= $level["name"] ?> :</b> <?= $level["description"] ?><br>
 			<?php } ?>
 		</p>
 
@@ -617,8 +617,8 @@ use App\Repository\SkillRepository;
 		<p>Les malus de fatigue sont ignorés si le personnage est en état de stress (quel que soit le niveau de stress).</p>
 
 		<h4>Récupérer du stress</h4>
-		<p>• Après disparition de la cause du stress&nbsp;: si la cause du stress a disparu, le personnage récupère d’un niveau de stress toutes les 10 minutes, jusqu’à revenir à son état normal.</p>
-		<p>• En situation de stress&nbsp;: si le personnage fait des efforts pour contrôler son stress, il peut refaire un jet de <i>Sang-Froid</i> avec les mêmes malus, à intervalles réguliers, pour perdre un niveau de stress.</p>
+		<p>• Après disparition de la cause du stress : si la cause du stress a disparu, le personnage récupère d’un niveau de stress toutes les 10 minutes, jusqu’à revenir à son état normal.</p>
+		<p>• En situation de stress : si le personnage fait des efforts pour contrôler son stress, il peut refaire un jet de <i>Sang-Froid</i> avec les mêmes malus, à intervalles réguliers, pour perdre un niveau de stress.</p>
 	</details>
 
 	<!-- Santé mentale -->
@@ -634,7 +634,7 @@ use App\Repository\SkillRepository;
 			</tr>
 			<?php foreach (array_reverse(MentalHealthController::levels) as $index => $level) { ?>
 				<tr>
-					<td><?= $index !== 0 ? ("&le; " . ((float) $index) * 100 . "&nbsp;%") : "0" ?></td>
+					<td><?= $index !== 0 ? ("&le; " . ((float) $index) * 100 . " %"):"0" ?></td>
 					<td class="ta-justify">
 						<?= ucfirst($level["description"]) ?><br>
 						<?= ucfirst($level["attributes-effects"]) ?>
@@ -645,7 +645,7 @@ use App\Repository\SkillRepository;
 
 		<h4>Perte définitive de PdE et de Sang-Froid</h4>
 		<p>Lorsqu’un PdE est perdu définitivement, il faut retirer un pt aux PdEm <i>et</i> aux PdE actuels.</p>
-		<p>Cette perte est cumulative. Autrement dit, un personnage passant de 60&nbsp;% à 20&nbsp;% de ses PdEm perdra définitivement 2 PdE et un pt de <i>Sang-froid</i>.</p>
+		<p>Cette perte est cumulative. Autrement dit, un personnage passant de 60 % à 20 % de ses PdEm perdra définitivement 2 PdE et un pt de <i>Sang-froid</i>.</p>
 
 	</details>
 
@@ -675,7 +675,7 @@ use App\Repository\SkillRepository;
 		<summary>
 			<h3>Modificateurs aux jets de réaction</h3>
 		</summary>
-		<p><b>Modificateurs liés au PJ :</b> avantages et désavantages ayant un impact sur les JR, ainsi que son comportement.</p>
+		<p><b>Modificateurs liés au PJ :</b> avantages et désavantages ayant un impact sur les JR, ainsi que son comportement.</p>
 		<p><b>A priori, caractère, culture et humeur du PNJ</b>, qui peuvent impliquer un modificateur de -2 à +2 aux JR, ou qui peuvent annuler des modificateurs aux JR du PJ, si le PNJ n’est pas sensible à une <i>Disgrâce sociale</i>, par exemple.</p>
 	</details>
 
@@ -686,7 +686,7 @@ use App\Repository\SkillRepository;
 		<table class="left-2">
 			<?php foreach (ReactionController::reactions as $index => $reaction) { ?>
 				<tr>
-					<td width="15%"><?= $index >= 11 ? "&ge;" : "&le;" ?>&nbsp;<?= $index ?></td>
+					<td width="15%"><?= $index >= 11 ? "&ge;":"&le;" ?>&nbsp;<?= $index ?></td>
 					<td><?= $reaction ?></td>
 				</tr>
 			<?php } ?>
@@ -697,7 +697,7 @@ use App\Repository\SkillRepository;
 		<summary>
 			<h3>Utilisation d’une compétence sociale</h3>
 		</summary>
-		<p>L’utilisation d’une compétence sociale appropriée, lorsque cela est possible (discrétion du MJ) peut modifier le résultat du jet de réaction&nbsp;:</p>
+		<p>L’utilisation d’une compétence sociale appropriée, lorsque cela est possible (discrétion du MJ) peut modifier le résultat du jet de réaction :</p>
 		<ul>
 			<li>Une réussite améliorera la réaction d’un niveau.</li>
 			<li>Un échec dégradera la réaction d’un niveau.</li>
