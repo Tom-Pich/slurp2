@@ -10,31 +10,6 @@ use App\Repository\SkillRepository;
 
 ?>
 
-<!-- Intro -->
-<!-- <article>
-	<h2>Généralités sur les jets</h2>
-	<details>
-		<summary>
-			<h3>Types de jets</h3>
-		</summary>
-		<p>Il y a 3 types de jets à SLURP. Tous se font avec des d6.</p>
-		<p>L’abbréviation «&nbsp;d&nbsp;» signifie d6.</p>
-		<ul>
-			<li>Les <b>jets des réussite</b>, avec 3d6, visant à tester une compétence ou une caractéristique. Le jet est réussi s'il est inférieur ou égal au score, ajusté par certains modificateurs.</li>
-			<li>Les <b>jets de dégâts</b>, avec un nombre variable de d6.</li>
-			<li>Les jets de réaction, qui se font avec 1d6</li>
-		</ul>
-	</details>
-	<details>
-		<summary>
-			<h3>Dégâts inférieurs à 1d-1</h3>
-		</summary>
-		Pour les jets de dégâts inférieurs à 1d-1, utiliser les correspondances suivantes : 1d-2 → 1d5-1, 1d-3 → 1d4-1, 1d-4 → 1d3-1, 1d-5 → 1d2-1
-	</details>
-
-	
-</article> -->
-
 <!-- Jet de réussite -->
 <article>
 	<h2>Jet de réussite</h2>
@@ -127,7 +102,7 @@ use App\Repository\SkillRepository;
 		<ul class="mt-½">
 			<li><b>Matériel utilisé</b> pour entreprendre l’action.</li>
 			<li><b>Environnement :</b> obscurité, sol instable, etc.</li>
-			<li><b>Main dextre / main «&nbsp;faible&nbsp;» :</b> effectuer une action avec sa main «&nbsp;faible&nbsp;» qui nécessiterait l’usage de la main dextre se fait généralement à -3.</li>
+			<li><b>Main dextre / main « faible » :</b> effectuer une action avec sa main « faible » qui nécessiterait l’usage de la main dextre se fait généralement à -3.</li>
 		</ul>
 	</detailS>
 
@@ -187,7 +162,7 @@ use App\Repository\SkillRepository;
 		<summary>
 			<h3>Jets de probabilité</h3>
 		</summary>
-		<p>Lorsque il faut faire un jet sous «&nbsp;rien&nbsp;», consulter la table ci-dessous.</p>
+		<p>Lorsque il faut faire un jet sous « rien », consulter la table ci-dessous.</p>
 
 		<table class="left-1">
 			<tr>
@@ -339,6 +314,7 @@ use App\Repository\SkillRepository;
 		<summary>
 			<h3>Perte de points de Fatigue</h3>
 		</summary>
+
 		<p>Des points de fatigue (PdF) peuvent être perdus suite à des efforts physiques, à un manque de sommeil, de nourriture, d’eau, à des températures extrêmes ou à un manque d’air.</p>
 
 		<h4>Efforts physiques</h4>
@@ -362,7 +338,7 @@ use App\Repository\SkillRepository;
 
 		<p>La fatigue est susceptible d’affecter <i>toutes</i> les caractéristiques du personnage, ainsi que sa <i>Vitesse</i>.</p>
 
-		<table class="left-2 mt-1">
+		<table class="left-2 mt-1 fs-300">
 			<tr>
 				<th>État</th>
 				<th>Effets</th>
@@ -370,7 +346,7 @@ use App\Repository\SkillRepository;
 			<?php foreach (array_reverse(FatigueController::levels) as $index => $level) { ?>
 				<tr>
 					<td>
-						<?= $level["name"] ?> (PdF&nbsp;<?= $index !== 0 ? ("&le;&nbsp;" . ((float) $index) * 100 . " %"):"=&nbsp;0" ?>)
+						<?= $level["name"] ?> (PdF <?= $index !== 0 ? ("&le; " . ((float) $index) * 100 . " %"):"= 0" ?>)
 					</td>
 					<td><?= ucfirst($level["description"]) ?></td>
 				</tr>
@@ -386,9 +362,13 @@ use App\Repository\SkillRepository;
 		<summary>
 			<h3>Récupération</h3>
 		</summary>
-		<p>Le MJ décide du rythme de récupération en fonction des conditions de repos et du type d’effort fourni. La seule règle est que l’on est «&nbsp;frais et dispo&nbsp;» qu’après une nuit de sommeil.</p>
-		<p><b>Règle de coin de table :</b> en se reposant après un effort, on peut récupérer au maximum un quart des PdF dépensés.</p>
+
+		<p>Le MJ décide du rythme de récupération en fonction des conditions de repos et du type d’effort fourni. La seule règle est que l’on est « frais et dispo » qu’après une nuit de sommeil.</p>
+
+		<p><b>Règle de coin de table :</b> en se reposant après un effort, on peut récupérer au maximum un quart des PdF dépensés pour cet effort.</p>
+
 		<p>Des PdF perdus par un manque de nourriture ou d’eau ne peuvent être regagnés qu’en mangeant ou en s’hydratant.</p>
+
 		<p>Ne tenir compte des PdF que si cela est important dans le jeu. Dans la plupart des situations, les PdF n’ont aucune importance.</p>
 	</details>
 
@@ -423,6 +403,7 @@ use App\Repository\SkillRepository;
 		<p>Un événement traumatisant provoque un choc psychologique. Il n’est pas nécessairement effrayant ni directement menaçant (perte d’un être cher, être témoin d’actes de barbarie, etc.).</p>
 		<p>Il peut entraîner la perte de PdE : faire un jet de <i>Sang-froid</i> pour résister au traumatisme. En cas de réussite, la perte de PdE est divisée par 2. Ce jet de <i>Sang-froid</i> peut être assorti d’un modificateur, mais ce modificateur ne dépendra, en général, pas de l’ampleur du traumatisme, qui est quantifié par la perte de PdE, mais de l’état ou du vécu du personnage.</p>
 
+		<!-- Table des traumas -->
 		<table class="left-1">
 			<tr>
 				<th>Ampleur du traumatisme</th>
@@ -581,7 +562,7 @@ use App\Repository\SkillRepository;
 		<h4>Précision sur certains éléments</h4>
 		<ul class="flow">
 			<li><b>Sonné :</b> une claque peut permettre au personnage de reprendre ses esprits (nouveau jet de <i>Sang-Froid</i>)</li>
-			<li><b>Réaction inconvenante :</b> lacher ce qu’on a en main (et qu’il ne fallait pas lacher&nbsp;!), vomir, se faire pipi dessus (voir pire&hellip;).</li>
+			<li><b>Réaction inconvenante :</b> lacher ce qu’on a en main (et qu’il ne fallait pas lacher !), vomir, se faire pipi dessus (voir pire&hellip;).</li>
 			<li><b>Nouveau <i>Travers</i></b> : si le personnage passe sous en seuil de PdE provoquant un <i>Désavantage mental</i> temporaire, alors le personnage n’hérite pas d’un nouveau travers, mais le <i>Désavantage mental</i> sera permanent.</li>
 			<li><b>Séquelles physique :</b> vieillissement, blanchiment des cheveux, mutisme, bégaiement&hellip; au choix du MJ.</li>
 		</ul>
@@ -617,8 +598,8 @@ use App\Repository\SkillRepository;
 		<p>Les malus de fatigue sont ignorés si le personnage est en état de stress (quel que soit le niveau de stress).</p>
 
 		<h4>Récupérer du stress</h4>
-		<p>• Après disparition de la cause du stress : si la cause du stress a disparu, le personnage récupère d’un niveau de stress toutes les 10 minutes, jusqu’à revenir à son état normal.</p>
-		<p>• En situation de stress : si le personnage fait des efforts pour contrôler son stress, il peut refaire un jet de <i>Sang-Froid</i> avec les mêmes malus, à intervalles réguliers, pour perdre un niveau de stress.</p>
+		<p><b>• Après disparition de la cause du stress :</b> le personnage récupère un niveau de stress toutes les 10 minutes, jusqu’à revenir à son état normal.</p>
+		<p><b>• En situation de stress :</b> si le personnage fait des efforts pour contrôler son stress, il peut refaire un jet de <i>Sang-Froid</i> avec les mêmes malus, à intervalles réguliers, pour redescendre d’un niveau de stress.</p>
 	</details>
 
 	<!-- Santé mentale -->
@@ -686,7 +667,7 @@ use App\Repository\SkillRepository;
 		<table class="left-2">
 			<?php foreach (ReactionController::reactions as $index => $reaction) { ?>
 				<tr>
-					<td width="15%"><?= $index >= 11 ? "&ge;":"&le;" ?>&nbsp;<?= $index ?></td>
+					<td width="15%"><?= $index >= 11 ? "&ge;":"&le;" ?> <?= $index ?></td>
 					<td><?= $reaction ?></td>
 				</tr>
 			<?php } ?>

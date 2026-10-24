@@ -13,8 +13,7 @@ class CharacterExportController
 		$date = date('ymd-His', time());
 
 		$character = new Character($id);
-		$process_state_data = false;
-		$character->processCharacter($process_state_data);
+		$character->processCharacter(false, true);
 
 		$myfile = fopen("./characters-backup/" . str_pad($id, 4, '0', STR_PAD_LEFT) . "-" . $date . " " . $character->name . ".txt", "w");
 
@@ -27,7 +26,7 @@ class CharacterExportController
 		fwrite($myfile, $attributes . "\n\n");
 
 		// Avantages & désavantages
-		$avdesavs = "";
+		$avdesavs = "## Avantages, Désavantages & Travers\n";
 		$character->avdesav = Sorter::sort($character->avdesav, "nom");
 		$character->avdesav = Sorter::sort($character->avdesav, "catégorie");
 		foreach ($character->avdesav as $avdesav) {

@@ -1,7 +1,7 @@
 import { qs, qsa, ce } from "./lib/dom-utils.js";
 import { updateDOM } from "./update-dom.js";
 import { wsURL, Message } from "./ws-utilities.js";
-import { activateDialogs } from "./main-utilities.js";
+import { activateDialogs, showSpinningWheel, hideSpinningWheel } from "./main-utilities.js";
 
 const form = qs("#noyau");
 const sessionId = form.dataset.sessionId;
@@ -74,7 +74,7 @@ form.addEventListener("change", () => {
 });
 
 // save on ctrl+s
-form.addEventListener("keydown", (e) => {
+document.addEventListener("keydown", (e) => {
     if (e.ctrlKey && e.key === "s") {
         e.preventDefault();
         const event = new Event("submit", {
@@ -92,6 +92,7 @@ form.addEventListener("submit", (e) => {
     e.preventDefault();
     const dialogs = qsa("dialog");
     dialogs.forEach((dialog) => dialog.close());
+	showSpinningWheel(form);
     fetch("/submit/update-character", {
         method: "post",
         body: new FormData(form),
@@ -103,5 +104,6 @@ form.addEventListener("submit", (e) => {
 			activateCloseInputModals();
             const ping = new Message(sessionId, wsKey, "character-ping", parseInt(characterId));
             ws.send(ping.stringify());
-        });
+        })
+		.then(() => hideSpinningWheel());
 });

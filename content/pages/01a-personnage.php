@@ -408,10 +408,11 @@ $repo = new SkillRepository;
 		<ul>
 			<li>de sa base</li>
 			<li>de sa difficulté : <i>facile</i> (-2), <i>moyenne</i> (-4), <i>ardue</i> (-6) ou <i>très ardue</i> (-8)</li>
-			<li>du nombre de points de personnage investis dedans</li>
+			<li>du nombre de points de personnage investis</li>
 		</ul>
 
 		<h4>Score par défaut</h4>
+
 		<p>En l’absence de points investis dans la compétence, son score correspond à la base + la difficulté (qui est un nombre négatif !). Si la difficulté de la compétence est notée entre parenthèses, aucun score par défaut n’est autorisé.</p>
 
 		<details class="exemple">
@@ -421,10 +422,19 @@ $repo = new SkillRepository;
 		</details>
 
 		<h4>Score et points de personnage</h4>
+
 		<p>La table ci-dessous indique le coût en points de personnage pour obtenir un <i>niveau</i> donné dans une compétence en fonction de sa difficulté. Ce niveau s’ajoute à la base pour calculer le score de la compétence.</p>
+
 		<p>Lorsque <b>deux valeurs</b> sont données, la deuxième ne s’applique qu’aux compétences exclusivement basées sur l’<i>Int</i>.</p>
 
 		<table>
+			<colgroup>
+				<col style="width: 20%">
+				<col style="width: 20%">
+				<col style="width: 20%">
+				<col style="width: 20%">
+				<col style="width: 20%">
+			</colgroup>
 			<tr>
 				<th>Niveau</th>
 				<th>-2</th>
@@ -432,18 +442,19 @@ $repo = new SkillRepository;
 				<th>-6</th>
 				<th>-8</th>
 			</tr>
-			<?php for ($niv = -4; $niv <= (SKILL_V2 ? 7 : 10); $niv++): ?>
+			<?php for ($niv = -4; $niv <= (SKILL_VERSION >= 2 ? 7 : 10); $niv++): ?>
+				<?php $cell_class = $niv === 0 ? "class=\"fw-700\"" : "" ?>
 				<tr>
-					<td <?= $niv === 0 ? "class=\"fw-700\"" : "" ?>><?= $niv > 0 ? "+" . $niv : $niv ?></td>
-					<td <?= $niv === 0 ? "class=\"fw-700\"" : "" ?>><?= Skill::displaySkillCost($niv, -2) ?></td>
-					<td <?= $niv === 0 ? "class=\"fw-700\"" : "" ?>><?= Skill::displaySkillCost($niv, -4) ?></td>
-					<td <?= $niv === 0 ? "class=\"fw-700\"" : "" ?>><?= Skill::displaySkillCost($niv, -6) ?></td>
-					<td <?= $niv === 0 ? "class=\"fw-700\"" : "" ?>><?= Skill::displaySkillCost($niv, -8) ?></td>
+					<td <?= $cell_class ?>><?= $niv > 0 ? "+" . $niv : $niv ?></td>
+					<td <?= $cell_class ?>><?= Skill::displaySkillCost($niv, -2) ?></td>
+					<td <?= $cell_class ?>><?= Skill::displaySkillCost($niv, -4) ?></td>
+					<td <?= $cell_class ?>><?= Skill::displaySkillCost($niv, -6) ?></td>
+					<td <?= $cell_class ?>><?= Skill::displaySkillCost($niv, -8) ?></td>
 				</tr>
 			<?php endfor; ?>
 		</table>
 
-		<?php if (SKILL_V2): ?>
+		<?php if (SKILL_VERSION >= 2): ?>
 			<p>Au-delà d’un niveau de +3, un entraînement <i>actif</i> est nécessaire. Le seul fait d’utiliser la compétence en jeu ne suffit plus à la faire évoluer.</p>
 			<p>Il n’est pas possible d’avoir un niveau de compétence supérieur à +7.</p>
 		<?php endif ?>
@@ -452,7 +463,7 @@ $repo = new SkillRepository;
 			<summary>Exemple de calculs de score</summary>
 			<p>
 				Soit un personnage ayant <i>For</i> 12, <i>Dex 13</i> et <i>Int</i> 11.<br>
-				Soit les compétences <i>Nage</i> [FD(-2)] et <i>Baratin</i> [I-4].
+				Soient les compétences <i>Nage</i> [FD(-2)] et <i>Baratin</i> [I-4].
 			</p>
 			<p>Voici quelques exemples de scores obtenus en fonction des points de personnage investis dans chacune des compétences</p>
 			<table>
@@ -467,7 +478,7 @@ $repo = new SkillRepository;
 					<td>11-4 = 7</td>
 				</tr>
 				<tr>
-					<th>0.5</th>
+					<th>½</th>
 					<td>12-1 = 11</td>
 					<td>11-2 = 9</td>
 				</tr>
@@ -484,18 +495,18 @@ $repo = new SkillRepository;
 			</table>
 		</details>
 
-		<h4>Compétences irrégulières</h4>
+		<!-- <h4>Compétences irrégulières</h4>
 		<p>Certaines compétences ont un niveau minimum. Ça signifie que leur niveau par défaut n’est pas celui donné par leur type, mais celui indiqué dans leur description.</p>
 		<p>Ce niveau par défaut est gratuit, et le coût de progression correspond à celui associé à leur type. Par exemple, la compétence <i>Esquive</i> et de type D-8. Son niveau minimum est -3. Ce niveau coûte normalement 1 pt de personnage, qui est offert. Pour faire passer cette compétence au niveau 0, qui coûte normalement 8 pts, il faudra payer la différence, c’est-à-dire 7 pts.</p>
 
-		<?php
+		<|php
 		$special_skills_name_list = [];
 		foreach (Skill::special_skills as $id => $value) {
 			$skill = $repo->getSkill($id);
 			$special_skills_name_list[] = "<i>{$skill->name}</i> (niv. min {$value["min-level"]})";
 		}
 		?>
-		<p><b>Liste des compétences irrégulières :</b> <?= join(", ", $special_skills_name_list) ?></p>
+		<p><b>Liste des compétences irrégulières :</b> <|= join(", ", $special_skills_name_list) ?></p> -->
 
 	</details>
 
@@ -504,7 +515,9 @@ $repo = new SkillRepository;
 		<summary>
 			<h3>Spécialisations</h3>
 		</summary>
+
 		<p><b>Spécialisation obligatoire :</b> compétences repérées par « (type) ». Chaque spécialité est une compétence distincte.</p>
+
 		<p><b>Spécialisation optionnelle :</b> 1 pt par +1. Max 5 pts. Pas plus de pts dans la spécialité que dans la compétence de base.</p>
 	</details>
 
@@ -524,16 +537,20 @@ $repo = new SkillRepository;
 		<summary>
 			<h3>Compétences proches</h3>
 		</summary>
+
 		<p>Certaines compétences sont proches les unes des autres. En maîtriser une facilite la maîtrise des autres.</p>
 
 		<p>Lorsque plusieurs compétences appartiennent à un même groupe (voir la liste en fin de pararaphe), il faut déterminer quelle est la compétence <i>principale</i> du groupe (celle que le personnage maîtrise le mieux). Les autres sont appelées compétences <i>secondaires</i>.</p>
 
 		<h4>Compétence principale</h4>
-		<p>Il s’agit de la compétence maîtrisée au <i>niveau</i> le plus élevé (hors bonus). En cas d’égalité, sélectionner la compétence la plus complexe, c’est-à-dire celle dont le malus de difficulté est le plus élevé.</p>
+		<p>Il s’agit de la compétence maîtrisée au <i>niveau</i> le plus élevé (hors bonus). En cas d’égalité, sélectionner la compétence dont la difficulté est la plus élevée.</p>
 
 		<h4>Compétences secondaires</h4>
+
 		<p>Les autres compétences du groupe auront un niveau par défaut égal au niveau de la compétence principale, -2 si leur complexité est égale ou moindre, -3 dans le cas contraire.</p>
+
 		<p>Il est possible d’améliorer une compétence secondaire en payant la différence de coût entre son niveau par défaut et son niveau souhaité. Cela peut avoir comme effet de permuter son rôle avec la compétence principale.</p>
+
 		<p>La fiche de personnage gère cet aspect automatiquement.</p>
 
 		<h4>Groupes de compétences proches</h4>

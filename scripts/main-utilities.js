@@ -1,4 +1,4 @@
-import { qs, qsa } from "./lib/dom-utils";
+import { qs, qsa } from "./lib/dom-utils.js";
 
 export function activateLoginDialog() {
     const connectionBtn = qs("#connection-btn");

@@ -99,7 +99,7 @@ class Character
 		return $has_clearance;
 	}
 
-	public function processCharacter(bool $with_state_modifiers = true)
+	public function processCharacter(bool $with_state_modifiers = true, bool $with_equipment = true)
 	{
 		// raw_data : id*, id_joueur*, id_groupe*, Nom*, Statut*, Pts*,
 		// Caractéristiques**, État, Calculs, MPP**, Avdesav**, Compétences**, Sorts, Pouvoirs, Psi,
@@ -194,7 +194,17 @@ class Character
 		$this->state["Membres"] = $this->state["Membres"] ?? [];
 		$this->state["Autres"] = $this->state["Autres"] ?? [];
 
-		$this->carried_weight = round(Equipment::getCarriedWeight($this->id), 1);
+		// traitement de l’équipement nécessaire à ce stade pour l’encombrement
+		$this->carried_weight = 0;
+		$this->equipment = [];
+
+		if ($with_equipment) {
+			$equipment_repo = new EquipmentRepository;
+			$raw_equipment = $equipment_repo->getCharacterEquipment($this->id);
+			[$this->equipment, $this->state] = Equipment::processEquipmentList($raw_equipment, $this->state);
+			$carried_lists = array_filter($this->equipment, fn($list) => $list["sur-soi"]);
+			$this->carried_weight = round(array_sum(array_column($carried_lists, "poids")), 1);
+		}
 
 		if ($with_state_modifiers) {
 			$this->state["Blessures"] = WoundController::getGeneralEffects($this->state["PdV"], $this->attributes["PdV"], $this->special_traits["resistance-douleur"]);
@@ -297,7 +307,7 @@ class Character
 		[$this->colleges, $this->points_count["colleges"]] = College::processColleges($raw_colleges_spells, $this->attributes, $this->modifiers, $this->special_traits);
 		[$this->spells, $this->points_count["spells"]] = Spell::processSpells($raw_colleges_spells, $this->colleges, $this->special_traits);
 
-		// --- powers
+		// ––– powers
 		$raw_powers = json_decode($raw_data["Pouvoirs"], true);
 		[$this->powers, $this->points_count["powers"]] = Power::processPowers($raw_powers, $this->raw_attributes, $this->modifiers);
 
@@ -307,9 +317,8 @@ class Character
 		[$this->psi, $this->points_count["psi"]] = PsiPower::processPowers($raw_psis, $this->disciplines, $this->attributes);
 
 		// ––– equipment
-		$equipment_repo = new EquipmentRepository;
-		$raw_equipment = $equipment_repo->getCharacterEquipment($this->id);
-		[$this->equipment, $this->state] = Equipment::processEquipmentList($raw_equipment, $this->state);
+		//[$this->equipment, $this->state] = Equipment::processEquipmentList($raw_equipment, $this->state);
+		// voir juste après default value for state
 
 		// ––– notes & background
 		$this->notes = $raw_data["Notes"];

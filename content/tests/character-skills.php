@@ -2,7 +2,7 @@
 
 use App\Entity\Character;
 
-$test = new Character(26);
+$test = new Character(43);
 $test->processCharacter(false);
 
 $keys = ["id", "label", "type", "base", "min-niv", "niv", "modif", "background", "groups", "free-points", "nominal-points", "spe-points", "points", "score"];
@@ -24,14 +24,14 @@ $keys = ["id", "label", "type", "base", "min-niv", "niv", "modif", "background",
 <table class="left-1 left-2" style="width: unset;">
 	<tr>
 		<th>Groupe</th>
-		<th>Compétence principale</th>
+		<th>CP (id)</th>
 		<th>Niv.</th>
 		<th>Diff.</th>
 	</tr>
 <?php foreach ($test->skill_groups as $group => $data): ?>
 	<tr>
 		<td><?= $group ?></td>
-		<td><?= $data["label"] ?></td>
+		<td><?= $data["label"] ?> (<?= $data["id"] ?>)</td>
 		<td><?= $data["niv"] ?></td>
 		<td><?= $data["difficulty"] ?></td>
 	</tr>

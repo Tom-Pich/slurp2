@@ -3,7 +3,12 @@
 import { calculate, int } from "./utilities.js";
 import { roll, scoreTester, getLocalisation } from "./game-table-utilities.js";
 
-export const wsURL = window.location.hostname === "site-jdr" ? "ws://127.0.0.1:1337" : "wss://web-chat.pichegru.net:443";
+const isLocal = ["localhost", "127.0.0.1", "site-jdr"].includes(window.location.hostname);
+export const wsURL = isLocal 
+  ? "ws://127.0.0.1:1337" 
+  : "wss://web-chat.pichegru.net";
+
+/* export const wsURL = window.location.hostname ==! "jdr.pichegru.net" ? "ws://127.0.0.1:1337" : "wss://web-chat.pichegru.net:443"; */
 
 export class Message {
     constructor(sender, key, type, content, recipients = [], label = null) {

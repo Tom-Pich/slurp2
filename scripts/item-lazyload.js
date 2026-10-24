@@ -1,4 +1,4 @@
-import { fetchResult } from "./game-table-utilities";
+import { fetchResult } from "./game-table-utilities.js";
 
 // lazy load event listener
 function setLazyloadingListeners() {

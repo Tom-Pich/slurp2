@@ -40,7 +40,7 @@
 
 		<h4>Modificateurs</h4>
 		<p>
-			À ce jet s’appliquent tous les modificateurs habituels (de fatigue, de blessures, d’encombrement&hellip;) plus un malus dû au poids de l’arme : -1 par kg (arrondir le poids de l’arme à l’entier inférieur).<br>
+			À ce jet s’appliquent tous les modificateurs habituels (de fatigue, de blessures, d’encombrement…) plus un malus dû au poids de l’arme : -1 par kg (arrondir le poids de l’arme à l’entier inférieur).<br>
 			Ce malus ne s’applique que si l’arme doit être bougée. Il ne s’applique pas à, par exemple, une arbalète lourde pointant dans la direction de sa cible.
 		</p>
 
@@ -212,7 +212,7 @@
 		</summary>
 
 		<h4>Manœuvres d’attaque</h4>
-		<p>Une attaque à mains nues peut avoir plusieurs objectifs différents : causer des dégâts, saisir son adversaire, le faire tomber&hellip; Lorsque vous porter une attaque à mains nues, vous devez choisir une des manœuvres ci-dessous.</p>
+		<p>Une attaque à mains nues peut avoir plusieurs objectifs : causer des dégâts, immobiliser son adversaire, le faire tomber… Lorsque vous porter une attaque à mains nues, vous devez choisir une des manœuvres ci-dessous.</p>
 
 		<!-- Porter un coup -->
 		<details>
@@ -220,6 +220,34 @@
 				<h5>Porter un coup</h5>
 			</summary>
 			<p>Dans le but d’infliger des dégâts. Jet de <i>Combat à mains nues</i> ou de <i>Karaté</i>. Ce type d’attaque est traitée comme une attaque avec une arme.</p>
+
+			<table>
+				<tr>
+					<th>Coup</th>
+					<th>Dégâts</th>
+				</tr>
+				<tr>
+					<td>Poing / coude</td>
+					<td>B.e-2</td>
+				</tr>
+				<tr>
+					<td>Pied</td>
+					<td>B.e, +1 avec des bottes pesantes</td>
+				</tr>
+				<tr>
+					<td>Genou</td>
+					<td>B.e-1</td>
+				</tr>
+				<tr>
+					<td>Tête</td>
+					<td>B.e-1*</td>
+				</tr>
+				<caption>Dégâts à mains nues pour les humains</caption>
+			</table>
+
+			<p>*Si l’attaque est ratée de plus de 3, l’attaquant subit la moitié des dégâts qu’il aurait dû infliger.</p>
+
+			<p>Avec la compétence <i>Karaté</i> : +1/5<sup>e</sup> du score de la compétence aux dégâts (sauf pour le coup de tête).
 		</details>
 
 		<!-- Bousculer -->
@@ -227,6 +255,7 @@
 			<summary>
 				<h5>Bousculer</h5>
 			</summary>
+
 			<p>Dans le but de faire tomber l’adversaire par la force. Ce type d’attaque se traite en deux étapes, qui comptent comme une seule action.</p>
 			<ol>
 				<li><b>Attaque</b> basée sur <i>Combat à mains nues</i> ou <i>Judo/lutte</i>. L’adversaire peut y opposer une défense normale.</li>
@@ -239,7 +268,9 @@
 			<summary>
 				<h5>Saisir</h5>
 			</summary>
-			<p>Saisir son adversaire, dans le but de le gêner dans sa défense et ses attaques, de faciliter ses propres attaques, ou pour ensuite le faire tomber ou l’immobiliser La saisie se fait avec la compétence <i>Combat à mains nues</i> ou <i>Judo/lutte</i>. Le défenseur peut y opposer une défense classique.</p>
+
+			<p>Dans le but de le gêner dans sa défense et ses attaques, de faciliter ses propres attaques, ou pour ensuite le faire tomber ou l’immobiliser. La saisie se fait avec la compétence <i>Combat à mains nues</i> ou <i>Judo/lutte</i>. Le défenseur peut y opposer une défense classique pour <i>éviter d’être saisi</i>.</p>
+			<p>Si l’adversaire a déjà été saisi et tente de se libérer, le fonctionnement est le même que pour la manœuvre <i>Faire tomber</i> ci-dessous.</p>
 		</details>
 
 		<!-- Faire tomber -->
@@ -247,27 +278,19 @@
 			<summary>
 				<h5>Faire tomber (prérequis)</h5>
 			</summary>
-			<p>Faire tomber son adversaire. Cette action nécessite d’avoir d’abord réussit une <i>bousculade</i> ou une <i>saisie</i>. On peut provoquer la chute soit par l’adresse, soit par la force.</p>
-			<p>L’enchaînement {bousculer + faire tomber} compte comme <b>une seule et même action</b>.</p>
-			<p>L’enchaînement <b>{saisir + faire tomber}</b> compte comme deux actions distinctes.</p>
-			<table class="mt-½">
-				<tr>
-					<th></th>
-					<th>Adresse</th>
-					<th>Force</th>
-				</tr>
-				<tr>
-					<th>Attaque</th>
-					<td><i>Combat à mains nues</i>, <i>Judo/lutte</i></td>
-					<td><i>For</i></td>
-				</tr>
-				<tr>
-					<th>Défense*</th>
-					<td><i>Dex</i>-3 (+1 si <i>Réflexes de combat</i>), <i>Judo/lutte</i></td>
-					<td><i>For</i>, <i>Judo/lutte</i></td>
-				</tr>
-			</table>
+			<p>Faire tomber son adversaire. Cette action nécessite d’avoir d’abord réussi une <i>bousculade</i> ou une <i>saisie</i>. On peut provoquer la chute soit par l’adresse, soit par la force.</p>
+
+			<p>
+				<b>Attaque :</b> <i>Combat à mains nues</i>, <i>Judo/lutte</i>, <i>For</i><br>
+				<b>Défense* :</b> <i>Dex</i>-3 (+1 si <i>Réflexes de combat</i>), <i>Judo/lutte</i>, <i>For</i>
+			</p>
+		
 			<p>* Comme dans le cas d’une attaque classique, la MR de l’attaque se transforme en malus au jet de défense, avec une limite de 5.</p>
+
+			<p>
+				L’enchaînement <b>{bousculer + faire tomber}</b> compte comme <b>une seule et même action</b>.<br>
+				L’enchaînement <b>{saisir + faire tomber}</b> compte comme <b>deux actions</b> distinctes.
+			</p>
 		</details>
 
 		<!-- Immobiliser -->
@@ -275,51 +298,26 @@
 			<summary>
 				<h5>Immobiliser (prérequis)</h5>
 			</summary>
-			<p>Cette manœuvre nécessite l’utilisation des deux mains. Elle doit nécessairement faire suite à une <i>Saisie</i> ou avoir lieu après avoir fait tombé l’adversaire (manœuvre <i>Faire tomber</i>).</p>
-			<p>Elle compte comme une action.</p>
-			<p>Elle peut s’appuyer sur l’adresse ou sur la force.</p>
-			<table class="mt-½">
-				<tr>
-					<th></th>
-					<th>Adresse</th>
-					<th>Force</th>
-				</tr>
-				<tr>
-					<th>Attaque</th>
-					<td><i>Judo/lutte</i></td>
-					<td><i>For</i></td>
-				</tr>
-				<tr>
-					<th>Défense*</th>
-					<td><i>Dex</i>, <i>Judo/lutte</i></td>
-					<td><i>For</i>, <i>Judo/lutte</i></td>
-				</tr>
-			</table>
+
+			<p>Cette manœuvre nécessite l’utilisation des deux mains. Elle doit nécessairement faire suite à une <i>Saisie</i> ou à la manœuvre <i>Faire tomber</i>. Elle compte comme <b>une action</b>. Elle peut s’appuyer sur l’adresse ou sur la force.</p>
+
+			<p>
+				<b>Attaque :</b> <i>Judo/lutte</i>, <i>For</i><br>
+				<b>Défense* :</b> <i>Dex</i>, <i>Judo/lutte</i>, <i>For</i>
+			</p>
+
 			<p>* Comme dans le cas d’une attaque classique, la MR de l’attaque se transforme en malus au jet de défense, avec une limite de 5.</p>
-			<p>Après un premier échec à une tentative de <i>Défense</i>, l’attaquant n’a plus besoin de faire de jet d’attaque et la défense se fait automatiquement à -5.</p>
+
+			<p>Après un premier échec à une <i>Défense</i>, l’attaquant n’a plus besoin de faire de jet d’attaque et la défense se fait automatiquement à -5.</p>
 		</details>
 
-
 		<h4>Attaque massive</h4>
+
 		<p>Il est possible de choisir une des options d’<i>Attaque massive</i> décrites plus haut</p>
 
 		<h4>Attaque d’un adversaire armé</h4>
-		<p>Si l’adversaire réussit sa parade, il inflige demi-dégâts à l’attaquant (prendre en compte la RD). Pour éviter d’être blessé, l’attaquant doit réussir une <i>Parade</i> ou une <i>Esquive</i>. Ce jet fait partie de l’action d’attaque. Il ne compte pas comme une action, et n’est pas non plus considéré comme une <i>défense d’urgence</i>.</p>
-	</details>
 
-	<!-- Dégâts à mains nues -->
-	<details>
-		<summary>
-			<h3>Dégâts à mains nues</h3>
-		</summary>
-		<p>Pour les humains :</p>
-		<ul>
-			<li>Coup de poing : B.e-2</li>
-			<li>Coup de pied : B.e, +1 avec des bottes pesantes.</li>
-			<li>Coup de genou : B.e-1.</li>
-			<li>Coup de tête : B.e-1. Si l’attaque est ratée de plus de 3, l’attaquant subit la moitié des dégâts qu’il aurait dû infliger.</li>
-		</ul>
-		<p>Avec la compétence <i>Karaté</i> : +1/5<sup>e</sup> du score de la compétence aux dégâts (sauf pour le coup de tête).
+		<p>Si l’adversaire réussit sa parade, il inflige demi-dégâts à l’attaquant (prendre en compte la RD). Pour éviter d’être blessé, l’attaquant doit réussir une <i>Parade</i> ou une <i>Esquive</i>. Ce jet fait partie de l’action d’attaque. Il ne compte pas comme une action, et n’est pas non plus considéré comme une <i>défense d’urgence</i>.</p>
 	</details>
 
 </article>
@@ -341,7 +339,9 @@
 		</ol>
 
 		<h4>Estimer la difficulté</h4>
+
 		<p>La <i>Portée utile</i> d’une arme à distance est la distance à laquelle une cible de la taille d’un torse humain est atteint sur un jet de difficulté <i>Moyenne</i> et dans des conditions idéales de visée (minimum 3 secondes, davantage si l’arme a une lunette de visée, l’arme doit être tenue dans les conditions idéales).</p>
+		
 		<p>Dans les mêmes conditions de visée, un changement de portée entraîne un modificateur selon la progression logarithmique suivante, à un facteur 10<sup><i>n</i></sup> près : 1 ; 1,5 ; 2 ; 3 ; 5 ; 7.</p>
 
 		<details class="exemple">
@@ -387,7 +387,7 @@
 			</table>
 		</details>
 
-		<p>Si le tireur n’est pas dans des conditions idéales de visée (cible plus petite qu’un torse humain, en mouvement, temps de visée raccourci, pistolet tenu à une main, &hellip;), il revient au MJ d’estimer la difficulté du tir.</p>
+		<p>Si le tireur n’est pas dans des conditions idéales de visée (cible plus petite qu’un torse humain, en mouvement, temps de visée raccourci, pistolet tenu à une main, …), il revient au MJ d’estimer la difficulté du tir.</p>
 
 	</details>
 
@@ -464,7 +464,9 @@
 		</ul>
 
 		<h4>Attaque et défense simultanées</h4>
+
 		<p>Il peut arriver que, après détermination de l’initiative, deux combattants s’attaquent mutuellement au même moment, ou bien qu’un combattant attaque son ennemi au moment où un deuxième opposant l’attaque lui-même. Dans ce cas, puisque la défense se fait au même moment que l’attaque, cette défense <i>devra</i> être une <i>défense d’urgence</i>, même si le combattant n’a, à ce stade, pas encore effectué ses deux actions.</p>
+
 		<p>Cette défense d’urgence sera comptabilisée comme telle et entrera donc dans la limite des deux défenses d’urgence par round. Le combattant aura par la suite le droit d’effectuer une action de défense normalement s’il le doit.</p>
 
 		<details class="exemple mt-1">
@@ -546,7 +548,7 @@
 			</tr>
 			<tr>
 				<th>Rupture</th>
-				<td><i>Esquive</i> +3 pour quitter le combat. Cette esquive s’oppose à toutes les attaques du tour.</td>
+				<td><i>Esquive</i> +3 ou <i>Acrobatie</i> pour quitter le combat. Cette esquive s’oppose à toutes les attaques du tour.</td>
 				<td>aucune attaque possible pour le reste du tour. Agit en dernier au prochain tour.</td>
 			</tr>
 			<tr>
@@ -805,5 +807,5 @@
 		<p>Pour traverser la paroi d’un objet, il faut passer 125 % de sa RD. Si ce seuil n’est pas atteint, l’objet prend tout de même les dégâts passant la RD mais sa paroi n’est pas percée.</p>
 	</details>
 
-	
+
 </article>

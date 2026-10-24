@@ -150,16 +150,19 @@ $playNotif = false;
 							<a href="personnage-fiche?perso=<?= $perso->id ?>" target="_blank" class="ff-fas fs-500 btn nude" title="voir la fiche">
 								&#xf2c2;
 							</a>
-							<button type="button" data-role="export-character" title="exporter en txt" class="nude ff-fas fs-500" data-id="<?= $perso->id ?>">&#xf56e;</button>
+							<button type="button" data-role="export-character" title="exporter en txt" class="nude ff-fas fs-500" data-id="<?= $perso->id ?>">
+								&#xf56e;
+							</button>
 						</div>
 
+						<!-- Points, groupe, joueur, statut -->
 						<div class="flex-s gap-½ mt-½">
 							<input type="text" name="Pts" value="<?= $perso->points ?>" style="width: 5ch" class="ta-center" title="Pts de perso">
 							<input type="text" name="id_groupe" value="<?= $perso->id_group ?>" style="width: 5ch" class="ta-center" title="groupe" placeholder="Gr">
 							<select name="id_joueur" class="fl-1" title="joueur">
-								<?php foreach ($users as $user) { ?>
+								<?php foreach ($users as $user): ?>
 									<option value="<?= $user->id ?>" <?= $user->id === $perso->id_player ? "selected" : "" ?>><?= $user->login ?></option>
-								<?php } ?>
+								<?php endforeach; ?>
 							</select>
 							<select name="Statut" class="fl-1" title="statut">
 								<option <?= $perso->status === "Création" ? "selected" : "" ?>>Création</option>
@@ -207,7 +210,7 @@ $playNotif = false;
 
 						<!-- Autres éléments d’état -->
 						<div class="flex-s gap-½ mt-½">
-							<textarea name="État[Autres]" placeholder="Autres éléments d’état" title="Autres éléments d’état" style="min-height: 5em;"><?= $perso->state["Autres"] ?? "" ?></textarea>
+							<textarea name="État[Autres]" placeholder="Autres éléments d’état" title="Autres éléments d’état" style="min-height: 5em;"><?= trim($perso->state["Autres"] ?? "") ?></textarea>
 						</div>
 
 						<!-- Détails du personnage -->
@@ -342,7 +345,7 @@ $playNotif = false;
 	</section>
 <?php } ?>
 
-<!-- template de résumé des fiches de persos. -->
+<!-- template de résumé des fiches de persos -->
 <template id="character-details">
 
 	<p data-content="Description"></p>

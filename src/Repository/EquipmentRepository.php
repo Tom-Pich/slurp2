@@ -17,12 +17,26 @@ class EquipmentRepository extends AbstractRepository
 		return $object;
 	}
 
-	public function getEquipmentName(int $id): string{
+	public function getEquipmentByIds(array $ids): array
+	{
+		if (empty($ids)) return [];
+		$placeholders = implode(",", array_fill(0, count($ids), "?"));
+		$query = $this->db->prepare("SELECT * FROM objets WHERE id IN ($placeholders)");
+		$query->execute(array_values($ids));
+		$indexed = [];
+		foreach ($query->fetchAll(\PDO::FETCH_ASSOC) as $row) {
+			$indexed[$row["id"]] = $row;
+		}
+		$query->closeCursor();
+		return $indexed;
+	}
+
+	/* public function getEquipmentName(int $id): string{
 		$query = $this->db->prepare("SELECT Nom FROM objets WHERE id = ?");
 		$query->execute([$id]);
 		$item = $query->fetch(\PDO::FETCH_ASSOC);
 		return $item["Nom"];
-	}
+	} */
 
 	public function getEquipmentFromPlace(string $place_code): array
 	{
@@ -45,7 +59,7 @@ class EquipmentRepository extends AbstractRepository
 
 	public function getCharacterEquipment(int $id, bool $only_carried_equipment = false): array
 	{
-		if ($only_carried_equipment) {
+		/* if ($only_carried_equipment) {
 			$query = $this->db->prepare("SELECT * FROM objets WHERE lieu = ? ORDER BY Ordre, id");
 			$query->execute(["pi_" . $id]);
 		} else {
@@ -67,7 +81,23 @@ class EquipmentRepository extends AbstractRepository
 					$items = array_merge($items, $container_items);
 				}
 			}
-		}
+		} */
+
+		$places = $only_carried_equipment ? ["pi_" . $id] : ["pi_" . $id, "pe_" . $id];
+		$placeholders = implode(",", array_fill(0, count($places), "?"));
+
+		$query = $this->db->prepare("
+			WITH RECURSIVE tree AS (
+				SELECT * FROM objets WHERE Lieu IN ($placeholders)
+				UNION ALL
+				SELECT o.* FROM objets o
+				JOIN tree t ON t.Contenant = 1 AND o.Lieu = CONCAT('ct_', t.id)
+			)
+			SELECT * FROM tree ORDER BY Ordre, id
+		");
+		$query->execute($places);
+		$items = $query->fetchAll(\PDO::FETCH_ASSOC);
+		$query->closeCursor();
 
 		$objects = [];
 		foreach ($items as $item) {
@@ -78,7 +108,7 @@ class EquipmentRepository extends AbstractRepository
 		return $objects;
 	}
 
-	public function getCommonGroupEquipment(int $group_id): array
+	/* public function getCommonGroupEquipmentOld(int $group_id): array
 	{
 		$query = $this->db->prepare("SELECT * FROM objets WHERE Groupe = ? ORDER BY Ordre, id");
 		$query->execute([$group_id]);
@@ -103,6 +133,69 @@ class EquipmentRepository extends AbstractRepository
 			}
 		}
 
+
+		return $group_list;
+	} */
+
+	public function getCommonGroupEquipment(int $group_id): array
+	{
+		// 1. objets partagés avec le groupe + tout leur contenu
+		$query = $this->db->prepare("
+        WITH RECURSIVE tree AS (
+            SELECT * FROM objets WHERE Groupe = ?
+            UNION
+            SELECT o.* FROM objets o
+            JOIN tree t ON t.Contenant = 1 AND o.Lieu = CONCAT('ct_', t.id)
+        )
+        SELECT * FROM tree ORDER BY Ordre, id
+    ");
+		$query->execute([$group_id]);
+		$items = $query->fetchAll(\PDO::FETCH_ASSOC);
+		$query->closeCursor();
+		if (empty($items)) return [];
+
+		// 2. nom du propriétaire de chaque objet partagé (remontée des contenants)
+		$query = $this->db->prepare("
+        WITH RECURSIVE up AS (
+            SELECT id AS start_id, Lieu, 0 AS depth FROM objets WHERE Groupe = ? AND Contenant = 1
+            UNION ALL
+            SELECT up.start_id, o.Lieu, up.depth + 1
+            FROM up JOIN objets o ON LEFT(up.Lieu, 3) = 'ct_' AND o.id = CAST(SUBSTRING(up.Lieu, 4) AS UNSIGNED)
+            WHERE up.depth < 20
+        )
+        SELECT up.start_id, p.Nom
+        FROM up JOIN persos p ON up.Lieu IN (CONCAT('pi_', p.id), CONCAT('pe_', p.id))
+    ");
+		$query->execute([$group_id]);
+		$owners = $query->fetchAll(\PDO::FETCH_KEY_PAIR); // id objet partagé → nom du perso
+		$query->closeCursor();
+
+		// 3. assemblage en mémoire
+		$by_id = [];
+		$contents_by_place = [];
+		foreach ($items as $item) {
+			$by_id[$item["id"]] = $item;
+			$contents_by_place[$item["Lieu"]][] = $item;
+		}
+
+		// remonte jusqu'à l'objet partagé « racine » (celui dont le parent n'est pas dans l'arbre)
+		$find_root_id = function (array $item) use ($by_id) {
+			$seen = [];
+			while (str_starts_with($item["Lieu"], "ct_")) {
+				$parent_id = (int) substr($item["Lieu"], 3);
+				if (!isset($by_id[$parent_id]) || isset($seen[$parent_id])) break;
+				$seen[$parent_id] = true;
+				$item = $by_id[$parent_id];
+			}
+			return $item["id"];
+		};
+
+		$group_list = [];
+		foreach ($items as $item) {
+			if (!$item["Contenant"]) continue;
+			$owner_name = $owners[$find_root_id($item)] ?? "";
+			$group_list[$item["Nom"] . " (" . $owner_name . ")"] = $contents_by_place["ct_" . $item["id"]] ?? [];
+		}
 
 		return $group_list;
 	}
@@ -149,7 +242,7 @@ class EquipmentRepository extends AbstractRepository
 			$is_in_inexistant_container = $place_prefix === "ct_" && !in_array($place_id, $container_ids);
 			$is_container = in_array($item_id, $container_ids);
 			$creates_loop = $is_container && self::creates_loop($item_id, $indexed_place_list);
-			if($creates_loop){
+			if ($creates_loop) {
 				// grosse prise de tête avec boucles infinies dans plein de méthodes → makeItemOphan règle tout
 				$has_inconsistent_place = true;
 				$this->makeItemOrphan($item_id);
@@ -184,12 +277,6 @@ class EquipmentRepository extends AbstractRepository
 		return $orphan_items;
 	}
 
-	/**
-	 * setEquipment
-	 *
-	 * @param  mixed $data indexed array with id, Nom, Contenant, Poids, Notes, (Secret,) Lieu, Groupe, Ordre
-	 * @return void
-	 */
 	public function setEquipment($data): void
 	{
 		if (isset($data["Secret"])) {

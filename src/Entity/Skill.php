@@ -24,13 +24,13 @@ class Skill implements RulesItem
 		"bow" => [14, 15],
 		"throwing" => [34, 36, 37, 38, 47],
 		"seduction" => [148, 192, 157],
-		"acrobatics-dodging" => [169, 26],
+		//"acrobatics-dodging" => [169, 26],
 		"survival" => [71, 56],
 	];
 
 	const special_skills = [
 		// these skills have special default value
-		26 => ["min-level" => -3], // Esquive
+		//26 => ["min-level" => -1], // Esquive
 		200 => ["min-level" => 5], // Langue maternelle
 	];
 
@@ -127,13 +127,18 @@ class Skill implements RulesItem
 		$x = $niv - $niv_½;
 		if ($niv <= $difficulty) return 0;
 		if ($niv <= $niv_c) return 2 ** ($x - 1); // ½ - 1 - 2 - 4 - 8
-		if ("SKILL_V2") {
-			if ($niv > 7) return INF;
-			if ($base === "I") return 4 * ($x - 2);
-			return 8 * ($x - 3);
+		switch (SKILL_VERSION) {
+			case 1: // version ancienne quadratique → trop peu lisible
+				if ($base === "I") return 4 * $x - 8; // intellectual skills - high level
+				return ($x ** 2 + $x - 4) / 2; // other skills - high level
+			case 2: // version GURPS 3
+				if ($niv > 7) return INF;
+				if ($base === "I") return 4 * ($x - 2);
+				return 8 * ($x - 3);
+			default: // version GURPS 4 → trop peu cher
+				if ($niv > 7) return INF;
+				return 4 * ($x - 2);
 		}
-		if ($base === "I") return 4 * $x - 8; // intellectual skills - high level
-		return ($x ** 2 + $x - 4) / 2; // other skills - high level
 	}
 
 	/**
@@ -174,8 +179,10 @@ class Skill implements RulesItem
 			// default niv
 			$skill["niv"] = $skill["niv"] ?? $skill["min-niv"];
 
-			// impossible niv → less then diff/2 or less then min-niv
-			if ($skill["niv"] < $skill["difficulty"] / 2 || $skill["niv"] < $skill["min-niv"]) $skill["niv"] = $skill["min-niv"];
+			// gestions des niveaux impossibles (trop bas)
+			if ($skill["niv"] < $skill["min-niv"]) $skill["niv"] = $skill["min-niv"];
+			if ($skill["niv"] > $skill["min-niv"] && $skill["niv"] < $skill["difficulty"] / 2) $skill["niv"] = $skill["difficulty"] / 2;
+			// if ($skill["niv"] < $skill["difficulty"] / 2 || $skill["niv"] < $skill["min-niv"]) $skill["niv"] = $skill["min-niv"];
 
 			// selecting main skill for each skill groups
 			foreach (self::skills_groups as $group => $id_list) {
@@ -186,6 +193,7 @@ class Skill implements RulesItem
 						|| $pool[$group]["niv"] < $skill["niv"] // higher "niv"
 						|| $pool[$group]["niv"] === $skill["niv"] && $pool[$group]["difficulty"] > $skill["difficulty"]; // same niv but higher diff
 					if ($update_pool) {
+						$pool[$group]["id"] = $skill["id"];
 						$pool[$group]["label"] = $skill["label"];
 						$pool[$group]["niv"] = $skill["niv"];
 						$pool[$group]["difficulty"] = $skill["difficulty"];
@@ -275,6 +283,7 @@ class Skill implements RulesItem
 
 			// score
 			$skill["score"] = $skill["base"] + $skill["niv"] + $skill["modif"];
+			if ($skill["id"] === 26) { $skill["score"] -= 3;}
 			if ($skill["niv"] === $skill["difficulty"] && !$skill["has-default"]) {
 				$skill["virtual-score"] = $skill["score"];
 				$skill["score"] = "–";
@@ -291,7 +300,7 @@ class Skill implements RulesItem
 	}
 
 	/** Add + modify skill in rules */
-	public static function processSubmitSkill($post)
+	public static function processSubmitSkill(array $post)
 	{
 		// id, Nom, Catégorie, Base, Difficulté, Description
 		$skill["id"] = (int) $post["id"];
@@ -317,6 +326,7 @@ class Skill implements RulesItem
 	{
 		$cost_std = self::niv2cost($niv, $difficulty, "D");
 		$cost_int = self::niv2cost($niv, $difficulty, "I");
+		if ($difficulty === -8) $cost_std = $cost_int; // "Très ardues" uniquement basées sur l’Int
 		if ($cost_std < 0.5) return "–";
 		if ($cost_std === .5) return "½";
 		if ($cost_std === 1.5) return "1½";

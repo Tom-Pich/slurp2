@@ -1,4 +1,4 @@
-import { qs, ce, qsa } from "./dom-utils"
+import { qs, ce, qsa } from "./dom-utils.js"
 export function showAlert(msgContent, msgType){
 	const activeAlerts = qsa(".alert");
 	const alertWindow = ce("div", ["alert", `alert-${activeAlerts.length+1}`])

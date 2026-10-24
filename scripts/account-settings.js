@@ -1,5 +1,5 @@
-import { qs } from "./lib/dom-utils";
-import { showAlert } from "./lib/alert";
+import { qs } from "./lib/dom-utils.js";
+import { showAlert } from "./lib/alert.js";
 
 function checkPasswordStrength(password) {
     const digit = /\d+/.test(password);

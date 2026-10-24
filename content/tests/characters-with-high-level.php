@@ -20,8 +20,8 @@ foreach ($characters as $id){
 	echo "<td>";
 	foreach ($skills as $s){
 		if ( isset($s->niv) && $s->niv > 5 && $s->id !== 200) {
-			print_r($s);
-			echo " – ";
+			echo ($s->label ?? "Sans label") . " – niv. " . $s->niv;
+			echo " ; ";
 		}
 	}
 	echo "</td>";

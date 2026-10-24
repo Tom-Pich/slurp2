@@ -32,6 +32,10 @@ $bdd = new \PDO("mysql:host=" . DB_HOST . "; dbname=" . DB_NAME . "; charset=utf
 session_start();
 LogController::checkSessionValidity();
 
+// afficher les logs d’erreur
+//ini_set("display_errors", "1");
+//error_reporting(E_ALL);
+
 // ––– pages data ––––––––––––––––––––––––––––––––––––––––––––––––––––––
 $pages_data = include "content/pages/_pages-data.php";
 
@@ -406,11 +410,11 @@ else if ($path_segments[1] === "wiki" && !empty($path_segments[2]) && count($pat
 		$page = new Error404Controller;
 		$page->show();
 	}
-	
+
 	if (!empty($articles[$article_name])) {
 		$article = $articles[$article_name];
 		$page_data["name"] = "wiki/" . $wiki . "/" . $article_name;
-		$page_data["title"] = $article["title"] ;
+		$page_data["title"] = $article["title"];
 		$page_data["titleH1"] = $article["titleH1"] ?? $article["title"];
 		$page_data["description"] = $article["description"] ?? "";
 		$page_data["file"] = "wiki-page"; // virtual file, see PageController
@@ -436,7 +440,7 @@ else {
 		$page_data["name"] = $page_name;
 		$page = new PageController($page_data);
 	}
-	
+
 	if ($page->accessRestriction) Firewall::filter($page->accessRestriction);
 	$page->show();
 }

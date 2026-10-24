@@ -3,7 +3,7 @@ import { calculate, int } from "./utilities.js";
 import { wsURL, Message } from "./ws-utilities.js";
 import { updateDOM } from "./update-dom.js";
 import { fetchResult } from "./game-table-utilities.js";
-import { showSpinningWheel } from "./main-utilities.js";
+import { showSpinningWheel, hideSpinningWheel } from "./main-utilities.js";
 
 const sessionId = qs("#ws-data").dataset.sessionId;
 const wsKey = qs("#ws-data").dataset.wsKey;
@@ -97,47 +97,59 @@ function submitCharacterForm(form) {
     pdxCells.forEach((cell) => {
         cell.value = calculate(cell.value);
     });
-    let form_id = form.getAttribute("id"); // don’t use form.id because of one input which name is id
+
     const form_data = new FormData(form);
+    showSpinningWheel(form);
     fetch("/submit/update-character-state", {
         method: "post",
         body: form_data,
-    }).then(() => {
-        const ping = new Message(sessionId, wsKey, "character-ping", parseInt(form_data.get("id")));
-        ws.send(ping.stringify());
-    });
+    })
+        .then(() => {
+            const ping = new Message(sessionId, wsKey, "character-ping", parseInt(form_data.get("id")));
+            ws.send(ping.stringify());
+        })
+        .then(() => {
+            hideSpinningWheel();
+        });
 }
 
 // character forms events
 const characterStateForms = qsa("[data-role=character-state-form]");
 characterStateForms.forEach((form) => {
     const saveBtn = form.querySelector("[data-role=save-character]");
-    let allowSaveBtnColorChange = true;
+    //let allowSaveBtnColorChange = true;
 
-    // if form submitted manually (with "enter" key)
+    // on form submit
     form.addEventListener("submit", (e) => {
         e.preventDefault();
+        //document.activeElement?.blur(); // Déclenche les 'change' en attente avant de sauvegarder
         submitCharacterForm(form);
     });
 
     // submit form with save-character btn
-    saveBtn.addEventListener("click", (e) => {
+    /* saveBtn.addEventListener("click", (e) => {
         e.preventDefault();
         submitCharacterForm(form);
+    }); */
+
+    // submit form with Ctrl + s
+    form.addEventListener("keydown", (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === "s") {
+            e.preventDefault();
+            //submitCharacterForm(form);
+            form.requestSubmit();
+            //allowSaveBtnColorChange = false;
+        }
     });
+
+	// alert on group change
+	form.querySelector("[name=id_groupe]").addEventListener("change", () => {
+		alert("Si vous changez un personnage de groupe, vous devez rafraîchir la page après la sauvegarde pour que celui-ci soit placé dans le groupe souhaité.")
+	})
 
     // highlight save btn on change
-    form.addEventListener("change", () => {
-        if (allowSaveBtnColorChange) saveBtn.classList.add("clr-invalid");
-        allowSaveBtnColorChange = true;
-    });
-
-    form.addEventListener("keydown", (e) => {
-        if (e.ctrlKey && e.key === "s") {
-            e.preventDefault();
-            submitCharacterForm(form);
-            allowSaveBtnColorChange = false;
-        }
+    form.addEventListener("input", () => {
+        saveBtn.classList.add("clr-invalid");
     });
 
     // click listener on element with details callable in dialog

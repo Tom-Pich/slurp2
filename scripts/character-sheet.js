@@ -46,7 +46,7 @@ function updateCharacter(id) {
         .then((response) => response.text())
         .then((response) => {
             updateDOM("main", response)
-                .then(() => showAlert("Personnage mis à jour&nbsp;!", "valid"))
+                .then(() => showAlert("Personnage mis à jour !", "valid"))
                 .then(() => fillPdMCount())
                 .then(() => hideSpinningWheel());
         });
@@ -99,7 +99,7 @@ function submitEquipment(pingAllCharacter = false) {
         }
     });
     showSpinningWheel();
-    fetch("/submit/equipment-list", {
+    fetch("/submit/equipment-list", { // see src/Entity → Equipment::processEquipmentSubmit
         method: "post",
         body: formData,
     })
@@ -199,8 +199,19 @@ formEquipment.addEventListener("click", (e) => {
 
 // event listeners for saving equipment after input change
 formEquipment.addEventListener("change", (e) => {
+	// a new item is saved when leaving its row (see focusout), so the weight can be entered
+    if (e.target.name?.startsWith("nouvel-objet")) return;
     const pingAllCharacter = e.target.dataset.pingAll !== undefined ? true : false;
     submitEquipment(pingAllCharacter);
+});
+
+// Enregsitrement d’un nouvel objet une fois qu’on focus out de sa ligne
+formEquipment.addEventListener("focusout", (e) => {
+    if (!e.target.name?.startsWith("nouvel-objet")) return;
+    const row = e.target.closest("details");
+    if (row.contains(e.relatedTarget)) return; // focus moves inside the same row
+    if (!row.querySelector("[name$='[Nom]']").value.trim()) return; // nothing to save
+    submitEquipment();
 });
 
 // event listener for drag and drop (not used: drag, dragleave, drop)

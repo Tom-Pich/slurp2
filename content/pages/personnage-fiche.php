@@ -4,7 +4,7 @@ use App\Lib\TextParser;
 use App\Repository\EquipmentRepository;
 
 $character = $payload;
-$character->processCharacter(with_state_modifiers: true);
+$character->processCharacter();
 $character_uses_pdm = $character->special_traits["magerie"] || $character->special_traits["pouvoirs"];
 $attributes_names = ["For", "Dex", "Int", "San", "Per", "Vol"];
 $pdx_names = ["PdV", "PdF", "PdM", "PdE"];
@@ -535,23 +535,32 @@ $displayEmojis = false;
 
 <!-- Modal pour les possessions -->
 <dialog data-name="possession-notice" class="flow" data-morphdom="ignore">
+
 	<button data-role="close-modal" class="ff-fas">&#xf00d;</button>
+
 	<p class="mt-0"><b>Ajouter un objet :</b> cliquer sur <span class="ff-fas clr-primary-500">&#xf055;</span> dans l’emplacement désiré.</p>
-	<p><b>Supprimer un objet :</b> effacer son nom. Attention : si vous effacez un objet-contenant, vous perdrez tout son contenu avec !</p>
+
+	<p><b>Supprimer un objet :</b> effacer son nom. Attention : si vous effacez un objet-contenant, vous perdrez tout son contenu avec ! L’objet ne sera pas complètement effacé : il sera placé dans une « corbeille » accessible par votre MJ.</p>
+
 	<p><b>Transformer un objet en contenant :</b> Insérer * devant son nom.</p>
+
 	<p><b>Transformer un contenant en objet simple :</b> cocher la case <span class="ff-fas clr-invalid">&#xf057;</span> dans la liste associée au contenant (pas possible si le contenant n’est pas vide).</p>
+	
 	<p><b>Changer l’ordre des contenants :</b> utiliser les boutons <span class="ff-fas">&#xf0aa;</span> et <span class="ff-fas">&#xf0ab;</span>. Attention : un contenant vide peut perturber le positionnement des autres contenants. Dans ce cas, transformez-le en objet simple.</p>
+
 	<p><b>Déplacer un objet</b> (vers un autre endroit, ou à l’intérieur d’une liste, ou vers un autre personnage) : faire un <i>glisser-déposer</i> en vous servant de la poignée <span class="ff-fas">&#xf58e;</span> . Si la liste de destination est repliée, maintenant votre objet une demi-seconde sur son nom pour qu’elle s’ouvre automatiquement.</p>
+
 	<p><b>Partager</b> le contenu d’un contenant : cliquer sur la case <span class="ff-fas clr-secondary-dark">&#xe533;</span>. Les autres membres du groupe pourront voir ce contenu (mais pas le modifier).</p>
+
 	<p><b>Calcul automatique des dégâts</b> des armes blanches :</p>
 	<ol>
-		<li>Entrez dans les <b>notes</b> de l’objet le ou les <b>codes de dégâts</b> de l’arme <i>tels que</i> donnés dans les règles (ex. P.e+1, T.t-2, B.t&hellip;), en tenant compte d’un éventuel bonus de qualité ou de magie.</li>
+		<li>Entrez dans les <b>notes</b> de l’objet le ou les <b>codes de dégâts</b> de l’arme <i>tels que</i> donnés dans les règles (ex. P.e+1, T.t-2, B.t…), en tenant compte d’un éventuel bonus de qualité ou de magie.</li>
 		<li>Pour une <b>arme maniée à deux mains</b>, si le maniement à deux mains est optionnel, insérez le caractère † dans les notes (n’importe où). S’il est obligatoire, entrez le caractère ‡.</li>
 		<li>Vous pouvez lire la <b>valeur des dégâts calculés</b> (le cas échéant) en survolant les notes avec le curseur.</li>
 	</ol>
+
 	<p>
-		<b>Créer un compteur</b> associé à un objet : ajouter au nom de l’objet les motifs <i>nombre/nombre</i> ou <i>(nombre %)</i>.<br>
-		Ces nombres peuvent être entiers ou décimaux (séparateur décimal : point).<br>
+		<b>Créer un compteur</b> associé à un objet : ajouter au nom de l’objet les motifs <i>nombre/nombre</i> ou <i>(nombre %)</i>. Ces nombres peuvent être entiers ou décimaux (séparateur décimal : point).
 	</p>
 </dialog>
 

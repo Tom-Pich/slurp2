@@ -4,10 +4,10 @@ define("IS_ONLINE", $_SERVER['HTTP_HOST'] === 'jdr.pichegru.net');
 define("DB_ACTIVE", true);
 define("GENERIC_PASSWORD", $_ENV["GENERIC_PASSWORD"]);
 define("SESSION_DURATION", 10800);
-define("VERSION", "3.34.0"); // 3.34: Déblocage robots
-define("DATE_VERSION", "juillet 2026");
+define("VERSION", "3.35.0"); // 3.35 : Compétence Esquive modifiée + gestion optimisée de l’équipement
+define("DATE_VERSION", "octobre 2026");
 define("PRODUCTION", true); // run webpack before switching to true (use mignified scripts)
-define("SKILL_V2", true); // coût compétences v2 → niv limité à +7
+define("SKILL_VERSION", 2); // v3 : coût comme GURPS 4 → niv limité à +7 (trop peu cher !)
 
 if (IS_ONLINE) {
 	define("DB_HOST", $_ENV["DB_HOST"]);

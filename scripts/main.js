@@ -1,4 +1,4 @@
-import { activateLoginDialog, activateMobileNav, activateDialogs, applyColorScheme } from "./main-utilities";
+import { activateLoginDialog, activateMobileNav, activateDialogs, applyColorScheme } from "./main-utilities.js";
 
 activateLoginDialog();
 activateMobileNav();

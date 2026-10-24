@@ -26,7 +26,7 @@ class Equipment
 
 	public function __construct($data = [])
 	{
-		$repo = new EquipmentRepository;
+		//$repo = new EquipmentRepository;
 		$this->id = $data["id"] ?? null;
 		$this->name = $data["Nom"] ?? "";
 		$this->isContainer = $data["Contenant"] ?? false;
@@ -36,13 +36,13 @@ class Equipment
 		$this->place = $data["Lieu"] ?? "pi_0";
 		$this->visibleByGroupId = $data["Groupe"] ?? null;
 		$this->order = $data["Ordre"] ?? 1;
-		if (substr($this->place, 0, 3) === "ct_") {
+		/* if (substr($this->place, 0, 3) === "ct_") {
 			$this->containerName = $repo->getEquipmentName((int)substr($this->place, 3));
-		}
+		} */
 		$this->id_gm = $data["MJ"] ?? 0;
 	}
 
-	public static function isCarried(int $id): bool
+	/* public static function isCarried(int $id): bool
 	{
 		$repo = new EquipmentRepository;
 		$location = $repo->getEquipmentPlace($id);
@@ -54,6 +54,20 @@ class Equipment
 			$parent_id = substr($location, 3);
 			return self::isCarried($parent_id);
 		}
+	} */
+
+	public static function isCarriedFromIndex(int $id, array $places_by_id): bool
+	{
+		$visited = [];
+		while (isset($places_by_id[$id]) && !isset($visited[$id])) {
+			$visited[$id] = true;
+			$place = $places_by_id[$id];
+			$prefix = substr($place, 0, 3);
+			if ($prefix === "pi_") return true;
+			if ($prefix === "pe_") return false;
+			$id = (int) substr($place, 3); // on monte d'un niveau
+		}
+		return false;
 	}
 
 	// detects if a container is inside itself (directly or not) after character save
@@ -99,7 +113,7 @@ class Equipment
 		}
 	}
 
-	public static function getCarriedWeight(int $character_id): float
+	/* public static function getCarriedWeight(int $character_id): float
 	{
 		$repo = new EquipmentRepository;
 		$carried_items = $repo->getCharacterEquipment($character_id, true);
@@ -108,6 +122,18 @@ class Equipment
 			$carried_weight += $item->weight;
 		}
 		return $carried_weight;
+	} */
+
+	private static function hasChanged(array $new, ?array $old): bool
+	{
+		if ($old === null) return true; // objet inconnu en base → on laisse le comportement actuel
+		foreach (["Nom", "Contenant", "Notes", "Secret", "Lieu", "Groupe", "Ordre", "MJ"] as $key) {
+			if (!array_key_exists($key, $new)) continue; // ex. "Secret" absent pour un joueur
+			if ((string) ($new[$key] ?? "") !== (string) ($old[$key] ?? "")) return true;
+		}
+		// Poids : null et 0 sont deux valeurs différentes
+		if (($new["Poids"] === null) !== ($old["Poids"] === null)) return true;
+		return $new["Poids"] !== null && (float) $new["Poids"] !== (float) $old["Poids"];
 	}
 
 	public static function processEquipmentList(array $raw_equipment, array $state = []): array
@@ -116,19 +142,32 @@ class Equipment
 			"pi" => ["id" => 0, "nom" => "Possessions sur soi", "liste" => [], "poids" => 0, "ordre" => null, "ordre-par-defaut" => 2, "sur-soi" => true, "lieu" => "pi"],
 		];
 
+		// new 26-10-24 - éviter les appels en BDD inutiles
+		$names_by_id = [];
+		$places_by_id = [];
 		foreach ($raw_equipment as $item) {
+			$names_by_id[$item->id] = $item->name;
+			$places_by_id[$item->id] = $item->place;
+		}
+		// fin
+
+		foreach ($raw_equipment as $item) {
+
 			if ($item->isContainer) {
+				$parent_name = str_starts_with($item->place, "ct_")
+					? ($names_by_id[(int) substr($item->place, 3)] ?? null)
+					: null;
 				$equipment["ct_" . $item->id] = [
 					"id" => $item->id,
-					"nom" => $item->name . ($item->containerName ? (" (" . $item->containerName . ")") : ""),
+					"nom" => $item->name . ($parent_name ? (" (" . $parent_name . ")") : ""),
 					"liste" => [],
 					"poids" => $item->weight,
 					"ordre" => null,
 					"ordre-par-defaut" => $item->order + 1,
 					"groupe" => $item->visibleByGroupId,
 					"non-vide" => false,
-					"sur-soi" => self::isCarried($item->id),
-					"dans-contenant" => !!$item->containerName,
+					"sur-soi" => self::isCarriedFromIndex($item->id, $places_by_id),
+					"dans-contenant" => !!$parent_name,
 					"lieu" => "ct_" . $item->id
 				];
 			}
@@ -177,101 +216,112 @@ class Equipment
 		$repo = new EquipmentRepository;
 		$repo_characters = new CharacterRepository;
 
-		$post["objet"] = $post["objet"] ?? [];
+		try {
+			// objet modifié dans une fiche de personnage
+			$post["objet"] = $post["objet"] ?? [];
+			$ids = array_filter(array_map("intval", array_keys($post["objet"])));
+			$existing = $repo->getEquipmentByIds($ids);
+			foreach ($post["objet"] as $id => $item) {
+				$order++;
+				if ($id && empty($item["Nom"])) {
+					$repo->makeItemOrphan($id); // objet dont le nom a été effacé → objet orphelin
+				} else {
 
-		// objet modifié dans une fiche de personnage
-		foreach ($post["objet"] as $id => $item) {
-			$order++;
-			if ($id && empty($item["Nom"])) {
-				$repo->makeItemOrphan($id); // objet dont le nom a été effacé → objet orphelin
-			} else {
+					$formatted_item = [];
+					$formatted_item["id"] = (int) $id;
+					$formatted_item["Nom"] = trim(strip_tags($item["Nom"]), "* ");
 
-				$formatted_item = [];
-				$formatted_item["id"] = (int) $id;
-				$formatted_item["Nom"] = trim(strip_tags($item["Nom"]), "* ");
+					// contenant ou pas ?
+					$formatted_item["Contenant"] = (int) $item["Contenant"];
+					if (!empty($post["sub-list"][$id]["Contenant-off"]) && empty($repo->getEquipmentFromPlace("ct_" . $id))) {
+						// si on décoche la case "contenant" de la sous-liste associée et que le contenant est vide
+						$formatted_item["Contenant"] = 0;
+					}
+					if (substr($item["Nom"], 0, 1) === "*") {
+						// si on déclare l’object comme contenant
+						$formatted_item["Contenant"] = 1;
+					}
 
-				// contenant ou pas ?
-				$formatted_item["Contenant"] = (bool) $item["Contenant"];
-				if (!empty($post["sub-list"][$id]["Contenant-off"]) && empty($repo->getEquipmentFromPlace("ct_" . $id))) {
-					// si on décoche la case "contenant" de la sous-liste associée et que le contenant est vide
-					$formatted_item["Contenant"] = false;
-				}
-				if (substr($item["Nom"], 0, 1) === "*") {
-					// si on déclare l’object comme contenant
-					$formatted_item["Contenant"] = true;
-				}
+					$formatted_item["Poids"] = $item["Poids"] !== "" ? (float) $item["Poids"] : null;
+					$formatted_item["Notes"] = strip_tags($item["Notes"]);
+					isset($item["Secret"]) ? $formatted_item["Secret"] = strip_tags($item["Secret"]) : "";
+					$formatted_item["Lieu"] = strip_tags($item["Lieu"]);
+					$formatted_item["Groupe"] = !empty($post["sub-list"][$id]["Groupe"]) ? (int) $post["sub-list"][$id]["Groupe"] : null;
+					$formatted_item["Ordre"] = (int) $order;
+					// Présence ou non du champ "Secret" au moment de l’inscription en base
+					$formatted_item["MJ"] = (int) $item["MJ"];
 
-				$formatted_item["Poids"] = $item["Poids"] !== "" ? (float) $item["Poids"] : null;
-				$formatted_item["Notes"] = strip_tags($item["Notes"]);
-				isset($item["Secret"]) ? $formatted_item["Secret"] = strip_tags($item["Secret"]) : "";
-				$formatted_item["Lieu"] = strip_tags($item["Lieu"]);
-				$formatted_item["Groupe"] = !empty($post["sub-list"][$id]["Groupe"]) ? (int) $post["sub-list"][$id]["Groupe"] : null;
-				$formatted_item["Ordre"] = $order;
-				// Présence ou non du champ "Secret" au moment de l’inscription en base
-				$formatted_item["MJ"] = (int) $item["MJ"];
+					// Détection d’une boucle infinie de contenant (A est dans B qui est lui-même dans A)
+					$creates_loop = false;
+					if ($formatted_item["Contenant"]) {
+						$item_is_in_container = substr($formatted_item["Lieu"], 0, 3) === "ct_";
+						if ($item_is_in_container) {
+							$creates_loop = self::detectLocationLoop($formatted_item["id"], $post);
+						}
+					}
 
-				// Détection d’une boucle infinie de contenant (A est dans B qui est lui-même dans A)
-				$creates_loop = false;
-				if ($formatted_item["Contenant"]) {
-					$item_is_in_container = substr($formatted_item["Lieu"], 0, 3) === "ct_";
-					if ($item_is_in_container) {
-						$creates_loop = self::detectLocationLoop($formatted_item["id"], $post);
+					if (!$creates_loop && self::hasChanged($formatted_item, $existing[$formatted_item["id"]] ?? null)) {
+						$repo->setEquipment($formatted_item);
+						//error_log("UPDATE objet " . $formatted_item["id"]);
 					}
 				}
-
-				if (!$creates_loop) $repo->setEquipment($formatted_item);
 			}
-		}
 
-		$post["nouvel-objet"] = $post["nouvel-objet"] ?? [];
-		foreach ($post["nouvel-objet"] as $item) {
-			$formatted_item = [];
-			$formatted_item["Nom"] = trim(strip_tags($item["Nom"]), "* ");
-			$formatted_item["Contenant"] = substr($item["Nom"], 0, 1) === "*" ? true : false;
-			$formatted_item["Poids"] = $item["Poids"] !== "" ? (float) $item["Poids"] : null;
-			$formatted_item["Notes"] = "";
-			$formatted_item["Secret"] = "";
-			$formatted_item["Lieu"] = strip_tags($item["Lieu"]);
-			$formatted_item["Groupe"] = null;
-			$formatted_item["Ordre"] = 99;
-			$formatted_item["MJ"] = (int) $item["MJ"];
-			if (!empty($formatted_item["Nom"])) {
-				$repo->createEquipment($formatted_item);
+			// objet créé sur fiche de personnage
+			$post["nouvel-objet"] = $post["nouvel-objet"] ?? [];
+			foreach ($post["nouvel-objet"] as $item) {
+				$formatted_item = [];
+				$formatted_item["Nom"] = trim(strip_tags($item["Nom"]), "* ");
+				$formatted_item["Contenant"] = (int) (substr($item["Nom"], 0, 1) === "*");
+				$formatted_item["Poids"] = $item["Poids"] !== "" ? (float) $item["Poids"] : null;
+				$formatted_item["Notes"] = "";
+				$formatted_item["Secret"] = "";
+				$formatted_item["Lieu"] = strip_tags($item["Lieu"]);
+				$formatted_item["Groupe"] = null;
+				$formatted_item["Ordre"] = 99;
+				$formatted_item["MJ"] = (int) $item["MJ"];
+				if (!empty($formatted_item["Nom"])) {
+					$repo->createEquipment($formatted_item);
+				}
 			}
-		}
 
-		$post["objet-gestionnaire"] = $post["objet-gestionnaire"] ?? [];
-		foreach ($post["objet-gestionnaire"] as $item) {
-			$formatted_item = [];
-			$formatted_item["id"] = (int) $item["id"];
-			$formatted_item["Nom"] = trim(strip_tags($item["Nom"]), "* ");
-			$formatted_item["Contenant"] = isset($item["Contenant"]) ? true : false;
-			$formatted_item["Poids"] = $item["Poids"] !== "" ? (float) $item["Poids"] : null;
-			$formatted_item["Notes"] = strip_tags($item["Notes"]);
-			$formatted_item["Secret"] = strip_tags($item["Secret"]);
-			$formatted_item["Lieu"] = strip_tags($item["Lieu"]);
-			$formatted_item["Groupe"] = null;
-			$formatted_item["Ordre"] = 99;
-			$formatted_item["MJ"] = (int) $item["MJ"];
+			// post depuis le gestionnaire du MJ
+			$post["objet-gestionnaire"] = $post["objet-gestionnaire"] ?? [];
+			foreach ($post["objet-gestionnaire"] as $item) {
+				$formatted_item = [];
+				$formatted_item["id"] = (int) $item["id"];
+				$formatted_item["Nom"] = trim(strip_tags($item["Nom"]), "* ");
+				$formatted_item["Contenant"] = (int) isset($item["Contenant"]);
+				$formatted_item["Poids"] = $item["Poids"] !== "" ? (float) $item["Poids"] : null;
+				$formatted_item["Notes"] = strip_tags($item["Notes"]);
+				$formatted_item["Secret"] = strip_tags($item["Secret"]);
+				$formatted_item["Lieu"] = strip_tags($item["Lieu"]);
+				$formatted_item["Groupe"] = null;
+				$formatted_item["Ordre"] = 99;
+				$formatted_item["MJ"] = (int) $item["MJ"];
 
-			// check attribution authorizations
-			$check["owner"] = self::getEquipmentOwnerId($formatted_item["Lieu"]);
-			$gm_characters_id = $repo_characters->getCharactersFromGM($formatted_item["MJ"]);
-			$check["character-group-id"] = $check["owner"] === 0 ? 0 : $repo_characters->getCharacterRef($check["owner"])["id_groupe"];
-			$check["is-test-character"] = $check["character-group-id"] === NULL;
-			$check["gm-has-clearance-for-attribution"] = in_array($check["owner"], $gm_characters_id) || $check["owner"] === 0;
+				// check attribution authorizations
+				$check["owner"] = self::getEquipmentOwnerId($formatted_item["Lieu"]);
+				$gm_characters_id = $repo_characters->getCharactersFromGM($formatted_item["MJ"]);
+				$check["character-group-id"] = $check["owner"] === 0 ? 0 : $repo_characters->getCharacterRef($check["owner"])["id_groupe"];
+				$check["is-test-character"] = $check["character-group-id"] === NULL;
+				$check["gm-has-clearance-for-attribution"] = in_array($check["owner"], $gm_characters_id) || $check["owner"] === 0;
 
-			if (!$check["gm-has-clearance-for-attribution"]) $formatted_item["Lieu"] = "pi_0";
-			if ($check["is-test-character"]) $formatted_item["MJ"] = 0;
+				if (!$check["gm-has-clearance-for-attribution"]) $formatted_item["Lieu"] = "pi_0";
+				if ($check["is-test-character"]) $formatted_item["MJ"] = 0;
 
-			if ($formatted_item["id"] && $formatted_item["Nom"]) {
-				$repo->setEquipment($formatted_item);
-			} elseif ($formatted_item["id"] && !$formatted_item["Nom"]) {
-				$repo->deleteEquipment($formatted_item["id"]);
-			} elseif (!$formatted_item["id"] && $formatted_item["Nom"]) {
-				unset($formatted_item["id"]);
-				$repo->createEquipment($formatted_item);
+				if ($formatted_item["id"] && $formatted_item["Nom"]) {
+					$repo->setEquipment($formatted_item);
+				} elseif ($formatted_item["id"] && !$formatted_item["Nom"]) {
+					$repo->deleteEquipment($formatted_item["id"]);
+				} elseif (!$formatted_item["id"] && $formatted_item["Nom"]) {
+					unset($formatted_item["id"]);
+					$repo->createEquipment($formatted_item);
+				}
 			}
+		} catch (\Throwable $e) {
+			$repo->rollBack();
+			throw $e; // ne pas avaler l'erreur
 		}
 	}
 
