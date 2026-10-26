@@ -12,7 +12,7 @@ $equipment_repo = new EquipmentRepository;
 $group_repo = new GroupRepository;
 $character_repo = new CharacterRepository;
 
-$liste_objets_orphelins = $equipment_repo->getOrphanEquiment($_SESSION["id"]);
+$liste_objets_orphelins = $equipment_repo->getOrphanEquipment($_SESSION["id"]);
 for ($k = 0; $k < 3; $k++) {
 	$nouvel_objet = new Equipment();
 	$nouvel_objet->id_gm = $_SESSION["id"];

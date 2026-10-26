@@ -141,14 +141,14 @@ class EquipmentRepository extends AbstractRepository
 	{
 		// 1. objets partagés avec le groupe + tout leur contenu
 		$query = $this->db->prepare("
-        WITH RECURSIVE tree AS (
-            SELECT * FROM objets WHERE Groupe = ?
-            UNION
-            SELECT o.* FROM objets o
-            JOIN tree t ON t.Contenant = 1 AND o.Lieu = CONCAT('ct_', t.id)
-        )
-        SELECT * FROM tree ORDER BY Ordre, id
-    ");
+			WITH RECURSIVE tree AS (
+				SELECT * FROM objets WHERE Groupe = ?
+				UNION
+				SELECT o.* FROM objets o
+				JOIN tree t ON t.Contenant = 1 AND o.Lieu = CONCAT('ct_', t.id)
+			)
+			SELECT * FROM tree ORDER BY Ordre, id
+		");
 		$query->execute([$group_id]);
 		$items = $query->fetchAll(\PDO::FETCH_ASSOC);
 		$query->closeCursor();
@@ -156,16 +156,16 @@ class EquipmentRepository extends AbstractRepository
 
 		// 2. nom du propriétaire de chaque objet partagé (remontée des contenants)
 		$query = $this->db->prepare("
-        WITH RECURSIVE up AS (
-            SELECT id AS start_id, Lieu, 0 AS depth FROM objets WHERE Groupe = ? AND Contenant = 1
-            UNION ALL
-            SELECT up.start_id, o.Lieu, up.depth + 1
-            FROM up JOIN objets o ON LEFT(up.Lieu, 3) = 'ct_' AND o.id = CAST(SUBSTRING(up.Lieu, 4) AS UNSIGNED)
-            WHERE up.depth < 20
-        )
-        SELECT up.start_id, p.Nom
-        FROM up JOIN persos p ON up.Lieu IN (CONCAT('pi_', p.id), CONCAT('pe_', p.id))
-    ");
+			WITH RECURSIVE up AS (
+				SELECT id AS start_id, Lieu, 0 AS depth FROM objets WHERE Groupe = ? AND Contenant = 1
+				UNION ALL
+				SELECT up.start_id, o.Lieu, up.depth + 1
+				FROM up JOIN objets o ON LEFT(up.Lieu, 3) = 'ct_' AND o.id = CAST(SUBSTRING(up.Lieu, 4) AS UNSIGNED)
+				WHERE up.depth < 20
+			)
+			SELECT up.start_id, p.Nom
+			FROM up JOIN persos p ON up.Lieu IN (CONCAT('pi_', p.id), CONCAT('pe_', p.id))
+		");
 		$query->execute([$group_id]);
 		$owners = $query->fetchAll(\PDO::FETCH_KEY_PAIR); // id objet partagé → nom du perso
 		$query->closeCursor();
@@ -213,7 +213,7 @@ class EquipmentRepository extends AbstractRepository
 		return self::creates_loop($id_container, $indexed_places, $container_chain); // on examine le container parent
 	}
 
-	public function getOrphanEquiment($id_mj = NULL): array
+	/* public function getOrphanEquipmentOld(?int $id_mj = null): array
 	{
 		if ($id_mj === NULL) {
 			$items_query = $this->db->query("SELECT id, Lieu FROM objets");
@@ -275,6 +275,72 @@ class EquipmentRepository extends AbstractRepository
 		}
 
 		return $orphan_items;
+	} */
+
+	public function getOrphanEquipment(?int $id_mj = null): array
+	{
+		$query = $this->db->query("
+			WITH RECURSIVE attached AS (
+				SELECT o.id, o.Contenant FROM objets o
+				JOIN persos p ON o.Lieu IN (CONCAT('pi_', p.id), CONCAT('pe_', p.id))
+				UNION
+				SELECT o.id, o.Contenant FROM objets o
+				JOIN attached a ON a.Contenant = 1 AND o.Lieu = CONCAT('ct_', a.id)
+			)
+			SELECT o.* FROM objets o
+			LEFT JOIN attached a ON a.id = o.id
+			WHERE a.id IS NULL
+			ORDER BY o.Ordre, o.id
+		");
+		$orphans = array_column($query->fetchAll(\PDO::FETCH_ASSOC), null, "id"); // id => ligne
+		$query->closeCursor();
+
+		// parents de chaque orphelin
+		$parent_of = [];
+		foreach ($orphans as $id => $item) {
+			$parent_of[$id] = null;
+			if (preg_match('/^ct_(\d+)$/', (string) $item["Lieu"], $m)) {
+				$parent_id = (int) $m[1];
+				if (isset($orphans[$parent_id]) && $orphans[$parent_id]["Contenant"]) $parent_of[$id] = $parent_id;
+			}
+		}
+
+		// détection de cycles : 1 = chemin en cours, 2 = chemin validé
+		$state = [];
+		foreach (array_keys($parent_of) as $start) {
+			$path = [];
+			$current = $start;
+			while ($current !== null && !isset($state[$current])) {
+				$state[$current] = 1;
+				$path[] = $current;
+				$current = $parent_of[$current];
+			}
+			if ($current !== null && $state[$current] === 1) { // on est retombé sur le chemin en cours → cycle
+				$this->makeItemOrphan($current); // un seul détachement suffit à casser la boucle
+				$parent_of[$current] = null;
+				$orphans[$current]["Lieu"] = "pi_0";
+			}
+			foreach ($path as $id) $state[$id] = 2;
+		}
+
+		$roots = [];
+		$children = [];
+		foreach ($orphans as $id => $item) {
+			if ($parent_of[$id] === null) $roots[] = $item;
+			else $children[$parent_of[$id]][] = $item;
+		}
+
+		$result = [];
+		$append = function (array $item) use (&$append, &$result, $children) {
+			$result[] = new Equipment($item);
+			foreach ($children[$item["id"]] ?? [] as $child) $append($child);
+		};
+		foreach ($roots as $root) {
+			if ($id_mj !== null && !in_array((int) $root["MJ"], [0, $id_mj], true)) continue; // le MJ de la racine s'applique à tout son contenu
+			$append($root);
+		}
+
+		return $result;
 	}
 
 	public function setEquipment($data): void

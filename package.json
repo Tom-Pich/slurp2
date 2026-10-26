@@ -1,16 +1,11 @@
 {
   "name": "slurp-v3",
-  "version": "3.33",
-  "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "sass": "sass --watch --style=compressed ./sass/main.scss:./styles.min.css",
     "webpack": "webpack --config webpack.config.js",
-	"tchat": "cd ../jdr-tchat && node server.js",
-	"live" : "browser-sync start --proxy 'site-jdr' --files '**/*.php, **/*.css, **/*.js'"
+    "tchat": "cd ../jdr-tchat && node server.js",
+    "live": "browser-sync start --proxy 'site-jdr' --files '**/*.php, **/*.css, **/*.js'"
   },
-  "keywords": [],
-  "author": "TomPich SitUp",
-  "license": "ISC",
   "sideEffects": false
 }

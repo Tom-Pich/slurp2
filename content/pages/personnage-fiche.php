@@ -370,32 +370,32 @@ function color_modifier(int|float $original_score, int|float $actual_score)
 			<?php if ($compact): include "content/components/compact-character-sheet/compact-psi.php"; ?>
 			<?php else: ?>
 
-			<details class="liste">
-				<summary>
-					<div>
-						<div><?= $discipline["nom"] ?></div>
-						<div>Niv. <?= $discipline["niv"] ?></div>
-					</div>
-				</summary>
-				<?php if (isset($discipline["notes"])) { ?>
-					<div><i><?= $discipline["notes"] ?></i></div>
-				<?php } ?>
-				<?php foreach ($character->psi as $pouvoir) {
-					if (in_array($discipline["id"], $pouvoir["data"]->disciplines) && $pouvoir["readable-score"]) { ?>
-						<details class="sous-liste">
-							<summary data-type="throwable-wrapper">
-								<div class="flex-s gap-½">
-									<div class="fl-1" data-type="throwable-label"><?= $pouvoir["data"]->name ?> (<?= $pouvoir["data"]->readableNiv ?>) [<?= $pouvoir["readable-cost"] ?>]</div>
-									<div data-type="throwable-score" <?= color_modifier(0, $character->modifiers["Int"]) ?>><?= $pouvoir["readable-score"] ?></div>
+				<details class="liste">
+					<summary>
+						<div>
+							<div><?= $discipline["nom"] ?></div>
+							<div>Niv. <?= $discipline["niv"] ?></div>
+						</div>
+					</summary>
+					<?php if (isset($discipline["notes"])) { ?>
+						<div><i><?= $discipline["notes"] ?></i></div>
+					<?php } ?>
+					<?php foreach ($character->psi as $pouvoir) {
+						if (in_array($discipline["id"], $pouvoir["data"]->disciplines) && $pouvoir["readable-score"]) { ?>
+							<details class="sous-liste">
+								<summary data-type="throwable-wrapper">
+									<div class="flex-s gap-½">
+										<div class="fl-1" data-type="throwable-label"><?= $pouvoir["data"]->name ?> (<?= $pouvoir["data"]->readableNiv ?>) [<?= $pouvoir["readable-cost"] ?>]</div>
+										<div data-type="throwable-score" <?= color_modifier(0, $character->modifiers["Int"]) ?>><?= $pouvoir["readable-score"] ?></div>
+									</div>
+								</summary>
+								<div class="fs-300">
+									<?= $pouvoir["data"]->getFullDescription(); ?>
 								</div>
-							</summary>
-							<div class="fs-300">
-								<?= $pouvoir["data"]->getFullDescription(); ?>
-							</div>
-						</details>
-				<?php }
-				} ?>
-			</details>
+							</details>
+					<?php }
+					} ?>
+				</details>
 
 			<?php endif ?>
 		<?php endforeach ?>
@@ -408,6 +408,10 @@ function color_modifier(int|float $original_score, int|float $actual_score)
 		<legend class="flex-s gap-½ ai-center">
 			Possessions
 			<button class="ff-far fs-200 btn-primary btn-square no-print" data-role="open-dialog" data-dialog-name="possession-notice" title="mode d’emploi de la liste de possession">&#xf059;</button>
+			<span id="equipment-status" class="no-print" data-morphdom="ignore" hidden>
+				<button type="button" class="btn-primary ff-fas fs-200 btn-square" data-role="save-equipment">&#xf0c7;</button>
+				<span data-role="status-label" class="fs-200"></span>
+			</span>
 		</legend>
 
 		<form id="form-equipment" class="flow">
@@ -465,7 +469,7 @@ function color_modifier(int|float $original_score, int|float $actual_score)
 							</div>
 						</details>
 					<?php } ?>
-					<div data-role=free-slot style="height: 0.75em;"></div>
+					<div data-role=free-slot style="height: .5em;"></div>
 				</details>
 			<?php } ?>
 			<div id="item-transfer" class="mt-0"><!-- temporary wrapper for item transfer, used in character.js --></div>
@@ -545,7 +549,7 @@ $displayEmojis = false;
 	<p><b>Transformer un objet en contenant :</b> Insérer * devant son nom.</p>
 
 	<p><b>Transformer un contenant en objet simple :</b> cocher la case <span class="ff-fas clr-invalid">&#xf057;</span> dans la liste associée au contenant (pas possible si le contenant n’est pas vide).</p>
-	
+
 	<p><b>Changer l’ordre des contenants :</b> utiliser les boutons <span class="ff-fas">&#xf0aa;</span> et <span class="ff-fas">&#xf0ab;</span>. Attention : un contenant vide peut perturber le positionnement des autres contenants. Dans ce cas, transformez-le en objet simple.</p>
 
 	<p><b>Déplacer un objet</b> (vers un autre endroit, ou à l’intérieur d’une liste, ou vers un autre personnage) : faire un <i>glisser-déposer</i> en vous servant de la poignée <span class="ff-fas">&#xf58e;</span> . Si la liste de destination est repliée, maintenant votre objet une demi-seconde sur son nom pour qu’elle s’ouvre automatiquement.</p>

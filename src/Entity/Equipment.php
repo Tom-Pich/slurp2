@@ -72,25 +72,18 @@ class Equipment
 
 	// detects if a container is inside itself (directly or not) after character save
 	// current_id is a recursive var with container id
-	public static function detectLocationLoop(int $id_object, array $post, int $location_id = 0)
+	public static function detectLocationLoop(int $id_object, array $post): bool
 	{
-		// loop detected
-		if ($id_object === $location_id) return true;
-
-		if (!$location_id) {
-			$location = $post["objet"][$id_object]["Lieu"];
-		} else {
-			$location = $post["objet"][$location_id]["Lieu"];
+		$visited = [];
+		$id = $id_object;
+		while (isset($post["objet"][$id]["Lieu"])) {
+			if (!preg_match('/^ct_(\d+)$/', $post["objet"][$id]["Lieu"], $m)) return false; // racine atteinte (pi_, pe_, ou lieu invalide)
+			$id = (int) $m[1];
+			if ($id === $id_object) return true;
+			if (isset($visited[$id])) return false; // boucle qui n'implique pas cet objet : ses membres sont bloqués par leur propre contrôle
+			$visited[$id] = true;
 		}
-
-		// if object inside a container
-		if (substr($location, 0, 3) === "ct_") {
-			if ($location_id === (int) substr($location, 3)) return true; // container directly in itself
-			$current_id = (int) substr($location, 3); // current_id is now location id
-			return self::detectLocationLoop($id_object, $post, $current_id); // run with location one step above
-		}
-
-		return false;
+		return false; // conteneur absent du POST
 	}
 
 	/**
@@ -99,18 +92,16 @@ class Equipment
 	 */
 	public static function getEquipmentOwnerId(int|string $ref): int
 	{
-		$location = $ref;
-		if (is_int($ref)) {
-			$repo = new EquipmentRepository;
-			$location = $repo->getEquipmentPlace($ref);
-			if (!$location) return 0;
+		$location = is_int($ref) ? (new EquipmentRepository)->getEquipmentPlace($ref) : $ref;
+		$visited = [];
+		while ($location && preg_match('/^(pi|pe|ct)_(\d+)$/', $location, $m)) {
+			if ($m[1] !== "ct") return (int) $m[2];
+			$id = (int) $m[2];
+			if (isset($visited[$id])) return 0; // boucle
+			$visited[$id] = true;
+			$location = (new EquipmentRepository)->getEquipmentPlace($id);
 		}
-		if (in_array(substr($location, 0, 3), ["pi_", "pe_"])) {
-			return (int) substr($location, 3);
-		} else {
-			$parent_id = (int) substr($location, 3);
-			return self::getEquipmentOwnerId($parent_id);
-		}
+		return 0;
 	}
 
 	/* public static function getCarriedWeight(int $character_id): float
