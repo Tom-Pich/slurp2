@@ -72,55 +72,57 @@ return $pages_data = [
 	"adapted-dungeons-dragons" => [
 		"title" => "AD&D",
 		"description" => "Ce qu’il faut pour jouer dans l’esprit <i>Donjons &amp; Dragons</i>, sans le système abject d20.",
-		"file" => "univers_add",
+		"file" => "univers-add",
 	],
 	"in-nomine" => [
 		"title" => "In Nomine",
 		"description" => "Une adaptation relativement libre de l’incontournable «&nbsp;Magna Veritas&nbsp;»",
-		"file" => "univers_in_nomine",
+		"file" => "univers-in-nomine",
 	],
 	"cthulhu" => [
 		"title" => "Cthulhu",
 		"description" => "Quelques éléments pour jouer un <i>Cthulhu</i>",
-		"file" => "univers_cthulhu",
+		"file" => "univers-cthulhu",
 	],
 	"ombres-esteren" => [
 		"title" => "Les Ombres d’Esteren",
 		"description" => "Une adaptation libre des <i>Ombres d’Esteren</i>",
-		"file" => "univers_ombres_esteren",
+		"file" => "univers-ombres-esteren",
 	],
 
 	// Aides de jeu
 	"ecrire-scenario" => [
 		"title" => "Écrire un scénario",
 		"description" => "Une évolution de l’article précédemment publié dans PTGPTB faisant la synthèse de nombreux articles sur la création de scénario",
-		"file" => "s_scenario",
+		"file" => "s01-scenario",
 		"body-class" => "standard-page writing-scenario",
 	],
-	/* "aide-de-jeu-medfan" => [
-		"title" => "Le Moyen Âge",
-		"description" => "Quelques éléments sur le Moyen-Âge",
-		"file" => "s_adj_med",
-	], */
 	"bibliotheque-liens" => [
 		"title" => "Bibliothèque de liens",
 		"description" => "Quelques liens utiles",
-		"file" => "s_liens",
+		"file" => "s02-liens",
 	],
 	"concevoir-personnage" => [
 		"title" => "Concevoir son perso",
 		"description" => "Une liste de traits de caractère pour aider à la création de PJ et de PNJ",
-		"file" => "s_concevoir_perso",
+		"file" => "s03-concevoir-perso",
 	],
 	"vocabulaire-relief" => [
 		"title" => "Vocabulaire du relief",
 		"description" => "Une liste de vocabulaire permettant de décrire le relief d’un terrain, des plus grosses structures jusqu’au détails à l’échelle humaine",
-		"file" => "s_vocabulaire_relief",
+		"file" => "s04-vocabulaire-relief",
 	],
 	"qualite-jeu" => [
 		"title" => "Améliorer le jeu",
 		"description" => "Quelques trucs et astuces pour améliorer la qualité des parties – pour le MJ et pour les joueurs.",
-		"file" => "s_qualite_jeu",
+		"body-class" => "basic-page",
+		"file" => "s05-qualite-jeu",
+	],
+	"documentation-ia" => [
+		"title" => "Documentation pour l’IA",
+		"description" => "Élément de règles au format MD pour l’IA",
+		"body-class" => "basic-page",
+		"file" => "s06-documentation-ia",
 	],
 	"test" => [
 		"title" => "Test",

@@ -375,17 +375,21 @@ class Character
 
 		// Kits
 		if (isset($post["kit_base"])) {
+			$character["Compétences"][] = ["id" => 21]; // Combat MN
 			$character["Compétences"][] = ["id" => 26]; // Esquive
+			$character["Compétences"][] = ["id" => 59]; // Escalade
 			$character["Compétences"][] = ["id" => 181]; // Furtivité
 			$character["Compétences"][] = ["id" => 127]; // Culture générale
 			$character["Compétences"][] = ["id" => 148]; // Baratin
 			$character["Compétences"][] = ["id" => 147]; // Acteur
+			$character["Compétences"][] = ["id" => 150]; // Diplomatie
 			$character["Compétences"][] = ["id" => 155]; // Perception empathique
+			$character["Compétences"][] = ["id" => 209]; // Observation
+			$character["Compétences"][] = ["id" => 126]; // Culture maternelle
+			$character["Compétences"][] = ["id" => 200]; // Langue maternelle
 		}
 		if (isset($post["kit_aventurier"])) {
-			$character["Compétences"][] = ["id" => 21]; // Combat à mains nues
 			$character["Compétences"][] = ["id" => 56]; // Connaissance de la Nature
-			$character["Compétences"][] = ["id" => 59]; // Escalade
 			$character["Compétences"][] = ["id" => 92]; // Fouille
 			$character["Compétences"][] = ["id" => 36]; // Lancer
 			$character["Compétences"][] = ["id" => 62]; // Nage
@@ -396,14 +400,15 @@ class Character
 			$character["Compétences"][] = ["id" => 113]; // Vigilance
 		}
 		if (isset($post["kit_contemporain"])) {
-			$character["Compétences"][] = ["id" => 162]; // Conduite
+			$character["Compétences"][] = ["id" => 162, "label" => "Conduite (voiture)"]; // Conduite
 			$character["Compétences"][] = ["id" => 95]; // Informatique
 			$character["Compétences"][] = ["id" => 62]; // Nage
+			$character["Compétences"][] = ["id" => 54]; // Premiers secours
+			$character["Compétences"][] = ["id" => 143]; // Recherches
 		}
 		if (isset($post["kit_combattant"])) {
 			$character["Avdesav"][] = ["id" => 29]; // Réflexes de combat
 			$character["Avdesav"][] = ["id" => 31]; // Résistance à la douleur
-			$character["Compétences"][] = ["id" => 21]; // Combat à mains nues
 			$character["Compétences"][] = ["id" => 26, "label" => "Esquive (+1)"]; // Esquive
 		}
 		if (isset($post["kit_magicien"])) {
@@ -431,7 +436,6 @@ class Character
 			$character["Avdesav"][] = ["id" => 28]; // Pouvoir légal
 			$character["Avdesav"][] = ["id" => 73]; // Devoir
 			$character["Compétences"][] = ["id" => 16]; // Arme à feu
-			$character["Compétences"][] = ["id" => 21]; // Combat à mains nues
 			$character["Compétences"][] = ["id" => 58]; // Courses
 			$character["Compétences"][] = ["id" => 125]; // Criminologie
 			$character["Compétences"][] = ["id" => 191, "label" => "Droit"]; // Droit

@@ -127,6 +127,7 @@ $body_class .=  $page->displayStyle !== "normal" ? (" " . $page->displayStyle) :
 						<li><a href="/concevoir-personnage"><?= $pages_data['concevoir-personnage']["title"] ?></a></li>
 						<li><a href="/vocabulaire-relief"><?= $pages_data['vocabulaire-relief']["title"] ?></a></li>
 						<li><a href="/qualite-jeu"><?= $pages_data['qualite-jeu']["title"] ?></a></li>
+						<li><a href="/documentation-ia"><?= $pages_data['documentation-ia']["title"] ?></a></li>
 						<?php if ($_SESSION['Statut'] >= 3) { ?> <li><a href="/test">Test</a></li> <?php } ?>
 					</ul>
 				</li>

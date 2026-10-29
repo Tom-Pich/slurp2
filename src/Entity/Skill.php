@@ -29,8 +29,8 @@ class Skill implements RulesItem
 	];
 
 	const special_skills = [
-		// these skills have special default value
-		//26 => ["min-level" => -1], // Esquive
+		// Compétences avec un niveau minimum gratuit
+		126 => ["min-level" => 5], // Culture maternelle
 		200 => ["min-level" => 5], // Langue maternelle
 	];
 

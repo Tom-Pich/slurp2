@@ -13,7 +13,7 @@ class GenerateSkillsController extends AbstractGenerateController
 	public function __construct()
 	{
 		$this->outputFile = "liste-competences.md";
-		$this->outputPath = __DIR__ . "/../../scenarii/ressources-ia/" . $this->outputFile;
+		$this->outputPath = __DIR__ . "/../../ressources-ia/" . $this->outputFile;
 	}
 
 	public function generate(): void

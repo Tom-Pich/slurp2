@@ -238,32 +238,51 @@ $playNotif = false;
 		Créer un personnage
 		<button class="nude ff-fas" data-role="open-dialog" data-dialog-name="create-characters-dialog" title="mode d’emploi">&#xf059;</button>
 	</h2>
-	<p>Les kits (optionnels) vous permettent d’ajouter des « packs » d’avantages, désavantages et compétences. Ils sont cumulatifs. Les compétences sont attribuées avec leur score par défaut.</p>
+	<p>Les kits (optionnels) vous permettent d’ajouter des « packs » d’avantages, désavantages et compétences. Ils sont cumulatifs. Les compétences sont attribuées avec leur score par défaut. Il est fortement recommandé de garder le kit « Base ».</p>
 	<form method="post" action="/submit/create-character" data-role="character-creation-form">
 		<div class="grid col-auto-fit gap-½" style="--col-min-width: 250px">
 
 			<!-- Base -->
 			<label class="card">
-				<p><input type="checkbox" name="kit_base"> <b>Base</b></p>
-				<p class="ta-left"><i>Acteur</i>, <i>Baratin</i>, <i>Culture générale</i>, <i>Esquive</i>, <i>Furtivité</i>, <i>Perception empathique</i></p>
+				<p><input type="checkbox" name="kit_base" checked> <b>Base</b></p>
+				<p class="ta-left">
+					<i>Acteur</i>,
+					<i>Baratin</i>,
+					<i>Combat MN</i>,
+					<i>Culture générale</i>,
+					<i>Culture maternelle</i>,
+					<i>Diplomatie</i>,
+					<i>Escalade</i>, 
+					<i>Esquive</i>,
+					<i>Furtivité</i>,
+					<i>Langue maternelle</i>,
+					<i>Observation</i>,
+					<i>Perception empathique</i>
+				</p>
+			</label>
+			
+			<!-- Contemporain -->
+			<label class="card">
+				<p><input type="checkbox" name="kit_contemporain"> <b>Contemporain</b></p>
+				<p class="ta-left">
+					<i>Conduite (voiture)</i>,
+					<i>Informatique</i>,
+					<i>Nage</i>,
+					<i>Premiers secours</i>,
+					<i>Recherches</i>
+				</p>
 			</label>
 
 			<!-- Aventurier -->
 			<label class="card">
 				<p><input type="checkbox" name="kit_aventurier"> <b>Aventurier</b></p>
-				<p class="ta-left"><i>Combat MN</i>, <i>Connaissance de la Nature</i>, <i>Escalade</i>, <i>Fouille</i>, <i>Lancer</i>, <i>Nage</i>, <i>Orientation</i>, <i>Pistage</i>, <i>Randonnée</i>, <i>Survie</i>, <i>Vigilance</i></p>
-			</label>
-
-			<!-- Contemporain -->
-			<label class="card">
-				<p><input type="checkbox" name="kit_contemporain"> <b>Contemporain</b></p>
-				<p class="ta-left"><i>Conduite</i>, <i>Informatique</i>, <i>Nage</i></p>
+				<p class="ta-left"><i>Connaissance de la Nature</i>, <i>Fouille</i>, <i>Lancer</i>, <i>Nage</i>, <i>Orientation</i>, <i>Pistage</i>, <i>Randonnée</i>, <i>Survie</i>, <i>Vigilance</i></p>
 			</label>
 
 			<!-- Combattant -->
 			<label class="card">
 				<input type="checkbox" name="kit_combattant"> <b>Combattant</b>
-				<p class="ta-left"><i>Réflexes de combat</i>, <i>Résistance à la douleur</i>, <i>Combat à Mains nues</i>, <i>Esquive</i></p>
+				<p class="ta-left"><i>Réflexes de combat</i>, <i>Résistance à la douleur</i></p>
 			</label>
 
 
@@ -288,7 +307,7 @@ $playNotif = false;
 			<!-- Policier -->
 			<label class="card">
 				<p><input type="checkbox" name="kit_policier"> <b>Policier</b></p>
-				<p class="ta-left"><i>Pouvoir légal</i>, <i>Devoir</i>, <i>Arme à feu</i>, <i>Combat à mains nues</i>, <i>Course</i>, <i>Criminologie</i>, <i>Droit</i></p>
+				<p class="ta-left"><i>Pouvoir légal</i>, <i>Devoir</i>, <i>Arme à feu</i>, <i>Course</i>, <i>Criminologie</i>, <i>Droit</i></p>
 			</label>
 
 			<!-- Enquêteur -->

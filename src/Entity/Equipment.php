@@ -36,25 +36,8 @@ class Equipment
 		$this->place = $data["Lieu"] ?? "pi_0";
 		$this->visibleByGroupId = $data["Groupe"] ?? null;
 		$this->order = $data["Ordre"] ?? 1;
-		/* if (substr($this->place, 0, 3) === "ct_") {
-			$this->containerName = $repo->getEquipmentName((int)substr($this->place, 3));
-		} */
 		$this->id_gm = $data["MJ"] ?? 0;
 	}
-
-	/* public static function isCarried(int $id): bool
-	{
-		$repo = new EquipmentRepository;
-		$location = $repo->getEquipmentPlace($id);
-		if (substr($location, 0, 3) === "pi_") {
-			return true;
-		} elseif (substr($location, 0, 3) === "pe_") {
-			return false;
-		} else {
-			$parent_id = substr($location, 3);
-			return self::isCarried($parent_id);
-		}
-	} */
 
 	public static function isCarriedFromIndex(int $id, array $places_by_id): bool
 	{

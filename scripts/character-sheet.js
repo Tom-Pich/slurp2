@@ -90,7 +90,7 @@ function setStatus(state) {
     equipmentStatus.querySelector("[data-role=status-label]").textContent = state === "saving" ? "Saving…" : "● Modifs…";
 }
 
-// marque en dirty, commande affichage status, annule le delay et en réarme un nouveau
+// marque qu’il y a eu des modification et réinitalise le timer
 function markDirty(delay = SAVE_DELAY, pingAll = false) {
     dirty = true;
     pingAllPending ||= pingAll; // the flag must survive until the delayed save
@@ -214,7 +214,7 @@ formEquipment.addEventListener("input", (e) => {
 
 // event listener sur une case à cocher
 formEquipment.addEventListener("change", (e) => {
-    if (e.target.type !== "checkbox") return; // text is already handled by "input"
+    if (e.target.type !== "checkbox") return; // les inputs text sont déjà gérées sur l’event "input"
     markDirty(QUICK_SAVE_DELAY, e.target.dataset.pingAll !== undefined);
 });
 

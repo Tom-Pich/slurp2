@@ -1,52 +1,51 @@
-<Files ~ "\.(env|json|config.js|md|gitignore|gitattributes|lock)$">
-    Order allow,deny
-    Deny from all
-</Files>
+# Protection des fichiers sensibles (Syntaxe Apache 2.4)
+<FilesMatch "\.(env|json|config\.js|md|gitignore|gitattributes|lock)$">
+    Require all denied
+</FilesMatch>
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
 
-	# Redirection anciennes pages
-	RewriteRule ^aide-de-jeu-medfan$ /wiki/moyen-age [R=301,L]
+    # Redirection anciennes pages
+    RewriteRule ^aide-de-jeu-medfan$ /wiki/moyen-age [R=301,L]
 
     # 1. Gestion des en-têtes d'autorisation
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
-    # 2. Redirection HTTPS et Domaine Unique (toujours en premier)
+    # 2. Redirection HTTPS et Domaine Unique
     RewriteCond %{HTTPS} off [OR]
     RewriteCond %{HTTP_HOST} !^jdr\.pichegru\.net$ [NC]
     RewriteCond %{HTTP_HOST} !^site-jdr$ [NC]
     RewriteRule ^(.*)$ https://jdr.pichegru.net/$1 [R=301,L]
 
-    # 3. Retrait du slash Final (sauf pour les vrais dossiers)
+    # 3. Retrait du slash final (sauf pour les vrais dossiers)
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)/$ /$1 [L,R=301]
 
-    # 4. Sécurité : blocage des dossiers sensibles
-    RewriteRule ^(content|src|vendor)/.*$ /not-found [L,R=301]
-    RewriteRule ^config\.php$ /not-found [L,R=301]
+    # 4. Sécurité : blocage direct sans redirection (403 Forbidden)
+	RewriteRule ^(content|src|vendor)(/.*)?$ - [F,L]
+	RewriteRule ^config\.php$ - [F,L]
 
     # 5. Routeur PHP (rewrite global vers index.php)
     RewriteRule ^index\.php$ - [L]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule . /index.php [L]
-
 </IfModule>
 
 <IfModule mod_headers.c>
     Header set Connection keep-alive
-    <filesmatch "\.(ico|flv|gif|woff|woff2|svg)$">
+    <FilesMatch "\.(ico|flv|gif|woff|woff2|svg)$">
         Header set Cache-Control "max-age=2592000, public"
-    </filesmatch>
-    <filesmatch "\.(jpg|jpeg|png|webp)$">
+    </FilesMatch>
+    <FilesMatch "\.(jpg|jpeg|png|webp)$">
         Header set Cache-Control "max-age=1209600, public"
-    </filesmatch>
-    <filesmatch "\.(css)$">
+    </FilesMatch>
+    <FilesMatch "\.(css)$">
         Header set Cache-Control "max-age=31536000, private"
-    </filesmatch>
-    <filesmatch "\.(js)$">
+    </FilesMatch>
+    <FilesMatch "\.(js)$">
         Header set Cache-Control "max-age=1209600, private"
-    </filesmatch>
+    </FilesMatch>
 </IfModule>
