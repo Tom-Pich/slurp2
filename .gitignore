@@ -4,6 +4,7 @@
 /scenarii/
 /newsletters/
 /ressources-ia/
+/.github/
 .env
 markdown.css
 todo-site.md

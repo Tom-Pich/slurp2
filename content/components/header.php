@@ -112,17 +112,22 @@ $body_class .=  $page->displayStyle !== "normal" ? (" " . $page->displayStyle) :
 					<h4>Univers</h4>
 					<ul class="sub-menu">
 						<li><a href="/adapted-dungeons-dragons"><?= $pages_data['adapted-dungeons-dragons']["title"] ?></a></li>
-						<li><a href="/wiki/paorn">Wiki Paorn</a></li>
 						<li><a href="/in-nomine"><?= $pages_data['in-nomine']["title"] ?></a></li>
 						<li><a href="/cthulhu"><?= $pages_data['cthulhu']["title"] ?></a></li>
 						<li><a href="/ombres-esteren"><?= $pages_data['ombres-esteren']["title"] ?></a></li>
 					</ul>
 				</li>
 				<li>
+					<h4>Wikis</h4>
+					<ul class="sub-menu">
+						<li><a href="/wiki/paorn">Paorn</a></li>
+						<li><a href="/wiki/moyen-age">Moyen Âge</a></li>
+					</ul>
+				</li>
+				<li>
 					<h4>Aides de jeu</h4>
 					<ul class="sub-menu" style="--height: 13rem;">
 						<li><a href="/ecrire-scenario"><?= $pages_data['ecrire-scenario']["title"] ?></a></li>
-						<li><a href="/wiki/moyen-age">Wiki Moyen Âge</a></li>
 						<li><a href="/bibliotheque-liens"><?= $pages_data['bibliotheque-liens']["title"] ?></a></li>
 						<li><a href="/concevoir-personnage"><?= $pages_data['concevoir-personnage']["title"] ?></a></li>
 						<li><a href="/vocabulaire-relief"><?= $pages_data['vocabulaire-relief']["title"] ?></a></li>

@@ -385,8 +385,8 @@ class Character
 			$character["Compétences"][] = ["id" => 150]; // Diplomatie
 			$character["Compétences"][] = ["id" => 155]; // Perception empathique
 			$character["Compétences"][] = ["id" => 209]; // Observation
-			$character["Compétences"][] = ["id" => 126]; // Culture maternelle
-			$character["Compétences"][] = ["id" => 200]; // Langue maternelle
+			//$character["Compétences"][] = ["id" => 126]; // Culture maternelle
+			//$character["Compétences"][] = ["id" => 200]; // Langue maternelle
 		}
 		if (isset($post["kit_aventurier"])) {
 			$character["Compétences"][] = ["id" => 56]; // Connaissance de la Nature
@@ -727,7 +727,7 @@ class Character
 			// commented values are not updated by manager
 			"id" => (int) $post["id"],
 			"id_joueur" => (int) $post["id_joueur"],
-			"id_groupe" => (int) $post["id_groupe"],
+			"id_groupe" => ($post["id_groupe"] ?? "") === "" ? null : (int) $post["id_groupe"],
 			//"Nom" => strip_tags($post["Nom"]),
 			"Statut" => "",
 			"Pts" => (float) $post["Pts"],
@@ -791,7 +791,12 @@ class Character
 		if ($character["État"] === "[]") $character["État"] = "{}";
 
 		$group_repo = new GroupRepository;
-		if (!in_array($character["id_groupe"], $group_repo->getExistingGroups())) $character["id_groupe"] = NULL;
+		//if (!in_array($character["id_groupe"], $group_repo->getExistingGroups())) $character["id_groupe"] = NULL;
+		//if (!in_array($character["id_groupe"], $group_repo->getGMGroups($_SESSION["id"])) && $_SESSION["id"] !==1 ) $character["id_groupe"] = NULL;
+
+		$allowed = $_SESSION["id"] === 1 ? $group_repo->getExistingGroups() : $group_repo->getGMGroupIds($_SESSION["id"]);
+		$allowed[] = null; // le groupe test
+		if (!in_array($character["id_groupe"], $allowed, true)) $character["id_groupe"] = null;
 
 		// Update database
 		$repo->updateCharactermanager($character);

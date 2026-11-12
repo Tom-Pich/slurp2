@@ -30,8 +30,8 @@ class Skill implements RulesItem
 
 	const special_skills = [
 		// Compétences avec un niveau minimum gratuit
-		126 => ["min-level" => 5], // Culture maternelle
-		200 => ["min-level" => 5], // Langue maternelle
+		126 => ["min-level" => 4], // Culture maternelle
+		200 => ["min-level" => 4], // Langue maternelle
 	];
 
 	const mvt_skills = [

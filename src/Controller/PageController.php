@@ -71,8 +71,6 @@ class PageController
 
 		include "content/components/header.php";
 
-		//var_dump($page);
-
 		echo "<div id='page-wrapper'>";
 
 		echo "<aside class='left'>";

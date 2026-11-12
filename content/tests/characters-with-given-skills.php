@@ -4,11 +4,11 @@ global $bdd;
 
 $sql = <<<'SQL'
 SELECT id, Nom FROM persos
-WHERE JSON_CONTAINS(Compétences, '{"id": 34}')
-   OR JSON_CONTAINS(Compétences, '{"id": 40}')
+WHERE JSON_CONTAINS(Compétences, '{"id": 126}')
+  /*  OR JSON_CONTAINS(Compétences, '{"id": 40}')
    OR JSON_CONTAINS(Compétences, '{"id": 101}')
-   OR JSON_CONTAINS(Compétences, '{"id": 157}')
-   OR JSON_CONTAINS(Compétences, '{"id": 192}');
+   OR JSON_CONTAINS(Compétences, '{"id": 157}') */
+   OR JSON_CONTAINS(Compétences, '{"id": 200}');
 SQL;
 
 $query = $bdd->query($sql);

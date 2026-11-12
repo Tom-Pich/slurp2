@@ -2,20 +2,31 @@
 
 body.basic-page{
 	main { width: min(100%, var(--content-max-width)); margin-inline: auto; @include flow; }
+	h2 { border-bottom: 1px solid var(--grey-700); padding-bottom: .25em; }
 }
 
 body.standard-page {
-	main { display: flex; gap: 1em; flex-wrap: wrap;  gap: 1em; }
+	main { display: flex; gap: 1em; flex-wrap: wrap;}
 	aside.left:empty + main { justify-content: center; }
 
-	:is(section, article) { border: 1px solid var(--grey-700); border-radius: 1em; box-shadow: var(--box-shadow); width: var(--col-width);  margin-top: .75em; }
-	:is(section, article) h2 { color: var(--white); font-size: var(--fs-450); margin: -1.25rem 0 1em; padding: .25em; }
-	:is(section, article) h2:not(.bg-primary-500, .bg-secondary-500, .bg-tertiary-500) { background-color: var(--black);  }
-	:is(section, article) h3 { font-size: var(--fs-450) }
+	article { border: 1px solid var(--grey-700); border-radius: 1em; box-shadow: var(--box-shadow); width: var(--col-width);  margin-top: .75em; }
+	article h2 { color: var(--white); font-size: var(--fs-450); margin: -1.25rem 0 1em; padding: .25em; background-color: var(--black); }
+	article h3 { font-size: var(--fs-450) }
 	
 	summary:has(h3) { background-color: var(--grey-900); padding: .5em; --marker-offset-r: .5em; --marker-padding: 1.75em; --marker-offset-t: .5em;}
 	details:has(> summary > h4) { border-block: .5px solid var(--grey-700); padding-block: .25em; }
 }
+
+/* body.standard-page-v2 {
+	main { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 1em;}
+
+	article { border: 1px solid var(--grey-700); border-radius: 1em; box-shadow: var(--box-shadow); margin-top: .75em; }
+	article h2 { color: var(--white); font-size: var(--fs-450); margin: -1.25rem 0 1em; padding: .25em; background-color: var(--black);}
+	article h3 { font-size: var(--fs-450) }
+	
+	summary:has(h3) { background-color: var(--grey-900); padding: .5em; --marker-offset-r: .5em; --marker-padding: 1.75em; --marker-offset-t: .5em;}
+	details:has(> summary > h4) { border-block: .5px solid var(--grey-700); padding-block: .25em; }
+} */
 
 body.home {
 	main { @include flow; }
@@ -160,8 +171,8 @@ body.personnage-gestion {
 
 body.gestionnaire-mj {
 	main { display: block; }
-	section {width: unset;}
-	section:not(:first-of-type) { margin-top: 2em; }
+	article {width: unset;}
+	article:not(:first-of-type) { margin-top: 2em; }
 	.card { border: 1px solid var(--grey-900); border-radius: 1em; padding: var(--ds-½-1); }
 	label.card {
 		cursor: pointer; transition: box-shadow .2s, background-color .2s;

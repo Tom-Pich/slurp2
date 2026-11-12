@@ -621,6 +621,7 @@ use App\Rules\WeaponsController;
 	</form>
 </fieldset>
 
+<!-- Explications sur les widgets -->
 <dialog data-name="widgets-help">
 	<button data-role="close-modal" class="ff-fas">&#xf00d;</button>
 

@@ -1,9 +1,9 @@
 <?php
-$playNotif = $playNotif ?? true;
+//$playNotif = $playNotif ?? true;
 $displayEmojis = $displayEmojis ?? true;
 ?>
 
-<div id="chat-container" data-sound="<?= $playNotif ?>">
+<div id="chat-container"><!-- data-sound="x?= $playNotif ?x" -->
 
 	<div id="connected-users">
 		<?php if (!$_SESSION["id"]) { ?><div class="ta-center italic">Vous n’êtes pas connecté</div><?php } ?>

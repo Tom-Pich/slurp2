@@ -93,9 +93,9 @@ $affichage = $_POST["affichage"] ?? "categorie";
 					</p>
 					<ul>
 						<li><b>Aide minime (1 ou 2 pts) :</b> fournir un toit, un coup de main sans risque, prêter une petite somme d’argent.</li>
-						<li><b>Aide non négligeable (10 ou 15 pts) :</b> prêter main forte au PJ, prendre des risques raisonnés. Permet en gros de doubler les capacités du PJ.<br></li>
-						<li><b>Aide importante (15 ou 30 pts) :</b> fournir une aide substantielle au PJ, sans laquelle ce dernier pourrait avoir des problèmes sérieux ou échouer dans un objectif important, tirer le PJ d’un problème sérieux.<br></li>
-						<li><b>Aide très importante (30 ou 60 pts) :</b> résout à peu près tous les problèmes du PJ, dans la mesure du possible.</li>
+						<li><b>Aide non négligeable (10 ou 15 pts) :</b> prêter main forte au PJ, prendre des risques raisonnés. Permet en gros de doubler les capacités du PJ.<br></li>
+						<li><b>Aide importante (15 ou 30 pts) :</b> fournir une aide substantielle au PJ, sans laquelle ce dernier pourrait avoir des problèmes sérieux ou échouer dans un objectif important, tirer le PJ d’un problème sérieux.<br></li>
+						<li><b>Aide très importante (30 ou 60 pts) :</b> résout à peu près tous les problèmes du PJ, dans la mesure du possible.</li>
 					</ul>
 
 					<p>D’autres PNJ peuvent être des <i>Désavantages</i> : les <i>Ennemis</i> et les <i>Subordonnés</i>.</p>
@@ -140,30 +140,32 @@ $affichage = $_POST["affichage"] ?? "categorie";
 				<?php elseif ($category === "Langue"): ?>
 					<p>
 						La plupart des langues sont de type I(-4) mais un sabir/créole sera I(-2) et une langue à la structure grammaticale très complexe sera ardue I(-6). La difficulté dépend également de la proximité entre la langue maternelle du personnage et la langue apprise.<br>
-						Niveau par défaut de la langue maternelle : <i>Int</i> + 5 ± <i>Statut social</i>.
+						Niveau par défaut de la langue maternelle : <i>Int</i> + 4 ± <i>Statut social</i>.
 					</p>
 
 					<h4>Signification du score de compétence</h4>
 					<p>
-						<b>&le; 9 :</b> Reconnaît quelques mots importants.<br>
-						<b>10 :</b> Questions simples, environnement proche et familier.<br>
-						<b>11 :</b> Descriptions, conversations simples.<br>
-						<b>12-13 :</b> Début d’autonomie ; se débrouiller, exprimer son opinion.<br>
-						<b>14-15 :</b> Compréhension courante et capacité à converser ; émettre un avis, soutenir une argumentation.<br>
-						<b>16-17 :</b> S’exprimer spontanément et couramment. Bonne maîtrise.<br>
-						<b>18-19 :</b> Comprend sans effort, s’exprime spontanément, de manière fine et nuancée. Très bonne maîtrise.<br>
-						<b>&ge; 20 :</b> Excellente maîtrise de la langue, de toutes ses finesses et des registres peu usités (ancien, littéraire, etc.)
+						<b>7 : Mots isolés ou transparents</b> et panneaux. Aucune phrase construite.<br>
+						<b>8 : Formules de base et besoins primaires.</b> Phrases courtes et stéréotypées apprises par cœur (« Où est l'auberge ? », « Combien ça coûte ? »). Compréhension si l'interlocuteur parle très lentement.<br>
+						<b>9 : Environnement immédiat.</b> Décrire son identité, commander un repas, comprendre des indications simples. Vocabulaire strictement limité au concret et à la survie quotidienne.<br>
+						<b>10 : Conversations simples et factuelles.</b> Échanger sur des sujets familiers (météo, travail, routine). Utilisation du passé et du futur basiques. Raconter un fait simple sans nuance.<br>
+						<b>11 : Débrouille en voyage.</b> Comprend l’essentiel d’un discours clair. Peut exprimer un avis simple (« <i>je ne suis pas d'accord car…</i> »), raconter une anecdote, négocier sans subtilité.<br>
+						<b>12-13 : Autonomie complète &amp; argumentation.</b> Participe spontanément à un débat, défend une opinion, comprend un discours rapide sans jargon. C'est le seuil où la langue n'est plus un frein social.<br>
+						<b>14-15 : Maîtrise fluide.</b> Compréhension de l'implicite, de l'ironie, des jeux de mots. Registre soutenu ou familier naturel.<br>
+						<b>16-17 : Excellente maîtrise.</b> Compréhension sans aucun effort, y compris avec accent prononcé ou débit très rapide. Nuances stylistiques fines.<br>
+						<b>&ge; 18 : Expertise philologique.</b> Maîtrise des registres archaïques, étymologie, jargon technique ultra-pointu, textes sacrés, argots anciens ou de corporations fermées.
 					</p>
 
 					<h4>Niveau, accents et prononciation</h4>
-					<p>L’accent d’un personnage dépend la différence entre sa compétence en langue (incluant les bonus de l’avantage <i>Don pour les langues</i>) et son <i>Int</i>. Pour ce qui est des accents, le score en <i>Langue</i> effectif est diminué de 1 pour <i>Mémoire infaillible</i> au niveau 1 et de 2 pour <i>Mémoire infaillible</i> au niveau 2.</p>
+
+					<p>L’accent d’un personnage dépend du <b>niveau</b> de sa compétence en langue (incluant les bonus de l’avantage <i>Don pour les langues</i>). Pour ce qui est des accents, le niveau est diminué de 1 pour <i>Mémoire infaillible</i> au niveau 1 et de 2 pour <i>Mémoire infaillible</i> au niveau 2.</p>
 
 					<p>
-						<b>≤ -2 :</b> Accent pouvant gêner la compréhension.<br>
-						<b>≥ -1 :</b> Accent n’empêchant pas la compréhension.<br>
-						<b>≥ +2 :</b> Léger accent.<br>
-						<b>≥ +4 :</b> Accent difficilement perceptible.<br>
-						<b>≥ +6 :</b> Aucun accent.
+						<b>≤ -2 :</b> Accent pouvant gêner la compréhension.<br>
+						<b>≥ -1 :</b> Accent n’empêchant pas la compréhension.<br>
+						<b>≥ +2 :</b> Léger accent.<br>
+						<b>≥ +4 :</b> Accent difficilement perceptible.<br>
+						<b>≥ +6 :</b> Aucun accent.
 					</p>
 
 				<?php elseif ($category === "Sociale"): ?>

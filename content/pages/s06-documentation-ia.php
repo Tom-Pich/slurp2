@@ -24,8 +24,9 @@
 <h3>Généralités</h3>
 <ul>
 	<li><a href="/ressources-ia/01-base-systeme.md">Présentation de SLURP</a> – quelques lignes sur les grands principes du système (personnages et jets de réussite).</li>
-	<li><a href="/ressources-ia/02-creation-personnage.md">Création d’un personnage</a> – présentation des règles de création d’un personnage.</li>
+	<li><a href="/ressources-ia/02-creation-personnage.md">Création d’un personnage</a> – présentation des règles de création d’un personnage. Ne compter tout de même pas sur l’IA pour vous faire le calcul du détails des points…</li>
 	<li><a href="/ressources-ia/05-regles-magie.md">Magie</a> – présentation du système de magie s’appliquant aux mages.</li>
+	<li><a href="/ressources-ia/guide-ecriture-scenario.md">Guide de création d’un scénario</a> – Reprend le contenu de mon <a href="/ecrire-scenario">guide</a>, sauf la dernière partie.</li>
 </ul>
 
 <h3>Listes pour le personnage</h3>

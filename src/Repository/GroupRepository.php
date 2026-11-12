@@ -28,7 +28,7 @@ class GroupRepository extends AbstractRepository
 		//$items[] = ["id" => 100, "Nom" => "Persos test", "MJ" => 0];
 		//$items[] = ["id" => 100 + $id, "Nom" => "Mes PNJ", "MJ" => 0];
 		$groups = [];
-		foreach ($items as $item){
+		foreach ($items as $item) {
 			$groups[] = new Group($item);
 		}
 		$groups[] = new Group(["id" => NULL, "Nom" => "Personnages test", "MJ" => 0]);
@@ -41,7 +41,7 @@ class GroupRepository extends AbstractRepository
 		$items = $query->fetchAll(\PDO::FETCH_ASSOC);
 		$query->closeCursor();
 		$groups = [];
-		foreach($items as $item){
+		foreach ($items as $item) {
 			$groups[] = new Group($item);
 		}
 
@@ -55,13 +55,15 @@ class GroupRepository extends AbstractRepository
 		return $groups;
 	}
 
-	public function updateGroup(array $data){
+	public function updateGroup(array $data)
+	{
 		$query = $this->db->prepare("UPDATE groupes SET Nom = :Nom, MJ = :MJ WHERE id = :id");
 		$query->execute($data);
 		$query->closeCursor();
 	}
 
-	public function createGroup(array $data){
+	public function createGroup(array $data)
+	{
 		$query = $this->db->prepare("INSERT INTO groupes (Nom, MJ) VALUES (:Nom, :MJ)");
 		$query->execute($data);
 		$query->closeCursor();
@@ -72,5 +74,14 @@ class GroupRepository extends AbstractRepository
 		$query = $this->db->query("SELECT id FROM groupes");
 		$items = $query->fetchAll(\PDO::FETCH_COLUMN);
 		return $items;
+	}
+
+	public function getGMGroupIds(int $id): array
+	{
+		$query = $this->db->prepare("SELECT id FROM groupes WHERE MJ = ?");
+		$query->execute([$id]);
+		$ids = $query->fetchAll(\PDO::FETCH_COLUMN);
+		$query->closeCursor();
+		return $ids;
 	}
 }

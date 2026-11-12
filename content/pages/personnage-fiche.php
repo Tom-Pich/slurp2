@@ -338,7 +338,7 @@ function color_modifier(int|float $original_score, int|float $actual_score)
 	<fieldset>
 		<legend>Pouvoirs</legend>
 
-		<?php if ($compact): include "content/components/compact-character-sheet/compact-spells.php"; ?>
+		<?php if ($compact): include "content/components/compact-character-sheet/compact-powers.php"; ?>
 		<?php else: ?>
 			<?php foreach ($character->powers as $pouvoir):
 				$type = $pouvoir["data"]->specific["Type"] ?? $pouvoir["origine"];
@@ -402,6 +402,7 @@ function color_modifier(int|float $original_score, int|float $actual_score)
 	</fieldset>
 <?php endif ?>
 
+<!-- Possessions & notes -->
 <div class="no-break">
 	<!-- Possessions -->
 	<fieldset>
@@ -439,11 +440,11 @@ function color_modifier(int|float $original_score, int|float $actual_score)
 							<button class="ff-fas nude" title="descendre le bloc" data-role="container-down" type="button">&#xf0ab;</button>
 						</div>
 						<?php if ($sublist["id"]) { ?>
-							<label class="ff-fas clr-invalid cursor-pointer" title="transformer en objet simple (si vide seulement !)">
+							<label class="ff-fas clr-invalid" style="cursor: pointer" title="transformer en objet simple (si vide seulement !)">
 								&#xf057;
 								<input type="checkbox" name="sub-list[<?= $sublist["id"] ?>][Contenant-off]" <?= $sublist["non-vide"] ? "disabled" : "" ?> hidden>
 							</label>
-							<label class="ff-fas clr-secondary-500 cursor-pointer group-share-input px-¼" title="rendre visible pour le groupe">
+							<label class="ff-fas clr-secondary-500 group-share-input px-¼" style="cursor: pointer" title="rendre visible pour le groupe">
 								&#xe533;
 								<input type="checkbox" hidden name="sub-list[<?= $sublist["id"] ?>][Groupe]" <?= !empty($sublist["groupe"]) ? "checked" : "" ?> value="<?= $character->id_group ?>" data-ping-all>
 							</label>
@@ -515,8 +516,8 @@ function color_modifier(int|float $original_score, int|float $actual_score)
 
 <?php
 // chat window parameters
-$playNotif = false;
-$displayEmojis = false;
+//$playNotif = false;
+//$displayEmojis = false;
 ?>
 
 <!-- Modal pour les jets -->

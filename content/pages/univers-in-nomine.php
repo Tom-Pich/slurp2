@@ -102,7 +102,7 @@ $repo_powers = new PowerRepository("ins");
 		<p>Certains anges et démons se sont déjà incarnés sur Terre dans le passé. Ils ont eu l’occasion d'apprendre des compétences variées qu'ils maîtrisent encore au cours de leurs incarnations ultérieures. Les compétences «&nbsp;récentes&nbsp;» telles que l’informatique sont rarement maîtrisées par les personnages au moment de leur incarnation, mais ils sont tout à fait capables de les développer. Ainsi, la liberté de choix de compétences pour les personnages est très grande.</p>
 		<p>
 			<b>• Projection magique&nbsp;:</b> toucher sa cible avec un pouvoir d’<i>Attaque à distance</i>. Il s'agit de la compétence <i>Lancer de sort</i> renommée pour l’occasion.<br>
-			<b>• Langues&nbsp;:</b> les anges et démons maîtrisent toutes les langues parlées par l’Humanité depuis 3761 av. J.C. comme si c’était leur langue maternelle (Int +5). Ils parlent égalemant le <i>langage angélique</i> (sorte de gazouilli elfique ethéré) ou le <i>langage démonique</i> (langue sombre et rocailleuse).
+			<b>• Langues&nbsp;:</b> les anges et démons maîtrisent toutes les langues parlées par l’Humanité depuis 3761 av. J.C. comme si c’était leur langue maternelle (Int +4). Ils parlent égalemant le <i>langage angélique</i> (sorte de gazouilli elfique ethéré) ou le <i>langage démonique</i> (langue sombre et rocailleuse).
 		</p>
 	</details>
 

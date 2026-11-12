@@ -1,5 +1,6 @@
 <h2 class="mt-1">Bonjour <?= $_SESSION["login"] ?> 👋</h2>
 
+<!-- Changement mot de passe -->
 <fieldset class="px-1">
 	<legend>Mot de passe</legend>
 	<div class="grid col-2 gap-2">
@@ -14,6 +15,7 @@
 	</div>
 </fieldset>
 
+<!-- Options -->
 <fieldset class="px-1">
 	<legend>Options</legend>
 

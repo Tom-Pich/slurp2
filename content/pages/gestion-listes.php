@@ -38,7 +38,7 @@ $title = [
 	<script src="https://cdn.tiny.cloud/1/yz5330dqgj93ymq1h7crpikarybmhr23o91ctzmkemy8ew3t/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 <?php endif ?>
 
-<div class="flex gap-1 ai-center">
+<div class="flex gap-1 ai-first-baseline">
 	<h2 class="fl-1"><?= $title[$_GET["req"]] ?? "Erreur" ?></h2>
 	<?php if (isset($_SERVER["HTTP_REFERER"])): ?>
 		<a href="<?= $_SERVER["HTTP_REFERER"] ?>" data-role="referer-link" class="btn mt-½"><span class="ff-fas">&#xf0a8</span> Retour</a>

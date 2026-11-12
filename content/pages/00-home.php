@@ -16,13 +16,13 @@
 
 <div class="flex gap-1-2">
 
-	<section class="p-0">
+	<div class="flow">
 		<h2 class="fs-500">Qui suis-je ?</h2>
 		<p class="fs-300">Professeur de physique et d’informatique, je suis passionné de JdR depuis le début des années 90. La crise du COVID m’a donné envie de jouer à distance avec mes joueurs. Pour y parvenir dans des conditions optimales, j’ai développé ce site, que j’améliore continûment.</p>
-	</section>
+	</div>
 
-	<section class="p-0">
+	<div class="flow">
 		<h2 class="fs-500">Mentions légales</h2>
 		<p class="fs-300">Ce site ne collecte pas de données personnelles. Les données collectées sont anonymes et servent à enrichir votre expérience sur ce site. En naviguant sur ce site, vous acceptez cette collecte de données anonymes.</p>
-	</section>
+	</div>
 </div>

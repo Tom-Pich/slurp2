@@ -113,14 +113,13 @@ return $pages_data = [
 		"file" => "s04-vocabulaire-relief",
 	],
 	"qualite-jeu" => [
-		"title" => "Améliorer le jeu",
+		"title" => "Améliorer notre pratique du JdR",
 		"description" => "Quelques trucs et astuces pour améliorer la qualité des parties – pour le MJ et pour les joueurs.",
-		"body-class" => "basic-page",
 		"file" => "s05-qualite-jeu",
 	],
 	"documentation-ia" => [
 		"title" => "Documentation pour l’IA",
-		"description" => "Élément de règles au format MD pour l’IA",
+		"description" => "Élément de règles au format markdown pour l’IA",
 		"body-class" => "basic-page",
 		"file" => "s06-documentation-ia",
 	],

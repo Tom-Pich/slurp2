@@ -36,13 +36,13 @@ usort($characters, function ($a, $b) use ($statusOrder) {
 });
 
 // chat window
-$playNotif = false;
+//$playNotif = false;
 ?>
 
 <div id="ws-data" hidden data-session-id="<?= $_SESSION["id"] ?>" data-ws-key="<?= WS_KEY ?>"></div>
 
 <!-- Objets orphelins -->
-<section>
+<article>
 	<h2 class="flex-s gap-1">
 		Objets orphelins
 		<button class="nude ff-fas" data-role="open-dialog" data-dialog-name="orphan-objects-dialog" title="mode d’emploi">&#xf059;</button>
@@ -76,10 +76,10 @@ $playNotif = false;
 			<button type="reset" class="btn-primary fs-500 ff-fas" title="rafraîchir">&#xf021;</button>
 		</div>
 	</form>
-</section>
+</article>
 
 <!-- Groupes et personnages -->
-<section>
+<article>
 	<h2 class="flex-s gap-1">
 		Groupes &amp; Personnages
 		<button class="nude ff-fas" data-role="open-dialog" data-dialog-name="characters-dialog" title="mode d’emploi">&#xf059;</button>
@@ -230,15 +230,16 @@ $playNotif = false;
 		</details>
 	<?php } ?>
 
-</section>
+</article>
 
 <!-- Créer un personnage -->
-<section>
+<article>
 	<h2 class="flex-s gap-1">
 		Créer un personnage
 		<button class="nude ff-fas" data-role="open-dialog" data-dialog-name="create-characters-dialog" title="mode d’emploi">&#xf059;</button>
 	</h2>
-	<p>Les kits (optionnels) vous permettent d’ajouter des « packs » d’avantages, désavantages et compétences. Ils sont cumulatifs. Les compétences sont attribuées avec leur score par défaut. Il est fortement recommandé de garder le kit « Base ».</p>
+	<p>Les kits (optionnels) vous permettent d’ajouter des « packs » d’avantages, désavantages et compétences. Ils sont cumulatifs. Les compétences sont attribuées avec leur score par défaut. <b>Il est fortement recommandé de garder le kit « de base ».</b> Tous les personnages ont la compétence <i>Langue maternelle</i> et <i>Culture maternelle</i>, mais il n’est pas nécessairement utile de les faire figurer dans la fiche – sauf si ces deux compétences sont atypiques dans le contexte du jeu.</p>
+
 	<form method="post" action="/submit/create-character" data-role="character-creation-form">
 		<div class="grid col-auto-fit gap-½" style="--col-min-width: 250px">
 
@@ -250,12 +251,10 @@ $playNotif = false;
 					<i>Baratin</i>,
 					<i>Combat MN</i>,
 					<i>Culture générale</i>,
-					<i>Culture maternelle</i>,
 					<i>Diplomatie</i>,
 					<i>Escalade</i>, 
 					<i>Esquive</i>,
 					<i>Furtivité</i>,
-					<i>Langue maternelle</i>,
 					<i>Observation</i>,
 					<i>Perception empathique</i>
 				</p>
@@ -321,11 +320,11 @@ $playNotif = false;
 		</div>
 		<button type="submit" class="btn-primary fs-500 ff-fas mx-auto mt-½" title="Créer un nouveau personnage">&#xe541;</button>
 	</form>
-</section>
+</article>
 
 <?php if ($admin) { ?>
 	<!-- Groupes -->
-	<section id="gestionnaire-groupes">
+	<article id="gestionnaire-groupes">
 		<h2>Groupes</h2>
 		<form action="/submit/groups" method="POST" autocomplete="off">
 			<div class="grid col-auto-fit gap-½ fl-wrap jc-center" style="--col-min-width: 250px">
@@ -361,7 +360,7 @@ $playNotif = false;
 			</div>
 			<button type="submit" class="btn-primary fs-500 ff-fas mx-auto mt-½">&#xf0c7;</button>
 		</form>
-	</section>
+	</article>
 <?php } ?>
 
 <!-- template de résumé des fiches de persos -->

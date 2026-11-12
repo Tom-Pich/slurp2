@@ -472,7 +472,7 @@ const testDialogLabel = testDialog.querySelector("[data-content=label]");
 const testDialogScore = testDialog.querySelector("[data-content=score]");
 const testDialogSecretCheckbox = testDialog.querySelector("[data-type=secret-test-checkbox]");
 
-throwableItems.forEach((item) => {
+/* throwableItems.forEach((item) => {
     item.addEventListener("click", (e) => {
         const isThrowableInSummary = item.tagName === "SUMMARY";
 
@@ -491,6 +491,29 @@ throwableItems.forEach((item) => {
         testDialogScore.value = score;
         testDialogSecretCheckbox.checked = item.dataset.secret === "true";
     });
+}); */
+
+// Écoute des clics sur les throwable-wrapper
+qs("main").addEventListener("click", (e) => {
+    const item = e.target.closest("[data-type=throwable-wrapper]");
+    if (!item) return;
+
+    const isThrowableInSummary = item.tagName === "SUMMARY";
+
+    // click on label in summary → only open details, don’t roll
+    if (isThrowableInSummary && e.target.dataset.type === "throwable-label") return;
+
+    e.preventDefault();
+
+    testDialog.showModal();
+    testDialogModifierInput.focus();
+    testDialogModifierInput.value = ""; // reset du modificateur
+
+    const label = trimModifier(item.querySelector("[data-type=throwable-label]").innerText);
+    const score = item.querySelector("[data-type=throwable-score]").innerText;
+    testDialogLabel.innerText = label;
+    testDialogScore.value = score;
+    testDialogSecretCheckbox.checked = item.dataset.secret === "true";
 });
 
 testDialogBtn.addEventListener("click", (e) => {

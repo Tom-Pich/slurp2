@@ -2,35 +2,35 @@
 <article>
 	<h2>Incubez sans succomber</h2>
 
-	<p>Ceci est une version mise à jour de <a href="https://ptgptb.fr/ecrire-un-scenario" target="_blank">mon article</a> sur ptgptb.fr. Il s’agit d’un guide méthodologique pour rédiger un scénario.</p>
-	<p>Avant de noter quoi que ce soit pour votre scénario, commencez par les étapes ci-dessous…</p>
+	<p>Ceci est une version mise à jour (31-10-2026) de <a href="https://ptgptb.fr/ecrire-un-scenario" target="_blank">mon article</a> sur ptgptb.fr.<!--  Il s’agit d’un guide méthodologique pour rédiger un scénario. --> Avant de noter quoi que ce soit pour votre scénario, commencez par les étapes ci-dessous…</p>
 
-	<!-- Pour qui ? -->
+	<!-- Style, durée et difficulté -->
 	<details>
 		<summary>
 			<h3>Style, durée et difficulté</h3>
 		</summary>
 
-		<p>Première étape : avoir une idée du style de scénario que vous allez écrire, de sa durée, de sa difficulté… Et cela dépend de vos joueurs.</p>
+		<!-- <p>Première étape : avoir une idée du style de scénario que vous allez écrire, de sa durée, de sa difficulté… Et cela dépend de vos joueurs.</p> -->
 
-		<p>Réflechissez à chacun des points ci-dessous. Rien ne vous oblige à prendre une décision tout de suite, mais les avoir en tête va vous permettre de clarifier et canaliser vos idées pour la suite.</p>
+		<!-- <p>Réflechissez à chacun des points ci-dessous. Rien ne vous oblige à prendre une décision tout de suite, mais les avoir en tête va vous permettre de clarifier et canaliser vos idées pour la suite.</p> -->
 
 		<h4>Style du scénario</h4>
-		<p>D’après Gary Gygax , il existe 4 styles de scénarios.</p>
-		<ul>
+		<!-- <p>D’après Gary Gygax , il existe 4 styles de scénarios.</p> -->
+		<ul class="pl-1">
 			<li><b>Action :</b> combats et poursuites.</li>
 			<li><b>Aventure :</b> explorations et organisation de ces explorations.</li>
-			<li><b>Mystère :</b> enquête, faire des découvertes. L’aspect organisationnel est également important.</li>
+			<li><b>Mystère :</b> enquête, découvertes. Aspect organisationnel également important.</li>
 			<li><b>Théâtre :</b> dialogues et gestion de personnes et de biens.</li>
 		</ul>
 
 		<h4>Durée</h4>
-		<p>One-shot d’une ou deux séances ? Début d’une campagne potentielle ? Long métrage de plusieurs séances ou élément d’une campagne sans fin ? Ce choix dictera le nombre et la complexité des idées à conserver pour élaborer votre scénario.</p>
+		<p>One-shot d’une ou deux séances ? Début d’une campagne potentielle ? Long métrage de plusieurs séances ou élément d’une campagne sans fin ?<!--  Ce choix dictera le nombre et la complexité des idées à conserver pour élaborer votre scénario. --></p>
 
 		<h4>Difficulté</h4>
-		<p><b>Pour les personnages :</b> elle va dépendre de la puissance des adversaires et des difficultés techniques des problèmes à résoudre.</p>
+		<p>Pour joueurs débutants ? Pour des personnages chevronnés ?</p>
+		<!-- <p><b>Pour les personnages :</b> elle va dépendre de la puissance des adversaires et des difficultés techniques des problèmes à résoudre.</p>
 
-		<p><b>Pour les joueurs :</b> elle va dépendre de la complexité de l’intrigue, de l’astuce, de la mémoire et éventuellement de la qualité du roleplaying qu’exigera la résolution des problèmes auxquels ils seront confrontés.</p>
+		<p><b>Pour les joueurs :</b> elle va dépendre de la complexité de l’intrigue, de l’astuce, de la mémoire et éventuellement de la qualité du roleplaying qu’exigera la résolution des problèmes auxquels ils seront confrontés.</p> -->
 
 	</details>
 
@@ -238,11 +238,11 @@
 
 		<details class="plot-type">
 			<summary>Mieux vaut tard que jamais</summary>
-			<p>Les méchants sont venus et ont fait des méchancetés puis se sont enfuis. Les PJ n’étaient pas là pour les empêcher de commettre leur méfait et doivent poursuivre les méchants avant qu’ils ne retournent à leur repaire, leur pays, ou derrière les lignes ennemis.</p>
+			<p>Les Méchants sont venus et ont fait des méchancetés puis se sont enfuis. Les PJ n’étaient pas là pour les empêcher de commettre leur méfait et doivent poursuivre les Méchants avant qu’ils ne retournent à leur repaire, leur pays, ou derrière les lignes ennemis.</p>
 			<h5>Variations</h5>
 			<ul>
-				<li>Les méchants sont partis avec un moyen de transports ou par un chemin que les PJ connaissent mieux qu’eux.</li>
-				<li>Les méchants ont quitter la route (métaphoriquement ou littéralement) pour se cacher dans un environnement souvent hostile aux PJ.</li>
+				<li>Les Méchants sont partis avec un moyen de transports ou par un chemin que les PJ connaissent mieux qu’eux.</li>
+				<li>Les Méchants ont quitter la route (métaphoriquement ou littéralement) pour se cacher dans un environnement souvent hostile aux PJ.</li>
 				<li>Si les Méchants franchissent la ligne d’arrivée (la frontière, le portail dimensionnel, etc.) on ne pourra pas les poursuivre au-delà</li>
 			</ul>
 		</details>
@@ -252,7 +252,7 @@
 			<p>Un Méchant a obtenu une information (illégalement, ou simplement en recherchant dans le passé des PJ) lui permettant de leur faire du chantage. La menace peut être de tout type (physique, sociale, etc.) mais elle dépend du fait que le Méchant est en possession de quelque chose (objet ou information) que d’autres n’ont pas. Maintenant il tire les ficelles et ordonne aux PJ de faire des choses qu’ils ne veulent pas faire. Les PJ doivent mettre fin à ce chantage, lui ôter son avantage, tout en suivant ses instructions et en endormant sa méfiance.</p>
 			<h5>Variations</h5>
 			<ul>
-				<li>L’intrigue implique que les PJ jouent un sale tour au méchant, qui se retournera à son avantage.</li>
+				<li>L’intrigue implique que les PJ jouent un sale tour au Méchant, qui se retournera à son avantage.</li>
 				<li>En introduction de l’aventure, les PJ rendent un service au Méchant, qui l'utilise alors contre eux (très cynique!)</li>
 				<li>Pour réussir, les PJ doivent entrer en contact avec d’autres victimes du Méchant.</li>
 				<li>Les PJ ne sont pas directement victime du chantage, mais une personne qui est important à leurs yeux ou dont ils ont la charge l’est. </li>
@@ -261,10 +261,10 @@
 
 		<details class="plot-type">
 			<summary>Base secrète</summary>
-			<p>Les PJ, alors qu’ils voyagent, tombent sur un nid de méchants, préparant une grosse méchanceté. Ils doivent trouver un moyen d’avertir les gentils, ou de neutraliser les méchants, ou une combinaison des deux.</p>
+			<p>Les PJ, alors qu’ils voyagent, tombent sur un nid de Méchants, préparant une grosse méchanceté. Ils doivent trouver un moyen d’avertir les gentils, ou de neutraliser les Méchants, ou une combinaison des deux.</p>
 			<h5>Variations</h5>
 			<ul>
-				<li>Les PJ doivent découvrir comment utiliser les ressources locales pour se défendre ou avoir une chance face aux méchants.</li>
+				<li>Les PJ doivent découvrir comment utiliser les ressources locales pour se défendre ou avoir une chance face aux Méchants.</li>
 			</ul>
 		</details>
 
@@ -273,15 +273,15 @@
 			<p>Les PJ s’occupent de leurs petites affaires, lorsqu’ils sont menacés ou attaqués. Ils ne savent pas pourquoi. Ils doivent découvrir les motivations de leurs adversaires et en même temps repousser ses attaques. Ils doivent ensuite résoudre le problème.</p>
 			<h5>Variations</h5>
 			<ul>
-				<li>Les PJ ont quelque chose que les méchants veulent, mais ils ne le savent pas nécessairement.</li>
-				<li>Les méchants sont là pour se venger d’une précédente (més)aventure.</li>
+				<li>Les PJ ont quelque chose que les Méchants veulent, mais ils ne le savent pas nécessairement.</li>
+				<li>Les Méchants sont là pour se venger d’une précédente (més)aventure.</li>
 				<li>Les Méchants se sont trompés et ont pris les PJ pour quelqu’un d’autre.</li>
 			</ul>
 		</details>
 
 		<details class="plot-type">
 			<summary>Mieux vaut prévenir</summary>
-			<p>Un méchant se prépare à un sale coup et les PJ en ont vent. Ils doivent d’abord enquêter et enfin empêcher la réalisation des projets du méchant.</p>
+			<p>Un Méchant se prépare à un sale coup et les PJ en ont vent. Ils doivent d’abord enquêter et enfin empêcher la réalisation des projets du Méchant.</p>
 			<h5>Variations</h5>
 			<ul>
 				<li>L’indice porté à la connaissance des PJ est en fait une fausse piste destinée à les éloigner du vrai sale coup.</li>
@@ -291,13 +291,13 @@
 
 		<details class="plot-type">
 			<summary>Fauteurs de troubles</summary>
-			<p>Un méchant sème l’anarchie, dérangeant le voisinage, empoisonnant les réservoirs, etc. Les PJ doivent voir sur place, localiser le méchant et l’arrêter.</p>
+			<p>Un Méchant sème l’anarchie, dérangeant le voisinage, empoisonnant les réservoirs, etc. Les PJ doivent voir sur place, localiser le Méchant et l’arrêter.</p>
 			<h5>Variations</h5>
 			<ul>
-				<li>Les PJ ne doivent pas blesser le méchant, il doit être ramené vivant et en bonne santé.</li>
-				<li>Le méchant a préparé quelque chose de dangereux et de caché au cas où il serait capturé.</li>
-				<li>Le méchant est un monstre ou un animal dangereux (ou une créature intelligente que tout le monde prend pour un monstre ou un animal).</li>
-				<li>Le méchant est un personnage public respecté, un officier supérieur, ou quelqu’un qui abuse de son autorité, et les PJ pourraient être confrontés à l’hostilité des locaux qui ne peuvent croire que le méchant soit méchant.</li>
+				<li>Les PJ ne doivent pas blesser le Méchant, il doit être ramené vivant et en bonne santé.</li>
+				<li>Le Méchant a préparé quelque chose de dangereux et de caché au cas où il serait capturé.</li>
+				<li>Le Méchant est un monstre ou un animal dangereux (ou une créature intelligente que tout le monde prend pour un monstre ou un animal).</li>
+				<li>Le Méchant est un personnage public respecté, un officier supérieur, ou quelqu’un qui abuse de son autorité, et les PJ pourraient être confrontés à l’hostilité des locaux qui ne peuvent croire que le Méchant soit méchant.</li>
 				<li>Les troubles sont diplomatiques ou politiques, et les PJ doivent rétablir la paix, pas la guerre. </li>
 			</ul>
 		</details>
@@ -413,7 +413,7 @@
 			<ul>
 				<li>Les autres participants sont malhonnêtes et les PJ doivent les empêcher de gagner malhonnêtement.</li>
 				<li>Les PJ ont un autre objectif que la victoire, comme protéger un autre concurrent, ou l’espionner, ou juste accéder à un endroit où passe la course.</li>
-				<li>Les PJ n’ont pas à gagner eux-mêmes; ils doivent juste empêcher le méchant de gagner.</li>
+				<li>Les PJ n’ont pas à gagner eux-mêmes ; ils doivent juste empêcher le Méchant de gagner.</li>
 				<li>L’évènement est une test délibéré des aptitudes des PJ (pour les faire entrer dans une organisation par exemple).</li>
 				<li>L'évènement devient plus mortel que ce qu'il était supposé être.</li>
 			</ul>
@@ -472,7 +472,7 @@
 			<p>Par exemple, avec <i>Un abri dans la tempête</i>, les PJ pourraient être dans le refuge lorsqu’un autre groupe arrive ; dans la variante <i>Les PJ ne sont pas les bienvenus</i>, les PJ pourraient être la voix de la raison pour faire taire une ferveur religieuse, des préjugés raciaux, ou toute autre source de conflit.</p>
 			<h5>Variations</h5>
 			<ul>
-				<li>Les PJ se trouvent dans le rôle des PNJ (les méchants, les fugitifs, etc) au lieu de pourchasser, ils sont les pourchassés; au lieu d’éliminer, ils doivent ne pas être éliminés.</li>
+				<li>Les PJ se trouvent dans le rôle des PNJ (les Méchants, les fugitifs, etc) au lieu de pourchasser, ils sont les pourchassés ; au lieu d’éliminer, ils doivent ne pas être éliminés.</li>
 				<li>Ne pas toucher à l’intrigue de base, mais inverser les variations.</li>
 			</ul>
 		</details>
@@ -482,10 +482,13 @@
 			<summary>
 				<h4>Mélanges d’intrigues</h4>
 			</summary>
+
 			<h5>Utiliser les métaphores</h5>
 			<p>Un objet peut être remplacé par une information, un endroit par une personne, un ennemi par un sentiment négatif, de même qu’une station spatiale peut être un donjon et un résidu magique une empreinte digitale.</p>
+
 			<h5>Caméléon</h5>
 			<p>Une aventure semble être d’un certain type mais se révèle être autre chose. Parfois le passage de l'un à l'autre est innocent et naturel. Parfois le passage est plus retors, avec des PNJ qui confient une mission d’un type alors qu'on comprend ensuite qu'il se passe autre chose.</p>
+
 			<h5>Intrigues multiples</h5>
 			<p>Une première intrigue sert d'introduction, la seconde de plat principal. Ces deux intrigues peuvent être les mêmes : deux couches peuvent avoir une structure similaire mais des racines et des détails très différents.</p>
 			<p>On peut également enchevêtrer deux intrigues séparées. Il est aisé par exemple de faire de l'une des intrigues l'intrigue physique et de l'autre l'intrigue personnelle. Ainsi seulement l'une des intrigues influence le lieu de l'action, tandis que l'autre peut avoir lieu n'importe où.</p>
@@ -496,20 +499,32 @@
 			<summary>
 				<h4>Variantes universelles</h4>
 			</summary>
-			<ul>
+			<ul class="flow pl-1">
 				<li>Les PJ doivent collaborer avec un PNJ ou une organisation qu’ils préfèrent éviter en temps normal.</li>
+
 				<li>Les <i>Victimes</i> sont en fait les <i>Méchants</i> et inversement.</li>
+
 				<li>Les PJ rencontrent des PNJ qui acceptent de les aider à condition qu’eux-mêmes les aident pour leur propre cause. </li>
+
 				<li>Le <i>Méchant</i> est quelqu’un que les PJ connaissent personnellement, voire respectent ou aiment (ou quelqu’un qu’ils rencontrent en cours de route et trouvent sympathique).</li>
+
 				<li>Les PJ doivent réussir sans violence, ou avec une discrétion particulière. </li>
 				<li>Les PJ doivent réussir sans utiliser les pouvoirs, équipements ou autres ressources auxquels ils ont habituellement accès.</li>
+
 				<li>Un autre groupe comparable aux PJ a déjà raté la mission et leurs fournissent des indices pour faire mieux.</li>
+
 				<li>Il y a des innocents aux alentours que les PJ doivent protéger tout en progressant.</li>
+
 				<li>Les PJ doivent se faire passer pour d’autres, ou bien faire semblant d’avoir des allégeances, des valeurs ou des goûts différents.</li>
+
 				<li>Les PJ ne peuvent pas tout faire et doivent choisir : quel Mal arrêter ? Quels innocents secourir ? Quelle valeur ou idéal promouvoir ?</li>
+
 				<li>Les PJ doivent faire un sacrifice personnel ou d’autres souffriront.</li>
+				
 				<li>Les PJ ne doivent pas résoudre le problème, mais aider avec le problème en toile de fond : faire passer une cargaison de vivres, faire sortir un patient qui a besoin d’aide médicale, etc.</li>
+
 				<li>Un des PJ est est la raison pour laquelle les PJ sont embarqués dans l’aventure.</li>
+				
 				<li>Un autre groupe comparable aux PJ est en compétition avec eux sur la même aventure, peut-être avec des objectifs très différents.</li>
 			</ul>
 		</details>
@@ -541,13 +556,13 @@
 			</p>
 
 			<h5>Courses contre la montre</h5>
-			<p>Jouer sur la dynamique temporelle du scénario, en le transformant en course contre la montre &ndash; avec ou sans heure limite précise. Imposer une heure limite précise est un exercice délicat ; trop proche et c’est l’échec assuré ; trop lointaine, elle ne sert à rien. Si l’heure limite n’est pas connue des joueurs, sa gestion est plus souple, mais ils se plaindront peut-être de l’aspect arbitraire du respect des délais.</p>
+			<p>Jouer sur la dynamique temporelle du scénario, en le transformant en course contre la montre – avec ou sans heure limite précise. Imposer une heure limite précise est un exercice délicat ; trop proche et c’est l’échec assuré ; trop lointaine, elle ne sert à rien. Si l’heure limite n’est pas connue des joueurs, sa gestion est plus souple, mais ils se plaindront peut-être de l’aspect arbitraire du respect des délais.</p>
 
 			<h5>Concurrence</h5>
 			<p>Insérer des concurrents. La découverte de l’existence de ces concurrents devrait alors se faire progressivement, au risque de tentatives de sabotage ou de règlements de comptes violents par une des deux parties.</p>
 
 			<h5>Choix final</h5>
-			<p>Prévoir une fin ouverte, où les joueurs devront faire un vrai choix (par exemple tuer le méchant en provoquant beaucoup de dommages collatéraux, ou le laisser s’enfuir et éviter la mort d’innocents, voir § <i>Paroxysme &amp; épilogue</i>). D’autant plus facile à gérer que ce choix n’aura pas d’influence sur le scénario qui se termine.</p>
+			<p>Prévoir une fin ouverte, où les joueurs devront faire un vrai choix (par exemple tuer le Méchant en provoquant beaucoup de dommages collatéraux, ou le laisser s’enfuir et éviter la mort d’innocents, voir § <i>Paroxysme &amp; épilogue</i>). D’autant plus facile à gérer que ce choix n’aura pas d’influence sur le scénario qui se termine.</p>
 
 		</details>
 
@@ -559,7 +574,8 @@
 			<p>Quatre techniques pour briser la linéarité d’un scénario.</p>
 
 			<h5>1. Ouverture par chapitre</h5>
-			<p>La manière la plus simple de concevoir un scénario semi-ouvert est de prévoir, pour chaque chapitre – ou <i>acte</i>, plusieurs solutions qui mènent toutes au même <i>mini-paroxysme</i> (voir § <i>Scénario &gt; Développement du scénario</i> ). Ces solutions alternatives peuvent avoir des conséquences mineures dans le déroulement ultérieur du scénario sans pour autant remettre fondamentalement en cause son déroulement.</p>
+
+			<p>La manière la plus simple de concevoir un scénario semi-ouvert est de prévoir, pour chaque chapitre, plusieurs solutions qui mènent toutes au même <i>mini-paroxysme</i> (voir § <i>Scénario &gt; Développement du scénario</i> ). Ces solutions alternatives peuvent avoir des conséquences mineures dans le déroulement ultérieur du scénario sans pour autant remettre fondamentalement en cause son déroulement.</p>
 
 			<h5>2. Le modèle insulaire</h5>
 			<p>Choisissez des éléments de jeu malléables que vous pouvez intégrer à différents endroits. Faites-en vos îles.</p>
@@ -570,8 +586,10 @@
 			<h5>3. Structure composite</h5>
 			<p>Une manière plus fine, mais plus exigeante, d’obtenir un scénario semi-ouvert et de créer une structure composite. Cela recouvre deux possibilités.</p>
 
-			<ul class="flow">
+			<ul class="flow pl-1">
+
 				<li><b>Scénarios convergents</b> simples pour former un unique scénario complexe. Chaque scénario simple doit être lié aux autres par l’idée générale du scénario complexe. Ceux-ci paraissent indépendants jusqu’à ce que les PJ réalisent qu’ils sont tous liés par une affaire plus importante. On a donc plusieurs ramifications différentes qui remontent toutes à une même origine. Ces scénarios simples doivent se combiner simultanément ou consécutivement, pour que les joueurs puissent passer librement de l’un à l’autre, afin de leur donner une sensation de liberté. Imposer un rythme rapide permettra de noyer les joueurs sous les possibilités pour qu’ils ne perçoivent pas la linéarité des différents scénarios simples.</li>
+
 				<li><b>Scénarios divergents.</b> Une autre structure possible est l’inverse de la précédente. Le début du scénario est unique, mais, à mesure qu’il se développe, on rajoute des ramifications à l’intrigue.</li>
 			</ul>
 
@@ -585,20 +603,26 @@
 			<summary>
 				<h4>Structure non linéaire</h4>
 			</summary>
+
 			<p>Un scénario véritablement non linéaire est composé de scènes indépendantes mais se rattachant à l’ensemble et débouchant sur plusieurs autres scènes possibles. Il s’agit d’une semi-improvisation : vous prévoyez un ensemble d’éléments (lieux, PNJ et événements) et les faites évoluer en fonction des actions des PJ.</p>
+
 			<p>La chronologie, les actions des PJ et leurs conséquences animeront la partie. Le MJ doit avoir une connaissance parfaite des différents paramètres du scénario pour réagir aux décisions les plus inattendues des joueurs et gérer les temps morts s’ils sont inactifs, bref, improviser dans un cadre assez bien défini. Un tableau chronologique où figurent le déroulement des événements « sauf intervention des PJ » et l’endroit où se trouvent les PNJ selon les heures, est particulièrement utile.</p>
+
 			<p>Ces scénarios peuvent être de type :</p>
 
 			<h5>Tourisme / Bac à sable</h5>
+
 			<p>
 				Les PJ n’ont pas d’objectif immédiat. Ils découvrent un endroit ou cherchent un employeur. Des événements mineurs sont prévus pour meubler les temps morts. Cette forme permet aux joueurs de découvrir leur environnement et au MJ de poser une ambiance.<br>
 				Le « bac à sable » en est une forme un peu plus active. Les PJ n’ont pas d’objectifs, mais leur environnement comporte de nombreuses pistes d’aventures et ils choisissent entre elles.
 			</p>
 
 			<h5>Démerdez-vous</h5>
+
 			<p>Dans une première partie du scénario, courte et linéaire, les PJ sont plongés dans un gros problème. La suite du scénario consiste à les laisser s’en sortir, sans prévoir de chemin tout tracé. Il est préférable de tout de même prévoir quelques portes de sortie.</p>
 
 			<h5>Partie d’échecs</h5>
+
 			<p>
 				Les PJ affrontent petit à petit leur ennemi. Il faut prévoir l’environnement, détailler le camp adverse et surtout la raison pour laquelle l’affrontement n’est pas immédiat et direct (d’un côté comme de l’autre), ainsi qu’une série d’objectifs secondaires, sans qu’aucun n’offre la victoire immédiatement.<br>
 				Là encore, l’existence d’un troisième groupe (concurrent ou ennemi) peut considérablement ouvrir le jeu.
@@ -641,8 +665,10 @@
 			<p>Exemples de thématiques : guerre, corruption, bien et mal, vengeance, fatalité, courage, héroïsme, justice, problèmes écologiques, apocalypse, grandeur et décadence, innocence, individualisme et communauté, libre arbitre et programmation psychologique, etc.</p>
 
 			<p>Il est possible de les combiner ou de les opposer pour donner une plus grande profondeur à l’histoire. La combinaison du bien et du mal et de la fatalité peut poser la question de la responsabilité de ses actes, par exemple.</p>
+
 			<p>Une fois le ou les thèmes choisis, explorez-en toutes les facettes pour mettre en évidence les différentes options exploitables dans le scénario. Puis réfléchissez à la manière dont le thème conceptuel va être utilisé, en rédigeant, par exemple, un petit paragraphe expliquant comment, petit à petit, la thématique va apparaître dans le scénario.</p>
-			<p>Attention cependant à choisir une thématique exploitable dans le style du scénario choisi (<i>Action</i>, <i>Aventure</i>, <i>Mystère</i> ou <i>Théâtre</i>).</p>
+
+			<!-- <p>Attention cependant à choisir une thématique exploitable dans le style du scénario choisi (<i>Action</i>, <i>Aventure</i>, <i>Mystère</i> ou <i>Théâtre</i>).</p> -->
 		</details>
 	</details>
 
@@ -654,7 +680,7 @@
 
 		<p>Quelques pistes pour avoir des idées.</p>
 
-		<fieldset class="widget mt-1" data-role="widget-generateur-idee">
+		<!-- <fieldset class="widget mt-1" data-role="widget-generateur-idee">
 			<legend>Générateur d’idées</legend>
 			<div class="flex-s ai-center gap-1">
 				<select class="fl-1 px-½" data-role="universe-selector">
@@ -669,17 +695,16 @@
 			</div>
 
 			<p class="ta-center mt-1" data-role="wrapper-idee"><i>Idée générée</i></p>
-		</fieldset>
+		</fieldset> -->
 
-		<p>Voir également <a href="http://chaoticshiny.com/index.php" target="_blank">Chaotic Shiny</a>, <a href="http://donjon.bin.sh/fantasy/random/#quest" target="_blank">Donjon</a> pour d’autres générateurs aléatoires.</p>
+		<!-- <p>Voir également <a href="http://chaoticshiny.com/index.php" target="_blank">Chaotic Shiny</a>, <a href="http://donjon.bin.sh/fantasy/random/#quest" target="_blank">Donjon</a> pour d’autres générateurs aléatoires.</p> -->
 
-		<p><b>Transpositions</b> plus ou moins modifiées de romans, films, bandes dessinées, mythes ou d’autres scénarios de JdR.</p>
-
-		<p><b>Images (de PNJ, de lieux)</b> particulièrement inspirantes, trouvées au hasard sur Internet ou ailleurs.</p>
-
-		<p><b>Recherche collective</b> avec un ou plusieurs amis MJ, ou avec une IA.</p>
-
-		<p><b>Goûts et aspirations</b> des joueurs et de leur personnages.</p>
+		<ul class="flow pl-1">
+			<li><b>Brainstrorming</b> avec une IA ou d’autres MJ.</li>
+			<li><b>Transpositions</b> plus ou moins modifiées de romans, films, bandes dessinées, mythes ou d’autres scénarios de JdR.</li>
+			<li><b>Images (de PNJ, de lieux)</b> particulièrement inspirantes, trouvées au hasard sur Internet ou ailleurs.</li>
+			<li><b>Goûts et aspirations</b> des joueurs et de leur personnages.</li>
+		</ul>
 	</details>
 
 	<!-- Préparer votre fiche de scénario -->
@@ -688,63 +713,15 @@
 			<h3>Préparer votre fiche de scénario</h3>
 		</summary>
 
-		<p>Préparer un document avec les trois grandes sections ci-dessous. Laissez-les vides pour l’instant. Le guide pour les compléter se trouve dans les sections suivantes</p>
+		<p>Préparer un document avec les trois grandes sections ci-dessous. Laissez-les vides pour l’instant. Le guide pour les compléter se trouve dans les sections suivantes.</p>
 
-		<!-- Notes -->
-		<details>
-			<summary class="clr-primary-500">
-				<h4>Notes</h4>
-			</summary>
-
-			<p>Une section temporaire qui évolue constamment. Vous pouvez la traiter à part, sur un brouillon ou un fichier temporaire. C’est le lieu où incubent vos idées et vos questions sur le scénario. Elle reflète le bouillonnement de vos idées. Certaines vont intégrer le scénario, d’autres vont y rester avant de mûrir et d’évoluer, d’autres encore seront abandonnées.</p>
-			<p><b>Pendant votre préparation</b>, notez-y vos idées, les questions auxquelles vous devez répondre et les éléments à intégrer dans le scénario.</p>
-			<p><b>Pendant le jeu</b>, noter les déroulements des actions, les questions qui surgissent, les points à détailler pour la prochaine fois.</p>
-
-		</details>
-
-		<!-- Scénario -->
-		<details>
-			<summary class="clr-secondary-500">
-				<h4>Scénario</h4>
-			</summary>
-
-			<p>C’est dans cette section que vous écrirez votre scénario. Elle comprend plusieurs parties.</p>
-
-			<h5>Contexte &amp; causes</h5>
-			<p>C’est ici que vous détaillerez la raison d’être de votre scénario et dans quel contexte il s’inscrit.</p>
-
-			<h5>Synopsis</h5>
-			<p>Une courte description du déroulement probable du scénario, étape par étape.</p>
-			<p>Commencez cette partie par le <b>but du scénario</b>.</p>
-			<p>Cette partie sera probablement assez courte, mais est nécessaire pour garder une image mentale structurée du scénario.</p>
-			<p>Même si les différentes étapes ne sont pas encore définies, il faudra avoir très tôt une idée de la scène finale du scénario.</p>
-
-			<h5>Introduction</h5>
-			<p>En plus de l’introduction, on y mettra la situation de départ des PJ, si c’est pertinent.</p>
-
-			<h5>Les différents actes</h5>
-			<p>
-				On va noter dans cette partie le déroulement du scénario en lui-même. Comme le scénario ne se déroulera pas comme prévu, on y ajoutera au fur et à mesure, des notes sur ce qu’ont effectivement fait les joueurs.<br>
-				Vous pouvez déjà noter « Acte 1, Acte 2, Acte 3 … ». Vous mettrez les titres quand vous aurez les idées claires.
-			</p>
-			<p>Le dernier acte annonce le paroxysme du scénario, qui se déroule lors de sa dernière scène.</p>
-
-			<h5>L’épilogue</h5>
-			<p>Une scène courte qui permet le retour à la normal. Il peut éventuellement préparer les personnages (et les joueurs) au scénario suivant.</p>
-
-		</details>
-
-		<!-- Annexes -->
-		<details>
-			<summary class="clr-tertiary-500">
-				<h4>Annexes</h4>
-			</summary>
-			<p>
-				On mettra dans cette partie toutes les informations « statiques », c’est-à-dire celles qui ne relèvent pas d’actions. PNJ, lieux, légendes, histoires, objets …<br>
-				Si ce que vous avez à noter peut éventuellement être utilisé dans un autre scénario, ou dans une suite, c’est probablement que ça a sa place dans cette section.
-			</p>
-			<p>Une chronologie pourra éventuellement y trouver sa place.</p>
-		</details>
+		<div class="border p-½ fw-700 flow">
+			<p class="clr-primary-500">Notes</p>
+			<hr style="border: 1px solid var(--grey-900)">
+			<p class="clr-secondary-500">Scénario</p>
+			<hr style="border: 1px solid var(--grey-900)">
+			<p class="clr-tertiary-500">Annexes</p>
+		</div>
 
 	</details>
 
@@ -753,8 +730,8 @@
 <!-- Notes -->
 <article>
 	<h2 class="bg-primary-500">Notes</h2>
-	<p>Cette section est un brouillon. Notez-y tout ce qui vous vient à l’esprit : idées, PNJ, questions …</p>
-	<p>Elle va évoluer tout au long de votre travail de création : vous y ajouterez des idées ou des questions, et retirerez ce qui n’est plus pertinent ou ce qui a été intégré à l’écriture de votre scénario.</p>
+
+	<p>Cette section est un brouillon. Notez-y tout ce qui vous vient à l’esprit : idées, PNJ, questions … Elle va évoluer tout au long de votre travail de création : vous y ajouterez des idées ou des questions, et retirerez ce qui n’est plus pertinent ou ce qui a été intégré à l’écriture de votre scénario.</p>
 
 	<!-- Idées en vrac -->
 	<details>
@@ -814,9 +791,11 @@
 			<summary>
 				<h4>Sa nature</h4>
 			</summary>
-			<ul>
-				<li>S’agit-il d’un personnage unique ou d’un groupe ?</li>
-				<li>Y a-t-il plusieurs antagonistes indépendants ? (s’allier avec l’un pour mieux combattre l’autre permet de créer des rebondissements et donne plus de profondeur à l’histoire).</li>
+			<ul class="flow pl-1">
+				<li>S’agit-il d’un <b>personnage unique</b> ou d’un <b>groupe</b> ?</li>
+
+				<li>Y a-t-il <b>plusieurs antagonistes indépendants</b> ? (s’allier avec l’un pour mieux combattre l’autre permet de créer des rebondissements et donne plus de profondeur à l’histoire).</li>
+
 				<li>Lien avec la thématique : si vous avez un <i>thème conceptuel</i>, définissez en quoi le ou les antagonistes sont liés au thème.</li>
 			</ul>
 		</details>
@@ -826,11 +805,16 @@
 			<summary>
 				<h4>Ses objectifs</h4>
 			</summary>
+
 			<p>Définissez son but ultime et une série d’objectifs intermédiaires qui vont lui permettre d’atteindre son but. La difficulté de ses objectifs doit progresser graduellement. On peut distinguer quatre types d’objectifs, qui ne s’excluent pas mutuellement :</p>
-			<ul>
+
+			<ul class="flow pl-1">
 				<li><b>Le pouvoir :</b> l’antagoniste recherche le pouvoir ou la maîtrise absolue dans un domaine (pouvoir physique, magique, divin, politique, social).</li>
+
 				<li><b>La richesse :</b> l’antagoniste veut obtenir la richesse matérielle, un objet unique, ou un savoir caché.</li>
+
 				<li><b>La conquête :</b> l’objectif le plus courant. Il constitue une menace pour le plus grand nombre. L’antagoniste peut utiliser la ruse plutôt que la force. La conquête peut être physique, mais aussi spirituelle, politique ou idéologique.</li>
+
 				<li><b>La destruction :</b> l’anéantissement absolu. L’antagoniste peut être aidé par une armée ou ses propres pouvoirs. Il n’a aucun intérêt pour la richesse ou la conquête. La cible peut être un pays, une famille, une race, une idéologie, etc.</li>
 			</ul>
 		</details>
@@ -841,16 +825,19 @@
 				<h4>Sa motivation</h4>
 			</summary>
 
-			<p>Pourquoi l’antagoniste poursuit-il ses buts ? Un « méchant » ne se considère généralement pas comme méchant mais comme légitime pour atteindre ses objectifs.</p>
+			<p>Pourquoi l’antagoniste poursuit-il ses buts ? Un « Méchant » ne se considère généralement pas comme méchant mais comme légitime pour atteindre ses objectifs.</p>
+
 			<p>Il y a deux types de motivations : les « bonnes » et les « mauvaises ».</p>
 
 			<h5>Les bonnes motivations</h5>
-			<p>Elles servent un objectif qui peut initialement paraître juste, voire noble, (réparer une injustice ou libérer un peuple d’une oppression) mais l’extrémisme du méchant ou ses méthodes tendent à le pervertir.</p>
+
+			<p>Elles servent un <b>objectif qui peut initialement paraître juste</b>, voire noble, (réparer une injustice ou libérer un peuple d’une oppression) mais l’extrémisme du Méchant ou ses méthodes tendent à le pervertir.</p>
 
 			<h5>Les mauvaises motivations</h5>
-			<p>Ces motivations sont uniquement égoïstes. Le méchant agit dans son seul et pur intérêt. Cela n’implique pas forcément qu’il soit une brute sans pitié (par exemple un gentleman cambrioleur), mais il ne sert aucune cause à part la sienne.</p>
 
-			<p class="mt-1">Ces motivations doivent avoir un sens pour l’antagoniste (pertinentes, raisonnables et/ou compréhensibles). Elles donnent une cohérence à ses actes, de l’ampleur et de la profondeur au méchant.</p>
+			<p>Ces motivations sont uniquement <b>égoïstes</b>. Le Méchant agit dans son seul et pur intérêt. Cela n’implique pas forcément qu’il soit une brute sans pitié (par exemple un gentleman cambrioleur), mais il ne sert aucune cause à part la sienne.</p>
+
+			<p class="mt-1">Ces motivations doivent avoir un sens pour l’antagoniste (pertinentes, raisonnables et/ou compréhensibles). Elles donnent une cohérence à ses actes, de l’ampleur et de la profondeur au Méchant.</p>
 		</details>
 
 		<!-- Sa personnalité -->
@@ -870,15 +857,19 @@
 			<p>Quatre méthodes qui peuvent se combiner :</p>
 
 			<h5>Méthode économique</h5>
+
 			<p>Perturber le commerce de son ennemi, détruire des sources de richesse, voler et piller. C’est une méthode qui peut être discrète.</p>
 
 			<h5>Force brute</h5>
+
 			<p>La plus simple, la plus évidente et la moins discrète. Des subterfuges peuvent néanmoins être mis en place pour masquer la véritable raison de l’utilisation de la force et donc le véritable commanditaire.</p>
 
 			<h5>Ruse</h5>
+
 			<p>Répandre des rumeurs, provoquer la paranoïa, fomenter un complot, trahir, frapper de l’intérieur, affaiblir son ennemi. Avec cette méthode, l’antagoniste est rarement vu directement au cours du scénario et la confrontation directe par les PJ est difficile, car l’antagoniste va plutôt essayer de détruire la réputation des PJ et monter la population ou le gouvernement contre eux.</p>
 
 			<h5>Intimidation</h5>
+
 			<p>Utilisation de menaces. L’antagoniste peut bluffer, ou pas, à propos de la mise à exécution de ses menaces. Il peut ne pas mettre ses menaces à exécution car il n’en a pas les moyens ou à cause de limites morales, mais il doit se donner les moyens d’en mettre au moins quelques unes à exécution sous peine de perdre toute crédibilité. Cette méthode va souvent de pair avec d’autres méthodes.</p>
 
 		</details>
@@ -889,24 +880,31 @@
 				<h4>Ses serviteurs</h4>
 			</summary>
 			<p>
-				Il existe deux types de serviteurs de l’<i>Antagoniste</i> : les lieutenants, compétents, individualisés et éventuellement complémentaires de l’antagoniste par leurs spécialisations, et les sous-fifres, nombreux, anonymes et peu compétents.<br>
-				Les serviteurs de l’antagoniste doivent refléter sa personnalité et ses buts. Ils agissent également comme une « couche d’isolant » entre les PJ et le grand méchant.</p>
+				Il existe deux types de serviteurs de l’<i>Antagoniste</i> : les <b>lieutenants</b>, compétents, individualisés et éventuellement complémentaires de l’antagoniste par leurs spécialisations, et les <b>sous-fifres</b>, nombreux, anonymes et peu compétents.<br>
+				Les serviteurs de l’antagoniste doivent refléter sa personnalité et ses buts. Ils agissent également comme une « couche d’isolant » entre les PJ et le grand Méchant.</p>
 
 			<h5>Les lieutenants</h5>
+
 			<p>Ils sont de puissance équivalente aux PJ. Détaillez leurs caractéristiques, leur personnalité et leurs traits particuliers pour les rendre uniques. Ce sont des spécialistes qui peuvent servir à combler les faiblesses de l’antagoniste (un mage si l’antagoniste est un guerrier, etc.). Ils dirigent les sous-fifres.</p>
 
 			<h5>Les sous-fifres</h5>
+
 			<p>Ils sont banals, peu dangereux individuellement, mais nombreux. Ils ne sont pas au courant des plans de l’antagoniste dans leur totalité, mais seulement de la partie qui les concerne.</p>
 		</details>
-	
+
 	</details>
 
-	<!-- But du scénario -->
+	<!-- But & Synopsis -->
 	<details>
 		<summary>
-			<h3>But du scénario</h3>
+			<h3>But &amp; Synopsis</h3>
 		</summary>
-		<p>Idées relatives au dénouement du scénario : quel est son but, comment l’atteindre et quelle sera la scène finale. Pensez-y très tôt, même s’il est lointain, car il va vous permettre de canaliser votre écriture.</p>
+
+		<p>Quel est l’objectif du scénario, comment l’atteindre et quelle sera la scène finale ? Pensez-y très tôt, même si l’objectif est lointain, car il va vous permettre de canaliser votre écriture.</p>
+
+		<p>Décrire brièvement les différentes étapes probables du scénario, depuis l’introduction jusqu’à la scène finale.</p>
+
+		<p>Cette section sert seulement à avoir une idée claire des différentes étapes au moment de son élaboration.</p>
 	</details>
 
 	<!-- Éléments des PJ -->
@@ -914,9 +912,13 @@
 		<summary>
 			<h3>Éléments des PJ</h3>
 		</summary>
+
 		<p>Notez dans cette partie les éléments des PJ exploitables dans le scénario (compétences, pouvoirs, éléments de background, trait de caractère, faiblesse, objectif, secret, ennemi, être cher, etc).</p>
+
 		<p>Reliez-les à des idées en vrac lorsque c’est possible, ainsi qu’à d’éventuelles accroches appropriées.</p>
+
 		<p>Essayez de connaître les éléments suivants pour chacun des PJ :</p>
+
 		<ul>
 			<li>Son histoire personnelle</li>
 			<li>Ses relations avec des PNJ (famille, amis, ennemis, contact, créanciers, débiteurs)</li>
@@ -924,16 +926,26 @@
 			<li>Ses relations avec les autres PJ</li>
 			<li>Ses qualités et défauts divers</li>
 		</ul>
-		<p>Deux puissants outils dont dispose le MJ pour créer ses scénarios sont les <b>objectifs des PJ</b>, qui vont lui permettre de créer un scénario où les personnages s’impliqueront fortement, ainsi que <b>ce qui leur est cher</b> (famille, amis, fortune, carrière, leurs attaches), qui va permettre au MJ d’exercer une certaine pression sur eux. Ces deux aspects constituent d’excellentes sources d’idées pour un scénario ou une campagne : l’intrigue du scénario peut proposer un moyen de réaliser une ambition ou menacer les attaches des personnages, voire les deux en même temps. Ces deux aspects peuvent d’ailleurs être élaborés par le joueur et le MJ conjointement.</p>
-		<p>Enfin, dernier point, assurez-vous de bien connaître les ressources de PJ (matériel, pouvoirs, compétences, relations) afin d’éviter que le scénario ne soit court-circuité par LA capacité que vous n’aviez pas prévue ou oubliée.</p>
+
+		<p>
+			Deux puissants outils dont dispose le MJ pour créer ses scénarios sont les <b>objectifs des PJ</b>, qui vont lui permettre de créer un scénario où les personnages s’impliqueront fortement, ainsi que <b>ce qui leur est cher</b> (famille, amis, fortune, carrière, leurs attaches), qui va permettre au MJ d’exercer une certaine pression sur eux.<br>
+			Ces deux aspects constituent d’excellentes sources d’idées pour un scénario ou une campagne : l’intrigue du scénario peut proposer un moyen de réaliser une ambition ou menacer les attaches des personnages, voire les deux en même temps. Ces deux aspects peuvent d’ailleurs être élaborés par le joueur et le MJ conjointement.
+		</p>
+
+		<p>Enfin, assurez-vous de bien connaître les ressources de PJ (matériel, pouvoirs, compétences, relations) afin d’éviter que le scénario ne soit court-circuité par LA capacité que vous n’aviez pas prévue ou oubliée.</p>
 
 		<!-- Aparté création -->
 		<div class="bg-grey-900 p-½ flow">
 			<h4>Création des personnages</h4>
+
 			<p>Petit aparté sur la création des personnages-joueurs. Deux possibilités se présentent : ou bien les PJ existent déjà et vous écrivez un scénario pour eux, ou bien ils ne sont pas encore créés.</p>
+
 			<p>Dans ce dernier cas, indiquez à vos joueurs le type de PJ adaptés à votre scénario, voire le rôle qu’ils doivent jouer. Vous pouvez éventuellement donner le rôle d’un personnage clé de l’intrigue à un joueur. Cela aura pour effet d’impliquer au maximum ce personnage dans l’intrigue, mais attention à ce qu’il ne vole pas la vedette aux autres PJ.</p>
+
 			<p>Pour assurer la cohésion du groupe, vous pouvez demander à vos joueurs de lier les personnages entre eux, soit par des liens de famille ou d’amitié de longue date, soit par des liens plus prosaïques (dette ou subordination).</p>
+
 			<p>Les personnages doivent être intéressants (de par leur nature, leur background, leurs biens ou leur fonction). Encouragez vos joueurs à développer un background riche, autant à la création qu’au cours du jeu.</p>
+
 			<p>En tant que MJ, créez un maximum de liens entre PJ et PNJ en cours de jeu.</p>
 		</div>
 
@@ -950,6 +962,7 @@
 		<p>Cela permet de donner au scénario une saveur particulière en accord avec celle de l’univers de jeu, et permettra aux joueurs (et aux personnages) d’améliorer leur connaissance de cet univers. D’ailleurs, vous pouvez faire apparaître des éléments iconiques de votre univers de jeu, même si ce n’est qu’en tant que figurant ou décor sans importance. Cela renforcera la présence du décor spécifique et la saveur de votre univers de jeu.</p>
 
 		<p>Les PNJ importants de votre univers de jeu devraient aussi être détaillés (historique, secrets et intrigues, ambitions, attaches etc. – comme un PJ), même si vous ne prévoyez pas pour eux un rôle important dans votre histoire. D’une part, cela permettra de donner plus de profondeur au monde, d’autre part, cela vous permettra soit de complexifier l’intrigue du scénario en cours de rédaction, soit de poser des éléments précurseurs de scénarios futurs.</p>
+
 		<p>Pensez également à des règles spécifiques qui vous paraissent intéressantes et que vous souhaitez tester.</p>
 	</details>
 
@@ -958,6 +971,7 @@
 		<summary>
 			<h3>Ouvertures</h3>
 		</summary>
+
 		<p>Pensez éventuellement à des éléments annonciateurs des scénarios à venir ou pouvant être utilisés pour donner une suite à votre scénario. Plus il y en a, plus l’écriture des scénarios suivants en sera facilitée.</p>
 	</details>
 
@@ -966,8 +980,16 @@
 <!-- Scénario -->
 <article>
 	<h2 class="bg-secondary-500">Scénario</h2>
-	<p>C’est dans cette section que vous allez écrire votre scénario proprement dit : sa raison d’être (<i>Contexte &amp; causes</i>) et son déroulement (<i>Introduction</i>, <i>Développement</i>, <i>Paroxysme</i>, <i>Épilogue</i>).</p>
-	<p>Écrire en style télé&shy;graphique est suffisant.</p>
+	<p>C’est dans cette section que vous allez écrire votre scénario proprement dit en le découpant selon le schéma proposé ci-dessous. Écrire en style télégraphique est suffisant.</p>
+
+	<!-- But du scénario -->
+	<details>
+		<summary>
+			<h3>But du scénario</h3>
+		</summary>
+		<p>Commencez par le <b>but du scénario</b>. Cette partie sera probablement assez courte, mais est nécessaire pour garder une image mentale structurée du scénario.</p>
+		<p>Même si les différentes étapes ne sont pas encore définies, il faudra avoir très tôt une idée de la scène finale du scénario.</p>
+	</details>
 
 	<!-- Contexte & causes -->
 	<details>
@@ -975,18 +997,12 @@
 			<h3>Contexte &amp; causes</h3>
 		</summary>
 		<p>Expliquer le pourquoi du comment de l’intrigue ainsi que le contexte dans lequel elle s’inscrit.</p>
-		<p>Le contexte du scénario décrit la situation (politique, géographique, social, etc), l’histoire et les particularités qui ont permis l’émergence des causes de votre scénario.</p>
-		<p>Les éléments les plus important de l’intrigue (PNJ, événements) doivent y trouver leur justification, et c’est également dans cette partie que l’on développe les motivations et les moyens de l’antagoniste.</p>
-		<p>Il s’agit d’une partie très importante car elle influe non seulement sur la cohérence et la crédibilité de votre scénario, mais aussi sur la complexité de l’intrigue que vous allez développer. Cette partie peut également être génératrice d’idées.</p>
-	</details>
 
-	<!-- Synopsis -->
-	<details>
-		<summary>
-			<h3>Synopsis</h3>
-		</summary>
-		<p>Décrire brièvement les différentes étapes probables du scénario, depuis l’introduction jusqu’à la scène finale.</p>
-		<p>Cette section ne sert pas à y noter des informations (elles seront décrites dans la scène ou la section d’annexes appropriée), mais seulement à avoir une idée claire des différentes étapes.</p>
+		<p>Le contexte du scénario décrit la situation (politique, géographique, social, etc), l’histoire et les particularités qui ont permis l’émergence des causes de votre scénario.</p>
+
+		<p>Les éléments les plus important de l’intrigue (PNJ, événements) doivent y trouver leur justification, et c’est également dans cette partie que l’on développe les motivations et les moyens de l’antagoniste.</p>
+
+		<p>Il s’agit d’une partie très importante (la plus importante ?) car elle influe non seulement sur la cohérence et la crédibilité de votre scénario, mais aussi sur la complexité de l’intrigue que vous allez développer. Cette partie peut également être génératrice d’idées.</p>
 	</details>
 
 	<!-- Introduction -->
@@ -1005,8 +1021,8 @@
 
 		<p>Dans le cas contraire, deux situations se présentent :</p>
 		<ul>
-			<li>Les personnages sont créés pour le scénario. Ils doivent alors former un groupe cohérent, avec des raisons d’être ensemble et un passé ou une psychologie justifiant leur implication dans l’aventure.</li>
-			<li>Les PJ existent déjà, il est possible d’utiliser leur passé commun. S’ils n’en ont pas, il faudra alors définir une raison pour laquelle les PJ sont ensembles.</li>
+			<li><b>Les PJ sont créés pour le scénario.</b> Ils doivent alors former un groupe cohérent, avec des raisons d’être ensemble et un passé ou une psychologie justifiant leur implication dans l’aventure.</li>
+			<li><b>Les PJ existent déjà</b>. Il est possible d’utiliser leur passé commun. S’ils n’en ont pas, il faudra alors définir une raison pour laquelle les PJ sont ensembles.</li>
 		</ul>
 
 		<p>Pour la crédibilité du scénario, l’accroche ne doit pas paraître artificielle. Elle ne doit être ni trop grosse (sinon, les joueurs auront l’impression de ne pas avoir de choix), ni trop subtile (sous peine de voir les joueurs passer à côté). Elle doit intervenir assez rapidement après le début de la partie. Il en existe plusieurs types, qui peuvent d’ailleurs être utilisées conjointement.</p>
@@ -1081,9 +1097,16 @@
 			<p>L’écriture de ce plan n’est pas nécessairement strictement chronologique. Si la structure de votre scénario est ouverte ou semi-ouverte, le plan peut être découpé par thème. Voir notamment le <i>Modèle insulaire</i>, dans la partie <i>Linéaire ou ouvert ? Structure semi-ouverte</i>.</p>
 
 			<h5>Les actes</h5>
+
 			<p>Découpez votre scénario en différents « actes ». Chaque acte doit avoir un objectif clair (au moins pour le MJ).</p>
+
+			<p>Vous pouvez déjà noter « Acte 1, Acte 2, Acte 3 … ». Vous mettrez les titres quand vous aurez les idées claires. </p>
+
 			<p>Un acte peut présenter des pistes vers des intrigues secondaires et quelques fausses pistes (2 ou 3).</p>
+
 			<p>Il peut être intéressant de finir un acte sur un « mini-paroxysme », afin de moduler la tension en cours de partie et peut-être dévoiler un aspect de ce que sera le <i>paroxysme</i> final.</p>
+
+			<p>Le dernier acte annonce le <b>paroxysme</b> du scénario, qui se déroule lors de sa dernière scène.</p>
 
 			<h5>Les scènes</h5>
 			<p>Un acte peut-être découpé en scènes, chaque scène correspondant à un environnement particulier. Une scène est une mini-aventure : on y trouve une accroche rapide qui mène à une situation et une ou plusieurs solutions. Les scènes ne doivent pas, généralement, être conçues de manière trop rigide, c’est-à-dire exigeant des actions très précises des joueurs ou être trop dépendantes des scènes précédentes pour bien fonctionner. Voir également ci-dessous le <i>format IARR</i>.</p>
@@ -1095,13 +1118,13 @@
 				<h4>Objectif(s) d’une scène</h4>
 			</summary>
 			<p>Chaque scène doit avoir une (ou plusieurs) raisons d’être. En voici les principales :</p>
-			<ul class="flow ta-justify">
+			<ul class="flow pl-1 ta-justify">
 
 				<li><b>Augmenter la tension</b>, que cette tension soit psychologique (découverte de détails dévoilant peu à peu l’horrible vérité, ou plonger les personnages dans des circonstances étranges ou inquiétantes), physique (combat, pièges, le tout à un rythme soutenu) ou relationnelle (conflits entre personnage ou même conflit intérieur d’un personnage).</li>
 
 				<li><b>Fournir des obstacles.</b> Prévoir des obstacles permet d’éviter la sensation de « se promener » dans le scénario. L’obstacle peut être physique (une porte gardée, des archives non ouvertes au public, un indice difficile à repérer) ou relationnel (un PNJ qui s’oppose aux objectifs des PJ). Cela peut aussi être des difficultés à découvrir des informations. Ces obstacles servent d’autant mieux le scénario s’ils sont totalement imprévus par les joueurs.</li>
 
-				<li><b>Atteindre un objectif.</b> Ces scènes constituent un mini-paroxysme (trouver le suspect principal, vaincre le bras droit du méchant). Elles peuvent permettre aux joueurs d’imaginer une partie du paroxysme, pour qu’ils en soient plus conscients lorsqu’il viendra. Elles orientent ou confirment les joueurs dans la bonne orientation et permettent de donner de la cohésion aux aventures longues.</li>
+				<li><b>Atteindre un objectif.</b> Ces scènes constituent un mini-paroxysme (trouver le suspect principal, vaincre le bras droit du Méchant). Elles peuvent permettre aux joueurs d’imaginer une partie du paroxysme, pour qu’ils en soient plus conscients lorsqu’il viendra. Elles orientent ou confirment les joueurs dans la bonne orientation et permettent de donner de la cohésion aux aventures longues.</li>
 
 				<li><b>Dégager une ambiance.</b> Ces scènes permettent d’immerger les joueurs dans un monde indépendant et vivant, où personne n’est juste un « accessoire ». Elles sont souvent descriptives, soit par un récit direct du MJ, soit par l’intermédiaire d’un PNJ haut en couleur. Elles aident les joueurs à penser comme leur personnage et favorisent le roleplay. Elles peuvent également préparer les joueurs aux événements qui surviendront à l’apogée de l’histoire.</li>
 
@@ -1152,7 +1175,7 @@
 				<li>La <b>tension à long terme</b> doit suivre un crescendo tout au long du scénario, jusqu’au paroxysme. Elle reflète les circonstances et l’ambiance de chaque partie de l’aventure.</li>
 			</ul>
 			<p>Gardez la trace de ces deux niveaux de tension en les reliant l’un à l’autre.</p>
-			<p>Les sources de tension possibles à <b>court terme</b> sont : le danger, un conflit, un temps limité, les conséquences désastreuses d’un échec (à conditions que les joueurs en aient conscience), des chances de succès très minces, des coups de théâtre (faux alliés, espions, traîtres), une fausse fin (le méchant que l’on croyait mort ressurgit), des retournements de situation (un allié inattendu apparaît, ou les PJ se rendent compte qu’ils ont été manipulés depuis le début).</p>
+			<p>Les sources de tension possibles à <b>court terme</b> sont : le danger, un conflit, un temps limité, les conséquences désastreuses d’un échec (à conditions que les joueurs en aient conscience), des chances de succès très minces, des coups de théâtre (faux alliés, espions, traîtres), une fausse fin (le Méchant que l’on croyait mort ressurgit), des retournements de situation (un allié inattendu apparaît, ou les PJ se rendent compte qu’ils ont été manipulés depuis le début).</p>
 			<p>Dans un acte, chaque événement porteur de tension immédiate devrait être plus intense que le précédent. La chute de la tension à court terme est possible après un mini-paroxysme ou par un passage à des événements moins tendus.</p>
 			<p>Chaque mini-paroxysme doit créer plus de tension que le mini-paroxysme précédent, il faut donc commencer à un niveau de tension assez bas.</p>
 			<p>La chute de la tension à long terme doit se faire seulement après le paroxysme final et jamais avant la fin du scénario. Le but d’avoir une tension à long terme est de ne pas « relâcher la tension » après avoir un acte.</p>
@@ -1278,7 +1301,6 @@
 	<h2 class="bg-tertiary-500">Annexes</h2>
 
 	<p>Dans cette section, vous noterez toutes les informations « statiques », c’est-à-dire celles dont vous pourrez avoir besoin à différents moment du scénario.</p>
-	<p>Si un élément du scénario n’est pas une action des PJ ou des PNJ, ou s’il peut être réutilisé dans un autre scénario, c’est qu’il a sa place ici.</p>
 
 	<!-- Généralités -->
 	<details>
@@ -1324,15 +1346,29 @@
 <article>
 	<h2>Conseils divers</h2>
 
+	<!-- <hr>
+	<p>Comme le scénario ne se déroulera pas comme prévu, on y ajoutera au fur et à mesure, des notes sur ce qu’ont effectivement fait les joueurs.</p>
+
+	<p><b>Pendant le jeu</b>, noter les déroulements des actions, les questions qui surgissent, les points à détailler pour la prochaine fois.</p>
+
+	<hr> -->
+
 	<!-- En cours de jeu -->
 	<details>
 		<summary>
 			<h3>En cours de jeu</h3>
 		</summary>
+
 		<p>Bien doser les périodes apparemment infructueuses et les succès. Au besoin, glisser un intermède où il y aura de l’action.</p>
+
 		<p>Mieux vaut quelques combats intenses qu’une suite d’escarmouches sans risques.</p>
+
 		<p>Garder un intermède sous le coude pour rattraper la sauce si le scénario part en sucette (par l’action des joueurs ou à cause d’une erreur conceptuelle) ou faire diversion en cas de problème.</p>
+
 		<p>Écouter les suppositions des joueurs. Utiliser les hypothèses les plus intéressantes.</p>
+
+		<p><b>Prenez des notes.</b> Noter les déroulements effectifs des actions des PJ et PNJ, les questions qui surgissent, les points à détailler pour la prochaine fois.</p>
+
 	</details>
 
 	<!-- Préparer le scénario suivant -->
@@ -1363,13 +1399,13 @@
 
 		<div class="border p-½ flow">
 			<h4>Titre de la campagne</h4>
+			<p>But de la campagne</p>
 			<p>Contexte et causes de la campagne
-			<p>Synopsis de la campagne
 			<p class="fw-700" style="margin-bottom: 0">Scénario 1</p>
 			<ul>
+				<li>But du scénario</li>
 				<li>Contexte &amp; causes</li>
-				<li>Synopsis</li>
-				<li>Actes et scènes</li>
+				<li>Déroulement du scénario (actes &amp; scènes)</li>
 				<li>Annexes du scénario</li>
 			</ul>
 			<p class="fw-700">Scénario 2</p>
@@ -1387,4 +1423,4 @@
 
 </article>
 
-<script type="module" src="/scripts/scenario-generator.js"></script>
+<!-- <script type="module" src="/scripts/scenario-generator.js" defer></script> -->
