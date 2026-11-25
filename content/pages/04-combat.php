@@ -211,17 +211,20 @@
 			<h3>Attaques à mains nues</h3>
 		</summary>
 
-		<h4>Manœuvres d’attaque</h4>
-		<p>Une attaque à mains nues peut avoir plusieurs objectifs : causer des dégâts, immobiliser son adversaire, le faire tomber… Lorsque vous porter une attaque à mains nues, vous devez choisir une des manœuvres ci-dessous.</p>
+		<!-- <h4>Manœuvres d’attaque</h4> -->
+
+		<p>Une attaque à mains nues peut avoir trois objectifs : porter un coup, faire chuter son adversaire ou l’immobiliser. Lorsque vous portez une attaque à mains nues, vous devez <b>choisir une des manœuvres ci-dessous</b>.</p>
 
 		<!-- Porter un coup -->
 		<details>
 			<summary>
-				<h5>Porter un coup</h5>
+				<h4>1. Porter un coup</h4>
 			</summary>
+
 			<p>Dans le but d’infliger des dégâts. Jet de <i>Combat à mains nues</i> ou de <i>Karaté</i>. Ce type d’attaque est traitée comme une attaque avec une arme.</p>
 
-			<table>
+			<!-- Table des dégâts -->
+			<table class="left-1">
 				<tr>
 					<th>Coup</th>
 					<th>Dégâts</th>
@@ -253,32 +256,52 @@
 		<!-- Bousculer -->
 		<details>
 			<summary>
-				<h5>Bousculer</h5>
+				<h4>2. Bousculer</h4>
 			</summary>
 
-			<p>Dans le but de faire tomber l’adversaire par la force. Ce type d’attaque se traite en deux étapes, qui comptent comme une seule action.</p>
-			<ol>
-				<li><b>Attaque</b> basée sur <i>Combat à mains nues</i> ou <i>Judo/lutte</i>. L’adversaire peut y opposer une défense normale.</li>
-				<li>Manœuvre <b><i>Faire tomber</i></b> (voir ci-après).</li>
-			</ol>
+			<p>Pour faire tomber l’adversaire. Ce type d’attaque se traite en deux étapes, qui comptent comme <b>une seule action</b>. On détermine d’abord si le contact de la bousculade se fait :</p>
+
+			<p>
+				<b>Attaque : </b> <i>Combat à mains nues</i> ou <i>Judo/lutte</i><br>
+				<b>Défense :</b> défense classique (<i>Esquive</i>, <i>Parade</i>, <i>Blocage</i>)
+			</p>
+
+			<p>On enchaîne immédiatement sur la manœuvre <b><i>Faire tomber</i></b> (voir ci-après).</p>
+
 		</details>
 
 		<!-- Saisir -->
 		<details>
 			<summary>
-				<h5>Saisir</h5>
+				<h4>3. Saisir</h4>
 			</summary>
 
-			<p>Dans le but de le gêner dans sa défense et ses attaques, de faciliter ses propres attaques, ou pour ensuite le faire tomber ou l’immobiliser. La saisie se fait avec la compétence <i>Combat à mains nues</i> ou <i>Judo/lutte</i>. Le défenseur peut y opposer une défense classique pour <i>éviter d’être saisi</i>.</p>
-			<p>Si l’adversaire a déjà été saisi et tente de se libérer, le fonctionnement est le même que pour la manœuvre <i>Faire tomber</i> ci-dessous.</p>
+			<p>Pour gêner l’adversaire, faciliter ses propres attaques, ou pour ensuite le faire tomber ou l’immobiliser. Compte comme <b>une action</b>.</p>
+
+			<p>
+				<b>Attaque : </b> <i>Combat à mains nues</i> ou <i>Judo/lutte</i><br>
+				<b>Défense :</b> défense classique (<i>Esquive</i>, <i>Parade</i>, <i>Blocage</i>)
+			</p>
+
+			<h5>Se libérer d’une saisie</h5>
+
+			<p>Tenter de se libérer d’une saisie réussie compte comme <b>une action</b>. Faire un duel entre :</p>
+
+			<p>
+				<b>Attaquant :</b> <i>Combat à mains nues</i>, <i>Judo/lutte</i>, <i>For</i><br>
+				<b>Défenseur* :</b> <i>Dex</i>-3 (+1 si <i>Réflexes de combat</i>), <i>Judo/lutte</i>, <i>For</i>
+			</p>
+
+			<p>* Comme dans le cas d’une attaque classique, la MR de l’attaquant se transforme en malus au jet de défense, avec une limite de 5.</p>
+
 		</details>
 
 		<!-- Faire tomber -->
 		<details>
 			<summary>
-				<h5>Faire tomber (prérequis)</h5>
+				<h4>4. Faire tomber (prérequis)</h4>
 			</summary>
-			<p>Faire tomber son adversaire. Cette action nécessite d’avoir d’abord réussi une <i>bousculade</i> ou une <i>saisie</i>. On peut provoquer la chute soit par l’adresse, soit par la force.</p>
+			<p>Faire tomber son adversaire. Cette action nécessite d’avoir d’abord réussi une <i>bousculade</i> ou une <i>saisie</i>.</p>
 
 			<p>
 				<b>Attaque :</b> <i>Combat à mains nues</i>, <i>Judo/lutte</i>, <i>For</i><br>
@@ -288,7 +311,7 @@
 			<p>* Comme dans le cas d’une attaque classique, la MR de l’attaque se transforme en malus au jet de défense, avec une limite de 5.</p>
 
 			<p>
-				L’enchaînement <b>{bousculer + faire tomber}</b> compte comme <b>une seule et même action</b>.<br>
+				L’enchaînement <b>{bousculer + faire tomber}</b> compte comme <b>une seule action</b>.<br>
 				L’enchaînement <b>{saisir + faire tomber}</b> compte comme <b>deux actions</b> distinctes.
 			</p>
 		</details>
@@ -296,10 +319,10 @@
 		<!-- Immobiliser -->
 		<details>
 			<summary>
-				<h5>Immobiliser (prérequis)</h5>
+				<h4>5. Immobiliser (prérequis)</h4>
 			</summary>
 
-			<p>Cette manœuvre nécessite l’utilisation des deux mains. Elle doit nécessairement faire suite à une <i>Saisie</i> ou à la manœuvre <i>Faire tomber</i>. Elle compte comme <b>une action</b>. Elle peut s’appuyer sur l’adresse ou sur la force.</p>
+			<p>Nécessite l’utilisation des deux mains. Elle doit nécessairement faire suite à une <i>Saisie</i> ou à la manœuvre <i>Faire tomber</i>. Elle compte comme <b>une action</b> à part entière. La manœvre la précédant (<i>Saisie</i> ou <i>Faire tomber</i>) est une <b>action distincte</b>.</p>
 
 			<p>
 				<b>Attaque :</b> <i>Judo/lutte</i>, <i>For</i><br>
@@ -308,7 +331,7 @@
 
 			<p>* Comme dans le cas d’une attaque classique, la MR de l’attaque se transforme en malus au jet de défense, avec une limite de 5.</p>
 
-			<p>Après un premier échec à une <i>Défense</i>, l’attaquant n’a plus besoin de faire de jet d’attaque et la défense se fait automatiquement à -5.</p>
+			<p>Après un premier échec à une <i>Défense</i>, l’attaquant n’a plus besoin de faire de jet d’attaque et la deuxième défense se fait automatiquement à -5. Si cette deuxième défense est un échec, le défenseur ne peut plus tenter de se libérer.</p>
 		</details>
 
 		<h4>Attaque massive</h4>
@@ -440,16 +463,6 @@
 		<p>*généralement, ce malus vaut -3, mais il y a des exceptions, mentionnées dans la <a href="/armes-armures">table des armes</a>. Une parade est possible seulement si l’arme est apprêtée.</p>
 	</details>
 
-	<!-- Nombre de défenses -->
-	<!-- <details>
-		<summary>
-			<h3>Nombre de défenses par tour</h3>
-		</summary>
-		<p>Un combattant a droit à <b>une défense par tour</b>. S’il renonce à attaquer, il a droit à une <b>deuxième défense</b>.</p>
-		<p>Pour avoir le droit à un jet de défense, le personnage ne doit <b>pas être surpris</b> par l’attaque.</p>
-		<p>Un défenseur ne peut opposer qu’<b>une seule défense par attaque</b> (sauf en cas de <i>Défense massive</i> – voir ci-dessous).</p>
-	</details> -->
-
 	<!-- Défense d’urgence -->
 	<details>
 		<summary>
@@ -579,13 +592,16 @@
 		<summary>
 			<h3>Défenses à mains nues</h3>
 		</summary>
-		<ul>
-			<li><b>Éviter un coup, une bousculade ou une saisie :</b> <i>Défense</i> classique.</li>
-			<li><b>Parer une arme :</b> possible seulement avec les compétences <i>Karaté</i> et <i>Judo/lutte</i>.</li>
-			<li>Se libérer d’une <b>saisie</b> ou d’une <b>immobilisation</b>, ou s’opposer à une manœuvre « <b><i>Faire tomber</i></b> » : voir le paragraphe <i>Attaques à mains nues</i>.</li>
-		</ul>
 
-		<p>Il est possible de choisir de faire une <i>Défense massive</i>.</p>
+		<p>Les parades à mains nues se font à -1, quelle que soit la compétence utilisée (<i>Combat à mains nues</i>, <i>Karaté</i> et <i>Judo/Lutte</i>)</p>
+
+		<ul class="flow pl-1">
+			<li><b>Éviter un coup :</b> <i>Défense</i> classique (<i>Esquive</i> ou <i>Parade</i>). <i>Défense massive</i> possible.</li>
+
+			<li><b>Parer une arme :</b> possible seulement avec les compétences <i>Karaté</i> et <i>Judo/lutte</i>.</li>
+
+			<li>Contre une <b>manœuvre d’attaque à mains nues</b> : voir le paragraphe <i>Attaques à mains nues</i>.</li>
+		</ul>
 	</details>
 
 	<!-- Parer ou bloquer un coup puissant -->

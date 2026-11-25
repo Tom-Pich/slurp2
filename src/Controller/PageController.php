@@ -88,6 +88,8 @@ class PageController
 
 		echo "</div>";
 
+		echo "<div class=\"vertical-space-filler\"></div>";
+
 		include "content/components/footer.php";
 	}
 }

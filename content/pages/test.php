@@ -5,4 +5,6 @@ ini_set("xdebug.var_display_max_data", -1);
 
 //include "content/tests/character-equipment.php";
 //include "content/tests/characters-with-given-skills.php";
+//include "content/tests/characters-with-specific-skill.php";
 //include "content/tests/dump-character.php";
+//include "content/tests/woundeffects-test.php";

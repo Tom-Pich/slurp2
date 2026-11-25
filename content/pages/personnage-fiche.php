@@ -14,7 +14,7 @@ $compact = $page->displayStyle === "compact";
 function color_modifier(int|float $original_score, int|float $actual_score)
 {
 	if ($actual_score < $original_score) return "style='color: var(--clr-invalid)'";
-	elseif ($actual_score > $original_score) return "style='color: var(--clr-secondary-500)'";
+	elseif ($actual_score > $original_score) return "style='color: var(--clr-s-500)'";
 	return "";
 }
 ?>
@@ -432,7 +432,7 @@ function color_modifier(int|float $original_score, int|float $actual_score)
 					</summary>
 					<!-- Container controls -->
 					<div class="flex-s ai-center gap-1 mt-½" data-role="container-controls">
-						<button class="ff-fas nude clr-primary-500" title="ajouter un objet" data-role="add-item" type="button">
+						<button class="ff-fas nude clr-p-500" title="ajouter un objet" data-role="add-item" type="button">
 							&#xf055;
 						</button>
 						<div class="flex-s gap-½ fl-1">
@@ -444,7 +444,7 @@ function color_modifier(int|float $original_score, int|float $actual_score)
 								&#xf057;
 								<input type="checkbox" name="sub-list[<?= $sublist["id"] ?>][Contenant-off]" <?= $sublist["non-vide"] ? "disabled" : "" ?> hidden>
 							</label>
-							<label class="ff-fas clr-secondary-500 group-share-input px-¼" style="cursor: pointer" title="rendre visible pour le groupe">
+							<label class="ff-fas clr-s-500 group-share-input px-¼" style="cursor: pointer" title="rendre visible pour le groupe">
 								&#xe533;
 								<input type="checkbox" hidden name="sub-list[<?= $sublist["id"] ?>][Groupe]" <?= !empty($sublist["groupe"]) ? "checked" : "" ?> value="<?= $character->id_group ?>" data-ping-all>
 							</label>
@@ -543,7 +543,7 @@ function color_modifier(int|float $original_score, int|float $actual_score)
 
 	<button data-role="close-modal" class="ff-fas">&#xf00d;</button>
 
-	<p class="mt-0"><b>Ajouter un objet :</b> cliquer sur <span class="ff-fas clr-primary-500">&#xf055;</span> dans l’emplacement désiré.</p>
+	<p class="mt-0"><b>Ajouter un objet :</b> cliquer sur <span class="ff-fas clr-p-500">&#xf055;</span> dans l’emplacement désiré.</p>
 
 	<p><b>Supprimer un objet :</b> effacer son nom. Attention : si vous effacez un objet-contenant, vous perdrez tout son contenu avec ! L’objet ne sera pas complètement effacé : il sera placé dans une « corbeille » accessible par votre MJ.</p>
 

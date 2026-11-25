@@ -214,13 +214,18 @@ class WoundController
 	public static function getWoundEffects(string $category, int $dex, int $san, int $pdvm, int $pdv, int $pain_resistance, int $raw_dmg, int $rd, string $dmg_type, string $bullet_type, string $localisation, array $rolls): array
 	{
 		// validation des entrées
+		$valid_categories = ["std", "nbh", "nbx", "ins", "ci"];
+		$valid_pain_resistances = [-1, 0, 1];
+		$valid_dmg_types = ["br", "tr", "pe", "mn", "b0", "b1", "b2", "b3", "exp"];
+		$valid_bullet_types = ["std", "bpa", "bpc"];
 		$valid_localisations = ["torse",  "coeur", "crane", "visage", "cou", "jambe", "bras", "pied", "main", "oeil", "org_gen"];
-		$category = !in_array($category, ["std", "nbh", "nbx", "ins", "ci"]) ? "std" : $category;
-		$pain_resistance = !in_array($pain_resistance, [-1, 0, 1]) ? 0 : $pain_resistance;
-		$dmg_type = !in_array($dmg_type, ["br", "tr", "pe", "mn", "b0", "b1", "b2", "b3", "exp"]) ? "br" : $dmg_type;
-		$bullet_type = !in_array($bullet_type, ["std", "bpa", "bpc"]) ? "std" : $bullet_type;
+
+		$category = !in_array($category, $valid_categories) ? "std" : $category;
+		$pain_resistance = !in_array($pain_resistance, $valid_pain_resistances) ? 0 : $pain_resistance;
+		$dmg_type = !in_array($dmg_type, $valid_dmg_types) ? "br" : $dmg_type;
+		$bullet_type = !in_array($bullet_type, $valid_bullet_types) ? "std" : $bullet_type;
 		$localisation = !in_array($localisation, $valid_localisations) ? "torse" : $localisation;
-		$rolls = array_filter($rolls, fn($roll) => $roll >= 3 && $roll <= 18);
+		$rolls = array_values(array_filter($rolls, fn($roll) => $roll >= 3 && $roll <= 18));
 
 		// default result array
 		$result = [
@@ -342,6 +347,7 @@ class WoundController
 		// ––– armor and special bullet types
 		$rd = $is_armor_piercing_bullet ? floor($rd / 2) : $rd;
 		$rd = $is_hollow_point_bullet ? max($rd * 2, 1) : $rd;
+		$rd = (int) $rd;
 
 		// ––– effective damages
 		$net_dmg = max($raw_dmg - $rd, 0);
@@ -426,13 +432,13 @@ class WoundController
 				case 2:
 					$duration = max($rolls[2] - $san + 5, 0);
 					if ($is_hard_to_stun) $duration = floor($duration / 2);
-					$result["sonné"] = "Sonné niv.2 pendant " . $duration + 1 . " action" . ($duration ? "s" : "");
+					$result["sonné"] = "Sonné niv.2 pendant " . ($duration + 1) . " action" . ($duration ? "s" : "");
 					break;
 
 				case 1:
 					$duration = max($rolls[2] - $san, 0);
 					if ($is_hard_to_stun) $duration = floor($duration / 2);
-					$result["sonné"] = "Sonné niv.1 pendant " . $duration + 1 . " action" . ($duration ? "s" : "");
+					$result["sonné"] = "Sonné niv.1 pendant " . ($duration + 1) . " action" . ($duration ? "s" : "");
 					break;
 			}
 		}
@@ -463,9 +469,9 @@ class WoundController
 		// ––– special random effects
 		$effects_modifier = DiceManager::getModifier($actual_dmg, $pdvm * 0.75);
 		if ($is_skull) $effects_modifier -= 3;
-		$purely_random_parameter = random_int(0, 1) === 0;
-		if ($is_major_wound) $purely_random_parameter = random_int(1, 3) <= 2;
-		if ($is_critical_wound) $purely_random_parameter = true;
+		$purely_random_parameter = random_int(0, 1) === 0; // 50 % chance
+		if ($is_major_wound) $purely_random_parameter = random_int(1, 3) <= 2; // 67 % chance
+		if ($is_critical_wound) $purely_random_parameter = true; // automatique
 		if ($localisation === "visage") $purely_random_parameter = random_int(1, 4) <= 3;
 		if ($localisation === "visage" && $is_major_wound) $purely_random_parameter = true;
 

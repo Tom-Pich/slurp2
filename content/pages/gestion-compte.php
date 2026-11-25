@@ -1,3 +1,8 @@
+<style>
+	.option-grid { grid-template-columns: 250px 1fr; column-gap: 2em; @include media { grid-template-columns: 1fr; } }
+	.option-grid:not(:first-child) { border-top: .5px solid var(--grey-700); }
+</style>
+
 <h2 class="mt-1">Bonjour <?= $_SESSION["login"] ?> 👋</h2>
 
 <!-- Changement mot de passe -->

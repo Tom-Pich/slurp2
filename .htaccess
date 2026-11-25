@@ -26,6 +26,7 @@
     # 4. Sécurité : blocage direct sans redirection (403 Forbidden)
 	RewriteRule ^(content|src|vendor)(/.*)?$ - [F,L]
 	RewriteRule ^config\.php$ - [F,L]
+	RewriteRule ^php-errors\.log$ - [F,L]
 
     # 5. Routeur PHP (rewrite global vers index.php)
     RewriteRule ^index\.php$ - [L]

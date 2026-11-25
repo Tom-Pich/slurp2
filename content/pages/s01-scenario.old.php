@@ -692,9 +692,9 @@
 		<p>Préparer un document avec les trois grandes sections ci-dessous. Laissez-les vides pour l’instant. Le guide pour les compléter se trouve dans les sections suivantes.</p>
 
 		<div class="border p-½ fw-700 flow">
-			<p class="clr-primary-500">Notes</p>
+			<p class="clr-p-500">Notes</p>
 			<hr style="border: 1px solid var(--grey-900)">
-			<p class="clr-secondary-500">Scénario</p>
+			<p class="clr-s-500">Scénario</p>
 			<hr style="border: 1px solid var(--grey-900)">
 			<p class="clr-tertiary-500">Annexes</p>
 		</div>
@@ -705,7 +705,7 @@
 
 <!-- Notes -->
 <article>
-	<h2 class="bg-primary-500">Notes</h2>
+	<h2 class="bg-p-500">Notes</h2>
 
 	<p>Cette section est un brouillon. Notez-y tout ce qui vous vient à l’esprit : idées, PNJ, questions …</p>
 
@@ -935,7 +935,7 @@
 
 <!-- Scénario -->
 <article>
-	<h2 class="bg-secondary-500">Scénario</h2>
+	<h2 class="bg-s-500">Scénario</h2>
 	<p>C’est dans cette section que vous allez écrire votre scénario proprement dit en le découpant selon le schéma proposé ci-dessous.</p>
 	<p>Écrire en style télégraphique est suffisant.</p>
 
@@ -1281,7 +1281,7 @@
 
 <!-- Annexes -->
 <article>
-	<h2 class="bg-tertiary-500">Annexes</h2>
+	<h2 class="bg-t-500">Annexes</h2>
 
 	<p>Dans cette section, vous noterez toutes les informations « statiques », c’est-à-dire celles dont vous pourrez avoir besoin à différents moment du scénario.</p>
 

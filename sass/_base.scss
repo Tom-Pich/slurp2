@@ -1,9 +1,13 @@
-/* Mon framework CSS v2026-06-26 🖐️ linked to original ! */
-/* Attention, class pc-center supprimée */
-/* variables --dynamic-space-x-y renommées */
-/* taille : 14300 → 13665 octets */
-/* media query applicable aussi à l’impression */
-/* body not scrollable quand dialog open */
+/* Mon framework CSS v2026-11-23 🖐️ linked to original ! */
+// changement du nom des variables et classes de couleur 13 528 octets → 13 563 octets
+// --clr-primary-500 → --clr-p-500 ; --clr-primary-900 → --clr-p-900
+// .clr-primary-500 → .clr-p-500 + .bg-primary-500, .bg-primary-900, .border-primary-500
+//.grid > * { min-width: 0; }
+// !important sur fw fs et les classes de couleurs
+
+// à creuser ?
+// textarea: field-sizing: content + min-height: 3lh
+// input:invalid → input:user-invalid
 
 $brp-l: 1200px !default;
 $brp-m: 768px !default;
@@ -19,12 +23,10 @@ $dynamic-size-values: ( "½-1": var(--ds-½-1), "1-2": var(--ds-1-2), "3-5": var
 @mixin dynamic-sizes($attr, $important: false) { @each $size, $value in $dynamic-size-values {
 	&-#{$size} { @if $important {#{$attr}: $value !important;} @else {#{$attr}: $value;} }
 }} // margin, padding and gaps
-@mixin fw-scale() { @each $step in (400, 700) { &-#{$step} {font-weight: #{$step}} }}
-@mixin fs-scale() { @each $step in (300, 400, 450, 500, 600, 700, 800, 900, 1000) { &-#{$step} { font-size: var(--fs-#{$step})} }}
+@mixin fw-scale() { @each $step in (400, 700) { &-#{$step} {font-weight: #{$step} !important} }}
+@mixin fs-scale() { @each $step in (300, 400, 450, 500, 600, 700, 800, 900, 1000) { &-#{$step} { font-size: var(--fs-#{$step}) !important} }}
 
-//@mixin media($break-point: $brp-m) {@media screen and (max-width: #{$break-point}) {@content}};
 @mixin media($break-point: $brp-m) {@media (max-width: #{$break-point}) {@content}};
-//@mixin media-min($break-point: $brp-m) {@media screen and ( width > #{$break-point}) {@content}};
 @mixin media-min($break-point: $brp-m) {@media (width > #{$break-point})  {@content}};
 @mixin flow { > :where(:not(:first-child)) {margin-top: var(--flow-space, 1em);} }
 @mixin wrapper { width: min( 100% - 2 * var(--ds-1-2), var(--content-max-width)); margin-inline: auto; }
@@ -47,8 +49,8 @@ $dynamic-size-values: ( "½-1": var(--ds-½-1), "1-2": var(--ds-1-2), "3-5": var
 	--ds-3-5: clamp(3rem, 1.74rem + 3.72vw, 5rem);
 
 	// colors
-	--clr-primary-500: hsl(125, 71%, 23%);
-	--clr-primary-900: hsl(125, 63%, 92%);
+	--clr-p-500: hsl(125, 71%, 23%);
+	--clr-p-900: hsl(125, 63%, 92%);
 
 	--clr-valid: green;
 	--clr-warning: orange;
@@ -92,15 +94,16 @@ h4 {font-size: var(--fs-600);}
 h5 {font-size: var(--fs-500);}
 h6 {font-size: var(--fs-450);}
 p { --flow-space: .5em; text-wrap: pretty;}
-a {transition: all .2s; color: var(--clr-primary-500)}
-a:hover {color: var(--clr-primary-500)}
+a {transition: all .2s; color: var(--clr-p-500)}
+a:hover {color: var(--clr-p-500)}
 img, picture, svg, video, iframe {display: block; max-width: 100%;}
 img {font-style: italic; height: auto;}
-figure > img { margin-inline: auto; }
+figure { max-width: 100%;}
+figure > :is(img, svg) { margin-inline: auto;}
 ul, ol {padding-left: 1.5em; --flow-space: .5em;}
 sub, sup {line-height: 0; font-size: 0.7em;}
-strong { font-weight: 700; color: var(--clr-primary-500) }
-em { color: var(--clr-primary-500) }
+strong { font-weight: 700; color: var(--clr-p-500) }
+em { color: var(--clr-p-500) }
 blockquote { border-left: 1px solid var(--grey-700); padding-left: 1em; }
 
 details {
@@ -141,7 +144,7 @@ button, input[type=submit], .btn {
 		color: var(--text-clr-hover, var(--btn-clr, currentColor));
 		border: 1px solid var(--border-clr-hover, var(--text-clr-hover, currentColor));}
 }
-.btn-primary { --btn-clr: var(--clr-primary-500); --text-clr: var(--white); }
+.btn-primary { --btn-clr: var(--clr-p-500); --text-clr: var(--white); }
 input, select, textarea { padding: .5em 1em; color: currentColor; border: 1px solid currentColor; background-color: var(--white); min-width: 0; font-family: inherit;}
 :is(input:not([type=checkbox], [type=radio]), select):is(.fl-1, .fl-2, .fl-3, .fl-4) { width: 5ch; } // default width, allow {flex: x} to work
 option { color: var(--grey-300); }
@@ -150,12 +153,12 @@ textarea {resize: vertical; min-height: 8em; width: 100%;}
 :focus {outline: none;}
 :focus-visible {outline: .5px solid var(--black);}
 :is(input:not([type=checkbox]):not([type=radio]), textarea).watched {
-	&:not(:placeholder-shown):valid { outline: 1px solid var(--clr-valid) }
-	&:not(:placeholder-shown):invalid { outline: 1px solid var(--clr-invalid) }
+	&:not(:placeholder-shown):valid { outline: 1px solid var(--clr-valid) } // user-valid à la place ?
+	&:not(:placeholder-shown):invalid { outline: 1px solid var(--clr-invalid) } // user-invalid à la place ?
 	&:focus:invalid { outline: 1px solid var(--clr-warning) }
 }
 input[type=number] { appearance: textfield; }
-input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none;  } // Chrome, Safari, Edge
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none;  } // Chrome, Safari
 ::placeholder, ::-ms-input-placeholder { color: var(--grey-500); }
 
 // Layout
@@ -181,6 +184,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-app
 .fl-column {flex-direction: column;}
 
 .grid {display: grid;}
+.grid > * { min-width: 0; } // évite les débordements
 .col-2 {grid-template-columns: repeat(2, 1fr); @include media {grid-template-columns: 1fr;}}
 .col-2-m {grid-template-columns: repeat(2, 1fr); @include media($brp-s) {grid-template-columns: 1fr;}}
 .col-2-s {grid-template-columns: repeat(2, 1fr);}
@@ -238,23 +242,23 @@ img:is(.aspect-photo, .aspect-square, .aspect-video) { object-fit: cover; }
 .fs { @include fs-scale; }
 
 // color, border & shadows
-.clr-black {color: var(--black);}
-.clr-grey-200 {color: var(--grey-200);}
-.clr-grey-500 {color: var(--grey-500);}
-.clr-white {color: var(--white);}
-.clr-primary-500 {color: var(--clr-primary-500);}
-.clr-inherit { color: inherit; }
+.clr-black {color: var(--black) !important;}
+.clr-grey-200 {color: var(--grey-200) !important;}
+.clr-grey-500 {color: var(--grey-500) !important;}
+.clr-white {color: var(--white) !important;}
+.clr-p-500 {color: var(--clr-p-500) !important;}
+.clr-inherit { color: inherit !important;}
 
-.bg-primary-500 {background-color: var(--clr-primary-500);}
-.bg-primary-900 {background-color: var(--clr-primary-900);}
-.bg-grey-900 { background-color: var(--grey-900);}
-.bg-white {background-color: var(--white);}
+.bg-p-500 {background-color: var(--clr-p-500) !important;}
+.bg-p-900 {background-color: var(--clr-p-900) !important;}
+.bg-grey-900 { background-color: var(--grey-900) !important;}
+.bg-white {background-color: var(--white) !important;}
 
 .text-shadow {text-shadow: var(--text-shadow);}
 .box-shadow {box-shadow: var(--box-shadow);}
 
 .border {border: 1px solid currentColor;}
-.border-primary-500 {border: 1px solid var(--clr-primary-500);}
+.border-p-500 {border: 1px solid var(--clr-p-500);}
 .border-grey-700 {border: 1px solid var(--grey-700);}
 .border-none { border: none;}
 

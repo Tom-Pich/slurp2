@@ -113,7 +113,7 @@ class Equipment
 	public static function processEquipmentList(array $raw_equipment, array $state = []): array
 	{
 		$equipment = [
-			"pi" => ["id" => 0, "nom" => "Possessions sur soi", "liste" => [], "poids" => 0, "ordre" => null, "ordre-par-defaut" => 2, "sur-soi" => true, "lieu" => "pi"],
+			"pi" => ["id" => 0, "nom" => "Sur soi", "liste" => [], "poids" => 0, "ordre" => null, "ordre-par-defaut" => 2, "sur-soi" => true, "lieu" => "pi"],
 		];
 
 		// new 26-10-24 - éviter les appels en BDD inutiles

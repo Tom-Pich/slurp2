@@ -1,6 +1,6 @@
 import { qs, qsa, ce } from "./lib/dom-utils.js";
-import { calculate, explicitSign, } from "./utilities.js";
-import {showSpinningWheel, hideSpinningWheel } from "./main-utilities.js";
+import { calculate, explicitSign } from "./utilities.js";
+import { showSpinningWheel, hideSpinningWheel } from "./main-utilities.js";
 import { flushMsg } from "./ws-utilities.js";
 
 // roll a dice expression and return expression an result
@@ -108,7 +108,11 @@ export async function fetchDamageExpression(strength, code, hands) {
             body: data,
         })
             .then((response) => response.json())
-            .then((response) => response.data.damages.slice(2));
+            .then((response) => {
+				// supprimer B., T. et P.
+				if (["B.", "T.", "P."].includes(response.data.damages.slice(0, 2))) return response.data.damages.slice(2)
+				return response.data.damages
+            });
     }
     return null;
 }
@@ -137,7 +141,10 @@ export async function fetchResult(url, data = null) {
         fetch(url, params)
             //.then(response => response.text()) // debug
             //.then(response => console.log(response)) // debug
-            .then((response) => response.json())
+            .then((response) => {
+                if (!response.ok) throw new Error(response.status);
+                return response.json();
+            })
             .then((response) => response.data)
     );
 }
@@ -149,11 +156,18 @@ export class Widget {
         this.form.addEventListener("submit", async (e) => {
             e.preventDefault();
             showSpinningWheel();
-            const result = await this.action();
-			 hideSpinningWheel();
-            if (result === null) return;
-            qs("#msg-input").value += result;
-            flushMsg("chat-roll");
+            try {
+                const result = await this.action();
+                if (result === null) return;
+                qs("#msg-input").value += result;
+                flushMsg("chat-roll");
+            } catch (err) {
+                console.error(err);
+                qs("#msg-input").value += "⚠️ Erreur serveur.";
+                flushMsg("chat-roll");
+            } finally {
+                hideSpinningWheel();
+            }
         });
     }
 }

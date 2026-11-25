@@ -8,7 +8,7 @@ const storedVersion = localStorage.getItem("version");
 
 if (!storedVersion || storedVersion !== version) {
     localStorage.clear();
-	console.info("localStorage has been reset")
+    console.info("localStorage has been reset");
     localStorage.setItem("version", version);
 }
 
@@ -50,14 +50,7 @@ const roundCounterWidget = new Widget("round-counter", function () {
 });
 
 const weaponDamageWidget = new Widget("widget-damage-location", async function () {
-    const strength = this.form.strength;
-    const dmgCode = this.form.code;
-    const hands = this.form.hands;
     const dmgExpression = this.form.expression;
-
-    const expression = await fetchDamageExpression(strength.value, dmgCode.value, hands.value);
-    if (expression) dmgExpression.value = expression;
-
     const damages = roll(dmgExpression.value);
     const localisation = await getLocalisation();
 
@@ -65,7 +58,30 @@ const weaponDamageWidget = new Widget("widget-damage-location", async function (
     qs("[data-name=wound-effect] [name=raw-dmg]").value = damages.result;
     qs("[data-name=wound-effect] [name=localisation]").value = localisation[1];
 
-    return `Dégâts (${damages.expression})&nbsp;: ${damages.result} – ${localisation[0]}`;
+	if (damages.expression === "0d") return `Localisation : ${localisation[0]}`
+	if (damages.expression.slice(0,3) === "0d+") return `Dégâts : ${damages.result} – ${localisation[0]}`
+    return `Dégâts (${damages.expression}) : ${damages.result} – ${localisation[0]}`;
+});
+
+// update dmg expression live
+let debounceTimer;
+["strength", "code", "hands"].forEach((input) => {
+    weaponDamageWidget.form[input].addEventListener("input", () => {
+        clearTimeout(debounceTimer);
+
+        debounceTimer = setTimeout(async () => {
+            const strength = weaponDamageWidget.form["strength"].value;
+            const code = weaponDamageWidget.form["code"].value;
+            const hands = weaponDamageWidget.form["hands"].value;
+
+            if (strength !== "" && code !== "" && hands !== "") {
+                let expression = await fetchDamageExpression(strength, code, hands);
+				if (expression === "Code dégâts non valide") expression = "?"
+				//console.log(expression)
+				weaponDamageWidget.form["expression"].value = expression
+            }
+        }, 300);
+    });
 });
 
 const criticalWidget = new Widget("widget-criticals", async function () {
@@ -85,12 +101,12 @@ const burstWidget = new Widget("widget-burst", async function () {
     for (let i = 0; i < hitNumbers; i++) {
         const damages = roll(damagesExpression).result;
         const localisation = this.form.localisation.checked ? await getLocalisation() : "";
-		const localisationString = localisation ? `– ${localisation[0]}` : ""
+        const localisationString = localisation ? `– ${localisation[0]}` : "";
         hits.push(`${damages} pts ${localisationString}`);
     }
 
     // formatting answer
-    let formattedMsg = `<b>Rafale&nbsp;:</b> Rcl ${this.form.rcl.value} – Balles ${this.form.bullets.value} – MR ${this.form.mr.value}`;
+    let formattedMsg = `<b>Rafale :</b> Rcl ${this.form.rcl.value} – Balles ${this.form.bullets.value} – MR ${this.form.mr.value}`;
     hits.forEach((value, index) => {
         formattedMsg += `<br><b>${index + 1}.</b> ${value}`;
     });
@@ -133,9 +149,9 @@ const generalStateWidget = new Widget("general-health-state", async function () 
 
     let formattedMsg = `État général de <b>${opponent.name}</b><br>${response.general}`;
     if (response.members !== undefined && !response["members-error"]) {
-        for (const [member, state] of Object.entries(response.members)) formattedMsg += `<br>${member}&nbsp;: ${state.description}`;
+        for (const [member, state] of Object.entries(response.members)) formattedMsg += `<br>${member} : ${state.description}`;
     }
-    if (response["members-error"]) formattedMsg += `<br>Membres&nbsp;: données incohérentes`;
+    if (response["members-error"]) formattedMsg += `<br>Membres : données incohérentes`;
 
     return formattedMsg;
 });
@@ -143,6 +159,7 @@ const generalStateWidget = new Widget("general-health-state", async function () 
 const woundEffectsWidget = new Widget("wound-effect", async function () {
     const opponentIndex = this.form["opponent-selector"].value;
     const opponent = opponents.list[opponentIndex];
+    //console.log(opponent)
     const rawDmg = roll(this.form["raw-dmg"].value).result;
     const rolls = [];
     for (let i = 0; i < 7; i++) rolls.push(roll("3d").result);
@@ -156,14 +173,15 @@ const woundEffectsWidget = new Widget("wound-effect", async function () {
     data.append("pain-resistance", opponent.painResistance);
     data.set("raw-dmg", rawDmg);
     data.append("rolls", rolls);
+    //console.log(Object.fromEntries(data));
 
     const result = await fetchResult("/api/wound-effects", data);
 
-    if (result.erreur) return "Données manquantes";
+    if (result.erreur) return "Données manquantes dans le widget <i>Protagonistes</i>";
 
     let formattedMsg = `<b>${opponent.name} – ${result["dégâts bruts"]} ( ${result["type dégâts"]} ${result["localisation"]})</b>`;
-    formattedMsg += `<br>Dégâts effectifs&nbsp;: ${result["dégâts effectifs"]}`;
-    if (result["recul"]) formattedMsg += `<br>Recul de ${result["recul"]}&nbsp;m.`;
+    formattedMsg += `<br>Dégâts effectifs : ${result["dégâts effectifs"]}`;
+    if (result["recul"]) formattedMsg += `<br>Recul de ${result["recul"]} m.`;
     if (result["mort"]) formattedMsg += `<br>${result["mort"]}`;
     const immediateDeath = result["mort"] && result["mort"].includes("😵");
     if (!immediateDeath) {
@@ -256,14 +274,14 @@ const objectDamageWidget = new Widget("object-damages", async function () {
 
     let formattedMsg = `
 				<b>Dégâts ${results.objectType}</b><br>
-				PdSm&nbsp;: ${results.pdsm} – RD&nbsp;: ${results.rd}<br>
-				Dégâts&nbsp;: ${results.netDamages} (${results.damagesLevel})<br>
-				PdS restant&nbsp;: ${results.pds} (${results.stateLevel})
+				PdSm : ${results.pdsm} – RD : ${results.rd}<br>
+				Dégâts : ${results.netDamages} (${results.damagesLevel})<br>
+				PdS restant : ${results.pds} (${results.stateLevel})
 			`;
     if (results.sideEffects.length) {
         formattedMsg += "<br>";
         for (let effect of results.sideEffects) {
-            formattedMsg += `•&nbsp;${effect[0]} niv. ${effect[1]}<br>`;
+            formattedMsg += `• ${effect[0]} niv. ${effect[1]}<br>`;
         }
     }
     return formattedMsg;
@@ -312,14 +330,14 @@ const collisionWidget = new Widget("vehicle-collision", async function () {
             damages = 0;
     }
 
-    const formattedMsg = `<b>Collision</b> ${severityLevel}&nbsp;: dégâts ${damages}`;
+    const formattedMsg = `<b>Collision</b> ${severityLevel} : dégâts ${damages}`;
     return formattedMsg;
 });
 
 const npcWidget = new Widget("npc-generator", async function () {
     const data = new FormData(this.form);
     const result = await fetchResult("/api/npc-generator", data);
-	return `/${userID} ${result}`;
+    return `/${userID} ${result}`;
 });
 
 // set and save NPC region
@@ -348,7 +366,7 @@ const wildGeneratorWidget = new Widget("wild-generator", async function () {
 
 const checkboxesWrapper = qs("[data-role=widget-choices]");
 const checkboxTemplate = qs("[data-role=widget-choices] template");
-const defaultDisplayedWidgets = {/*  "simple-roll": true, "scores-tester": true,  */"widget-damage-location": true, "widget-criticals": true };
+const defaultDisplayedWidgets = { /*  "simple-roll": true, "scores-tester": true,  */ "widget-damage-location": true, "widget-criticals": true };
 const displayedWidgets = JSON.parse(localStorage.getItem("display-widgets")) || defaultDisplayedWidgets;
 
 // build widgets choice dialog

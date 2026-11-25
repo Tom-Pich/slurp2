@@ -45,7 +45,7 @@
 
 	<p class="italic ta-center" style="margin-top: -.5em">Nos engagements pour des parties vivantes</p>
 
-	<p>Après des années de pratique, nous savons tous comment fonctionne une partie de jeu de rôle. Mais, entre la fatigue, les soucis extérieurs et les habitudes prises au fil du temps, il est facile de glisser vers un jeu « en pilotage automatique ».</p>
+	<p>On est tous des vieux routards du JdR 👴🏻. Mais, entre la fatigue, les soucis et les vieilles habitudes, on peut facilement glisser vers du « pilotage automatique ».</p>
 
 	<!-- Le contrat -->
 	<details>

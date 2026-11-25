@@ -260,16 +260,16 @@ use App\Rules\WeaponsController;
 	<h4>Widget Protagonistes</h4>
 	<div class="mt-1 flow">
 		<p>Pour pouvoir utiliser les widgets <i>État général et PdV</i>, <i>Effets d’une blessure</i> et <i>Hémorragie</i>, il est nécessaire de remplir au moins une entrée protagoniste. Ces widgets se servent des caractéristiques des protagonistes.</p>
-		<p><b>Catégorie&nbsp;:</b> sélectionner la «&nbsp;catégorie&nbsp;» du protagoniste. Les effets des blessures en dépendent.</p>
+		<p><b>Catégorie :</b> sélectionner la « catégorie » du protagoniste. Les effets des blessures en dépendent.</p>
 		<ul>
-			<li><b>std&nbsp;:</b> standard – le protagoniste est une créature biologique de type mammifère/reptile. Les règles standard des blessures s’appliquent.</li>
-			<li><b>nbh&nbsp;:</b> non biologique humanoïde – ces créatures sont insensibles à la douleur, n’ont pas d’organes vitaux, et meurent à 0 PdV. Elles ont cependant une sensibilité accrue à la tête. Exemple typique&nbsp;: zombie.</li>
-			<li><b>nbx&nbsp;:</b> non biologique quelconque – comme « nbh », sauf que ces créatures n’ont pas de tête, ou bien la tête n’a pas de rôle particulier dans le fonctionnement de la créature.</li>
-			<li><b>ins&nbsp;:</b> ange ou démon <i>In Nomine</i> – mêmes règles que les créatures standard, sauf que leur PdV doublés n’ont pas d’influence sur le recul causé par des dégâts bruts.</li>
-			<li><b>ci&nbsp;:</b> créatures insectoïde – ces créatures possèdent 6 pattes (ou plus) et sont très résistantes à la douleur.</li>
+			<li><b>std :</b> standard – le protagoniste est une créature biologique de type animal. Les règles standard des blessures s’appliquent.</li>
+			<li><b>nbh :</b> non biologique humanoïde – ces créatures sont insensibles à la douleur, n’ont pas d’organes vitaux, et meurent à 0 PdV. Elles ont cependant une sensibilité accrue à la tête. Exemple typique : zombie.</li>
+			<li><b>nbx :</b> non biologique quelconque – comme « nbh », sauf que ces créatures n’ont pas de tête, ou bien la tête n’a pas de rôle particulier dans le fonctionnement de la créature.</li>
+			<li><b>ins :</b> ange ou démon <i>In Nomine</i> – mêmes règles que les créatures standard, sauf que leur PdV doublés n’ont pas d’influence sur le recul causé par des dégâts bruts.</li>
+			<li><b>ci :</b> créatures insectoïde – ces créatures possèdent 6 pattes (ou plus) et sont très résistantes à la douleur.</li>
 		</ul>
-		<p><b>Résistance à la douleur&nbsp;:</b> -1 pour <i>Douillet</i> ou 1 pour <i>Résistance à la douleur</i>. Sinon, mettre 0 ou laisser vide.</p>
-		<p><b>Blessure membres&nbsp;:</b> Mettre la première lettre du membre (Bras, Main, Jambe, Pied) et la première lettre du côté (Droit ou Gauche), puis indiquer les dégâts reçus. Séparer les différents membres par une virgule. Exemple&nbsp;: MD 1, BD 3 signifie une blessure de 1 pt à la main droite et une blessure de 3 points au bras droit.</p>
+		<p><b>Résistance à la douleur :</b> -1 pour <i>Douillet</i> ou 1 pour <i>Résistance à la douleur</i>. Sinon, mettre 0 ou laisser vide.</p>
+		<p><b>Blessure membres :</b> Mettre la première lettre du membre (Bras, Main, Jambe, Pied) et la première lettre du côté (Droit ou Gauche), puis indiquer les dégâts reçus. Séparer les différents membres par une virgule. Exemple : MD 1, BG 3 signifie une blessure de 1 pt à la main droite et une blessure de 3 points au bras guache.</p>
 
 		<p><b>Pour supprimer</b> un protagoniste, effacer son nom.</p>
 	</div>
@@ -322,9 +322,14 @@ use App\Rules\WeaponsController;
 	</form>
 </fieldset>
 
-<!-- Compteur de round -->
+<!-- compteur de round -->
 <fieldset data-name="round-counter" hidden>
-	<legend>Compteur de round</legend>
+	<legend class="flex-s gap-1 ai-center">
+		Compteur de rounds
+		<div class="flex-s gap-½">
+			<button class="nude ff-fas" data-role="open-dialog" data-dialog-name="round-counter-dialog" title="mode d’emploi">&#xf059;</button>
+		</div>
+	</legend>
 	<form class="flex-s gap-½">
 		<div class="flex-s gap-½ fl-1">
 			<input type="text" name="round" class="ta-center" placeholder="round" title="N° du round" value="1">
@@ -333,10 +338,23 @@ use App\Rules\WeaponsController;
 		<button class="nude">🎲</button>
 	</form>
 </fieldset>
+<dialog data-name="round-counter-dialog">
+	<button data-role="close-modal" class="ff-fas">&#xf00d;</button>
+	<h4>Widget Compteur de rounds</h4>
+	<div class="mt-1 flow">
+		<p>Le n° du round est incrémenté automatiquement à chaque utilisation. Vous devez le réinitialiser à la main si nécessaire.</p>
+		<p><b>Ordre d’initiative :</b> ce champ est optionnel, vous pouvez y écrire ce que vous voulez. Si vous inscrivez un numéro, il sera remplacé par le nom du protagoniste correspondant si c’est possible.</p>
+	</div>
+</dialog>
 
 <!-- dégâts et localisation -->
 <fieldset data-name="widget-damage-location">
-	<legend>Dégâts et localisation</legend>
+	<legend class="flex-s gap-1 ai-center">
+		Dégâts &amp; localisation
+		<div class="flex-s gap-½">
+			<button class="nude ff-fas" data-role="open-dialog" data-dialog-name="damage-location-dialog" title="mode d’emploi">&#xf059;</button>
+		</div>
+	</legend>
 	<form class="flex-s gap-½ ai-center">
 		<input type="text" name="strength" class="ta-center" placeholder="For" title="For de l’attaquant">
 		<input type="text" name="code" class="ta-center" placeholder="t/e" title="Code dégâts de l’arme">
@@ -350,6 +368,22 @@ use App\Rules\WeaponsController;
 		<button class="nude">🎲</button>
 	</form>
 </fieldset>
+<dialog data-name="damage-location-dialog">
+	<button data-role="close-modal" class="ff-fas">&#xf00d;</button>
+	<h4>Widget Dégâts &amp; localisation</h4>
+	<div class="mt-1 flow">
+		<p>Ce widget vous affiche le montant des dégâts occasionnés et une localisation.</p>
+		<p>Vous pouvez :</p>
+		<ul>
+			<li>soit préciser la <i>For</i>, le code de dégâts (par exemple t+2, e-3…) et le maniement de l’arme ;</li>
+			<li>soit entrer directement un code de dégâts à droite (il aura alors la priorité sur les données de gauche).</li>
+		</ul>
+
+		<p>Le maniement de l’arme (1 main, 2 mains optionnel ou 2 mains) est à vérifier sur les caractéristiques de l’arme utilisée.</p>
+
+		<p>Le widget <i>Effets d’une blessure</i> est automatiquement mis à jour à chaque utilisation de ce wdiget.</p>
+	</div>
+</dialog>
 
 <!-- critiques & maladresses -->
 <fieldset data-name="widget-criticals">
@@ -416,7 +450,12 @@ use App\Rules\WeaponsController;
 
 <!-- Effet blessure -->
 <fieldset data-name="wound-effect" hidden>
-	<legend>Effets d’une blessure</legend>
+	<legend class="flex-s gap-1 ai-center">
+		Effets d’une blessure
+		<div class="flex-s gap-½">
+			<button class="nude ff-fas" data-role="open-dialog" data-dialog-name="wound-effect-dialog" title="mode d’emploi">&#xf059;</button>
+		</div>
+	</legend>
 	<form class="flex-s gap-½ ai-center">
 
 		<div class="fl-1">
@@ -462,6 +501,22 @@ use App\Rules\WeaponsController;
 		<button class="nude">🎲</button>
 	</form>
 </fieldset>
+<dialog data-name="wound-effect-dialog">
+	<button data-role="close-modal" class="ff-fas">&#xf00d;</button>
+	<h4>Widget Effets d’une blessure</h4>
+	<div class="mt-1 flow">
+		<p>Pour utiliser ce widget, vous <b>devez</b> avoir défini au moins un <i>Protagoniste</i>.</p>
+
+		<ol class="pl-1 bold-bullet">
+			<li>Sélectionner un <b>Protagoniste</b> (ses caractéristiques doivent avoir été renseignées).</li>
+			<li>Préciser un <b>code dégâts</b> ou un <b>montant fixe</b> de dégâts.</li>
+			<li>Préciser la <b>RD de la localisation</b> (elle vaut 0 si le champ est vide).</li>
+			<li>Sélectionner un <b>type de dégâts</b>.</li>
+			<li>Si les dégâts sont causés par une balle, sélectionner un <b>type de balle</b> (si ce n’est pas le cas, le sélecteur est désactivé).</li>
+			<li>Sélectionner une <b>localisation</b>.</li>
+		</ol>
+	</div>
+</dialog>
 
 <!-- Hémorragie -->
 <fieldset data-name="bleeding-widget">

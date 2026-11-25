@@ -24,6 +24,8 @@ $users = $user_repo->getAllUsers();
 $groups = $admin ? $group_repo->getAllGroups() : $group_repo->getGMGroups($_SESSION["id"]);
 $characters_id = $admin ? $character_repo->getAllCharacters() : $character_repo->getCharactersFromGM($_SESSION["id"]);
 
+//var_dump($characters_id); die();
+
 $characters = [];
 foreach ($characters_id as $id) $characters[] = new Character($id);
 $statusOrder = ["Actif", "Création", "Archivé", "Mort"];

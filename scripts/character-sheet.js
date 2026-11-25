@@ -193,7 +193,7 @@ formEquipment.addEventListener("click", (e) => {
 			<summary class="grid gap-½ ai-center">
 				<div class="ff-fas" draggable="true" data-role="item-grip">&#xf58e;</div>
 				<input name="nouvel-objet[${newObjectNumber}][Nom]"	type="text" placeholder = "Nouvel objet">
-				<input name="nouvel-objet[${newObjectNumber}][Poids]" type="text" class="ta-center">
+				<input name="nouvel-objet[${newObjectNumber}][Poids]" type="text" class="ta-right" placeholder="Pds">
 				<input hidden name="nouvel-objet[${newObjectNumber}][Lieu]" value="${containerWrapper.dataset.place}" data-role="item-place">
 				<input hidden name="nouvel-objet[${newObjectNumber}][MJ]" value="${gmId}">
 			</summary>

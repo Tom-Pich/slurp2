@@ -123,11 +123,18 @@ class ApiController
 
 	public function getWoundEffects(string $category,  int $dex, int $san, int $pdvm, int $pdv, int $pain_resistance, int $raw_dmg, int $rd, string $dmg_type, string $bullet_type, string $localisation, array $rolls)
 	{
-		$this->response["data"] = WoundController::getWoundEffects($category, $dex, $san, $pdvm, $pdv, $pain_resistance, $raw_dmg, $rd, $dmg_type, $bullet_type, $localisation, $rolls);
+		try {
+			$this->response["data"] = WoundController::getWoundEffects($category, $dex, $san, $pdvm, $pdv, $pain_resistance, $raw_dmg, $rd, $dmg_type, $bullet_type, $localisation, $rolls);
+		} catch (\Throwable $e) {
+			error_log(sprintf("[wound-effects] %s in %s:%d | POST=%s", $e->getMessage(), $e->getFile(), $e->getLine(), json_encode($_POST, JSON_UNESCAPED_UNICODE)));
+			http_response_code(500);
+			$this->response["data"] = ["erreur" => true];
+		}
 		$this->sendResponse();
 	}
 
-	public function getBleedingEffects(int $san_test_mr, int $san_test_critical, int $pdvm, int $severity){
+	public function getBleedingEffects(int $san_test_mr, int $san_test_critical, int $pdvm, int $severity)
+	{
 		$this->response["data"] = WoundController::getBleedingEffects($san_test_mr, $san_test_critical, $pdvm, $severity);
 		$this->sendResponse();
 	}

@@ -95,7 +95,6 @@ return $pages_data = [
 		"title" => "Écrire un scénario",
 		"description" => "Une évolution de l’article précédemment publié dans PTGPTB faisant la synthèse de nombreux articles sur la création de scénario",
 		"file" => "s01-scenario",
-		"body-class" => "standard-page writing-scenario",
 	],
 	"bibliotheque-liens" => [
 		"title" => "Bibliothèque de liens",
@@ -113,21 +112,20 @@ return $pages_data = [
 		"file" => "s04-vocabulaire-relief",
 	],
 	"qualite-jeu" => [
-		"title" => "Améliorer notre pratique du JdR",
+		"title" => "Améliorer sa pratique",
 		"description" => "Quelques trucs et astuces pour améliorer la qualité des parties – pour le MJ et pour les joueurs.",
 		"file" => "s05-qualite-jeu",
 	],
 	"documentation-ia" => [
 		"title" => "Documentation pour l’IA",
 		"description" => "Élément de règles au format markdown pour l’IA",
-		"body-class" => "basic-page",
 		"file" => "s06-documentation-ia",
 	],
 	"test" => [
 		"title" => "Test",
 		"description" => "",
 		"file" => "test",
-		"body-class" => "test",
+		"body-class" => "basic-page",
 		"access-restriction" => 3,
 	],
 
@@ -135,8 +133,8 @@ return $pages_data = [
 	"personnage-fiche" => [
 		"title" => "", // nom du perso
 		"description" => "",
-		"file" => "personnage-fiche",
-		"body-class" => "personnage-fiche",
+		"file" => CHARACTER_SHEET_VERSION === 2 ? "personnage-fiche-v2" : "personnage-fiche",
+		"body-class" => "personnage-fiche" . (CHARACTER_SHEET_VERSION === 2 ? " v2" : ""),
 		"aside-right" => "chat-window",
 	],
 	"personnage-gestion" => [
@@ -165,7 +163,7 @@ return $pages_data = [
 	"mon-compte" => [
 		"title" => "Mon compte",
 		"description" => "",
-		"body-class" => "basic-page account-page",
+		"body-class" => "basic-page",
 		"access-restriction" => 1,
 		"file" => "gestion-compte",
 	],

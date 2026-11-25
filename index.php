@@ -2,6 +2,9 @@
 
 require_once "vendor/autoload.php";
 
+ini_set('log_errors', '1');
+ini_set('error_log', __DIR__ . '/php-errors.log'); // fichier protégé par .htaccess
+
 use App\Controller\ApiController;
 use App\Controller\CharacterExportController;
 use App\Controller\Error404Controller;
@@ -121,7 +124,15 @@ if ($path_segments[1] === "api") {
 			break;
 
 		case "/api/wound-effects":
-			Firewall::check(isset($_POST["category"]) && isset($_POST["dex"]) && isset($_POST["san"]) && isset($_POST["pdvm"]) && isset($_POST["pdv"]) && isset($_POST["pain-resistance"]) && isset($_POST["raw-dmg"]) && isset($_POST["rd"]) && isset($_POST["dmg-type"]) && isset($_POST["localisation"]) && isset($_POST["rolls"]));
+			$required = [ "category", "dex", "san", "pdvm", "pdv", "pain-resistance", "raw-dmg", "rd", "dmg-type", "localisation", "rolls" ];
+			$all_required_values_present = true;
+			foreach ($required as $key) {
+				if (!isset($_POST[$key])) {
+					$all_required_values_present = false;
+					break;
+				}
+			}
+			Firewall::check($all_required_values_present);
 			$category = htmlspecialchars($_POST["category"]);
 			$dex = (int) $_POST["dex"];
 			$san = (int) $_POST["san"];

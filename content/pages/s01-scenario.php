@@ -1,8 +1,16 @@
+<style>
+	body {counter-reset: plot-counter;}
+	details.plot-type { counter-increment: plot-counter; }
+	details.plot-type > summary::before { content: counter(plot-counter) ". "; }
+</style>
+
+<p class="intro">Ceci est une version mise à jour (31-10-2026) de <a href="https://ptgptb.fr/ecrire-un-scenario" target="_blank">mon article</a> sur ptgptb.fr.</p>
+
 <!-- Incubez sans succomber -->
 <article>
 	<h2>Incubez sans succomber</h2>
 
-	<p>Ceci est une version mise à jour (31-10-2026) de <a href="https://ptgptb.fr/ecrire-un-scenario" target="_blank">mon article</a> sur ptgptb.fr.<!--  Il s’agit d’un guide méthodologique pour rédiger un scénario. --> Avant de noter quoi que ce soit pour votre scénario, commencez par les étapes ci-dessous…</p>
+	<p><!-- Ceci est une version mise à jour (31-10-2026) de <a href="https://ptgptb.fr/ecrire-un-scenario" target="_blank">mon article</a> sur ptgptb.fr. --><!--  Il s’agit d’un guide méthodologique pour rédiger un scénario. --> Avant de noter quoi que ce soit pour votre scénario, commencez par les étapes ci-dessous…</p>
 
 	<!-- Style, durée et difficulté -->
 	<details>
@@ -716,11 +724,11 @@
 		<p>Préparer un document avec les trois grandes sections ci-dessous. Laissez-les vides pour l’instant. Le guide pour les compléter se trouve dans les sections suivantes.</p>
 
 		<div class="border p-½ fw-700 flow">
-			<p class="clr-primary-500">Notes</p>
+			<p class="clr-p-500">Notes</p>
 			<hr style="border: 1px solid var(--grey-900)">
-			<p class="clr-secondary-500">Scénario</p>
+			<p class="clr-s-500">Scénario</p>
 			<hr style="border: 1px solid var(--grey-900)">
-			<p class="clr-tertiary-500">Annexes</p>
+			<p style="color: var(--clr-t-500)">Annexes</p>
 		</div>
 
 	</details>
@@ -729,7 +737,7 @@
 
 <!-- Notes -->
 <article>
-	<h2 class="bg-primary-500">Notes</h2>
+	<h2 class="bg-p-500">Notes</h2>
 
 	<p>Cette section est un brouillon. Notez-y tout ce qui vous vient à l’esprit : idées, PNJ, questions … Elle va évoluer tout au long de votre travail de création : vous y ajouterez des idées ou des questions, et retirerez ce qui n’est plus pertinent ou ce qui a été intégré à l’écriture de votre scénario.</p>
 
@@ -979,7 +987,7 @@
 
 <!-- Scénario -->
 <article>
-	<h2 class="bg-secondary-500">Scénario</h2>
+	<h2 style="background-color: var(--clr-s-500)">Scénario</h2>
 	<p>C’est dans cette section que vous allez écrire votre scénario proprement dit en le découpant selon le schéma proposé ci-dessous. Écrire en style télégraphique est suffisant.</p>
 
 	<!-- But du scénario -->
@@ -1298,7 +1306,7 @@
 
 <!-- Annexes -->
 <article>
-	<h2 class="bg-tertiary-500">Annexes</h2>
+	<h2 style="background-color: var(--clr-t-500)">Annexes</h2>
 
 	<p>Dans cette section, vous noterez toutes les informations « statiques », c’est-à-dire celles dont vous pourrez avoir besoin à différents moment du scénario.</p>
 
